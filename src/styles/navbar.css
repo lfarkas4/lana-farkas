@@ -1,0 +1,15 @@
+.navbar-header{
+    width: 100%;
+    background-color: #DEDEDE;
+}
+
+.nav-intro {
+    padding-left: 2.5%; 
+    padding-right: 2.5%; 
+}
+
+.active {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
