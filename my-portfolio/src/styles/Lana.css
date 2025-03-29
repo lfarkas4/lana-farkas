@@ -1,0 +1,117 @@
+@keyframes float-l {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    50% { transform: translate(0px, 4px) rotate(-3deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+  }
+  
+  @keyframes float-a1 {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    50% { transform: translate(2px, -17px) rotate(5deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+  }
+  
+  @keyframes float-n {
+    0% { transform: translate(0px, 0px) rotate(-0.5deg); }
+    50% { transform: translate(3px, 8px) rotate(-3deg); }
+    100% { transform: translate(0px, 0px) rotate(-0.5deg); }
+  }
+  
+  @keyframes float-a2 {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    50% { transform: translate(6px, -17px) rotate(-4deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+  }
+  
+  @keyframes float-halo {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    50% { transform: translate(3px, -12px) rotate(1deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+  }
+  
+  @keyframes float-orstar1 {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    50% { transform: translate(7px, -10px) rotate(0deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+  }
+  
+  @keyframes float-redstar1 {
+    0% { transform: translate(0px, 0px); }
+    50% { transform: translate(8px, 20px); }
+    100% { transform: translate(0px, 0px); }
+  }
+  
+  @keyframes float-blustar3 {
+    0% { transform: translate(0px, 0px); }
+    50% { transform: translate(10px, 12px); }
+    100% { transform: translate(0px, 0px); }
+  }
+  
+  @keyframes float-blustar2 {
+    0% { transform: translate(0px, 0px); }
+    50% { transform: translate(0px, -21px); }
+    100% { transform: translate(0px, 0px); }
+  }
+  
+  @keyframes float-blustar1 {
+    0% { transform: translate(0px, 0px); }
+    50% { transform: translate(0px, -20px); }
+    100% { transform: translate(0px, 0px); }
+  }
+  
+  @keyframes float-redstar2 {
+    0% { transform: translate(0px, 0px); }
+    50% { transform: translate(-1px, -13px); }
+    100% { transform: translate(0px, 0px); }
+  }
+  
+  @keyframes float-crown {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    50% { transform: translate(13px, -15px) rotate(5deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+  }
+  
+  .lana-container {
+    position: relative;
+    width: 100%;
+    max-width: 786.86px;
+    aspect-ratio: 786.86 / 280.77;
+    margin: 0 auto;
+  }
+  
+  .lana-piece {
+    position: absolute;
+    width: 12%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  
+  /* === Floating pieces with centered anchors === */
+  .l-piece    { width: 16.2%; top: 63.6%; left: 25.3%; animation: float-l 3.2s ease-in-out infinite; }
+  .a1-piece   { width: 16.9%; top: 56%; left: 39.8%; animation: float-a1 3.2s ease-in-out infinite; }
+  .n-piece    { width: 20.05%; top: 37.05%; left: 47.5%; animation: float-n 3.2s ease-in-out infinite; }
+  .a2-piece   { width: 18.9%; top: 30%; left: 65.8%; animation: float-a2 3.2s ease-in-out infinite; }
+  .halo-piece { width: 20.1%; top: 15.3%; left: 47.6%; animation: float-halo 3.2s ease-in-out infinite; }
+  
+  
+  /* Decorative stars and crown */
+  .orstar1-piece  { width: 8.2%; top: 12.6%; left: 7.7%;  animation: float-orstar1 3.35s ease-in-out infinite; }
+  .redstar1-piece { width: 6%; top: 67.2%; left: 8.5%;  animation: float-redstar1 3.3s ease-in-out infinite; }
+  .blustar3-piece { width: 5.3%; top: 43.5%; left: 1.9%;  animation: float-blustar3 3.2s ease-in-out infinite; }
+  .blustar2-piece { width: 4%; top: 88.6%; left: 37.5%; animation: float-blustar2 3.2s ease-in-out infinite; }
+  .blustar1-piece { width: 4.1%; top: 39.2%; left: 88.8%; animation: float-blustar1 3.31s ease-in-out infinite; }
+  .redstar2-piece { width: 6%; top: 15%; left: 82.5%; animation: float-redstar2 3.3s ease-in-out infinite; }
+  .crown-piece    { width: 11.7%; top: 65.5%; left: 79.6%; animation: float-crown 3.2s ease-in-out infinite; }
+  
+  /* Keep your existing animations */
+  @keyframes float-l {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(-50%, calc(-50% + 2px)) rotate(-3deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+  }
+  /* Repeat this translate(-50%, -50%) pattern for all animations */
+  @keyframes float-a1 {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(calc(-50% + 2px), calc(-50% - 17px)) rotate(5deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+  }

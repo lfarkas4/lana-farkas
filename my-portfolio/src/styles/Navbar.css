@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+
+.custom-navbar {
+    background: transparent !important;
+    position: fixed;
+    width: 100%;
+    top: 20px;
+    left: 0;
+    z-index: 100;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+/* Navigation Container */
+.nav-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+}
+
+.brand-logo img {
+    height: 40px;
+    width: auto;
+    margin-top: 5px;
+    position: relative;
+    z-index: 101; /* Keeps it above the menu */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Adjust logo for mobile */
+@media (max-width: 992px) {
+    .brand-logo img {
+        height: 35px; /* Slightly smaller for mobile */
+        margin-top: 10px;
+        position: fixed;
+        top: 25px;
+        left: 40px; /* Moves to the left */
+        z-index: 103; /* Ensures it's above menu */
+    }
+}
+
+.resume-arrow {
+    font-size: 1rem; /* Match font size of text */
+    vertical-align: middle; /* Align with text */
+    margin-left: -2px; /* Add spacing */
+}
+
+/* If menu is open, adjust logo position */
+.menu-open .brand-logo img {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%); /* Centers the logo */
+    height: 45px; /* Slightly larger for better visibility */
+    transition: all 0.4s ease-in-out;
+}
+
+/* Desktop Navigation (Visible on Large Screens) */
+.nav-links-desktop {
+    display: flex;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.nav-link {
+    color: rgb(204, 204, 204) !important;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: lowercase;
+    text-decoration: none;
+    letter-spacing: 0.85px;;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: rgb(240, 240, 240) !important;
+}
+
+/* Hamburger Menu */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: rgb(204, 204, 204); /* Default color */
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    z-index: 102;
+    transition: color 0.2s ease-in-out; /* Smooth transition */
+}
+
+.menu-icon:hover {
+    color: rgb(240, 240, 240) !important; /* Lighter color on hover */
+}
+
+@media (max-width: 992px) {
+    .menu-icon {
+        display: block;
+    }
+
+    /* Hide Desktop Nav Links on Mobile */
+    .nav-links-desktop {
+        display: none;
+    }
+}
+
+/* Fullscreen Background (Behind Menu) */
+.nav-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: #00030b; /* Dark Blue */
+    z-index: -1;
+    transition: height 0.4s ease-in-out;
+}
+
+.nav-background.active {
+    height: 100vh;
+}
+
+/* Fullscreen Dropdown Menu (Only on Mobile) */
+.nav-links-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.nav-links-container.active {
+    height: 100vh;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Centered Navigation Links in Mobile Menu */
+.nav-links-container .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+/* Ensure menu resets when resizing */
+@media (min-width: 993px) {
+    .nav-links-container {
+        display: none !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .nav-links-container .nav-link {
+        font-size: 1.5rem; /* Increase text size */
+        font-weight: 400;
+        letter-spacing: 0.85px;
+    }
+}
+
+@media (max-width: 992px) {
+    .resume-arrow {
+        font-size: 1.5rem; /* Match mobile nav text size */
+    }
+}
+
+.navbar-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(
+      to bottom,
+      rgba(1, 0, 3, 0.3) 0%,
+      rgba(1, 0, 3, 0.2) 40%,
+      rgba(1, 0, 3, 0.1) 75%,
+      rgba(1, 0, 3, 0.0) 100%
+    );
+    z-index: 99;
+    pointer-events: none;
+  }

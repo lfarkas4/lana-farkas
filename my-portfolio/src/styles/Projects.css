@@ -1,0 +1,240 @@
+/* Base styles unchanged up top… */
+.projects-section {
+  padding: 0px 55px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects-wrapper {
+  max-width: 1150px;
+  width: 100%;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  text-transform: lowercase;
+  color: rgb(204, 204, 204);
+  margin: 30px 0 25px;
+}
+
+.section-arrow {
+  height: 1rem;
+  width: auto;
+  display: inline-block;
+  margin-bottom: 1px;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 75px 48px;
+  margin-bottom: 140px;
+  margin-top: 40px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.project-thumbnail {
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* ✅ Maintain consistent proportions */
+  background: #777;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.project-tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 0px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgb(230, 230, 230);
+  font-size: 0.75rem;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.project-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 410;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 24px;
+  color: rgb(240, 240, 240);
+  text-transform: lowercase;
+}
+
+.project-lock-icon {
+  height: 18px;
+  width: auto;
+  margin-left: 4px;
+  margin-bottom: 3px;
+  filter: brightness(0.9);
+}
+
+.project-description {
+  font-size: 0.85rem;
+  color: rgb(200, 200, 200);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  line-height: 1.5;
+  max-width: 100%;
+  text-transform: lowercase;
+}
+
+/* Mini Projects – Desktop */
+.mini-projects-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 30px;
+  margin-top: 40px;
+}
+
+.mini-project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mini-project-card .project-thumbnail {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #777;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.mini-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  color: rgb(240, 240, 240);
+  text-transform: lowercase;
+}
+
+.mini-description {
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.4;
+  color: rgb(200, 200, 200);
+  text-transform: lowercase;
+}
+
+.project-content {
+  padding: 0 10px;
+}
+
+.mini-content {
+  padding: 0 10px;
+}
+
+#work {
+  scroll-margin-top: 100px;
+}
+
+/* ==========================
+   TABLET: 768px – 991px
+   ========================== */
+@media (max-width: 860px) and (min-width: 601px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+
+  .mini-projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .mini-project-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  .mini-project-card .project-thumbnail {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #777;
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+
+  .mini-content {
+    width: 50%;
+    padding-left: 10px;
+    margin-top: 25px;
+  }
+
+  .mini-title {
+    font-size: 1.25rem;
+  }
+
+  .mini-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}
+
+/* ==========================
+   MOBILE: ≤ 600px
+   ========================== */
+   @media (max-width: 650px) {
+    .projects-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .mini-projects-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  
+    .mini-project-card {
+      flex-direction: column;
+      width: 100%;
+      align-items: flex-start;
+    }
+  
+    .mini-project-card .project-thumbnail {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #777;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+  
+    .mini-content {
+      width: 100%;
+      padding: 0 10px; /* 👈 MATCHES the main project content */
+    }
+  
+    .mini-title {
+      font-size: 1.25rem;
+    }
+  
+    .mini-description {
+      font-size: 0.85rem;
+    }
+  }
+  
