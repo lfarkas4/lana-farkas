@@ -19,7 +19,7 @@ const Footer = () => {
 
         <div className="footer-right">
           <span className="footer-credit">
-            designed and coded by lana farkas © {new Date().getFullYear()}
+            designed and developed by lana farkas © {new Date().getFullYear()}
           </span>
         </div>
       </div>
