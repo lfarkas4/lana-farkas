@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 
 const Navigation = () => {
@@ -27,8 +28,9 @@ const Navigation = () => {
 
       <Navbar expand="lg" className="custom-navbar">
         <div className="nav-container">
+
           {/* Logo */}
-          <Navbar.Brand href="#home" className="brand-logo">
+          <Navbar.Brand href="/" className="brand-logo">
             <motion.img
               src="/starlogolight.svg"
               alt="logo"
@@ -47,11 +49,16 @@ const Navigation = () => {
           {/* Desktop Nav */}
           <div className="nav-links-desktop">
             <Nav className="nav-links">
-              <Nav.Link href="#work" className="nav-link">work</Nav.Link>
-              <Nav.Link href="#about" className="nav-link">about</Nav.Link>
-              <Nav.Link href="#resume" className="nav-link">
+              <Link to="/" className="nav-link">work</Link>
+              <Link to="/about" className="nav-link">about</Link>
+              <a
+                href="/assets/lana_resume.pdf"
+                className="nav-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 resume <FiArrowUpRight className="resume-arrow" />
-              </Nav.Link>
+              </a>
             </Nav>
           </div>
 
@@ -66,11 +73,17 @@ const Navigation = () => {
           {/* Mobile Dropdown Nav */}
           <div className={`nav-links-container ${menuOpen ? "active" : ""}`}>
             <Nav className="nav-links">
-              <Nav.Link href="#work" className="nav-link" onClick={toggleMenu}>work</Nav.Link>
-              <Nav.Link href="#about" className="nav-link" onClick={toggleMenu}>about</Nav.Link>
-              <Nav.Link href="#resume" className="nav-link" onClick={toggleMenu}>
+              <Link to="/" className="nav-link" onClick={toggleMenu}>work</Link>
+              <Link to="/about" className="nav-link" onClick={toggleMenu}>about</Link>
+              <a
+                href="/assets/lana_resume.pdf"
+                className="nav-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={toggleMenu}
+              >
                 resume <FiArrowUpRight className="resume-arrow" />
-              </Nav.Link>
+              </a>
             </Nav>
           </div>
         </div>

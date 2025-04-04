@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+
+.about-top {
+    padding: 75px 95px 120px; /* matches typical hero spacing */
+    color: rgb(204, 204, 204);
+    display: flex;
+    justify-content: center;
+  }
+
+.about-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1500px; /* ⬅️ makes room for the large image */
+  width: 100%;
+  gap: 80px;
+  flex-wrap: nowrap; /* ⬅️ force side-by-side on desktop */
+}
+
+/* ====================
+   Profile Image Block
+======================= */
+
+.about-photo-wrapper {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  flex-shrink: 0;
+  margin-left: 80px;
+  margin-top: 80px;
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: none;
+  background: none;
+}
+
+/* Optional glow behind image (Figma-style) */
+.about-photo-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: 
+      radial-gradient(circle, rgba(255, 255, 255, 0.18) 15%, rgba(255, 255, 255, 0) 45%),
+      radial-gradient(circle, rgba(90, 51, 201, 0.35) 30%, rgba(42, 15, 173, 0) 70%);
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
+  }
+/* ====================
+   Text Content
+======================= */
+
+.about-intro {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 95px;
+  padding-right: 80px;
+}
+
+.about-role {
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  .about-heading {
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0 0 10px 0;
+  }
+  
+  .about-subheading {
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-top: 0;
+    line-height: 1.4;
+  }
+  
+  .light-bold {
+    font-weight: 450; /* subtle bold */
+  }
+
+.italic {
+  font-style: italic;
+}
+
+.about-bio {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ====================
+   Contact Block (footer-style reuse)
+======================= */
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.footer-icon img {
+  height: 32px;
+  width: auto;
+  margin-bottom: 9.5px;
+  filter: brightness(1);
+  transition: filter 0.3s ease;
+}
+
+.footer-icon2 img {
+  height: 22px;
+  width: auto;
+  filter: brightness(1);
+  transition: filter 0.3s ease;
+}
+
+.footer-icon:hover img,
+.footer-icon2:hover img {
+  filter: brightness(1.5);
+}
+
+.footer-message {
+  font-weight: 360;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* ====================
+   Responsive Layout
+======================= */
+
+@media (max-width: 1200px) {
+    .about-top {
+      padding: 140px 60px 100px;
+    }
+  
+    .about-wrapper {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 60px;
+    }
+  
+    .about-intro {
+      align-items: center;
+      padding: 0 20px;
+      margin-top: 0;
+    }
+  
+    .about-photo-wrapper {
+      margin: 0 auto;
+      width: 75vw;
+      height: 75vw;
+      max-width: 450px;
+      max-height: 450px;
+    }
+  }

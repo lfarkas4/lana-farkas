@@ -95,7 +95,7 @@
   
   
   /* Decorative stars and crown */
-  .orstar1-piece  { width: 8.2%; top: 12.6%; left: 7.7%;  animation: float-orstar1 3.35s ease-in-out infinite; }
+  .orstar1-piece  { width: 8.2%; top: 14%; left: 7.7%;  animation: float-orstar1 3.35s ease-in-out infinite; }
   .redstar1-piece { width: 6%; top: 67.2%; left: 8.5%;  animation: float-redstar1 3.3s ease-in-out infinite; }
   .blustar3-piece { width: 5.3%; top: 43.5%; left: 1.9%;  animation: float-blustar3 3.2s ease-in-out infinite; }
   .blustar2-piece { width: 4%; top: 88.6%; left: 37.5%; animation: float-blustar2 3.2s ease-in-out infinite; }

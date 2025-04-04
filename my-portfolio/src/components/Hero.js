@@ -11,7 +11,7 @@ const Hero = () => {
 
       {/* Tagline */}
       <p className="hero-tagline">
-        ... a product designer bringing clarity to the cosmos of digital experiences.
+        ... a product designer bringing <span className="italic">clarity</span> to the <span className="italic">cosmos</span> of digital experiences.
 
       </p>
 

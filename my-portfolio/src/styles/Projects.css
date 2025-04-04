@@ -154,8 +154,8 @@
 /* ==========================
    TABLET: 768px – 991px
    ========================== */
-@media (max-width: 860px) and (min-width: 601px) {
-  .projects-container {
+   @media (max-width: 860px) and (min-width: 621px) {
+    .projects-container {
     grid-template-columns: 1fr;
   }
 
@@ -183,7 +183,7 @@
   .mini-content {
     width: 50%;
     padding-left: 10px;
-    margin-top: 25px;
+    margin-top: 18px;
   }
 
   .mini-title {
@@ -199,7 +199,7 @@
 /* ==========================
    MOBILE: ≤ 600px
    ========================== */
-   @media (max-width: 650px) {
+   @media (max-width: 620px) {
     .projects-container {
       grid-template-columns: 1fr;
     }
@@ -207,7 +207,7 @@
     .mini-projects-container {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 75px;
     }
   
     .mini-project-card {
