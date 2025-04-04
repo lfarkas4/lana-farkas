@@ -5,18 +5,26 @@ const About = () => {
   return (
     <section className="about-top" id="about">
       <div className="about-wrapper">
-
-        {/* Profile Image */}
         <div className="about-photo-wrapper">
           <img src="/assets/lana-about.svg" alt="Lana" className="about-photo" />
         </div>
 
-        {/* Text Intro */}
         <div className="about-intro">
-        <h2 className="about-heading">
-        i’m a product designer ✸<br />
-        <span className="italic">adding a lil’ magic to everyday tech.</span>
-        </h2>
+          <h2 className="about-heading">
+            i’m a{" "}
+            <span className="sliding-roles">
+            <div className="roles-wrapper">
+              <span>user researcher ➹</span>
+              <span>product designer ✸</span>
+              <span>front-end developer ❒</span>
+              <span>visual designer ☻</span>
+            {/* Duplicate for infinite scrolling illusion */}
+              <span>user researcher ➹</span>
+            </div>
+            </span>
+            <br />
+            <span className="italic">adding a lil’ magic to everyday tech.</span>
+          </h2>
 
           <p className="about-bio">
             For me, design is about more than just functionality—it's about
@@ -34,7 +42,6 @@ const About = () => {
             <span className="light-bold">B.A. in Cognitive Science</span>.
           </p>
 
-          {/* Contact Info */}
           <div className="footer-left" style={{ marginTop: "18px" }}>
             <a
               href="https://www.linkedin.com/in/lana-farkas-66bb0a246"
