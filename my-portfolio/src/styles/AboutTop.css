@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
 
 .about-top {
-  padding: 75px 95px 120px;
+  padding: 75px 95px 65px;
   color: rgb(204, 204, 204);
   display: flex;
   justify-content: center;
@@ -12,20 +12,20 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  max-width: 1500px;
+  max-width: 1325px;
   width: 100%;
   gap: 80px;
   flex-wrap: nowrap;
 }
 
 .about-photo-wrapper {
-  position: relative;
-  width: 450px;
-  height: 450px;
-  flex-shrink: 0;
-  margin-left: 80px;
-  margin-top: 80px;
-}
+    position: relative;
+    width: clamp(240px, 30vw, 450px); /* scales smoothly like LANA graphic */
+    aspect-ratio: 1 / 1;              /* keeps it a perfect circle */
+    flex-shrink: 0;
+    margin-left: 80px;
+    margin-top: 85px;
+  }  
 
 .about-photo {
   width: 100%;
@@ -126,9 +126,24 @@
     overflow: hidden;
     vertical-align: bottom;
     position: relative;
+  }
+@media (min-width: 1201px) {
+  .sliding-roles {
     transform: translateY(-3.75px);
   }
-  
+}
+
+@media (max-width: 1200px) and (min-width: 861px) {
+  .sliding-roles {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 860px) {
+  .sliding-roles {
+    transform: translateY(-0.5px);
+  }
+}
   .roles-wrapper {
     display: inline-block;
     animation: slideRoles 10s infinite ease-in-out;
@@ -150,33 +165,99 @@
     /* Invisible reset */
     98.001%, 100%  { transform: translateY(0rem); }
   }
+
+/* Base styles remain unchanged above... */
+
+/* Responsive - tablet and small desktops */
+@media (max-width: 1400px) {
+    .about-top {
+      padding: 100px 48px 80px;
+    }
   
+    .about-wrapper {
+      gap: 60px;
+      max-width: 1100px;
+    }
+
+    .about-photo-wrapper {
+        position: relative;
+        width: clamp(300px, 35vw, 400px); /* scales smoothly like LANA graphic */
+        aspect-ratio: 1 / 1;              /* keeps it a perfect circle */
+        flex-shrink: 0;
+        margin-left: 40px;
+        margin-top: 90px;
+      }  
   
+    .about-intro {
+        flex: 1;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      padding-right: 48px;
+      margin-top: 80px;
+    }
 
-/* Responsive */
-@media (max-width: 1200px) {
-  .about-top {
-    padding: 140px 60px 100px;
+    .about-heading {
+      font-size: 1.6rem;
+    }
+  
+    .about-bio {
+      font-size: 0.9rem;
+    }
   }
-
-  .about-wrapper {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 60px;
+  
+/* Tablet breakpoint: stack content vertically at 860px */
+@media (max-width: 992px) {
+    .about-top {
+        padding: 100px 80px 60px 40px;
+      }
+      
+    .about-wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 75px;
+    }
+  
+    .about-intro {
+      align-items: flex-start; /* ← LEFT align content */
+      text-align: left;        /* ← LEFT align text */
+      padding: 0 32px;
+      margin-top: 0;
+      padding-right: 0;
+      max-width: 600px;
+    }
+  
+    .about-photo-wrapper {
+      width: 60vw;
+      height: 60vw;
+      max-width: 360px;
+      max-height: 360px;
+      margin: 0 auto;
+    }
+  
+    .about-heading {
+      font-size: 1.5rem;
+    }
+  
+    .about-bio {
+      font-size: 0.85rem;
+    }
   }
-
-  .about-intro {
-    align-items: center;
-    padding: 0 20px;
-    margin-top: 0;
+  
+  .curved-text-svg {
+    position: absolute;
+    top: 3.5%;
+    left: 27.5%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* slightly larger than the photo to wrap around */
+    height: auto;
+    pointer-events: none;
+    z-index: 2;
   }
-
-  .about-photo-wrapper {
-    margin: 0 auto;
-    width: 75vw;
-    height: 75vw;
-    max-width: 450px;
-    max-height: 450px;
+  
+  @media (max-width: 992px) {
+    .curved-text-svg {
+      display: none;
+    }
   }
-}

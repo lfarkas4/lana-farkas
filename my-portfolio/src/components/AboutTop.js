@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/About.css";
+import '../styles/AboutTop.css';
 
 const About = () => {
   return (
@@ -7,6 +7,7 @@ const About = () => {
       <div className="about-wrapper">
         <div className="about-photo-wrapper">
           <img src="/assets/lana-about.svg" alt="Lana" className="about-photo" />
+          <img className="curved-text-svg" src="/assets/text.svg" alt="Curved text" />
         </div>
 
         <div className="about-intro">

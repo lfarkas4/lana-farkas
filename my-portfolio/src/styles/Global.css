@@ -72,3 +72,62 @@ html {
   .text-2xl { font-size: 1.5rem; }
   .text-3xl { font-size: 1.875rem; }
   .text-4xl { font-size: 2.25rem; }
+
+  .shooting-star {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    background: rgb(244, 244, 244);
+    border-radius: 50%;
+    box-shadow: 0 0 6px 3px rgba(70, 75, 120, 0.8);
+    animation: shoot 2s linear forwards;
+    transform: rotate(45deg);
+    z-index: -5;
+    pointer-events: none;
+    opacity: 1;
+    overflow: visible;
+  }
+  
+  .shooting-star::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px; /* trail length */
+    height: 2px;  /* slim line */
+    background: linear-gradient(to left, rgba(184, 184, 184, 0.9), rgba(255, 255, 255, 0));
+    transform: translate(-100%, -50%) rotate(-20deg);
+    transform-origin: right;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+    opacity: 1;
+    animation: trail-fade 1.85s linear forwards;
+  }
+  
+  @keyframes shoot {
+    0% {
+      transform: translate(0, 0) scale(1) rotate(45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(100vw, 100vh) scale(1.2) rotate(45deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes trail-fade {
+    0% {
+      opacity: 1;
+      width: 200px;
+    }
+    80% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0;
+      width: 0px;
+    }
+  }
+  
+  

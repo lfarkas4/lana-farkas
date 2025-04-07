@@ -1,5 +1,5 @@
 .projects-section {
-  padding: 0px 55px;
+  padding: 0px 95px 75px;
   background: transparent;
   display: flex;
   justify-content: center;
@@ -7,7 +7,7 @@
 }
 
 .projects-wrapper {
-  max-width: 1150px;
+  max-width: 1325px; /* or remove if you want it full width */
   width: 100%;
 }
 

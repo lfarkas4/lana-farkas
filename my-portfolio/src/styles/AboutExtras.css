@@ -1,0 +1,556 @@
+.about-extras {
+    padding: 75px 95px 0px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .extras-intro {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.2px;
+    font-family: "Montserrat", sans-serif;
+    color: rgb(204, 204, 204);
+    text-transform: lowercase;
+    text-align: center;
+    margin: 0 0 75px;
+    width: 100%;
+    max-width: 1150px;
+  }
+  
+  /* Desktop to tablet scaling */
+  @media (max-width: 1400px) {
+    .about-extras {
+      padding: 100px 48px 80px;
+    }
+  
+    .extras-intro {
+      font-size: 1.5rem;
+      max-width: 1100px;
+    }
+  }
+  
+  /* Mobile layout */
+  @media (max-width: 992px) {
+    .about-extras {
+      padding: 100px 80px 60px 40px;
+    }
+  
+    .extras-intro {
+      font-size: 1.3rem;
+      text-align: right;
+      margin: 0 0 40px;
+    }
+  }
+  
+  /* Layout */
+  .extras-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1325px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .extras-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 30px;
+  }
+  
+  @media (max-width: 992px) {
+    .extras-grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+  
+    .extras-column {
+      width: 100%;
+    }
+  
+    .extras-card,
+    .spotify-card-wrapper {
+      width: 100%;
+    }
+  }
+  
+  /* Cards */
+  .extras-card {
+    background: rgba(44, 39, 52, 0.25);
+    border-radius: 16px;
+    padding: 15px 55px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: "Montserrat", sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+    color: rgb(204, 204, 204);
+    box-sizing: border-box;
+  }
+  
+  .extras-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: lowercase;
+    margin-bottom: 35px;
+  }
+  
+  /* Stats container (personal stats style) */
+  .stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-left: 25px;
+  }
+  
+  .stat-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    font-size: 1.15rem;
+    column-gap: 10px;
+    line-height: 1.8;
+  }
+  
+  .stat-label {
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  
+  .stat-value {
+    font-weight: 500;
+  }
+  
+  /* Joy, dates content */
+  .stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .stats-list li {
+    list-style: none;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: rgb(204, 204, 204);
+  }
+  
+  /* Checklist-style for "ongoing design to-do's" */
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-left: 25px;
+  }
+  
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+  
+  .checklist .checkbox {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    margin-top: 4px;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  
+  .checklist .text {
+    flex: 1;
+    word-break: break-word;
+  }
+  
+  .checklist li.checked .checkbox {
+    background-color: rgb(204, 204, 204);
+    border-color: rgb(204, 204, 204);
+  }
+  
+  .checklist li.checked .text {
+    text-decoration: line-through;
+    color: rgba(204, 204, 204, 0.5);
+  }
+  
+  /* Spotify Embed */
+  .spotify-card-wrapper {
+    padding: 0;
+    margin-bottom: 6px;
+    overflow: hidden;
+    border-radius: 16px;
+    height: 152px;
+    box-sizing: border-box;
+  }
+  
+  .spotify-embed {
+    width: 100%;
+    height: 152px;
+    border-radius: 16px;
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Full height left column card */
+  .stretch-bottom {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-left: 25px;
+  }
+  
+  @media (max-width: 992px) {
+    .extras-title {
+        font-size: 1.15rem;
+    }
+    
+    .stat-row {
+      font-size: 1.05rem;
+    }
+  
+    .stats-list li {
+      font-size: 0.95rem;
+    }
+  
+    .checklist li {
+      font-size: 0.95rem;
+    }
+  
+    .stat-label,
+    .stat-value,
+    .checklist .text {
+      font-size: 0.95rem;
+    }
+  }
+
+  .pinterest-card-wrapper {
+    background: rgba(29, 29, 29, 0.7);
+    border-radius: 16px;
+    padding: 0;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+  }
+  
+  /* Optional: refine the embedded iframe scaling */
+  .pinterest-embed {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  
+  .pinterest-mock-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0 5px;
+    margin-bottom: 18px;
+  }
+  
+  .pinterest-mock-grid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+  }
+  
+  .pinterest-mock-grid img:hover {
+    transform: scale(1.02);
+  }
+  
+  .pinterest-follow {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(204, 204, 204, 0.85);
+    text-decoration: none;
+    border: 1px solid rgba(204, 204, 204, 0.2);
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    max-width: fit-content;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+  
+  .pinterest-follow:hover {
+    background-color: rgba(204, 204, 204, 0.2);
+  }
+  
+  .pinterest-logo {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  
+  /* Pinterest Scrollable Mockup Card */
+  .pinterest-mockup {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px 30px;
+    border-radius: 16px;
+    background: rgba(44, 39, 52, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+  }
+  
+  /* Scroll container inside Pinterest card */
+  .pinterest-scroll-area {
+    max-height: 375px;
+    overflow-y: auto;
+    padding-right: 6px;
+    margin-bottom: 18px;
+  }
+  
+  /* Custom scrollbar styling */
+  .pinterest-scroll-area::-webkit-scrollbar {
+    width: 6px;
+  }
+  .pinterest-scroll-area::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+  
+  /* Pinterest grid */
+  .pinterest-mock-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  /* Pinterest tile styling */
+  .pinterest-mock-grid img {
+    width: 100%;
+    border-radius: 10px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.05);
+    transition: transform 0.35s ease, filter 0.35s ease;
+    will-change: transform, filter;
+    opacity: 0.95;
+  }
+  
+  .pinterest-mock-grid img:hover {
+    transform: scale(1.025);
+    filter: brightness(1.15) contrast(1.05);
+    z-index: 1;
+  }
+  
+  
+  /* Follow button */
+  .pinterest-follow {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(204, 204, 204, 0.85);
+    text-decoration: none;
+    border: 1px solid rgba(204, 204, 204, 0.2);
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    max-width: fit-content;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+  
+  .pinterest-follow:hover {
+    background-color: rgba(204, 204, 204, 0.2);
+    color: #111;
+  }
+  
+  .pinterest-logo {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .pinterest-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .pinterest-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .pinterest-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .pinterest-username {
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(204, 204, 204);
+  }
+  
+  .pinterest-board-title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: rgba(204, 204, 204, 0.85);
+    text-transform: lowercase;
+  }
+  
+  .pinterest-board-desc {
+    font-size: 0.85rem;
+    color: rgba(204, 204, 204, 0.6);
+    line-height: 1.4;
+    max-width: 300px;
+  }
+  
+  .full-height-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .heart-btn {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.45);
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .heart-btn:hover {
+    transform: scale(1.2);
+    color: rgb(255, 100, 100);
+  }
+  
+  .extras-card {
+    position: relative;
+    /* keep your existing styles here */
+  }
+  
+  .svg-heart-btn {
+    position: absolute;
+    top: 25px;
+    right: 28px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .heart-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+    opacity: 0.85;
+  }
+  
+  .svg-heart-btn:hover .heart-icon {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  
+/* ==== TOOLKIT CARD ==== */
+.toolkit-card {
+    width: 100%;
+    max-width: 1325px;
+    padding: 15px 55px 60px;
+    margin: 30px auto 0px;
+    border-radius: 16px;
+    background: rgba(44, 39, 52, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+    color: rgb(204, 204, 204);
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+  }
+  
+  /* Carousel container inside card */
+  .toolkit-scroll-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 0;
+  
+    /* Edge fade effect */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+  
+  /* Scroll track that moves both sequences */
+  .toolkit-scroll-track {
+    display: flex;
+    animation: scrollCarousel 25s linear infinite;
+    min-width: max-content;
+    will-change: transform;
+  }
+  
+  /* Each repeated sequence of icons */
+  .toolkit-scroll-sequence {
+    display: flex;
+    gap: 40px;
+  }
+  
+  /* Toolkit icon styling */
+  .toolkit-scroll-sequence img {
+    max-width: 80px;
+    height: auto;
+    filter: brightness(0.9) contrast(1);
+    opacity: 0.6;
+    transition: transform 0.2s ease, filter 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .toolkit-scroll-sequence img:hover {
+    transform: scale(1.05);
+    filter: brightness(1) contrast(1.05);
+    opacity: 1;
+  }
+
+  .toolkit-scroll-sequence img:last-child {
+    margin-right: 40px; /* Same as your gap */
+  }
+  
+  /* Smooth infinite scroll animation */
+  @keyframes scrollCarousel {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  

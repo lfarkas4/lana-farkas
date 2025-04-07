@@ -27,7 +27,7 @@ const Footer = () => {
 
         {/* Right side: Credit */}
         <span className="footer-credit">
-          designed and coded by lana farkas © {new Date().getFullYear()}
+        designed + coded by lana farkas © {new Date().getFullYear()}
         </span>
       </div>
     </footer>

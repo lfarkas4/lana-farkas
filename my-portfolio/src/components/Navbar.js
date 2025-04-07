@@ -42,7 +42,7 @@ const Navigation = () => {
                 filter: "brightness(1.1)",
               }}
               animate={{ rotate: 0, scale: 1, filter: "brightness(1)" }}
-              transition={{ duration: 0.0001, ease: "easeOut" }}
+              transition={{ duration: 0.0000001, ease: "easeOut" }}
             />
           </Navbar.Brand>
 

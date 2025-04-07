@@ -6,7 +6,7 @@ import Navigation from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
-import About from "./components/About"; // 👈 your new About page
+import About from "./pages/About";
 
 import "./styles/Global.css";
 

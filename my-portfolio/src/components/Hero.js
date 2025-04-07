@@ -1,8 +1,10 @@
 import React from "react";
 import "../styles/Hero.css";
+import useShootingStar from "../utils/shootingstar";
 import Lana from "./Lana";
 
 const Hero = () => {
+useShootingStar();
   return (
     <section className="hero" id="home">
       <h1 className="hero-title">hello, my name is</h1>
@@ -22,7 +24,7 @@ const Hero = () => {
           <p>
             product design intern @{" "}
             <a
-              href="https://www.tutors.plus/en/"
+              href="https://www.tutors.plus/"
               target="_blank"
               rel="noopener noreferrer"
             >
