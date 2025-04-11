@@ -35,7 +35,7 @@ useShootingStar();
         </div>
         <div className="hero-column">
           <h4>previously</h4>
-          <p>b.a. cognitive science @ uva</p>
+          <p>b.a. cogsci @ university of virginia</p>
           <p>
             systems designer @{" "}
             <a
@@ -43,7 +43,7 @@ useShootingStar();
               target="_blank"
               rel="noopener noreferrer"
             >
-              aquatomony
+              aquatonomy
             </a>
           </p>
         </div>

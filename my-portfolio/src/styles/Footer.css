@@ -1,10 +1,17 @@
 .footer {
-  position: relative;
-  padding: 125px 68px 60px;
-  background: transparent;
-  color: rgb(204, 204, 204);
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.85rem;
+  padding: 120px 68px 60px; /* desktop */
+}
+
+@media (max-width: 860px) and (min-width: 621px) {
+  .footer {
+    padding: 100px 60px 70px;
+  }
+}
+
+@media (max-width: 620px) {
+  .footer {
+    padding: 75px 40px 50px;
+  }
 }
 
 .footer-gradient {
@@ -105,7 +112,7 @@
 ========================== */
 @media (max-width: 860px) and (min-width: 621px) {
   .footer {
-    padding: 100px 60px 70px;
+    padding: 50px 60px 70px;
     text-align: center;
   }
 
@@ -132,7 +139,7 @@
 ========================== */
 @media (max-width: 620px) {
   .footer {
-    padding: 100px 40px 50px;
+    padding: 45px 40px 50px;
   }
 
   .footer-content {

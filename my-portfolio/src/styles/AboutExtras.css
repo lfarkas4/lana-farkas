@@ -37,7 +37,7 @@
   /* Mobile layout */
   @media (max-width: 992px) {
     .about-extras {
-      padding: 100px 80px 60px 40px;
+      padding: 100px 80px 40px;
     }
   
     .extras-intro {

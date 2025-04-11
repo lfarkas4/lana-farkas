@@ -105,9 +105,9 @@
   
   /* Keep your existing animations */
   @keyframes float-l {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    0% { transform: translate(-50%, -50%) rotate(1deg); }
     50% { transform: translate(-50%, calc(-50% + 2px)) rotate(-3deg); }
-    100% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(1deg); }
   }
   /* Repeat this translate(-50%, -50%) pattern for all animations */
   @keyframes float-a1 {

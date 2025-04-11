@@ -1,5 +1,7 @@
+/* === PROJECTS SECTION === */
+
 .projects-section {
-  padding: 0px 95px 75px;
+  padding: 0px 9vw;
   background: transparent;
   display: flex;
   justify-content: center;
@@ -7,8 +9,9 @@
 }
 
 .projects-wrapper {
-  max-width: 1325px; /* or remove if you want it full width */
   width: 100%;
+  max-width: 1325px;
+  margin: 0 auto;
 }
 
 .section-title {
@@ -18,24 +21,22 @@
   font-size: 1rem;
   font-weight: 400;
   font-family: "Montserrat", sans-serif;
-  text-transform: lowercase;
   color: rgb(204, 204, 204);
+  text-transform: lowercase;
   margin: 30px 0 25px;
 }
 
 .section-arrow {
   height: 1rem;
   width: auto;
-  display: inline-block;
   margin-bottom: 1px;
 }
 
 .projects-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 75px 48px;
-  margin-bottom: 140px;
-  margin-top: 40px;
+  gap: 75px 38px;
+  margin: 40px 0 140px;
 }
 
 .project-card {
@@ -54,9 +55,8 @@
 
 .project-tags {
   display: flex;
-  gap: 10px;
-  margin-bottom: 0px;
-  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 0;
 }
 
 .tag {
@@ -70,6 +70,10 @@
   letter-spacing: 0.5px;
 }
 
+.project-content {
+  padding: 0 2px;
+}
+
 .project-title {
   display: flex;
   align-items: center;
@@ -79,7 +83,6 @@
   font-family: "Montserrat", sans-serif;
   margin-bottom: 24px;
   color: rgb(240, 240, 240);
-  text-transform: lowercase;
 }
 
 .project-lock-icon {
@@ -92,15 +95,14 @@
 
 .project-description {
   font-size: 0.85rem;
-  color: rgb(200, 200, 200);
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
+  color: rgb(200, 200, 200);
   line-height: 1.5;
-  max-width: 100%;
-  text-transform: lowercase;
 }
 
-/* Mini Projects – Desktop */
+/* === MINI PROJECTS === */
+
 .mini-projects-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -122,61 +124,47 @@
   margin-bottom: 8px;
 }
 
+.mini-content {
+  padding: 0 2px;
+}
+
 .mini-title {
   font-size: 1.25rem;
   font-weight: 500;
   margin-bottom: 24px;
   color: rgb(240, 240, 240);
-  text-transform: lowercase;
 }
 
 .mini-description {
   font-size: 0.85rem;
   font-weight: 300;
-  line-height: 1.4;
   color: rgb(200, 200, 200);
-  text-transform: lowercase;
+  line-height: 1.4;
 }
 
-.project-content {
-  padding: 0 10px;
-}
-
-.mini-content {
-  padding: 0 10px;
-}
+/* === SCROLL POSITIONING === */
 
 #work {
   scroll-margin-top: 100px;
 }
 
-/* ==========================
-   TABLET: 768px – 991px
-   ========================== */
-   @media (max-width: 860px) and (min-width: 621px) {
-    .projects-container {
+/* === RESPONSIVE BREAKPOINTS === */
+
+/* Tablet (≤ 991px) */
+@media (max-width: 991px) {
+  .projects-container {
     grid-template-columns: 1fr;
   }
 
   .mini-projects-container {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 40px;
   }
 
   .mini-project-card {
-    display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 25px;
-  }
-
-  .mini-project-card .project-thumbnail {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    background: #777;
-    border-radius: 12px;
-    margin-bottom: 8px;
   }
 
   .mini-content {
@@ -184,56 +172,53 @@
     padding-left: 10px;
     margin-top: 18px;
   }
+}
+
+/* Mobile (≤ 695px) */
+@media (max-width: 695px) {
+  .projects-section {
+    padding: 70px 60px;
+  }
+
+  .project-tags {
+    gap: 6px;
+  }
+
+  .mini-projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
+  }
+
+  .mini-project-card {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .mini-content {
+    width: 100%;
+    padding: 0 2px;
+    margin-top: 0;
+  }
 
   .mini-title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 
   .mini-description {
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: 0.8rem;
   }
 }
 
-/* ==========================
-   MOBILE: ≤ 600px
-   ========================== */
-   @media (max-width: 620px) {
-    .projects-container {
-      grid-template-columns: 1fr;
-    }
-  
-    .mini-projects-container {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 75px;
-    }
-  
-    .mini-project-card {
-      flex-direction: column;
-      width: 100%;
-      align-items: flex-start;
-    }
-  
-    .mini-project-card .project-thumbnail {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background: #777;
-      border-radius: 12px;
-      margin-bottom: 8px;
-    }
-  
-    .mini-content {
-      width: 100%;
-      padding: 0 10px;
-    }
-  
-    .mini-title {
-      font-size: 1.25rem;
-    }
-  
-    .mini-description {
-      font-size: 0.85rem;
-    }
+/* Small Phones (≤ 480px) */
+@media (max-width: 480px) {
+  .tag {
+    font-size: 0.65rem;
+    padding: 6px 10px;
+    letter-spacing: 0.3px;
   }
-  
+
+  .project-tags {
+    gap: 5px;
+  }
+}

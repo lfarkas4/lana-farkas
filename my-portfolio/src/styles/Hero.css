@@ -74,12 +74,26 @@
   color: rgb(240, 240, 240);
 }
 
+
 .scroll-down {
-  margin-top: 40px;
+  margin-top: 30px;
+  margin-bottom: 20px; /* was 120px – now tighter */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+@media (max-width: 991px) {
+  .scroll-down {
+    margin-bottom: 50px; /* was 100px */
+  }
+}
+
+@media (max-width: 695px) {
+  .scroll-down {
+    margin-bottom: 10px; /* was 75px */
+  }
 }
 
 .scroll-arrow {
@@ -192,11 +206,11 @@
   }
 
   .hero-column h4 {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .hero-column p {
-    font-size: 0.80rem;
+    font-size: 0.75rem;
     line-height: 1.4;
   }
 
