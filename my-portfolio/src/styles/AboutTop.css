@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
 
+/* === ABOUT TOP === */
 .about-top {
-  padding: 75px 95px 50px;
+  padding: 100px 6vw 80px;
   color: rgb(204, 204, 204);
   display: flex;
   justify-content: center;
@@ -12,28 +13,28 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  max-width: 1325px;
+  gap: 60px;
   width: 100%;
-  gap: 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 4vw;
   flex-wrap: nowrap;
 }
 
+/* === PROFILE === */
 .about-photo-wrapper {
-    position: relative;
-    width: clamp(240px, 30vw, 450px); /* scales smoothly like LANA graphic */
-    aspect-ratio: 1 / 1;              /* keeps it a perfect circle */
-    flex-shrink: 0;
-    margin-left: 80px;
-    margin-top: 85px;
-  }  
+  position: relative;
+  width: clamp(250px, 28vw, 440px);
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  margin-top: 85px;
+}
 
 .about-photo {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: none;
-  background: none;
 }
 
 .about-photo-wrapper::before {
@@ -45,7 +46,7 @@
   height: 600px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: 
+  background:
     radial-gradient(circle, rgba(255, 255, 255, 0.18) 15%, rgba(255, 255, 255, 0) 45%),
     radial-gradient(circle, rgba(90, 51, 201, 0.35) 30%, rgba(42, 15, 173, 0) 70%);
   filter: blur(40px);
@@ -53,21 +54,21 @@
   pointer-events: none;
 }
 
+/* === TEXT === */
 .about-intro {
   flex: 1;
   max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 95px;
-  padding-right: 80px;
+  margin-top: 50px;
 }
 
 .about-heading {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.4;
-  margin: 0 0 10px 0;
+  margin-bottom: 10px;
 }
 
 .light-bold {
@@ -79,185 +80,117 @@
 }
 
 .about-bio {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 300;
   line-height: 1.6;
 }
 
-.footer-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 24px;
-}
-
-.footer-icon img {
-  height: 32px;
-  width: auto;
-  margin-bottom: 9.5px;
-  filter: brightness(1);
-  transition: filter 0.3s ease;
-}
-
-.footer-icon2 img {
-  height: 22px;
-  width: auto;
-  filter: brightness(1);
-  transition: filter 0.3s ease;
-}
-
-.footer-icon:hover img,
-.footer-icon2:hover img {
-  filter: brightness(1.5);
-}
-
-.footer-message {
-  font-weight: 360;
-  font-size: 1rem;
-  font-style: italic;
-  white-space: nowrap;
-}
-
-/* Sliding Role Animation */
+/* === SLIDING ROLES === */
 .sliding-roles {
-    display: inline-block;
-    height: 2rem;
-    overflow: hidden;
-    vertical-align: bottom;
-    position: relative;
-  }
-@media (min-width: 1201px) {
+  display: inline-block;
+  height: 2rem;
+  overflow: hidden;
+  vertical-align: baseline;
+  transform: translateY(6.75px);
+  position: relative;
+}
+
+@media (max-width: 1200px) {
   .sliding-roles {
-    transform: translateY(-3.75px);
+    transform: translateY(6.75px);
   }
 }
 
-@media (max-width: 1200px) and (min-width: 861px) {
-  .sliding-roles {
-    transform: translateY(-2px);
-  }
-}
-
-@media (max-width: 860px) {
-  .sliding-roles {
-    transform: translateY(-0.5px);
-  }
-}
-  .roles-wrapper {
-    display: inline-block;
-    animation: slideRoles 10s infinite ease-in-out;
-  }
-  
-  .roles-wrapper span {
-    display: block;
-    height: 2rem;
-    line-height: 2rem;
-  }
-  
-  @keyframes slideRoles {
-    0%, 1%         { transform: translateY(0rem); }       /* product designer (ultra-instantaneous visibility) */
-    5%, 25%        { transform: translateY(-2rem); }      /* front-end developer */
-    29%, 49%       { transform: translateY(-4rem); }      /* visual designer */
-    53%, 73%       { transform: translateY(-6rem); }      /* user researcher */
-    77%, 98%       { transform: translateY(-8rem); }      /* duplicate product designer (long pause) */
-  
-    /* Invisible reset */
-    98.001%, 100%  { transform: translateY(0rem); }
-  }
-
-/* Base styles remain unchanged above... */
-
-/* Responsive - tablet and small desktops */
-@media (max-width: 1400px) {
-    .about-top {
-      padding: 100px 48px 80px;
-    }
-  
-    .about-wrapper {
-      gap: 60px;
-      max-width: 1100px;
-    }
-
-    .about-photo-wrapper {
-        position: relative;
-        width: clamp(300px, 35vw, 400px); /* scales smoothly like LANA graphic */
-        aspect-ratio: 1 / 1;              /* keeps it a perfect circle */
-        flex-shrink: 0;
-        margin-left: 40px;
-        margin-top: 90px;
-      }  
-  
-    .about-intro {
-        flex: 1;
-        max-width: 600px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      padding-right: 48px;
-      margin-top: 80px;
-    }
-
-    .about-heading {
-      font-size: 1.6rem;
-    }
-  
-    .about-bio {
-      font-size: 0.9rem;
-    }
-  }
-  
-/* Tablet breakpoint: stack content vertically at 860px */
 @media (max-width: 992px) {
-    .about-top {
-        padding: 100px 80px 60px 40px;
-      }
-      
-    .about-wrapper {
-      flex-direction: column;
-      align-items: center;
-      gap: 75px;
-    }
-  
-    .about-intro {
-      align-items: flex-start; /* ← LEFT align content */
-      text-align: left;        /* ← LEFT align text */
-      padding: 0 32px;
-      margin-top: 0;
-      padding-right: 0;
-      max-width: 600px;
-    }
-  
-    .about-photo-wrapper {
-      width: 60vw;
-      height: 60vw;
-      max-width: 360px;
-      max-height: 360px;
-      margin: 0 auto;
-    }
-  
-    .about-heading {
-      font-size: 1.5rem;
-    }
-  
-    .about-bio {
-      font-size: 0.85rem;
-    }
+  .sliding-roles {
+    transform: translateY(7.5px);
   }
-  
+}
+
+@media (max-width: 695px) {
+  .sliding-roles {
+    transform: translateY(8.5px);
+  }
+}
+
+.roles-wrapper {
+  display: inline-block;
+  animation: slideRoles 10s infinite ease-in-out;
+}
+
+.roles-wrapper span {
+  display: block;
+  height: 2rem;
+  line-height: 2rem;
+}
+
+@keyframes slideRoles {
+  0%, 1%         { transform: translateY(0rem); }
+  5%, 25%        { transform: translateY(-2rem); }
+  29%, 49%       { transform: translateY(-4rem); }
+  53%, 73%       { transform: translateY(-6rem); }
+  77%, 98%       { transform: translateY(-8rem); }
+  98.001%, 100%  { transform: translateY(0rem); }
+}
+
+/* === CURVED TEXT === */
+.curved-text-svg {
+  position: absolute;
+  top: 4.5%;
+  left: 34.5%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* === STACKED LAYOUT (≤ 992px) === */
+@media (max-width: 992px) {
+  .about-top {
+    padding: 100px 54px 60px;
+  }
+
+  .about-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 68px;
+    padding: 0;
+  }
+
+  .about-photo-wrapper {
+    width: 60vw;
+    height: 60vw;
+    max-width: 360px;
+    max-height: 360px;
+    margin: 0 auto;
+  }
+
+  .about-intro {
+    width: 100%;
+    padding: 0 5vw;
+    margin-top: 0;
+    align-items: flex-start;
+  }
+
+  .about-heading {
+    font-size: 1.5rem;
+  }
+
+  .about-bio {
+    font-size: 0.85rem;
+  }
+
   .curved-text-svg {
-    position: absolute;
-    top: 3.5%;
-    left: 27.5%;
-    transform: translate(-50%, -50%);
-    width: 80%; /* slightly larger than the photo to wrap around */
-    height: auto;
-    pointer-events: none;
-    z-index: 2;
+    display: none;
   }
-  
-  @media (max-width: 992px) {
-    .curved-text-svg {
-      display: none;
-    }
+}
+
+/* === XL Screens: prevent stretch (≥1600px) === */
+@media (min-width: 1600px) {
+  .about-wrapper {
+    max-width: 1100px;
+    padding: 0 6vw;
+    gap: 100px;
   }
+}

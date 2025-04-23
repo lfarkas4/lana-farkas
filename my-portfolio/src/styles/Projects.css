@@ -18,12 +18,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 400;
   font-family: "Montserrat", sans-serif;
   color: rgb(204, 204, 204);
   text-transform: lowercase;
-  margin: 30px 0 25px;
+  margin: 30px 0 30px;
 }
 
 .section-arrow {
@@ -68,10 +68,11 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   letter-spacing: 0.5px;
+
 }
 
 .project-content {
-  padding: 0 2px;
+  padding: 0 6px;
 }
 
 .project-title {
@@ -83,6 +84,7 @@
   font-family: "Montserrat", sans-serif;
   margin-bottom: 24px;
   color: rgb(240, 240, 240);
+
 }
 
 .project-lock-icon {
@@ -99,6 +101,7 @@
   font-weight: 300;
   color: rgb(200, 200, 200);
   line-height: 1.5;
+
 }
 
 /* === MINI PROJECTS === */
@@ -108,6 +111,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 60px 30px;
   margin-top: 40px;
+  margin-bottom: 35px;
 }
 
 .mini-project-card {
@@ -125,7 +129,7 @@
 }
 
 .mini-content {
-  padding: 0 2px;
+  padding: 0 6px;
 }
 
 .mini-title {
@@ -197,7 +201,7 @@
 
   .mini-content {
     width: 100%;
-    padding: 0 2px;
+    padding: 0 6px;
     margin-top: 0;
   }
 

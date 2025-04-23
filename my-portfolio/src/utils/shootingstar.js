@@ -20,7 +20,7 @@ export default function useShootingStar() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       // Always prevent scrolling on spacebar
-      if (e.code === 'Space') {
+      if (e.key.toLowerCase() === 's') {
         e.preventDefault();
 
         // Only launch the star if screen is large

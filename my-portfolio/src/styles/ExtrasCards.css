@@ -1,0 +1,347 @@
+/* === CARD BASE === */
+.extras-card {
+  background: rgba(44, 39, 52, 0.25);
+  border-radius: 16px;
+  padding: 25px 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+  color: rgb(204, 204, 204);
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.extras-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  margin-bottom: 35px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 992px) {
+  .extras-card {
+    padding: 25px 24px 50px;
+  }
+
+  .extras-title {
+    font-size: 1.15rem;
+  }
+
+  /* TOOLKIT FIX */
+  .toolkit-card.extras-card {
+    max-width: 750px;
+    padding: 25px 24px 50px;
+    margin: 30px auto 0;
+  }
+}
+
+/* === PERSONAL STATS === */
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-left: 50px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  font-size: 1.15rem;
+  column-gap: 10px;
+  line-height: 1.8;
+}
+
+.stat-label {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.stat-value {
+  font-weight: 500;
+}
+
+/* === JOY / DATES === */
+.stats-list,
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding-left: 0;
+  margin-left: 25px;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: rgb(204, 204, 204);
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.6;
+}
+
+.checklist .checkbox {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  margin-top: 4px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.checklist .text {
+  flex: 1;
+  word-break: break-word;
+}
+
+.checklist li.checked .checkbox {
+  background-color: rgb(204, 204, 204);
+  border-color: rgb(204, 204, 204);
+}
+
+.checklist li.checked .text {
+  text-decoration: line-through;
+  color: rgba(204, 204, 204, 0.5);
+}
+
+/* === HEART ICON === */
+.svg-heart-btn {
+  position: absolute;
+  top: 25px;
+  right: 28px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.heart-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+  opacity: 0.85;
+}
+
+.svg-heart-btn:hover .heart-icon {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+/* === PINTEREST CARD === */
+.extras-card.stretch-bottom {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pinterest-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.pinterest-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pinterest-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pinterest-username {
+  font-weight: 500;
+  font-size: 1rem;
+  color: rgb(204, 204, 204);
+}
+
+.pinterest-board-title {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(204, 204, 204, 0.85);
+  text-transform: lowercase;
+}
+
+.pinterest-scroll-area {
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 6px;
+  margin-bottom: 20px;
+  flex: 1;
+  scrollbar-color: rgba(180, 180, 180, 0.8) transparent;
+  scrollbar-width: thin;
+}
+
+.pinterest-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pinterest-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pinterest-scroll-area::-webkit-scrollbar-thumb {
+  background-color: rgba(160, 160, 160, 0.6);
+  border-radius: 10px;
+}
+
+.pinterest-mock-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px 12px 0;
+}
+
+.pinterest-mock-grid img {
+  width: 100%;
+  border-radius: 10px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.05);
+  transition: transform 0.35s ease, filter 0.35s ease;
+  opacity: 0.95;
+}
+
+.pinterest-mock-grid img:hover {
+  transform: scale(1.025);
+  filter: brightness(1.15) contrast(1.05);
+}
+
+.pinterest-follow {
+  display: block;
+  align-self: center;
+  font-size: 0.9rem;
+  color: rgba(204, 204, 204, 0.85);
+  text-decoration: none;
+  border: 1px solid rgba(204, 204, 204, 0.2);
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.04);
+
+  margin-top: 1.75vh;  /* 👈 slight visual buffer from grid */
+  margin-bottom: 0;
+}
+
+.pinterest-follow:hover {
+  background-color: rgba(204, 204, 204, 0.2);
+  color: #111;
+}
+
+.pinterest-logo {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.pinterest-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center vertically */
+  gap: 24px; /* optional breathing space between grid & button */
+}
+
+
+/* === SPOTIFY CARD === */
+.spotify-card-wrapper {
+  background: rgba(44, 39, 52, 0.25);
+  border-radius: 16px;
+  overflow: hidden;
+  height: 152px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.spotify-embed {
+  width: 100%;
+  height: 152px;
+  border: none;
+  border-radius: 16px;
+}
+
+/* === TOOLKIT SCROLLER === */
+.toolkit-card {
+  width: 100%;
+  max-width: 1325px;
+  padding: 25px 6vw 50px;
+  margin: 30px auto 0px;
+  border-radius: 16px;
+  background: rgba(44, 39, 52, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+  color: rgb(204, 204, 204);
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+.toolkit-scroll-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.toolkit-scroll-track {
+  display: flex;
+  animation: scrollCarousel 25s linear infinite;
+  min-width: max-content;
+  will-change: transform;
+}
+
+.toolkit-scroll-sequence {
+  display: flex;
+  gap: 40px;
+}
+
+.toolkit-scroll-sequence img {
+  max-width: 80px;
+  height: auto;
+  filter: brightness(0.9) contrast(1);
+  opacity: 0.6;
+  transition: transform 0.2s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.toolkit-scroll-sequence img:hover {
+  transform: scale(1.05);
+  filter: brightness(1) contrast(1.05);
+  opacity: 1;
+}
+
+.toolkit-scroll-sequence img:last-child {
+  margin-right: 40px;
+}
+
+@keyframes scrollCarousel {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

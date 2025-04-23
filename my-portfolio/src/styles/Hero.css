@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
 
+/* === HERO SECTION === */
+
 .hero {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: center; /* ⬅️ Center vertically */
   text-align: center;
-  padding: 90px 0 80px; /* Balanced top/bottom spacing */
   min-height: 85vh;
+  padding: 90px 0 80px;
 }
 
 .hero-title {
@@ -29,24 +31,22 @@
 }
 
 .hero-tagline {
-  max-width: 611px;
-  width: 55vw;
   font-size: 1.35rem;
   font-weight: 400;
   color: rgb(204, 204, 204);
-  margin: 15px auto 20px;
-  text-align: center;
+  width: 55vw;
+  max-width: 611px;
   line-height: 1.5;
-  margin-top: 50px;
+  margin: 50px auto 20px;
 }
 
 .hero-info {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 120px;
   margin-bottom: 45px;
-  flex-wrap: wrap;
 }
 
 .hero-column h4 {
@@ -74,26 +74,15 @@
   color: rgb(240, 240, 240);
 }
 
+/* === SCROLL ARROW === */
 
 .scroll-down {
-  margin-top: 30px;
-  margin-bottom: 20px; /* was 120px – now tighter */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-}
-
-@media (max-width: 991px) {
-  .scroll-down {
-    margin-bottom: 50px; /* was 100px */
-  }
-}
-
-@media (max-width: 695px) {
-  .scroll-down {
-    margin-bottom: 10px; /* was 75px */
-  }
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .scroll-arrow {
@@ -102,14 +91,11 @@
 }
 
 /* ==========================
-   TABLET: 768px – 991px
+   TABLET: 601px – 991px
    ========================== */
 @media (max-width: 992px) and (min-width: 601px) {
   .hero {
-    padding-top: 100px;
-    padding-bottom: 60px;
-    padding-left: 5vw;
-    padding-right: 5vw;
+    padding: 100px 5vw 60px;
   }
 
   .hero-title {
@@ -127,18 +113,13 @@
 
   .hero-tagline {
     font-size: 1.3rem;
-    line-height: 1.45;
     width: 62vw;
     max-width: 640px;
-    margin: 20px auto 30px;
-    white-space: normal;
-    margin-top: 50px;
+    line-height: 1.45;
+    margin: 50px auto 30px;
   }
 
   .hero-info {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 80px;
     margin-top: 5px;
   }
@@ -158,6 +139,7 @@
 
   .scroll-down {
     margin-top: 35px;
+    margin-bottom: 50px;
   }
 
   .scroll-arrow {
@@ -171,8 +153,7 @@
    ========================== */
 @media (max-width: 695px) {
   .hero {
-    padding-top: 100px;
-    padding-bottom: 60px;
+    padding: 100px 0 60px;
   }
 
   .hero-title {
@@ -184,8 +165,8 @@
     width: 90vw;
     max-width: 525px;
     min-width: 375px;
-    transform: none;
     margin: 12px auto;
+    transform: none;
   }
 
   .hero-tagline {
@@ -216,6 +197,7 @@
 
   .scroll-down {
     margin-top: 25px;
+    margin-bottom: 10px;
   }
 
   .scroll-arrow {

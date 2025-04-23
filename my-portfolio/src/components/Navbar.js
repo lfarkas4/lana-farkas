@@ -52,13 +52,13 @@ const Navigation = () => {
               <Link to="/" className="nav-link">work</Link>
               <Link to="/about" className="nav-link">about</Link>
               <a
-                href="/assets/lana_resume.pdf"
-                className="nav-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                resume <FiArrowUpRight className="resume-arrow" />
-              </a>
+  href="/assets/lana_resume.pdf"
+  className="nav-link"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  resume <FiArrowUpRight className="resume-arrow" />
+</a>
             </Nav>
           </div>
 

@@ -12,10 +12,10 @@ const caseStudies = [
     title: "Underwater Intelligence with Aquatonomy",
     tags: ["Human-Robot Interaction", "Autonomous Systems"],
     description:
-      "Designed key interactions and service design for an autonomous underwater inspection system.",
+      "Designed key interactions and overall service for an autonomous underwater inspection system.",
   },
   {
-    title: "Pulsepoint: Guiding Cancer Care",
+    title: "Thought Bubble: Guiding Cancer Care",
     tags: ["Healthcare", "Wearables", "Patient Experience"],
     description:
       "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
