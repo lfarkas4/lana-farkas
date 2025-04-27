@@ -97,3 +97,26 @@
     display: contents; /* Treat children as direct grid items */
   }
 }
+
+@media (max-width: 600px) {
+  .about-extras {
+    padding: 85px 28px 30px;
+  }
+
+  .extras-intro {
+    font-size: 1.15rem;
+    margin-bottom: 35px;
+    line-height: 1.5;
+    padding: 0 8px;
+    text-align: left;
+  }
+
+  .extras-grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .extras-column {
+    display: contents;
+  }
+}

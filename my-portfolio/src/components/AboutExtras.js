@@ -174,12 +174,13 @@ const AboutExtras = () => {
               <em>stuff i say on first dates</em> ☟
             </h4>
             <div className="stats-container">
-              <div className="stat-row">“I have a twin brother.”</div>
-              <div className="stat-row">“I’ve pierced 7 of my friends’ ears.”</div>
-              <div className="stat-row">“I’m very allergic to walnuts.”</div>
+              <div className="stat-row">"I have a twin brother."</div>
+              <div className="stat-row">"I’ve pierced 7 of my friends’ ears."</div>
+              <div className="stat-row">"I’m very allergic to walnuts."</div>
+              <div className="stat-row">"I'm still on Team Jacob. Don't ask." </div>
               <div className="stat-row">
-                “I speak just enough Russian to confuse strangers and make my
-                mom proud.”
+              "I speak just enough Russian to confuse strangers and make my
+                mom proud."
               </div>
             </div>
           </div>

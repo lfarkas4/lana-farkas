@@ -37,7 +37,7 @@ useShootingStar();
           <h4>previously</h4>
           <p>b.a. cogsci @ university of virginia</p>
           <p>
-            systems designer @{" "}
+            product experience designer @{" "}
             <a
               href="https://www.aquatonomy.com/"
               target="_blank"

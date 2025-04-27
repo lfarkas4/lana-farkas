@@ -22,7 +22,7 @@
   font-weight: 500;
   text-transform: lowercase;
   margin-bottom: 35px;
-  margin-left: 20px;
+  margin-left: 15px;
   margin-top: 20px;
 }
 
@@ -181,10 +181,10 @@
 }
 
 .pinterest-scroll-area {
-  max-height: 340px;
+  max-height: 400px;
   overflow-y: auto;
   padding-right: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   flex: 1;
   scrollbar-color: rgba(180, 180, 180, 0.8) transparent;
   scrollbar-width: thin;
@@ -229,21 +229,21 @@
   display: block;
   align-self: center;
   font-size: 0.9rem;
-  color: rgba(204, 204, 204, 0.85);
+  color: rgba(217, 217, 217, 0.85);
   text-decoration: none;
   border: 1px solid rgba(204, 204, 204, 0.2);
-  padding: 8px 14px;
+  padding: 11px 20px;
   border-radius: 10px;
   transition: all 0.2s ease;
   background-color: rgba(255, 255, 255, 0.04);
 
   margin-top: 1.75vh;  /* 👈 slight visual buffer from grid */
-  margin-bottom: 0;
+  margin-bottom: -4px;
 }
 
 .pinterest-follow:hover {
-  background-color: rgba(204, 204, 204, 0.2);
-  color: #111;
+  background-color: rgba(215, 215, 215, 0.2);
+  color: #020006;
 }
 
 .pinterest-logo {
@@ -343,5 +343,65 @@
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .extras-card {
+    padding: 22px 20px 50px;
+    margin: 0 auto;
+  }
+
+  .extras-title {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    margin-left: 10px;
+  }
+
+  .stats-container {
+    margin-left: 25px;
+    gap: 10px;
+  }
+
+  .stat-row {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .stats-list,
+  .checklist {
+    margin-left: 18px;
+    font-size: 0.95rem;
+    gap: 10px;
+  }
+
+  .spotify-card-wrapper {
+    height: 140px;
+  }
+
+  .pinterest-scroll-area {
+    max-height: 280px;
+  }
+
+  .toolkit-card {
+    padding: 22px 20px 45px;
+    margin-top: 20px;
+  }
+
+  .toolkit-scroll-sequence img {
+    max-width: 60px;
+    opacity: 0.75;
+  }
+  .toolkit-scroll-sequence {
+    gap: 24px; /* instead of 40px */
+  }
+  .svg-heart-btn {
+    top: 20px;
+    right: 20px;
+  }
+  
+  .heart-icon {
+    width: 18px;
+    height: 18px;
   }
 }

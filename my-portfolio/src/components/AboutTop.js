@@ -11,21 +11,22 @@ const About = () => {
         </div>
 
         <div className="about-intro">
-          <h2 className="about-heading">
-            i’m a{" "}
-            <span className="sliding-roles">
-            <div className="roles-wrapper">
-              <span>user researcher ➹</span>
-              <span>product designer ✸</span>
-              <span>front-end developer ❒</span>
-              <span>visual designer ☻</span>
-            {/* Duplicate for infinite scrolling illusion */}
-              <span>user researcher ➹</span>
-            </div>
-            </span>
-            <br />
-            <span className="italic">adding a lil’ magic to everyday tech.</span>
-          </h2>
+  <h2 className="about-heading">
+    <span className="greeting italic">hi, it's lana! (like del rey)</span>
+    <br />
+    i’m a{" "}
+    <span className="sliding-roles">
+      <div className="roles-wrapper">
+        <span>user researcher ➹</span>
+        <span>product designer ✸</span>
+        <span>front-end developer ❒</span>
+        <span>visual designer ☻</span>
+        <span>user researcher ➹</span>
+      </div>
+    </span>
+    <br />
+    <span className="italic">adding a lil’ magic to everyday tech.</span>
+  </h2>
 
           <p className="about-bio">
             For me, design is about more than just functionality—it's about
