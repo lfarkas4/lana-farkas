@@ -25,7 +25,7 @@ const AboutExtras = () => {
   return (
     <section className="about-extras">
       <h3 className="extras-intro">
-        ...and here’s the rest of <em>my universe</em> ✦
+        ...and here’s the rest of <em>my universeeeee</em> ✦
       </h3>
 
       <div className="extras-grid">
