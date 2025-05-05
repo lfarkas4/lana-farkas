@@ -92,7 +92,7 @@ const AboutExtras = () => {
                   {[...Array(48)].map((_, i) => (
                     <img
                       key={i}
-                      src={`/assets/pinphotos/pin${i + 1}.jpg`}
+                      src={`/assets/pinphotos/pin${i + 1}.JPG`}
                       alt={`pin${i + 1}`}
                     />
                   ))}
