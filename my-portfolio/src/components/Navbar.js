@@ -37,12 +37,12 @@ const Navigation = () => {
               className="logo"
               initial={{ rotate: 0, scale: 1, filter: "brightness(1)" }}
               whileHover={{
-                rotate: 3,
+                rotate: -2,
                 scale: 1.1,
-                filter: "brightness(1.1)",
+                filter: "brightness(1.4)",
               }}
               animate={{ rotate: 0, scale: 1, filter: "brightness(1)" }}
-              transition={{ duration: 0.0000001, ease: "easeOut" }}
+              transition={{ duration: 0.0000000001, ease: "easeOut" }}
             />
           </Navbar.Brand>
 

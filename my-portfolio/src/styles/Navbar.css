@@ -73,7 +73,7 @@
 }
 
 .nav-link {
-    color: rgb(204, 204, 204) !important;
+    color: rgb(180, 180, 180) !important;
     font-size: 1rem;
     font-weight: 400;
     text-transform: lowercase;
@@ -83,7 +83,7 @@
 }
 
 .nav-link:hover {
-    color: rgb(240, 240, 240) !important;
+    color: rgb(249, 249, 249) !important;
 }
 
 /* Hamburger Menu */
@@ -100,7 +100,7 @@
 }
 
 .menu-icon:hover {
-    color: rgb(240, 240, 240) !important; /* Lighter color on hover */
+    color: rgb(249, 249, 249) !important;
 }
 
 @media (max-width: 992px) {
