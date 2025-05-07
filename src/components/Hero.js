@@ -7,7 +7,7 @@ const Hero = () => {
 useShootingStar();
   return (
     <section className="hero" id="home">
-      <h1 className="hero-title">hello, my name is</h1>
+      <h1 className="hero-title">hello, my name isssssddsd</h1>
       {/* Lana SVG logo */}
       <Lana />
 
