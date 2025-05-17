@@ -155,7 +155,7 @@
 /* === RESPONSIVE BREAKPOINTS === */
 
 /* Tablet (≤ 991px) */
-@media (max-width: 991px) {
+@media (max-width: 875px) {
   .projects-container {
     grid-template-columns: 1fr;
   }
@@ -179,7 +179,7 @@
 }
 
 /* Mobile (≤ 695px) */
-@media (max-width: 695px) {
+@media (max-width: 664px) {
   .projects-section {
     padding: 70px 60px;
   }
@@ -215,7 +215,7 @@
 }
 
 /* Small Phones (≤ 480px) */
-@media (max-width: 480px) {
+@media (max-width: 375px) {
   .tag {
     font-size: 0.65rem;
     padding: 6px 10px;

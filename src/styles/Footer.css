@@ -2,13 +2,13 @@
   padding: 120px 68px 60px; /* desktop */
 }
 
-@media (max-width: 860px) and (min-width: 621px) {
+@media (max-width: 875px) and (min-width: 665px) {
   .footer {
     padding: 100px 60px 70px;
   }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 664px) {
   .footer {
     padding: 75px 40px 50px;
   }
@@ -110,7 +110,7 @@
 /* ==========================
    Tablet: 768px – 991px
 ========================== */
-@media (max-width: 860px) and (min-width: 621px) {
+@media (max-width: 875px) and (min-width: 665px) {
   .footer {
     padding: 50px 60px 70px;
     text-align: center;
@@ -137,7 +137,7 @@
 /* ==========================
    Mobile: ≤ 620px
 ========================== */
-@media (max-width: 620px) {
+@media (max-width: 664px) {
   .footer {
     padding: 45px 40px 50px;
   }

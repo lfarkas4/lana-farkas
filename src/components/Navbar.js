@@ -2,16 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/Navbar.css";
 
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // Close menu on window resize above breakpoint
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 992) {
@@ -24,12 +26,13 @@ const Navigation = () => {
 
   return (
     <>
-      <div className="navbar-gradient" />
+      {/* Mobile background overlay */}
+      <div className={`nav-background ${menuOpen ? "active" : ""}`} />
 
       <Navbar expand="lg" className="custom-navbar">
         <div className="nav-container">
 
-          {/* Logo */}
+          {/* Logo on the left */}
           <Navbar.Brand href="/" className="brand-logo">
             <motion.img
               src="/starlogolight.svg"
@@ -46,48 +49,69 @@ const Navigation = () => {
             />
           </Navbar.Brand>
 
-          {/* Desktop Nav */}
-          <div className="nav-links-desktop">
+          {/* Desktop frosted nav capsule */}
+          <div className="nav-bubble">
             <Nav className="nav-links">
-              <Link to="/" className="nav-link">work</Link>
-              <Link to="/about" className="nav-link">about</Link>
-              <a
-  href="/assets/lana_resume.pdf"
-  className="nav-link"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  resume <FiArrowUpRight className="resume-arrow" />
-</a>
-            </Nav>
-          </div>
+              <Link
+                to="/"
+                className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+              >
+                work
+              </Link>
 
-          {/* Hamburger (Mobile) */}
-          <div className="menu-icon" onClick={toggleMenu}>
-            {menuOpen ? <FiX /> : <FiMenu />}
-          </div>
+              <Link
+                to="/about"
+                className={`nav-link ${location.pathname === "/about" ? "active" : ""}`}
+              >
+                about
+              </Link>
 
-          {/* Mobile Nav Background */}
-          <div className={`nav-background ${menuOpen ? "active" : ""}`}></div>
-
-          {/* Mobile Dropdown Nav */}
-          <div className={`nav-links-container ${menuOpen ? "active" : ""}`}>
-            <Nav className="nav-links">
-              <Link to="/" className="nav-link" onClick={toggleMenu}>work</Link>
-              <Link to="/about" className="nav-link" onClick={toggleMenu}>about</Link>
               <a
                 href="/assets/lana_resume.pdf"
                 className="nav-link"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={toggleMenu}
               >
                 resume <FiArrowUpRight className="resume-arrow" />
               </a>
             </Nav>
           </div>
+
+          {/* Hamburger Icon for Mobile */}
+          <div className="menu-icon" onClick={toggleMenu}>
+            {menuOpen ? <FiX /> : <FiMenu />}
+          </div>
         </div>
       </Navbar>
+
+      {/* Mobile Dropdown Nav */}
+      <div className={`nav-links-container ${menuOpen ? "active" : ""}`}>
+        <Nav className="nav-links">
+          <Link
+            to="/"
+            className="nav-link"
+            onClick={toggleMenu}
+          >
+            work
+          </Link>
+          <Link
+            to="/about"
+            className="nav-link"
+            onClick={toggleMenu}
+          >
+            about
+          </Link>
+          <a
+            href="/assets/lana_resume.pdf"
+            className="nav-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={toggleMenu}
+          >
+            resume <FiArrowUpRight className="resume-arrow" />
+          </a>
+        </Nav>
+      </div>
     </>
   );
 };
