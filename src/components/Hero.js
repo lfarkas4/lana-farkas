@@ -9,20 +9,20 @@ useShootingStar();
     <section className="hero" id="home">
       <div className="hero-inner-wrapper">
       <h1 className="hero-title">
-      <span className="font-fira-italic-light">hello</span>, my name is
+      <span className="font-cooper-italic-hello">hello</span>, my name is
       </h1>
         {/* Lana SVG logo */}
         <Lana />
 
         {/* Tagline */}
         <p className="hero-tagline">
-  ... a product designer bringing <span className="font-fira-italic-sub">clarity</span> to the <span className="font-fira-italic-sub">cosmos</span> of digital experiences.
+  ... a product designer bringing <span className="font-cooper-italic-tag">clarity</span> to the <span className="font-cooper-italic-tag">cosmos</span> of digital experiences.
 </p>
 
         {/* Info columns */}
         <div className="hero-info">
           <div className="hero-column">
-          <h4 className="font-fira-italic">currently</h4>
+          <h4 className="font-cooper-italic">currently</h4>
             <p>
               product design intern @{" "}
               <a
@@ -36,7 +36,7 @@ useShootingStar();
             <p>mhci @ carnegie mellon university</p>
           </div>
           <div className="hero-column">
-          <h4 className="font-fira-italic">previously</h4>
+          <h4 className="font-cooper-italic">previously</h4>
 
             <p>b.a. cogsci @ university of virginia</p>
             <p>

@@ -9,7 +9,7 @@
   align-items: center;
   text-align: center;
   min-height: 85vh;
-  padding: 75px 0 80px;
+  padding: 90px 0 80px;
 }
 
 .hero-inner-wrapper {
@@ -18,7 +18,7 @@
 
 .hero-title {
   font-family: "Montserrat", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 400;
   color: rgb(204, 204, 204);
   margin-bottom: 30px;
@@ -35,13 +35,13 @@
 }
 
 .hero-tagline {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: rgb(204, 204, 204);
   width: 30vw;
-  max-width: 611px;
+  max-width: 740px;
   line-height: 1.5;
-  margin: 66px auto 20px;
+  margin: 66px auto 15px;
 }
 
 .hero-info {
@@ -49,20 +49,19 @@
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 110px;
+  gap: 100px;
   margin-bottom: 45px;
 }
 
 .hero-column h4 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 400;
   text-transform: lowercase;
   margin-bottom: 10px;
 }
 
 .hero-column p {
-  font-size: 0.63rem;
+  font-size: 0.68rem;
   font-weight: 370;
   color: rgb(204, 204, 204);
   margin: 5px 0;

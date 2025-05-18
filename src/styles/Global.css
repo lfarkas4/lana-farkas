@@ -145,7 +145,7 @@ html {
     font-family: 'Fira Sans', sans-serif;
     font-style: italic;
     font-weight: 300;
-    font-size: 1.625rem;
+    font-size: 1.675rem;
     letter-spacing: 1.2px;
   }
 
@@ -153,7 +153,56 @@ html {
     font-family: 'Fira Sans', sans-serif;
     font-style: italic;
     font-weight: 300;
-    font-size: 1.02rem;
+    font-size: 1.10rem;
     letter-spacing: 0.85px;
   }
   
+    /* ----------------------------------------
+   TYPOGRAPHY UTILITY CLASSES - COOPER
+----------------------------------------- */
+
+@font-face {
+  font-family: 'CooperMdBT-Italic';
+  src: url('/public/fonts/CooperMdBT-Italic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CooperLtBT-Italic';
+  src: url('/public/fonts/CooperLtBT-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+.font-cooper-italic-hello {
+  font-family: 'CooperLtBT-Italic', serif;
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 2.25px;
+  font-size: 1.8rem;
+}
+
+.font-cooper-italic-tag {
+  font-family: 'CooperLtBT-Italic', serif;
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 1.4px;
+  font-size: 1.25rem;
+}
+
+.font-cooper-italic {
+  font-family: 'CooperLtBT-Italic', serif;
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+.font-cooper-italic-bold {
+  font-family: 'CooperMdBT-Italic', serif;
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
