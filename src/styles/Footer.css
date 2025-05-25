@@ -17,12 +17,6 @@
 .footer {
   margin-top: 200px;
   padding: 10px 68px 25px; /* desktop */
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.88) 0%,
-    rgba(0, 0, 0, 0.75) 35%,
-    rgba(0, 0, 0, 0) 100%
-  );
   position: relative;
   z-index: 1;
 }
@@ -55,10 +49,8 @@
 .footer-left {
   display: flex;
   align-items: baseline;
-  gap: 12px;
   flex-wrap: nowrap;
   flex-shrink: 0;
-  margin-top: -10px;
 }
 
 .footer-icons {
@@ -74,7 +66,6 @@
   font-style: italic;
   line-height: 1;
   white-space: nowrap;
-  margin-left: 6px;
   transform: translateY(0px);
 }
 
@@ -126,7 +117,6 @@
 @media (max-width: 875px) and (min-width: 665px) {
   .footer {
     padding: 50px 60px 70px;
-    text-align: center;
   }
 
   .footer-content {
@@ -183,7 +173,6 @@
 .footer-left {
   display: flex;
   align-items: flex-start;
-  gap: 18px;
 }
 
 .footer-orbit-icon {
@@ -194,7 +183,8 @@
 .footer-salutation {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  justify-content: space-between;
 }
 
 .footer-thanks {
@@ -217,6 +207,7 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
+  justify-content: space-between;
 }
 
 .footer-icons {

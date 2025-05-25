@@ -225,6 +225,7 @@ html {
 }
 .brand-logo {
   text-decoration: none !important;
+  display: flex;
 }
 
 .brand-logo * {

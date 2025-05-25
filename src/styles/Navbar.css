@@ -7,8 +7,7 @@
  top: 20px;
  left: 0;
  width: 100%;
- z-index: 100;
- padding: 10px 20px;
+ z-index: 200;
  display: flex;
  align-items: center;
  justify-content: space-between;
@@ -22,14 +21,13 @@
  justify-content: space-between;
  align-items: center;
  width: 100%;
- padding: 0 60px;
+ padding: 10px 55px;
 }
 
 
 .brand-logo img {
  height: 40px;
  width: auto;
- margin-top: 5px;
  z-index: 101;
  transition: all 0.3s ease-in-out;
 }
@@ -39,11 +37,6 @@
 @media (max-width: 768px) {
  .brand-logo img {
    height: 35px;
-   margin-top: 10px;
-   position: fixed;
-   top: 25px;
-   left: 40px;
-   z-index: 103;
  }
 }
 
@@ -192,9 +185,6 @@
   cursor: pointer;
   font-size: 24px;
   color: rgb(204, 204, 204);
-  position: fixed;
-  top: 40px;
-  right: 40px;
   z-index: 200;
   transition: color 0.2s ease-in-out;
   pointer-events: auto; /* ✅ must be auto or removed */
@@ -329,7 +319,7 @@
 
 
  .menu-icon {
-   display: block;
+   display: flex;
  }
 
 
