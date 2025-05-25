@@ -25,7 +25,7 @@ const AboutExtras = () => {
   return (
     <section className="about-extras">
       <h3 className="extras-intro">
-        ...and here’s the rest of <em>my universeeeee</em> ✦
+        ...and here’s the rest of <em>my universe</em> ✦
       </h3>
 
       <div className="extras-grid">
@@ -171,13 +171,13 @@ const AboutExtras = () => {
               />
             </button>
             <h4 className="extras-title">
-              <em>stuff i say on first dates</em> ☟
+              <em>fun facts about me</em> ☟
             </h4>
             <div className="stats-container">
               <div className="stat-row">"I have a twin brother."</div>
               <div className="stat-row">"I’ve pierced 7 of my friends’ ears."</div>
               <div className="stat-row">"I’m very allergic to walnuts."</div>
-              <div className="stat-row">"I'm still on Team Jacob. Don't ask." </div>
+              <div className="stat-row">"I'm scary good at parallel parking — it freaks people out a little.'" </div>
               <div className="stat-row">
               "I speak just enough Russian to confuse strangers and make my
                 mom proud."

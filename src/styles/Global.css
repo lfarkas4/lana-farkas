@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,300;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400&display=swap');
 
 html, body {
     height: 100%;
@@ -172,7 +173,7 @@ html {
 @font-face {
   font-family: 'CooperLtBT-Italic';
   src: url('/public/fonts/CooperLtBT-Italic.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: light;
   font-style: italic;
   font-display: swap;
 }
@@ -182,7 +183,7 @@ html {
   font-style: italic;
   font-weight: normal;
   letter-spacing: 2.25px;
-  font-size: 1.8rem;
+  font-size: 1.85rem;
 }
 
 .font-cooper-italic-tag {
@@ -191,6 +192,22 @@ html {
   font-weight: normal;
   letter-spacing: 1.4px;
   font-size: 1.25rem;
+}
+
+.font-cooper-italic-tag2 {
+  font-family: 'CooperLtBT-Italic', serif;
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 1.4px;
+  font-size: 1.5rem;
+}
+
+.font-cooper-italic-tag3 {
+  font-family: 'CooperLtBT-Italic', serif;
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 1.4px;
+  font-size: 1rem;
 }
 
 .font-cooper-italic {
@@ -205,4 +222,11 @@ html {
   font-style: italic;
   font-weight: bold;
   letter-spacing: 0.5px;
+}
+.brand-logo {
+  text-decoration: none !important;
+}
+
+.brand-logo * {
+  text-decoration: none !important;
 }

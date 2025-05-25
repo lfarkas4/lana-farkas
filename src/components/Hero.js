@@ -16,7 +16,7 @@ useShootingStar();
 
         {/* Tagline */}
         <p className="hero-tagline">
-  ... a product designer bringing <span className="font-cooper-italic-tag">clarity</span> to the <span className="font-cooper-italic-tag">cosmos</span> of digital experiences.
+  ... a product futurist bringing <span className="font-cooper-italic-tag">clarity</span> to the <span className="font-cooper-italic-tag">cosmos</span> of digital experiences.
 </p>
 
         {/* Info columns */}

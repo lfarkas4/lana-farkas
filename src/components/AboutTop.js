@@ -44,20 +44,29 @@ const About = () => {
             <span className="light-bold">B.A. in Cognitive Science</span>.
           </p>
 
-          <div className="footer-left" style={{ marginTop: "18px" }}>
-            <a
-              href="https://www.linkedin.com/in/lana-farkas-66bb0a246"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-icon"
-            >
-              <img src="/assets/linkedin.svg" alt="LinkedIn" />
-            </a>
-            <a href="mailto:lfarkas@andrew.cmu.edu" className="footer-icon2">
-              <img src="/assets/email.svg" alt="Email" />
-            </a>
-            <span className="footer-message">happy to chat anytime ⟢</span>
-          </div>
+          <div className="about-contact-block">
+  <div className="about-icons">
+    <a
+      href="https://www.linkedin.com/in/lana-farkas-66bb0a246"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img src="/assets/linkedin.svg" alt="LinkedIn" />
+    </a>
+    <a href="mailto:lfarkas@andrew.cmu.edu">
+      <img src="/assets/email.svg" alt="Email" />
+    </a>
+    <a
+      href="https://github.com/yourgithub"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img src="/assets/git.svg" alt="GitHub" />
+    </a>
+  </div>
+  <div className="about-chat-message">happy to chat anytime ✧</div>
+</div>
+
         </div>
       </div>
     </section>

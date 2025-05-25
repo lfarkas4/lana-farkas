@@ -286,3 +286,49 @@
   }
 
 }
+
+.about-contact-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.about-icons {
+  display: flex;
+  gap: 14px;
+}
+
+.about-icons img {
+  width: 30px;
+  height: auto;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.about-icons img[alt="Email"] {
+  transform: translateY(6px); /* Adjust upward/downward */
+}
+
+.about-icons img:hover {
+  opacity: 1;
+}
+
+.about-chat-message {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .about-contact-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .about-chat-message {
+    font-size: 0.85rem;
+  }
+}
