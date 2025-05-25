@@ -15,8 +15,8 @@
 }
 
 .footer {
-  margin-top: 200px;
-  padding: 10px 68px 25px; /* desktop */
+  margin-top: 96px;
+  padding: 0px 64px 25px; /* desktop */
   position: relative;
   z-index: 1;
 }
@@ -155,7 +155,6 @@
   .footer-left,
   .footer-credit {
     font-size: 0.95rem;
-    text-align: center;
     white-space: nowrap;
     margin-top: 0;
   }
@@ -167,7 +166,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 40px;
-  padding: 60px 15px 70px;
+  padding: 60px 0px 70px;
 }
 
 .footer-left {
@@ -183,13 +182,13 @@
 .footer-salutation {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   justify-content: space-between;
 }
 
 .footer-thanks {
   font-family: 'CooperLtBT-Italic', serif;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   font-style: italic;
   letter-spacing: 1.5px;
   color: #fff;
@@ -197,7 +196,7 @@
 
 .footer-travels {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-style: italic;
   color: rgba(240, 240, 240, 0.85);
 }
@@ -206,7 +205,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
+  gap: 8px;
   justify-content: space-between;
 }
 
@@ -216,7 +215,7 @@
 }
 
 .footer-icons img {
-  width: 30px;
+  width: 26px;
   height: auto;
   transition: opacity 0.3s ease;
   opacity: 0.9;
@@ -228,7 +227,7 @@
 
 .footer-message {
   font-style: italic;
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: #ccc;
 }
 
