@@ -290,7 +290,7 @@
 .about-contact-block {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   margin-top: 28px;
   flex-wrap: wrap;
 }
@@ -301,14 +301,10 @@
 }
 
 .about-icons img {
-  width: 30px;
+  width: 28px;
   height: auto;
   opacity: 0.85;
   transition: opacity 0.3s ease;
-}
-
-.about-icons img[alt="Email"] {
-  transform: translateY(6px); /* Adjust upward/downward */
 }
 
 .about-icons img:hover {
@@ -317,8 +313,9 @@
 
 .about-chat-message {
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #ccc;
+  align-self: flex-end;
 }
 
 @media (max-width: 768px) {
@@ -331,4 +328,9 @@
   .about-chat-message {
     font-size: 0.85rem;
   }
+}
+
+.about-icons-links {
+  display: flex;
+  align-items: end;
 }

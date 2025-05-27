@@ -12,9 +12,8 @@ const About = () => {
 
         <div className="about-intro">
   <h2 className="about-heading">
-    <span className="greeting italic">hi, it's lana! (like del rey)</span>
-    <br />
-    i’m a{" "}
+    {/* <span className="greeting italic">hi, it's lana! (like del rey)</span> */}
+    I'm a{" "}
     <span className="sliding-roles">
       <div className="roles-wrapper">
         <span>user researcher ➹</span>
@@ -47,16 +46,20 @@ const About = () => {
           <div className="about-contact-block">
   <div className="about-icons">
     <a
+      className="about-icons-links"
       href="https://www.linkedin.com/in/lana-farkas-66bb0a246"
       target="_blank"
       rel="noopener noreferrer"
     >
       <img src="/assets/linkedin.svg" alt="LinkedIn" />
     </a>
-    <a href="mailto:lfarkas@andrew.cmu.edu">
+    <a 
+      className="about-icons-links"
+      href="mailto:lfarkas@andrew.cmu.edu">
       <img src="/assets/email.svg" alt="Email" />
     </a>
     <a
+      className="about-icons-links"
       href="https://github.com/yourgithub"
       target="_blank"
       rel="noopener noreferrer"
@@ -64,7 +67,7 @@ const About = () => {
       <img src="/assets/git.svg" alt="GitHub" />
     </a>
   </div>
-  <div className="about-chat-message">happy to chat anytime ✧</div>
+  <div className="about-chat-message">happy to chat anytime ⟢</div>
 </div>
 
         </div>

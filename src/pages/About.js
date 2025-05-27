@@ -3,13 +3,14 @@ import AboutTop from "../components/AboutTop";
 import AboutExtras from "../components/AboutExtras";
 import useShootingStar from "../utils/shootingstar";
 import "../styles/Global.css";
+import { useResetScroll } from "../utils/useResetScroll";
 
 const About = () => {
+  useResetScroll();
   useShootingStar();
   return (
     <>
       <AboutTop />
-      <AboutExtras />
     </>
   );
 };
