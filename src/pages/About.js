@@ -4,6 +4,7 @@ import AboutExtras from "../components/AboutExtras";
 import useShootingStar from "../utils/shootingstar";
 import "../styles/Global.css";
 import { useResetScroll } from "../utils/useResetScroll";
+import AboutCards from "../components/AboutCards";
 
 const About = () => {
   useResetScroll();
@@ -11,6 +12,7 @@ const About = () => {
   return (
     <>
       <AboutTop />
+      <AboutCards />
     </>
   );
 };
