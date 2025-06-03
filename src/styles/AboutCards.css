@@ -1,19 +1,43 @@
 .about-cards {
-    padding: 80px 95px 60px;
-    display: flex;
-    justify-content: center;
-  }
+  padding: 80px 95px 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers the grid */
+}
   
+.extras-intro {
+  font-size: 1.1rem;
+  font-family: 'CooperLtBT-Italic', serif;
+  font-weight: 400;
+  color: #ffffffd5;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 100%;
+  max-width: 1200px;
+  padding-left: 10px; /* align with card content */
+}
+
+.extras-intro {
+  font-size: clamp(1.5rem, 2vw, 1.1rem);
+  text-align: center;
+  margin: 0 auto 65px;
+  color: rgb(204, 204, 204);
+  max-width: 1150px;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  text-transform: lowercase;
+}
+
   .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1200px; /* this ensures cards don't stretch too far */
   }
   
  .info-card {
-    background: rgba(20, 20, 30, 0.45);
+    background: rgba(20, 20, 30, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 22px;
     padding: 15px 45px 0px;
@@ -27,10 +51,10 @@
   }
 
   .info-card1 {
-    background: rgba(20, 20, 30, 0.45);
+    background: rgba(20, 20, 30, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 22px;
-    padding: 15px 34px 0px;
+    padding: 15px 40px 0px;
     position: relative;
     backdrop-filter: blur(5px);
     box-shadow: 0 0 24px rgba(255, 255, 255, 0.025);
@@ -44,7 +68,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 24px;
     position: relative;
   }
   
@@ -70,14 +94,13 @@
   .card-content {
     display: flex;
     flex-direction: column;
-    gap: 34px;
-    margin-left: 20px;
+    margin-left: 15px;
   }
 
   .card-content2 {
     display: flex;
     flex-direction: column;
-    gap: 34px;
+    gap: 26px;
   }
   
   .card-group {
@@ -86,12 +109,6 @@
     padding-left: 25px;
   }
   
-  .card-group.personal {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 14px;
-    padding-left: 0;
-  }
   
   .card-icon.personal {
     font-size: 1.2rem;
@@ -102,12 +119,7 @@
     padding-top: 6px;
   }
   
-  .card-text.personal {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: -3px;
-  }
+
   
   .card-label {
     font-size: 0.65rem;
@@ -141,7 +153,7 @@
     gap: 8px;
     overflow-y: auto;
     padding-right: 3px;
-    margin-top: -7px;
+    margin-top: -18px;
   }
   
   .spotify-container iframe {
@@ -187,14 +199,14 @@
   .card-content {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 26px;
   }
   
   .personal-stat-group {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 16px;
+    gap: 12px;
   }
   
   .stat-icon {

@@ -4,6 +4,9 @@ import "../styles/AboutCards.css";
 const AboutCards = () => {
   return (
     <section className="about-cards">
+      <h3 className="extras-intro">
+        ...and here’s the rest of <em>my universe</em> ⟡
+      </h3>
       <div className="cards-grid">
         {/* Personal Stats Card */}
         <div className="info-card">
@@ -103,7 +106,7 @@ const AboutCards = () => {
               style={{ borderRadius: "12px" }}
             ></iframe>
             <iframe
-              src="https://open.spotify.com/embed/track/2VjXGuPVVxyhMgER3Uz2Fe?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/2VjXGuPVVxyhMgER3Uz2Fe?utm_source=generator&theme=0" 
               width="100%"
               height="352"
               frameBorder="0"
@@ -113,13 +116,13 @@ const AboutCards = () => {
               style={{ borderRadius: "12px" }}
             ></iframe>
             <iframe
-              src="https://open.spotify.com/embed/track/1wgqttlPacpvmX5DKVboOa?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/5tqZJUHEuqdN12RZVq2l9p?utm_source=generator&theme=0"
               width="100%"
               height="352"
               frameBorder="0"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
-              title="Paper Planes"
+              title="Ex-Factor"
               style={{ borderRadius: "12px" }}
             ></iframe>
           </div>
