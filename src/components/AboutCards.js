@@ -4,9 +4,6 @@ import "../styles/AboutCards.css";
 const AboutCards = () => {
   return (
     <section className="about-cards">
-      <h3 className="extras-intro">
-        ...and here’s the rest of <em>my universe</em> ⟡
-      </h3>
       <div className="cards-grid">
         {/* Personal Stats Card */}
         <div className="info-card">
@@ -78,55 +75,96 @@ const AboutCards = () => {
           <img src="/assets/bottomline.svg" alt="" className="card-bottom-svg" />
         </div>
 
-        {/* Spotify Card */}
-        <div className="info-card1">
+        {/* Fun Facts Card */}
+        <div className="info-card">
           <div className="card-top-row">
-            <h3 className="card-heading">current vibes</h3>
+            <h3 className="card-heading">more fun facts</h3>
             <img src="/assets/topline1.svg" alt="" className="card-top-svg" />
           </div>
-          <div className="card-main-content spotify-container">
-            <iframe
-              src="https://open.spotify.com/embed/track/1otG6j1WHNvl9WgXLWkHTo?utm_source=generator&theme=0"
-              width="100%"
-              height="352"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              title="After the Storm"
-              style={{ borderRadius: "12px" }}
-            ></iframe>
-            <iframe
-              src="https://open.spotify.com/embed/track/2E7a96qey4AzSOdK6H21vS?utm_source=generator&theme=0"
-              width="100%"
-              height="352"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              title="Untitled Track 2"
-              style={{ borderRadius: "12px" }}
-            ></iframe>
-            <iframe
-              src="https://open.spotify.com/embed/track/2VjXGuPVVxyhMgER3Uz2Fe?utm_source=generator&theme=0" 
-              width="100%"
-              height="352"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              title="Ex-Factor"
-              style={{ borderRadius: "12px" }}
-            ></iframe>
-            <iframe
-              src="https://open.spotify.com/embed/track/5tqZJUHEuqdN12RZVq2l9p?utm_source=generator&theme=0"
-              width="100%"
-              height="352"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              title="Ex-Factor"
-              style={{ borderRadius: "12px" }}
-            ></iframe>
+          <div className="card-main-content">
+            <div className="card-content2">
+              <div className="card-group">
+                <span className="card-label">fun fact #1</span>
+                <span className="card-value">I have a twin brother</span>
+              </div>
+              <div className="card-group">
+                <span className="card-label">fun fact #2</span>
+                <span className="card-value">I’m allergic to walnuts</span>
+              </div>
+              <div className="card-group">
+                <span className="card-label">fun fact #3</span>
+                <span className="card-value">I’m a parallel parking god</span>
+              </div>
+              <div className="card-group">
+                <span className="card-label">fun fact #4</span>
+                <span className="card-value">I’m a london fog loyalist</span>
+              </div>
+            </div>
           </div>
           <img src="/assets/bottomline.svg" alt="" className="card-bottom-svg" />
+        </div>
+      </div>
+
+      {/* Spotify Section */}
+      <div className="spotify-block">
+      <h3 className="extras-intro">
+        ...and here’s a few loops <em>before you go</em> ⊹
+      </h3>
+        <div className="spotify-trapezoid">
+          <div className="spotify-row top-row">
+            <iframe
+              src="https://open.spotify.com/embed/track/1otG6j1WHNvl9WgXLWkHTo?utm_source=generator&theme=1"
+              width="100%"
+              height="84"
+              title="After the Storm"
+              loading="lazy"
+              style={{ borderRadius: "12px" }}
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+            <iframe
+              src="https://open.spotify.com/embed/track/7zgEoBci3rKmEkLdsZ8ZKJ?utm_source=generator&theme=1"
+              width="100%"
+              height="84"
+              title="Intergalactic Janet"
+              loading="lazy"
+              style={{ borderRadius: "12px" }}
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+            <iframe
+              src="https://open.spotify.com/embed/track/2E7a96qey4AzSOdK6H21vS?utm_source=generator&theme=1"
+              width="100%"
+              height="84"
+              title="Scorsese Baby Daddy"
+              loading="lazy"
+              style={{ borderRadius: "12px" }}
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+          </div>
+          <div className="spotify-row bottom-row">
+            <iframe
+              src="https://open.spotify.com/embed/track/3ubGHUhPi5x7RSHqWXseq8?utm_source=generator&theme=1"
+              width="100%"
+              height="84"
+              title="Bust Your Windows"
+              loading="lazy"
+              style={{ borderRadius: "12px" }}
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+            <iframe
+              src="https://open.spotify.com/embed/track/4eVUPMhqGFcmxo6cjv9KqA?utm_source=generator&theme=1"
+              width="100%"
+              height="84"
+              title="Time Moves Slow"
+              loading="lazy"
+              style={{ borderRadius: "12px" }}
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+          </div>
         </div>
       </div>
     </section>
