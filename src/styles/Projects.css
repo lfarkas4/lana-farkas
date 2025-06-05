@@ -18,9 +18,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 400;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'CooperLtBT-Italic';
   color: rgb(204, 204, 204);
   text-transform: lowercase;
   margin: 30px 0 30px;
@@ -30,6 +30,7 @@
   height: 1rem;
   width: auto;
   margin-bottom: 1px;
+  margin-right: 5px;
 }
 
 .projects-container {

@@ -108,12 +108,12 @@ const AboutCards = () => {
       {/* Spotify Section */}
       <div className="spotify-block">
       <h3 className="extras-intro">
-        ...and here’s a few loops <em>before you go</em> ⊹
+        ...and here’s a few stellar tracks <em>before you go</em> ⊹
       </h3>
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">
             <iframe
-              src="https://open.spotify.com/embed/track/1otG6j1WHNvl9WgXLWkHTo?utm_source=generator&theme=1"
+              src="https://open.spotify.com/embed/track/1otG6j1WHNvl9WgXLWkHTo?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="After the Storm"
@@ -123,7 +123,7 @@ const AboutCards = () => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             ></iframe>
             <iframe
-              src="https://open.spotify.com/embed/track/7zgEoBci3rKmEkLdsZ8ZKJ?utm_source=generator&theme=1"
+              src="https://open.spotify.com/embed/track/5tqZJUHEuqdN12RZVq2l9p?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Intergalactic Janet"
@@ -133,7 +133,7 @@ const AboutCards = () => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             ></iframe>
             <iframe
-              src="https://open.spotify.com/embed/track/2E7a96qey4AzSOdK6H21vS?utm_source=generator&theme=1"
+              src="https://open.spotify.com/embed/track/2E7a96qey4AzSOdK6H21vS?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Scorsese Baby Daddy"
@@ -145,7 +145,7 @@ const AboutCards = () => {
           </div>
           <div className="spotify-row bottom-row">
             <iframe
-              src="https://open.spotify.com/embed/track/3ubGHUhPi5x7RSHqWXseq8?utm_source=generator&theme=1"
+              src="https://open.spotify.com/embed/track/4eVUPMhqGFcmxo6cjv9KqA?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Bust Your Windows"
@@ -155,7 +155,7 @@ const AboutCards = () => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             ></iframe>
             <iframe
-              src="https://open.spotify.com/embed/track/4eVUPMhqGFcmxo6cjv9KqA?utm_source=generator&theme=1"
+              src="https://open.spotify.com/embed/track/71WVaCgIEVbfTgL0iJt8c3?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Time Moves Slow"
