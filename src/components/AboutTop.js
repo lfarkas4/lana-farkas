@@ -24,7 +24,7 @@ const About = () => {
       </div>
     </span>
     <br />
-    <span className="italic">adding a lil’ magic to everyday tech.</span>
+    <span className="cooper-tagline">adding a lil’ magic to everyday tech.</span>
   </h2>
 
           <p className="about-bio">

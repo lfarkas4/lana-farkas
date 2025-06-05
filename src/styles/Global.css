@@ -231,3 +231,20 @@ html {
 .brand-logo * {
   text-decoration: none !important;
 }
+
+.cooper-tagline {
+  font-family: 'CooperLtBT-Italic', serif;
+  font-weight: 300;
+  font-style: italic;
+  color: #cccccc;
+  font-size: 1.75rem;
+}
+
+.cooper-spotify-heading {
+  font-family: 'CooperLtBT-Italic', serif;
+  font-weight: 300;
+  font-style: italic;
+  color: #cccccc;
+  text-align: center;
+  font-size: 1.5rem;
+}

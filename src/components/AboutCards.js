@@ -108,7 +108,7 @@ const AboutCards = () => {
       {/* Spotify Section */}
       <div className="spotify-block">
       <h3 className="extras-intro">
-        ...and here’s a few stellar tracks <em>before you go</em> ⊹
+      ...and here’s a few stellar tracks <span className="cooper-spotify-heading">before you go</span> ⊹
       </h3>
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">
@@ -126,7 +126,7 @@ const AboutCards = () => {
               src="https://open.spotify.com/embed/track/5tqZJUHEuqdN12RZVq2l9p?utm_source=generator&theme=0"
               width="100%"
               height="84"
-              title="Intergalactic Janet"
+              title="Hold On"
               loading="lazy"
               style={{ borderRadius: "12px" }}
               frameBorder="0"
@@ -148,7 +148,7 @@ const AboutCards = () => {
               src="https://open.spotify.com/embed/track/4eVUPMhqGFcmxo6cjv9KqA?utm_source=generator&theme=0"
               width="100%"
               height="84"
-              title="Bust Your Windows"
+              title="Time Moves Slow"
               loading="lazy"
               style={{ borderRadius: "12px" }}
               frameBorder="0"
@@ -158,7 +158,7 @@ const AboutCards = () => {
               src="https://open.spotify.com/embed/track/71WVaCgIEVbfTgL0iJt8c3?utm_source=generator&theme=0"
               width="100%"
               height="84"
-              title="Time Moves Slow"
+              title="There She Goes"
               loading="lazy"
               style={{ borderRadius: "12px" }}
               frameBorder="0"
