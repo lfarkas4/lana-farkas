@@ -69,7 +69,7 @@ const Navigation = () => {
         <div className="nav-container">
           {/* Logo */}
           <Navbar.Brand href="/" className="brand-logo">
-            <img src="/starlogolight.svg" alt="logo" className="logo" />
+          <img src="/starlogolight.svg" alt="logo" className="logo hover-subtle" />
           </Navbar.Brand>
 
           {/* Desktop Nav */}

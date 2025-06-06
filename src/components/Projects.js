@@ -7,24 +7,28 @@ const caseStudies = [
     tags: ["Artificial Intelligence", "Data Visualization"],
     description:
       "Co-founded an AI-powered platform to streamline and visualize behavioral data in applied behavior analysis therapy.",
+    video: "/assets/dribbleshot.mp4",
   },
   {
     title: "Underwater Intelligence with Aquatonomy",
     tags: ["Human-Robot Interaction", "Autonomous Systems"],
     description:
       "Designed key interactions and overall service for an autonomous underwater inspection system.",
+    video: "/assets/aquamock1.mp4",
   },
   {
     title: "Thought Bubble: Guiding Cancer Care",
     tags: ["Healthcare", "Wearables", "Patient Experience"],
     description:
       "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
+    image: "/assets/watchmock.svg",
   },
   {
     title: "Designing Fluid Learning with Stackbuilder",
     tags: ["Education", "Personalized Learning"],
     description:
       "Explored new learning models that empower students to shape their own educational journeys.",
+    video: "/assets/bub.mp4",
   },
 ];
 
@@ -33,16 +37,19 @@ const miniProjects = [
     title: "Moonranger x NASA",
     description:
       "Developed branding and merchandise for CMU D5C Poker AI Competition.",
+    image: "/assets/default.png",
   },
   {
     title: "Tap-Tap Revolution",
     description:
       "Developed physical prototype of model maker for class project.",
+    image: "/assets/default.png",
   },
   {
     title: "Light the Muse",
     description:
       "Conceptualized mobile application that serves to combat addictive technology.",
+    image: "/assets/default.png",
   },
 ];
 
@@ -62,7 +69,24 @@ const Projects = () => {
         <div className="projects-container">
           {caseStudies.map((project, index) => (
             <div className="project-card" key={index}>
-              <div className="project-thumbnail" />
+              <div className="project-thumbnail">
+                {project.video ? (
+                  <video
+                    src={project.video}
+                    className="thumbnail-media"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="thumbnail-media"
+                  />
+                )}
+              </div>
               <div className="project-tags">
                 {project.tags.map((tag, i) => (
                   <span className="tag" key={i}>
@@ -90,7 +114,13 @@ const Projects = () => {
         <div className="mini-projects-container">
           {miniProjects.map((mini, index) => (
             <div className="mini-project-card" key={index}>
-              <div className="project-thumbnail" />
+              <div className="project-thumbnail">
+                <img
+                  src={mini.image}
+                  alt={mini.title}
+                  className="thumbnail-media"
+                />
+              </div>
               <div className="mini-content">
                 <h4 className="mini-title">{mini.title}</h4>
                 <p className="mini-description">{mini.description}</p>

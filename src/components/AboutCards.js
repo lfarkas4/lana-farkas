@@ -85,19 +85,19 @@ const AboutCards = () => {
             <div className="card-content2">
               <div className="card-group">
                 <span className="card-label">fun fact #1</span>
-                <span className="card-value">I have a twin brother</span>
+                <span className="card-value">I have a twin brother.</span>
               </div>
               <div className="card-group">
                 <span className="card-label">fun fact #2</span>
-                <span className="card-value">I’m allergic to walnuts</span>
+                <span className="card-value">I'm allergic to walnuts.</span>
               </div>
               <div className="card-group">
                 <span className="card-label">fun fact #3</span>
-                <span className="card-value">I’m a parallel parking god</span>
+                <span className="card-value">I’m a parallel parking god.</span>
               </div>
               <div className="card-group">
                 <span className="card-label">fun fact #4</span>
-                <span className="card-value">I’m a london fog loyalist</span>
+                <span className="card-value">I’m a london fog loyalist.</span>
               </div>
             </div>
           </div>
@@ -108,7 +108,7 @@ const AboutCards = () => {
       {/* Spotify Section */}
       <div className="spotify-block">
       <h3 className="extras-intro">
-      ...and here’s a few stellar tracks <span className="cooper-spotify-heading">before you go</span> ⊹
+      ...and here’s a few stellar tracks <span className="cooper-spotify-heading">just for you</span> ⊹
       </h3>
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">
