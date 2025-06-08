@@ -24,7 +24,7 @@ const caseStudies = [
     image: "/assets/watchmock.svg",
   },
   {
-    title: "Designing Fluid Learning with Stackbuilder",
+    title: "Dynamic Learning with Stackbuilder",
     tags: ["Education", "Personalized Learning"],
     description:
       "Explored new learning models that empower students to shape their own educational journeys.",
@@ -36,20 +36,20 @@ const miniProjects = [
   {
     title: "Moonranger x NASA",
     description:
-      "Developed branding and merchandise for CMU D5C Poker AI Competition.",
-    image: "/assets/default.png",
+      "Refined mission interface for lunar rover in collaboration with NASA and CMU.",
+    image: "/assets/moonthumb.png",
   },
   {
     title: "Tap-Tap Revolution",
     description:
-      "Developed physical prototype of model maker for class project.",
-    image: "/assets/default.png",
+      "Developed interactive game prototype using Arduino and digital fabrication tools.",
+    image: "/assets/taptap.png",
   },
   {
     title: "Light the Muse",
     description:
-      "Conceptualized mobile application that serves to combat addictive technology.",
-    image: "/assets/default.png",
+      "Conceptualized mobile app to counter addictive technology through creative expression.",
+    video: "/assets/whatsapp3.mp4",
   },
 ];
 
@@ -115,11 +115,22 @@ const Projects = () => {
           {miniProjects.map((mini, index) => (
             <div className="mini-project-card" key={index}>
               <div className="project-thumbnail">
-                <img
-                  src={mini.image}
-                  alt={mini.title}
-                  className="thumbnail-media"
-                />
+                {mini.video ? (
+                  <video
+                    src={mini.video}
+                    className="thumbnail-media"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={mini.image}
+                    alt={mini.title}
+                    className="thumbnail-media"
+                  />
+                )}
               </div>
               <div className="mini-content">
                 <h4 className="mini-title">{mini.title}</h4>

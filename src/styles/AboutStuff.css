@@ -1,0 +1,81 @@
+.about-cards {
+    padding: 0px 95px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers the grid */
+  }
+    
+  .extras-intro {
+    font-size: 1rem;
+    font-family: 'CooperLtBT-Italic', serif;
+    font-weight: 400;
+    color: #ffffffd5;
+    text-align: left;
+    width: 100%;
+    max-width: 1200px;
+    padding-left: 10px; /* align with card content */
+  }
+  
+  .extras-intro {
+    font-size: clamp(1.4rem, 2vw, 1rem);
+    text-align: center;
+    margin: 50px auto 70px;
+    color: rgb(204, 204, 204);
+    max-width: 1150px;
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+    text-transform: lowercase;
+  }
+
+
+  .spotify-block {
+    margin-top: 0px;
+    width: 100%;
+    max-width: 1150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .spotify-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.3rem, 2vw, 1.1rem);
+    font-weight: 400;
+    text-align: center;
+    color: #cccccc;
+    margin-bottom: 35px;
+    text-transform: lowercase;
+  }
+  
+  .spotify-trapezoid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  
+  .spotify-row {
+    display: flex;
+    gap: 24px;
+  }
+  
+  .top-row {
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+  }
+  
+  .bottom-row {
+    justify-content: center;
+    gap: 48px;
+  }
+  
+  .spotify-row iframe {
+    width: 100%;
+    max-width: 310px;
+    height: 84px; /* ← match the original height */
+    border-radius: 12px;
+    border: none;
+  }
+  
+  

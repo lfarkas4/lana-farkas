@@ -42,7 +42,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-credit">
-      built with love and caffeine © {new Date().getFullYear()} Lana Farkas.
+      built with love and code © {new Date().getFullYear()} Lana Farkas.
       </div>
     </footer>
   );
