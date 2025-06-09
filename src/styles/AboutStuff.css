@@ -19,7 +19,7 @@
   .extras-intro {
     font-size: clamp(1.4rem, 2vw, 1rem);
     text-align: center;
-    margin: 50px auto 70px;
+    margin: 50px auto 45px;
     color: rgb(204, 204, 204);
     max-width: 1150px;
     font-weight: 400;

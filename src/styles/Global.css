@@ -178,20 +178,28 @@ html {
   font-display: swap;
 }
 
-.font-cooper-italic-hello {
-  font-family: 'CooperLtBT-Italic', serif;
+@font-face {
+  font-family: 'CooperLtBT-Italic-Lightened'; /* regular hyphen */
+  src: url('/public/fonts/CooperLtBT-Italic-Lightened.ttf') format('truetype');
   font-style: italic;
   font-weight: 300;
+  font-display: swap;
+}
+
+
+.font-cooper-italic-hello {
+  font-family: 'CooperLtBT-Italic-Lightened', serif;
+  font-style: italic;
   letter-spacing: 2.25px;
-  font-size: 1.85rem;
+  font-size: 2rem;
 }
 
 .font-cooper-italic-tag {
-  font-family: 'CooperLtBT-Italic', serif;
+  font-family: 'CooperLtBT-Italic-Lightened', serif;
   font-style: italic;
   font-weight: normal;
   letter-spacing: 1.4px;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
 
 .font-cooper-italic-tag2 {
@@ -233,18 +241,20 @@ html {
 }
 
 .cooper-tagline {
-  font-family: 'CooperLtBT-Italic', serif;
+  font-family: 'CooperLtBT-Italic-Lightened', serif;
   font-weight: 300;
   font-style: italic;
   color: #cccccc;
-  font-size: 1.75rem;
+  font-size: 1.8rem;
+  letter-spacing: 1.45px;
 }
 
 .cooper-spotify-heading {
-  font-family: 'CooperLtBT-Italic', serif;
+  font-family: 'CooperLtBT-Italic-Lightened', serif;
   font-weight: 300;
   font-style: italic;
   color: #cccccc;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.55rem;
+  letter-spacing: 1.25px;
 }
