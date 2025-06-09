@@ -11,7 +11,7 @@ html, body {
 }
 
 body {
-    background: url("../assets/saturntest.svg") no-repeat center center fixed;
+    background: transparent;
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
     color: rgb(204, 204, 204);

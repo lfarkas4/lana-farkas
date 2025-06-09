@@ -1,0 +1,99 @@
+/* Cosmic Background Container */
+.cosmic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    background: #050F11;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  /* Star Dimming Overlay */
+  .star-dimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -190;
+    background: radial-gradient(
+      circle at center,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.35) 40%,
+      rgba(0, 0, 0, 0.45) 100%
+    );
+    pointer-events: none;
+  }
+
+  
+  
+  /* Core Orb — Deep Inner Glow (new!) */
+/* Core Orb – Deep Central Fade (finalized) */
+
+  .center-orb3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1100px;
+    height: 500px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+      circle,
+      rgb(2, 8, 9) 0%,           /* fully opaque in the center */
+      rgba(5, 15, 17, 0.977) 10%,       /* still very dark */
+      rgba(5, 15, 17, 0.858) 20%,        /* starts fading */
+      rgba(5, 15, 17, 0.509) 40%,        /* lighter fade */
+      transparent 100%              /* fully transparent edge */
+    );
+    border-radius: 50%;
+    z-index: -9;
+    pointer-events: none;
+    filter: blur(120px);
+  }
+  
+  
+  /* Animated Blobs */
+  .blob {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(85px);
+    opacity: 0.35;
+    mix-blend-mode: screen;
+    animation: blobFloat 40s ease-in-out infinite;
+  }
+  .blob1 { background: rgba(119, 0, 239, 0.32); top: 80%; left: -15%; animation-delay: 0s; }
+  .blob2 { background: rgba(62, 1, 132, 0.481); top: 89%; left: 15%; animation-delay: 5s; }
+  .blob3 { background: rgba(144, 25, 162, 0.219); top: -55%; right: 40%; animation-delay: 10s; }
+  .blob4 { background: rgba(68, 13, 218, 0.228); bottom: 85%; right: 20%; animation-delay: 15s; }
+  .blob5 { background: rgba(46, 14, 151, 0.258); bottom: -40%; left: 2%; animation-delay: 20s; }
+  
+  @keyframes blobFloat {
+    0%   { transform: translate(0px, 0px) scale(1); }
+    25%  { transform: translate(20px, -10px) scale(1.02); }
+    50%  { transform: translate(-15px, 15px) scale(0.98); }
+    75%  { transform: translate(10px, -20px) scale(1.01); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  
+  /* Canvas Starfield */
+  .star-canvas {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: -200;
+    pointer-events: none;
+    animation: rotateStars 600s linear infinite;
+  }
+  
+  @keyframes rotateStars {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
