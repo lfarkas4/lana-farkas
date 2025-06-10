@@ -197,6 +197,7 @@
 .footer-travels {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
+  font-weight: 360 !important;
   font-style: italic;
   color: rgba(240, 240, 240, 0.85);
 }

@@ -316,6 +316,7 @@
   font-size: 1rem;
   color: #ccc;
   align-self: flex-end;
+  font-weight: 360;
 }
 
 @media (max-width: 768px) {
