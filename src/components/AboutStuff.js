@@ -4,10 +4,45 @@ import "../styles/AboutStuff.css";
 const AboutStuff = () => {
     return (
       <section className="about-cards">
+        {/*Photocards Section */}
+        <section className="floating-card-section">
+        <div className="floating-card rotate-plant offset-left">
+        <div className="clip-wrapper">
+    <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+  </div>
+  <div className="frame">
+    <img src="/assets/pilea.svg" alt="Card 1" className="floating-img" />
+  </div>
+  <p className="floating-caption">i’m also a proud plant mom…</p>
+</div>
+
+<div className="floating-card rotate-toast offset-mid">
+<div className="clip-wrapper2">
+    <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+  </div>
+  <div className="frame">
+    <img src="/assets/toast.svg" alt="Card 2" className="floating-img" />
+  </div>
+  <p className="floating-caption">…a lover of sweet treats…</p>
+</div>
+
+<div className="floating-card rotate-craft offset-right">
+<div className="clip-wrapper3">
+    <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+  </div>
+  <div className="frame">
+    <img src="/assets/craft.svg" alt="Card 3" className="floating-img" />
+  </div>
+  <p className="floating-caption">…and a maker of tiny messes.</p>
+</div>
+
+</section>
+
+
         {/* Spotify Section */}
         <div className="spotify-block">
         <h3 className="extras-intro">
-        ...and here’s a few stellar tracks <span className="cooper-spotify-heading">just for you</span> ⊹
+        ...now here's a few tunes to <span className="cooper-spotify-heading">remember me by</span> ⊹
         </h3>
           <div className="spotify-trapezoid">
             <div className="spotify-row top-row">

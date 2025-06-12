@@ -45,7 +45,7 @@
 .nav-bubble {
  display: flex;
  align-items: center;
- padding: 7px 18px 6px 33px;
+ padding: 7px 19px 6px 33px;
  border-radius: 999px;
  background: rgba(20, 20, 30, 0.45);
  backdrop-filter: blur(16px);

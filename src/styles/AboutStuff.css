@@ -1,5 +1,5 @@
 .about-cards {
-    padding: 0px 95px 35px;
+    padding: 40px 95px 0px;
     display: flex;
     flex-direction: column;
     align-items: center; /* centers the grid */
@@ -78,4 +78,146 @@
     border: none;
   }
   
+  .floating-card-section {
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 55px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .floating-card-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 100px;
+    flex-wrap: wrap;
+  }
+  
+  .floating-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: floatCard 4s ease-in-out infinite;
+    transform: rotate(var(--rotation)); /* new line */
+    margin: 0 28px; /* ⬅️ adjust this to increase distance between cards */
+  }
+  
+
+  .rotate-plant {
+    --rotation: -3.72deg;
+  }
+  
+  .rotate-toast {
+    --rotation: -1.16deg;
+  }
+  
+  .rotate-craft {
+    --rotation: 2.43deg;
+  }
+  
+  
+
+  .frame {
+    background: linear-gradient(to bottom, #f3f3f3 0%, #dfdfdf 100%);
+    padding: 8px;
+    border-radius: 22px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.353);
+    display: inline-block;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .floating-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.459); /* subtle drop shadow from image */
+    object-fit: cover;
+  }
+
+  .floating-caption {
+    font-size: 1.35rem;
+    font-family: 'CooperLtBT-Italic-Lightened', serif;
+    color: #cccccc;
+    margin-top: 23px;
+    text-transform: lowercase;
+  }
+  
+  @keyframes floatCard {
+    0% {
+      transform: translateY(0px) rotate(var(--rotation, 0deg));
+    }
+    50% {
+      transform: translateY(-20px) rotate(var(--rotation, 0deg));
+    }
+    100% {
+      transform: translateY(0px) rotate(var(--rotation, 0deg));
+    }
+  }
+
+  .floating-card:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .floating-card:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  .floating-card:nth-child(3) {
+    animation-delay: 1s;
+  }
+
+  .offset-left {
+    transform: translate(-20px, -20px) rotate(var(--rotation)); /* old version */
+  }
+  
+  /* Replace with: */
+  .offset-left {
+    margin-top: -20px;
+  }
+  
+  .offset-right {
+    margin-top: -10px;
+  }
+
+  .offset-mid {
+    margin-top: 20px;
+  }
+  
+  .clip-wrapper {
+    position: absolute;
+    top: -100px;
+    left: 25%;
+    transform: translateX(-50%);
+    z-index: 3;
+    rotate: -10deg;
+    pointer-events: none; /* so it's decorative only */
+  }
+
+  .clip-wrapper2 {
+    position: absolute;
+    top: -70px;
+    left: 60%;
+    transform: translateX(-50%);
+    z-index: 3;
+    rotate: 12deg;
+    pointer-events: none; /* so it's decorative only */
+  }
+
+  .clip-wrapper3 {
+    position: absolute;
+    top: -100px;
+    left: 30%;
+    transform: translateX(-50%);
+    z-index: 3;
+    rotate: -6deg;
+    pointer-events: none; /* so it's decorative only */
+  }
+  
+  .clip-img {
+    width: 175px;
+    height: auto;
+    opacity: 0.9;
+  }
   

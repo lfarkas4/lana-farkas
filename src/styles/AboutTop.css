@@ -2,11 +2,18 @@
 
 /* === ABOUT TOP === */
 .about-top {
-  padding: 100px 6vw 80px;
-  color: rgb(204, 204, 204);
+  min-height: 85vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 90px 0 90px; /* mirror .hero padding */
 }
+
+.scroll-cue-spacer {
+  height: 30px; /* adjust until it visually matches Hero's scroll cue exactly */
+}
+
 
 .about-wrapper {
   display: flex;
@@ -334,4 +341,56 @@
 .about-icons-links {
   display: flex;
   align-items: end;
+}
+
+.scroll-cue {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-mouse {
+  width: 20px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.675);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.scroll-dot {
+  width: 4px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  position: absolute;
+  top: 7px;
+  animation: scrollBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px) scale(1);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(10px) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
 }
