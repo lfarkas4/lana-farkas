@@ -143,13 +143,26 @@
 /* === CURVED TEXT === */
 .curved-text-svg {
   position: absolute;
-  top: 4.5%;
-  left: 34.5%;
+  top: 10.25%;
+  left: 28.5%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 85%;
   height: auto;
   pointer-events: none;
   z-index: 2;
+  rotate: 2.25deg;
+}
+
+.curved-text-svg1 {
+  position: absolute;
+  top: 15%;
+  left: 26%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+  rotate: 18deg;
 }
 
 /* === STACKED LAYOUT (≤ 992px) === */

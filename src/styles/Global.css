@@ -258,3 +258,7 @@ html {
   font-size: 1.55rem;
   letter-spacing: 1.25px;
 }
+
+/* body, * {
+  cursor: none;
+} */

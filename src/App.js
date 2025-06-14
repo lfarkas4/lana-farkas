@@ -7,6 +7,7 @@ import Navigation from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
+import CustomCursor from "./components/CustomCursor";
 
 // Pages
 import About from "./pages/About";
@@ -19,6 +20,7 @@ import CosmicBackground from "./components/CosmicBackground"; // ✅ Import the 
 function App() {
   return (
     <Router>
+      <CustomCursor />
       <CosmicBackground /> {/* ✅ Persistent animated background */}
       <Navigation />
       <Routes>

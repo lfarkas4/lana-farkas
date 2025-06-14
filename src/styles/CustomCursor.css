@@ -1,0 +1,57 @@
+.cursor-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Dot cursor - commented out but preserved
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #5B73E9;
+  background-color: #1f1f1f26;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.custom-cursor.hovering {
+  transform: scale(1.35);
+  transition: transform 0.35s ease;
+}
+*/
+
+.cursor-label {
+  position: fixed;
+  font-size: 0.9rem;
+  background: #040E10;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10000;
+  display: none;
+  transition: opacity 0.2s ease;
+}
+
+
+
+/* .cursor-label {
+  position: fixed;
+  font-size: 0.9rem;
+  background: #040E10;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10000;
+  display: none;
+  transition: opacity 0.2s ease;
+} */

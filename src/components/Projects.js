@@ -8,6 +8,7 @@ const caseStudies = [
     description:
       "Co-founded an AI-powered platform to streamline and visualize behavioral data in applied behavior analysis therapy.",
     video: "/assets/dribbleshot.mp4",
+    link: "/case-studies/behavai",
   },
   {
     title: "Underwater Intelligence with Aquatonomy",
@@ -15,6 +16,7 @@ const caseStudies = [
     description:
       "Designed key interactions and overall service for an autonomous underwater inspection system.",
     video: "/assets/aquamock1.mp4",
+    link: "/case-studies/aquatonomy",
   },
   {
     title: "Thought Bubble: Guiding Cancer Care",
@@ -22,6 +24,7 @@ const caseStudies = [
     description:
       "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
     image: "/assets/watchmock.svg",
+    link: "/case-studies/thought-bubble",
   },
   {
     title: "Dynamic Learning with Stackbuilder",
@@ -29,6 +32,7 @@ const caseStudies = [
     description:
       "Explored new learning models that empower students to shape their own educational journeys.",
     video: "/assets/bub.mp4",
+    link: "/case-studies/stackbuilder",
   },
 ];
 
@@ -38,18 +42,21 @@ const miniProjects = [
     description:
       "Refined mission interface for lunar rover in collaboration with NASA and CMU.",
     image: "/assets/moonthumb.png",
+    link: "/mini-projects/moonranger",
   },
   {
     title: "Tap-Tap Revolution",
     description:
       "Developed interactive game prototype using Arduino and digital fabrication tools.",
     image: "/assets/taptap.png",
+    link: "/mini-projects/taptap",
   },
   {
     title: "Light the Muse",
     description:
       "Conceptualized mobile app to counter addictive technology through creative expression.",
     video: "/assets/whatsapp3.mp4",
+    link: "/mini-projects/light-the-muse",
   },
 ];
 
@@ -57,19 +64,19 @@ const Projects = () => {
   return (
     <section className="projects-section" id="work">
       <div className="projects-wrapper">
-        {/* Case Studies */}
         <h3 className="section-title">
-          <img
-            src="/assets/arrowyuh.svg"
-            alt="Arrow"
-            className="section-arrow"
-          />
+          <img src="/assets/arrowyuh.svg" alt="Arrow" className="section-arrow" />
           case studies
         </h3>
         <div className="projects-container">
           {caseStudies.map((project, index) => (
             <div className="project-card" key={index}>
-              <div className="project-thumbnail">
+              <a
+                href={project.link}
+                className="project-thumbnail clickable project-card-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {project.video ? (
                   <video
                     src={project.video}
@@ -86,7 +93,8 @@ const Projects = () => {
                     className="thumbnail-media"
                   />
                 )}
-              </div>
+                <div className="thumbnail-overlay" />
+              </a>
               <div className="project-tags">
                 {project.tags.map((tag, i) => (
                   <span className="tag" key={i}>
@@ -102,19 +110,19 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Mini Projects */}
         <h3 className="section-title">
-          <img
-            src="/assets/arrowyuh.svg"
-            alt="Arrow"
-            className="section-arrow"
-          />
+          <img src="/assets/arrowyuh.svg" alt="Arrow" className="section-arrow" />
           mini projects
         </h3>
         <div className="mini-projects-container">
           {miniProjects.map((mini, index) => (
-            <div className="mini-project-card" key={index}>
-              <div className="project-thumbnail">
+            <div className="project-card mini-project-card" key={index}>
+              <a
+                href={mini.link}
+                className="project-thumbnail clickable project-card-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {mini.video ? (
                   <video
                     src={mini.video}
@@ -131,7 +139,8 @@ const Projects = () => {
                     className="thumbnail-media"
                   />
                 )}
-              </div>
+                <div className="thumbnail-overlay" />
+              </a>
               <div className="mini-content">
                 <h4 className="mini-title">{mini.title}</h4>
                 <p className="mini-description">{mini.description}</p>
