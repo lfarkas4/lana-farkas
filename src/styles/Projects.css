@@ -66,7 +66,7 @@
 .tag {
   background: rgba(255, 255, 255, 0.08);
   color: rgb(230, 230, 230);
-  font-size: 0.75rem;
+  font-size: 0.825rem;
   padding: 8px 15px;
   border-radius: 6px;
   font-family: "Montserrat", sans-serif;
@@ -263,6 +263,7 @@
 
 .project-card-link:hover .thumbnail-media {
   transform: scale(1.0375);
+  /* transform: scale(0.9); */
   opacity: 0.95;
 }
 
