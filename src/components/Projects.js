@@ -28,7 +28,7 @@ const caseStudies = [
   },
   {
     title: "Dynamic Learning with Stackbuilder",
-    tags: ["Education", "Personalized Learning"],
+    tags: ["Educational Tech", "Personalized Learning"],
     description:
       "Explored new learning models that empower students to shape their own educational journeys.",
     video: "/assets/bub.mp4",
@@ -70,43 +70,49 @@ const Projects = () => {
         </h3>
         <div className="projects-container">
           {caseStudies.map((project, index) => (
-            <div className="project-card" key={index}>
-              <a
-                href={project.link}
-                className="project-thumbnail clickable project-card-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {project.video ? (
-                  <video
-                    src={project.video}
-                    className="thumbnail-media"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                ) : (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="thumbnail-media"
-                  />
-                )}
-                <div className="thumbnail-overlay" />
-              </a>
-              <div className="project-tags">
-                {project.tags.map((tag, i) => (
-                  <span className="tag" key={i}>
-                    {tag}
-                  </span>
-                ))}
+            <a
+              href={project.link}
+              className="project-card-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              key={index}
+            >
+              <div className="project-card">
+                <div
+                  className="project-thumbnail"
+                  data-label="view project ✧˖°."
+                >
+                  {project.video ? (
+                    <video
+                      src={project.video}
+                      className="thumbnail-media"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="thumbnail-media"
+                    />
+                  )}
+                  <div className="thumbnail-overlay" />
+                </div>
+                <div className="project-tags">
+                  {project.tags.map((tag, i) => (
+                    <span className="tag" key={i}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="project-content">
+                  <h4 className="project-title">{project.title}</h4>
+                  <p className="project-description">{project.description}</p>
+                </div>
               </div>
-              <div className="project-content">
-                <h4 className="project-title">{project.title}</h4>
-                <p className="project-description">{project.description}</p>
-              </div>
-            </div>
+            </a>
           ))}
         </div>
 
@@ -116,36 +122,42 @@ const Projects = () => {
         </h3>
         <div className="mini-projects-container">
           {miniProjects.map((mini, index) => (
-            <div className="project-card mini-project-card" key={index}>
-              <a
-                href={mini.link}
-                className="project-thumbnail clickable project-card-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {mini.video ? (
-                  <video
-                    src={mini.video}
-                    className="thumbnail-media"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                ) : (
-                  <img
-                    src={mini.image}
-                    alt={mini.title}
-                    className="thumbnail-media"
-                  />
-                )}
-                <div className="thumbnail-overlay" />
-              </a>
-              <div className="mini-content">
-                <h4 className="mini-title">{mini.title}</h4>
-                <p className="mini-description">{mini.description}</p>
+            <a
+              href={mini.link}
+              className="project-card-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              key={index}
+            >
+              <div className="project-card mini-project-card">
+                <div
+                  className="project-thumbnail"
+                  data-label="view project ✧˖°."
+                >
+                  {mini.video ? (
+                    <video
+                      src={mini.video}
+                      className="thumbnail-media"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <img
+                      src={mini.image}
+                      alt={mini.title}
+                      className="thumbnail-media"
+                    />
+                  )}
+                  <div className="thumbnail-overlay" />
+                </div>
+                <div className="mini-content">
+                  <h4 className="mini-title">{mini.title}</h4>
+                  <p className="mini-description">{mini.description}</p>
+                </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
