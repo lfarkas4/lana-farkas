@@ -1,13 +1,13 @@
 // App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CustomCursor from "./components/CustomCursor";
 
 // Components
 import Navigation from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
-import CustomCursor from "./components/CustomCursor";
 
 // Pages
 import About from "./pages/About";
