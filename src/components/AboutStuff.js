@@ -45,7 +45,7 @@ const AboutStuff = () => {
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">
             <iframe
-              src="https://open.spotify.com/embed/track/1otG6j1WHNvl9WgXLWkHTo?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/5n1WeUNWJIjs9ueYD4v0Pt?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="After the Storm"
@@ -65,7 +65,7 @@ const AboutStuff = () => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             ></iframe>
             <iframe
-              src="https://open.spotify.com/embed/track/2E7a96qey4AzSOdK6H21vS?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/2TzPpF0yA5g8kzE0F59iX2?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Scorsese Baby Daddy"
@@ -77,7 +77,7 @@ const AboutStuff = () => {
           </div>
           <div className="spotify-row bottom-row">
             <iframe
-              src="https://open.spotify.com/embed/track/7F2nEClWeQ3x5ycA5qtKOI?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/4KVSdwwJ67JHu5s9vIA0zi?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Time Moves Slow"
