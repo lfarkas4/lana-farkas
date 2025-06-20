@@ -48,7 +48,7 @@ const AboutStuff = () => {
               src="https://open.spotify.com/embed/track/5n1WeUNWJIjs9ueYD4v0Pt?utm_source=generator&theme=0"
               width="100%"
               height="84"
-              title="After the Storm"
+              title="Killer"
               loading="lazy"
               style={{ borderRadius: "12px" }}
               frameBorder="0"
@@ -68,7 +68,7 @@ const AboutStuff = () => {
               src="https://open.spotify.com/embed/track/2TzPpF0yA5g8kzE0F59iX2?utm_source=generator&theme=0"
               width="100%"
               height="84"
-              title="Scorsese Baby Daddy"
+              title="Into Sands"
               loading="lazy"
               style={{ borderRadius: "12px" }}
               frameBorder="0"
@@ -80,7 +80,7 @@ const AboutStuff = () => {
               src="https://open.spotify.com/embed/track/6x2TIQEU0w7nedmVKBU0ec?utm_source=generator&theme=0"
               width="100%"
               height="84"
-              title="Time Moves Slow"
+              title="Pluto"
               loading="lazy"
               style={{ borderRadius: "12px" }}
               frameBorder="0"
@@ -90,7 +90,7 @@ const AboutStuff = () => {
               src="https://open.spotify.com/embed/track/5cxOC94379M1lUOww9SNLX?utm_source=generator&theme=0"
               width="100%"
               height="84"
-              title="There She Goes"
+              title="Mood Ring"
               loading="lazy"
               style={{ borderRadius: "12px" }}
               frameBorder="0"
