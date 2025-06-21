@@ -11,7 +11,7 @@ const AboutStuff = () => {
             <img src="/assets/clip.svg" alt="clip" className="clip-img" />
           </div>
           <div className="frame hover-label" data-label="propogation nation ⚘">
-            <img src="/assets/pilea.svg" alt="Card 1" className="floating-img" />
+            <img src="/assets/pilea.jpg" alt="Card 1" className="floating-img" />
           </div>
           <p className="floating-caption">i’m also a proud plant mom…</p>
         </div>
@@ -21,7 +21,7 @@ const AboutStuff = () => {
             <img src="/assets/clip.svg" alt="clip" className="clip-img" />
           </div>
           <div className="frame hover-label" data-label="the best toast eva ＊">
-            <img src="/assets/toast.svg" alt="Card 2" className="floating-img" />
+            <img src="/assets/toast.jpg" alt="Card 2" className="floating-img" />
           </div>
           <p className="floating-caption">…a lover of sweet treats…</p>
         </div>
@@ -31,7 +31,7 @@ const AboutStuff = () => {
             <img src="/assets/clip.svg" alt="clip" className="clip-img" />
           </div>
           <div className="frame hover-label" data-label="my kind of therapy ✂">
-            <img src="/assets/craft.svg" alt="Card 3" className="floating-img" />
+            <img src="/assets/craft.jpg" alt="Card 3" className="floating-img" />
           </div>
           <p className="floating-caption">…and a maker of tiny messes.</p>
         </div>

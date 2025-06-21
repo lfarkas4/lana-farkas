@@ -12,26 +12,40 @@ const CosmicBackground = () => {
     const ctx = canvas.getContext("2d");
 
     const resizeCanvas = () => {
-      const newWidth = window.innerWidth * 2;
-      const newHeight = window.innerHeight * 2;
-      const prevWidth = prevSize.current.width * 2;
-      const prevHeight = prevSize.current.height * 2;
-
+      const dpr = window.devicePixelRatio || 1;
+      const newWidth = window.innerWidth * dpr;
+      const newHeight = window.innerHeight * dpr;
+    
       canvas.width = newWidth;
       canvas.height = newHeight;
-
-      const widthRatio = newWidth / 2880;
+    
+      const centerX = newWidth / 2;
+      const centerY = newHeight / 2;
+    
+      const baseWidth = 2880; // The original design width
+      const baseHeight = 1800; // Or whatever your JSON was based on
+      const scaleX = newWidth / baseWidth;
+      const scaleY = newHeight / baseHeight;
       const minScale = 0.6;
-
-      starsRef.current = starsRef.current.map(star => ({
-        ...star,
-        x: (star.x / prevWidth) * newWidth,
-        y: (star.y / prevHeight) * newHeight,
-        radius: Math.max(star.baseRadius * widthRatio, star.baseRadius * minScale),
-      }));
-
+    
+      starsRef.current = starLayout.map((star) => {
+        const baseRadius = star.radius;
+        return {
+          ...star,
+          x: star.x * scaleX,
+          y: star.y * scaleY,
+          baseRadius,
+          radius: Math.max(baseRadius * Math.min(scaleX, scaleY), baseRadius * minScale),
+          opacity: Math.random(),
+          twinkleSpeed: Math.random() * 0.001 + 0.001,
+          fadeDirection: Math.random() > 0.5 ? 1 : -1,
+          minOpacity: 0.1 + Math.random() * 0.2,
+          maxOpacity: 0.2 + Math.random() * 0.2,
+        };
+      });
+    
       prevSize.current = { width: window.innerWidth, height: window.innerHeight };
-    };
+    };    
 
     // Initialize stars from JSON and supplement missing fields
     starsRef.current = starLayout.map(star => {

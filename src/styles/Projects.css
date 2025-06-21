@@ -249,7 +249,7 @@
   width: 110%; /* slightly larger than container */
   height: 110%;
   object-fit: cover;
-  transform: scale(1.05); /* default slightly zoomed */
+  transform: scale(1.07); /* default slightly zoomed */
   transition: transform 0.35s ease, opacity 0.35s ease;
   z-index: 1;
   border-radius: 12px;
