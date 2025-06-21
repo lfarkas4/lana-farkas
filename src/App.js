@@ -14,7 +14,7 @@ import Moonranger from "./pages/Moonranger";
 import TapTap from "./pages/TapTap";
 import LightTheMuse from "./pages/LightTheMuse";
 
-import "./styles/Global.css";
+import "./styles/Global.scss";
 import CosmicBackground from "./components/CosmicBackground";
 
 function AppContent() {

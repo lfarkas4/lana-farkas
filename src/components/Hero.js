@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Hero.css";
+import "../styles/Hero.scss";
 import useShootingStar from "../utils/shootingstar";
 import Lana from "./Lana";
 

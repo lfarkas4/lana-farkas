@@ -1,0 +1,26 @@
+/* Colors */
+$primary: rgb(204, 204, 204);
+
+/* Typography */
+@mixin body_font {
+  font-size: 96px;
+  font-weight: 600;
+}
+
+/* Breakpoints */
+$sm_breakpoint: '768px';
+$md_breakpoint: '';
+$lg_breakpoint: '';
+
+// 375px 
+// 430px 
+// 600px *
+// 664px *
+// 695px 
+// 768px *
+// 875px *
+// 992px *
+// 1200px 
+// 1400px 
+// 1600px 
+

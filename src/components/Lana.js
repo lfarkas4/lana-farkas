@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Lana.css";
+import "../styles/Lana.scss";
 
 const Lana = () => {
   return (

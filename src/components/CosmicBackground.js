@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import "../styles/CosmicBackground.css";
+import "../styles/CosmicBackground.scss";
 import starLayout from "../assets/starLayout.json";
 
 const CosmicBackground = () => {

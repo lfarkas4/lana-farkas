@@ -1,7 +1,7 @@
 import React from "react";
 import AboutTop from "../components/AboutTop";
 import useShootingStar from "../utils/shootingstar";
-import "../styles/Global.css";
+import "../styles/Global.scss";
 import { useResetScroll } from "../utils/useResetScroll";
 import AboutStuff from "../components/AboutStuff";
 

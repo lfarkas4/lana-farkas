@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../styles/AboutExtras.css";
-import "../styles/ExtrasCards.css";
+import "../styles/AboutExtras.scss";
+import "../styles/ExtrasCards.scss";
 
 const AboutExtras = () => {
   const [likedStats, setLikedStats] = useState(false);

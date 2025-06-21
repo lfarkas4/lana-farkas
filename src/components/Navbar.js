@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
-import "../styles/Navbar.css";
+import "../styles/Navbar.scss";
 
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
