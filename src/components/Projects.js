@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/Projects.css";
 
 const caseStudies = [
@@ -24,7 +25,7 @@ const caseStudies = [
     description:
       "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
     image: "/assets/watchmock.svg",
-    link: "/case-studies/thought-bubble",
+    link: "/case-studies/hira",
   },
   {
     title: "Dynamic Learning with Stackbuilder",
@@ -42,21 +43,21 @@ const miniProjects = [
     description:
       "Refined mission interface for lunar rover in collaboration with NASA and CMU.",
     image: "/assets/moonthumb.png",
-    link: "/mini-projects/moonranger",
+    link: "/case-studies/moonranger",
   },
   {
     title: "Tap-Tap Revolution",
     description:
       "Developed interactive game prototype using Arduino and digital fabrication tools.",
     image: "/assets/taptap.png",
-    link: "/mini-projects/taptap",
+    link: "/case-studies/taptap",
   },
   {
     title: "Light the Muse",
     description:
       "Conceptualized mobile app to counter addictive technology through creative expression.",
     video: "/assets/whatsapp3.mp4",
-    link: "/mini-projects/light-the-muse",
+    link: "/case-studies/lightthemuse",
   },
 ];
 
@@ -70,18 +71,9 @@ const Projects = () => {
         </h3>
         <div className="projects-container">
           {caseStudies.map((project, index) => (
-            <a
-              href={project.link}
-              className="project-card-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              key={index}
-            >
+            <Link to={project.link} className="project-card-link" key={index}>
               <div className="project-card">
-                <div
-                  className="project-thumbnail"
-                  data-label="view project ✧˖°."
-                >
+                <div className="project-thumbnail" data-label="view project ✧˖°.">
                   {project.video ? (
                     <video
                       src={project.video}
@@ -112,7 +104,7 @@ const Projects = () => {
                   <p className="project-description">{project.description}</p>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -122,18 +114,9 @@ const Projects = () => {
         </h3>
         <div className="mini-projects-container">
           {miniProjects.map((mini, index) => (
-            <a
-              href={mini.link}
-              className="project-card-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              key={index}
-            >
+            <Link to={mini.link} className="project-card-link" key={index}>
               <div className="project-card mini-project-card">
-                <div
-                  className="project-thumbnail"
-                  data-label="view project ✧˖°."
-                >
+                <div className="project-thumbnail" data-label="view project ✧˖°.">
                   {mini.video ? (
                     <video
                       src={mini.video}
@@ -157,7 +140,7 @@ const Projects = () => {
                   <p className="mini-description">{mini.description}</p>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

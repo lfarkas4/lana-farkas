@@ -1,0 +1,41 @@
+.back-button-wrapper {
+    position: sticky;
+    top: 20px;
+    left: 0;
+    z-index: 200;
+    padding-left: 40px;
+  }
+  
+  /* Matches .nav-bubble */
+  .back-bubble {
+    display: flex;
+    align-items: center;
+    padding: 7px 19px 6px 33px;
+    border-radius: 999px;
+    background: rgba(20, 20, 30, 0.215);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.12);
+    font-family: 'CooperLtBT-Italic', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(240, 240, 240, 1);
+    text-decoration: none;
+    text-transform: lowercase;
+    letter-spacing: 0.85px;
+  }
+  
+  /* Arrow on the left side, fixed rotation */
+  .back-arrow {
+    transform: rotate(-135deg); /* ↖️ pointing left */
+    font-size: 1.15rem;
+    margin-right: 6px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* Prevent inherited hover effects */
+  .back-bubble:hover .back-arrow {
+    transform: rotate(-135deg);
+  }
+  

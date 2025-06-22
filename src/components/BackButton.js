@@ -1,0 +1,19 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { FiArrowUpRight } from "react-icons/fi";
+import "../styles/BackButton.css";
+
+const BackButton = () => {
+  return (
+    <div className="back-button-wrapper">
+      <Link to="/" className="back-bubble">
+        <span className="back-arrow">
+          <FiArrowUpRight />
+        </span>
+        <span className="back-label">back</span>
+      </Link>
+    </div>
+  );
+};
+
+export default BackButton;

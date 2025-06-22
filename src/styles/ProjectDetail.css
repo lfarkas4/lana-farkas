@@ -1,0 +1,60 @@
+.project-detail-content {
+    flex: 1;
+    padding: 100px 80px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    color: rgb(230, 230, 230);
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .project-detail-page {
+    background-color: #060f17;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 0;
+  }  
+  
+  .project-intro {
+    margin-bottom: 60px;
+  }
+  
+  .project-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #aaa;
+    margin-bottom: 30px;
+  }
+  
+  .project-hero-media {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 50px;
+  }
+  
+  .project-section {
+    margin-bottom: 65px;
+  }
+  
+  .project-section h2 {
+    font-family: 'CooperLtBT-Italic', serif;
+    font-size: 1.5rem;
+    letter-spacing: 1.25px;
+    color: #f0f0f0;
+    margin-bottom: 16px;
+  }
+  
+  .project-section p,
+  .project-section ul {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ccc;
+  }
+  
+  .project-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 24px;
+  }
+  
