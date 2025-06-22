@@ -1,7 +1,7 @@
 import React from "react";
 import BackButton from "./BackButton";
 import Footer from "./Footer";
-import "../styles/ProjectDetail.css"; // you'll create this next
+import "../styles/ProjectDetail.scss"; // you'll create this next
 
 const ProjectDetailLayout = ({ children }) => {
   return (

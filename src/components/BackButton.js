@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FiArrowUpRight } from "react-icons/fi";
-import "../styles/BackButton.css";
+import "../styles/BackButton.scss";
 
 const BackButton = () => {
   return (
