@@ -22,7 +22,7 @@
     background: radial-gradient(
       circle at center,
       rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0.35) 40%,
+      rgba(0, 0, 0, 0.35) 42%,
       rgba(0, 0, 0, 0.45) 100%
     );
     pointer-events: none;
@@ -85,7 +85,7 @@
   .star-canvas {
     position: absolute;
     top: -38%;
-    left: -57.75%;
+    left: -57%;
     width: 200%;
     height: 200%;
     z-index: -200;

@@ -16,15 +16,21 @@ useShootingStar();
 
         {/* Tagline */}
         <p className="hero-tagline">
-  ... a product futurist bringing <span className="font-cooper-italic-tag">clarity</span> to the <span className="font-cooper-italic-tag">cosmos</span> of digital experiences.
+  ... a product futurist bringing <span className="font-cooper-italic-tag">clarity</span> to the <br />
+  <span className="font-cooper-italic-tag">cosmos</span> of digital experiences.
 </p>
 
         {/* Info columns */}
         <div className="hero-info">
           <div className="hero-column">
-          <h4 className="font-cooper-italic">currently</h4>
+          <h4 className="font-cooper-italic">currently learning</h4>
+            <p>mhci @ carnegie mellon university</p>
+          </div>
+          <div className="hero-column">
+          <h4 className="font-cooper-italic">currently building
+                    </h4>
             <p>
-              product design intern @{" "}
+            product design systems @{" "}
               <a
                 href="https://www.tutors.plus/"
                 target="_blank"
@@ -32,23 +38,7 @@ useShootingStar();
               >
                 plus
               </a>
-            </p>
-            <p>mhci @ carnegie mellon university</p>
-          </div>
-          <div className="hero-column">
-          <h4 className="font-cooper-italic">previously</h4>
-
-            <p>b.a. cogsci @ university of virginia</p>
-            <p>
-              experience designer @{" "}
-              <a
-                href="https://www.aquatonomy.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                aquatonomy
-              </a>
-            </p>
+              </p>
           </div>
         </div>
 

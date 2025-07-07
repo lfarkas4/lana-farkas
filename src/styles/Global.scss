@@ -132,41 +132,24 @@ html {
     }
   }
   
-  /* ----------------------------------------
-   TYPOGRAPHY UTILITY CLASSES - FIRA SANS
------------------------------------------ */
-  
-  .font-fira-italic {
-    font-family: 'Fira Sans', sans-serif;
-    font-style: italic;
-    letter-spacing: 0.85px;
-  }
-  
-  .font-fira-italic-light {
-    font-family: 'Fira Sans', sans-serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 1.675rem;
-    letter-spacing: 1.2px;
-  }
-
-  .font-fira-italic-sub {
-    font-family: 'Fira Sans', sans-serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 1.10rem;
-    letter-spacing: 0.85px;
-  }
-  
     /* ----------------------------------------
    TYPOGRAPHY UTILITY CLASSES - COOPER
 ----------------------------------------- */
 
 @font-face {
-  font-family: 'CooperMdBT-Italic';
-  src: url('../../public/fonts/CooperMdBT-Italic.ttf') format('truetype');
-  font-weight: bold;
-  font-style: italic;
+  font-family: 'CooperLtBT-Regular-Lightened';
+  src: url('../../public/fonts/CooperLtBT-Regular-Lightened.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CooperLtBT-Regular-Lightened1';
+  src: url('../../public/fonts/CooperLtBT-Regular-Lightened1.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CooperLtBT-Regular';
+  src: url('../../public/fonts/CooperLtBT-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -184,30 +167,6 @@ html {
   font-style: italic;
   font-weight: 300;
   font-display: swap;
-}
-
-
-.font-cooper-italic-hello {
-  font-family: 'CooperLtBT-Italic-Lightened', serif;
-  font-style: italic;
-  letter-spacing: 2.25px;
-  font-size: 1.95rem;
-}
-
-.font-cooper-italic-tag {
-  font-family: 'CooperLtBT-Italic-Lightened', serif;
-  font-style: italic;
-  font-weight: normal;
-  letter-spacing: 1.4px;
-  font-size: 1.3rem;
-}
-
-.font-cooper-italic-tag2 {
-  font-family: 'CooperLtBT-Italic', serif;
-  font-style: italic;
-  font-weight: normal;
-  letter-spacing: 1.4px;
-  font-size: 1.5rem;
 }
 
 .font-cooper-italic-tag3 {

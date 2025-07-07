@@ -1,82 +1,86 @@
-@keyframes float-l {
-    0% { transform: translate(0px, 0px) rotate(0deg); }
-    50% { transform: translate(0px, 4px) rotate(-10deg); }
-    100% { transform: translate(0px, 0px) rotate(0deg); }
+@use './partials/tokens'; // SCSS Example 
+
+/* main letters (my name hehe) */
+  @keyframes float-l {
+    0% { transform: translate(-50%, -50%) rotate(0.5deg); }
+    50% { transform: translate(calc(-50%), calc(-50% + 2%)) rotate(-4deg); }
+    100% { transform: translate(-50%, -50%) rotate(0.5deg); }
   }
-  
+
   @keyframes float-a1 {
-    0% { transform: translate(0px, 0px) rotate(0deg); }
-    50% { transform: translate(2px, -17px) rotate(5deg); }
-    100% { transform: translate(0px, 0px) rotate(0deg); }
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(calc(-50% + 2%), calc(-50% - 11%)) rotate(5deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
   }
-  
+
   @keyframes float-n {
-    0% { transform: translate(0px, 0px) rotate(-0.5deg); }
-    50% { transform: translate(3px, 5px) rotate(-3deg); }
-    100% { transform: translate(0px, 0px) rotate(-0.5deg); }
+    0% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+    50% { transform: translate(calc(-50% + 3%), calc(-50% + 5%)) rotate(-3deg); }
+    100% { transform: translate(-50%, -50%) rotate(-0.5deg); }
   }
-  
+
   @keyframes float-a2 {
-    0% { transform: translate(0px, 0px) rotate(0deg); }
-    50% { transform: translate(6px, -10px) rotate(-4deg); }
-    100% { transform: translate(0px, 0px) rotate(0deg); }
+    0% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+    50% { transform: translate(calc(-50% + 6%), calc(-50% - 10%)) rotate(-4deg); }
+    100% { transform: translate(-50%, -50%) rotate(-0.5deg); }
   }
-  
+
+/* sparkles & stuff */
   @keyframes float-halo {
-    0% { transform: translate(0px, 0px) rotate(0deg); }
-    50% { transform: translate(0px, -7px) rotate(0deg); }
-    100% { transform: translate(0px, 0px) rotate(0deg); }
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(-50%, calc(-50% - 7%)) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
   }
   
   @keyframes float-orstar1 {
-    0% { transform: translate(0px, 0px) rotate(0deg); }
-    50% { transform: translate(4px, -8px) rotate(0deg); }
-    100% { transform: translate(0px, 0px) rotate(0deg); }
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(calc(-50% + 4%), calc(-50% - 8%)) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
   }
   
   @keyframes float-redstar1 {
-    0% { transform: translate(0px, 0px); }
-    50% { transform: translate(4px, 12px); }
-    100% { transform: translate(0px, 0px); }
+    0% { transform: translate(-50%, -50%); }
+    50% { transform: translate(calc(-50% + 4%), calc(-50% + 12%)); }
+    100% { transform: translate(-50%, -50%); }
   }
   
   @keyframes float-blustar3 {
-    0% { transform: translate(0px, 0px); }
-    50% { transform: translate(5px, 5px); }
-    100% { transform: translate(0px, 0px); }
+    0% { transform: translate(-50%, -50%); }
+    50% { transform: translate(calc(-50% + 15%), calc(-50% + 5%)); }
+    100% { transform: translate(-50%, -50%); }
   }
   
   @keyframes float-blustar2 {
-    0% { transform: translate(0px, 0px); }
-    50% { transform: translate(0px, -7px); }
-    100% { transform: translate(0px, 0px); }
+    0% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, calc(-50% - 8%)); }
+    100% { transform: translate(-50%, -50%); }
   }
   
   @keyframes float-blustar1 {
-    0% { transform: translate(0px, 0px); }
-    50% { transform: translate(0px, -10px); }
-    100% { transform: translate(0px, 0px); }
+    0% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, calc(-50% - 10%)); }
+    100% { transform: translate(-50%, -50%); }
   }
   
   @keyframes float-redstar2 {
-    0% { transform: translate(0px, 0px); }
-    50% { transform: translate(-1px, -10px); }
-    100% { transform: translate(0px, 0px); }
+    0% { transform: translate(-50%, -50%); }
+    50% { transform: translate(calc(-50% - 1%), calc(-50% - 10%)); }
+    100% { transform: translate(-50%, -50%); }
   }
-  
+
   @keyframes float-crown {
-    0% { transform: translate(0px, 0px) rotate(0deg); }
-    50% { transform: translate(5px, -10px) rotate(4deg); }
-    100% { transform: translate(0px, 0px) rotate(0deg); }
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(calc(-50% + 5%), calc(-50% - 14%)) rotate(4deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
   }
   
   .lana-container {
     position: relative;
-    width: 100%;
-    max-width: 820px;
+    width: clamp(200px, 50vw + 200px, 715px);
     aspect-ratio: 786.86 / 280.77;
     margin: 0 auto;
-    transform: scale(1.25); /* Optional: visually enlarge slightly */
+    margin-top: -25px;
+    margin-bottom: -20px;
   }
   
   .lana-piece {
@@ -87,32 +91,25 @@
     pointer-events: none;
   }
   
-  /* === Floating pieces with centered anchors === */
-  .l-piece    { width: 16.2%; top: 63.6%; left: 25.3%; animation: float-l 3.1s ease-in-out infinite; }
-  .a1-piece   { width: 16.9%; top: 56%; left: 39.8%; animation: float-a1 3.1s ease-in-out infinite; }
-  .n-piece    { width: 20.05%; top: 37.05%; left: 47.5%; animation: float-n 3.1s ease-in-out infinite; }
-  .a2-piece   { width: 18.9%; top: 30%; left: 65.8%; animation: float-a2 3.1s ease-in-out infinite; }
-  .halo-piece { width: 20.1%; top: 14%; left: 48%; animation: float-halo 3.1s ease-in-out infinite; }
-  
-  
   /* Decorative stars and crown */
-  .orstar1-piece  { width: 8.2%; top: 14%; left: 7.7%;  animation: float-orstar1 3.2s ease-in-out infinite; }
-  .redstar1-piece { width: 6%; top: 67.2%; left: 8.5%;  animation: float-redstar1 3.15s ease-in-out infinite; }
-  .blustar3-piece { width: 5.3%; top: 43.5%; left: 1.9%;  animation: float-blustar3 3.2s ease-in-out infinite; }
-  .blustar2-piece { width: 4%; top: 88.6%; left: 37.5%; animation: float-blustar2 3.15s ease-in-out infinite; }
-  .blustar1-piece { width: 4.1%; top: 39.2%; left: 88.8%; animation: float-blustar1 3.2s ease-in-out infinite; }
-  .redstar2-piece { width: 6%; top: 15%; left: 82.5%; animation: float-redstar2 3.15s ease-in-out infinite; }
-  .crown-piece    { width: 11.7%; top: 65.5%; left: 79.6%; animation: float-crown 3.1s ease-in-out infinite; }
-  
-  /* Keep your existing animations */
-  @keyframes float-l {
-    0% { transform: translate(-50%, -50%) rotate(1deg); }
-    50% { transform: translate(-50%, calc(-50% + 2px)) rotate(-3deg); }
-    100% { transform: translate(-50%, -50%) rotate(1deg); }
-  }
-  /* Repeat this translate(-50%, -50%) pattern for all animations */
-  @keyframes float-a1 {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    50% { transform: translate(calc(-50% + 2px), calc(-50% - 10px)) rotate(5deg); }
-    100% { transform: translate(-50%, -50%) rotate(0deg); }
+  .orstar1-piece  { width: 8.2%; top: 23.75%; left: 12%; transform: translate(-50%, -50%); animation: float-orstar1 3.2s ease-in-out infinite; }
+  .redstar1-piece { width: 6%; top: 78%; left: 11.5%; transform: translate(-50%, -50%); animation: float-redstar1 3.15s ease-in-out infinite; }
+  .blustar3-piece { width: 5.3%; top: 52%; left: 4.5%; transform: translate(-50%, -50%); animation: float-blustar3 3.2s ease-in-out infinite; }
+  .blustar2-piece { width: 4%; top: 95%; left: 39.5%; transform: translate(-50%, -50%); animation: float-blustar2 3.15s ease-in-out infinite; }
+  .blustar1-piece { width: 4.1%; top: 42%; left: 91%; transform: translate(-50%, -50%); animation: float-blustar1 3.2s ease-in-out infinite; }
+  .redstar2-piece { width: 6%; top: 20%; left: 86%; transform: translate(-50%, -50%); animation: float-redstar2 3.15s ease-in-out infinite; }
+  .crown-piece    { width: 11.7%; top: 82%; left: 85.75%; transform: translate(-50%, -50%); animation: float-crown 3.1s ease-in-out infinite; }
+
+
+  /* === Floating pieces with centered anchors === */
+  .l-piece    { width: 16.1%; top: 64%; left: 25.25%; transform: translate(-50%, -50%); animation: float-l 3.1s ease-in-out infinite; }
+  .a1-piece   { width: 16.9%; top: 56%; left: 39.5%; transform: translate(-50%, -50%); animation: float-a1 3.1s ease-in-out infinite; }
+  .n-piece    { width: 20.05%; top: 65.75%; left: 57.5%; transform: translate(-50%, -50%); animation: float-n 3.1s ease-in-out infinite; }
+  .a2-piece   { width: 18.9%; top: 59%; left: 75.25%; transform: translate(-50%, -50%); animation: float-a2 3.1s ease-in-out infinite; }
+  .halo-piece { width: 20.1%; top: 25%; left: 58%; transform: translate(-50%, -50%); animation: float-halo 3.1s ease-in-out infinite; }
+
+  @media (max-width: #{tokens.$xxs_breakpoint}) {
+    .lana-container {
+      width: 96vw;
+    }
   }

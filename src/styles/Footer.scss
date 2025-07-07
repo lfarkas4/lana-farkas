@@ -1,199 +1,35 @@
-.footer {
-  padding: 120px 68px 20px; /* desktop */
-}
+@use './partials/tokens';
 
-@media (max-width: 875px) and (min-width: 665px) {
-  .footer {
-    padding: 100px 60px 70px;
-  }
+/* === footer main content === */
+.footer-main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 60px 0 70px;
 }
-
-@media (max-width: 664px) {
-  .footer {
-    padding: 75px 40px 50px;
-  }
+.footer-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; // top aligns blocks left and right
+  width: 100%;
 }
-
 .footer {
   margin-top: 96px;
-  padding: 0px 64px 25px; /* desktop */
+  padding: 0px 64px 25px;
   position: relative;
   z-index: 1;
 }
 
-.footer-gradient {
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background: linear-gradient(
-    to top,
-    rgba(1, 0, 3, 0.0) 100%,
-    rgba(1, 0, 3, 0.2) 75%,
-    rgba(1, 0, 3, 0.1) 40%,
-    rgba(1, 0, 3, 0.0) 0%
-  );
-  pointer-events: none;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 20px;
-  flex-wrap: nowrap;
-  width: 100%;
-}
-
-.footer-left {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-}
-
-.footer-icons {
-  display: flex;
-  gap: 14px;
-  align-items: baseline;
-  transform: translateY(0px);
-}
-
-.footer-message {
-  font-size: 1rem;
-  font-weight: 360;
-  font-style: italic;
-  line-height: 1;
-  white-space: nowrap;
-  transform: translateY(0px);
-}
-
-.footer-icon {
-  display: flex;
-  align-items: center;
-  transform: translateY(4px);
-}
-
-.footer-icon2 {
-  display: flex;
-  align-items: center;
-  transform: translateY(4px);
-}
-
-.footer-icon img {
-  height: 32px;
-  width: auto;
-  display: block;
-  transition: filter 0.3s ease;
-}
-
-.footer-icon2 img {
-  height: 22px;
-  width: auto;
-  display: block;
-  transition: filter 0.3s ease;
-}
-
-.footer-icon:hover img,
-.footer-icon2:hover img {
-  filter: brightness(1.5);
-}
-
-.footer-credit {
-  font-weight: 350;
-  font-size: 1rem;
-  color: rgb(204, 204, 204);
-  white-space: nowrap;
-  flex-shrink: 0;
-  line-height: 1;
-  text-align: right;
-  margin-top: -2px;
-}
-
-/* ==========================
-   Tablet: 768px – 991px
-========================== */
-@media (max-width: 875px) and (min-width: 665px) {
-  .footer {
-    padding: 50px 60px 70px;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
-  }
-
-  .footer-left {
-    font-size: 0.95rem;
-  }
-
-  .footer-credit {
-    text-align: center;
-    font-size: 0.95rem;
-    margin-top: 0;
-  }
-}
-
-/* ==========================
-   Mobile: ≤ 620px
-========================== */
-@media (max-width: 664px) {
-  .footer {
-    padding: 45px 40px 50px;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
-  }
-
-  .footer-left,
-  .footer-credit {
-    font-size: 0.95rem;
-    white-space: nowrap;
-    margin-top: 0;
-  }
-}
-
-.footer-main {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
-  padding: 60px 0px 70px;
-}
-
-.footer-left {
-  display: flex;
-  align-items: flex-start;
-}
-
-.footer-orbit-icon {
-  width: 0px;
-  height: auto;
-}
-
+/* === left footer block === */
 .footer-salutation {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  justify-content: space-between;
+  gap: 17px;
 }
-
 .footer-thanks {
-  font-family: 'CooperLtBT-Italic', serif;
-  font-size: 1.25rem;
-  font-style: italic;
-  letter-spacing: 1.5px;
-  color: #fff;
+  @include tokens.type-coop-display2-bold;
+  color: tokens.$prisec;
 }
-
 .footer-travels {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
@@ -202,56 +38,217 @@
   color: rgba(240, 240, 240, 0.85);
 }
 
-.footer-right {
+/* === right footer block === */
+.footer-contact {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; // stack icons over message on desktop
   align-items: flex-end;
-  gap: 14px;
-  justify-content: space-between;
+  gap: 17px;
 }
-
 .footer-icons {
   display: flex;
-  gap: 14px;
+  gap: 15px;
+  align-items: center;
 }
-
 .footer-icons img {
   width: 28px;
+  display: block;
   height: auto;
-  transition: opacity 0.3s ease;
-  opacity: 0.9;
+  transition: filter 0.175s ease;
 }
-
+.footer-icons img[alt="Email"] {
+  transform: translateY(2.65px);
+}
 .footer-icons img:hover {
-  opacity: 1;
+  filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
 }
-
 .footer-message {
-  font-style: italic;
-  font-size: 1rem;
-  color: #ccc;
+  @include tokens.type-mont-footer;
+  color: tokens.$primary;
+  line-height: 1.5;
+  white-space: nowrap;
 }
-
 .footer-credit {
   width: 100%;
+  @include tokens.type-mont-credit;
+  color: tokens.$tertiary;
+  white-space: nowrap;
+  line-height: 1.25;
   text-align: center;
-  font-size: 0.8rem;
-  color: rgba(204, 204, 204, 0.8);
 }
 
-@media (max-width: 768px) {
+
+
+/* === RESPONSIVENESS === */
+/* ==========================
+   MD - LG: 465px – 625px
+========================== */
+@media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
+  .footer-thanks {
+    font-size: 1.45rem;
+  }
+  .footer-travels {
+    font-size: 0.95rem;
+  }
+  .footer-message {
+    font-size: 0.95rem;
+  }
+  .footer-icons img {
+    width: 27.5px;
+  }
+  .footer-credit {
+    font-size: 0.7rem;
+  }
+}
+
+/* ==========================
+   SM - MD: 626px – 728px
+========================== */
+@media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
   .footer-main {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
+    align-items: center;
+    gap: 22px;
+    padding: 30px 0 75px;
   }
-
-  .footer-right {
-    align-items: flex-start;
+  .footer-line {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
   }
-
+  .footer-salutation {
+    align-items: center;
+  }
+  .footer-travels-wrapper {
+    display: none;
+  }
+  .footer-contact {
+    display: flex;
+    flex-direction: row; // inline like About
+    align-items: center; // align icons and text middle
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; // match About contact block
+  }
+  .footer-icons {
+    display: flex;
+    align-items: center; // align icon bottoms with text baseline
+    gap: 14px;
+    transform: translateY(-3px);
+  }
+  .footer-icons img {
+    width: 27px;
+  }
+  .footer-message {
+    font-size: 1.05rem;
+    align-self: center; // ensure alignment within flex row
+  }
   .footer-credit {
-    text-align: left;
-    padding: 30px 0 20px;
+    font-size: 0.75rem;
+  }
+  .footer-thanks {
+    font-size: 1.55rem;
+  }
+}
+
+// /* ==========================
+//    XS - SM: 465px – 625px
+// ========================== */
+@media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
+  .footer-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    padding: 25px 0 70px;
+  }
+  .footer-line {
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+  }
+  .footer-salutation {
+    align-items: center;
+  }
+  .footer-travels-wrapper {
+    display: none;
+  }
+  .footer-contact {
+    display: flex;
+    flex-direction: row; // inline same as About
+    align-items: center; // icons + message vertically aligned
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px; // slight tighter spacing on XS–SM
+  }
+  .footer-icons {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    transform: translateY(-3px);
+  }
+  .footer-icons img {
+    width: 27px;
+  }
+  .footer-message {
+    font-size: 0.95rem; // scale slightly smaller
+  }
+  .footer-credit {
+    font-size: 0.65rem;
+  }
+  .footer-thanks {
+    font-size: 1.4rem;
+  }
+}
+
+
+// /* ==========================
+//    XS and below: ≤ 464px
+// ========================== */
+@media (max-width: #{tokens.$xs_breakpoint}) {
+  .footer-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    padding: 0px 0 65px;
+  }
+  .footer {
+    padding: 0px 50px 25px;
+  }
+  .footer-line {
+    flex-direction: column;
+    align-items: center;
+    gap: 21px;
+  }
+  .footer-salutation {
+    align-items: center;
+  }
+  .footer-travels-wrapper {
+    display: none;
+  }
+  .footer-contact {
+    display: flex;
+    flex-direction: row; // inline same as About
+    align-items: center; // icons + message vertically aligned
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px; // slight tighter spacing on XS–SM
+  }
+  .footer-icons {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    transform: translateY(-3px);
+  }
+  .footer-icons img {
+    width: 20px;
+  }
+  .footer-credit {
+    font-size: 0.65rem;
+  }
+  .footer-thanks {
+    font-size: 1.1rem;
+  }
+  .footer-message {
+    font-size: 0.75rem !important;
   }
 }

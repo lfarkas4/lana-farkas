@@ -94,7 +94,7 @@ const CosmicBackground = () => {
 
   return (
     <div className="cosmic-background">
-      <div className="star-dimmer" />
+      {/* <div className="star-dimmer" /> */}
       <canvas ref={canvasRef} className="star-canvas" />
       <div className="center-orb3" />
       <div className="blob blob1" />

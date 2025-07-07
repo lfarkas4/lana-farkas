@@ -34,23 +34,23 @@ const Navigation = () => {
         <span className="nav-link-wrapper">
           <span className="nav-link-label">{label}</span>
 
-          {isActive && (
-            <svg
-              className="nav-active-stroke"
-              viewBox="0 0 180 100"
-              preserveAspectRatio="none"
-            >
-              <path
-                id={`nav-path-${pathId}`}
-                className="nav-active-path"
-                d="M29,38 a60,25 0 1,0 120,0 a60,25 0 1,0 -120,0"
-              />
-            </svg>
-          )}
+          {isActive && !menuOpen && (
+  <svg
+    className="nav-active-stroke"
+    viewBox="0 0 180 100"
+    preserveAspectRatio="none"
+  >
+    <path
+      id={`nav-path-${pathId}`}
+      className="nav-active-path"
+      d="M29,38 a60,25 0 1,0 120,0 a60,25 0 1,0 -120,0"
+    />
+  </svg>
+)}
 
-          {isActive && (
-            <img src="/assets/spark.svg" alt="sparkle" className="nav-sparkle" />
-          )}
+{isActive && !menuOpen && (
+  <img src="/assets/spark.svg" alt="sparkle" className="nav-sparkle" />
+)}
         </span>
       </Link>
     );

@@ -1,8 +1,6 @@
-@use 'partials/tokens'; // SCSS Example 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+@use './partials/tokens'; // SCSS Example 
 
 /* === HERO SECTION === */
-
 .hero {
   display: flex;
   flex-direction: column;
@@ -10,220 +8,72 @@
   align-items: center;
   text-align: center;
   min-height: 85vh;
-  padding: 90px 0 80px;
+  padding: 16px 0 80px;
 }
 
-.hero-inner-wrapper {
- max-width: 1500px;
+/* === hello, my name is === */
+.font-cooper-italic-hello {
+  @include tokens.type-coop-display1;
+  color: tokens.$primary;
 }
-
 .hero-title {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.75rem;
-  font-weight: 400;
-  color: tokens.$primary; // SCSS Example
-  margin-bottom: 20px;
+  @include tokens.type-mont-display1;
+  color: tokens.$primary;
 }
 
-.lana-graphic {
-  width: 70vw;
-  max-width: 820px;
-  min-width: 640px;
-  height: auto;
-  margin: -10px 10px;
-  transform: translateX(-20px);
-  transition: width 0.3s ease-in-out;
+/* === a product futurist === */
+.font-cooper-italic-tag {
+  @include tokens.type-coop-display2;
+  color: tokens.$primary;
 }
-
 .hero-tagline {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: rgb(204, 204, 204);
-  width: 30vw;
-  max-width: 525px;
-  line-height: 1.3;
+  @include tokens.type-mont-display2;
+  color: tokens.$primary;
+  line-height: 1.25;
   margin: 67px auto 15px;
+  margin-bottom: -15px;
 }
 
+
+/* === prev/current === */
 .hero-info {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   gap: 100px;
-  margin-bottom: 45px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
-
 .hero-column h4 {
-  font-size: 1.2rem;
-  font-weight: 400;
-  text-transform: lowercase;
-  margin-bottom: 10px;
-  font-family: 'CooperLtBT-Italic-Lightened', serif;
+  @include tokens.type-coop-h1;
+  color: tokens.$primary;
+  margin-bottom: 6px;
 }
-
 .hero-column p {
-  font-size: 0.75rem;
-  font-weight: 370;
-  color: rgb(204, 204, 204);
-  margin: 5px 0;
+  @include tokens.type-mont-body;
+  color: tokens.$primary;
+  margin: 5px 0; // can switch for line height
 }
-
-.hero-column a {
-  color: rgb(204, 204, 204);
+.hero-column a { // HOVER ANIMATION FOR LINKS
+  color: tokens.$primary;
   text-decoration: underline;
-  transition: color 0.3s ease-in-out;
+  transition: filter 0.2s ease;
 }
-
 .hero-column a:hover {
-  color: rgb(255, 255, 255);
+  filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
 }
 
-/* === SCROLL ARROW === */
-
-.scroll-down {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-.scroll-arrow {
-  width: 30px;
-  height: 30px;
-}
-
-/* ==========================
-   TABLET: 601px – 991px
-   ========================== */
-@media (max-width: 875px) and (min-width: 665px) {
-  .hero {
-    padding: 100px 5vw 60px;
-  }
-
-  .hero-title {
-    font-size: 1.85rem;
-    margin-bottom: 10px;
-  }
-
-  .lana-graphic {
-    width: 80vw;
-    max-width: 700px;
-    min-width: 460px;
-    margin: 0 auto;
-    transform: none;
-  }
-
-  .hero-tagline {
-    font-size: 1.3rem;
-    width: 62vw;
-    max-width: 640px;
-    line-height: 1.45;
-    margin: 50px auto 30px;
-  }
-
-  .hero-info {
-    gap: 80px;
-    margin-top: 5px;
-  }
-
-  .hero-column {
-    text-align: center;
-  }
-
-  .hero-column h4 {
-    font-size: 1rem;
-  }
-
-  .hero-column p {
-    font-size: 0.85rem;
-    line-height: 1.4;
-  }
-
-  .scroll-down {
-    margin-top: 35px;
-    margin-bottom: 50px;
-  }
-
-  .scroll-arrow {
-    width: 28px;
-    height: 28px;
-  }
-}
-
-/* ==========================
-   MOBILE: ≤ 695px
-   ========================== */
-@media (max-width: 664px) {
-  .hero {
-    padding: 100px 0 60px;
-  }
-
-  .hero-title {
-    font-size: 1.4rem;
-    margin-bottom: 5px;
-  }
-
-  .lana-graphic {
-    width: 90vw;
-    max-width: 525px;
-    min-width: 375px;
-    margin: 12px auto;
-    transform: none;
-  }
-
-  .hero-tagline {
-    font-size: 0.95rem;
-    width: 65vw;
-    max-width: 75vw;
-    margin: 40px auto 25px;
-  }
-
-  .hero-info {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-
-  .hero-column {
-    text-align: center;
-  }
-
-  .hero-column h4 {
-    font-size: 0.85rem;
-  }
-
-  .hero-column p {
-    font-size: 0.75rem;
-    line-height: 1.4;
-  }
-
-  .scroll-down {
-    margin-top: 25px;
-    margin-bottom: 10px;
-  }
-
-  .scroll-arrow {
-    width: 28px;
-    height: 28px;
-  }
-}
-
-
+/* === scroll cue === */
 .scroll-cue {
-  margin-top: 50px;
+  margin-top: 50px; // doesn't exactly match with about
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .scroll-mouse {
   width: 20px;
   height: 32px;
-  border: 2px solid rgba(255, 255, 255, 0.675); /* bright white */
+  border: 2px solid tokens.$prisaac;
   border-radius: 14px;
   display: flex;
   justify-content: center;
@@ -231,18 +81,17 @@
   box-sizing: border-box;
   position: relative;
 }
-
 .scroll-dot {
   width: 4px;
   height: 4px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: tokens.$primary;
   border-radius: 50%;
   position: absolute;
-  top: 7px; /* aligned to top of capsule */
+  top: 7px; // aligned to top of capsule
   animation: scrollBounce 1.8s ease-in-out infinite;
 }
 
-/* No opacity at all — just scale + translate */
+/* bouncing animation for scroll cue */
 @keyframes scrollBounce {
   0% {
     transform: translateY(0) scale(0);
@@ -263,5 +112,171 @@
   100% {
     transform: translateY(0) scale(0);
     opacity: 0;
+  }
+}
+
+
+
+/* === RESPONSIVENESS === */
+/* ==========================
+   XXL and above: ≥ 1600px
+========================== */
+@media (min-width: #{tokens.$xxl_breakpoint}) {
+  .hero {
+    padding: 16px 5vw 70px;
+  }
+}
+
+/* ==========================
+   XL - XXL: 1200px – 1599px
+========================== */
+@media (max-width: #{tokens.$xxl_breakpoint}) and (min-width: #{tokens.$xl_breakpoint}) {
+  .hero {
+    padding: 16px 5vw 70px;
+  }
+}
+
+/* ==========================
+   LG - XL: 992px – 1199px
+========================== */
+@media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
+  .hero {
+    padding: 16px 5vw 70px;
+  }
+}
+
+/* ==========================
+   MD - LG: 768px – 991px
+========================== */
+@media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
+  .hero {
+    padding: 0px 5vw 60px;
+  }
+  .font-cooper-italic-hello {
+    font-size: 1.8rem;
+  }
+  .hero-title {
+    font-size: 1.65rem;
+    margin-bottom: 30px;
+  }
+  .hero-tagline {
+    font-size: 1.2rem;
+    margin-bottom: -10px;
+  }
+  .font-cooper-italic-tag {
+    font-size: 1.3rem;
+  }
+  .hero-info {
+    gap: 60px;
+  }
+  .hero-column {
+    text-align: center;
+  }
+}
+
+/* ==========================
+   SM - MD: 600px – 767px
+========================== */
+@media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
+  .hero {
+    padding: 0px 5vw 60px;
+  }
+  .font-cooper-italic-hello {
+    font-size: 1.8rem;
+  }
+  .hero-title {
+    font-size: 1.65rem;
+    margin-bottom: 30px;
+  }
+  .hero-tagline {
+    font-size: 1.2rem;
+    margin-bottom: -10px;
+  }
+  .font-cooper-italic-tag {
+    font-size: 1.3rem;
+  }
+  .hero-info {
+    gap: 60px;
+  }
+  .hero-column {
+    text-align: center;
+  }
+}
+
+/* ==========================
+   XS - SM: 425px – 599px
+========================== */
+@media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
+  .hero {
+    padding: 0px 5vw 50px;
+  }
+  .font-cooper-italic-hello {
+    font-size: 1.6rem;
+  }
+  .hero-title {
+    font-size: 1.45rem;
+    margin-bottom: 30px;
+  }
+  .hero-tagline {
+    font-size: 1rem;
+    margin-top: 60px;
+    margin-bottom: -10px;
+  }
+  .font-cooper-italic-tag {
+    font-size: 1.15rem;
+  }
+  .hero-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-column {
+    text-align: center;
+  }
+  .hero-column h4 {
+    font-size: 1.1rem;
+  }
+  .hero-column p {
+    font-size: 0.875rem;
+  }
+}
+
+
+/* ==========================
+   XXS - XS: 375px – 424px
+========================== */
+@media (max-width: #{tokens.$xs_breakpoint}) {
+  .hero {
+    padding: 0px 5vw 50px;
+  }
+  .font-cooper-italic-hello {
+    font-size: 1.45rem;
+  }
+  .hero-title {
+    font-size: 1.3rem;
+    margin-bottom: 35px;
+  }
+  .hero-tagline {
+    font-size: 0.85rem;
+    margin-top: 55px;
+    margin-bottom: -10px;
+  }
+  .font-cooper-italic-tag {
+    font-size: 0.9rem;
+  }
+  .hero-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 60px;
+  }
+  .hero-column {
+    text-align: center;
+  }
+  .hero-column h4 {
+    font-size: 0.9rem;
+  }
+  .hero-column p {
+    font-size: 0.75rem;
   }
 }

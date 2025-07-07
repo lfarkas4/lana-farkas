@@ -73,7 +73,7 @@ const Projects = () => {
           {caseStudies.map((project, index) => (
             <Link to={project.link} className="project-card-link" key={index}>
               <div className="project-card">
-                <div className="project-thumbnail" data-label="view project ✧˖°.">
+                <div className="project-thumbnail">
                   {project.video ? (
                     <video
                       src={project.video}
@@ -116,7 +116,7 @@ const Projects = () => {
           {miniProjects.map((mini, index) => (
             <Link to={mini.link} className="project-card-link" key={index}>
               <div className="project-card mini-project-card">
-                <div className="project-thumbnail" data-label="view project ✧˖°.">
+                <div className="project-thumbnail">
                   {mini.video ? (
                     <video
                       src={mini.video}

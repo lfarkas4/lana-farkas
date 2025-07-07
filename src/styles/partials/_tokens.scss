@@ -1,26 +1,131 @@
 /* Colors */
-$primary: rgb(204, 204, 204);
+$primary: rgb(210, 210, 210); // default (dimmest)
+$prisec: rgb(230, 230, 230); // middle brightness
+$prisaac: rgb(200, 200, 200); // middle brightness
+$secondary: rgb(255, 255, 255); // hover animation (brightest)
+$tertiary: rgb(166, 166, 166); // slightly lighter than primary
+
+$tag: rgba(255, 255, 255, 0.07); // project tag background
+
 
 /* Typography */
-@mixin body_font {
-  font-size: 96px;
-  font-weight: 600;
+
+/* === FONT FAMILIES === */
+$font-montserrat: 'Montserrat', sans-serif;
+$font-cooperxtralight: 'CooperLtBT-Italic-Lightened', serif;
+$font-cooperlight: 'CooperLtBT-Italic', serif;
+
+
+/* === FONT SIZES === */
+$font-coop-display1: 2.05rem;
+$font-coop-display2: 1.45rem;
+$font-coop-h1: 1.3rem;
+$font-coop-h2: 1.15rem;
+
+$font-mont-display1: 1.825rem;
+$font-mont-display2: 1.35rem;
+$font-mont-body1: 0.825rem; // not used
+$font-mont-body: 0.875rem;
+$font-mont-credit: 0.75rem;
+
+
+$font-mont-italic-nav: 1rem;
+$font-mont-italic-footer: 1rem;
+
+
+// /* === FONT WEIGHTS - Montserrat === */
+$mont-weight-425: 425;
+$mont-weight-400: 400;
+$mont-weight-375: 375;
+
+/* === FONT CHOICES === */
+@mixin type-coop-nav-bold {
+  font-family: $font-cooperlight;
+  font-size: 1.1rem;
+  letter-spacing: 1.4px;
+}
+@mixin type-coop-nav-bold-mob {
+  font-family: $font-cooperlight;
+  font-size: $font-mont-display1;
+  letter-spacing: 1.4px;
 }
 
-/* Breakpoints */
-$sm_breakpoint: '768px';
-$md_breakpoint: '';
-$lg_breakpoint: '';
 
-// 375px 
-// 430px 
-// 600px *
-// 664px *
-// 695px 
-// 768px *
-// 875px *
-// 992px *
-// 1200px 
-// 1400px 
-// 1600px 
+@mixin type-coop-display1 {
+  font-family: $font-cooperxtralight;
+  font-size: $font-coop-display1;
+  letter-spacing: 2.25px;
+}
+@mixin type-coop-display2 {
+  font-family: $font-cooperxtralight;
+  font-size: $font-coop-display2;
+  letter-spacing: 1.45px;
+}
+@mixin type-coop-display2-bold {
+  font-family: $font-cooperlight;
+  font-size: $font-coop-display2;
+  letter-spacing: 1.45px;
+}
+@mixin type-coop-h1 {
+  font-family: $font-cooperxtralight;
+  font-size: $font-coop-h2;
+  letter-spacing: 1.35px;
+}
+@mixin type-coop-h2 {
+  font-family: $font-cooperxtralight;
+  font-size: $font-coop-h1;
+  letter-spacing: 1.35px;
+}
+
+
+@mixin type-mont-display1 {
+  font-family: $font-montserrat;
+  font-size: $font-mont-display1;
+  font-weight: $mont-weight-400;
+  letter-spacing: 0.9px;
+}
+@mixin type-mont-display2 {
+  font-family: $font-montserrat;
+  font-size: $font-mont-display2;
+  font-weight: $mont-weight-400;
+  letter-spacing: 0.75px;
+}
+@mixin type-mont-display2-bold {
+  font-family: $font-montserrat;
+  font-size: $font-mont-display2;
+  font-weight: $mont-weight-425;
+}
+@mixin type-mont-body {
+  font-family: $font-montserrat;
+  font-size: $font-mont-body;
+  font-weight: $mont-weight-375;
+}
+@mixin type-mont-body-bold {
+  font-family: $font-montserrat;
+  font-size: $font-mont-body;
+  font-weight: $mont-weight-400;
+}
+
+@mixin type-mont-footer {
+  font-family: $font-montserrat;
+  font-style: italic;
+  font-size: $font-mont-italic-footer;
+  font-weight: $mont-weight-375;
+}
+@mixin type-mont-credit {
+  font-family: $font-montserrat;
+  font-size: $font-mont-credit;
+  font-weight: $mont-weight-375;
+}
+
+
+
+/* === BREAKPOINTS === */
+$xxs_breakpoint: '375px';   // Smallest mobile
+$xs_breakpoint: '465px';   // Small mobile
+$sm_breakpoint: '626px';   // Larger phones / small tablets
+$md_breakpoint: '768px';   // Tablets (portrait)
+$lg_breakpoint: '992px';   // Small laptops
+$xl_breakpoint: '1200px';  // Desktops
+$xxl_breakpoint: '1600px'; // Large/ultrawide screens
 
