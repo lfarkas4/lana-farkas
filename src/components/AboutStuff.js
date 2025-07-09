@@ -40,7 +40,7 @@ const AboutStuff = () => {
       {/* Spotify Section */}
       <div className="spotify-block">
         <h3 className="extras-intro">
-          ...now here's a few tunes to <span className="cooper-spotify-heading">remember me by</span> ⊹
+          ... now here's a few tunes to <span className="cooper-spotify-heading">remember me by</span> ⊹
         </h3>
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">

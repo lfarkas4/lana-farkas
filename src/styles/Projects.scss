@@ -80,7 +80,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
-  transition: transform 0.35s ease, opacity 0.35s ease; // include both
+  transition: transform 0.35s ease, filter 0.35s ease; // Add filter here!
   z-index: 1;
 }
 
@@ -93,9 +93,12 @@
   border-radius: 12px;
   cursor: pointer;
 }
-.project-card-link:hover .thumbnail-media {
+.project-thumbnail:hover {
+  cursor: none;
+}
+.project-thumbnail:hover .thumbnail-media {
   transform: scale(1);
-  // opacity: 0.95;
+  filter: brightness(0.8);
 }
 .project-card-link:hover .thumbnail-overlay {
   opacity: 1;
@@ -206,6 +209,28 @@
   text-overflow: ellipsis;
 }
 
+/* === custom projects cursor === */
+.custom-projects-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 70px;
+  background: #010304;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.1s ease;
+  z-index: 9999;
+  img {
+    width: 72%;
+    height: 72%;
+    transform: translateX(-0.75px) translateY(-2px);
+  }
+}
 
 
 /* === RESPONSIVENESS === */
