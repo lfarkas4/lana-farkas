@@ -31,7 +31,7 @@
 .nav-bubble {
   display: flex;
   align-items: center;
-  padding: 7px 16px 5px 30px;
+  padding: 7px 16px 8px 28px;
   border-radius: 999px;
   background: rgba(14, 14, 23, 0.215);
   backdrop-filter: blur(16px);
@@ -40,7 +40,7 @@
   transition: transform 0.275s ease, box-shadow 0.3s ease;
 }
 .nav-bubble:hover {
-  transform: scale(1.03);
+  transform: scale(1.04);
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
 }
 
@@ -57,15 +57,17 @@
   position: relative;
   color: tokens.$prisaac;
   @include tokens.type-coop-nav-bold;
-  transition: color 0.275s ease-in-out;
+  transition: color 0.275s ease-in-out, filter 0.275s ease;;
 }
 .nav-link:hover,
 .nav-link:not(.active):hover .nav-link-label {
   color: tokens.$secondary;
+  filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
 }
 .nav-link.active {
   color: tokens.$secondary;
 }
+
 
 /* === nav link structure === */
 .nav-link-wrapper {
@@ -75,7 +77,7 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 .nav-bubble:hover .nav-link-wrapper {
-  transform: scale(0.98);
+  transform: scale(0.99);
 }
 .nav-link-label {
   position: relative;
@@ -85,7 +87,7 @@
 
 /* === resume icon === */
 .resume-arrow { // hover color a bit fyunkay
-  font-size: tokens.$font-coop-h2;
+  font-size: tokens.$font-mont-italic-nav;
   vertical-align: middle;
   margin-top: -0.5px;
   transform: rotate(0deg);
@@ -99,7 +101,7 @@
 .nav-active-stroke {
   position: absolute;
   top: -6px;
-  left: -20.5px;
+  left: -20px;
   width: calc(100% + 40px);
   height: 60px;
   z-index: 1;
@@ -125,7 +127,7 @@
 .nav-sparkle {
   position: absolute;
   top: 3px;
-  left: -1px;
+  left: 1px;
   width: 12px;
   height: 12px;
   opacity: 0;
@@ -238,6 +240,5 @@
   }
   .resume-arrow {
     font-size: tokens.$font-mont-display1;
-    margin-top: 0.25px;
   }
 }

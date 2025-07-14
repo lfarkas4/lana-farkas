@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 
 import Navigation from "./components/Navbar";
 import Footer from "./components/Footer";
+import CustomCursor from "./components/CustomCursor";
 
 import About from "./pages/About";
 import Home from "./pages/Home";
@@ -43,9 +44,12 @@ function AppContent() {
 
 function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <>
+      <CustomCursor />
+      <Router>
+        <AppContent />
+      </Router>
+    </>
   );
 }
 

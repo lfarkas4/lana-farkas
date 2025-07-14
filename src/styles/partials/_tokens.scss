@@ -18,11 +18,13 @@ $font-cooperlight: 'CooperLtBT-Italic', serif;
 
 /* === FONT SIZES === */
 $font-coop-display1: 2.05rem;
+$font-coop-display-mid: 1.8rem;
 $font-coop-display2: 1.45rem;
 $font-coop-h1: 1.3rem;
 $font-coop-h2: 1.15rem;
 
 $font-mont-display1: 1.825rem;
+$font-mont-display-mid: 1.6rem;
 $font-mont-display2: 1.35rem;
 $font-mont-body1: 0.825rem; // not used
 $font-mont-body: 0.875rem;
@@ -40,14 +42,16 @@ $mont-weight-375: 375;
 
 /* === FONT CHOICES === */
 @mixin type-coop-nav-bold {
-  font-family: $font-cooperlight;
-  font-size: 1.1rem;
-  letter-spacing: 1.4px;
+  font-family: $font-montserrat;
+  font-size: $font-mont-italic-nav;
+  letter-spacing: 1px;
+  font-weight: $mont-weight-400;
 }
 @mixin type-coop-nav-bold-mob {
-  font-family: $font-cooperlight;
+  font-family: $font-montserrat;
   font-size: $font-mont-display1;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.2px;
+  font-weight: $mont-weight-400;
 }
 
 
@@ -55,6 +59,11 @@ $mont-weight-375: 375;
   font-family: $font-cooperxtralight;
   font-size: $font-coop-display1;
   letter-spacing: 2.25px;
+}
+@mixin type-coop-display-mid {
+  font-family: $font-cooperxtralight;
+  font-size: $font-coop-display-mid;
+  letter-spacing: 2px;
 }
 @mixin type-coop-display2 {
   font-family: $font-cooperxtralight;
@@ -84,6 +93,12 @@ $mont-weight-375: 375;
   font-weight: $mont-weight-400;
   letter-spacing: 0.9px;
 }
+@mixin type-mont-display-mid {
+  font-family: $font-montserrat;
+  font-size: $font-mont-display-mid;
+  font-weight: $mont-weight-400;
+  letter-spacing: 0.825px;
+}
 @mixin type-mont-display2 {
   font-family: $font-montserrat;
   font-size: $font-mont-display2;
@@ -106,6 +121,7 @@ $mont-weight-375: 375;
   font-weight: $mont-weight-400;
 }
 
+
 @mixin type-mont-footer {
   font-family: $font-montserrat;
   font-style: italic;
@@ -117,7 +133,6 @@ $mont-weight-375: 375;
   font-size: $font-mont-credit;
   font-weight: $mont-weight-375;
 }
-
 
 
 /* === BREAKPOINTS === */

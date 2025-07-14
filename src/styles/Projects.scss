@@ -98,7 +98,7 @@
 }
 .project-thumbnail:hover .thumbnail-media {
   transform: scale(1);
-  filter: brightness(0.8);
+  filter: brightness(0.95);
 }
 .project-card-link:hover .thumbnail-overlay {
   opacity: 1;
@@ -223,7 +223,7 @@
   justify-content: center;
   pointer-events: none;
   transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.1s ease;
+  transition: transform 0.125s ease;
   z-index: 9999;
   img {
     width: 72%;
@@ -445,3 +445,7 @@
     height: 0.9rem;
   }
 }
+
+
+
+

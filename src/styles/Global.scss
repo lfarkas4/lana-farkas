@@ -199,15 +199,6 @@ html {
   text-decoration: none !important;
 }
 
-.cooper-tagline {
-  font-family: 'CooperLtBT-Italic-Lightened', serif;
-  font-weight: 300;
-  font-style: italic;
-  color: #cccccc;
-  font-size: 1.85rem;
-  letter-spacing: 1.45px;
-}
-
 .cooper-spotify-heading {
   font-family: 'CooperLtBT-Italic-Lightened', serif;
   font-weight: 300;
@@ -218,6 +209,7 @@ html {
   letter-spacing: 1.25px;
 }
 
-/* body, * {
+html, body, * {
   cursor: none;
-} */
+}
+

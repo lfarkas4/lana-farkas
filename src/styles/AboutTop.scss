@@ -74,13 +74,8 @@
 }
 
 .about-heading {
-  font-size: 1.85rem;
-  font-weight: 400;
-  line-height: 1.5;
-  margin-bottom: 10px;
-  font-family: tokens.$font-cooperxtralight;
-  font-size: 1.85 !important;
-  letter-spacing: 1.45px;
+  @include tokens.type-mont-display-mid;
+  color: tokens.$primary;
 }
 
 .light-bold {
@@ -90,7 +85,11 @@
 .italic {
   font-style: italic;
 }
-
+.cooper-tagline {
+  @include tokens.type-coop-display-mid;
+  color: tokens.$primary;
+  line-height: 1.8;
+}
 .about-bio {
   font-size: 0.9rem;
   font-weight: 300;
