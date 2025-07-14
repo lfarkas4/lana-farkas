@@ -1,56 +1,57 @@
-import React, { useEffect, useRef } from 'react';
-import '../styles/CustomCursor.scss';
+import React, { useEffect, useRef } from "react";
+import "../styles/CustomCursor.scss";
 
 const CustomCursor = () => {
   const cursorRef = useRef(null);
-  const position = useRef({ x: 0, y: 0 });
-  const visible = useRef(false);
+  const position = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  const targetPosition = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  const visible = useRef(true);
 
-  useEffect(() => {
-    const cursor = cursorRef.current;
+  const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
 
-    const onMouseMove = (e) => {
-      position.current = { x: e.clientX, y: e.clientY };
-      visible.current = true;
-      cursor.style.opacity = '1';
-    };
+  const updateCursor = () => {
+    if (!cursorRef.current) return;
 
-    const onMouseLeave = () => {
-      visible.current = false;
-      cursor.style.opacity = '0';
-    };
+    position.current.x = lerp(position.current.x, targetPosition.current.x, 0.15);
+    position.current.y = lerp(position.current.y, targetPosition.current.y, 0.15);
 
-    const onVisibilityChange = () => {
-      if (document.visibilityState !== 'visible') {
-        cursor.style.opacity = '0';
-      }
-    };
-
-    const updateCursor = () => {
-      if (!cursor) return;
-      cursor.style.transform = `translate3d(${position.current.x}px, ${position.current.y}px, 0)`;
-      cursor.style.opacity = visible.current ? '1' : '0';
-      requestAnimationFrame(updateCursor);
-    };
-
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseleave', onMouseLeave);
-    window.addEventListener('mouseenter', onMouseMove);
-    document.addEventListener('visibilitychange', onVisibilityChange);
+    cursorRef.current.style.transform = `translate3d(${position.current.x}px, ${position.current.y}px, 0)`;
+    cursorRef.current.style.opacity = visible.current ? "1" : "0";
 
     requestAnimationFrame(updateCursor);
+  };
+
+  useEffect(() => {
+    const moveCursor = (e) => {
+      targetPosition.current.x = e.clientX;
+      targetPosition.current.y = e.clientY;
+      visible.current = true;
+    };
+
+    const hideCursor = () => {
+      visible.current = false;
+    };
+
+    const showCursor = () => {
+      visible.current = true;
+    };
+
+    document.addEventListener("mousemove", moveCursor);
+    document.addEventListener("mouseenter", showCursor);
+    document.addEventListener("mouseleave", hideCursor);
+
+    updateCursor();
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseleave', onMouseLeave);
-      window.removeEventListener('mouseenter', onMouseMove);
-      document.removeEventListener('visibilitychange', onVisibilityChange);
+      document.removeEventListener("mousemove", moveCursor);
+      document.removeEventListener("mouseenter", showCursor);
+      document.removeEventListener("mouseleave", hideCursor);
     };
   }, []);
 
   return (
-    <div className="custom-cursor" ref={cursorRef}>
-      <img src="/assets/curse.svg" alt="cursor ufo" />
+    <div ref={cursorRef} className="custom-cursor">
+      <img src="/assets/curse.svg" alt="Cursor Icon" />
     </div>
   );
 };

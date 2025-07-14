@@ -7,9 +7,9 @@
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.2s ease, transform 0.05s ease;
     will-change: transform, opacity;
+    opacity: 1;
+    transition: opacity 0.2s ease;
   
     img {
       width: 55%;
@@ -20,7 +20,6 @@
     &.hover {
       width: 70px;
       height: 70px;
-  
       img {
         width: 72%;
         height: 72%;
@@ -28,4 +27,3 @@
       }
     }
   }
-  
