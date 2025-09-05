@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Projects.scss";
 
@@ -62,45 +61,6 @@ const miniProjects = [
 ];
 
 const Projects = () => {
-  useEffect(() => {
-    const cursor = document.querySelector('.custom-projects-cursor');
-    const projectThumbnails = document.querySelectorAll('.project-thumbnail');
-
-    const moveCursor = (e) => {
-      cursor.style.top = `${e.clientY}px`;
-      cursor.style.left = `${e.clientX}px`;
-    };
-
-    const showCursor = () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-    };
-
-    const hideCursor = () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(0)';
-    };
-
-    window.addEventListener('mousemove', moveCursor);
-
-    projectThumbnails.forEach(thumbnail => {
-      thumbnail.addEventListener('mouseenter', showCursor);
-      thumbnail.addEventListener('mouseleave', hideCursor);
-    });
-
-    const handleScroll = () => {
-      hideCursor();
-    };
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('mousemove', moveCursor);
-      window.removeEventListener('scroll', handleScroll);
-      projectThumbnails.forEach(thumbnail => {
-        thumbnail.removeEventListener('mouseenter', showCursor);
-        thumbnail.removeEventListener('mouseleave', hideCursor);
-      });
-    };
-  }, []);
-
   return (
     <section className="projects-section" id="work">
       <div className="projects-wrapper">
@@ -182,11 +142,6 @@ const Projects = () => {
             </Link>
           ))}
         </div>
-      </div>
-
-      {/* === Custom Projects Cursor === */}
-      <div className="custom-projects-cursor">
-        <img src="/assets/eye.svg" alt="View icon" />
       </div>
     </section>
   );

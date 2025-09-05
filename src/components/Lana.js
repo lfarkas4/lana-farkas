@@ -6,7 +6,7 @@ const Lana = () => {
     <div className="lana-container">
 
       {/* === Responsive floating animated version === */}
-      {/* <img src="/assets/L.svg" alt="L" className="lana-piece l-piece" /> */}
+      <img src="/assets/L.svg" alt="L" className="lana-piece l-piece" />
       {/* <img src="/assets/A1.svg" alt="A1" className="lana-piece a1-piece" /> */}
       {/* <img src="/assets/N.svg" alt="N" className="lana-piece n-piece" />
       <img src="/assets/A2.svg" alt="A2" className="lana-piece a2-piece" /> */}
@@ -22,12 +22,12 @@ const Lana = () => {
       <img src="/assets/crown.svg" alt="Crown" className="lana-piece crown-piece" /> */}
 
       
-      <img
+      {/* <img
         src="/assets/L@1x.png"
         srcSet="/assets/L@1x.png 1x, /assets/L@2x.png 2x, /assets/L@3x.png 3x"
         alt="L"
         className="lana-piece l-piece"
-      />
+      /> */}
       <img
         src="/assets/A1@1x.png"
         srcSet="/assets/A1@1x.png 1x, /assets/A1@2x.png 2x, /assets/A1@3x.png 3x"

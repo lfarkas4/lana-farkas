@@ -209,30 +209,6 @@
   text-overflow: ellipsis;
 }
 
-/* === custom projects cursor === */
-.custom-projects-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 70px;
-  height: 70px;
-  background: #010304;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.125s ease;
-  z-index: 9999;
-  img {
-    width: 72%;
-    height: 72%;
-    transform: translateX(-0.75px) translateY(-2px);
-  }
-}
-
-
 /* === RESPONSIVENESS === */
 /* ==========================
    XXL and above: ≥ 1600px
@@ -445,7 +421,5 @@
     height: 0.9rem;
   }
 }
-
-
 
 
