@@ -1,5 +1,8 @@
+
+@use './partials/tokens';
+
 .about-cards {
-    padding: 40px 95px 0px;
+    padding: 0px 95px 0px;
     display: flex;
     flex-direction: column;
     align-items: center; /* centers the grid */
@@ -120,10 +123,14 @@
   
 
   .frame {
-    background: linear-gradient(to bottom, #f3f3f3 0%, #dfdfdf 100%); // add FROSTED EDGES INSTEAD OF WHITE FRAME
-    padding: 8px;
+    background: rgba(146, 137, 161, 0.05); /* Much more subtle transparency */
+    backdrop-filter: blur(8px); /* Slightly less blur */
+    border: 1px solid rgba(255, 255, 255, 0.03); /* Very subtle border */
+    padding: 12px;
     border-radius: 22px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.353);
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.353), /* Keep your original shadow */
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.1); /* Very subtle inner highlight */
     display: inline-block;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -221,3 +228,38 @@
     opacity: 0.9;
   }
   
+
+  /* === HAIKU SECTION === */
+.haiku-section {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 165px;
+  text-align: center;
+}
+
+.haiku-intro {
+  font-size: 1.25rem;
+  font-weight: 375;
+  font-family: 'Montserrat', sans-serif;
+  color: tokens.$primary;
+  margin-bottom: 30px;
+  text-transform: lowercase;
+}
+
+.haiku-text {
+  font-family: 'CooperLtBT-Italic-Lightened', serif;
+  font-size: 2.5rem;
+  color: tokens.$primary;
+  line-height: 1.2;
+  font-style: italic;
+  letter-spacing: 1.75px;
+}
+
+.haiku-text p {
+  margin: 8px 0;
+}
+
+.cooper-symbols {
+  font-family: 'CooperLtBT', serif; /* Cooper font without italic */
+  font-style: normal;
+}

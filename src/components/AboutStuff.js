@@ -4,6 +4,18 @@ import "../styles/AboutStuff.scss";
 const AboutStuff = () => {
   return (
     <section className="about-cards">
+            {/* Haiku Section */}
+            <section className="haiku-section">
+        <h3 className="extras-intro">
+          ... a personal haiku <span className="cooper-spotify-heading">about me</span> ⊹
+        </h3>
+        <div className="haiku-text">
+          <p>Draws lines, mind wanders</p>
+          <p>she drifts where ideas bloom wide</p>
+          <p>caught in a daydream <span className="cooper-symbols">✶⋆.˚</span></p>
+        </div>
+      </section>
+
       {/* Photocards Section */}
       <section className="floating-card-section">
         <div className="floating-card rotate-plant offset-left">
@@ -40,7 +52,7 @@ const AboutStuff = () => {
       {/* Spotify Section */}
       <div className="spotify-block">
         <h3 className="extras-intro">
-          ... now here's a few tunes to <span className="cooper-spotify-heading">remember me by</span> ⊹
+          ... and a few tunes to <span className="cooper-spotify-heading">remember me by</span> ⊹
         </h3>
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">

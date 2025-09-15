@@ -11,7 +11,7 @@ const Footer = () => {
           {/* LEFT BLOCK */}
           <div className="footer-salutation">
             <div className="footer-thanks font-cooper-italic-tag2">
-              thanks for stopping by ✧˖°.
+              thanks for stopping by <span className="cooper-symbols">✧˖°.</span>
             </div>
             <div className="footer-travels footer-travels-wrapper">
               safe travels across the digital cosmos!
@@ -32,7 +32,7 @@ const Footer = () => {
               </a>
             </div>
             <div className="footer-message">
-              happy to chat anytime ⟢
+              happy to chat anytime <span className="cooper-symbols">⟢</span>
             </div>
           </div>
         </div>

@@ -6,9 +6,9 @@ html, body, * {
 .custom-cursor {
   position: fixed;
   top: -10px;
-  left: -12px;
-  width: 40px;   /* base size for the icon-only state */
-  height: 40px;
+  left: -15px;
+  width: 38px;   /* base size for the icon-only state */
+  height: 38px;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%); /* center the box on the pointer */
@@ -22,9 +22,9 @@ html, body, * {
   &::before {
     content: "";
     position: absolute;
-    width: 70px;
-    height: 70px;
-    left: 49%;
+    width: 66px;
+    height: 66px;
+    left: 45%;
     top: 50%;
     border-radius: 50%;
     background: #010304;
@@ -43,7 +43,7 @@ html, body, * {
   /* Base cursor image — centered, small */
   img {
     position: absolute;
-    left: 50%;
+    left: 46%;
     top: 50%;
     display: block;
 

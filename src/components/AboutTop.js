@@ -85,7 +85,8 @@ const About = () => {
                   <img src="/assets/git.svg" alt="GitHub" />
                 </a>
               </div>
-              <div className="about-chat-message">happy to chat anytime ⟢</div>
+              <div className="about-chat-message">happy to chat anytime <span className="cooper-symbols">⟢</span></div>
+
             </div>
           </div>
       </div>
