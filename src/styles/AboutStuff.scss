@@ -336,16 +336,16 @@
   }
 }
 @media (max-width: #{tokens.$xs_breakpoint}) {
-  .extras-intro           { font-size: 0.9rem; margin-bottom: 35px;}
+  .extras-intro           { font-size: 0.9rem; margin-bottom: 25px;}
   .cooper-spotify-heading { font-size: 1rem; }
   .haiku-text             { font-size: 1.25rem; letter-spacing: 1px;}
-  .haiku-section { margin-bottom: 110px; }
+  .haiku-section { margin-bottom: 100px; }
   .floating-caption { 
     font-size: 1rem !important; 
   }
 }
 @media (max-width: #{tokens.$xxs_breakpoint}) {
-  .extras-intro           { font-size: 0.85rem; margin-bottom: 35px;}
+  .extras-intro           { font-size: 0.85rem; margin-bottom: 20px;}
   .cooper-spotify-heading { font-size: 0.925rem; }
   .haiku-text             { font-size: 1.10rem; letter-spacing: 0.8px;}
   .haiku-section { margin-bottom: 90px; }
