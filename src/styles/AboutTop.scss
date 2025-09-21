@@ -518,7 +518,7 @@
   }
   
   .about-photo-wrapper {
-    width: clamp(190px, 60vw, 260px);
+    width: clamp(200px, 60vw, 260px);
     padding: 25px 8px 8px 8px;
     margin-top: 30px;
   }
@@ -538,7 +538,9 @@
   }
   
   .cooper-tagline {
-    font-size: 1.1rem;
+    font-family: font-cooperlight;
+    letter-spacing: 1px;
+    font-size: 1.175rem;
   }
   
   .about-bio {
@@ -564,7 +566,7 @@
   
   /* Smallest sliding roles */
   .sliding-roles {
-    height: 1.15em;
+    height: 1.21em;
   }
   
   .roles-wrapper span {
