@@ -78,7 +78,7 @@ const About = () => {
                 </a>
                 <a
                   className="about-icons-links"
-                  href="https://github.com/yourgithub"
+                  href="https://github.com/lfarkas4"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

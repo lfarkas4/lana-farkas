@@ -1,149 +1,114 @@
-/* --- Hide default cursor --- */
-html, body, * {
-  cursor: none !important;
-}
+/* --- Hide default cursor everywhere --- */
+html, body, * { cursor: none !important; }
 
+/* === Custom cursor base === */
 .custom-cursor {
   position: fixed;
   top: -10px;
   left: -15px;
-  width: 38px;   /* base size for the icon-only state */
+  width: 38px;
   height: 38px;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%); /* center the box on the pointer */
-  opacity: 0;
-
-  // Performance
+  transform: translate(-50%, -50%);
+  opacity: 0;                  /* set to 1 if you want it visible immediately */
   will-change: transform;
   backface-visibility: hidden;
 
-  /* The black circular hover “halo” (centered at pointer) */
   &::before {
     content: "";
     position: absolute;
-    width: 66px;
-    height: 66px;
-    left: 45%;
-    top: 50%;
+    width: 66px; height: 66px;
+    left: 45%; top: 50%;
     border-radius: 50%;
     background: #010304;
-
-    /* Start hidden & scaled down but centered */
     transform: translate(-50%, -50%) scale(0.6);
     opacity: 0;
-
-    /* Smooth scale-in */
-    transition:
-      transform 180ms cubic-bezier(.2,.8,.2,1),
-      opacity 120ms ease;
+    transition: transform 180ms cubic-bezier(.2,.8,.2,1), opacity 120ms ease;
     will-change: transform, opacity;
   }
 
-  /* Base cursor image — centered, small */
   img {
     position: absolute;
-    left: 46%;
-    top: 50%;
+    left: 46%; top: 50%;
     display: block;
-
-    /* Base size for default cursor icon */
-    width: 55%;
-    height: auto;
-
-    /* Center on pointer */
+    width: 55%; height: auto;
     transform: translate(-50%, -50%);
-    transition:
-      transform 180ms cubic-bezier(.2,.8,.2,1),
-      opacity 120ms ease,
-      width 120ms ease;  /* lets width grow smoothly on hover */
+    transition: transform 180ms cubic-bezier(.2,.8,.2,1), opacity 120ms ease, width 120ms ease;
     will-change: transform, opacity, width;
   }
 
-  // Your black circular hover style - CSS only handles styling
   &.hover {
-    /* show and scale the black circle */
-    &::before {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-    }
-
-    /* icon: grow to correct hover size AND pop-in */
+    &::before { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     img {
-      /* your tiny nudge + end at scale(1) (original transform), but wider */
-      width: 98%;  /* match your previous hover size */
+      width: 98%;
       transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px);
       animation: cursor-pop 180ms cubic-bezier(.2,.8,.2,1) both;
     }
   }
 
-  /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    &::before,
-    img {
-      transition: none;
-      animation: none;
-    }
+    &::before, img { transition: none; animation: none; }
   }
 }
 
-/* Icon “pop-in” — scales the icon from 0.6 to 1 while staying centered */
+/* Icon “pop-in” */
 @keyframes cursor-pop {
-  from {
-    transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(0.6);
-    opacity: 0;
-  }
-  to {
-    transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1);
-    opacity: 1;
-  }
+  from { transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(0.6); opacity: 0; }
+  to   { transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1);   opacity: 1; }
 }
 
-/* Pulse animation for click feedback */
+/* Click feedback (non-hover) */
 @keyframes cursor-click {
-  0%   { transform: translate(-50%, -50%) scale(1); }
-  40%  { transform: translate(-50%, -50%) scale(0.75); }
-  100% { transform: translate(-50%, -50%) scale(1); }
+  0% { transform: translate(-50%, -50%) scale(1); }
+  40%{ transform: translate(-50%, -50%) scale(0.75); }
+  100%{transform: translate(-50%, -50%) scale(1); }
 }
+.custom-cursor.click:not(.hover) img { animation: cursor-click 180ms ease-out; }
 
-/* Only apply click pulse when NOT in hover mode */
-.custom-cursor.click:not(.hover) img {
-  animation: cursor-click 180ms ease-out;
-}
-
-/* ===== NEW: hover click pulses ===== */
-
-/* Halo (black circle) pulse while hovering */
+/* Hover click pulses */
 @keyframes hover-halo-click {
-  0%   { transform: translate(-50%, -50%) scale(1); }
-  35%  { transform: translate(-50%, -50%) scale(0.9); }
-  70%  { transform: translate(-50%, -50%) scale(1.06); }
-  100% { transform: translate(-50%, -50%) scale(1); }
+  0% { transform: translate(-50%, -50%) scale(1); }
+  35%{ transform: translate(-50%, -50%) scale(0.9); }
+  70%{ transform: translate(-50%, -50%) scale(1.06); }
+  100%{transform: translate(-50%, -50%) scale(1); }
 }
-
-/* View icon pulse while hovering */
 @keyframes hover-icon-click {
-  0%   { transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1); }
-  35%  { transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(0.9); }
-  70%  { transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1.08); }
-  100% { transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1); }
+  0% { transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1); }
+  35%{ transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(0.9); }
+  70%{ transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1.08); }
+  100%{transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1); }
+}
+.custom-cursor.hover.click::before { animation: hover-halo-click 240ms cubic-bezier(.25,.8,.25,1); }
+.custom-cursor.hover.click img     { animation: hover-icon-click 240ms cubic-bezier(.25,.8,.25,1); }
+
+/* === Overrides / integration (place AFTER base rules) === */
+
+/* Make JS transform immediate (no fade) */
+.custom-cursor { transition: none; /* keep opacity as you prefer: 0 or 1 */ }
+
+/* Hide the custom cursor when JS adds .suppress (e.g., over iframes) */
+.custom-cursor.suppress { opacity: 0 !important; }
+
+/* Keep custom cursor everywhere in the block… */
+.spotify-block,
+.spotify-trapezoid,
+.spotify-row {
+  cursor: none !important;
 }
 
-/* When BOTH hover + click are present, pulse the halo + icon */
-.custom-cursor.hover.click::before {
-  animation: hover-halo-click 240ms cubic-bezier(.25,.8,.25,1);
-}
-.custom-cursor.hover.click img {
-  animation: hover-icon-click 240ms cubic-bezier(.25,.8,.25,1);
+/* …but use the native cursor only right on the iframe surface */
+.spotify-row iframe {
+  cursor: auto !important;
 }
 
-/* (You can keep your existing default click rule) */
-@keyframes cursor-click {
-  0%   { transform: translate(-50%, -50%) scale(1); }
-  40%  { transform: translate(-50%, -50%) scale(0.75); }
-  100% { transform: translate(-50%, -50%) scale(1); }
-}
-.custom-cursor.click:not(.hover) img {
-  animation: cursor-click 180ms ease-out;
-}
+/* “Temporarily restore native cursor” scope */
+html.cursor-native,
+html.cursor-native * { cursor: auto !important; }
+html.cursor-native .custom-cursor { opacity: 0 !important; }
 
+/* Touch devices: disable custom cursor entirely */
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor { display: none !important; }
+  html, body, * { cursor: auto !important; }
+}

@@ -60,32 +60,38 @@ $mont-weight-375: 375;
   font-size: $font-coop-display1;
   letter-spacing: 2.25px;
   font-style: italic;
-  font-weight: 300;
 }
 @mixin type-coop-display-mid {
   font-family: $font-cooperxtralight;
   font-size: $font-coop-display-mid;
-  letter-spacing: 2px;
+  letter-spacing: 1.7px;
+  font-style: italic;
 }
 @mixin type-coop-display2 {
   font-family: $font-cooperxtralight;
   font-size: $font-coop-display2;
-  letter-spacing: 1.45px;
+  letter-spacing: 1.25px;
+  font-style: italic;
 }
 @mixin type-coop-display2-bold {
   font-family: $font-cooperlight;
   font-size: $font-coop-display2;
   letter-spacing: 1.45px;
+  font-style: italic;
 }
 @mixin type-coop-h1 {
   font-family: $font-cooperxtralight;
   font-size: $font-coop-h2;
   letter-spacing: 1.35px;
+  font-style: italic;
+
 }
 @mixin type-coop-h2 {
   font-family: $font-cooperxtralight;
   font-size: $font-coop-h1;
   letter-spacing: 1.35px;
+  font-style: italic;
+  font-weight: 425;
 }
 
 

@@ -27,7 +27,7 @@
   gap: 17px;
 }
 .footer-thanks {
-  @include tokens.type-coop-display2-bold;
+  @include tokens.type-coop-display2;
   color: tokens.$prisec;
 }
 .footer-travels {

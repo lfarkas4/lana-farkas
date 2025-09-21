@@ -4,8 +4,8 @@ import "../styles/AboutStuff.scss";
 const AboutStuff = () => {
   return (
     <section className="about-cards">
-            {/* Haiku Section */}
-            <section className="haiku-section">
+      {/* Haiku Section */}
+      <section className="haiku-section">
         <h3 className="extras-intro">
           ... a personal haiku <span className="cooper-spotify-heading">about me</span> ⊹
         </h3>
@@ -18,41 +18,43 @@ const AboutStuff = () => {
 
       {/* Photocards Section */}
       <section className="floating-card-section">
-        <div className="floating-card rotate-plant offset-left">
-          <div className="clip-wrapper">
-            <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+        <div className="floating-card-grid">
+          <div className="floating-card rotate-plant offset-left">
+            <div className="clip-wrapper">
+              <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+            </div>
+            <div className="frame hover-label" data-label="propogation nation ❘">
+              <img src="/assets/pilea.jpg" alt="Card 1" className="floating-img" />
+            </div>
+            <p className="floating-caption">i'm also a proud plant mom <span className="cooper-symbols">🌱</span></p>
           </div>
-          <div className="frame hover-label" data-label="propogation nation ⚘">
-            <img src="/assets/pilea.jpg" alt="Card 1" className="floating-img" />
-          </div>
-          <p className="floating-caption">i’m also a proud plant mom…</p>
-        </div>
 
-        <div className="floating-card rotate-toast offset-mid">
-          <div className="clip-wrapper2">
-            <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+          <div className="floating-card rotate-toast offset-mid">
+            <div className="clip-wrapper2">
+              <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+            </div>
+            <div className="frame hover-label" data-label="the best toast eva ＊">
+              <img src="/assets/toast.jpg" alt="Card 2" className="floating-img" />
+            </div>
+            <p className="floating-caption">a lover of sweet treats <span className="cooper-symbols">🍰</span></p>
           </div>
-          <div className="frame hover-label" data-label="the best toast eva ＊">
-            <img src="/assets/toast.jpg" alt="Card 2" className="floating-img" />
-          </div>
-          <p className="floating-caption">…a lover of sweet treats…</p>
-        </div>
 
-        <div className="floating-card rotate-craft offset-right">
-          <div className="clip-wrapper3">
-            <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+          <div className="floating-card rotate-craft offset-right">
+            <div className="clip-wrapper3">
+              <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+            </div>
+            <div className="frame hover-label" data-label="my kind of therapy ✂">
+              <img src="/assets/craft.jpg" alt="Card 3" className="floating-img" />
+            </div>
+            <p className="floating-caption">and a maker of tiny messes <span className="cooper-symbols">✂️</span></p>
           </div>
-          <div className="frame hover-label" data-label="my kind of therapy ✂">
-            <img src="/assets/craft.jpg" alt="Card 3" className="floating-img" />
-          </div>
-          <p className="floating-caption">…and a maker of tiny messes.</p>
         </div>
       </section>
 
       {/* Spotify Section */}
       <div className="spotify-block">
         <h3 className="extras-intro">
-          ... and a few tunes to <span className="cooper-spotify-heading">remember me by</span> ⊹
+          ... and here's a few tunes to <span className="cooper-spotify-heading">remember me by</span> ⊹
         </h3>
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">
