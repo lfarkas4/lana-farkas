@@ -1,5 +1,7 @@
 @use './partials/tokens'; // SCSS Example 
 
+
+
 /* main letters (my name hehe) */
   @keyframes float-l {
     0% { transform: translate(-50%, -50%) rotate(0.5deg); }
@@ -81,15 +83,22 @@
     margin: 0 auto;
     margin-top: -25px;
     margin-bottom: -20px;
+  
+    /* Start hidden; reveal when images are ready */
+    & :is(.lana-piece) { animation-play-state: paused; opacity: 0; }
+    &.is-ready :is(.lana-piece) { animation-play-state: running; opacity: 1; transition: opacity 175ms ease; }
   }
   
   .lana-piece {
     position: absolute;
     width: 12%;
     height: auto;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0); /* GPU + stable */
+    backface-visibility: hidden;
+    will-change: transform;
     pointer-events: none;
   }
+  
   
   /* Decorative stars and crown */
   .orstar1-piece  { width: 8.2%; top: 23.75%; left: 12%; transform: translate(-50%, -50%); animation: float-orstar1 3.2s ease-in-out infinite; }

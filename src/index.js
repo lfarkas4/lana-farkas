@@ -1,6 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom/client"; // Use this for React 18+
+import ReactDOM from "react-dom/client";
 import App from "./App";
+
+/* TEMP: disable the custom cursor globally */
+document.documentElement.classList.add("cursor-native");
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

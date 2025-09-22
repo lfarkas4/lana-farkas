@@ -209,7 +209,10 @@ html {
   letter-spacing: 1.25px;
 }
 
-html, body, * {
-  cursor: none;
+/* Only hide the OS cursor when NOT in native mode */
+html:not(.cursor-native),
+html:not(.cursor-native) body,
+html:not(.cursor-native) * {
+  cursor: none !important;
 }
-
+body { cursor: default; }  /* safe */

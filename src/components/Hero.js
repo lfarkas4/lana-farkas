@@ -16,9 +16,24 @@ useShootingStar();
 
         {/* Tagline */}
         <p className="hero-tagline">
-  ... a product futurist bringing <span className="font-cooper-italic-tag">clarity</span> to the <br />
-  <span className="font-cooper-italic-tag">cosmos</span> of digital experiences.
+  {/* > XS (keeps your single <br /> before “cosmos”) */}
+  <span className="tagline-gtxs">
+    … a product futurist bringing <span className="font-cooper-italic-tag">clarity</span> to the{" "}
+    <br />
+    <span className="font-cooper-italic-tag">cosmos</span> of digital experiences.
+  </span>
+
+  {/* XS only (3 exact lines) */}
+  <span className="tagline-xs">
+    <span className="line">… a product futurist bringing</span>
+    <span className="line">
+      <span className="font-cooper-italic-tag">clarity</span> to the{" "}
+      <span className="font-cooper-italic-tag">cosmos</span> of
+    </span>
+    <span className="line">digital experiences.</span>
+  </span>
 </p>
+
 
         {/* Info columns */}
         <div className="hero-info">

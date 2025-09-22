@@ -112,3 +112,31 @@ html.cursor-native .custom-cursor { opacity: 0 !important; }
   .custom-cursor { display: none !important; }
   html, body, * { cursor: auto !important; }
 }
+/* Native mode baseline = arrow */
+html.cursor-native body { cursor: default !important; }
+
+/* Hand on anything clickable (and their children/media) */
+html.cursor-native a[href],
+html.cursor-native a[href] *,
+html.cursor-native button,
+html.cursor-native button *,
+html.cursor-native [role="button"],
+html.cursor-native input[type="button"],
+html.cursor-native input[type="submit"],
+html.cursor-native label[for],
+html.cursor-native summary,
+html.cursor-native .project-card-link,
+html.cursor-native .project-card-link *,
+html.cursor-native .project-thumbnail,
+html.cursor-native .project-thumbnail *,
+html.cursor-native .thumbnail-media,
+html.cursor-native .thumbnail-overlay,
+html.cursor-native .nav-link,
+html.cursor-native .nav-link *,
+html.cursor-native .nav-link-wrapper,
+html.cursor-native .menu-icon {
+  cursor: pointer !important;
+}
+
+/* Keep the custom cursor UI hidden in native mode */
+html.cursor-native .custom-cursor { display: none !important; }

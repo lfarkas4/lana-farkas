@@ -10,10 +10,12 @@ const AboutStuff = () => {
           ... a personal haiku <span className="cooper-spotify-heading">about me</span> ⊹
         </h3>
         <div className="haiku-text">
-          <p>Draws lines, mind wanders</p>
-          <p>she drifts where ideas bloom wide</p>
-          <p>caught in a daydream <span className="cooper-symbols">✶⋆.˚</span></p>
-        </div>
+  <p>Draws lines, mind wanders</p>
+  <p>
+    she drifts where <span className="xs-line">ideas bloom wide</span>
+  </p>
+  <p>caught in a daydream <span className="cooper-symbols">✶⋆.˚</span></p>
+</div>
       </section>
 
       {/* Photocards Section */}
@@ -21,7 +23,7 @@ const AboutStuff = () => {
         <div className="floating-card-grid">
           <div className="floating-card rotate-plant offset-left">
             <div className="clip-wrapper">
-              <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+              <img src="/assets/clip.png" alt="clip" className="clip-img" />
             </div>
             <div className="frame hover-label" data-label="propogation nation ❘">
               <img src="/assets/pilea.jpg" alt="Card 1" className="floating-img" />
@@ -31,7 +33,7 @@ const AboutStuff = () => {
 
           <div className="floating-card rotate-toast offset-mid">
             <div className="clip-wrapper2">
-              <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+              <img src="/assets/clip.png" alt="clip" className="clip-img" />
             </div>
             <div className="frame hover-label" data-label="the best toast eva ＊">
               <img src="/assets/toast.jpg" alt="Card 2" className="floating-img" />
@@ -41,7 +43,7 @@ const AboutStuff = () => {
 
           <div className="floating-card rotate-craft offset-right">
             <div className="clip-wrapper3">
-              <img src="/assets/clip.svg" alt="clip" className="clip-img" />
+              <img src="/assets/clip.png" alt="clip" className="clip-img" />
             </div>
             <div className="frame hover-label" data-label="my kind of therapy ✂">
               <img src="/assets/craft.jpg" alt="Card 3" className="floating-img" />
@@ -53,9 +55,11 @@ const AboutStuff = () => {
 
       {/* Spotify Section */}
       <div className="spotify-block">
-        <h3 className="extras-intro">
-          ... and here's a few tunes to <span className="cooper-spotify-heading">remember me by</span> ⊹
-        </h3>
+      <h3 className="extras-intro">
+  <span className="xs-hide">... and here's a few tunes to </span>
+  <span className="xs-only">... a few tunes to </span>
+  <span className="cooper-spotify-heading">remember me by</span> ⊹
+</h3>
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">
             <iframe

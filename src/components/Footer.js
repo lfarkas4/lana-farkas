@@ -39,7 +39,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-credit">
-        built with ♥ & code © {new Date().getFullYear()} Lana Farkas.
+        built with <span className="text-heart" aria-hidden="true">&#x2665;&#xFE0E;</span> &amp; code © {new Date().getFullYear()} Lana Farkas.
       </div>
     </footer>
   );

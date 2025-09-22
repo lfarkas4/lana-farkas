@@ -68,7 +68,7 @@
   top: 16.5%; /* Adjusted to work within padding */
   left: 30%;
   transform: translate(-50%, -50%) rotate(0.9deg);
-  width: 82%; /* Reduced size to fit within wrapper */
+  width: 88%; /* Reduced size to fit within wrapper */
   height: auto;
   pointer-events: none;
   z-index: 2;
@@ -102,7 +102,7 @@
 }
 
 .light-bold {
-  font-weight: 450;
+  font-weight: 500 !important;
 }
 
 .about-bio {
@@ -518,7 +518,7 @@
   }
   
   .about-photo-wrapper {
-    width: clamp(200px, 60vw, 260px);
+    width: clamp(200px, 80vw, 260px);
     padding: 25px 8px 8px 8px;
     margin-top: 30px;
   }
@@ -532,31 +532,33 @@
   }
   
   .about-heading {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     line-height: 1.45;
     margin-bottom: 20px;
   }
   
   .cooper-tagline {
-    font-family: font-cooperlight;
-    letter-spacing: 1px;
-    font-size: 1.175rem;
+    @include tokens.type-coop-display2-bold;
+    font-size: 1.45rem;
+    line-height: 1.5px;
   }
   
   .about-bio {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     line-height: 1.65;
+    font-weight: 400 !important;
   }
   
   .about-contact-block {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 15px;
     margin-top: 35px;
   }
   
   .about-chat-message {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 400 !important;
   }
   
   .about-icons img {
@@ -564,25 +566,37 @@
   }
 
   
-  /* Smallest sliding roles */
-  .sliding-roles {
-    height: 1.21em;
+  /* Exact, single-source-of-truth row height for mobile */
+.sliding-roles {
+  --step: 1.325em;            /* tweak this to taste */
+  height: var(--step);
+  line-height: var(--step);
+}
+
+/* each item block matches the viewport height */
+.roles-wrapper span {
+  height: var(--step);
+  line-height: var(--step);
+}
+
+/* use a mobile-specific keyframes so we don't fight the desktop one */
+.roles-wrapper { animation-name: slideRolesMobile; }
+
+/* if you have 4 roles, we move 4 exact steps with short holds */
+@keyframes slideRolesMobile {
+  0%,   20% { transform: translateY(0); }
+  25%,  45% { transform: translateY(calc(-1 * var(--step))); }
+  50%,  70% { transform: translateY(calc(-2 * var(--step))); }
+  75%,  95% { transform: translateY(calc(-3 * var(--step))); }
+  100%      { transform: translateY(calc(-4 * var(--step))); } /* 4 roles */
+}
+
+  /* Hide the curved text overlay and tighten top padding on the photo */
+  .curved-text-svg { display: none !important; }
+
+  .about-photo-wrapper {
+    /* remove the extra top padding you added to make room for the curve */
+    padding: 0px 0px 0px 0px;
   }
   
-  .roles-wrapper span {
-    height: 1.1em;
-    line-height: 1.1em;
-  }
-  
-  @keyframes slideRoles {
-    0% { transform: translateY(0); }
-    20% { transform: translateY(0); }
-    25% { transform: translateY(-1.1em); }
-    45% { transform: translateY(-1.1em); }
-    50% { transform: translateY(-2.2em); }
-    70% { transform: translateY(-2.2em); }
-    75% { transform: translateY(-3.3em); }
-    95% { transform: translateY(-3.3em); }
-    100% { transform: translateY(-4.4em); }
-  }
 }

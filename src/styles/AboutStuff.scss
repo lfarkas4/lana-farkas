@@ -305,6 +305,15 @@
   .floating-card      { --cardW: clamp(175px, 70cqw, 240px); }
   .clip-img           { width: clamp(80px, calc(var(--cardW) * 0.48), 130px); }
 }
+/* Show/hide helpers for XS and below */
+.xs-only { display: none; }
+.xs-hide { display: inline; }
+
+@media (max-width: #{tokens.$xs_breakpoint}) {
+  .xs-only { display: inline; }
+  .xs-hide { display: none !important; }
+}
+
 
 /* =========================================================
    Type tweaks to match AboutTop at smaller sizes
@@ -336,22 +345,33 @@
   }
 }
 @media (max-width: #{tokens.$xs_breakpoint}) {
-  .extras-intro           { font-size: 0.9rem; margin-bottom: 25px;}
-  .cooper-spotify-heading { font-size: 1rem; }
-  .haiku-text             { font-size: 1.25rem; letter-spacing: 1px;}
+  .extras-intro           { font-size: 1rem; margin-bottom: 25px;}
+  .cooper-spotify-heading {     @include tokens.type-coop-display-mid;
+    font-size: 1.1rem; letter-spacing: 0.75px;}
+  .haiku-text             { @include tokens.type-coop-display2-bold; font-size: 1.45rem; letter-spacing: 1px;}
   .haiku-section { margin-bottom: 100px; }
   .floating-caption { 
-    font-size: 1rem !important; 
+    @include tokens.type-coop-display2-bold; font-size: 0.95rem !important; letter-spacing: 0.75px;
   }
+  .spotify-trapezoid { gap: 18px; }
+  /* force “ideas bloom wide” onto its own line only on phones */
+.haiku-text .xs-line { display: block; }
+
+/* (optional) tighten the vertical rhythm a touch */
+.haiku-text { line-height: 1.55; }
+.haiku-text p { margin: -3px 0; }
+
 }
 @media (max-width: #{tokens.$xxs_breakpoint}) {
-  .extras-intro           { font-size: 0.85rem; margin-bottom: 20px;}
-  .cooper-spotify-heading { font-size: 0.925rem; }
-  .haiku-text             { font-size: 1.10rem; letter-spacing: 0.8px;}
-  .haiku-section { margin-bottom: 90px; }
+  .extras-intro           { font-size: 1rem; margin-bottom: 25px;}
+  .cooper-spotify-heading {     @include tokens.type-coop-display2-bold;
+    font-size: 1.1rem; letter-spacing: 0.75px;}
+  .haiku-text             { @include tokens.type-coop-display2-bold; font-size: 1.45rem; letter-spacing: 1px;}
+  .haiku-section { margin-bottom: 100px; }
   .floating-caption { 
-    font-size: 0.95rem !important; 
+    @include tokens.type-coop-display2-bold; font-size: 0.95rem !important; letter-spacing: 0.75px;
   }
+  .spotify-trapezoid { gap: 18px; }
 }
 
 /* =========================================================

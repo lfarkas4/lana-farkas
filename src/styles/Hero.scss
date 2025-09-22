@@ -250,6 +250,7 @@
     padding: 0px 5vw 50px;
   }
   .font-cooper-italic-hello {
+    @include tokens.type-coop-display2-bold;
     font-size: 1.45rem;
   }
   .hero-title {
@@ -257,12 +258,14 @@
     margin-bottom: 35px;
   }
   .hero-tagline {
-    font-size: 0.85rem;
+    font-size: 1rem;
     margin-top: 55px;
     margin-bottom: -10px;
   }
   .font-cooper-italic-tag {
-    font-size: 0.9rem;
+    @include tokens.type-coop-display2-bold;
+    font-size: 1.1rem; 
+    letter-spacing: 0.75px;
   }
   .hero-info {
     flex-direction: column;
@@ -274,9 +277,46 @@
     text-align: center;
   }
   .hero-column h4 {
-    font-size: 0.9rem;
+    @include tokens.type-coop-display2-bold;
+    font-size: 0.95rem !important; 
+    letter-spacing: 0.75px;
   }
   .hero-column p {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    font-weight: 400 !important;
   }
+}
+.xs-break { display: none; }
+
+/* default: show desktop/tablet version, hide XS version */
+.hero-tagline .tagline-gtxs { display: inline; }
+.hero-tagline .tagline-xs   { display: none; }
+
+/* XS and below: swap to the 3-line version and lock equal line height */
+@media (max-width: #{tokens.$xs_breakpoint}) {
+  .hero-tagline {
+    --lh: 1.45rem;           /* tweak to taste */
+    line-height: var(--lh);
+    max-width: 28ch;        /* optional for nicer rag */
+    margin-inline: auto;
+  }
+
+  .hero-tagline .tagline-gtxs { display: none; }
+  .hero-tagline .tagline-xs   { display: block; }
+
+  .hero-tagline .tagline-xs .line {
+    display: block;
+    line-height: var(--lh);  /* keeps lines equal even with italic spans */
+  }
+
+  .hero-tagline .tagline-xs .line + .line { margin-top: 0.15rem; } /* tiny gap */
+  .hero-tagline .font-cooper-italic-tag { line-height: var(--lh); } /* normalize */
+}
+
+.hero,
+.hero-title,
+.hero-tagline {
+  cursor: default;      /* avoid I-beam */
+  user-select: none;    /* optional, stops text highlight */
 }

@@ -8,7 +8,7 @@ const About = () => {
         <div className="about-wrapper">
           <div className="about-photo-wrapper">
             <img
-              src="/assets/lana-about.svg"
+              src="/assets/lana-about.png"
               alt="Lana"
               className="about-photo"
             />

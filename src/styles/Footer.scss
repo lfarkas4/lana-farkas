@@ -244,11 +244,19 @@
   }
   .footer-credit {
     font-size: 0.65rem;
+    font-weight: 400;
   }
   .footer-thanks {
-    font-size: 1.1rem;
+    @include tokens.type-coop-display2-bold;
+    font-size: 1.1rem; 
+    letter-spacing: 0.75px;
   }
   .footer-message {
-    font-size: 0.75rem !important;
+    font-size: 0.8rem;
+    font-weight: 400 !important;
   }
+}
+.text-heart {
+  font-variant-emoji: text; // Safari/iOS supports this
+  font-family: inherit;     // don’t pull in Apple Color Emoji here
 }

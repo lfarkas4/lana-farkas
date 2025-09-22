@@ -93,16 +93,20 @@
   border-radius: 12px;
   cursor: pointer;
 }
-.project-thumbnail:hover {
-  cursor: none;
-}
-.project-thumbnail:hover .thumbnail-media {
+/* Hover anywhere on the card -> animate the media */
+.project-card-link:hover .thumbnail-media,
+.project-card-link:focus-visible .thumbnail-media {
   transform: scale(1);
-  filter: brightness(0.95);
+  filter: brightness(0.92);
 }
-.project-card-link:hover .thumbnail-overlay {
+
+/* Keep overlay behavior consistent too (optional) */
+.project-card-link:hover .thumbnail-overlay,
+.project-card-link:focus-visible .thumbnail-overlay {
   opacity: 1;
 }
+
+html:not(.cursor-native) .project-thumbnail:hover { cursor: none; }
 .thumbnail-overlay {
   position: absolute;
   top: 0;
@@ -402,20 +406,33 @@
     padding: 6px 9px;
   }
   .project-title {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+    margin-top: 14px;
+    line-height: 28px;
   }
   .project-description {
-    font-size: 0.65rem;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    font-weight: 400 !important;
   }
   .mini-title {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    line-height: 28px;
   }
   .mini-description {
-    font-size: 0.65rem;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    font-weight: 400 !important;
   }
   .section-title {
-    font-size: 1rem;
+    @include tokens.type-coop-display2-bold;
+    font-size: 1.1rem; 
+    letter-spacing: 0.75px;
     gap: 6px;
+    margin-bottom: -10px;
   }
   .section-arrow {
     height: 0.9rem;
@@ -423,3 +440,4 @@
 }
 
 
+html:not(.cursor-native) .project-thumbnail:hover { cursor: none; }
