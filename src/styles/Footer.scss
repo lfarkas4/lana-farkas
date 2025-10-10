@@ -1,262 +1,323 @@
-@use './partials/tokens';
+/* ================================================================
+   FOOTER
+   Site-wide footer with salutation, contact, and credit
+   ================================================================ */
+   @use './partials/tokens' as tokens;
 
-/* === footer main content === */
-.footer-main {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 60px 0 70px;
-}
-.footer-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start; // top aligns blocks left and right
-  width: 100%;
-}
-.footer {
-  margin-top: 96px;
-  padding: 0px 64px 25px;
-  position: relative;
-  z-index: 1;
-}
-
-/* === left footer block === */
-.footer-salutation {
-  display: flex;
-  flex-direction: column;
-  gap: 17px;
-}
-.footer-thanks {
-  @include tokens.type-coop-display2;
-  color: tokens.$prisec;
-}
-.footer-travels {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 360 !important;
-  font-style: italic;
-  color: rgba(240, 240, 240, 0.85);
-}
-
-/* === right footer block === */
-.footer-contact {
-  display: flex;
-  flex-direction: column; // stack icons over message on desktop
-  align-items: flex-end;
-  gap: 17px;
-}
-.footer-icons {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-.footer-icons img {
-  width: 28px;
-  display: block;
-  height: auto;
-  transition: filter 0.175s ease;
-}
-.footer-icons img[alt="Email"] {
-  transform: translateY(2.65px);
-}
-.footer-icons img:hover {
-  filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
-}
-.footer-message {
-  @include tokens.type-mont-footer;
-  color: tokens.$primary;
-  line-height: 1.5;
-  white-space: nowrap;
-}
-.footer-credit {
-  width: 100%;
-  @include tokens.type-mont-credit;
-  color: tokens.$tertiary;
-  white-space: nowrap;
-  line-height: 1.25;
-  text-align: center;
-}
-
-
-
-/* === RESPONSIVENESS === */
-/* ==========================
-   MD - LG: 465px – 625px
-========================== */
-@media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
-  .footer-thanks {
-    font-size: 1.45rem;
-  }
-  .footer-travels {
-    font-size: 0.95rem;
-  }
-  .footer-message {
-    font-size: 0.95rem;
-  }
-  .footer-icons img {
-    width: 27.5px;
-  }
-  .footer-credit {
-    font-size: 0.7rem;
-  }
-}
-
-/* ==========================
-   SM - MD: 626px – 728px
-========================== */
-@media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
-  .footer-main {
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
-    padding: 30px 0 75px;
-  }
-  .footer-line {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-  .footer-salutation {
-    align-items: center;
-  }
-  .footer-travels-wrapper {
-    display: none;
-  }
-  .footer-contact {
-    display: flex;
-    flex-direction: row; // inline like About
-    align-items: center; // align icons and text middle
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px; // match About contact block
-  }
-  .footer-icons {
-    display: flex;
-    align-items: center; // align icon bottoms with text baseline
-    gap: 14px;
-    transform: translateY(-3px);
-  }
-  .footer-icons img {
-    width: 27px;
-  }
-  .footer-message {
-    font-size: 1.05rem;
-    align-self: center; // ensure alignment within flex row
-  }
-  .footer-credit {
-    font-size: 0.75rem;
-  }
-  .footer-thanks {
-    font-size: 1.55rem;
-  }
-}
-
-// /* ==========================
-//    XS - SM: 465px – 625px
-// ========================== */
-@media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
-  .footer-main {
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
-    padding: 25px 0 70px;
-  }
-  .footer-line {
-    flex-direction: column;
-    align-items: center;
-    gap: 26px;
-  }
-  .footer-salutation {
-    align-items: center;
-  }
-  .footer-travels-wrapper {
-    display: none;
-  }
-  .footer-contact {
-    display: flex;
-    flex-direction: row; // inline same as About
-    align-items: center; // icons + message vertically aligned
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px; // slight tighter spacing on XS–SM
-  }
-  .footer-icons {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    transform: translateY(-3px);
-  }
-  .footer-icons img {
-    width: 27px;
-  }
-  .footer-message {
-    font-size: 0.95rem; // scale slightly smaller
-  }
-  .footer-credit {
-    font-size: 0.65rem;
-  }
-  .footer-thanks {
-    font-size: 1.4rem;
-  }
-}
-
-
-// /* ==========================
-//    XS and below: ≤ 464px
-// ========================== */
-@media (max-width: #{tokens.$xs_breakpoint}) {
-  .footer-main {
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
-    padding: 0px 0 65px;
-  }
-  .footer {
-    padding: 0px 50px 25px;
-  }
-  .footer-line {
-    flex-direction: column;
-    align-items: center;
-    gap: 21px;
-  }
-  .footer-salutation {
-    align-items: center;
-  }
-  .footer-travels-wrapper {
-    display: none;
-  }
-  .footer-contact {
-    display: flex;
-    flex-direction: row; // inline same as About
-    align-items: center; // icons + message vertically aligned
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 14px; // slight tighter spacing on XS–SM
-  }
-  .footer-icons {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    transform: translateY(-3px);
-  }
-  .footer-icons img {
-    width: 20px;
-  }
-  .footer-credit {
-    font-size: 0.65rem;
-    font-weight: 400;
-  }
-  .footer-thanks {
-    @include tokens.type-coop-display2-bold;
-    font-size: 1.1rem; 
-    letter-spacing: 0.75px;
-  }
-  .footer-message {
-    font-size: 0.8rem;
-    font-weight: 400 !important;
-  }
-}
-.text-heart {
-  font-variant-emoji: text; // Safari/iOS supports this
-  font-family: inherit;     // don’t pull in Apple Color Emoji here
-}
+   /* ================================================================
+      TABLE OF CONTENTS
+      1. Footer Container
+      2. Left Block (Salutation & Travels)
+      3. Right Block (Contact Icons & Message)
+      4. Credit Line
+      5. Utilities
+      6. Responsive Breakpoints (Desktop → Mobile)
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. FOOTER CONTAINER
+      ================================================================ */
+   .footer {
+     margin-top: tokens.$space-3xl;
+     padding: 0 tokens.$space-xl tokens.$space-sm;
+     position: relative;
+     z-index: 1;
+   }
+   
+   .footer-main {
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+     padding: 60px 0 70px;
+   }
+   
+   .footer-line {
+     display: flex;
+     justify-content: space-between;
+     align-items: flex-start;
+     width: 100%;
+   }
+   
+   
+   /* ================================================================
+      2. LEFT BLOCK (Salutation & Travels)
+      ================================================================ */
+   .footer-salutation {
+     display: flex;
+     flex-direction: column;
+     gap: 17px;
+   }
+   
+   .footer-thanks {
+     @include tokens.type-coop-display2;
+     color: tokens.$prisec;
+   }
+   
+   .footer-travels {
+     font-family: 'Montserrat', sans-serif;
+     font-size: 1rem;
+     font-weight: 360 !important;
+     font-style: italic;
+     color: rgba(240, 240, 240, 0.85);
+   }
+   
+   
+   /* ================================================================
+      3. RIGHT BLOCK (Contact Icons & Message)
+      ================================================================ */
+   .footer-contact {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-end;
+     gap: 17px;
+   }
+   
+   .footer-icons {
+     display: flex;
+     gap: 15px;
+     align-items: center;
+   }
+   
+   .footer-icons img {
+     width: 28px;
+     display: block;
+     height: auto;
+     transition: filter 0.175s ease;
+     
+     &:hover {
+       filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
+     }
+   }
+   
+   /* Email icon optical alignment */
+   .footer-icons img[alt="Email"] {
+     transform: translateY(2.65px);
+   }
+   
+   .footer-message {
+     @include tokens.type-mont-footer;
+     color: tokens.$primary;
+     line-height: 1.5;
+     white-space: nowrap;
+   }
+   
+   
+   /* ================================================================
+      4. CREDIT LINE
+      ================================================================ */
+   .footer-credit {
+     width: 100%;
+     @include tokens.type-mont-credit;
+     color: tokens.$tertiary;
+     white-space: nowrap;
+     line-height: 1.25;
+     text-align: center;
+   }
+   
+   
+   /* ================================================================
+      5. UTILITIES
+      ================================================================ */
+   .text-heart {
+     font-variant-emoji: text;
+     font-family: inherit;
+   }
+   
+   
+   /* ================================================================
+      6. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
+      ================================================================ */
+   
+   /* LG: 768px – 991px (Tablets) */
+   @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
+     .footer-thanks {
+       font-size: 1.45rem;
+     }
+   
+     .footer-travels {
+       font-size: 0.95rem;
+     }
+   
+     .footer-message {
+       font-size: 0.95rem;
+     }
+   
+     .footer-icons img {
+       width: 27.5px;
+     }
+   
+     .footer-credit {
+       font-size: 0.7rem;
+     }
+   }
+   
+   /* MD: 626px – 767px (Large phones) */
+   @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
+     .footer-main {
+       flex-direction: column;
+       align-items: center;
+       gap: 22px;
+       padding: tokens.$space-md 0 75px;
+     }
+   
+     .footer-line {
+       flex-direction: column;
+       align-items: center;
+       gap: tokens.$space-md;
+     }
+   
+     .footer-salutation {
+       align-items: center;
+     }
+   
+     /* Hide travels text on smaller screens */
+     .footer-travels-wrapper {
+       display: none;
+     }
+   
+     /* Contact switches to horizontal inline layout */
+     .footer-contact {
+       flex-direction: row;
+       align-items: center;
+       justify-content: center;
+       flex-wrap: wrap;
+       gap: 20px;
+     }
+   
+     .footer-icons {
+       gap: 14px;
+       transform: translateY(-3px);
+     }
+   
+     .footer-icons img {
+       width: 27px;
+     }
+   
+     .footer-message {
+       font-size: 1.05rem;
+       align-self: center;
+     }
+   
+     .footer-thanks {
+       font-size: 1.55rem;
+     }
+   
+     .footer-credit {
+       font-size: 0.75rem;
+     }
+   }
+   
+   /* SM: 465px – 625px (Medium phones) */
+   @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
+     .footer-main {
+       flex-direction: column;
+       align-items: center;
+       gap: 22px;
+       padding: tokens.$space-sm 0 70px;
+     }
+   
+     .footer-line {
+       flex-direction: column;
+       align-items: center;
+       gap: 26px;
+     }
+   
+     .footer-salutation {
+       align-items: center;
+     }
+   
+     .footer-travels-wrapper {
+       display: none;
+     }
+   
+     .footer-contact {
+       flex-direction: row;
+       align-items: center;
+       justify-content: center;
+       flex-wrap: wrap;
+       gap: tokens.$space-xs;
+     }
+   
+     .footer-icons {
+       gap: 13px;
+       transform: translateY(-3px);
+     }
+   
+     .footer-icons img {
+       width: 27px;
+     }
+   
+     .footer-message {
+       font-size: 0.95rem;
+     }
+   
+     .footer-thanks {
+       font-size: 1.4rem;
+     }
+   
+     .footer-credit {
+       font-size: 0.65rem;
+     }
+   }
+   
+   /* XS: ≤ 464px (Small phones) */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .footer {
+       padding: 0 50px tokens.$space-sm;
+     }
+   
+     .footer-main {
+       flex-direction: column;
+       align-items: center;
+       gap: 22px;
+       padding: 0 0 tokens.$space-lg;
+     }
+   
+     .footer-line {
+       flex-direction: column;
+       align-items: center;
+       gap: 21px;
+     }
+   
+     .footer-salutation {
+       align-items: center;
+     }
+   
+     .footer-travels-wrapper {
+       display: none;
+     }
+   
+     .footer-contact {
+       flex-direction: row;
+       align-items: center;
+       justify-content: center;
+       flex-wrap: wrap;
+       gap: 14px;
+     }
+   
+     .footer-icons {
+       gap: 9px;
+       transform: translateY(-3px);
+     }
+   
+     .footer-icons img {
+       width: 20px;
+     }
+   
+     .footer-thanks {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.1rem;
+       letter-spacing: 0.75px;
+     }
+   
+     .footer-message {
+       font-size: 0.8rem;
+       font-weight: 400 !important;
+     }
+   
+     .footer-credit {
+       font-size: 0.65rem;
+       font-weight: 400;
+     }
+   }

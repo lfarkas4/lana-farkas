@@ -1,322 +1,425 @@
-@use './partials/tokens'; // SCSS Example 
+/* ================================================================
+   HERO SECTION
+   Landing page hero with name, tagline, and info columns
+   ================================================================ */
+   @use './partials/tokens' as tokens;
 
-/* === HERO SECTION === */
-.hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 85vh;
-  padding: 16px 0 80px;
-}
+   /* ================================================================
+      TABLE OF CONTENTS
+      1. Container & Layout
+      2. Introduction Text (Hello, Name)
+      3. Tagline (Product Futurist)
+      4. Info Columns (Previous/Current)
+      5. Scroll Cue Animation
+      6. Entrance Animations
+      7. Responsive Breakpoints (Desktop → Mobile)
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. CONTAINER & LAYOUT
+      ================================================================ */
+   .hero {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     min-height: 85vh;
+     padding: tokens.$space-xs 0 tokens.$space-xxl;
+     
+     /* Prevent text selection for UI elements */
+     cursor: default;
+     user-select: none;
+   }
+   
+   
+   /* ================================================================
+      2. INTRODUCTION TEXT (Hello, Name)
+      ================================================================ */
+   .font-cooper-italic-hello {
+     @include tokens.type-coop-display1;
+     color: tokens.$prisec;
+   }
+   
+   .hero-title {
+     @include tokens.type-mont-display1;
+     color: tokens.$prisec;
+     
+     cursor: default;
+     user-select: none;
+   }
+   
+   
+   /* ================================================================
+      3. TAGLINE (Product Futurist)
+      ================================================================ */
+   .font-cooper-italic-tag {
+     @include tokens.type-coop-display2;
+     color: tokens.$prisec;
+   }
+   
+   .hero-tagline {
+     @include tokens.type-mont-display2;
+     color: tokens.$prisec;
+     line-height: 1.25;
+     margin: tokens.$space-xl auto tokens.$space-xs;
+     margin-bottom: -15px;
+     
+     cursor: default;
+     user-select: none;
+   }
+   
+   /* Responsive text swap: desktop vs mobile versions */
+   .hero-tagline .tagline-gtxs {
+     display: inline; /* Desktop version */
+   }
+   
+   .hero-tagline .tagline-xs {
+     display: none; /* Mobile version hidden by default */
+   }
+   
+   
+   /* ================================================================
+      4. INFO COLUMNS (Previous/Current)
+      ================================================================ */
+   .hero-info {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 100px;
+     margin-top: tokens.$space-lg;
+   }
+   
+   .hero-column {
+     text-align: center;
+   }
+   
+   .hero-column h4 {
+     @include tokens.type-coop-h1;
+     color: tokens.$prisec;
+     margin-bottom: 6px;
+   }
+   
+   .hero-column p {
+     @include tokens.type-mont-body;
+     color: tokens.$primary;
+     margin: 5px 0;
+   }
+   
+   /* Link hover animation */
+   .hero-column a {
+     color: tokens.$primary;
+     text-decoration: underline;
+     transition: filter 0.2s ease;
+     
+     &:hover {
+       filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
+     }
+   }
+   
+   
+   /* ================================================================
+      5. SCROLL CUE ANIMATION
+      ================================================================ */
+   .scroll-cue {
+     margin-top: 50px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   
+   .scroll-mouse {
+     width: 20px;
+     height: 32px;
+     border: 2px solid tokens.$primary;
+     border-radius: 14px;
+     display: flex;
+     justify-content: center;
+     align-items: flex-start;
+     box-sizing: border-box;
+     position: relative;
+   }
+   
+   .scroll-dot {
+     width: 4px;
+     height: 4px;
+     background-color: tokens.$prisec;
+     border-radius: 50%;
+     position: absolute;
+     top: 7px;
+     animation: scrollBounce 1.8s ease-in-out infinite;
+   }
+   
+   @keyframes scrollBounce {
+     0% {
+       transform: translateY(0) scale(0);
+       opacity: 0;
+     }
+     5% {
+       transform: translateY(0) scale(1);
+       opacity: 1;
+     }
+     50% {
+       transform: translateY(10px) scale(1);
+       opacity: 1;
+     }
+     80% {
+       transform: translateY(10px) scale(0);
+       opacity: 0;
+     }
+     100% {
+       transform: translateY(0) scale(0);
+       opacity: 0;
+     }
+   }
+   
+  /* ================================================================
+     6. ENTRANCE ANIMATIONS
+     ================================================================ */
 
-/* === hello, my name is === */
-.font-cooper-italic-hello {
-  @include tokens.type-coop-display1;
-  color: tokens.$primary;
-}
-.hero-title {
-  @include tokens.type-mont-display1;
-  color: tokens.$primary;
-}
-
-/* === a product futurist === */
-.font-cooper-italic-tag {
-  @include tokens.type-coop-display2;
-  color: tokens.$primary;
-}
-.hero-tagline {
-  @include tokens.type-mont-display2;
-  color: tokens.$primary;
-  line-height: 1.25;
-  margin: 67px auto 15px;
-  margin-bottom: -15px;
-}
-
-
-/* === prev/current === */
-.hero-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 100px;
-  margin-top: 40px;
-}
-.hero-column h4 {
-  @include tokens.type-coop-h1;
-  color: tokens.$primary;
-  margin-bottom: 6px;
-}
-.hero-column p {
-  @include tokens.type-mont-body;
-  color: tokens.$primary;
-  margin: 5px 0; // can switch for line height
-}
-.hero-column a { // HOVER ANIMATION FOR LINKS
-  color: tokens.$primary;
-  text-decoration: underline;
-  transition: filter 0.2s ease;
-}
-.hero-column a:hover {
-  filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
-}
-
-/* === scroll cue === */
-.scroll-cue {
-  margin-top: 50px; // doesn't exactly match with about
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.scroll-mouse {
-  width: 20px;
-  height: 32px;
-  border: 2px solid tokens.$prisaac;
-  border-radius: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  box-sizing: border-box;
-  position: relative;
-}
-.scroll-dot {
-  width: 4px;
-  height: 4px;
-  background-color: tokens.$primary;
-  border-radius: 50%;
-  position: absolute;
-  top: 7px; // aligned to top of capsule
-  animation: scrollBounce 1.8s ease-in-out infinite;
-}
-
-/* bouncing animation for scroll cue */
-@keyframes scrollBounce {
-  0% {
-    transform: translateY(0) scale(0);
-    opacity: 0;
-  }
-  5% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(10px) scale(1);
-    opacity: 1;
-  }
-  80% {
-    transform: translateY(10px) scale(0);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0) scale(0);
-    opacity: 0;
-  }
-}
-
-
-
-/* === RESPONSIVENESS === */
-/* ==========================
-   XXL and above: ≥ 1600px
-========================== */
-@media (min-width: #{tokens.$xxl_breakpoint}) {
-  .hero {
-    padding: 16px 5vw 70px;
-  }
-}
-
-/* ==========================
-   XL - XXL: 1200px – 1599px
-========================== */
-@media (max-width: #{tokens.$xxl_breakpoint}) and (min-width: #{tokens.$xl_breakpoint}) {
-  .hero {
-    padding: 16px 5vw 70px;
-  }
-}
-
-/* ==========================
-   LG - XL: 992px – 1199px
-========================== */
-@media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
-  .hero {
-    padding: 16px 5vw 70px;
-  }
-}
-
-/* ==========================
-   MD - LG: 768px – 991px
-========================== */
-@media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
-  .hero {
-    padding: 0px 5vw 60px;
-  }
-  .font-cooper-italic-hello {
-    font-size: 1.8rem;
-  }
-  .hero-title {
-    font-size: 1.65rem;
-    margin-bottom: 30px;
-  }
-  .hero-tagline {
-    font-size: 1.2rem;
-    margin-bottom: -10px;
-  }
-  .font-cooper-italic-tag {
-    font-size: 1.3rem;
-  }
-  .hero-info {
-    gap: 60px;
-  }
-  .hero-column {
-    text-align: center;
-  }
-}
-
-/* ==========================
-   SM - MD: 600px – 767px
-========================== */
-@media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
-  .hero {
-    padding: 0px 5vw 60px;
-  }
-  .font-cooper-italic-hello {
-    font-size: 1.8rem;
-  }
-  .hero-title {
-    font-size: 1.65rem;
-    margin-bottom: 30px;
-  }
-  .hero-tagline {
-    font-size: 1.2rem;
-    margin-bottom: -10px;
-  }
-  .font-cooper-italic-tag {
-    font-size: 1.3rem;
-  }
-  .hero-info {
-    gap: 60px;
-  }
-  .hero-column {
-    text-align: center;
-  }
-}
-
-/* ==========================
-   XS - SM: 425px – 599px
-========================== */
-@media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
-  .hero {
-    padding: 0px 5vw 50px;
-  }
-  .font-cooper-italic-hello {
-    font-size: 1.6rem;
-  }
-  .hero-title {
-    font-size: 1.45rem;
-    margin-bottom: 30px;
-  }
-  .hero-tagline {
-    font-size: 1rem;
-    margin-top: 60px;
-    margin-bottom: -10px;
-  }
-  .font-cooper-italic-tag {
-    font-size: 1.15rem;
-  }
-  .hero-info {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .hero-column {
-    text-align: center;
-  }
-  .hero-column h4 {
-    font-size: 1.1rem;
-  }
-  .hero-column p {
-    font-size: 0.8rem;
-  }
-}
-
-
-/* ==========================
-   XXS - XS: 375px – 424px
-========================== */
-@media (max-width: #{tokens.$xs_breakpoint}) {
-  .hero {
-    padding: 0px 5vw 50px;
-  }
-  .font-cooper-italic-hello {
-    @include tokens.type-coop-display2-bold;
-    font-size: 1.45rem;
-  }
-  .hero-title {
-    font-size: 1.3rem;
-    margin-bottom: 35px;
-  }
-  .hero-tagline {
-    font-size: 1rem;
-    margin-top: 55px;
-    margin-bottom: -10px;
-  }
-  .font-cooper-italic-tag {
-    @include tokens.type-coop-display2-bold;
-    font-size: 1.1rem; 
-    letter-spacing: 0.75px;
-  }
-  .hero-info {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 60px;
-  }
-  .hero-column {
-    text-align: center;
-  }
-  .hero-column h4 {
-    @include tokens.type-coop-display2-bold;
-    font-size: 0.95rem !important; 
-    letter-spacing: 0.75px;
-  }
-  .hero-column p {
-    font-size: 0.8rem;
-    line-height: 1.65;
-    font-weight: 400 !important;
-  }
-}
-.xs-break { display: none; }
-
-/* default: show desktop/tablet version, hide XS version */
-.hero-tagline .tagline-gtxs { display: inline; }
-.hero-tagline .tagline-xs   { display: none; }
-
-/* XS and below: swap to the 3-line version and lock equal line height */
-@media (max-width: #{tokens.$xs_breakpoint}) {
-  .hero-tagline {
-    --lh: 1.45rem;           /* tweak to taste */
-    line-height: var(--lh);
-    max-width: 28ch;        /* optional for nicer rag */
-    margin-inline: auto;
+  /* Fade in and slide up animation */
+  @keyframes fadeInUp {
+      from {
+       opacity: 0;
+       transform: translateY(5px);
+      }
+      to {
+       opacity: 1;
+       transform: translateY(0);
+      }
   }
 
-  .hero-tagline .tagline-gtxs { display: none; }
-  .hero-tagline .tagline-xs   { display: block; }
-
-  .hero-tagline .tagline-xs .line {
-    display: block;
-    line-height: var(--lh);  /* keeps lines equal even with italic spans */
+  /* Initial state - elements hidden before animation */
+    .animate-fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
-  .hero-tagline .tagline-xs .line + .line { margin-top: 0.15rem; } /* tiny gap */
-  .hero-tagline .font-cooper-italic-tag { line-height: var(--lh); } /* normalize */
-}
+  /* No animation - elements immediately visible */
+    .no-animation {
+      opacity: 1 !important;
+      animation: none !important;
+      transform: translateY(0) !important;
+  }
 
-.hero,
-.hero-title,
-.hero-tagline {
-  cursor: default;      /* avoid I-beam */
-  user-select: none;    /* optional, stops text highlight */
-}
+  /* Ensure smooth loading */
+    .hero-loaded .animate-fade-in {
+      animation-play-state: running;
+  }
+   
+   
+   /* ================================================================
+      7. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
+      ================================================================ */
+   
+   /* XXL: ≥ 1600px (Extra large desktops) */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .hero {
+       padding: tokens.$space-xs 5vw 70px;
+     }
+   }
+   
+   /* XL: 1200px – 1599px (Large desktops) */
+   @media (max-width: #{tokens.$xxl_breakpoint}) and (min-width: #{tokens.$xl_breakpoint}) {
+     .hero {
+       padding: tokens.$space-xs 5vw 70px;
+     }
+   }
+   
+   /* LG: 992px – 1199px (Small laptops) */
+   @media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
+     .hero {
+       padding: tokens.$space-xs 5vw 70px;
+     }
+   }
+   
+   /* MD: 768px – 991px (Tablets) */
+   @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
+     .hero {
+       padding: 0 5vw 60px;
+     }
+   
+     .font-cooper-italic-hello {
+       font-size: 1.8rem;
+     }
+   
+     .hero-title {
+       font-size: 1.65rem;
+       margin-bottom: tokens.$space-md;
+     }
+   
+     .hero-tagline {
+       font-size: 1.2rem;
+       margin-bottom: -10px;
+     }
+   
+     .font-cooper-italic-tag {
+       font-size: 1.3rem;
+     }
+   
+     .hero-info {
+       gap: 60px;
+     }
+   
+     .hero-column {
+       text-align: center;
+     }
+   }
+   
+   /* SM: 626px – 767px (Large phones) */
+   @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
+     .hero {
+       padding: 0 5vw 60px;
+     }
+   
+     .font-cooper-italic-hello {
+       font-size: 1.8rem;
+     }
+   
+     .hero-title {
+       font-size: 1.65rem;
+       margin-bottom: tokens.$space-md;
+     }
+   
+     .hero-tagline {
+       font-size: 1.2rem;
+       margin-bottom: -10px;
+     }
+   
+     .font-cooper-italic-tag {
+       font-size: 1.3rem;
+     }
+   
+     .hero-info {
+       gap: 60px;
+     }
+   
+     .hero-column {
+       text-align: center;
+     }
+   }
+   
+   /* XS: 465px – 625px (Medium phones) */
+   @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
+     .hero {
+       padding: 0 5vw 50px;
+     }
+   
+     .font-cooper-italic-hello {
+       font-size: 1.6rem;
+     }
+   
+     .hero-title {
+       font-size: 1.45rem;
+       margin-bottom: tokens.$space-md;
+     }
+   
+     .hero-tagline {
+       font-size: 1rem;
+       margin-top: 60px;
+       margin-bottom: -10px;
+     }
+   
+     .font-cooper-italic-tag {
+       font-size: 1.15rem;
+     }
+   
+     /* Info columns stack vertically */
+     .hero-info {
+       flex-direction: column;
+       align-items: center;
+       gap: 10px;
+     }
+   
+     .hero-column {
+       text-align: center;
+     }
+   
+     .hero-column h4 {
+       font-size: 1.1rem;
+     }
+   
+     .hero-column p {
+       font-size: 0.8rem;
+     }
+   }
+   
+   /* XS: ≤ 464px (Small phones) */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .hero {
+       padding: 0 5vw 50px;
+     }
+   
+     .font-cooper-italic-hello {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.4rem;
+     }
+   
+     .hero-title {
+       font-size: 1.3rem;
+       margin-bottom: 35px;
+     }
+   
+     .hero-tagline {
+       font-size: 1rem;
+       margin-top: 55px;
+       margin-bottom: -10px;
+       
+       /* Multi-line layout for XS */
+       --lh: 1.225rem;
+       line-height: var(--lh);
+       max-width: 28ch;
+       margin-inline: auto;
+     }
+   
+     .font-cooper-italic-tag {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1rem;
+       letter-spacing: 0.75px;
+       line-height: var(--lh);
+     }
+   
+     /* Swap to mobile text version */
+     .hero-tagline .tagline-gtxs {
+       display: none;
+     }
+   
+     .hero-tagline .tagline-xs {
+       display: block;
+     }
+   
+     .hero-tagline .tagline-xs .line {
+       display: block;
+       line-height: var(--lh);
+     }
+   
+     .hero-tagline .tagline-xs .line + .line {
+       margin-top: 0.15rem;
+     }
+   
+     /* Info columns stack */
+     .hero-info {
+       flex-direction: column;
+       align-items: center;
+       gap: 10px;
+       margin-bottom: 60px;
+     }
+   
+     .hero-column {
+       text-align: center;
+     }
+   
+     .hero-column h4 {
+       @include tokens.type-coop-display2-bold;
+       font-size: 0.95rem !important;
+       letter-spacing: 0.75px;
+     }
+   
+     .hero-column p {
+       font-size: 0.8rem;
+       line-height: 1.65;
+       font-weight: 400 !important;
+     }
+   }

@@ -1,60 +1,689 @@
-.project-detail-content {
-    flex: 1;
-    padding: 100px 80px 60px;
-    max-width: 900px;
-    margin: 0 auto;
-    color: rgb(230, 230, 230);
-    font-family: "Montserrat", sans-serif;
-  }
+/* ================================================================
+   PROJECT DETAIL PAGE
+   Individual case study page layout and styling
+   ================================================================ */
+   @use './partials/tokens' as tokens;
 
-  .project-detail-page {
-    background-color: #060f17;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 0;
-  }  
-  
-  .project-intro {
-    margin-bottom: 60px;
-  }
-  
-  .project-subtitle {
-    font-size: 1.2rem;
-    font-style: italic;
-    color: #aaa;
-    margin-bottom: 30px;
-  }
-  
-  .project-hero-media {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 50px;
-  }
-  
-  .project-section {
-    margin-bottom: 65px;
-  }
-  
-  .project-section h2 {
-    font-family: 'CooperLtBT-Italic', serif;
-    font-size: 1.5rem;
-    letter-spacing: 1.25px;
-    color: #f0f0f0;
-    margin-bottom: 16px;
-  }
-  
-  .project-section p,
-  .project-section ul {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #ccc;
-  }
-  
-  .project-image {
-    width: 100%;
-    border-radius: 12px;
-    margin-top: 24px;
-  }
-  
+   /* ================================================================
+      TABLE OF CONTENTS
+      1. Page Setup & Variables
+      2. Page Container
+      3. Hero Section
+      4. Meta Strip (Role, Team, Timeline, Tools)
+      5. Content Sections
+      6. Coming Soon Banner
+      7. Next Project Teaser & Scroll to Top
+      8. Responsive Breakpoints (Desktop → Mobile)
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. PAGE SETUP & VARIABLES
+      ================================================================ */
+   html {
+     scroll-behavior: smooth;
+   }
+   
+   :root {
+     /* Page gutters - can be replaced with tokens in the future */
+     --page-gutter-desktop: 15vw;
+     --page-gutter-tablet: 12vw;
+     --page-gutter-xs: 8vw;
+     
+     /* Meta row spacing */
+     --meta-inset-desktop: tokens.$space-sm;
+     --meta-inset-tablet: 20px;
+     --meta-inset-xs: tokens.$space-xs;
+   }
+   
+   
+   /* ================================================================
+      2. PAGE CONTAINER
+      ================================================================ */
+   .project-detail-page {
+     background: #040f11;
+     min-height: 100vh;
+   }
+   
+   .project-detail-content {
+     position: relative;
+     padding: tokens.$space-xxl var(--page-gutter-desktop) 110px;
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+   }
+   
+   
+   /* ================================================================
+      3. HERO SECTION
+      ================================================================ */
+   .pd-hero {
+     color: tokens.$prisec;
+     margin-top: 12px;
+   }
+   
+   /* Eyebrow (brand + category) */
+   .pd-hero__eyebrow {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     margin-bottom: 26px;
+     color: tokens.$primary;
+     @include tokens.type-mont-poj-body;
+     letter-spacing: 0.8px;
+   }
+   
+   .pd-hero__brand {
+     height: var(--brand-h, 18px);
+     width: auto;
+     max-height: tokens.$space-md;
+     opacity: 0.9;
+     display: inline-block;
+     vertical-align: middle;
+   }
+   
+   .pd-hero__brand-text {
+     opacity: 0.9;
+   }
+   
+   /* Title */
+   .pd-hero__title {
+     @include tokens.type-mont-poj-display1;
+     color: tokens.$prisec;
+     line-height: 1.22;
+     margin: 6px 0 18px;
+   }
+   
+   /* Subtitle */
+   .pd-hero__subtitle {
+     @include tokens.type-mont-poj-body;
+     color: tokens.$primary;
+     line-height: 1.6;
+     margin-bottom: tokens.$space-lg;
+   }
+   
+   /* Hero media (large image/video) */
+   .pd-hero__media {
+     width: 100%;
+     border-radius: 20px;
+     overflow: hidden;
+     margin: 18px 0 tokens.$space-lg;
+     background: transparent;
+     border: none;
+     padding: 0;
+   
+     img, video, canvas {
+       display: block;
+       width: 100%;
+       height: auto;
+       border-radius: inherit;
+     }
+   }
+   
+   
+   /* ================================================================
+      4. META STRIP (Role, Team, Timeline, Tools)
+      Stays 4 columns on desktop, 2 columns on smaller screens
+      ================================================================ */
+   .pd-meta {
+     width: 100%;
+     margin: 26px 0 60px;
+     padding: 10px 25px 55px;
+     border-top: none;
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     gap: tokens.$space-xl;
+   }
+   
+   .pd-meta__item {
+     min-width: 0;
+   }
+   
+   .pd-meta__heading {
+     @include tokens.type-mont-poj-display2-bold;
+     color: tokens.$prisec;
+     letter-spacing: 0.2px;
+     margin-bottom: 15px;
+   }
+   
+   .pd-meta__text {
+     @include tokens.type-mont-poj-body;
+     color: tokens.$primary;
+     line-height: 1.45;
+     max-width: 34ch;
+     white-space: normal;
+   }
+   
+   /* Tools icons */
+   .pd-tools {
+     display: flex;
+     align-items: center;
+     gap: tokens.$space-xs;
+     padding: 2px 0 0;
+     list-style: none;
+     margin: 0;
+   }
+   
+   .pd-tool {
+     width: tokens.$space-md;
+     height: tokens.$space-md;
+     display: grid;
+     place-items: center;
+   }
+   
+   .pd-tool__icon {
+     width: tokens.$space-md;
+     height: tokens.$space-md;
+     display: block;
+     object-fit: contain;
+     opacity: 0.9;
+     transition: filter 0.2s ease, transform 0.2s ease;
+   }
+   
+   .pd-tool__icon[alt="Notion"] {
+     transform: translateX(-1px);
+   }
+   
+   
+   /* ================================================================
+      5. CONTENT SECTIONS
+      Base styles - can be extended with specific components
+      ================================================================ */
+   .pd-section {
+     margin-top: tokens.$space-xxl;
+   }
+   
+   .pd-section__title {
+     @include tokens.type-coop-display2-bold;
+     color: tokens.$prisec;
+     margin-bottom: 12px;
+   }
+   
+   .pd-section__body {
+     @include tokens.type-mont-body;
+     color: tokens.$primary;
+     line-height: 1.65;
+     max-width: 70ch;
+   }
+   
+   
+   /* ================================================================
+      6. COMING SOON BANNER (Full-bleed light section)
+      ================================================================ */
+   .cs-section {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   
+     background: #E8EAF0;
+     border-top: 1px solid rgba(0,0,0,0.06);
+     border-bottom: 1px solid rgba(0,0,0,0.06);
+     padding: 75px 0 100px;
+   }
+   
+   .cs-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   
+     display: grid;
+     grid-template-columns: auto 1fr;
+     gap: 22px 50px;
+     align-items: center;
+   }
+   
+   .cs-badge {
+     width: 150px;
+     height: 150px;
+     border-radius: 999px;
+     background: #ffffff;
+     border: 1px solid rgba(0,0,0,0.08);
+     box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+     display: grid;
+     place-items: center;
+   }
+   
+   .cs-icon {
+     width: 102px;
+     height: auto;
+     display: block;
+   }
+   
+   .cs-copy {
+     display: grid;
+     gap: tokens.$space-2xs;
+   }
+   
+   .cs-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: rgba(14, 17, 23, 0.70);
+     margin-bottom: 15px;
+   }
+   
+   .cs-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #0E1117;
+   }
+   
+   
+   /* ================================================================
+      7. NEXT PROJECT TEASER & SCROLL TO TOP
+      ================================================================ */
+   .next-project-section {
+     position: relative;
+     margin-top: 100px;
+     margin-bottom: -180px;
+   }
+   
+   .np-wrap {
+     position: relative;
+   }
+   
+   .np-head {
+     position: relative;
+     margin-bottom: tokens.$space-lg;
+   }
+   
+   .section-title1 {
+     @include tokens.type-coop-h2;
+     color: tokens.$prisec;
+     font-size: 2.15rem;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+   }
+   
+   /* Project card - side by side on desktop */
+   .np-card {
+     display: grid;
+     grid-template-columns: 1.1fr 1.2fr;
+     gap: 60px;
+     align-items: center;
+     text-decoration: none;
+     color: inherit;
+     border-radius: tokens.$space-xs;
+     transition: all 0.3s ease;
+   }
+   
+   /* Next project thumbnail with hover effects */
+   .np-thumbnail {
+     width: 100%;
+     aspect-ratio: 4 / 3;
+     border-radius: 20px;
+     overflow: hidden;
+     position: relative;
+     border: 0.5px solid rgba(42, 42, 43, 0.35);
+     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+   }
+   
+   .np-card:hover .np-thumbnail {
+     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+   }
+   
+   .np-thumbnail-media {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     border-radius: 12px;
+     transform: scale(1.06);
+     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), filter 0.35s ease;
+   }
+   
+   .np-card:hover .np-thumbnail-media {
+     transform: scale(1);
+     filter: brightness(0.95);
+   }
+   
+   /* Next project content */
+   .np-content {
+     padding: 0 tokens.$space-2xs;
+   }
+   
+   /* Tags */
+   .np-tags.project-tags {
+     display: flex;
+     flex-wrap: wrap;
+     gap: tokens.$space-2xs 6px;
+     max-width: 100%;
+     margin-bottom: 0;
+   }
+   
+   .np-tags .tag {
+     background: tokens.$tag;
+     color: tokens.$prisec;
+     @include tokens.type-mont-body-bold;
+     padding: tokens.$space-2xs 15px;
+     border-radius: 10px;
+     margin-top: 5px;
+     transition: background 0.3s ease;
+   }
+   
+   .np-card:hover .np-tags .tag {
+     background: rgba(255, 255, 255, 0.1);
+   }
+   
+   .np-title.project-title {
+     @include tokens.type-mont-display2-bold;
+     color: tokens.$prisec;
+     margin-bottom: 18px;
+     margin-top: 22px;
+     transition: color 0.3s ease, opacity 0.3s ease;
+     opacity: 0.95;
+   }
+   
+   .np-card:hover .np-title.project-title {
+     color: tokens.$secondary;
+     opacity: 1;
+   }
+   
+   .np-desc.project-description {
+     @include tokens.type-mont-body;
+     color: tokens.$primary;
+     line-height: 1.5;
+     transition: color 0.3s ease, opacity 0.3s ease;
+     opacity: 0.95;
+   }
+   
+   .np-card:hover .np-desc.project-description {
+     color: tokens.$prisec;
+     opacity: 1;
+   }
+   
+   /* Scroll to top button */
+   .np-scrolltop {
+     position: absolute;
+     top: -40px;
+     right: -60px;
+     
+     display: inline-flex;
+     align-items: center;
+     gap: 6px;
+     
+     @include tokens.type-mont-footer;
+     color: tokens.$primary;
+     font-style: normal;
+     font-weight: 400;
+     letter-spacing: 0.8px;
+     
+     background: none;
+     border: none;
+     padding: 0;
+     
+     transition: color 0.275s ease, filter 0.275s ease, transform 0.275s ease;
+     cursor: pointer !important;
+     user-select: none;
+     pointer-events: auto;
+     z-index: 10;
+     
+     &:hover {
+       color: tokens.$secondary;
+       filter: brightness(1.5) drop-shadow(0 0 2px rgba(255, 255, 255, 0.25));
+       transform: translateY(-3px);
+     }
+   }
+   
+   .np-scrolltop__label {
+     pointer-events: none;
+   }
+   
+   .np-scrolltop__arrow {
+     font-size: tokens.$font-mont-italic-footer;
+     vertical-align: middle;
+     margin-top: 2px;
+     transform: rotate(-45deg);
+     transition: filter 0.275s ease;
+     pointer-events: none;
+   }
+   
+   .np-scrolltop:hover .np-scrolltop__arrow {
+     filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
+   }
+   
+   
+   /* ================================================================
+      8. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
+      ================================================================ */
+   
+   /* LG: ≤ 991px (Tablets & Small Laptops) */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     .pd-hero {
+       margin-top: 28px;
+     }
+   
+     .project-detail-content {
+       padding: 70px var(--page-gutter-tablet) 100px;
+     }
+   
+     .pd-hero__title {
+       font-size: 1.9rem;
+     }
+   
+     .pd-hero__subtitle {
+       font-size: 0.95rem;
+     }
+   
+     /* Meta stays 2 columns */
+     .pd-meta {
+       grid-template-columns: repeat(2, 1fr);
+       gap: 28px tokens.$space-lg;
+       padding: 10px 20px tokens.$space-lg;
+     }
+   
+     .cs-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .cs-title {
+       font-size: 1.5rem;
+     }
+   
+     .cs-eyebrow {
+       font-size: 1.1rem;
+       margin-bottom: 10px;
+     }
+   
+     .np-card {
+       gap: 35px;
+     }
+   
+     .np-scrolltop {
+       top: -60px;
+       right: -40px;
+     }
+   
+     .next-project-section {
+       margin-bottom: -120px;
+     }
+   
+     .section-title1 {
+       font-size: 2.15rem;
+     }
+   }
+   
+   /* MD: ≤ 767px (Tablets) */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+     .pd-hero {
+       margin-top: 28px;
+     }
+   
+     .cs-badge {
+       width: 100px;
+       height: 100px;
+     }
+   
+     .cs-icon {
+       width: 65px;
+     }
+   
+     .cs-section {
+       padding: 60px 0 tokens.$space-xxl;
+     }
+   
+     .pd-meta {
+       gap: 20px;
+       padding: 10px 10px tokens.$space-lg;
+     }
+   
+     /* Card stacks at MD breakpoint and below */
+     .np-card {
+       grid-template-columns: 1fr;
+       gap: 5px;
+     }
+   
+     .next-project-section {
+       margin-bottom: -75px;
+     }
+   
+     .section-title1 {
+       font-size: 2rem;
+       margin-bottom: -5px;
+     }
+   }
+   
+   /* SM: ≤ 625px (Large Phones) */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     .pd-hero {
+       margin-top: tokens.$space-lg;
+     }
+   
+     .project-detail-content {
+       padding: 60px var(--page-gutter-xs) 90px;
+     }
+   
+     .pd-hero__brand {
+       max-height: tokens.$space-sm;
+     }
+   
+     .pd-hero__title {
+       font-size: 1.75rem;
+     }
+   
+     .pd-hero__subtitle {
+       font-size: 0.9rem;
+       max-width: 56ch;
+     }
+   
+     /* Meta stays 2 columns even on phones */
+     .pd-meta {
+       gap: 20px;
+       padding: 10px 5px tokens.$space-lg;
+     }
+   
+     .pd-meta__heading {
+       font-size: 1.15rem;
+       letter-spacing: 0.15px;
+       margin-bottom: tokens.$space-2xs;
+     }
+   
+     .pd-tools {
+       gap: 12px;
+     }
+   
+     .pd-tool {
+       width: 28px;
+       height: 28px;
+     }
+   
+     .pd-tool__icon {
+       width: 22px;
+       height: 22px;
+     }
+   
+     .pd-section {
+       margin-top: 60px;
+     }
+   
+     .pd-section__body {
+       font-size: 0.85rem;
+     }
+   
+     .cs-section {
+       padding: 34px 0 tokens.$space-lg;
+     }
+   
+     .cs-inner {
+       padding: 0 var(--page-gutter-xs);
+       gap: 25px;
+     }
+   
+     .cs-badge {
+       width: 75px;
+       height: 75px;
+     }
+   
+     .cs-icon {
+       width: 50px;
+     }
+   
+     .cs-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 5px;
+     }
+   
+     .cs-title {
+       font-size: 1.2rem;
+     }
+   
+     .next-project-section {
+       margin-top: tokens.$space-xxl;
+       margin-bottom: -75px;
+     }
+   
+     .np-scrolltop {
+       font-size: 0.95rem;
+       top: -50px;
+       right: 0px;
+     }
+   
+     .section-title1 {
+       font-size: 1.85rem;
+       margin-bottom: -10px;
+     }
+   }
+   
+   /* XS: ≤ 464px (Small Phones) */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .pd-hero__title {
+       font-size: 1.45rem;
+     }
+   
+     .pd-hero__subtitle {
+       font-size: 0.825rem;
+       font-weight: 400;
+     }
+   
+     .pd-meta__heading {
+       font-size: 1.1rem;
+     }
+   
+     .pd-meta__text {
+       font-size: 0.825rem;
+     }
+   
+     .cs-inner {
+       padding: 0 var(--page-gutter-xs);
+       grid-template-columns: 1fr;
+       gap: tokens.$space-xs;
+     }
+   
+     .np-scrolltop {
+       top: -55px;
+       right: 0px;
+       font-size: 0.8rem;
+     }
+   
+     .next-project-section {
+       margin-bottom: -85px;
+     }
+   
+     .section-title1 {
+       font-size: 1.65rem;
+       margin-bottom: -15px;
+     }
+   }

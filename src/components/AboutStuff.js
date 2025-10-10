@@ -1,31 +1,54 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "../styles/AboutStuff.scss";
 
 const AboutStuff = () => {
+  const floatingCardsRef = useRef(null);
+  const spotifyRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    if (floatingCardsRef.current) {
+      observer.observe(floatingCardsRef.current);
+    }
+    if (spotifyRef.current) {
+      observer.observe(spotifyRef.current);
+    }
+
+    return () => {
+      if (floatingCardsRef.current) {
+        observer.unobserve(floatingCardsRef.current);
+      }
+      if (spotifyRef.current) {
+        observer.unobserve(spotifyRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section className="about-cards">
-      {/* Haiku Section */}
-      <section className="haiku-section">
-        <h3 className="extras-intro">
-          ... a personal haiku <span className="cooper-spotify-heading">about me</span> ⊹
-        </h3>
-        <div className="haiku-text">
-  <p>Draws lines, mind wanders</p>
-  <p>
-    she drifts where <span className="xs-line">ideas bloom wide</span>
-  </p>
-  <p>caught in a daydream <span className="cooper-symbols">✶⋆.˚</span></p>
-</div>
-      </section>
-
       {/* Photocards Section */}
-      <section className="floating-card-section">
+      <section ref={floatingCardsRef} className="floating-card-section animate-section">
         <div className="floating-card-grid">
           <div className="floating-card rotate-plant offset-left">
             <div className="clip-wrapper">
               <img src="/assets/clip.png" alt="clip" className="clip-img" />
             </div>
-            <div className="frame hover-label" data-label="propogation nation ❘">
+            <div className="frame hover-label" data-label="propogation nation ☘">
               <img src="/assets/pilea.jpg" alt="Card 1" className="floating-img" />
             </div>
             <p className="floating-caption">i'm also a proud plant mom <span className="cooper-symbols">🌱</span></p>
@@ -54,12 +77,12 @@ const AboutStuff = () => {
       </section>
 
       {/* Spotify Section */}
-      <div className="spotify-block">
-      <h3 className="extras-intro">
-  <span className="xs-hide">... and here's a few tunes to </span>
-  <span className="xs-only">... a few tunes to </span>
-  <span className="cooper-spotify-heading">remember me by</span> ⊹
-</h3>
+      <div ref={spotifyRef} className="spotify-block animate-section">
+        <h3 className="extras-intro">
+          <span className="xs-hide">... and here's a few tunes to </span>
+          <span className="xs-only">... a few tunes to </span>
+          <span className="cooper-spotify-heading">remember me by</span> ⊹
+        </h3>
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">
             <iframe

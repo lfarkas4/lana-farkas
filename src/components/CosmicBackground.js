@@ -7,6 +7,57 @@ const CosmicBackground = () => {
   const starsRef = useRef([]);
   const prevSize = useRef({ width: window.innerWidth, height: window.innerHeight });
 
+  // Generate additional stars to fill gaps in corners/edges
+  const generateGapFillerStars = (baseWidth, baseHeight, scaleX, scaleY) => {
+    const centerX = baseWidth / 2;
+    const centerY = baseHeight / 2;
+    const gapStars = [];
+    
+    // Generate stars in 8 radial sections to fill rotation gaps
+    const sections = 8;
+    const starsPerSection = 15;
+    const minRadius = Math.min(baseWidth, baseHeight) * 0.3; // Avoid center
+    const maxRadius = Math.max(baseWidth, baseHeight) * 0.6;
+    
+    for (let section = 0; section < sections; section++) {
+      const baseAngle = (section / sections) * Math.PI * 2;
+      const angleSpread = (Math.PI * 2) / sections;
+      
+      for (let i = 0; i < starsPerSection; i++) {
+        const angle = baseAngle + (Math.random() - 0.5) * angleSpread;
+        const radius = minRadius + Math.random() * (maxRadius - minRadius);
+        
+        const x = centerX + Math.cos(angle) * radius;
+        const y = centerY + Math.sin(angle) * radius;
+        
+        // Random color palette
+        const colors = [
+          [255, 255, 255],      // white
+          [255, 238, 204],      // warm white
+          [255, 204, 238],      // pink
+          [170, 209, 255],      // light blue
+          [221, 255, 204],      // light green
+        ];
+        const baseColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        gapStars.push({
+          x: x * scaleX,
+          y: y * scaleY,
+          baseRadius: 2.5 + Math.random() * 0.8,
+          radius: (2.5 + Math.random() * 0.8) * Math.min(scaleX, scaleY),
+          opacity: Math.random() * 0.5 + 0.3,
+          twinkleSpeed: Math.random() * 0.0015 + 0.001,
+          fadeDirection: Math.random() > 0.5 ? 1 : -1,
+          baseColor,
+          minOpacity: 0.1 + Math.random() * 0.2,
+          maxOpacity: 0.2 + Math.random() * 0.2,
+        });
+      }
+    }
+    
+    return gapStars;
+  };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -19,16 +70,14 @@ const CosmicBackground = () => {
       canvas.width = newWidth;
       canvas.height = newHeight;
     
-      const centerX = newWidth / 2;
-      const centerY = newHeight / 2;
-    
-      const baseWidth = 2880; // The original design width
-      const baseHeight = 1800; // Or whatever your JSON was based on
+      const baseWidth = 2880;
+      const baseHeight = 1800;
       const scaleX = newWidth / baseWidth;
       const scaleY = newHeight / baseHeight;
       const minScale = 0.6;
     
-      starsRef.current = starLayout.map((star) => {
+      // Load original stars
+      const originalStars = starLayout.map((star) => {
         const baseRadius = star.radius;
         return {
           ...star,
@@ -36,37 +85,29 @@ const CosmicBackground = () => {
           y: star.y * scaleY,
           baseRadius,
           radius: Math.max(baseRadius * Math.min(scaleX, scaleY), baseRadius * minScale),
-          opacity: Math.random(),
-          twinkleSpeed: Math.random() * 0.001 + 0.001,
-          fadeDirection: Math.random() > 0.5 ? 1 : -1,
-          minOpacity: 0.1 + Math.random() * 0.2,
-          maxOpacity: 0.2 + Math.random() * 0.2,
+          opacity: star.opacity || Math.random(),
+          twinkleSpeed: star.twinkleSpeed || Math.random() * 0.001 + 0.001,
+          fadeDirection: star.fadeDirection || (Math.random() > 0.5 ? 1 : -1),
+          minOpacity: star.minOpacity || 0.1 + Math.random() * 0.2,
+          maxOpacity: star.maxOpacity || 0.2 + Math.random() * 0.2,
         };
       });
+      
+      // Generate gap filler stars
+      const gapFillers = generateGapFillerStars(baseWidth, baseHeight, scaleX, scaleY);
+      
+      // Combine both sets
+      starsRef.current = [...originalStars, ...gapFillers];
     
       prevSize.current = { width: window.innerWidth, height: window.innerHeight };
-    };    
-
-    // Initialize stars from JSON and supplement missing fields
-    starsRef.current = starLayout.map(star => {
-      const baseRadius = star.radius;
-      return {
-        ...star,
-        baseRadius,
-        radius: baseRadius,
-        opacity: Math.random(),
-        twinkleSpeed: Math.random() * 0.001 + 0.001,
-        fadeDirection: Math.random() > 0.5 ? 1 : -1,
-        minOpacity: 0.1 + Math.random() * 0.2,
-        maxOpacity: 0.2 + Math.random() * 0.2,
-      };
-    });
+    };
 
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
       for (const star of starsRef.current) {
         star.opacity += star.twinkleSpeed * star.fadeDirection;
         if (star.opacity <= star.minOpacity) {
@@ -94,8 +135,8 @@ const CosmicBackground = () => {
 
   return (
     <div className="cosmic-background">
-      {/* <div className="star-dimmer" /> */}
       <canvas ref={canvasRef} className="star-canvas" />
+      <div className="color-layer" />
       <div className="center-orb3" />
       <div className="blob blob1" />
       <div className="blob blob2" />

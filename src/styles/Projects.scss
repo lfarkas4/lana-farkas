@@ -1,443 +1,609 @@
-@use './partials/tokens'; // SCSS Example 
+/* ================================================================
+   PROJECTS SECTION
+   Homepage project grid with case studies and mini projects
+   ================================================================ */
+   @use './partials/tokens' as tokens;
 
-/* === projects section === */
-.projects-section {
-  padding: 0px 9vw;
-  background: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.projects-wrapper {
-  width: 100%;
-  max-width: 1325px;
-  margin: 0 auto;
-}
-
-/* === section title === */
-.section-title {
-  @include tokens.type-coop-h2;
-  color: tokens.$primary;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.section-arrow {
-  height: 1rem;
-  width: auto;
-  margin-bottom: 2px;
-  margin-right: 5px;
-}
-
-/* === case studies grid === */
-.projects-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 75px 38px;
-  margin: 40px 0 140px;
-}
-
-/* === case study card === */
-.project-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.project-thumbnail {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: 20px;
-  margin-bottom: 16px;
-  overflow: hidden;
-  position: relative;
-  border: 0.5px solid rgba(42, 42, 43, 0.933);
-}
-
-/* === case study card (media content) === */
-.thumbnail-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.thumbnail-media {
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  transform: scale(1.1); // default slightly zoomed
-  transition: transform 0.35s ease, opacity 0.35s ease;
-  z-index: 1;
-  border-radius: 12px;
-}
-.thumbnail-media {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: transform 0.35s ease, filter 0.35s ease; // Add filter here!
-  z-index: 1;
-}
-
-/* === case study card (link + hover interactions) === */
-.project-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  transition: all 0.3s ease;
-  border-radius: 12px;
-  cursor: pointer;
-}
-/* Hover anywhere on the card -> animate the media */
-.project-card-link:hover .thumbnail-media,
-.project-card-link:focus-visible .thumbnail-media {
-  transform: scale(1);
-  filter: brightness(0.92);
-}
-
-/* Keep overlay behavior consistent too (optional) */
-.project-card-link:hover .thumbnail-overlay,
-.project-card-link:focus-visible .thumbnail-overlay {
-  opacity: 1;
-}
-
-html:not(.cursor-native) .project-thumbnail:hover { cursor: none; }
-.thumbnail-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  z-index: 2;
-}
-
-/* === case study tags === */
-.project-tags {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 0;
-}
-.tag {
-  background: tokens.$tag;
-  color: tokens.$prisec;
-  @include tokens.type-mont-body-bold;
-  padding: 8px 15px;
-  border-radius: 10px;
-  margin-top: 5px;
-}
-
-/* === case study title + description === */
-.project-content {
-  padding: 0 8px;
-}
-.project-title {
-  @include tokens.type-mont-display2-bold;
-  color: tokens.$prisec;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 22px;
-  margin-top: 22px;
-}
-.project-description {
-  @include tokens.type-mont-body;
-  color: tokens.$primary;
-  line-height: 1.5;
-}
-
-/* === mini projects section === */
-.mini-projects-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 60px 30px;
-  margin-top: 40px;
-  margin-bottom: 35px;
-}
-.mini-content {
-  padding: 0 8px;
-}
-
-/* === mini project card === */
-.mini-project-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.mini-project-card .project-thumbnail {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: 20px;
-  margin-bottom: 8px;
-}
-
-/* === mini project title + description === */
-.mini-title {
-  @include tokens.type-mont-display2-bold;
-  color: tokens.$prisec;
-  margin-bottom: 24px;
-}
-.mini-description {
-  @include tokens.type-mont-body;
-  color: tokens.$primary;
-  line-height: 1.5;
-}
-
-/* === clamp titles and descriptions === */
-.project-title {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.project-description {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 6px;
-  max-width: 100%;
-}
-.project-title,
-.project-description {
-  word-wrap: break-word;
-  text-overflow: ellipsis;
-}
-
-/* === RESPONSIVENESS === */
-/* ==========================
-   XXL and above: ≥ 1600px
-========================== */
-@media (min-width: #{tokens.$xxl_breakpoint}) {
-  .projects-section {
-    padding: 0 8vw;
+   /* ================================================================
+      TABLE OF CONTENTS
+      1. Section Container & Layout
+      2. Section Title
+      3. Case Studies Grid
+      4. Project Cards (Thumbnail, Tags, Content)
+      5. Mini Projects Grid
+      6. Text Clamping & Overflow
+      7. Scroll Animations
+      8. Responsive Breakpoints (Desktop → Mobile)
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. SECTION CONTAINER & LAYOUT
+      ================================================================ */
+   .projects-section {
+     padding: 0 tokens.$padding-wide;
+     background: transparent;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   
+   .projects-wrapper {
+     width: 100%;
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+   }
+   
+   
+   /* ================================================================
+      2. SECTION TITLE
+      ================================================================ */
+   .section-title {
+     @include tokens.type-coop-h2;
+     color: tokens.$prisec;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+   }
+   
+   .section-arrow {
+     height: 1.125rem;
+     width: auto;
+     margin-bottom: 2px;
+     margin-right: 5px;
+   }
+   
+   
+   /* ================================================================
+      3. CASE STUDIES GRID
+      ================================================================ */
+   .projects-container {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: tokens.$space-xxl tokens.$space-lg;
+     margin: tokens.$space-lg 0 tokens.$space-4xl;
+   }
+   
+   
+   /* ================================================================
+      4. PROJECT CARDS (Thumbnail, Tags, Content)
+      ================================================================ */
+   
+   /* Card container */
+   .project-card {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+   }
+   
+   .project-card-link {
+     text-decoration: none;
+     color: inherit;
+     display: block;
+     transition: all 0.3s ease;
+     border-radius: 12px;
+     cursor: pointer;
+     pointer-events: auto;
+   }
+   
+   /* Thumbnail container */
+   .project-thumbnail {
+     width: 100%;
+     aspect-ratio: 4 / 3;
+     border-radius: 20px;
+     margin-bottom: tokens.$space-xs;
+     overflow: hidden;
+     position: relative;
+     border: 0.5px solid rgba(42, 42, 43, 0.35);
+     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+   }
+   
+   html:not(.cursor-native) .project-thumbnail:hover {
+     cursor: none;
+   }
+   
+   /* Hover state - deeper shadow */
+   .project-card-link:hover .project-thumbnail,
+   .project-card-link:focus-visible .project-thumbnail {
+     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+   }
+   
+   /* Thumbnail media (image/video) */
+   .thumbnail-image {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+   }
+   
+   .thumbnail-media {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     border-radius: 12px;
+     transform: scale(1.05);
+     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+     z-index: 1;
+     
+     /* Hide all video controls on mobile */
+     &::-webkit-media-controls {
+       display: none !important;
+     }
+     
+     &::-webkit-media-controls-enclosure {
+       display: none !important;
+     }
+     
+     &::-webkit-media-controls-panel {
+       display: none !important;
+     }
+     
+     &::-webkit-media-controls-play-button {
+       display: none !important;
+     }
+     
+     &::-webkit-media-controls-start-playback-button {
+       display: none !important;
+     }
+     
+     /* Prevent video interaction */
+     pointer-events: none;
+   }
+   
+   /* Hover interactions - scale and subtle brightness */
+   .project-card-link:hover .thumbnail-media,
+   .project-card-link:focus-visible .thumbnail-media {
+     transform: scale(1);
+     filter: brightness(0.95);
+   }
+   
+   /* Tags */
+   .project-tags {
+     display: flex;
+     flex-wrap: wrap;
+     gap: tokens.$space-2xs 6px;
+     max-width: 100%;
+     margin-bottom: 0;
+   }
+   
+   .tag {
+     background: tokens.$tag;
+     color: tokens.$prisec;
+     @include tokens.type-mont-body-bold;
+     padding: tokens.$space-2xs 15px;
+     border-radius: 10px;
+     margin-top: 5px;
+     transition: background 0.3s ease;
+   }
+   
+   /* Subtle tag hover effect */
+   .project-card-link:hover .tag {
+     background: rgba(255, 255, 255, 0.1);
+   }
+   
+   /* Project content */
+   .project-content {
+     padding: 0 tokens.$space-2xs;
+   }
+   
+   .project-title {
+     @include tokens.type-mont-display2-bold;
+     color: tokens.$prisec;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     margin-bottom: 18px;
+     margin-top: 22px;
+     transition: color 0.3s ease;
+     opacity: 0.95;
+   }
+   
+   .project-card-link:hover .project-title {
+     color: tokens.$secondary;
+     opacity: 1;
+   }
+   
+   .project-description {
+     @include tokens.type-mont-body;
+     color: tokens.$primary;
+     line-height: 1.5;
+     transition: color 0.3s ease, opacity 0.3s ease;
+     opacity: 0.9;
+   }
+   
+   .project-card-link:hover .project-description {
+     color: tokens.$prisec;
+     opacity: 1;
+   }
+   
+   
+   /* ================================================================
+      5. MINI PROJECTS GRID
+      ================================================================ */
+   .mini-projects-container {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 60px tokens.$space-md;
+     margin-top: tokens.$space-lg;
+     margin-bottom: 35px;
+   }
+   
+   .mini-project-card {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+   }
+   
+   .mini-project-card .project-thumbnail {
+     width: 100%;
+     aspect-ratio: 4 / 3;
+     border-radius: 20px;
+     margin-bottom: 0;
+   }
+   
+   .mini-content {
+     padding: 0 tokens.$space-2xs;
+   }
+   
+   .mini-title {
+     @include tokens.type-mont-display2-bold;
+     color: tokens.$prisec;
+     margin-bottom: 18px;
+     transition: color 0.3s ease;
+     opacity: 0.95;
+   }
+   
+   .project-card-link:hover .mini-title {
+     color: tokens.$secondary;
+     opacity: 1;
+   }
+   
+   .mini-description {
+     @include tokens.type-mont-body;
+     color: tokens.$primary;
+     line-height: 1.5;
+     transition: color 0.3s ease, opacity 0.3s ease;
+     opacity: 0.9;
+   }
+   
+   .project-card-link:hover .mini-description {
+     color: tokens.$prisec;
+     opacity: 1;
+   }
+   
+   
+   /* ================================================================
+      6. TEXT CLAMPING & OVERFLOW
+      ================================================================ */
+   .project-title {
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+     word-wrap: break-word;
+     text-overflow: ellipsis;
+   }
+   
+   .project-description {
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+     word-wrap: break-word;
+     text-overflow: ellipsis;
+   }
+   
+   
+   /* ================================================================
+      7. SCROLL ANIMATIONS
+      ================================================================ */
+   
+   /* Keyframes for scroll-triggered animations */
+   @keyframes fadeInUp {
+     from {
+       opacity: 0;
+       transform: translateY(40px);
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+   
+   @keyframes slideInFromBottom {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-}
-
-/* ==========================
-   XL - XXL: 1200px – 1599px
-========================== */
-@media (max-width: #{tokens.$xxl_breakpoint}) and (min-width: #{tokens.$xl_breakpoint}) {
-  .projects-section {
-    padding: 0 8vw;
+  
+  /* Section title animation - starts hidden */
+  .animate-section-title {
+    opacity: 0;
+    transform: translateY(5px);
   }
-  .mini-projects-container {
-    gap: 32px;
+  
+  .is-visible .animate-section-title {
+    animation: slideInFromBottom 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
-}
-
-/* ==========================
-   LG - XL: 992px – 1199px
-========================== */
-@media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
-  .projects-section {
-    padding: 0 8vw;
-  }
-  .tag {
-    font-size: 0.78rem;
-    padding: 7px 14px;
-  }
-  .project-title {
-    font-size: 1.2rem;
-  }
-  .project-description {
-    font-size: 0.8rem;
-  }
-  .mini-projects-container {
-    gap: 25px;
-  }
-  .mini-title {
-    font-size: 1.2rem;
-  }
-  .mini-description {
-    font-size: 0.8rem;
-  }
-  .projects-container {
-    gap: 75px 30px;
-  }
-}
-
-/* ==========================
-   MD - LG: 768px – 991px
-========================== */
-@media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
-  .projects-section {
-    padding: 0 8vw;
-  }
-  .projects-container {
-    grid-template-columns: 1fr;
-  }
-  .mini-projects-container {
-    grid-template-columns: 1fr;
-    gap: 45px;
-  }
-  .mini-project-card {
-    flex-direction: row;
-    align-items: center; // instead of flex-start
-    gap: 40px;
-  }
-  .mini-content {
-    width: 70%;
-    padding-left: 12px;
-    transform: translateY(-15%); // move up 10% of its own height
-  }
-  .section-title {
-    font-size: 1.25rem;
-  }
-  .section-arrow {
-    height: 1.15rem;
-  }
-}
-
-/* ==========================
-   SM - MD: 626px – 767px
-========================== */
-@media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
-  .projects-section {
-    padding: 0 8vw;
-  }
-  .projects-container {
-    grid-template-columns: 1fr;
-  }
-  .mini-projects-container {
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-  }
-  .mini-project-card {
-    flex-direction: column;
-    gap: 0;
-  }
-  .mini-content {
-    width: 100%;
-    padding: 0 6px;
-    margin-top: 0;
-  }
-  .section-title {
-    font-size: 1.2rem;
-  }
-  .section-arrow {
-    height: 1.1rem;
-  }
-}
-
-/* ==========================
-   XS - SM: 465px – 625px
-========================== */
-@media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
-  .projects-section {
-    padding: 0 8vw;
-  }
-  .projects-container {
-    grid-template-columns: 1fr;
-  }
-  .project-tags {
-    gap: 6px;
-  }
-  .mini-projects-container {
-    display: flex;
-    flex-direction: column;
-    gap: 75px;
-  }
-  .mini-project-card {
-    flex-direction: column;
-    gap: 0;
-  }
-  .mini-content {
-    width: 100%;
-    padding: 0 5px;
-    margin-top: 0;
-  }
-  .tag {
-    font-size: 0.78rem;
-    padding: 7px 14px;
-  }
-  .project-title {
-    font-size: 1.2rem;
-  }
-  .project-description {
-    font-size: 0.8rem;
-  }
-  .mini-title {
-    font-size: 1.2rem;
-  }
-  .mini-description {
-    font-size: 0.8rem;
-  }
-  .section-title {
-    font-size: 1.175rem;
-    gap: 8px;
-  }
-  .section-arrow {
-    height: 1.075rem;
-  }
-}
-
-/* ==========================
-   XS and below : 464px
-========================== */
-@media (max-width: #{tokens.$xs_breakpoint}) {
-  .projects-section {
-    padding: 0 7.5vw;
-  }
-  .projects-container {
-    grid-template-columns: 1fr;
-    gap: 65px;
-  }
-  .project-tags {
-    gap: 4px;
-  }
-  .mini-projects-container {
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-  }
-  .tag {
-    font-size: 0.65rem;
-    padding: 6px 9px;
-  }
-  .project-title {
-    font-size: 1.2rem;
-    margin-bottom: 14px;
-    margin-top: 14px;
-    line-height: 28px;
-  }
-  .project-description {
-    font-size: 0.8rem;
-    line-height: 1.65;
-    font-weight: 400 !important;
-  }
-  .mini-title {
-    font-size: 1.2rem;
-    margin-bottom: 12px;
-    margin-top: 12px;
-    line-height: 28px;
-  }
-  .mini-description {
-    font-size: 0.8rem;
-    line-height: 1.65;
-    font-weight: 400 !important;
-  }
-  .section-title {
-    @include tokens.type-coop-display2-bold;
-    font-size: 1.1rem; 
-    letter-spacing: 0.75px;
-    gap: 6px;
-    margin-bottom: -10px;
-  }
-  .section-arrow {
-    height: 0.9rem;
-  }
-}
-
-
-html:not(.cursor-native) .project-thumbnail:hover { cursor: none; }
+   
+   /* Project card animation - starts hidden */
+   .animate-project-card {
+     opacity: 0;
+     transform: translateY(5px);
+   }
+   
+   .is-visible .animate-project-card {
+     animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+   }
+   
+   
+   /* ================================================================
+      8. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
+      ================================================================ */
+   
+   /* XXL: ≥ 1600px (Extra large desktops) */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   }
+   
+   /* XL: 1200px – 1599px (Large desktops) */
+   @media (max-width: #{tokens.$xxl_breakpoint}) and (min-width: #{tokens.$xl_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     .mini-projects-container {
+       gap: tokens.$space-md;
+     }
+   }
+   
+   /* LG: 992px – 1199px (Small laptops) */
+   @media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     .projects-container {
+       gap: tokens.$space-xxl tokens.$space-md;
+     }
+   
+     .tag {
+       font-size: 0.78rem;
+       padding: 7px 14px;
+     }
+   
+     .project-title {
+       font-size: 1.2rem;
+     }
+   
+     .project-description {
+       font-size: 0.8rem;
+     }
+   
+     .mini-projects-container {
+       gap: 25px;
+     }
+   
+     .mini-title {
+       font-size: 1.2rem;
+     }
+   
+     .mini-description {
+       font-size: 0.8rem;
+     }
+   }
+   
+   /* MD: 768px – 991px (Tablets) */
+   @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     /* Main projects stack to single column */
+     .projects-container {
+       grid-template-columns: 1fr;
+     }
+   
+     /* Mini projects stack to single column */
+     .mini-projects-container {
+       grid-template-columns: 1fr;
+       gap: 45px;
+     }
+   
+     /* Mini project card becomes horizontal */
+     .mini-project-card {
+       flex-direction: row;
+       align-items: center;
+       gap: tokens.$space-lg;
+     }
+   
+     .mini-content {
+       width: 70%;
+       padding-left: 12px;
+       transform: translateY(-15%);
+     }
+   
+     .section-title {
+       font-size: 1.25rem;
+     }
+   
+     .section-arrow {
+       height: 1.15rem;
+     }
+   }
+   
+   /* SM: 626px – 767px (Large phones) */
+   @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     .projects-container {
+       grid-template-columns: 1fr;
+     }
+   
+     /* Mini projects fully vertical */
+     .mini-projects-container {
+       display: flex;
+       flex-direction: column;
+       gap: 60px;
+     }
+   
+     .mini-project-card {
+       flex-direction: column;
+       gap: 0;
+     }
+   
+     .mini-content {
+       width: 100%;
+       padding: 0 6px;
+       margin-top: 0;
+     }
+   
+     .section-title {
+       font-size: 1.2rem;
+     }
+   
+     .section-arrow {
+       height: 1.1rem;
+     }
+   }
+   
+   /* XS: 465px – 625px (Medium phones) */
+   @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     .projects-container {
+       grid-template-columns: 1fr;
+     }
+   
+     .project-tags {
+       gap: 6px;
+     }
+   
+     .mini-projects-container {
+       display: flex;
+       flex-direction: column;
+       gap: 75px;
+     }
+   
+     .mini-project-card {
+       flex-direction: column;
+       gap: 0;
+     }
+   
+     .mini-content {
+       width: 100%;
+       padding: 0 5px;
+       margin-top: 0;
+     }
+   
+     .tag {
+       font-size: 0.78rem;
+       padding: 7px 14px;
+     }
+   
+     .project-title {
+       font-size: 1.2rem;
+     }
+   
+     .project-description {
+       font-size: 0.8rem;
+     }
+   
+     .mini-title {
+       font-size: 1.2rem;
+     }
+   
+     .mini-description {
+       font-size: 0.8rem;
+     }
+   
+     .section-title {
+       font-size: 1.175rem;
+       gap: tokens.$space-2xs;
+     }
+   
+     .section-arrow {
+       height: 1.075rem;
+     }
+   }
+   
+   /* XS: ≤ 464px (Small phones) */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .projects-section {
+       padding: 0 6.75vw;
+     }
+   
+     .projects-container {
+       grid-template-columns: 1fr;
+       gap: 65px;
+       margin-bottom: 100px;
+     }
+   
+     .project-tags {
+       gap: 4px;
+     }
+   
+     .tag {
+       font-size: 0.66rem;
+       padding: 6px 9px;
+     }
+   
+     .project-title {
+       font-size: 1.2rem;
+       margin-bottom: 14px;
+       margin-top: 14px;
+       line-height: 28px;
+     }
+   
+     .project-description {
+       font-size: 0.825rem;
+       line-height: 1.6;
+       font-weight: 400 !important;
+     }
+   
+     .mini-projects-container {
+       display: flex;
+       flex-direction: column;
+       gap: 60px;
+     }
+   
+     .mini-title {
+       font-size: 1.2rem;
+       margin-bottom: 14px;
+       margin-top: 20px;
+       line-height: 28px;
+     }
+   
+     .mini-description {
+       font-size: 0.825rem;
+       line-height: 1.6;
+       font-weight: 400 !important;
+     }
+   
+     .section-title {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.1rem;
+       letter-spacing: 0.75px;
+       gap: 6px;
+       margin-bottom: -10px;
+     }
+   
+     .section-arrow {
+       height: 0.9rem;
+     }
+   }
