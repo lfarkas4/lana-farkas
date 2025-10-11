@@ -332,7 +332,7 @@
   }
   
   .is-visible .animate-section-title {
-    animation: slideInFromBottom 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: slideInFromBottom 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
    
    /* Project card animation - starts hidden */
@@ -342,7 +342,7 @@
    }
    
    .is-visible .animate-project-card {
-     animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+     animation: fadeInUp 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
    }
    
    
