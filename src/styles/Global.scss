@@ -173,88 +173,133 @@
    }
    
    
-   /* ================================================================
-      5. TEXT SELECTION & CURSOR CONTROLS
-      ================================================================ */
-   
-   /* Prevent I-beam cursor and text selection on UI elements */
-   body,
-   h1, h2, h3, h4, h5, h6,
-   .hero,
-   .hero-title,
-   .hero-tagline,
-   .hero-column h4,
-   .about-top,
-   .about-heading,
-   .cooper-tagline,
-   .about-contact-block,
-   .about-cards,
-   .extras-intro,
-   .spotify-heading,
-   .floating-caption,
-   .haiku-intro,
-   .haiku-text,
-   .footer-thanks,
-   .footer-message,
-   .section-title,
-   .project-title,
-   .mini-title,
-   .pd-hero__eyebrow,
-   .pd-hero__title,
-   .pd-meta__heading,
-   .section-title1,
-   .custom-navbar,
-   .nav-bubble,
-   .nav-links,
-   .nav-link,
-   .nav-link-label {
-     user-select: none;
-     cursor: default;
-   }
-   
-   /* Allow text selection on body content */
-   p,
-   .about-bio,
-   .hero-column p,
-   .project-description,
-   .mini-description,
-   .pd-hero__subtitle,
-   .pd-meta__text,
-   .pd-section__body,
-   article,
-   .selectable-text {
-     user-select: text;
-     cursor: text;
-   }
-   
-   /* Custom cursor mode - hide OS cursor when NOT in native mode */
-   html:not(.cursor-native),
-   html:not(.cursor-native) body,
-   html:not(.cursor-native) * {
-     cursor: none !important;
-   }
-   
-   /* Clickable elements in native cursor mode */
-   html.cursor-native .nav-link,
-   html.cursor-native .nav-link *,
-   html.cursor-native .nav-link-wrapper,
-   html.cursor-native .menu-icon,
-   html.cursor-native button,
-   html.cursor-native a,
-   html.cursor-native .clickable {
-     cursor: pointer !important;
-   }
-   
-   /* Brand logo */
-   .brand-logo {
-     text-decoration: none !important;
-     display: flex;
-   }
-   
-   .brand-logo * {
-     text-decoration: none !important;
-   }
-   
+/* ================================================================
+   5. TEXT SELECTION & CURSOR CONTROLS
+   ================================================================ */
+
+/* Prevent I-beam cursor and text selection on UI elements */
+body,
+h1, h2, h3, h4, h5, h6,
+.hero,
+.hero-title,
+.hero-tagline,
+.hero-column h4,
+.about-top,
+.about-heading,
+.cooper-tagline,
+.about-contact-block,
+.about-cards,
+.extras-intro,
+.spotify-heading,
+.floating-caption,
+.haiku-intro,
+.haiku-text,
+.footer-thanks,
+.footer-message,
+.section-title,
+.project-title,
+.mini-title,
+.pd-hero__eyebrow,
+.pd-hero__title,
+.pd-meta__heading,
+.section-title1,
+.custom-navbar,
+.nav-bubble,
+.nav-links,
+.nav-link,
+.nav-link-label {
+  user-select: none;
+  cursor: default;
+}
+
+/* Allow text selection on body content BUT NO I-BEAM */
+p,
+p *,
+strong,
+b,
+em,
+i,
+span,
+.about-bio,
+.about-bio *,
+.hero-column p,
+.hero-column p *,
+.project-description,
+.project-description *,
+.mini-description,
+.mini-description *,
+.pd-hero__subtitle,
+.pd-hero__subtitle *,
+.pd-meta__text,
+.pd-meta__text *,
+.pd-section__body,
+.pd-section__body *,
+article,
+article *,
+.selectable-text,
+.selectable-text *,
+.light-bold {
+  user-select: text;
+  cursor: default !important;
+}
+
+/* Custom cursor mode - hide OS cursor when NOT in native mode */
+html:not(.cursor-native),
+html:not(.cursor-native) body,
+html:not(.cursor-native) * {
+  cursor: none !important;
+}
+
+/* In NATIVE cursor mode - force default cursor on ALL text (no I-beam) */
+html.cursor-native p,
+html.cursor-native p *,
+html.cursor-native strong,
+html.cursor-native b,
+html.cursor-native em,
+html.cursor-native i,
+html.cursor-native span,
+html.cursor-native .about-bio,
+html.cursor-native .about-bio *,
+html.cursor-native .hero-column p,
+html.cursor-native .hero-column p *,
+html.cursor-native .project-description,
+html.cursor-native .project-description *,
+html.cursor-native .mini-description,
+html.cursor-native .mini-description *,
+html.cursor-native .pd-hero__subtitle,
+html.cursor-native .pd-hero__subtitle *,
+html.cursor-native .pd-meta__text,
+html.cursor-native .pd-meta__text *,
+html.cursor-native .pd-section__body,
+html.cursor-native .pd-section__body *,
+html.cursor-native article,
+html.cursor-native article *,
+html.cursor-native .selectable-text,
+html.cursor-native .selectable-text *,
+html.cursor-native .light-bold {
+  cursor: default !important;
+}
+
+/* Clickable elements in native cursor mode */
+html.cursor-native .nav-link,
+html.cursor-native .nav-link *,
+html.cursor-native .nav-link-wrapper,
+html.cursor-native .menu-icon,
+html.cursor-native button,
+html.cursor-native a,
+html.cursor-native .clickable {
+  cursor: pointer !important;
+}
+
+/* Brand logo */
+.brand-logo {
+  text-decoration: none !important;
+  display: flex;
+}
+
+.brand-logo * {
+  text-decoration: none !important;
+}
    
    /* ================================================================
       6. SHOOTING STAR ANIMATION

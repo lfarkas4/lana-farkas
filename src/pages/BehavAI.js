@@ -5,10 +5,6 @@ import ComingSoonBanner from "../components/ComingSoonBanner";
 import NextProjectTeaser from "../components/NextProjectTeaser";
 import { caseStudies } from "../data/ProjectsData";
 
-// optional: if you also import the SCSS here it’s fine,
-// but the layout already pulls it in.
-// import "../styles/ProjectDetail.scss";
-
 const iconMap = {
   Figma: "/assets/figma.svg",
   Notion: "/assets/notion.svg",
@@ -19,7 +15,6 @@ export default function BehavAI() {
   const data = caseStudies.find(p => p.slug === "behavai");
   if (!data) return null;
 
-  // split helpers for line breaks that match your comp
   const splitTeam = (txt) => {
     const parts = String(txt).split(" — ");
     return parts.length > 1 ? (
@@ -47,34 +42,32 @@ export default function BehavAI() {
 
   return (
     <ProjectDetailLayout>
-      {/* ===== HERO (identical structure/classes as Aquatonomy) ===== */}
+      {/* ===== HERO ===== */}
       <section className="pd-hero">
-      <div className="pd-hero__eyebrow">
-  {data.brandMark && (
-    <img
-      className="pd-hero__brand"
-      src={data.brandMark}
-      alt=""
-      style={{ "--brand-h": data.brandMarkH || "18px" }}
-    />
-  )}
-</div>
+        <div className="pd-hero__eyebrow">
+          {data.brandMark && (
+            <img
+              className="pd-hero__brand"
+              src={data.brandMark}
+              alt=""
+              style={{ "--brand-h": data.brandMarkH || "18px" }}
+            />
+          )}
+        </div>
 
+        <h1 className="pd-hero__title">{data.title}</h1>
+        <p className="pd-hero__subtitle">{data.description}</p>
 
-  <h1 className="pd-hero__title">{data.title}</h1>
-  <p className="pd-hero__subtitle">{data.description}</p>
+        <div className="pd-hero__media">
+          {data.video ? (
+            <video src={data.video} autoPlay muted loop playsInline />
+          ) : (
+            data.image && <img src={data.image} alt={data.title} />
+          )}
+        </div>
+      </section>
 
-  <div className="pd-hero__media">
-    {data.video ? (
-      <video src={data.video} autoPlay muted loop playsInline />
-    ) : (
-      data.image && <img src={data.image} alt={data.title} />
-    )}
-  </div>
-</section>
-
-
-      {/* ===== META (same grid + classes) ===== */}
+      {/* ===== META ===== */}
       <section className="pd-meta">
         <div className="pd-meta__item">
           <div className="pd-meta__heading">My Role</div>
@@ -107,9 +100,8 @@ export default function BehavAI() {
         </div>
       </section>
 
-      {/* ===== Placeholder banner + next project (optional) ===== */}
       <ComingSoonBanner />
-      <NextProjectTeaser currentSlug="behavai" />
+      <NextProjectTeaser currentSlug="behavai" nextSlug="aquatonomy" />
     </ProjectDetailLayout>
   );
 }

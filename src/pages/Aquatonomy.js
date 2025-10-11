@@ -3,7 +3,7 @@ import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
 import ComingSoonBanner from "../components/ComingSoonBanner";
 import NextProjectTeaser from "../components/NextProjectTeaser";
-import { caseStudies } from "../data/ProjectsData"; // use the same path casing as in BehavAI.js
+import { caseStudies } from "../data/ProjectsData";
 
 const iconMap = {
   Figma: "/assets/figma.svg",
@@ -47,7 +47,7 @@ export default function Aquatonomy() {
 
   return (
     <ProjectDetailLayout>
-      {/* ===== HERO (same structure/classes as other case studies) ===== */}
+      {/* ===== HERO ===== */}
       <section className="pd-hero">
         <div className="pd-hero__eyebrow">
           {data.brandMark && (
@@ -102,7 +102,7 @@ export default function Aquatonomy() {
       </section>
 
       <ComingSoonBanner />
-      <NextProjectTeaser currentSlug="aquatonomy" />
+      <NextProjectTeaser currentSlug="aquatonomy" nextSlug="hira" />
     </ProjectDetailLayout>
   );
 }

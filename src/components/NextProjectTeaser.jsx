@@ -1,13 +1,16 @@
 // src/components/NextProjectTeaser.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import { caseStudies } from "../data/ProjectsData";
+import { caseStudies, miniProjects } from "../data/ProjectsData";
 import { FiArrowUpRight } from "react-icons/fi";
 import "../styles/ProjectDetail.scss";
 
-const NextProjectTeaser = () => {
-  // pick whichever project you want to tease here
-  const next = caseStudies.find(p => p.slug === "behavai");
+const NextProjectTeaser = ({ currentSlug, nextSlug }) => {
+  // Combine all projects
+  const allProjects = [...caseStudies, ...miniProjects];
+  
+  // Find next project by slug
+  const next = allProjects.find(p => p.slug === nextSlug);
 
   const handleScrollToTop = (e) => {
     e.preventDefault();
@@ -62,11 +65,13 @@ const NextProjectTeaser = () => {
           </div>
 
           <div className="np-content">
-            <div className="np-tags project-tags">
-              {next.tags.map(tag => (
-                <span className="tag" key={tag}>{tag}</span>
-              ))}
-            </div>
+            {next.tags && (
+              <div className="np-tags project-tags">
+                {next.tags.map(tag => (
+                  <span className="tag" key={tag}>{tag}</span>
+                ))}
+              </div>
+            )}
 
             <h4 className="np-title project-title">{next.title}</h4>
             <p className="np-desc project-description">{next.description}</p>

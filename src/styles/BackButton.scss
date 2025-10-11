@@ -22,15 +22,18 @@
 .back-bubble {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 
-  padding: 12px 22px 12px 24px;
+  padding: 9px 22px 9px 20px;
   border-radius: 999px;
-  background: rgba(14, 14, 23, 0.445);
-  backdrop-filter: blur(5px);
+  
+  /* Darker background for better visibility on light sections */
+  background: rgba(14, 14, 23, 0.65);
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.12);
-  transition: color 0.275s ease-in-out, transform 0.275s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 tokens.$space-xs rgba(0, 0, 0, 0.15);
+  
+  transition: transform 0.275s ease, box-shadow 0.3s ease, background 0.275s ease;
 
   color: tokens.$prisec;
   @include tokens.type-coop-nav-bold;
@@ -39,9 +42,18 @@
   text-decoration: none;
 
   &:hover {
-    transform: scale(1.035);
-    box-shadow: 0 0 24px rgba(0, 0, 0, 0.05);
+    transform: scale(1.04);
+    background: rgba(14, 14, 23, 0.75);
+    box-shadow: 0 0 tokens.$space-sm rgba(0, 0, 0, 0.2);
   }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.back-label {
+  transition: color 0.275s ease, filter 0.275s ease;
 }
 
 .back-bubble:hover .back-label,
@@ -50,25 +62,33 @@
   filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
 }
 
+.back-arrow {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  transform: rotate(-135deg);
+  margin-top: -1px;
+  margin-left: -2px;
+  color: tokens.$prisec;
+  pointer-events: none;
+  transition: color 0.275s ease, filter 0.275s ease;
+}
+
 .back-bubble:hover .back-arrow,
 .back-bubble:focus-visible .back-arrow {
+  color: tokens.$secondary;
   filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
-  transform: rotate(-135deg);
 }
 
-.back-arrow {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
-  transform: rotate(-135deg);
-  margin-top: -0.25px;
-  margin-left: -6px;
-  margin-right: -2px;
-  pointer-events: none;
-}
-
-.back-bubble, .back-bubble * { 
+.back-bubble, 
+.back-bubble * { 
   text-decoration: none !important; 
+}
+
+/* Focus visible for accessibility */
+.back-bubble:focus-visible {
+  outline: 2px solid tokens.$secondary;
+  outline-offset: 3px;
 }
 
 /* Mobile responsiveness */
@@ -79,14 +99,24 @@
   }
   
   .back-bubble {
-    padding: 10px 18px 10px 20px;
-    font-size: 0.9rem;
+    padding: 8px 18px 8px 16px;
+    font-size: 0.95rem;
+  }
+
+  .back-arrow {
+    width: 16px;
+    height: 16px;
   }
 }
 
 @media (max-width: #{tokens.$sm_breakpoint}) {
   .back-button-wrapper {
     left: 24px;
-    top: 16px;
+    top: 18px;
+  }
+
+  .back-bubble {
+    padding: 7px 16px 7px 14px;
+    gap: 6px;
   }
 }

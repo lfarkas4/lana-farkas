@@ -6,19 +6,34 @@
 
    /* ================================================================
       TABLE OF CONTENTS
-      1. Page Setup & Variables
-      2. Page Container
-      3. Hero Section
-      4. Meta Strip (Role, Team, Timeline, Tools)
-      5. Content Sections
-      6. Coming Soon Banner
-      7. Next Project Teaser & Scroll to Top
-      8. Responsive Breakpoints (Desktop → Mobile)
+      1. Entrance Animations
+      2. Page Setup & Variables
+      3. Page Container
+      4. Hero Section
+      5. Meta Strip (Role, Team, Timeline, Tools)
+      6. Content Sections
+      7. Coming Soon Banner
+      8. Next Project Teaser & Scroll to Top
+      9. Responsive Breakpoints (Desktop → Mobile)
       ================================================================ */
    
    
    /* ================================================================
-      1. PAGE SETUP & VARIABLES
+      1. ENTRANCE ANIMATIONS
+      ================================================================ */
+   @keyframes fadeInUp {
+     from {
+       opacity: 0;
+       transform: translateY(30px);
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+   
+   /* ================================================================
+      2. PAGE SETUP & VARIABLES
       ================================================================ */
    html {
      scroll-behavior: smooth;
@@ -37,91 +52,95 @@
    }
    
    
-   /* ================================================================
-      2. PAGE CONTAINER
-      ================================================================ */
+/* ================================================================
+   3. PAGE CONTAINER
+   ================================================================ */
    .project-detail-page {
-     background: #040f11;
-     min-height: 100vh;
-   }
+    background: #03090b;
+    min-height: 100vh;
+  }
+  
+  .project-detail-content {
+    position: relative;
+    padding: tokens.$space-xxl var(--page-gutter-desktop) 110px;
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    animation: fadeInUp 0.25s ease 0s both; /* Almost instant */
+  }
    
-   .project-detail-content {
-     position: relative;
-     padding: tokens.$space-xxl var(--page-gutter-desktop) 110px;
-     max-width: tokens.$container-page-max;
-     margin: 0 auto;
-   }
    
-   
-   /* ================================================================
-      3. HERO SECTION
-      ================================================================ */
+/* ================================================================
+   4. HERO SECTION
+   ================================================================ */
    .pd-hero {
-     color: tokens.$prisec;
-     margin-top: 12px;
-   }
-   
-   /* Eyebrow (brand + category) */
-   .pd-hero__eyebrow {
-     display: flex;
-     align-items: center;
-     gap: 10px;
-     margin-bottom: 26px;
-     color: tokens.$primary;
-     @include tokens.type-mont-poj-body;
-     letter-spacing: 0.8px;
-   }
-   
-   .pd-hero__brand {
-     height: var(--brand-h, 18px);
-     width: auto;
-     max-height: tokens.$space-md;
-     opacity: 0.9;
-     display: inline-block;
-     vertical-align: middle;
-   }
-   
-   .pd-hero__brand-text {
-     opacity: 0.9;
-   }
-   
-   /* Title */
-   .pd-hero__title {
-     @include tokens.type-mont-poj-display1;
-     color: tokens.$prisec;
-     line-height: 1.22;
-     margin: 6px 0 18px;
-   }
-   
-   /* Subtitle */
-   .pd-hero__subtitle {
-     @include tokens.type-mont-poj-body;
-     color: tokens.$primary;
-     line-height: 1.6;
-     margin-bottom: tokens.$space-lg;
-   }
-   
-   /* Hero media (large image/video) */
-   .pd-hero__media {
-     width: 100%;
-     border-radius: 20px;
-     overflow: hidden;
-     margin: 18px 0 tokens.$space-lg;
-     background: transparent;
-     border: none;
-     padding: 0;
-   
-     img, video, canvas {
-       display: block;
-       width: 100%;
-       height: auto;
-       border-radius: inherit;
-     }
-   }
-   
+    color: tokens.$prisec;
+    margin-top: 12px;
+  }
+  
+  /* Eyebrow (brand + category) */
+  .pd-hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 26px;
+    color: tokens.$primary;
+    @include tokens.type-mont-poj-body;
+    letter-spacing: 0.8px;
+    animation: fadeInUp 0.3s ease 0.05s both;
+  }
+  
+  .pd-hero__brand {
+    height: var(--brand-h, 18px);
+    width: auto;
+    max-height: tokens.$space-md;
+    opacity: 0.9;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .pd-hero__brand-text {
+    opacity: 0.9;
+  }
+  
+  /* Title */
+  .pd-hero__title {
+    @include tokens.type-mont-poj-display1;
+    color: tokens.$prisec;
+    line-height: 1.22;
+    margin: 6px 0 18px;
+    animation: fadeInUp 0.3s ease 0.08s both;
+  }
+  
+  /* Subtitle */
+  .pd-hero__subtitle {
+    @include tokens.type-mont-poj-body;
+    color: tokens.$primary;
+    line-height: 1.6;
+    margin-bottom: tokens.$space-lg;
+    animation: fadeInUp 0.3s ease 0.11s both;
+  }
+  
+  /* Hero media (large image/video) */
+  .pd-hero__media {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 18px 0 tokens.$space-lg;
+    background: transparent;
+    border: none;
+    padding: 0;
+    animation: fadeInUp 0.35s ease 0.15s both; /* Changed from scaleIn */
+  
+    img, video, canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: inherit;
+    }
+  }
    
    /* ================================================================
-      4. META STRIP (Role, Team, Timeline, Tools)
+      5. META STRIP (Role, Team, Timeline, Tools)
       Stays 4 columns on desktop, 2 columns on smaller screens
       ================================================================ */
    .pd-meta {
@@ -137,6 +156,24 @@
    .pd-meta__item {
      min-width: 0;
    }
+   
+   /* Stagger each meta item */
+/* Stagger each meta item */
+.pd-meta__item:nth-child(1) {
+  animation: fadeInUp 0.3s ease 0.2s both;
+}
+
+.pd-meta__item:nth-child(2) {
+  animation: fadeInUp 0.3s ease 0.23s both;
+}
+
+.pd-meta__item:nth-child(3) {
+  animation: fadeInUp 0.3s ease 0.26s both;
+}
+
+.pd-meta__item:nth-child(4) {
+  animation: fadeInUp 0.3s ease 0.29s both;
+}
    
    .pd-meta__heading {
      @include tokens.type-mont-poj-display2-bold;
@@ -185,7 +222,7 @@
    
    
    /* ================================================================
-      5. CONTENT SECTIONS
+      6. CONTENT SECTIONS
       Base styles - can be extended with specific components
       ================================================================ */
    .pd-section {
@@ -206,76 +243,78 @@
    }
    
    
-   /* ================================================================
-      6. COMING SOON BANNER (Full-bleed light section)
-      ================================================================ */
+/* ================================================================
+   7. COMING SOON BANNER (Full-bleed light section)
+   ================================================================ */
    .cs-section {
-     width: 100vw;
-     position: relative;
-     left: 50%;
-     right: 50%;
-     margin-left: -50vw;
-     margin-right: -50vw;
-   
-     background: #E8EAF0;
-     border-top: 1px solid rgba(0,0,0,0.06);
-     border-bottom: 1px solid rgba(0,0,0,0.06);
-     padding: 75px 0 100px;
-   }
-   
-   .cs-inner {
-     max-width: tokens.$container-page-max;
-     margin: 0 auto;
-     padding: 0 var(--page-gutter-desktop);
-   
-     display: grid;
-     grid-template-columns: auto 1fr;
-     gap: 22px 50px;
-     align-items: center;
-   }
-   
-   .cs-badge {
-     width: 150px;
-     height: 150px;
-     border-radius: 999px;
-     background: #ffffff;
-     border: 1px solid rgba(0,0,0,0.08);
-     box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-     display: grid;
-     place-items: center;
-   }
-   
-   .cs-icon {
-     width: 102px;
-     height: auto;
-     display: block;
-   }
-   
-   .cs-copy {
-     display: grid;
-     gap: tokens.$space-2xs;
-   }
-   
-   .cs-eyebrow {
-     @include tokens.type-mont-poj-light-header;
-     color: rgba(14, 17, 23, 0.70);
-     margin-bottom: 15px;
-   }
-   
-   .cs-title {
-     @include tokens.type-mont-poj-light-headerintro;
-     color: #0E1117;
-   }
-   
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  
+    background: #E8EAF0;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 75px 0 100px;
+    /* Removed animation */
+  }
+  
+  .cs-inner {
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter-desktop);
+  
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 22px 50px;
+    align-items: center;
+  }
+  
+  .cs-badge {
+    width: 150px;
+    height: 150px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    display: grid;
+    place-items: center;
+    /* Removed animation */
+  }
+  
+  .cs-icon {
+    width: 102px;
+    height: auto;
+    display: block;
+  }
+  
+  .cs-copy {
+    display: grid;
+    gap: tokens.$space-2xs;
+    /* Removed animation */
+  }
+  
+  .cs-eyebrow {
+    @include tokens.type-mont-poj-light-header;
+    color: rgba(14, 17, 23, 0.70);
+    margin-bottom: 15px;
+  }
+  
+  .cs-title {
+    @include tokens.type-mont-poj-light-headerintro;
+    color: #0E1117;
+  }
    
    /* ================================================================
-      7. NEXT PROJECT TEASER & SCROLL TO TOP
+      8. NEXT PROJECT TEASER & SCROLL TO TOP
       ================================================================ */
-   .next-project-section {
-     position: relative;
-     margin-top: 100px;
-     margin-bottom: -180px;
-   }
+      .next-project-section {
+        position: relative;
+        margin-top: 100px;
+        margin-bottom: -180px;
+      }
    
    .np-wrap {
      position: relative;
@@ -447,7 +486,7 @@
    
    
    /* ================================================================
-      8. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
+      9. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
       ================================================================ */
    
    /* LG: ≤ 991px (Tablets & Small Laptops) */
