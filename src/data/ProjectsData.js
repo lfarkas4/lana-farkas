@@ -12,7 +12,7 @@ export const caseStudies = [
       video: "/assets/dribbleshot.mp4",
       // image: "/assets/behavai-thumb.png",
       brandMark: "/assets/behavai-mark.svg",   // ← add this
-      brandMarkH: "33px",               // ← per-project size
+      brandMarkH: "32px",               // ← per-project size
       meta: {
         role: "Co-founder, Product Design",
         team: "2 founders + advisors",
@@ -27,7 +27,7 @@ export const caseStudies = [
       description:
         "Designed key interactions and overall service for an autonomous underwater inspection system.",
       link: "/case-studies/aquatonomy",
-      video: "/assets/aquamock1.mp4", // <— this is the SAME file used on the grid
+      video: "/assets/aquamock2.mp4", // <— this is the SAME file used on the grid
       // image: "/assets/aquatonomy-thumb.png",
       brandMark: "/assets/aquatonomy-mark.svg",
       brandMarkH: "18px",                // ← per-project size
@@ -46,7 +46,8 @@ export const caseStudies = [
         "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
       link: "/case-studies/hira",
       image: "/assets/watchmock.svg",
-      brandMark: "/assets/brands/hira-mark.svg",
+      brandMark: "/assets/hira-mark.svg",
+      brandMarkH: "45px",                // ← per-project size
       meta: {
         role: "Product Design",
         team: "4 collaborators — Research, Design",
@@ -62,7 +63,8 @@ export const caseStudies = [
         "Explored new learning models that empower students to shape their own educational journeys.",
       link: "/case-studies/stackbuilder",
       video: "/assets/bub.mp4",
-      brandMark: "/assets/brands/stackbuilder-mark.svg",
+      brandMark: "/assets/stack-mark.svg",
+      brandMarkH: "20px",                // ← per-project size
       meta: {
         role: "Product Designer",
         team: "MHCI Capstone Team",
@@ -80,6 +82,14 @@ export const caseStudies = [
         "Refined mission interface for lunar rover in collaboration with NASA and CMU.",
       link: "/case-studies/moonranger",
       image: "/assets/moonthumb.png",
+      brandMark: "/assets/moonranger-mark.svg",
+      brandMarkH: "23px",                // ← per-project size
+      meta: {
+        role: "Product Design & Research",
+        team: "6 collaborators — Design, Research, Strategy",
+        timeline: "Aug – Dec 2024 (14 weeks)",
+        tools: "Figma, Notion, Miro",
+      },   
     },
     {
       slug: "taptap",
@@ -88,6 +98,14 @@ export const caseStudies = [
         "Developed interactive game prototype using Arduino and digital fabrication tools.",
       link: "/case-studies/taptap",
       image: "/assets/taptap.png",
+      brandMark: "/assets/taptap-mark.svg",
+      brandMarkH: "24px",                // ← per-project size
+      meta: {
+        role: "Product Design & Research",
+        team: "6 collaborators — Design, Research, Strategy",
+        timeline: "Aug – Dec 2024 (14 weeks)",
+        tools: "Figma, Notion, Miro",
+      },
     },
     {
       slug: "lightthemuse",
@@ -96,6 +114,14 @@ export const caseStudies = [
         "Conceptualized mobile app to counter addictive technology through creative expression.",
       link: "/case-studies/lightthemuse",
       video: "/assets/whatsapp3.mp4",
+      brandMark: "/assets/lightthemuse-mark.svg",
+      brandMarkH: "24px",                // ← per-project size
+      meta: {
+        role: "Product Design & Research",
+        team: "6 collaborators — Design, Research, Strategy",
+        timeline: "Aug – Dec 2024 (14 weeks)",
+        tools: "Figma, Notion, Miro",
+      },
     },
   ];
   

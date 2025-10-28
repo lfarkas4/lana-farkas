@@ -1,9 +1,16 @@
 // src/pages/Aquatonomy.js
 import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
-import ComingSoonBanner from "../components/ComingSoonBanner";
+import OverviewSection from "../components/OverviewSection";
+import NDABanner from "../components/NDABanner";
+import ProblemSpace from "../components/ProblemSpace";
 import NextProjectTeaser from "../components/NextProjectTeaser";
 import { caseStudies } from "../data/ProjectsData";
+import "../styles/Aquatonomy.scss"; 
+import SolutionImpact from "../components/SolutionImpact";
+import ResearchDiscovery from "../components/ResearchDiscovery";
+import DeliveredReflection from "../components/DeliveredReflection";
+
 
 const iconMap = {
   Figma: "/assets/figma.svg",
@@ -59,6 +66,7 @@ export default function Aquatonomy() {
             />
           )}
         </div>
+        <NDABanner />
 
         <h1 className="pd-hero__title">{data.title}</h1>
         <p className="pd-hero__subtitle">{data.description}</p>
@@ -101,7 +109,14 @@ export default function Aquatonomy() {
         </div>
       </section>
 
-      <ComingSoonBanner />
+      {/* ===== CASE STUDY CONTENT ===== */}
+      <OverviewSection videoSrc="/assets/aqua.mp4" />
+      
+      <ProblemSpace />
+      <SolutionImpact />
+      <ResearchDiscovery />
+      <DeliveredReflection />
+
       <NextProjectTeaser currentSlug="aquatonomy" nextSlug="hira" />
     </ProjectDetailLayout>
   );

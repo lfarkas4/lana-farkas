@@ -30,7 +30,7 @@ const NextProjectTeaser = ({ currentSlug, nextSlug }) => {
       <div className="np-wrap">
         <div className="np-head">
           <h3 className="section-title1">
-            Explore More <span className="cooper-symbols">⟢</span>
+            Explore more work <span className="cooper-symbols">⟢</span>
           </h3>
           <button 
             type="button"

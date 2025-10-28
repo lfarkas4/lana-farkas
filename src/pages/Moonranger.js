@@ -15,14 +15,6 @@ export default function Moonranger() {
   const data = miniProjects.find((p) => p.slug === "moonranger");
   if (!data) return null;
 
-  // Default meta for mini projects
-  const defaultMeta = {
-    role: "Product Design & Research",
-    team: "6 collaborators — Design, Research, Strategy",
-    timeline: "Aug – Dec 2024 (14 weeks)",
-    tools: "Figma, Notion, Miro",
-  };
-
   const splitTeam = (txt) => {
     const parts = String(txt).split(" — ");
     return parts.length > 1 ? (
@@ -48,7 +40,7 @@ export default function Moonranger() {
     );
   };
 
-  const tools = String(defaultMeta.tools)
+  const tools = String(data.meta?.tools || "")
     .split(",")
     .map((t) => t.trim())
     .filter(Boolean);
@@ -57,7 +49,16 @@ export default function Moonranger() {
     <ProjectDetailLayout>
       {/* Hero Section */}
       <section className="pd-hero">
-        <div className="pd-hero__eyebrow"></div>
+        <div className="pd-hero__eyebrow">
+          {data.brandMark && (
+            <img
+              className="pd-hero__brand"
+              src={data.brandMark}
+              alt=""
+              style={{ "--brand-h": data.brandMarkH || "18px" }}
+            />
+          )}
+        </div>
 
         <h1 className="pd-hero__title">{data.title}</h1>
         <p className="pd-hero__subtitle">{data.description}</p>
@@ -75,17 +76,17 @@ export default function Moonranger() {
       <section className="pd-meta">
         <div className="pd-meta__item">
           <div className="pd-meta__heading">My Role</div>
-          <div className="pd-meta__text">{defaultMeta.role}</div>
+          <div className="pd-meta__text">{data.meta?.role}</div>
         </div>
 
         <div className="pd-meta__item">
           <div className="pd-meta__heading">Team</div>
-          <div className="pd-meta__text">{splitTeam(defaultMeta.team)}</div>
+          <div className="pd-meta__text">{splitTeam(data.meta?.team)}</div>
         </div>
 
         <div className="pd-meta__item">
           <div className="pd-meta__heading">Timeline</div>
-          <div className="pd-meta__text">{splitTimeline(defaultMeta.timeline)}</div>
+          <div className="pd-meta__text">{splitTimeline(data.meta?.timeline)}</div>
         </div>
 
         <div className="pd-meta__item">

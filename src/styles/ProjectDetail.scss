@@ -10,11 +10,12 @@
       2. Page Setup & Variables
       3. Page Container
       4. Hero Section
-      5. Meta Strip (Role, Team, Timeline, Tools)
-      6. Content Sections
-      7. Coming Soon Banner
-      8. Next Project Teaser & Scroll to Top
-      9. Responsive Breakpoints (Desktop → Mobile)
+      5. NDA Banner
+      6. Meta Strip (Role, Team, Timeline, Tools)
+      8. Content Sections
+      9. Coming Soon Banner
+      10. Next Project Teaser & Scroll to Top
+      11. Responsive Breakpoints (Desktop → Mobile)
       ================================================================ */
    
    
@@ -31,6 +32,7 @@
        transform: translateY(0);
      }
    }
+   
    
    /* ================================================================
       2. PAGE SETUP & VARIABLES
@@ -52,101 +54,139 @@
    }
    
    
-/* ================================================================
-   3. PAGE CONTAINER
-   ================================================================ */
+   /* ================================================================
+      3. PAGE CONTAINER
+      ================================================================ */
    .project-detail-page {
-    background: #03090b;
-    min-height: 100vh;
-  }
-  
-  .project-detail-content {
-    position: relative;
-    padding: tokens.$space-xxl var(--page-gutter-desktop) 110px;
-    max-width: tokens.$container-page-max;
-    margin: 0 auto;
-    animation: fadeInUp 0.25s ease 0s both; /* Almost instant */
-  }
+     background: #03090b;
+     min-height: 100vh;
+   }
    
+   .project-detail-content {
+     position: relative;
+     padding: tokens.$space-xxl var(--page-gutter-desktop) 110px;
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     animation: fadeInUp 0.25s ease 0s both;
+   }
    
-/* ================================================================
-   4. HERO SECTION
-   ================================================================ */
-   .pd-hero {
-    color: tokens.$prisec;
-    margin-top: 12px;
-  }
-  
-  /* Eyebrow (brand + category) */
-  .pd-hero__eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 26px;
-    color: tokens.$primary;
-    @include tokens.type-mont-poj-body;
-    letter-spacing: 0.8px;
-    animation: fadeInUp 0.3s ease 0.05s both;
-  }
-  
-  .pd-hero__brand {
-    height: var(--brand-h, 18px);
-    width: auto;
-    max-height: tokens.$space-md;
-    opacity: 0.9;
-    display: inline-block;
-    vertical-align: middle;
-  }
-  
-  .pd-hero__brand-text {
-    opacity: 0.9;
-  }
-  
-  /* Title */
-  .pd-hero__title {
-    @include tokens.type-mont-poj-display1;
-    color: tokens.$prisec;
-    line-height: 1.22;
-    margin: 6px 0 18px;
-    animation: fadeInUp 0.3s ease 0.08s both;
-  }
-  
-  /* Subtitle */
-  .pd-hero__subtitle {
-    @include tokens.type-mont-poj-body;
-    color: tokens.$primary;
-    line-height: 1.6;
-    margin-bottom: tokens.$space-lg;
-    animation: fadeInUp 0.3s ease 0.11s both;
-  }
-  
-  /* Hero media (large image/video) */
-  .pd-hero__media {
-    width: 100%;
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 18px 0 tokens.$space-lg;
-    background: transparent;
-    border: none;
-    padding: 0;
-    animation: fadeInUp 0.35s ease 0.15s both; /* Changed from scaleIn */
-  
-    img, video, canvas {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: inherit;
-    }
-  }
    
    /* ================================================================
-      5. META STRIP (Role, Team, Timeline, Tools)
+      4. HERO SECTION
+      ================================================================ */
+   .pd-hero {
+     color: tokens.$prisec;
+     margin-top: 12px;
+     position: relative;
+   }
+   
+   /* Eyebrow (brand + category) */
+   .pd-hero__eyebrow {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     margin-bottom: 26px;
+     color: tokens.$primary;
+     @include tokens.type-mont-poj-body;
+     letter-spacing: 0.8px;
+     animation: fadeInUp 0.3s ease 0.05s both;
+   }
+   
+   .pd-hero__brand {
+     height: var(--brand-h, 18px);
+     width: auto;
+     max-height: tokens.$space-lg;
+     opacity: 0.9;
+     display: inline-block;
+     vertical-align: middle;
+   }
+   
+   .pd-hero__brand-text {
+     opacity: 0.9;
+   }
+   
+   /* Title */
+   .pd-hero__title {
+     @include tokens.type-mont-poj-display1;
+     color: tokens.$prisec;
+     line-height: 1.22;
+     margin: 6px 0 18px;
+     animation: fadeInUp 0.3s ease 0.08s both;
+   }
+   
+   /* Subtitle */
+   .pd-hero__subtitle {
+     @include tokens.type-mont-poj-body;
+     color: tokens.$primary;
+     line-height: 1.45;
+     margin-bottom: tokens.$space-lg;
+     animation: fadeInUp 0.3s ease 0.11s both;
+   }
+   
+   /* Hero media (large image/video) */
+   .pd-hero__media {
+     width: 100%;
+     border-radius: 20px;
+     overflow: hidden;
+     margin: 18px 0 tokens.$space-lg;
+     background: transparent;
+     border: none;
+     padding: 0;
+     animation: fadeInUp 0.35s ease 0.15s both;
+   
+     img, video, canvas {
+       display: block;
+       width: 100%;
+       height: auto;
+       border-radius: inherit;
+     }
+   }
+   
+   
+   /* ================================================================
+      5. NDA BANNER (Top right of hero section)
+      ================================================================ */
+   .nda-banner {
+     position: absolute;
+     top: -45px;
+     right: -150px;
+     
+     display: inline-flex;
+     align-items: center;
+     gap: 10px;
+     
+     background: #E8EAF0;
+     border: 1px solid rgba(0, 0, 0, 0.08);
+     border-radius: 999px;
+     padding: 8px 30px 8px 16px;
+     
+     animation: fadeInUp 0.3s ease 0.05s both;
+     z-index: 10;
+   }
+   
+   .nda-icon {
+     width: 26px;
+     height: 26px;
+     display: block;
+   }
+   
+   .nda-text {
+    @include tokens.type-mont-poj-light-body;
+    color: #0E1117;
+     font-size: 0.9rem;
+     font-weight: 450;
+     white-space: nowrap;
+   }
+   
+   
+   /* ================================================================
+      6. META STRIP (Role, Team, Timeline, Tools)
       Stays 4 columns on desktop, 2 columns on smaller screens
       ================================================================ */
    .pd-meta {
      width: 100%;
      margin: 26px 0 60px;
-     padding: 10px 25px 55px;
+     padding: 10px 25px 40px;
      border-top: none;
      display: grid;
      grid-template-columns: repeat(4, 1fr);
@@ -158,22 +198,21 @@
    }
    
    /* Stagger each meta item */
-/* Stagger each meta item */
-.pd-meta__item:nth-child(1) {
-  animation: fadeInUp 0.3s ease 0.2s both;
-}
-
-.pd-meta__item:nth-child(2) {
-  animation: fadeInUp 0.3s ease 0.23s both;
-}
-
-.pd-meta__item:nth-child(3) {
-  animation: fadeInUp 0.3s ease 0.26s both;
-}
-
-.pd-meta__item:nth-child(4) {
-  animation: fadeInUp 0.3s ease 0.29s both;
-}
+   .pd-meta__item:nth-child(1) {
+     animation: fadeInUp 0.3s ease 0.2s both;
+   }
+   
+   .pd-meta__item:nth-child(2) {
+     animation: fadeInUp 0.3s ease 0.23s both;
+   }
+   
+   .pd-meta__item:nth-child(3) {
+     animation: fadeInUp 0.3s ease 0.26s both;
+   }
+   
+   .pd-meta__item:nth-child(4) {
+     animation: fadeInUp 0.3s ease 0.29s both;
+   }
    
    .pd-meta__heading {
      @include tokens.type-mont-poj-display2-bold;
@@ -221,8 +260,9 @@
    }
    
    
+   
    /* ================================================================
-      6. CONTENT SECTIONS
+      8. CONTENT SECTIONS
       Base styles - can be extended with specific components
       ================================================================ */
    .pd-section {
@@ -243,78 +283,76 @@
    }
    
    
-/* ================================================================
-   7. COMING SOON BANNER (Full-bleed light section)
-   ================================================================ */
+   /* ================================================================
+      9. COMING SOON BANNER (Full-bleed light section)
+      ================================================================ */
    .cs-section {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-  
-    background: #E8EAF0;
-    border-top: 1px solid rgba(0,0,0,0.06);
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    padding: 75px 0 100px;
-    /* Removed animation */
-  }
-  
-  .cs-inner {
-    max-width: tokens.$container-page-max;
-    margin: 0 auto;
-    padding: 0 var(--page-gutter-desktop);
-  
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 22px 50px;
-    align-items: center;
-  }
-  
-  .cs-badge {
-    width: 150px;
-    height: 150px;
-    border-radius: 999px;
-    background: #ffffff;
-    border: 1px solid rgba(0,0,0,0.08);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    display: grid;
-    place-items: center;
-    /* Removed animation */
-  }
-  
-  .cs-icon {
-    width: 102px;
-    height: auto;
-    display: block;
-  }
-  
-  .cs-copy {
-    display: grid;
-    gap: tokens.$space-2xs;
-    /* Removed animation */
-  }
-  
-  .cs-eyebrow {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   
+     background: #E8EAF0;
+     border-top: 1px solid rgba(0,0,0,0.06);
+     border-bottom: 1px solid rgba(0,0,0,0.06);
+     padding: 75px 0 100px;
+   }
+   
+   .cs-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   
+     display: grid;
+     grid-template-columns: auto 1fr;
+     gap: 22px 50px;
+     align-items: center;
+   }
+   
+   .cs-badge {
+     width: 150px;
+     height: 150px;
+     border-radius: 999px;
+     background: #ffffff;
+     border: 1px solid rgba(0,0,0,0.08);
+     box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+     display: grid;
+     place-items: center;
+   }
+   
+   .cs-icon {
+     width: 102px;
+     height: auto;
+     display: block;
+   }
+   
+   .cs-copy {
+     display: grid;
+     gap: tokens.$space-2xs;
+   }
+   
+   .cs-eyebrow {
     @include tokens.type-mont-poj-light-header;
-    color: rgba(14, 17, 23, 0.70);
-    margin-bottom: 15px;
-  }
-  
-  .cs-title {
-    @include tokens.type-mont-poj-light-headerintro;
-    color: #0E1117;
-  }
+    color: #060e1d;
+     margin-bottom: 15px;
+   }
+   
+   .cs-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #0E1117;
+   }
+   
    
    /* ================================================================
-      8. NEXT PROJECT TEASER & SCROLL TO TOP
+      10. NEXT PROJECT TEASER & SCROLL TO TOP
       ================================================================ */
-      .next-project-section {
-        position: relative;
-        margin-top: 100px;
-        margin-bottom: -180px;
-      }
+   .next-project-section {
+     position: relative;
+     margin-top: 100px;
+     margin-bottom: -180px;
+   }
    
    .np-wrap {
      position: relative;
@@ -347,7 +385,7 @@
    }
    
    /* Next project thumbnail with hover effects */
-   .np-thumbnail {
+   .np-thumb {
      width: 100%;
      aspect-ratio: 4 / 3;
      border-radius: 20px;
@@ -358,11 +396,11 @@
      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
    }
    
-   .np-card:hover .np-thumbnail {
+   .np-card:hover .np-thumb {
      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
    }
    
-   .np-thumbnail-media {
+   .thumbnail-media {
      position: absolute;
      top: 0;
      left: 0;
@@ -374,7 +412,7 @@
      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), filter 0.35s ease;
    }
    
-   .np-card:hover .np-thumbnail-media {
+   .np-card:hover .thumbnail-media {
      transform: scale(1);
      filter: brightness(0.95);
    }
@@ -437,7 +475,7 @@
    /* Scroll to top button */
    .np-scrolltop {
      position: absolute;
-     top: -40px;
+     top: -50px;
      right: -60px;
      
      display: inline-flex;
@@ -486,7 +524,7 @@
    
    
    /* ================================================================
-      9. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
+      11. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
       ================================================================ */
    
    /* LG: ≤ 991px (Tablets & Small Laptops) */
@@ -504,7 +542,23 @@
      }
    
      .pd-hero__subtitle {
-       font-size: 0.95rem;
+       font-size: 1rem;
+     }
+   
+     /* NDA Banner */
+     .nda-banner {
+      top: -55px;
+      right: -10px;
+      padding: 6px 18px 6px 12px;
+    }
+     
+     .nda-text {
+       font-size: 0.82rem;
+     }
+     
+     .nda-icon {
+       width: 24px;
+       height: 24px;
      }
    
      /* Meta stays 2 columns */
@@ -514,6 +568,8 @@
        padding: 10px 20px tokens.$space-lg;
      }
    
+   
+     /* Coming Soon */
      .cs-inner {
        padding: 0 var(--page-gutter-tablet);
      }
@@ -529,6 +585,20 @@
    
      .np-card {
        gap: 35px;
+     }
+   
+     /* Match homepage project styling */
+     .np-tags .tag {
+       font-size: 0.78rem;
+       padding: 7px 14px;
+     }
+   
+     .np-title.project-title {
+       font-size: 1.2rem;
+     }
+   
+     .np-desc.project-description {
+       font-size: 0.8rem;
      }
    
      .np-scrolltop {
@@ -551,6 +621,23 @@
        margin-top: 28px;
      }
    
+     /* NDA Banner - Move higher to avoid overlap with brand */
+     .nda-banner {
+       top: -55px;
+       right: -10px;
+       padding: 6px 18px 6px 12px;
+     }
+     
+     .nda-text {
+       font-size: 0.75rem;
+     }
+
+     .nda-icon {
+       width: 20px;
+       height: 20px;
+     }
+   
+     /* Coming Soon */
      .cs-badge {
        width: 100px;
        height: 100px;
@@ -569,10 +656,30 @@
        padding: 10px 10px tokens.$space-lg;
      }
    
-     /* Card stacks at MD breakpoint and below */
+     /* Card stacks - matches homepage behavior */
      .np-card {
        grid-template-columns: 1fr;
        gap: 5px;
+     }
+   
+     /* Reset content padding when stacked */
+     .np-content {
+       padding: 0 6px;
+     }
+   
+     /* Match homepage project styling */
+     .np-tags .tag {
+       font-size: 0.78rem;
+       padding: 7px 14px;
+     }
+   
+     .np-title.project-title {
+       font-size: 1.2rem;
+       margin-top: 18px;
+     }
+   
+     .np-desc.project-description {
+       font-size: 0.8rem;
      }
    
      .next-project-section {
@@ -592,11 +699,11 @@
      }
    
      .project-detail-content {
-       padding: 60px var(--page-gutter-xs) 90px;
+       padding: 75px var(--page-gutter-xs) 90px;
      }
    
      .pd-hero__brand {
-       max-height: tokens.$space-sm;
+       max-height: tokens.$space-md;
      }
    
      .pd-hero__title {
@@ -604,8 +711,25 @@
      }
    
      .pd-hero__subtitle {
-       font-size: 0.9rem;
+       font-size: 1rem;
        max-width: 56ch;
+     }
+   
+     /* NDA Banner - Even higher */
+     .nda-banner {
+       padding: 6px 14px 6px 10px;
+       gap: 7px;
+       top: -60px;
+       right: -5px;
+     }
+     
+     .nda-icon {
+       width: 18px;
+       height: 18px;
+     }
+     
+     .nda-text {
+       font-size: 0.7rem;
      }
    
      /* Meta stays 2 columns even on phones */
@@ -633,6 +757,7 @@
        width: 22px;
        height: 22px;
      }
+   
    
      .pd-section {
        margin-top: 60px;
@@ -674,6 +799,27 @@
        margin-bottom: -75px;
      }
    
+     /* Match homepage project styling */
+     .np-content {
+       padding: 0 5px;
+     }
+   
+     .np-tags .tag {
+       font-size: 0.78rem;
+       padding: 7px 14px;
+     }
+   
+     .np-title.project-title {
+       font-size: 1.2rem;
+       margin-bottom: 14px;
+       margin-top: 18px;
+     }
+   
+     .np-desc.project-description {
+       font-size: 0.8rem;
+       line-height: 1.6;
+     }
+   
      .np-scrolltop {
        font-size: 0.95rem;
        top: -50px;
@@ -697,6 +843,23 @@
        font-weight: 400;
      }
    
+     /* NDA Banner - Highest position */
+     .nda-banner {
+       padding: 5px 12px 5px 8px;
+       gap: 6px;
+       top: -50px;
+       right: 0px;
+     }
+     
+     .nda-icon {
+       width: 16px;
+       height: 16px;
+     }
+     
+     .nda-text {
+       font-size: 0.70rem;
+     }
+   
      .pd-meta__heading {
        font-size: 1.1rem;
      }
@@ -711,6 +874,33 @@
        gap: tokens.$space-xs;
      }
    
+     /* Match homepage project styling exactly */
+     .np-content {
+       padding: 0 5px;
+     }
+   
+     .np-tags .tag {
+       font-size: 0.66rem;
+       padding: 6px 9px;
+     }
+   
+     .np-tags.project-tags {
+       gap: 4px;
+     }
+   
+     .np-title.project-title {
+       font-size: 1.2rem;
+       margin-bottom: 14px;
+       margin-top: 20px;
+       line-height: 28px;
+     }
+   
+     .np-desc.project-description {
+       font-size: 0.825rem;
+       line-height: 1.6;
+       font-weight: 400 !important;
+     }
+   
      .np-scrolltop {
        top: -55px;
        right: 0px;
@@ -722,7 +912,7 @@
      }
    
      .section-title1 {
-       font-size: 1.65rem;
+       font-size: 1.5rem;
        margin-bottom: -15px;
      }
    }
