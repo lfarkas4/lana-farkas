@@ -29,7 +29,7 @@ export const caseStudies = [
       link: "/case-studies/aquatonomy",
       video: "/assets/aquamock2.mp4", // <— this is the SAME file used on the grid
       // image: "/assets/aquatonomy-thumb.png",
-      brandMark: "/assets/aquatonomy-mark.svg",
+      brandMark: "/assets/aquatonomy-mark.png",
       brandMarkH: "18px",                // ← per-project size
       meta: {
         role: "Product Design & Research",

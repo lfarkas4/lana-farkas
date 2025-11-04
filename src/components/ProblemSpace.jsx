@@ -1,19 +1,29 @@
 // src/components/ProblemSpace.jsx
 import React from "react";
+import useReveal from "../utils/useReveal"; // same hook Overview uses
 
 export default function ProblemSpace() {
+  // this sets up IntersectionObserver just like in Overview
+  const sectionRef = useReveal();
+
   return (
-    <section className="problem-why-section" aria-label="Problem space and context">
-      {/* Problem Space Header - FULL WIDTH like Overview */}
-      <div className="pw-header">
+    <section
+      ref={sectionRef}
+      className="problem-why-section"
+      aria-label="Problem space and context"
+    >
+      {/* Problem Space Header */}
+      <div className="pw-header reveal-block">
         <div className="pw-eyebrow">Problem Space</div>
         <h3 className="pw-title">
-          Underwater inspections happen in some of the <span className="pw-title-light">toughest conditions</span>, and the complexity goes beyond the water itself.
+          Underwater inspections happen in some of the{" "}
+          <span className="pw-title-light">toughest conditions</span>, and the
+          complexity goes beyond the water itself.
         </h3>
       </div>
 
-      {/* Icon Grid - 4 columns */}
-      <div className="pw-icons">
+      {/* Icon Grid */}
+      <div className="pw-icons reveal-block" data-stagger-block>
         <div className="pw-icon-item">
           <div className="pw-icon-wrapper">
             <img src="/assets/harsh.svg" alt="" aria-hidden="true" />
@@ -55,20 +65,26 @@ export default function ProblemSpace() {
         </div>
       </div>
 
-      {/* Why This Matters - FULL WIDTH like Overview */}
-      <div className="pw-why-header">
+      {/* Why This Matters */}
+      <div className="pw-why-header reveal-block">
         <div className="pw-eyebrow">Why This Matters</div>
         <h3 className="pw-title">
-          Aquatonomy isn't a tool for one person, it's a system for a <br></br>network of people with <span className="pw-title-light">different goals and contexts</span>.
+          Aquatonomy isn&apos;t a tool for one person, it&apos;s a system for a{" "}
+          <br />
+          network of people with{" "}
+          <span className="pw-title-light">
+            different goals and contexts
+          </span>
+          .
         </h3>
       </div>
 
-      {/* Images with captions */}
-      <div className="pw-images">
+      {/* Images */}
+      <div className="pw-images reveal-block" data-stagger-block>
         <div className="pw-image-item">
-          <img 
-            src="/assets/aqpic1.jpg" 
-            alt="Team learning how the robot works" 
+          <img
+            src="/assets/aqpic1.jpg"
+            alt="Team learning how the robot works"
             className="pw-image"
           />
           <p className="pw-caption">
@@ -77,9 +93,9 @@ export default function ProblemSpace() {
         </div>
 
         <div className="pw-image-item">
-          <img 
-            src="/assets/aqpic2.jpg" 
-            alt="Field testing deployment" 
+          <img
+            src="/assets/aqpic2.jpg"
+            alt="Field testing deployment"
             className="pw-image"
           />
           <p className="pw-caption">
@@ -89,10 +105,10 @@ export default function ProblemSpace() {
       </div>
 
       {/* Sparkle decoration */}
-      <img 
-        src="/assets/spark-six.svg" 
-        alt="" 
-        className="pw-sparkle"
+      <img
+        src="/assets/spark-six.svg"
+        alt=""
+        className="pw-sparkle reveal-block--decor"
         aria-hidden="true"
       />
     </section>

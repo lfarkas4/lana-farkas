@@ -3,6 +3,7 @@
    Individual case study page layout and styling
    ================================================================ */
    @use './partials/tokens' as tokens;
+   @use './partials/reveal';
 
    /* ================================================================
       TABLE OF CONTENTS
@@ -32,7 +33,16 @@
        transform: translateY(0);
      }
    }
-   
+   @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-40px); /* start above */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
    
    /* ================================================================
       2. PAGE SETUP & VARIABLES
@@ -160,7 +170,7 @@
      border-radius: 999px;
      padding: 8px 30px 8px 16px;
      
-     animation: fadeInUp 0.3s ease 0.05s both;
+     animation: fadeInDown 0.35s ease-out 0.05s both;
      z-index: 10;
    }
    
@@ -366,7 +376,7 @@
    .section-title1 {
      @include tokens.type-coop-h2;
      color: tokens.$prisec;
-     font-size: 2.15rem;
+     font-size: 2rem;
      display: flex;
      align-items: center;
      gap: 10px;
@@ -611,7 +621,7 @@
      }
    
      .section-title1 {
-       font-size: 2.15rem;
+       font-size: 1.75rem;
      }
    }
    
@@ -687,7 +697,7 @@
      }
    
      .section-title1 {
-       font-size: 2rem;
+       font-size: 1.8rem;
        margin-bottom: -5px;
      }
    }
@@ -695,7 +705,7 @@
    /* SM: ≤ 625px (Large Phones) */
    @media (max-width: #{tokens.$sm_breakpoint}) {
      .pd-hero {
-       margin-top: tokens.$space-lg;
+       margin-top: tokens.$space-xl;
      }
    
      .project-detail-content {
@@ -717,11 +727,17 @@
    
      /* NDA Banner - Even higher */
      .nda-banner {
-       padding: 6px 14px 6px 10px;
-       gap: 7px;
-       top: -60px;
-       right: -5px;
-     }
+      /* keep it absolutely positioned, but anchor to the left gutter */
+      left: var(--page-gutter-xs) - 10px;
+      right: auto;
+  
+      /* small spacing tweaks so it sits nicely above the brand/title */
+      top: -56px;                /* was -60px; nudge if needed */
+      padding: 6px 14px 6px 10px;
+      gap: 7px;
+
+      white-space: nowrap;
+    }
      
      .nda-icon {
        width: 18px;
@@ -827,7 +843,7 @@
      }
    
      .section-title1 {
-       font-size: 1.85rem;
+       font-size: 1.75rem;
        margin-bottom: -10px;
      }
    }
@@ -837,6 +853,9 @@
      .pd-hero__title {
        font-size: 1.45rem;
      }
+     .pd-hero {
+      margin-top: tokens.$space-lg;
+    }
    
      .pd-hero__subtitle {
        font-size: 0.825rem;
@@ -845,11 +864,14 @@
    
      /* NDA Banner - Highest position */
      .nda-banner {
-       padding: 5px 12px 5px 8px;
-       gap: 6px;
-       top: -50px;
-       right: 0px;
-     }
+      left: var(--page-gutter-xs) - 10px;
+      right: auto;
+  
+      top: -50px;                /* a hair closer on very small phones */
+      padding: 5px 12px 5px 8px; /* your current XS sizing */
+      gap: 6px;
+      white-space: nowrap;
+    }
      
      .nda-icon {
        width: 16px;
@@ -912,7 +934,9 @@
      }
    
      .section-title1 {
-       font-size: 1.5rem;
+       font-size: 1.3rem;
        margin-bottom: -15px;
      }
    }
+
+   

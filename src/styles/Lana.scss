@@ -78,10 +78,11 @@
   
   .lana-container {
     position: relative;
-    width: clamp(200px, 50vw + 200px, 715px);
+    width: clamp(200px, 50vw + 200px, 740px);
     aspect-ratio: 786.86 / 280.77;
     margin: 0 auto;
     margin-top: -25px;
+    margin-left: -8px;
     margin-bottom: -20px;
   
     /* Start hidden; reveal when images are ready */
@@ -119,6 +120,6 @@
 
   @media (max-width: #{tokens.$xxs_breakpoint}) {
     .lana-container {
-      width: 96vw;
+      width: 97vw;
     }
   }

@@ -14,7 +14,7 @@ const Projects = () => {
         {/* Case Studies Section */}
         <div ref={caseStudiesRef} className={`case-studies-section ${caseStudiesVisible ? 'is-visible' : ''}`}>
           <h3 className="section-title animate-section-title">
-            <img src="/assets/arrowyuh.svg" alt="Arrow" className="section-arrow" />
+            <img src="/assets/spark.svg" alt="Arrow" className="section-arrow" />
             case studies
           </h3>
 
@@ -68,7 +68,7 @@ const Projects = () => {
         {/* Mini Projects Section */}
         <div ref={miniProjectsRef} className={`mini-projects-section ${miniProjectsVisible ? 'is-visible' : ''}`}>
           <h3 className="section-title animate-section-title">
-            <img src="/assets/arrowyuh.svg" alt="Arrow" className="section-arrow" />
+            <img src="/assets/spark.svg" alt="Arrow" className="section-arrow" />
             mini projects
           </h3>
 

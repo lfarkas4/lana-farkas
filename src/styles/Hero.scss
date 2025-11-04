@@ -363,7 +363,7 @@
      }
    
      .hero-tagline {
-       font-size: 1rem;
+       font-size: 0.95rem;
        margin-top: 55px;
        margin-bottom: -10px;
        
@@ -376,7 +376,7 @@
    
      .font-cooper-italic-tag {
        @include tokens.type-coop-display2-bold;
-       font-size: 1rem;
+       font-size: 0.975rem;
        letter-spacing: 0.75px;
        line-height: var(--lh);
      }
@@ -419,7 +419,9 @@
    
      .hero-column p {
        font-size: 0.8rem;
-       line-height: 1.65;
+       line-height: 1.5;
        font-weight: 400 !important;
      }
    }
+
+   

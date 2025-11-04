@@ -62,10 +62,9 @@ const Hero = () => {
           <span className="tagline-xs">
             <span className="line">… a product futurist bringing</span>
             <span className="line">
-              <span className="font-cooper-italic-tag">clarity</span> to the{" "}
-              <span className="font-cooper-italic-tag">cosmos</span> of
+              clarity to the{" "}
+              cosmos of digital experiences.
             </span>
-            <span className="line">digital experiences.</span>
           </span>
         </p>
 

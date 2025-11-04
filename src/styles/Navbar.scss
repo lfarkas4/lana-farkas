@@ -142,7 +142,7 @@
    .nav-active-stroke {
      position: absolute;
      top: -6px;
-     left: -20px;
+     left: -21px;
      width: calc(100% + 40px);
      height: 60px;
      z-index: 1;
@@ -169,8 +169,8 @@
    /* Sparkle animation */
    .nav-sparkle {
      position: absolute;
-     top: 3px;
-     left: 1px;
+     top: 4px;
+     left: -1px;
      width: 12px;
      height: 12px;
      opacity: 0;
@@ -311,6 +311,12 @@
        font-size: tokens.$font-mont-display1;
      }
    }
+
+      @media (max-width: #{tokens.$sm_breakpoint}) {
+        .nav-container {
+          padding: tokens.$space-xs tokens.$space-md tokens.$space-md;
+        }
+      }
    
    
    /* ================================================================
