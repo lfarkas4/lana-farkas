@@ -19,9 +19,7 @@ export default function ResearchDiscovery() {
         <div className="research-eyebrow">Research &amp; Discovery</div>
 
         <p className="research-intro">
-          To understand what actually happens in underwater inspections, we
-          combined <em>field research</em>, <em>operator interviews</em>, and{" "}
-          <em>scrappy prototype demos</em>.
+          We mixed <em>field research</em>, <em>operator interviews</em>, and <em>fast prototypes</em> to learn what really happens in underwater inspections.
         </p>
       </div>
 
@@ -45,7 +43,7 @@ export default function ResearchDiscovery() {
         <div className="research-content reveal-block">
           <div className="research-subtitle-wrapper">
             <h3 className="research-subtitle">
-              Evaluating the Existing Console
+              Evaluating the Console
             </h3>
 
             {/* little spark decoration */}
@@ -58,9 +56,7 @@ export default function ResearchDiscovery() {
           </div>
 
           <p className="research-text">
-            Heuristic reviews and expert analyses revealed missing feedback
-            loops, inconsistent labels, and task flows that demanded too many
-            clicks.
+          Heuristic reviews and expert reads exposed weak feedback, inconsistent labels, and click-heavy flows.
           </p>
 
           <div className="research-callout reveal-block">
@@ -98,7 +94,7 @@ export default function ResearchDiscovery() {
               className="research-spark reveal-block--decor"
               aria-hidden="true"
             />
-            <h3 className="research-subtitle">Learning from the Field</h3>
+            <h3 className="research-subtitle">Learning from Real Life</h3>
           </div>
 
           <p className="research-text">
@@ -146,8 +142,7 @@ export default function ResearchDiscovery() {
           </div>
 
           <p className="research-text">
-            We co-designed with operators and engineers through bodystorming
-            workshops and tested prototypes, refining scenarios step by step.
+          Bodystorming and usability sessions with operators and engineers helped us refine scenarios step by step.
           </p>
 
           <div className="research-callout reveal-block">
@@ -169,7 +164,7 @@ export default function ResearchDiscovery() {
           <h3 className="insights-title">
             <span>
               Through discovery and testing, we uncovered insights that{" "}
-              <em>guided our iterative design process</em>...
+              <em>guided our design process</em>...
             </span>
             <img
               src="/assets/spark-check.svg"
@@ -185,23 +180,21 @@ export default function ResearchDiscovery() {
           <div className="insight-item">
             <div className="insight-number">Insight #1</div>
             <p className="insight-text">
-              Operators need <strong>clear status signals</strong> to act
-              decisively in zero-visibility environments.
+              Operators need <strong>clear status signals</strong> to act decisively when they can’t see.
             </p>
           </div>
 
           <div className="insight-item">
             <div className="insight-number">Insight #2</div>
             <p className="insight-text">
-              Operations must <strong>support multiple roles</strong> so
-              operators can coordinate through one shared system.
+            The system must <strong>support multiple roles</strong> through one shared source of truth.
             </p>
           </div>
 
           <div className="insight-item">
             <div className="insight-number">Insight #3</div>
             <p className="insight-text">
-              Setup should take minutes, not hours. Delays at the surface{" "}
+              Setup should take minutes, not hours. Delays {" "}
               <strong>waste time</strong> and <strong>add risk</strong>.
             </p>
           </div>
@@ -209,8 +202,7 @@ export default function ResearchDiscovery() {
           <div className="insight-item">
             <div className="insight-number">Insight #4</div>
             <p className="insight-text">
-              Usability must <strong>extend beyond experts</strong> to open
-              broader markets like public safety and emergency response.
+              Usability must <strong>extend beyond experts</strong> to open broader markets.
             </p>
           </div>
         </div>

@@ -245,7 +245,7 @@
     font-family: $font-montserrat;
     font-size: 1.075rem;
     font-weight: 425;
-    letter-spacing: -0.55px;
+    letter-spacing: -0.25px;
   }
    
    @mixin type-mont-poj-light-header {
@@ -340,7 +340,6 @@ $track-loose: 0.2px !default;    /* looser for dark bg */
 @mixin body-strong-light {
   font-weight: 600 !important;
   color: #000000;
-  letter-spacing: -0.1px;
 }
 
 @mixin body-strong-dark {

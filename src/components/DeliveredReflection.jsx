@@ -42,12 +42,12 @@ export default function DeliveredReflection() {
               <div className="delivered-eyebrow">What We Delivered</div>
 
               <h3 className="delivered-title">
-                We delivered refined operations, validated features, and a
-                service blueprint for <em>future growth.</em>
+                We delivered operational refinements, validated features, and a
+                blueprint for <em>future growth.</em>
               </h3>
 
               <p className="delivered-body">
-                We delivered <strong>high-fidelity prototypes</strong> for
+                We presented <strong>high-fidelity prototypes</strong> for
                 handoff, which are <strong>under NDA</strong>. Improvements are
                 documented in the task flows and supporting artifacts,
                 summarized in three key outputs:
@@ -72,8 +72,7 @@ export default function DeliveredReflection() {
                   Operator Console Updates
                 </h4>
                 <p className="deliverable-text">
-                  Mission control updates that improved situational awareness
-                  and enabled shared route planning with new AI systems.
+                Mission control patterns that improved situational awareness and enabled shared route planning.
                 </p>
               </div>
             </div>
@@ -91,8 +90,8 @@ export default function DeliveredReflection() {
                 <div className="deliverable-label">Deliverable #2</div>
                 <h4 className="deliverable-title">3D Analysis Tools</h4>
                 <p className="deliverable-text">
-                  Prototypes of new tools for engineers to explore scans in 3D,
-                  spot defects, and verify inspection data.
+                  Prototypes of new tools for reviewing scans, spotting defects,
+                  and verifying inspection data.
                 </p>
               </div>
             </div>
@@ -110,8 +109,7 @@ export default function DeliveredReflection() {
                 <div className="deliverable-label">Deliverable #3</div>
                 <h4 className="deliverable-title">Service Blueprint</h4>
                 <p className="deliverable-text">
-                  A systems-level map of people, tools, and environments, to
-                  guide scaling beyond single missions.
+                  A systems map of people, tools, and environments to guide scaling beyond single missions.
                 </p>
               </div>
             </div>
@@ -124,9 +122,8 @@ export default function DeliveredReflection() {
             <div className="reflection-eyebrow">Reflection &amp; Takeaways</div>
 
             <h3 className="reflection-title">
-              Designing for robotics taught me that{" "}
-              <em>clarity beats complexity</em>, and{" "}
-              <em>research is the bridge</em> between chaos and strategy.
+            Robotics taught me that <em>clarity beats complexity</em>, and research bridges <em>chaos</em> and <em>strategy</em>.
+
               <img
                 src="/assets/spark-thumb.svg"
                 alt=""
@@ -136,7 +133,7 @@ export default function DeliveredReflection() {
             </h3>
 
             <p className="reflection-body">
-              Working with robotics felt overwhelming at first, but I learned{" "}
+              While this project felt overwhelming at first, I learned{" "}
               <strong>design lives at the interface, not in the machine</strong>
               . My role wasn't to master algorithms, but to{" "}
               <strong>build trust for operators</strong>. This shift left me
@@ -152,8 +149,7 @@ export default function DeliveredReflection() {
                   Failure as a Design Input
                 </h4>
                 <p className="takeaway-text">
-                  In complex domains, confidence comes from designing for edge
-                  cases and failures, not perfect scenarios.
+                Reliability starts by designing for what goes wrong, not what should go right.
                 </p>
               </div>
             </div>
@@ -165,8 +161,7 @@ export default function DeliveredReflection() {
                   Strategy in Real Contexts
                 </h4>
                 <p className="takeaway-text">
-                  Aligning processes with real people ensures product decisions
-                  serve actual needs, not abstract usability.
+                When process follows real people and contexts, decisions serve real needs.
                 </p>
               </div>
             </div>
@@ -178,8 +173,7 @@ export default function DeliveredReflection() {
                   Fast Prototypes, Big Impact
                 </h4>
                 <p className="takeaway-text">
-                  Even quick, low-fidelity tests revealed patterns that shaped
-                  final workflows and strategy.
+                  Quick, low-fidelity tests revealed the patterns that drove our final workflows and strategy.
                 </p>
               </div>
             </div>

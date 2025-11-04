@@ -65,12 +65,12 @@ export default function SolutionImpact() {
       <div className="si-solution">
         <div className="si-eyebrow">Solution</div>
         <h3 className="si-title">
-          Delivered UX workflows and strategies that <span className="si-title-light">streamlined inspections</span>, helping users <span className="si-title-light">plan, supervise</span>, and <span className="si-title-light">review</span> with confidence.
+        We reframed Aquatonomy as a <span className="si-title-light">decision-support system</span>, helping users plan, supervise, and review with confidence.
         </h3>
 
         <div className="si-body">
           <p>
-            Our team reframed Aquatonomy as a <strong>decision-support system</strong> by <strong>simplifying workflows</strong>, adding <strong>clear signal patterns</strong> for zero-visibility confidence, and centering <strong>cross-user coordination</strong> to focus effort where robotics adds the most value!
+          Our solution included <strong>streamlined workflows</strong> for fewer, faster tasks, <strong>clear signal patterns</strong> for zero-visibility moments, and <strong>cross-role coordination</strong> to focus effort where robotics adds the most value!
           </p>
         </div>
       </div>

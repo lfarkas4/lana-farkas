@@ -18,7 +18,7 @@ export default function ProblemSpace() {
         <h3 className="pw-title">
           Underwater inspections happen in some of the{" "}
           <span className="pw-title-light">toughest conditions</span>, and the
-          complexity goes beyond the water itself.
+          complexity goes beyond the water.
         </h3>
       </div>
 
@@ -40,7 +40,7 @@ export default function ProblemSpace() {
           </div>
           <h4 className="pw-icon-title">Niche Users</h4>
           <p className="pw-icon-label">
-            Civil engineers, divers, roboticists, public safety.
+            Divers, engineers, roboticists, public safety.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export default function ProblemSpace() {
           </div>
           <h4 className="pw-icon-title">Multi-User Workflows</h4>
           <p className="pw-icon-label">
-            Field operators, engineers in the office, clients reviewing data.
+            Field operators and clients share the same mission.
           </p>
         </div>
 

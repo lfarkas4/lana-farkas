@@ -428,7 +428,7 @@
      color: tokens.$primary;
      line-height: 1.65;
      margin: 0;
-     letter-spacing: 0.025px;
+     letter-spacing: 0.075px;
    
      strong { @include tokens.body-strong-dark; }
    }
@@ -446,7 +446,7 @@
        color: tokens.$prisec;
        line-height: 1.6;
        margin: 0;
-       letter-spacing: 0.025px;
+       letter-spacing: 0.075px;
    
        strong { @include tokens.body-strong-dark; }
      }
@@ -523,7 +523,7 @@
      font-weight: 500;
      color: tokens.$primary;
      min-width: 85px;
-     letter-spacing: 0.025px;
+     letter-spacing: 0.075px;
    }
    
    .insight-text {
@@ -532,7 +532,7 @@
      line-height: 1.6;
      margin: 0;
      font-size: 1.075rem;
-     letter-spacing: 0.025px;
+     letter-spacing: 0.075px;
    
      strong { @include tokens.body-strong-dark; color: tokens.$secondary; }
    }
@@ -716,7 +716,7 @@
      background: rgba(0, 0, 0, 0.04);
      border: 1px solid rgba(0, 0, 0, 0.12);
      color: #222;
-     margin-top: 40px;
+     margin-top: 30px;
    }
    
    .takeaway-content { padding-top: 0; }
@@ -895,7 +895,7 @@
        background: rgba(0, 0, 0, 0.04);
        border: 1px solid rgba(0, 0, 0, 0.12);
        color: #222;
-       margin-top: 40px;
+       margin-top: 30px;
        font-size: 1.5rem !important;
      }
    
