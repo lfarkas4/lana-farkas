@@ -496,7 +496,7 @@
      color: tokens.$primary;
      font-style: normal;
      font-weight: 400;
-     letter-spacing: 0.8px;
+     letter-spacing: 0.4px;
      
      background: none;
      border: none;
@@ -854,7 +854,7 @@
        font-size: 1.45rem;
      }
      .pd-hero {
-      margin-top: tokens.$space-lg;
+      margin-top: tokens.$space-xl;
     }
    
      .pd-hero__subtitle {
@@ -934,9 +934,10 @@
      }
    
      .section-title1 {
-       font-size: 1.3rem;
-       margin-bottom: -15px;
-     }
+      @include tokens.type-coop-display2-bold;
+      font-size: 1.3rem;
+      margin-bottom: -15px;
+    }
    }
 
    

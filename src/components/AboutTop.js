@@ -47,7 +47,7 @@ const About = () => {
             </p>
 
             <p className="about-bio">
-              I’m currently pursuing a{" "}
+              I recently earned a{" "}
               <span className="light-bold">
                 Master’s in Human-Computer Interaction
               </span>{" "}

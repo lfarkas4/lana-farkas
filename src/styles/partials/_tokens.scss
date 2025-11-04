@@ -139,7 +139,7 @@
      font-family: $font-montserrat;
      font-size: $font-mont-display1;
      font-weight: $mont-weight-400;
-     letter-spacing: 0.9px;
+     letter-spacing: 0.85px;
    }
    
    @mixin type-mont-display-mid {
@@ -250,14 +250,14 @@
    
    @mixin type-mont-poj-light-header {
      font-family: $font-montserrat;
-     font-size: 1.2rem;
+     font-size: 1.1rem;
      font-weight: $mont-weight-400;
      letter-spacing: 0px;
    }
 
    @mixin type-mont-poj-dark-header {
     font-family: $font-montserrat;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 375;
     letter-spacing: 0px;
   }

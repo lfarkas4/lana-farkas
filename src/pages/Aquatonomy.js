@@ -11,8 +11,6 @@ import "../styles/Aquatonomy.scss";
 import SolutionImpact from "../components/SolutionImpact";
 import ResearchDiscovery from "../components/ResearchDiscovery";
 import DeliveredReflection from "../components/DeliveredReflection";
-
-// 👇 this is your hook (from /src/utils/useReveal.js)
 import useReveal from "../utils/useReveal";
 
 const iconMap = {

@@ -74,7 +74,7 @@ const Hero = () => {
           style={shouldAnimate ? { animationDelay: '0.4s' } : {}}
         >
           <div className="hero-column">
-            <h4 className="font-cooper-italic">currently learning</h4>
+            <h4 className="font-cooper-italic">previously learned</h4>
             <p>mhci @ carnegie mellon university</p>
           </div>
           <div className="hero-column">

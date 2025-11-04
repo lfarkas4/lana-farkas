@@ -314,7 +314,7 @@
 
       @media (max-width: #{tokens.$sm_breakpoint}) {
         .nav-container {
-          padding: tokens.$space-xs tokens.$space-md tokens.$space-md;
+          padding: tokens.$space-xs tokens.$space-md tokens.$space-sm;
         }
       }
    

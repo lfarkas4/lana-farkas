@@ -218,6 +218,7 @@
      line-height: 1.5;
      transition: color 0.3s ease, opacity 0.3s ease;
      opacity: 0.9;
+     letter-spacing: 0.25px;
    }
    
    .project-card-link:hover .project-description {
@@ -553,7 +554,7 @@
    
      .projects-container {
        grid-template-columns: 1fr;
-       gap: 65px;
+       gap: 45px;
        margin-bottom: 100px;
      }
    
@@ -571,18 +572,20 @@
        margin-bottom: 14px;
        margin-top: 14px;
        line-height: 28px;
+       letter-spacing: 0px;
      }
    
      .project-description {
        font-size: 0.825rem;
        line-height: 1.6;
        font-weight: 400 !important;
+       letter-spacing: -0.05px;
      }
    
      .mini-projects-container {
        display: flex;
        flex-direction: column;
-       gap: 60px;
+       gap: 45px;
      }
    
      .mini-title {
@@ -602,7 +605,7 @@
        font-size: 0.925rem;
        letter-spacing: 0.75px;
        gap: 6px;
-       margin-bottom: -10px;
+       margin-bottom: -25px;
      }
    
      .section-arrow {

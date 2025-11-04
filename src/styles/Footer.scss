@@ -60,6 +60,7 @@
      font-weight: 360 !important;
      font-style: italic;
      color: rgba(240, 240, 240, 0.85);
+     letter-spacing: 0.5px;
    }
    
    
@@ -100,6 +101,7 @@
      color: tokens.$primary;
      line-height: 1.5;
      white-space: nowrap;
+     letter-spacing: 0.5px;
    }
    
    
@@ -113,6 +115,7 @@
      white-space: nowrap;
      line-height: 1.25;
      text-align: center;
+     letter-spacing: 0.6px;
    }
    
    
@@ -265,6 +268,7 @@
    @media (max-width: #{tokens.$xs_breakpoint}) {
      .footer {
        padding: 0 50px tokens.$space-sm;
+       margin-top: tokens.$space-xxl;
      }
    
      .footer-main {

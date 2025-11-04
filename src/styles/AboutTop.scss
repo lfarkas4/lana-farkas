@@ -152,6 +152,7 @@
      margin-bottom: 0;
      margin-top: 0;
      word-wrap: break-word;
+     letter-spacing: 0.25px;
    }
    
    
@@ -236,6 +237,7 @@
      @include tokens.type-mont-footer;
      color: tokens.$primary;
      font-weight: 360;
+     letter-spacing: 0.5px;
    }
    
    
