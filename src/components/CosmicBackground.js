@@ -1,143 +1,143 @@
-import React, { useEffect, useRef } from "react";
+// src/components/CosmicBackground.jsx
+import React from "react";
 import "../styles/CosmicBackground.scss";
-import starLayout from "../assets/starLayout.json";
 
-const CosmicBackground = () => {
-  const canvasRef = useRef(null);
-  const starsRef = useRef([]);
-  const prevSize = useRef({ width: window.innerWidth, height: window.innerHeight });
+/** SVG “sparkle” stars (keep your positions exactly) */
+const SPARKLE_STARS = [
+  { left: "10%", top: "16%", size: "sm", delay: "0.0s"  },
+  { left: "35%", top: "13%", size: "md", delay: "2.5s"  },
+  { left: "58%", top: "11%", size: "sm", delay: "5.0s"  },
+  { left: "84%", top: "22%", size: "sm", delay: "7.5s"  },
+  { left: "78%", top: "37%", size: "md", delay: "3.2s"  },
+  { left: "93%", top: "40%", size: "md", delay: "3.2s"  },
+  { left: "83%", top: "55%", size: "sm", delay: "6.4s"  },
+  { left: "76%", top: "64%", size: "md", delay: "9.6s"  },
+  { left: "65%", top: "90%", size: "sm", delay: "1.9s"  },
+  { left: "26%", top: "86%", size: "sm", delay: "4.1s"  },
+  { left: "12%", top: "72%", size: "md", delay: "8.3s"  },
+  { left: "8%",  top: "50%", size: "sm", delay: "10.0s" },
+  { left: "16%", top: "36%", size: "sm", delay: "11.7s" },
+];
 
-  // Generate additional stars to fill gaps in corners/edges
-  const generateGapFillerStars = (baseWidth, baseHeight, scaleX, scaleY) => {
-    const centerX = baseWidth / 2;
-    const centerY = baseHeight / 2;
-    const gapStars = [];
-    
-    // Generate stars in 8 radial sections to fill rotation gaps
-    const sections = 8;
-    const starsPerSection = 15;
-    const minRadius = Math.min(baseWidth, baseHeight) * 0.3; // Avoid center
-    const maxRadius = Math.max(baseWidth, baseHeight) * 0.6;
-    
-    for (let section = 0; section < sections; section++) {
-      const baseAngle = (section / sections) * Math.PI * 2;
-      const angleSpread = (Math.PI * 2) / sections;
-      
-      for (let i = 0; i < starsPerSection; i++) {
-        const angle = baseAngle + (Math.random() - 0.5) * angleSpread;
-        const radius = minRadius + Math.random() * (maxRadius - minRadius);
-        
-        const x = centerX + Math.cos(angle) * radius;
-        const y = centerY + Math.sin(angle) * radius;
-        
-        // Random color palette
-        const colors = [
-          [255, 255, 255],      // white
-          [255, 238, 204],      // warm white
-          [255, 204, 238],      // pink
-          [170, 209, 255],      // light blue
-          [221, 255, 204],      // light green
-        ];
-        const baseColor = colors[Math.floor(Math.random() * colors.length)];
-        
-        gapStars.push({
-          x: x * scaleX,
-          y: y * scaleY,
-          baseRadius: 2.5 + Math.random() * 0.8,
-          radius: (2.5 + Math.random() * 0.8) * Math.min(scaleX, scaleY),
-          opacity: Math.random() * 0.5 + 0.3,
-          twinkleSpeed: Math.random() * 0.0015 + 0.001,
-          fadeDirection: Math.random() > 0.5 ? 1 : -1,
-          baseColor,
-          minOpacity: 0.1 + Math.random() * 0.2,
-          maxOpacity: 0.2 + Math.random() * 0.2,
-        });
-      }
-    }
-    
-    return gapStars;
-  };
+/** Circle-dot stars (keep your placement & radius; we only tweak glow) */
+const CIRCLE_STARS = [
+  { left: "14%", top: "8%",  r: 5, color: "rgba(255,255,255,.7)",   delay: "0s"  },
+  { left: "6%",  top: "30%", r: 4, color: "rgba(255,238,204,.8)",   delay: "18s" },
+  { left: "20%", top: "23%", r: 6, color: "rgba(170,209,255,.85)",  delay: "4s"  },
+  { left: "26%", top: "13%", r: 5, color: "rgba(255,204,238,.7)",   delay: "2s",  move: true },
+  { left: "31%", top: "4%",  r: 4, color: "rgba(255,255,255,.85)",  delay: "8s"  },
+  { left: "45%", top: "8%",  r: 6, color: "rgba(170,209,255,.8)",   delay: "10s" },
+  { left: "62%", top: "7%",  r: 4, color: "rgba(255,238,204,.8)",   delay: "12s" },
+  { left: "70%", top: "14%", r: 5, color: "rgba(255,255,255,.7)",   delay: "14s" },
+  { left: "80%", top: "20%", r: 4, color: "rgba(255,204,238,.8)",   delay: "16s" },
+  { left: "92%", top: "17%", r: 6, color: "rgba(170,209,255,.85)",  delay: "2s"  },
+  { left: "85%", top: "35%", r: 5, color: "rgba(255,255,255,.8)",   delay: "14s" },
+  { left: "90%", top: "45%", r: 4, color: "rgba(255,238,204,.7)",   delay: "12s" },
+  { left: "95%", top: "60%", r: 6, color: "rgba(255,238,204,.8)",   delay: "20s" },
+  { left: "87%", top: "72%", r: 5, color: "rgba(170,209,255,.75)",  delay: "18s" },
+  { left: "80%", top: "78%", r: 6, color: "rgba(255,204,238,.8)",   delay: "16s" },
+  { left: "92%", top: "85%", r: 4, color: "rgba(255,255,255,.8)",   delay: "4s"  },
+  { left: "88%", top: "90%", r: 5, color: "rgba(255,238,204,.8)",   delay: "12s" },
+  { left: "74%", top: "94%", r: 5, color: "rgba(170,209,255,.75)",  delay: "12s", move: true },
+  { left: "54%", top: "96%", r: 6, color: "rgba(255,204,238,.8)",   delay: "8s"  },
+  { left: "38%", top: "92%", r: 5, color: "rgba(255,255,255,.7)",   delay: "0s"  },
+  { left: "33%", top: "95%", r: 4, color: "rgba(255,238,204,.8)",   delay: "12s" },
+  { left: "20%", top: "90%", r: 6, color: "rgba(170,209,255,.8)",   delay: "10s" },
+  { left: "22%", top: "72%", r: 6, color: "rgba(255,204,238,.75)",  delay: "22s" },
+  { left: "7%",  top: "86%", r: 5, color: "rgba(255,204,238,.8)",   delay: "6s"  },
+  { left: "5%",  top: "78%", r: 4, color: "rgba(255,255,255,.85)",  delay: "8s"  },
+  { left: "14%", top: "60%", r: 4, color: "rgba(255,238,204,.7)",   delay: "12s" },
+  { left: "18%", top: "56%", r: 5, color: "rgba(170,209,255,.85)",  delay: "18s" },
+  { left: "4%",  top: "47%", r: 6, color: "rgba(170,209,255,.75)",  delay: "2s"  },
+];
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
+/** Map radius → brightness “layer” (far/mid/near). Tweak here to change depth. */
+function layerFor(r) {
+  if (r >= 6) {         // NEAR (brightest)
+    return { minO: 0.36, maxO: 0.84, haloMin: "1px", haloMax: "12px" };
+  } else if (r === 5) { // MID
+    return { minO: 0.22, maxO: 0.70, haloMin: "1px", haloMax: "10px" };
+  }
+  // FAR (dimmest)
+  return { minO: 0.10, maxO: 0.44, haloMin: "0px", haloMax: "8px" };
+}
 
-    const resizeCanvas = () => {
-      const dpr = window.devicePixelRatio || 1;
-      const newWidth = window.innerWidth * dpr;
-      const newHeight = window.innerHeight * dpr;
-    
-      canvas.width = newWidth;
-      canvas.height = newHeight;
-    
-      const baseWidth = 2880;
-      const baseHeight = 1800;
-      const scaleX = newWidth / baseWidth;
-      const scaleY = newHeight / baseHeight;
-      const minScale = 0.6;
-    
-      // Load original stars
-      const originalStars = starLayout.map((star) => {
-        const baseRadius = star.radius;
-        return {
-          ...star,
-          x: star.x * scaleX,
-          y: star.y * scaleY,
-          baseRadius,
-          radius: Math.max(baseRadius * Math.min(scaleX, scaleY), baseRadius * minScale),
-          opacity: star.opacity || Math.random(),
-          twinkleSpeed: star.twinkleSpeed || Math.random() * 0.001 + 0.001,
-          fadeDirection: star.fadeDirection || (Math.random() > 0.5 ? 1 : -1),
-          minOpacity: star.minOpacity || 0.1 + Math.random() * 0.2,
-          maxOpacity: star.maxOpacity || 0.2 + Math.random() * 0.2,
-        };
-      });
-      
-      // Generate gap filler stars
-      const gapFillers = generateGapFillerStars(baseWidth, baseHeight, scaleX, scaleY);
-      
-      // Combine both sets
-      starsRef.current = [...originalStars, ...gapFillers];
-    
-      prevSize.current = { width: window.innerWidth, height: window.innerHeight };
-    };
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      for (const star of starsRef.current) {
-        star.opacity += star.twinkleSpeed * star.fadeDirection;
-        if (star.opacity <= star.minOpacity) {
-          star.fadeDirection = 1;
-          star.opacity = star.minOpacity;
-        } else if (star.opacity >= star.maxOpacity) {
-          star.fadeDirection = -1;
-          star.opacity = star.maxOpacity;
-        }
-
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${star.baseColor[0]}, ${star.baseColor[1]}, ${star.baseColor[2]}, ${star.opacity})`;
-        ctx.fill();
-      }
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener("resize", resizeCanvas);
-    };
-  }, []);
+export default function CosmicBackground() {
+  const debug = new URLSearchParams(window.location.search).has("stardebug");
 
   return (
-    <div className="cosmic-background">
-      <canvas ref={canvasRef} className="star-canvas" />
-      <div className="color-layer" />
+    <div className="cosmic-background" aria-hidden>
+      {/* back textures */}
+      <div className="grain-layer" />
+      <div className="nebula-layer" />
+
+      {/* readability */}
+      <div className="star-dimmer" />
       <div className="center-orb3" />
+
+      {/* circle dots (layered continuous glow) */}
+      <div className="circle-stars stars-enter">
+  {CIRCLE_STARS.map((s, i) => {
+    const { minO, maxO, haloMin, haloMax } = layerFor(s.r);
+
+    const glowDur   = `${7 + ((i * 37) % 80) / 10}s`;          // 7–15s
+    const glowDelay = `calc(${s.delay || "0s"} + ${(i % 5) * 110}ms)`;
+
+    const hue =
+      (i % 6 === 0) ? 120 :  // green
+      (i % 5 === 0) ? 195 :  // blue
+      (i % 4 === 0) ? 305 :  // magenta
+      (i % 3 === 0) ? 48  :  // warm yellow
+      0;
+
+    return (
+      <span
+        key={`dot-${i}`}
+        className={`circle-star${s.move ? " mover" : ""}`}
+        style={{
+          left: s.left,
+          top: s.top,
+          width: `${s.r}px`,
+          height: `${s.r}px`,
+          backgroundColor: s.color,
+
+          // per-star CSS vars
+          "--minO": String(minO),
+          "--maxO": String(maxO),
+          "--haloMin": haloMin,
+          "--haloMax": haloMax,
+          "--glowDur": glowDur,
+          "--glowDelay": glowDelay,
+          "--dotHue": hue,
+
+          // movement
+          "--ampX": s.move ? "10px" : "0px",
+          "--ampY": s.move ? "8px"  : "0px",
+          "--pathDur": s.move ? `${18 + (i % 5) * 3}s` : "0s",
+          "--pathDelay": s.move ? `${(i % 7) * 0.7}s` : "0s",
+        }}
+        data-label={debug ? i + 1 : undefined}
+      />
+    );
+  })}
+</div>
+
+
+      {/* SVG sparkle stars (keep your scale twinkle) */}
+      <div className="manual-stars stars-enter">
+        {SPARKLE_STARS.map((s, i) => (
+          <img
+            key={`spark-${i}`}
+            className={`manual-star s-${s.size || "md"}`}
+            src="/assets/star-plain.svg"
+            alt=""
+            aria-hidden="true"
+            style={{ left: s.left, top: s.top, animationDelay: s.delay || `${(i * 3.2) % 12}s` }}
+          />
+        ))}
+      </div>
+
+      {/* blobs */}
       <div className="blob blob1" />
       <div className="blob blob2" />
       <div className="blob blob3" />
@@ -146,6 +146,4 @@ const CosmicBackground = () => {
       <div className="blob blob6" />
     </div>
   );
-};
-
-export default CosmicBackground;
+}

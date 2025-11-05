@@ -187,7 +187,7 @@ export default function ResearchDiscovery() {
           <div className="insight-item">
             <div className="insight-number">Insight #2</div>
             <p className="insight-text">
-            The system must <strong>support multiple roles</strong> through one shared source of truth.
+            The system must <strong>support multiple roles</strong> on a unified platform.
             </p>
           </div>
 
