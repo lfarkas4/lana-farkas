@@ -97,7 +97,7 @@ export const caseStudies = [
       description:
         "Developed interactive game prototype using Arduino and digital fabrication tools.",
       link: "/case-studies/taptap",
-      image: "/assets/taptap.png",
+      image: "/assets/taptap1.png",
       brandMark: "/assets/taptap-mark.svg",
       brandMarkH: "24px",                // ← per-project size
       meta: {

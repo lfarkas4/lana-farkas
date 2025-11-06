@@ -49,9 +49,9 @@ const AboutStuff = () => {
               <img src="/assets/clip.png" alt="clip" className="clip-img" />
             </div>
             <div className="frame hover-label" data-label="propogation nation ☘">
-              <img src="/assets/pilea.jpg" alt="Card 1" className="floating-img" />
+              <img src="/assets/stationary.png" alt="Card 1" className="floating-img" />
             </div>
-            <p className="floating-caption">i'm also a proud plant mom <span className="cooper-symbols">🌱</span></p>
+            <p className="floating-caption">i'm also a stationary junkie <span className="cooper-symbols">✍︎</span></p>
           </div>
 
           <div className="floating-card rotate-toast offset-mid">
@@ -59,9 +59,9 @@ const AboutStuff = () => {
               <img src="/assets/clip.png" alt="clip" className="clip-img" />
             </div>
             <div className="frame hover-label" data-label="the best toast eva ＊">
-              <img src="/assets/toast.jpg" alt="Card 2" className="floating-img" />
+              <img src="/assets/cafe.png" alt="Card 2" className="floating-img" />
             </div>
-            <p className="floating-caption">a lover of sweet treats <span className="cooper-symbols">🍰</span></p>
+            <p className="floating-caption">a hardcore cafe hopper <span className="cooper-symbols">☕︎</span></p>
           </div>
 
           <div className="floating-card rotate-craft offset-right">
@@ -69,9 +69,9 @@ const AboutStuff = () => {
               <img src="/assets/clip.png" alt="clip" className="clip-img" />
             </div>
             <div className="frame hover-label" data-label="my kind of therapy ✂">
-              <img src="/assets/craft.jpg" alt="Card 3" className="floating-img" />
+              <img src="/assets/ghost.png" alt="Card 3" className="floating-img" />
             </div>
-            <p className="floating-caption">and a maker of tiny messes <span className="cooper-symbols">✂️</span></p>
+            <p className="floating-caption">and a proud dog mom <span className="cooper-symbols">·ᴥ·</span></p>
           </div>
         </div>
       </section>
@@ -81,12 +81,12 @@ const AboutStuff = () => {
         <h3 className="extras-intro">
           <span className="xs-hide">... and here's a few tunes to </span>
           <span className="xs-only">... a few tunes to </span>
-          <span className="cooper-spotify-heading">remember me by</span> ⊹
+          <span className="cooper-spotify-heading">remember me by!</span>
         </h3>
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">
             <iframe
-              src="https://open.spotify.com/embed/track/5n1WeUNWJIjs9ueYD4v0Pt?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/5cxOC94379M1lUOww9SNLX?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Killer"
@@ -96,7 +96,7 @@ const AboutStuff = () => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             ></iframe>
             <iframe
-              src="https://open.spotify.com/embed/track/5tqZJUHEuqdN12RZVq2l9p?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/0jC4hSRcgcIN8qcfSN7Wkf?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Hold On"
@@ -106,7 +106,7 @@ const AboutStuff = () => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             ></iframe>
             <iframe
-              src="https://open.spotify.com/embed/track/2TzPpF0yA5g8kzE0F59iX2?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/6TeKbncyK62smlAvPy1dNa?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Into Sands"
@@ -118,7 +118,7 @@ const AboutStuff = () => {
           </div>
           <div className="spotify-row bottom-row">
             <iframe
-              src="https://open.spotify.com/embed/track/6x2TIQEU0w7nedmVKBU0ec?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/6KS5iyM4uDuJ6oAacMSXha?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Pluto"
@@ -128,7 +128,7 @@ const AboutStuff = () => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             ></iframe>
             <iframe
-              src="https://open.spotify.com/embed/track/5cxOC94379M1lUOww9SNLX?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/2TzPpF0yA5g8kzE0F59iX2?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Mood Ring"

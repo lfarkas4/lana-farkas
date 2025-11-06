@@ -8,13 +8,13 @@ const About = () => {
         <div className="about-wrapper">
           <div className="about-photo-wrapper">
             <img
-              src="/assets/lana-about.png"
+              src="/assets/lana-about1.png"
               alt="Lana"
               className="about-photo"
             />
             <img
               className="curved-text-svg"
-              src="/assets/text.svg"
+              src="/assets/text2.svg"
               alt="Curved text"
             />
           </div>

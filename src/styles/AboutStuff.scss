@@ -170,7 +170,7 @@
    
    /* Card image */
    .floating-img {
-     width: 100%;
+     width: 95%;
      height: auto;
      display: block;
      border-radius: 20px;
@@ -213,9 +213,9 @@
      top: 0;
    }
    
-   .clip-wrapper { transform: translate(calc(var(--cardW, 320px) * 0.10), calc(var(--cardW, 320px) * -0.28)) rotate(-10deg); }
-   .clip-wrapper2 { transform: translate(calc(var(--cardW, 320px) * 0.30), calc(var(--cardW, 320px) * -0.26)) rotate(12deg); }
-   .clip-wrapper3 { transform: translate(calc(var(--cardW, 320px) * 0.20), calc(var(--cardW, 320px) * -0.27)) rotate(-6deg); }
+   .clip-wrapper { transform: translate(calc(var(--cardW, 320px) * 0.15), calc(var(--cardW, 320px) * -0.29)) rotate(-6deg); }
+   .clip-wrapper2 { transform: translate(calc(var(--cardW, 320px) * 0.30), calc(var(--cardW, 320px) * -0.28)) rotate(23deg); }
+   .clip-wrapper3 { transform: translate(calc(var(--cardW, 320px) * 0.20), calc(var(--cardW, 320px) * -0.27)) rotate(6deg); }
    
    .clip-img {
      width: clamp(120px, calc(var(--cardW, 320px) * 0.52), 190px);
