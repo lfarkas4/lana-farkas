@@ -10,7 +10,7 @@ const SPARKLE_STARS = [
   { left: "84%", top: "22%", size: "sm", delay: "7.5s"  },
   { left: "78%", top: "37%", size: "md", delay: "3.2s"  },
   { left: "93%", top: "40%", size: "md", delay: "3.2s"  },
-  { left: "83%", top: "55%", size: "sm", delay: "6.4s"  },
+  { left: "86%", top: "55%", size: "sm", delay: "6.4s"  },
   { left: "76%", top: "64%", size: "md", delay: "9.6s"  },
   { left: "65%", top: "90%", size: "sm", delay: "1.9s"  },
   { left: "26%", top: "86%", size: "sm", delay: "4.1s"  },

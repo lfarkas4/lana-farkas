@@ -218,9 +218,9 @@
    .clip-wrapper3 { transform: translate(calc(var(--cardW, 320px) * 0.20), calc(var(--cardW, 320px) * -0.27)) rotate(6deg); }
    
    .clip-img {
-     width: clamp(120px, calc(var(--cardW, 320px) * 0.52), 190px);
+     width: clamp(120px, calc(var(--cardW, 320px) * 0.55), 190px);
      height: auto;
-     opacity: 0.9;
+     opacity: 1;
    }
    
    

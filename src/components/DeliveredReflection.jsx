@@ -48,7 +48,7 @@ export default function DeliveredReflection() {
 
               <p className="delivered-body">
                 We presented <strong>high-fidelity prototypes</strong> for
-                handoff, which are <strong>under NDA</strong>. Improvements are
+                handoff; these materials are <strong>under NDA</strong>—please contact me for additional details. Improvements are
                 documented in the task flows and supporting artifacts,
                 summarized in three key outputs:
               </p>
