@@ -47,11 +47,11 @@ export default function DeliveredReflection() {
               </h3>
 
               <p className="delivered-body">
-                We presented <strong>high-fidelity prototypes</strong> for
-                handoff; these materials are <strong>under NDA</strong>—please contact me for additional details. Improvements are
-                documented in the task flows and supporting artifacts,
-                summarized in three key outputs:
-              </p>
+              We presented high-fidelity prototypes for handoff; these
+  materials are <strong className="hi">under NDA — please contact me for additional details</strong>.
+  Improvements are documented in the task flows and supporting artifacts,
+  summarized in three key outputs:
+</p>
             </div>
           </div>
 
@@ -133,12 +133,11 @@ export default function DeliveredReflection() {
             </h3>
 
             <p className="reflection-body">
-              While this project felt overwhelming at first, I learned{" "}
-              <strong>design lives at the interface, not in the machine</strong>
-              . My role wasn't to master algorithms, but to{" "}
-              <strong>build trust for operators</strong>. This shift left me
-              with three lessons to carry forward...
-            </p>
+  While this project felt overwhelming at first, I learned{" "}
+  <strong className="hi">design lives at the interface, not in the machine</strong>. My role wasn't
+  to master algorithms, but to <strong className="hi">build trust for operators</strong>. This shift
+  left me with three lessons to carry forward...
+</p>
           </div>
 
           <div className="takeaways-list" data-stagger-block>

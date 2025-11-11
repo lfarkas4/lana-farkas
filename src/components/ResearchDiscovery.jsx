@@ -3,7 +3,6 @@ import React from "react";
 import useReveal from "../utils/useReveal";
 
 export default function ResearchDiscovery() {
-  // observe this whole section for scroll-in
   const sectionRef = useReveal();
 
   return (
@@ -19,7 +18,8 @@ export default function ResearchDiscovery() {
         <div className="research-eyebrow">Research &amp; Discovery</div>
 
         <p className="research-intro">
-          We mixed <em>field research</em>, <em>operator interviews</em>, and <em>fast prototypes</em> to learn what really happens in underwater inspections.
+          We mixed <em>field research</em>, <em>operator interviews</em>, and{" "}
+          <em>fast prototypes</em> to learn what really happens in underwater inspections.
         </p>
       </div>
 
@@ -42,29 +42,21 @@ export default function ResearchDiscovery() {
         {/* right/content */}
         <div className="research-content reveal-block">
           <div className="research-subtitle-wrapper">
-            <h3 className="research-subtitle">
-              Evaluating the Console
-            </h3>
-
-            {/* little spark decoration */}
-            <img
-              src="/assets/spark-right.svg"
-              alt=""
-              className="research-spark reveal-block--decor"
-              aria-hidden="true"
-            />
+            <h3 className="research-subtitle">Evaluating the Existing Console</h3>
+            {/* spark removed per request */}
           </div>
 
           <p className="research-text">
-          Heuristic reviews and expert reads exposed weak feedback, inconsistent labels, and click-heavy flows.
+            Heuristic reviews and expert reads exposed weak feedback, inconsistent labels,
+            and click-heavy flows.
           </p>
 
-          <div className="research-callout reveal-block">
-            <p>
-              In mission-critical contexts, <strong>clarity</strong> of{" "}
-              <strong>operator interactions</strong> became a top priority.
-            </p>
-          </div>
+          {/* callout replaced with PNG #1 */}
+          <img
+            src="/assets/callout1.png"
+            alt="Finding #1: In mission-critical contexts, clarity of operator interactions became a top priority."
+            className="research-callout-img"
+          />
         </div>
       </div>
 
@@ -87,27 +79,21 @@ export default function ResearchDiscovery() {
         {/* right/content */}
         <div className="research-content reveal-block">
           <div className="research-subtitle-wrapper">
-            {/* spark on the left for this one */}
-            <img
-              src="/assets/spark-left.svg"
-              alt=""
-              className="research-spark reveal-block--decor"
-              aria-hidden="true"
-            />
-            <h3 className="research-subtitle">Learning from Real Life</h3>
+            {/* spark removed per request */}
+            <h3 className="research-subtitle">Learning from the Field</h3>
           </div>
 
           <p className="research-text">
-            We shadowed commercial divers and public safety officials to see
-            inspections unfold both in the water and onshore.
+            We shadowed commercial divers and public safety officials to see inspections
+            unfold both in the water and onshore.
           </p>
 
-          <div className="research-callout reveal-block">
-            <p>
-              Fieldwork revealed how the console must support the{" "}
-              <strong>broader service</strong> workflow.
-            </p>
-          </div>
+          {/* callout replaced with PNG #2 */}
+          <img
+            src="/assets/callout2.png"
+            alt="Finding #2: Fieldwork revealed how the console must support the broader service workflow."
+            className="research-callout-img"
+          />
         </div>
       </div>
 
@@ -130,32 +116,26 @@ export default function ResearchDiscovery() {
         {/* right/content */}
         <div className="research-content reveal-block">
           <div className="research-subtitle-wrapper">
-            <h3 className="research-subtitle">
-              Co-Design &amp; Usability Testing
-            </h3>
-            <img
-              src="/assets/spark-right.svg"
-              alt=""
-              className="research-spark reveal-block--decor"
-              aria-hidden="true"
-            />
+            <h3 className="research-subtitle">Co-Design &amp; Usability Testing</h3>
+            {/* spark removed per request */}
           </div>
 
           <p className="research-text">
-          Bodystorming and usability sessions with operators and engineers helped us refine scenarios step by step.
+            Bodystorming and usability sessions with operators and engineers helped us
+            refine scenarios step by step.
           </p>
 
-          <div className="research-callout reveal-block">
-            <p>
-              Designing with users kept solutions aligned to{" "}
-              <strong>real inspection tasks</strong>.
-            </p>
-          </div>
+          {/* callout replaced with PNG #3 */}
+          <img
+            src="/assets/callout3.png"
+            alt="Finding #3: Designing with users kept solutions aligned to real inspection tasks."
+            className="research-callout-img"
+          />
         </div>
       </div>
 
       {/* ========================
-         Key Insights (staggered cards)
+         Key Insights
       ========================= */}
       <div className="research-insights reveal-block">
         <div className="insights-header reveal-block">
@@ -164,10 +144,11 @@ export default function ResearchDiscovery() {
           <h3 className="insights-title">
             <span>
               Through discovery and testing, we uncovered insights that{" "}
-              <em>guided our design process</em>...
+              <em>guided our iterative design process</em>...
             </span>
+            {/* swap spark-check → spark-right */}
             <img
-              src="/assets/spark-check.svg"
+              src="/assets/spark-right.svg"
               alt=""
               className="insights-spark reveal-block--decor"
               aria-hidden="true"
@@ -175,32 +156,31 @@ export default function ResearchDiscovery() {
           </h3>
         </div>
 
-        {/* stagger each insight like meta row timing */}
         <div className="insights-list" data-stagger-block>
           <div className="insight-item">
-            <div className="insight-number">Insight #1</div>
+            <img src="/assets/01.png" alt="01" className="insight-number-img" />
             <p className="insight-text">
               Operators need <strong>clear status signals</strong> to act decisively when they can’t see.
             </p>
           </div>
 
           <div className="insight-item">
-            <div className="insight-number">Insight #2</div>
+            <img src="/assets/02.png" alt="02" className="insight-number-img" />
             <p className="insight-text">
-            The system must <strong>support multiple roles</strong> on a unified platform.
+              The system must <strong>support multiple roles</strong> on a unified platform.
             </p>
           </div>
 
           <div className="insight-item">
-            <div className="insight-number">Insight #3</div>
+            <img src="/assets/03.png" alt="03" className="insight-number-img" />
             <p className="insight-text">
-              Setup should take minutes, not hours. Delays {" "}
-              <strong>waste time</strong> and <strong>add risk</strong>.
+              Setup should take minutes, not hours. Delays <strong>waste time</strong> and{" "}
+              <strong>add risk</strong>.
             </p>
           </div>
 
           <div className="insight-item">
-            <div className="insight-number">Insight #4</div>
+            <img src="/assets/04.png" alt="04" className="insight-number-img" />
             <p className="insight-text">
               Usability must <strong>extend beyond experts</strong> to open broader markets.
             </p>

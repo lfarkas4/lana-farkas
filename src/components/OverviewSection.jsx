@@ -42,25 +42,35 @@ export default function OverviewSection({
 
           {/* Body */}
           <div className="overview-content">
-            <div className="overview-body">
-              <p>
-                Aquatonomy is a robotics startup building autonomous systems for underwater
-                inspection. The tech was innovative, but the <strong>operator experience</strong> still had
-                gaps.
-              </p>
-              <p>
-                I led the <strong>console review</strong> and <strong>linked field research</strong>{' '}
-                to design. Interviews with divers and engineers revealed the need for
-                <strong> clearer status cues</strong> and <strong>simpler processes</strong>, which I
-                prototyped and tested to ensure the console worked in real inspections.
-              </p>
-              <p>
-                And honestly? After months of thinking about deep water, freezing divers, and robots bumping around in the dark...
-              </p>
-              <p className="overview-closing">
-                <em>I&apos;ll never look at a dam the same way again.</em>
-              </p>
-            </div>
+          <div className="overview-body">
+  <p>
+    Aquatonomy builds autonomous robots that inspect and analyze underwater
+    infrastructure. The tech was innovative, but the{" "}
+    <strong className="hi">
+      operator experience still had gaps.
+    </strong>
+  </p>
+
+  <p>
+    <strong className="hi">
+      I led the console review and linked field research to design
+    </strong>
+    . Interviews with divers and engineers revealed the need for
+    clearer status cues and
+    simpler processes, which I prototyped and
+    tested to ensure the console worked in real inspections.
+  </p>
+
+  <p>
+    And honestly? After months of thinking about deep water, freezing divers, and
+    robots bumping around in the dark...
+  </p>
+
+  <p className="overview-closing">
+  <em className="hi hi--closing">I’ll never look at a dam the same way again.</em>
+</p>
+</div>
+
           </div>
         </div>
       </div>

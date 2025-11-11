@@ -38,7 +38,7 @@ const About = () => {
             </h2>
 
             <p className="about-bio">
-              For me, design is about more than just functionality—it's about
+              For me, design is about more than just functionality — it's about
               creating unforgettable experiences that shape how people engage
               with technology. This passion has led me to work across industries
               like tech, robotics, healthcare, and education, where I focus on

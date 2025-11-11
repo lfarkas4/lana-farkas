@@ -227,6 +227,25 @@
      pointer-events: none;
      z-index: 5;
    }
+   /* Highlight helpers for Overview callouts */
+/* === Overview highlight utilities (usable anywhere in the section) === */
+.overview-section {
+  .hi {
+    @include tokens.body-strong-light;   /* keeps your strong weight */
+    background: #C8D3F5;                 /* requested highlight */
+    padding: 0 .25em;
+    border-radius: 4px;
+    -webkit-box-decoration-break: clone; /* preserve highlight across wraps */
+    box-decoration-break: clone;
+  }
+  /* For the italic closing line specifically */
+  .hi--closing {
+    font-style: italic;
+    font-weight: 600;    /* matches your existing .overview-closing em rule */
+  }
+}
+
+
    
    
    /* ================================================================
@@ -255,7 +274,7 @@
    .pw-title {
      @include tokens.type-mont-poj-dark-headerintro;
      color: tokens.$prisec;
-     letter-spacing: 0.025px;
+     letter-spacing: -0.025px;
    
      .pw-title-light {
        font-style: italic;
@@ -360,7 +379,7 @@
      @include tokens.type-mont-poj-dark-headerintro;
      color: tokens.$prisec;
      line-height: 1.45;
-     letter-spacing: 0.025px;
+     letter-spacing: -0.025px;
    
      em { font-style: italic; font-weight: 400; }
    }
@@ -482,7 +501,7 @@
      align-items: center;
      flex-wrap: wrap;
      gap: 20px;
-     letter-spacing: 0.025px;
+     letter-spacing: -0.025px;
      position: relative;
      padding-right: 8vw;
    
@@ -513,7 +532,7 @@
    
      display: grid;
      grid-template-columns: auto 1fr;
-     gap: 25px;
+     gap: 30px;
      align-items: center;
    }
    
@@ -537,6 +556,37 @@
      strong { @include tokens.body-strong-dark; color: tokens.$secondary; }
    }
    
+   /* Image-based callouts (PNG notecards) */
+.research-callout-img {
+  width: min(600px, 100%);
+  height: auto;
+  display: block;
+  margin: 20px 0 0;
+  /* keeps the same rhythm as your old .research-callout box */
+}
+
+/* Replace the numeric pill with an image */
+.insight-item {
+  grid-template-columns: auto 1fr; /* unchanged */
+  align-items: center;
+}
+
+.insight-number-img {
+  width: 50px;   /* adjust to your PNG dimensions */
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Optional: tighten on small screens */
+@media (max-width: 767px) {
+  .research-callout-img { width: min(520px, 100%); }
+  .insight-number-img { width: 65px; }
+}
+@media (max-width: #{tokens.$sm_breakpoint}) {
+  .insight-number-img { width: 45px; margin-bottom: 10px;}
+
+}
    
    /* ================================================================
       6. SECTION: DELIVERED & REFLECTION (light)
@@ -751,6 +801,18 @@
      text-align: center;
      margin: 0 8px; /* standardized */
    }
+   /* === Delivered & Reflection highlight utilities === */
+.delivered-reflection-section {
+  .hi {
+    @include tokens.body-strong-light;  /* same strong weight you use elsewhere */
+    background: #C8D3F5;                /* marker highlight */
+    padding: 0 .25em;
+    border-radius: 4px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+}
+
    
    
    /* ================================================================
@@ -834,6 +896,24 @@
    .si-sparkle {
      @include abs-decor(-50px, calc(var(--page-gutter-desktop) + 10px), auto, auto, 100px);
    }
+   /* === Solution/Impact highlight utilities === */
+.solution-impact-section {
+  .hi {
+    @include tokens.body-strong-light;  /* same bold weight you use elsewhere */
+    background: #C8D3F5;                /* requested highlight */
+    padding: 0 .25em;
+    border-radius: 4px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  /* Optional: if you ever want an underlined variant here too */
+  .hi--underline {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+}
    
    
    /* ================================================================
