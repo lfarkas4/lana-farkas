@@ -90,7 +90,7 @@ export default function SolutionImpact() {
           </div>
         </div>
 
-        <img src="/assets/spark-call.svg" alt="" className="si-sparkle" aria-hidden="true" />
+        <img src="/assets/impact.png" alt="" className="si-sparkle" aria-hidden="true" />
       </div>
     </section>
   );

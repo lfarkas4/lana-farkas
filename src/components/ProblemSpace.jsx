@@ -26,7 +26,7 @@ export default function ProblemSpace() {
       <div className="pw-icons reveal-block" data-stagger-block>
         <div className="pw-icon-item">
           <div className="pw-icon-wrapper">
-            <img src="/assets/harsh.svg" alt="" aria-hidden="true" />
+            <img src="/assets/harsh.png" alt="" aria-hidden="true" />
           </div>
           <h4 className="pw-icon-title">Harsh Environments</h4>
           <p className="pw-icon-label">
@@ -36,7 +36,7 @@ export default function ProblemSpace() {
 
         <div className="pw-icon-item">
           <div className="pw-icon-wrapper">
-            <img src="/assets/niche.svg" alt="" aria-hidden="true" />
+            <img src="/assets/niche.png" alt="" aria-hidden="true" />
           </div>
           <h4 className="pw-icon-title">Niche Users</h4>
           <p className="pw-icon-label">
@@ -46,7 +46,7 @@ export default function ProblemSpace() {
 
         <div className="pw-icon-item">
           <div className="pw-icon-wrapper">
-            <img src="/assets/multi.svg" alt="" aria-hidden="true" />
+            <img src="/assets/multi.png" alt="" aria-hidden="true" />
           </div>
           <h4 className="pw-icon-title">Multi-User Workflows</h4>
           <p className="pw-icon-label">
@@ -56,7 +56,7 @@ export default function ProblemSpace() {
 
         <div className="pw-icon-item">
           <div className="pw-icon-wrapper">
-            <img src="/assets/high.svg" alt="" aria-hidden="true" />
+            <img src="/assets/high.png" alt="" aria-hidden="true" />
           </div>
           <h4 className="pw-icon-title">High Stakes</h4>
           <p className="pw-icon-label">

@@ -77,7 +77,7 @@ export default function OverviewSection({
 
       {/* Decorations fade in after the block */}
       <img
-  src="/assets/spark-arrow.svg"
+  src="/assets/spark-boat.png"
   alt=""
   className="overview-arrow reveal reveal--up arrow-reveal"
   aria-hidden="true"

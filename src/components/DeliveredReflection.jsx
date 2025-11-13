@@ -60,7 +60,7 @@ export default function DeliveredReflection() {
             <div className="deliverable-item">
               <div className="deliverable-icon-wrapper">
                 <img
-                  src="/assets/operator.svg"
+                  src="/assets/operator.png"
                   alt=""
                   className="deliverable-icon"
                   aria-hidden="true"
@@ -80,7 +80,7 @@ export default function DeliveredReflection() {
             <div className="deliverable-item">
               <div className="deliverable-icon-wrapper">
                 <img
-                  src="/assets/3d.svg"
+                  src="/assets/3d.png"
                   alt=""
                   className="deliverable-icon"
                   aria-hidden="true"
@@ -99,7 +99,7 @@ export default function DeliveredReflection() {
             <div className="deliverable-item">
               <div className="deliverable-icon-wrapper">
                 <img
-                  src="/assets/service.svg"
+                  src="/assets/service.png"
                   alt=""
                   className="deliverable-icon"
                   aria-hidden="true"
@@ -125,7 +125,7 @@ export default function DeliveredReflection() {
             Robotics taught me that <em>clarity beats complexity</em>, and research bridges <em>chaos</em> and <em>strategy</em>.
 
               <img
-                src="/assets/spark-thumb.svg"
+                src="/assets/bulb.png"
                 alt=""
                 className="reflection-spark"
                 aria-hidden="true"
