@@ -1,0 +1,194 @@
+/* ================================================================
+   BEHAVAI CASE STUDY
+   First section: "The Kickoff"
+   ================================================================ */
+
+   @use "./partials/tokens" as tokens;
+
+   /* Reuse the full-bleed + container helpers from Aquatonomy */
+   @mixin full-bleed {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   }
+   
+   @mixin container($pad: var(--page-gutter-desktop)) {
+     @include tokens.container-page($pad);
+   }
+   
+   @mixin media-frame($mode: light) {
+     width: 100%;
+     height: auto;
+     border-radius: 20px;
+     display: block;
+   
+     @if $mode == light {
+       border: 1px solid rgba(0, 0, 0, 0.1);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+     } @else {
+       border: 1px solid rgba(255, 255, 255, 0.1);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+     }
+   }
+   
+   /* Light/dark strong helpers (same behavior as Aquatonomy) */
+   .is-light {
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   .is-dark {
+     strong {
+       @include tokens.body-strong-dark;
+     }
+   }
+   
+   /* ================================================================
+      KICKOFF SECTION
+      ================================================================ */
+   
+   .behavai-kickoff {
+     @include full-bleed;
+     background: #f5f5f5; /* matches your Figma page color */
+     padding: 80px 0 100px;
+   
+     /* Purple highlight for key phrases */
+     .hi {
+       @include tokens.body-strong-light;
+       background: #d2c1ff; /* soft purple marker */
+       padding: 0 0.25em;
+       border-radius: 4px;
+       -webkit-box-decoration-break: clone;
+       box-decoration-break: clone;
+     }
+   }
+   
+   .behavai-kickoff-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-lg;
+   }
+   
+   /* Header */
+   .behavai-kickoff-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .behavai-kickoff-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+     max-width: 32ch;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* Body copy */
+   .behavai-kickoff-body {
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   
+     p {
+       @include tokens.type-mont-poj-light-body;
+       color: #000206;
+       line-height: 1.65;
+       margin: 0;
+     }
+   }
+   
+   /* Media */
+   .behavai-kickoff-media {
+     margin-top: tokens.$space-lg;
+     display: flex;
+     flex-direction: column;
+     gap: 18px;
+   }
+   
+   .behavai-kickoff-media video,
+   .behavai-kickoff-media img {
+     @include media-frame(light);
+   }
+   
+   .behavai-kickoff-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 0 8px;
+   }
+   
+   /* ================================================================
+      RESPONSIVE TUNING (mirror Aquatonomy overview rhythm)
+      ================================================================ */
+   
+   /* LG: ≤ 991px */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     .behavai-kickoff {
+       padding: 70px 0 90px;
+     }
+   
+     .behavai-kickoff-inner {
+       @include container(var(--page-gutter-tablet));
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .behavai-kickoff-title {
+       font-size: 1.5rem;
+     }
+   
+     .behavai-kickoff-body p {
+       font-size: 0.95rem;
+     }
+   }
+   
+   /* SM: ≤ 625px */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     .behavai-kickoff {
+       padding: 60px 0 80px;
+     }
+   
+     .behavai-kickoff-inner {
+       @include container(var(--page-gutter-xs));
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .behavai-kickoff-title {
+       font-size: 1.3rem;
+       line-height: 1.45;
+     }
+   
+     .behavai-kickoff-body p {
+       font-size: 0.82rem;
+     }
+   
+     .behavai-kickoff-caption {
+       font-size: 0.9rem;
+     }
+   }
+   
+   /* XS: ≤ 464px */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .behavai-kickoff {
+       padding: 50px 0 70px;
+     }
+   
+     .behavai-kickoff-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   }
+   

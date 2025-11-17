@@ -4,104 +4,143 @@ import ProjectDetailLayout from "../components/ProjectDetailLayout";
 import ComingSoonBanner from "../components/ComingSoonBanner";
 import NextProjectTeaser from "../components/NextProjectTeaser";
 import { caseStudies } from "../data/ProjectsData";
+import useReveal from "../utils/useReveal";
 
 const iconMap = {
   Figma: "/assets/figma.svg",
-  Notion: "/assets/notion.svg",
-  Miro: "/assets/miro.svg",
+  GitHub: "/assets/github.svg",
+  React: "/assets/react.svg",
 };
 
 export default function BehavAI() {
-  const data = caseStudies.find(p => p.slug === "behavai");
+  const data = caseStudies.find((p) => p.slug === "behavai");
+
+  // Hooks always before any early return
+  const revealRef = useReveal();
+
   if (!data) return null;
 
+  // Only add a line break before "clinical advisors"
   const splitTeam = (txt) => {
-    const parts = String(txt).split(" — ");
-    return parts.length > 1 ? (
-      <>
-        {parts[0]}:<br />{parts.slice(1).join(" — ")}
-      </>
-    ) : txt;
+    if (!txt) return null;
+    const str = String(txt);
+
+    // General “ + …” split (gives you `2 co-founders +` / `clinical advisors`)
+    const plusIdx = str.indexOf(" + ");
+    if (plusIdx > -1) {
+      return (
+        <>
+          {str.slice(0, plusIdx + 3)}
+          <br />
+          {str.slice(plusIdx + 3)}
+        </>
+      );
+    }
+
+    // Fallback: no special formatting
+    return str;
   };
 
   const splitTimeline = (txt) => {
-    const idx = String(txt).indexOf(" (");
+    if (!txt) return null;
+    const str = String(txt);
+    const idx = str.indexOf(" (");
     return idx > -1 ? (
       <>
-        {txt.slice(0, idx)}
+        {str.slice(0, idx)}
         <br />
-        {txt.slice(idx)}
+        {str.slice(idx)}
       </>
-    ) : txt;
+    ) : (
+      str
+    );
   };
 
   const tools = String(data.meta?.tools || "")
     .split(",")
-    .map(t => t.trim())
+    .map((t) => t.trim())
     .filter(Boolean);
 
   return (
     <ProjectDetailLayout>
-      {/* ===== HERO ===== */}
-      <section className="pd-hero">
-        <div className="pd-hero__eyebrow">
-          {data.brandMark && (
+      <div ref={revealRef}>
+        {/* ===== HERO ===== */}
+        <section className="pd-hero reveal" aria-label="BehavAI case study hero">
+          <div className="pd-hero__eyebrow">
+            {data.brandMark && (
+              <img
+                className="pd-hero__brand"
+                src={data.brandMark}
+                alt=""
+                style={{ "--brand-h": data.brandMarkH || "18px" }}
+              />
+            )}
+          </div>
+
+          {/* Techstars award badge (replaces NDA pill) */}
+          <div className="pd-hero__award">
             <img
-              className="pd-hero__brand"
-              src={data.brandMark}
-              alt=""
-              style={{ "--brand-h": data.brandMarkH || "18px" }}
+              src="/assets/tech-light.png"
+              alt="Techstars"
+              className="pd-hero__award-logo"
             />
-          )}
-        </div>
+            <span className="pd-hero__award-text">
+              🥇 1st Place Techstars Startup Weekend 2025
+            </span>
+          </div>
 
-        <h1 className="pd-hero__title">{data.title}</h1>
-        <p className="pd-hero__subtitle">{data.description}</p>
+          <h1 className="pd-hero__title">{data.title}</h1>
+          <p className="pd-hero__subtitle">{data.description}</p>
 
-        <div className="pd-hero__media">
-          {data.video ? (
-            <video src={data.video} autoPlay muted loop playsInline />
-          ) : (
-            data.image && <img src={data.image} alt={data.title} />
-          )}
-        </div>
-      </section>
+          <div className="pd-hero__media">
+            {data.video ? (
+              <video src={data.video} autoPlay muted loop playsInline />
+            ) : (
+              data.image && <img src={data.image} alt={data.title} />
+            )}
+          </div>
+        </section>
 
-      {/* ===== META ===== */}
-      <section className="pd-meta">
-        <div className="pd-meta__item">
-          <div className="pd-meta__heading">My Role</div>
-          <div className="pd-meta__text">{data.meta?.role}</div>
-        </div>
+        {/* ===== META STRIP ===== */}
+        <section className="pd-meta">
+          <div className="pd-meta__item reveal">
+            <div className="pd-meta__heading">My Role</div>
+            {/* CEO stays inline here */}
+            <div className="pd-meta__text">{data.meta?.role}</div>
+          </div>
 
-        <div className="pd-meta__item">
-          <div className="pd-meta__heading">Team</div>
-          <div className="pd-meta__text">{splitTeam(data.meta?.team)}</div>
-        </div>
+          <div className="pd-meta__item reveal">
+            <div className="pd-meta__heading">Team</div>
+            <div className="pd-meta__text">{splitTeam(data.meta?.team)}</div>
+          </div>
 
-        <div className="pd-meta__item">
-          <div className="pd-meta__heading">Timeline</div>
-          <div className="pd-meta__text">{splitTimeline(data.meta?.timeline)}</div>
-        </div>
+          <div className="pd-meta__item reveal">
+            <div className="pd-meta__heading">Timeline</div>
+            <div className="pd-meta__text">
+              {splitTimeline(data.meta?.timeline)}
+            </div>
+          </div>
 
-        <div className="pd-meta__item">
-          <div className="pd-meta__heading">Tools</div>
-          <ul className="pd-tools">
-            {tools.map(tool => (
-              <li className="pd-tool" key={tool}>
-                <img
-                  className="pd-tool__icon"
-                  src={iconMap[tool]}
-                  alt={tool}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+          <div className="pd-meta__item reveal">
+            <div className="pd-meta__heading">Tools</div>
+            <ul className="pd-tools">
+              {tools.map((tool) => (
+                <li className="pd-tool" key={tool}>
+                  <img
+                    className="pd-tool__icon"
+                    src={iconMap[tool] || iconMap.Figma}
+                    alt={tool}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-      <ComingSoonBanner />
-      <NextProjectTeaser currentSlug="behavai" nextSlug="aquatonomy" />
+        {/* Placeholder until we build the BehavAI sections */}
+        <ComingSoonBanner />
+        <NextProjectTeaser currentSlug="behavai" nextSlug="aquatonomy" />
+      </div>
     </ProjectDetailLayout>
   );
 }

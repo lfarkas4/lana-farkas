@@ -135,21 +135,28 @@
    
    /* Hero media (large image/video) */
    .pd-hero__media {
-     width: 100%;
-     border-radius: 20px;
-     overflow: hidden;
-     margin: 18px 0 tokens.$space-lg;
-     background: transparent;
-     border: none;
-     padding: 0;
-     animation: fadeInUp 0.35s ease 0.15s both;
-   
-     img, video, canvas {
-       display: block;
-       width: 100%;
-       height: auto;
-       border-radius: inherit;
-     }
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 18px 0 tokens.$space-lg;
+    background: transparent;
+    border: none;
+    padding: 0;
+    animation: fadeInUp 0.35s ease 0.15s both;
+  
+    /* 🔹 Force a consistent 16:9 card across all case studies */
+    aspect-ratio: 16 / 9;
+  }
+  
+  /* Make the media fill that card and crop if needed */
+  .pd-hero__media img,
+  .pd-hero__media video,
+  .pd-hero__media canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
    }
    
    
@@ -159,7 +166,7 @@
    .nda-banner {
      position: absolute;
      top: -45px;
-     right: -150px;
+     right: -100px;
      
      display: inline-flex;
      align-items: center;
@@ -187,7 +194,106 @@
      font-weight: 450;
      white-space: nowrap;
    }
-   
+
+   /* ================================================================
+   5b. TECHSTARS AWARD BADGE (BehavAI)
+   Same placement as NDA banner, but no pill background.
+   ================================================================ */
+.pd-hero__award {
+  position: absolute;
+  top: -25px;
+  right: -100px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  animation: fadeInDown 0.35s ease-out 0.05s both;
+  z-index: 10;
+}
+
+.pd-hero__award-logo {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+
+.pd-hero__award-text {
+  @include tokens.type-mont-poj-light-body;
+  color: tokens.$primary; // light text on dark hero
+  font-size: 0.9rem;      // same as .nda-text
+  font-weight: 450;
+  white-space: nowrap;
+}
+
+
+/* LG: ≤ 991px */
+@media (max-width: #{tokens.$lg_breakpoint}) {
+  .pd-hero__award {
+    top: -40px;
+    right: -10px;
+  }
+
+  .pd-hero__award-text {
+    font-size: 0.82rem;
+  }
+
+  .pd-hero__award-logo {
+    height: 17px;
+  }
+}
+
+/* MD: ≤ 767px */
+@media (max-width: #{tokens.$md_breakpoint}) {
+  .pd-hero__award {
+    top: -55px;
+    right: -10px;
+  }
+
+  .pd-hero__award-text {
+    font-size: 0.75rem;
+  }
+
+  .pd-hero__award-logo {
+    height: 16px;
+  }
+}
+
+/* SM: ≤ 625px */
+@media (max-width: #{tokens.$sm_breakpoint}) {
+  .pd-hero__award {
+    right: calc(var(--page-gutter-xs));
+    right: auto;
+    top: -56px;
+    gap: 7px;
+  }
+
+  .pd-hero__award-logo {
+    height: 16px;
+  }
+
+  .pd-hero__award-text {
+    font-size: 0.7rem;
+  }
+}
+
+/* XS: ≤ 464px */
+@media (max-width: #{tokens.$xs_breakpoint}) {
+  .pd-hero__award {
+    right: calc(var(--page-gutter-xs));
+    right: auto;
+    top: -50px;
+    gap: 6px;
+  }
+
+  .pd-hero__award-logo {
+    height: 12px;
+  }
+
+  .pd-hero__award-text {
+    font-size: 0.65rem;
+  }
+}
    
    /* ================================================================
       6. META STRIP (Role, Team, Timeline, Tools)

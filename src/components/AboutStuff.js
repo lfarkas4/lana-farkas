@@ -51,7 +51,7 @@ const AboutStuff = () => {
             <div className="frame hover-label" data-label="propogation nation ☘">
               <img src="/assets/stationary.png" alt="Card 1" className="floating-img" />
             </div>
-            <p className="floating-caption">i'm also a stationary junkie <span className="cooper-symbols">✍︎</span></p>
+            <p className="floating-caption">i'm also a stationery junkie <span className="cooper-symbols">✍︎</span></p>
           </div>
 
           <div className="floating-card rotate-toast offset-mid">

@@ -6,7 +6,7 @@ export const caseStudies = [
       title: "BehavAI: Smarter Support for ABA Therapy",
       tags: ["Artificial Intelligence", "Data Visualization"],
       description:
-        "Co-founded an AI-powered platform to streamline and visualize behavioral data in Applied Behavior Analysis (ABA) therapy.",
+        "Co-founded an AI-powered platform to optimize behavioral data in Applied Behavior Analysis (ABA) therapy.",
       link: "/case-studies/behavai",
       // Use one of these two keys (video takes precedence if both exist)
       video: "/assets/dribbleshot.mp4",
@@ -14,10 +14,10 @@ export const caseStudies = [
       brandMark: "/assets/behavai-mark.png",   // ← add this
       brandMarkH: "32px",               // ← per-project size
       meta: {
-        role: "Co-founder, Product Design",
-        team: "2 founders + advisors",
-        timeline: "2025 – present",
-        tools: "Figma, Notion",
+        role: "Founding Designer & Front-End Dev (CEO)",
+        team: "2 co-founders + clinical advisors",
+        timeline: "Jan 2025 – Present (pre-launch)",
+        tools: "Figma, GitHub, React",
       },
     },
     {
