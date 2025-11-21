@@ -106,7 +106,7 @@ const AboutStuff = () => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             ></iframe>
             <iframe
-              src="https://open.spotify.com/embed/track/6TeKbncyK62smlAvPy1dNa?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/4AvachE4yZUjWBBub9t8aT?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Into Sands"
@@ -118,7 +118,7 @@ const AboutStuff = () => {
           </div>
           <div className="spotify-row bottom-row">
             <iframe
-              src="https://open.spotify.com/embed/track/6KS5iyM4uDuJ6oAacMSXha?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/track/0uiHiwJzQvWLTETzEZRxFG?utm_source=generator&theme=0"
               width="100%"
               height="84"
               title="Pluto"

@@ -403,6 +403,7 @@
      .floating-caption {
        font-size: 1.25rem !important;
      }
+     
    }
    
    /* SM: 626px – 767px (Large phones) - Stacked triangle layout */
@@ -424,7 +425,7 @@
        gap: tokens.$space-md;
        width: 100%;
        max-width: 540px;
-       margin: 0 auto;
+       margin: 45px 0px -60px;
      }
    
      .floating-card {
@@ -442,12 +443,12 @@
      /* Mobile rotations */
      .rotate-plant { --rotation: -5.5deg; }
      .rotate-toast { --rotation: 3deg; }
-     .rotate-craft { --rotation: -4deg; }
+     .rotate-craft { --rotation: -6deg; }
    
      /* Triangle offsets */
      .floating-card:nth-child(1) { --tx: -4cqw; --mt: calc(-0.15 * var(--cardH)); }
      .floating-card:nth-child(2) { --tx: 58cqw; --mt: calc(-0.60 * var(--cardH)); }
-     .floating-card:nth-child(3) { --tx: -8cqw; --mt: calc(-0.41 * var(--cardH)); }
+     .floating-card:nth-child(3) { --tx: -3cqw; --mt: calc(-0.41 * var(--cardH)); }
    
      .clip-img {
        width: clamp(90px, calc(var(--cardW) * 0.48), 150px);
@@ -519,7 +520,7 @@
        width: 100%;
        gap: 26px;
        padding-inline: 0;
-       margin: -20px 0px -40px;
+       margin: 0px 0px -60px;
        --stackShift: 0cqw;
        transform: translateX(var(--stackShift));
      }
@@ -592,6 +593,19 @@
      .floating-caption {
        font-size: 1.05rem !important;
      }
+     .floating-card:nth-child(1) { --nudgeX: -4cqw; --bumpY: clamp(12px, calc(var(--cardH) * 0), 48px); }
+     .floating-card:nth-child(2) { --nudgeX: 6cqw; --bumpY: clamp(12px, calc(var(--cardH) * 0.2), 48px); }
+     .floating-card:nth-child(3) { --nudgeX: 1cqw; --bumpY: clamp(12px, calc(var(--cardH) * 0.2), 48px); }
+     .rotate-plant { --rotation: -6deg; }
+     .rotate-toast { --rotation: 5deg; }
+     .rotate-craft { --rotation: -4deg; }
+     .floating-caption {
+      font-size: 1rem !important;
+    }
+    .floating-card {
+      --cardW: 270px;
+      --cardH: 300px;
+    }
    }
    
    /* Typography adjustments: ≤ 464px (Small phones) */
@@ -607,10 +621,10 @@
        flex-direction: column !important;
        align-items: center;
        justify-content: flex-start;
-       max-width: 360px;
+       max-width: 500px;
        width: 100%;
        gap: 22px;
-       margin: -20px 0px -40px;
+       margin: 8px 0px -60px;
      }
    
      .floating-card {
@@ -682,6 +696,19 @@
        width: 100% !important;
        max-width: none !important;
      }
+     .floating-card:nth-child(1) { --nudgeX: -2.5cqw; --bumpY: clamp(12px, calc(var(--cardH) * 0), 48px); }
+     .floating-card:nth-child(2) { --nudgeX: 6cqw; --bumpY: clamp(12px, calc(var(--cardH) * 0.2), 48px); }
+     .floating-card:nth-child(3) { --nudgeX: 1cqw; --bumpY: clamp(12px, calc(var(--cardH) * 0.2), 48px); }
+     .rotate-plant { --rotation: -5deg; }
+     .rotate-toast { --rotation: 5deg; }
+     .rotate-craft { --rotation: -4deg; }
+     .floating-caption {
+      font-size: 1rem !important;
+    }
+    .floating-card {
+      --cardW: 240px;
+      --cardH: 300px;
+    }
    }
    
    /* XXS: ≤ 375px (Smallest phones) */

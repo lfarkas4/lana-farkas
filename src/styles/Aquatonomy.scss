@@ -47,7 +47,7 @@
      display: block;
    
      @if $mode == light {
-       border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 0.05px solid rgba(0, 0, 0, 0.05);
        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
      } @else {
        border: 1px solid rgba(255, 255, 255, 0.1);
@@ -823,6 +823,7 @@
      @include full-bleed;
      @include tokens.section-light(75px, 100px);
      margin-top: 0;
+     background: #FAFAFE;
    }
    
    /* Solution */
@@ -1052,7 +1053,7 @@
      .research-spark { width: 60px; }
      .research-subtitle-wrapper .research-spark { display: none !important; }
    
-     .research-text { font-size: 0.95rem; } /* matches parity rule below via !important when needed */
+     .research-text { font-size: 0.95rem !important; } /* matches parity rule below via !important when needed */
      .research-caption { display: none !important; }
    
      .research-callout { padding: 20px 24px; p { font-size: 0.95rem; } }
@@ -1076,12 +1077,12 @@
      }
    
      .si-title { font-size: 1.5rem !important; }
-     .si-body p { font-size: 0.95rem; }
+     .si-body p { font-size: 0.95rem !important; }
    
      .si-impact { @include container(var(--page-gutter-tablet)); }
      .si-stats { gap: 40px !important; }
      .si-stat-number { font-size: 3.5rem; }
-     .si-stat-label { font-size: 1rem !important; }
+     .si-stat-label { font-size: 0.95rem !important; }
    
      .si-sparkle {
        width: 65px !important;
@@ -1107,7 +1108,9 @@
      .reflection-title { font-size: 1.5rem; }
    
      .delivered-body,
-     .reflection-body { font-size: 0.95rem; }
+     .deliverable-text,
+     .takeaway-text,
+     .reflection-body { font-size: 0.95rem !important; }
    
      .deliverables-grid { grid-template-columns: 1fr; justify-items: center; }
      .deliverable-item { align-items: center; text-align: center; width: min(640px, 100%); gap: 0; }
@@ -1146,7 +1149,7 @@
      .overview-content { order: 1 !important; }
      .overview-media   { order: 2 !important; margin-top: 10px; }
      .overview-title   { font-size: 1.5rem; }
-     .overview-body p  { font-size: 0.95rem; }
+     .overview-body p  { font-size: 0.95rem !important; }
      .overview-caption { font-size: 1rem !important; }
    
      .overview-section {
@@ -1295,7 +1298,7 @@
      }
      .pw-why-header { padding-right: 40px; }
    
-     .pw-eyebrow { font-size: 0.9rem !important; }
+     .pw-eyebrow { font-size: 1.1rem !important; }
      .pw-title   { font-size: 1.3rem !important; line-height: 1.45 !important; }
    
      .pw-icons {
@@ -1337,7 +1340,7 @@
      .research-spark    { width: 45px; }
    
      .research-text,
-     .research-caption { font-size: 0.82rem; }
+     .research-caption { font-size: 0.82rem !important; }
    
      .research-callout { padding: 16px 20px; p { font-size: 0.82rem; } }
    
@@ -1359,7 +1362,7 @@
        margin: 0 0 2px 0 !important;
        text-align: left !important;
      }
-     .insight-text { font-size: 1.075rem; order: 2 !important; }
+     .insight-text { font-size: 0.95rem; order: 2 !important; }
    
      /* Solution & Impact */
      .solution-impact-section { padding: 45px 0 60px; }
@@ -1367,13 +1370,13 @@
      .si-eyebrow  { font-size: 1.1rem; }
    
      .si-title { font-size: 1.3rem !important; line-height: 1.45; margin-bottom: 28px; }
-     .si-body p { font-size: 0.82rem; }
+     .si-body p { font-size: 0.82rem !important; }
    
      .si-impact { @include container(var(--page-gutter-xs)); }
    
      .si-stats { gap: 40px 30px !important; }
      .si-stat-number { font-size: 3rem; }
-     .si-stat-label  { font-size: 0.9rem !important; }
+     .si-stat-label  { font-size: 0.82rem !important; }
    
      .si-sparkle {
        width: 75px;
@@ -1409,7 +1412,8 @@
      .reflection-title { font-size: 1.3rem !important; }
    
      .delivered-body,
-     .reflection-body { font-size: 0.82rem; }
+     .takeaway-text,
+     .reflection-body { font-size: 0.82rem !important; }
    
      .deliverable-item { gap: 20px; }
    
@@ -1417,7 +1421,7 @@
      .deliverable-icon        { width: 45px; height: 45px; }
    
      .deliverable-title { font-size: 1.25rem !important; }
-     .deliverable-text  { font-size: 0.82rem; }
+     .deliverable-text  { font-size: 0.82rem !important; }
      .deliverable-label { font-size: 0.9rem !important; }
    
      .reflection-spark { width: 50px; right: -60px; top: -15px; }
@@ -1448,7 +1452,7 @@
        padding-bottom: 52px !important;
      }
      .overview-title  { font-size: 1.3rem; }
-     .overview-body p { font-size: 0.82rem; }
+     .overview-body p { font-size: 0.82rem !important; }
      .overview-caption{ font-size: 0.9rem !important; }
    
      .overview-section {
@@ -1465,7 +1469,7 @@
      .problem-why-section { padding: 40px 0 55px; }
      .pw-header { margin-bottom: 25px; }
    
-     .pw-eyebrow { font-size: 0.9rem; margin-bottom: 10px; }
+     .pw-eyebrow { font-size: 0.9rem !important; margin-bottom: 10px; }
      .pw-title   { font-size: 1.2rem !important; line-height: 1.4; }
    
      .pw-icons { gap: 30px 20px; margin-bottom: 50px; }
@@ -1626,7 +1630,7 @@
    .deliverable-text,
    .reflection-body,
    .takeaway-text {
-     font-size: 1.075rem !important;
+     font-size: 1.075rem;
      line-height: 1.65;
    }
    

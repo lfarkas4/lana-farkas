@@ -1,10 +1,16 @@
 // src/pages/BehavAI.js
 import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
-import ComingSoonBanner from "../components/ComingSoonBanner";
 import NextProjectTeaser from "../components/NextProjectTeaser";
+import BehavaiKickoff from "../components/BehavaiKickoff";
+import BehavaiProblemSpace from "../components/BehavaiProblemSpace";
+import BehavaiSolutionPreview from "../components/BehavaiSolutionPreview";
+import BehavaiResearchDiscovery from "../components/BehavaiResearchDiscovery";
+import ComingSoonBanner from "../components/ComingSoonBanner";
+
 import { caseStudies } from "../data/ProjectsData";
 import useReveal from "../utils/useReveal";
+import "../styles/BehavAI.scss";
 
 const iconMap = {
   Figma: "/assets/figma.svg",
@@ -15,17 +21,15 @@ const iconMap = {
 export default function BehavAI() {
   const data = caseStudies.find((p) => p.slug === "behavai");
 
-  // Hooks always before any early return
-  const revealRef = useReveal();
+  // one scope for hero + meta
+  const heroScopeRef = useReveal();
 
   if (!data) return null;
 
-  // Only add a line break before "clinical advisors"
+  // Only break line before "clinical advisors"
   const splitTeam = (txt) => {
     if (!txt) return null;
     const str = String(txt);
-
-    // General “ + …” split (gives you `2 co-founders +` / `clinical advisors`)
     const plusIdx = str.indexOf(" + ");
     if (plusIdx > -1) {
       return (
@@ -36,8 +40,6 @@ export default function BehavAI() {
         </>
       );
     }
-
-    // Fallback: no special formatting
     return str;
   };
 
@@ -63,9 +65,12 @@ export default function BehavAI() {
 
   return (
     <ProjectDetailLayout>
-      <div ref={revealRef}>
+      <div ref={heroScopeRef}>
         {/* ===== HERO ===== */}
-        <section className="pd-hero reveal" aria-label="BehavAI case study hero">
+        <section
+          className="pd-hero reveal"
+          aria-label="BehavAI case study hero"
+        >
           <div className="pd-hero__eyebrow">
             {data.brandMark && (
               <img
@@ -105,7 +110,7 @@ export default function BehavAI() {
         <section className="pd-meta">
           <div className="pd-meta__item reveal">
             <div className="pd-meta__heading">My Role</div>
-            {/* CEO stays inline here */}
+            {/* CEO stays inline */}
             <div className="pd-meta__text">{data.meta?.role}</div>
           </div>
 
@@ -136,11 +141,18 @@ export default function BehavAI() {
             </ul>
           </div>
         </section>
-
-        {/* Placeholder until we build the BehavAI sections */}
-        <ComingSoonBanner />
-        <NextProjectTeaser currentSlug="behavai" nextSlug="aquatonomy" />
       </div>
+
+      {/* ===== CASE STUDY CONTENT ===== */}
+      <BehavaiKickoff />
+      <BehavaiProblemSpace />
+      <BehavaiSolutionPreview />
+      <BehavaiResearchDiscovery />
+      <ComingSoonBanner />
+
+
+      {/* Temporary while you build the rest of the sections */}
+      <NextProjectTeaser currentSlug="behavai" nextSlug="aquatonomy" />
     </ProjectDetailLayout>
   );
 }

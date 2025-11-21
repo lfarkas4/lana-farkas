@@ -1,11 +1,27 @@
 /* ================================================================
-   BEHAVAI CASE STUDY
-   First section: "The Kickoff"
+   BEHAVAI CASE STUDY - ORGANIZED SCSS
+   Consistent responsive design across all sections
    ================================================================ */
 
    @use "./partials/tokens" as tokens;
 
-   /* Reuse the full-bleed + container helpers from Aquatonomy */
+   /* ================================================================
+      TABLE OF CONTENTS
+      ----------------------------------------------------------------
+      1. MIXINS & HELPERS
+      2. SHARED UTILITIES
+      3. SECTION: Kickoff
+      4. SECTION: Problem Space
+      5. SECTION: Solution Preview
+      6. SECTION: Research & Discovery (dark)
+      7. RESPONSIVE BREAKPOINTS (Unified)
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. MIXINS & HELPERS
+      ================================================================ */
+   
    @mixin full-bleed {
      width: 100vw;
      position: relative;
@@ -26,7 +42,7 @@
      display: block;
    
      @if $mode == light {
-       border: 1px solid rgba(0, 0, 0, 0.1);
+       border: 0.05px solid rgba(0, 0, 0, 0.05);
        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
      } @else {
        border: 1px solid rgba(255, 255, 255, 0.1);
@@ -34,62 +50,22 @@
      }
    }
    
-   /* Light/dark strong helpers (same behavior as Aquatonomy) */
-   .is-light {
-     strong {
-       @include tokens.body-strong-light;
-     }
-   }
-   
-   .is-dark {
-     strong {
-       @include tokens.body-strong-dark;
-     }
-   }
    
    /* ================================================================
-      KICKOFF SECTION
+      2. SHARED UTILITIES
       ================================================================ */
    
-   .behavai-kickoff {
-     @include full-bleed;
-     background: #f5f5f5; /* matches your Figma page color */
-     padding: 80px 0 100px;
-   
-     /* Purple highlight for key phrases */
-     .hi {
-       @include tokens.body-strong-light;
-       background: #d2c1ff; /* soft purple marker */
-       padding: 0 0.25em;
-       border-radius: 4px;
-       -webkit-box-decoration-break: clone;
-       box-decoration-break: clone;
-     }
-   }
-   
-   .behavai-kickoff-inner {
-     @include container();
-     max-width: tokens.$container-page-max;
-     margin: 0 auto;
-     padding: 0 var(--page-gutter-desktop);
-   
-     display: flex;
-     flex-direction: column;
-     gap: tokens.$space-lg;
-   }
-   
-   /* Header */
-   .behavai-kickoff-eyebrow {
+   /* Consistent typography for headers */
+   .behavai-eyebrow {
      @include tokens.type-mont-poj-light-header;
      color: #060e1d;
      margin-bottom: 15px;
      letter-spacing: -0.1px;
    }
    
-   .behavai-kickoff-title {
+   .behavai-title {
      @include tokens.type-mont-poj-light-headerintro;
      color: #000206;
-     max-width: 32ch;
    
      em {
        font-style: italic;
@@ -97,98 +73,1464 @@
      }
    }
    
-   /* Body copy */
-   .behavai-kickoff-body {
-     display: flex;
-     flex-direction: column;
-     gap: tokens.$space-xs;
+   .behavai-body {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     line-height: 1.65;
    
      p {
-       @include tokens.type-mont-poj-light-body;
-       color: #000206;
-       line-height: 1.65;
        margin: 0;
      }
    }
    
-   /* Media */
-   .behavai-kickoff-media {
-     margin-top: tokens.$space-lg;
-     display: flex;
-     flex-direction: column;
-     gap: 18px;
+   /* Highlight utility */
+   .hi {
+     @include tokens.body-strong-light;
+     background: #dbc9f7;
+     padding: 0 0.25em;
+     border-radius: 4px;
+     -webkit-box-decoration-break: clone;
+     box-decoration-break: clone;
    }
    
-   .behavai-kickoff-media video,
-   .behavai-kickoff-media img {
-     @include media-frame(light);
-   }
-   
-   .behavai-kickoff-caption {
+   /* Caption style */
+   .behavai-caption {
      @include tokens.type-caption-light;
      color: #000206;
      text-align: center;
      margin: 0 8px;
    }
    
+   /* Context helpers */
+   .is-light { strong { @include tokens.body-strong-light; } }
+   .is-dark  { strong { @include tokens.body-strong-dark; } }
+   
+   
    /* ================================================================
-      RESPONSIVE TUNING (mirror Aquatonomy overview rhythm)
+      3. SECTION: KICKOFF
       ================================================================ */
+   
+   .behavai-kickoff {
+     @include full-bleed;
+     background: #E8EAF0;
+     padding: 80px 0 100px;
+   }
+   
+   .behavai-kickoff-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .behavai-kickoff-header {
+     margin-bottom: 50px;
+   }
+   
+   .behavai-kickoff-eyebrow {
+     @extend .behavai-eyebrow;
+   }
+   
+   .behavai-kickoff-title {
+     @extend .behavai-title;
+   }
+   
+   .behavai-kickoff-body {
+     @extend .behavai-body;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+     margin-bottom: 60px;
+   }
+   
+   .behavai-kickoff-media {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;
+   
+     video, img {
+       @include media-frame(light);
+       width: 100%;
+       height: 320px;
+       max-height: 46vh;
+       object-fit: cover;
+       object-position: center center;
+     }
+   }
+   
+   .behavai-kickoff-caption {
+     @extend .behavai-caption;
+   }
+   
+   
+   /* ================================================================
+      4. SECTION: PROBLEM SPACE
+      ================================================================ */
+   
+   .behavai-problem {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 90px 0 160px;
+   }
+   
+   .behavai-problem-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .behavai-problem-header {
+     margin-bottom: 50px;
+   }
+   
+   .behavai-problem-eyebrow {
+     @extend .behavai-eyebrow;
+   }
+   
+   .behavai-problem-title {
+     @extend .behavai-title;
+   }
+   
+   .behavai-problem-body {
+     @extend .behavai-body;
+     margin-bottom: 48px;
+   }
+   
+   /* ========= WEB VIEW (Desktop) ========= */
+   .behavai-problem-web {
+     display: flex;
+     justify-content: center;
+   }
+   
+   .behavai-problem-web-inner {
+     position: relative;
+     width: min(900px, 100%);
+     aspect-ratio: 16 / 9;
+     margin: -65px auto;
+   }
+   
+   /* connecting lines */
+   .behavai-problem-web-lines {
+     position: absolute;
+     top: -3%;
+     inset: 0;
+     width: 103%;
+     height: 105%;
+     pointer-events: none;
+   }
+   
+   /* center phrase */
+   .behavai-problem-web-center {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+     min-width: 34rem;
+   
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.35rem;
+     font-weight: 550;
+     line-height: 1.35;
+     color: #000206;
+     z-index: 1;
+     
+     em {
+       font-style: italic;
+       font-weight: 400;
+     }
+   }
+   
+   /* ========= LINEAR VIEW (Mobile) - Hidden by default ========= */
+   .behavai-problem-linear {
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     gap: 40px;
+     margin: 0 auto;
+   }
+   
+   .behavai-linear-center {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.1rem;
+     font-weight: 550;
+     text-align: center;
+     color: #000206;
+     max-width: 90%;
+     margin-bottom: 20px;
+     
+     em {
+       font-style: italic;
+       font-weight: 400;
+     }
+   }
+   
+   .behavai-linear-nodes {
+     position: relative;
+     display: flex;
+     align-items: flex-start;
+     justify-content: space-between;
+     width: 100%;
+     max-width: 100%;
+     padding: 0 10px;
+     
+     &::before {
+       content: '';
+       position: absolute;
+       top: 30px;
+       left: 40px;
+       right: 40px;
+       height: 1px;
+       background: #d6d6d6;
+       z-index: 0;
+     }
+   }
+   
+   .behavai-linear-node {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 2px;
+     z-index: 2;
+     flex: 0 0 auto;
+   }
+   
+   .behavai-linear-node-circle {
+     width: 60px;
+     height: 60px;
+     border-radius: 50%;
+     background: #f2f5fd;
+     border: 1px solid #d6d6d6;
+     display: grid;
+     place-items: center;
+     position: relative;
+     
+     img {
+       width: 32px;
+       height: 32px;
+       object-fit: contain;
+     }
+   }
+   
+   .behavai-linear-node-label {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.75rem;
+     color: #000206;
+     text-align: center;
+     line-height: 1.2;
+     max-width: 70px;
+   }
+   
+   /* Linear view stars */
+   .behavai-linear-stars {
+     position: relative;
+     width: 100%;
+     height: 60px;
+     margin-top: 20px;
+   }
+   
+   .behavai-linear-star {
+     position: absolute;
+     width: 20px;
+     height: auto;
+     animation: star-twinkle 3s ease-in-out infinite;
+     
+     &--one {
+       top: -230px;
+       left: 8%;
+     }
+     
+     &--two {
+       top: -35px;
+       left: 38%;
+       transform: translateX(-50%);
+       animation-delay: 1s;
+     }
+     
+     &--three {
+       top: -200px;
+       right: 15%;
+       animation-delay: 2s;
+     }
+   }
+   
+   /* ========= NODES with floating animations (Desktop) ========= */
+   .behavai-node {
+     position: absolute;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     z-index: 2;
+   }
+   
+   .behavai-node-circle {
+     width: 75px;
+     height: 75px;
+     border-radius: 50%;
+     background: #f2f5fd;
+     border: 1px solid #d6d6d6;
+     display: grid;
+     place-items: center;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     
+     img {
+       width: 45px;
+       height: 45px;
+       object-fit: contain;
+     }
+   }
+   
+   .behavai-node-label {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.9rem;
+     color: #000206;
+     text-align: center;
+     line-height: 0.5;
+     margin-top: 8px;
+   }
+   
+   /* Node positions with animations */
+   .behavai-node--top-left {
+     top: 16%;
+     left: 10%;
+     animation: float-node-1 8s ease-in-out infinite;
+   }
+   
+   .behavai-node--left {
+     top: 52%;
+     left: -6%;
+     animation: float-node-2 7s ease-in-out infinite;
+   }
+   
+   .behavai-node--bottom {
+     bottom: -6%;
+     left: 50%;
+     transform: translateX(-50%);
+     animation: float-node-3 9s ease-in-out infinite;
+   }
+   
+   .behavai-node--right {
+     top: 54%;
+     right: -3%;
+     animation: float-node-4 6s ease-in-out infinite;
+   }
+   
+   .behavai-node--top-right {
+     top: 14%;
+     right: 20%;
+     animation: float-node-5 7.5s ease-in-out infinite;
+   }
+   
+   /* Floating animations */
+   @keyframes float-node-1 {
+     0%, 100% { transform: translate(0, 0); }
+     25% { transform: translate(18px, -18px); }
+     50% { transform: translate(-6px, 16px); }
+     75% { transform: translate(6px, 2px); }
+   }
+   
+   @keyframes float-node-2 {
+     0%, 100% { transform: translate(0px, -3px); }
+     20% { transform: translate(25px, 20px); }
+     40% { transform: translate(16px, 34px); }
+     60% { transform: translate(-4px, 18px); }
+     80% { transform: translate(6px, 12px); }
+   }
+   
+   @keyframes float-node-3 {
+     0%, 100% { transform: translateX(-40%) translateY(0); }
+     30% { transform: translateX(-100%) translateY(-5px); }
+     60% { transform: translateX(calc(-50% + 12px)) translateY(-8px); }
+     90% { transform: translateX(calc(-30% - 2px)) translateY(10px); }
+   }
+   
+   @keyframes float-node-4 {
+     0%, 100% { transform: translate(0, 0); }
+     15% { transform: translate(-18px, -20px); }
+     35% { transform: translate(8px, 8px); }
+     55% { transform: translate(10px, -12px); }
+     75% { transform: translate(-12px, 4px); }
+   }
+   
+   @keyframes float-node-5 {
+     0%, 100% { transform: translate(0, 0); }
+     25% { transform: translate(-20px, 8px); }
+     50% { transform: translate(10px, 4px); }
+     75% { transform: translate(-14px, -6px); }
+   }
+   
+   /* Stars with twinkling */
+   .behavai-problem-star {
+     position: absolute;
+     width: 25px;
+     height: auto;
+     pointer-events: none;
+     z-index: 3;
+   }
+   
+   .behavai-problem-star--one {
+     top: 20%;
+     left: -2%;
+     transform: translateX(-50%);
+     animation: star-twinkle 3s ease-in-out infinite;
+   }
+   
+   .behavai-problem-star--two {
+     top: 90%;
+     left: 20%;
+     animation: star-twinkle 3.5s ease-in-out infinite 0.8s;
+   }
+   
+   .behavai-problem-star--three {
+     top: 30%;
+     right: 5%;
+     animation: star-twinkle 4s ease-in-out infinite 1.6s;
+   }
+   
+   @keyframes star-twinkle {
+     0%, 100% {
+       opacity: 0.3;
+       transform: scale(0.8) rotate(0deg);
+     }
+     50% {
+       opacity: 1;
+       transform: scale(1.1) rotate(180deg);
+     }
+   }
+   
+   
+   /* ================================================================
+      5. SECTION: SOLUTION PREVIEW
+      ================================================================ */
+   
+   .behavai-solution {
+     @include full-bleed;
+     background: #E8EAF0;
+     padding: 90px 0 110px;
+   }
+   
+   .behavai-solution-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .behavai-solution-header {
+     position: relative;
+     margin-bottom: 50px;
+   }
+   
+   .behavai-solution-eyebrow {
+     @extend .behavai-eyebrow;
+   }
+   
+   .behavai-solution-title {
+     @extend .behavai-title;
+   }
+   
+   .behavai-solution-title-break {
+     display: block;
+   }
+   
+   .behavai-solution-spark {
+     position: absolute;
+     top: -40px;
+     right: 0%;
+     width: 70px;
+     height: auto;
+     pointer-events: none;
+   }
+   
+   .behavai-solution-media {
+     width: 100%;
+     margin: 0 auto;
+     text-align: center;
+   }
+   
+   .behavai-solution-video {
+     @include media-frame(light);
+     display: block;
+     width: 100%;
+     height: auto;
+     max-height: none;
+     object-fit: cover;
+   }
+   
+   .behavai-solution-caption {
+     @extend .behavai-caption;
+     margin-top: 18px;
+   }
+   
+   
+   /* ================================================================
+      6. SECTION: RESEARCH & DISCOVERY (dark)
+      ================================================================ */
+   
+   .behavai-research-section {
+     @include full-bleed;
+     @include tokens.section-dark(80px, 100px);
+   }
+   
+   .behavai-research-subsection {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto 100px;
+     padding: 0 var(--page-gutter-desktop);
+     
+     &--last {
+       margin-bottom: 0;
+     }
+   }
+   
+   .behavai-research-header {
+     margin-bottom: 35px;
+   }
+   
+   .behavai-research-eyebrow {
+     @include tokens.type-mont-poj-dark-header;
+     color: tokens.$prisec;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .behavai-research-intro {
+     @include tokens.type-mont-poj-dark-headerintro;
+     color: tokens.$prisec;
+     line-height: 1.45;
+     letter-spacing: -0.025px;
+   
+     em { 
+       font-style: italic; 
+       font-weight: 400; 
+     }
+   }
+   
+   .behavai-research-body {
+     margin-bottom: 50px;
+   }
+   
+   .behavai-research-text {
+     @include tokens.type-mont-poj-light-body;
+     color: tokens.$primary;
+     line-height: 1.65;
+     margin: 0 0 tokens.$space-xs 0;
+     letter-spacing: 0.075px;
+   
+     strong { 
+       @include tokens.body-strong-dark; 
+     }
+     
+     &:last-child {
+       margin-bottom: 0;
+     }
+   }
+   
+   /* User Discovery Visual - Circles */
+   .behavai-discovery-visual {
+     width: 100%;
+   }
+   
+   .behavai-discovery-circles {
+     display: flex;
+     align-items: flex-start;
+     justify-content: center;
+     gap: 30px;
+     max-width: 900px;
+     margin: 0 auto;
+   }
+   
+   .behavai-discovery-item {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     flex: 0 1 200px;
+   }
+   
+   .behavai-discovery-circle {
+     width: 180px;
+     height: 180px;
+     border-radius: 50%;
+     background: #F6F8FE;
+     border: 2px solid #C3C3C3;
+     display: grid;
+     place-items: center;
+     margin-bottom: 20px;
+     
+     img {
+       width: 100px;
+       height: 100px;
+       object-fit: contain;
+     }
+   }
+   
+   .behavai-discovery-stat {
+     font-family: tokens.$font-montserrat;
+     font-size: 3rem;
+     font-weight: 525;
+     color: tokens.$prisec;
+     line-height: 1;
+     margin-bottom: 10px;
+   }
+   
+   .behavai-discovery-label {
+     @include tokens.type-mont-poj-light-body;
+     color: tokens.$primary;
+     font-size: 0.95rem;
+     line-height: 1.4;
+     max-width: 160px;
+   }
+   
+   .behavai-discovery-arrow {
+     width: 80px;
+     height: auto;
+     align-self: center;
+     margin-top: -90px; // Center vertically with circles
+   }
+   
+   /* Landscape Analysis Visual - Table */
+   .behavai-landscape-visual {
+     overflow-x: auto;
+   }
+   
+   .behavai-landscape-table {
+     width: 100%;
+     max-width: 900px;
+     margin: 0 auto;
+     border-collapse: separate;
+     border-spacing: 0;
+   }
+   
+   .behavai-landscape-table th,
+   .behavai-landscape-table td {
+     padding: 18px 15px;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+   }
+   
+   .behavai-table-feature {
+     @include tokens.type-mont-poj-light-body;
+     color: tokens.$primary;
+     text-align: left;
+     font-size: 0.95rem;
+     padding-left: 0;
+     min-width: 240px;
+   }
+   
+   .behavai-table-brand {
+     text-align: center;
+     vertical-align: middle;
+     width: 120px;
+     
+     img {
+       height: 26px;
+       width: auto;
+       display: inline-block;
+       filter: brightness(0.9);
+     }
+     
+     &--ours img {
+       filter: none;
+     }
+   }
+   
+   .behavai-table-cell {
+     text-align: center;
+     vertical-align: middle;
+   }
+   
+   .behavai-table-icon {
+     width: 20px;
+     height: 20px;
+     display: inline-block;
+   }
+   
+   /* Design Foundation Visual - Quote Cards */
+   .behavai-design-visual {
+     position: relative;
+     max-width: 1000px;
+     margin-top: 120px;
+   }
+   
+   .behavai-design-spark {
+     position: absolute;
+     top: -80px;
+     right: 10px;
+     width: 70px;
+     height: auto;
+     z-index: 10;
+     rotate: -12deg;
+   }
+   
+   .behavai-quote-cards {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 30px;
+     margin-bottom: 50px;
+   }
+   
+   .behavai-quote-card {
+     background: #FAFAFE;
+     border-radius: 16px;
+     padding: 60px 50px 55px;
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+   }
+   
+   .behavai-quote-icon {
+     position: absolute;
+     top: -45px;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+     background: #EDF1FC;
+     border: 5px solid #FAFAFE;
+     display: grid;
+     place-items: center;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     
+     img {
+       width: 45px;
+       height: 45px;
+       object-fit: contain;
+     }
+   }
+   
+   .behavai-quote-text {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     font-size: 1.2rem;
+     line-height: 1.6;
+     text-align: center;
+     margin: 15px 0 0 0;
+     
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   .behavai-design-caption {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 20px;
+     
+     span {
+       @include tokens.type-mont-poj-light-body;
+       color: tokens.$primary;
+       font-size: 1.1rem;
+     }
+     
+     img {
+       width: 60px;
+       height: auto;
+     }
+   }
+   
+   
+   /* ================================================================
+      7. RESPONSIVE BREAKPOINTS (Unified)
+      ================================================================ */
+   
+   @media (max-width: 1245px) {
+     .behavai-solution-title-break {
+       display: inline;
+     }
+   }
+
+   /* XL: ≤ 1200px */
+   @media (max-width: #{tokens.$xl_breakpoint}) {
+     /* Shared typography scaling */
+     .behavai-eyebrow {
+       font-size: 1.1rem;
+     }
+     
+     .behavai-title {
+       font-size: 1.75rem;
+       line-height: 1.35;
+     }
+     
+     /* Problem Space adjustments */
+     .behavai-problem-web-center {
+       font-size: 1.2rem;
+       min-width: 28rem;
+     }
+     
+     .behavai-node-circle {
+       width: 70px;
+       height: 70px;
+       
+       img {
+         width: 40px;
+         height: 40px;
+       }
+     }
+     
+     .behavai-node-label {
+       font-size: 0.85rem;
+     }
+     
+     /* Solution specific */
+     .behavai-solution-spark {
+       right: -6%;
+       width: 60px;
+       top: -20px;
+     }
+     
+     /* Research & Discovery */
+     .behavai-research-intro {
+       font-size: 1.75rem;
+     }
+     
+     .behavai-discovery-circle {
+       width: 140px;
+       height: 140px;
+       
+       img {
+         width: 80px;
+         height: 80px;
+       }
+     }
+     .behavai-discovery-stat {
+       font-size: 1.85rem;
+     }
+     .behavai-discovery-arrow {
+        width: 60px;
+      }
+         /* Design Foundation Visual - Quote Cards */
+  
+  .behavai-design-spark {
+    top: -80px;
+    right: -10px;
+    width: 70px;
+    rotate: -16deg;
+  }
+  
+  .behavai-quote-card {
+    border-radius: 16px;
+    padding: 60px 40px 55px;
+  }
+  
+  .behavai-quote-icon {
+    top: -45px;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    
+    img {
+      width: 45px;
+      height: 45px;
+    }
+  }
+  
+  .behavai-quote-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 15px 0 0 0;
+  }
+  
+  .behavai-design-caption {
+    gap: 20px;
+  }
+   }
    
    /* LG: ≤ 991px */
    @media (max-width: #{tokens.$lg_breakpoint}) {
+     /* Section padding adjustments */
      .behavai-kickoff {
        padding: 70px 0 90px;
      }
-   
-     .behavai-kickoff-inner {
+     
+     .behavai-problem {
+       padding: 75px 0 145px;
+     }
+     
+     .behavai-solution {
+       padding: 75px 0 95px;
+     }
+     
+     .behavai-research-section {
+       padding: 70px 0 60px;
+     }
+     
+     /* Container adjustments */
+     .behavai-kickoff-inner,
+     .behavai-problem-inner,
+     .behavai-solution-inner,
+     .behavai-research-subsection {
        @include container(var(--page-gutter-tablet));
        padding: 0 var(--page-gutter-tablet);
      }
-   
-     .behavai-kickoff-title {
+     
+     /* Header spacing */
+     .behavai-kickoff-header,
+     .behavai-problem-header,
+     .behavai-solution-header,
+     .behavai-research-header {
+       margin-bottom: 40px;
+     }
+     
+     .behavai-research-subsection {
+       margin-bottom: 80px;
+     }
+     
+     /* Typography */
+     .behavai-title,
+     .behavai-research-intro {
        font-size: 1.5rem;
      }
-   
-     .behavai-kickoff-body p {
+     
+     .behavai-body p,
+     .behavai-caption,
+     .behavai-research-text {
        font-size: 0.95rem;
      }
+     
+     /* Kickoff specific */
+     .behavai-kickoff-body {
+       margin-bottom: 40px;
+     }
+     
+     /* Problem Space specific */
+     .behavai-problem-web-center {
+       font-size: 1.1rem;
+       max-width: 24rem;
+       width: 90%;
+     }
+     
+     .behavai-node-circle {
+       width: 65px;
+       height: 65px;
+       
+       img {
+         width: 38px;
+         height: 38px;
+       }
+     }
+     
+     /* Solution specific */
+     .behavai-solution-spark {
+       display: none;
+     }
+     
+     /* Research & Discovery */
+     .behavai-discovery-circles {
+       gap: 0px;
+     }
+     
+     .behavai-discovery-circle {
+       width: 120px;
+       height: 120px;
+       
+       img {
+         width: 60px;
+         height: 60px;
+       }
+     }
+     
+     .behavai-discovery-arrow {
+       width: 60px;
+     }
+     
+     .behavai-discovery-stat {
+       font-size: 1.7rem;
+     }
+     
+     .behavai-discovery-label {
+       font-size: 0.9rem;
+     }
+     
+     .behavai-quote-cards {
+    //    grid-template-columns: 1fr;
+       gap: 20px;
+    //    max-width: 600px;
+       margin: 0 auto 40px;
+     }
+     
+     .behavai-design-spark {
+       display: none;
+     }
+     .behavai-quote-card {
+        border-radius: 16px;
+        padding: 60px 30px 55px;
+      }
+      
+      .behavai-quote-icon {
+        top: -45px;
+        left: 50%;
+        width: 80px;
+        height: 80px;
+        
+        img {
+          width: 45px;
+          height: 45px;
+        }
+      }
+      
+      .behavai-quote-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 15px 0 0 0;
+      }
+   }
+   
+   /* MD: ≤ 767px - SWITCH TO LINEAR LAYOUT */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+     /* Hide web view, show linear view */
+     .behavai-problem-web {
+       display: none !important;
+     }
+     
+     .behavai-problem-linear {
+       display: flex !important;
+     }
+     
+     /* Section padding */
+     .behavai-kickoff {
+       padding: 60px 0 80px;
+     }
+     
+     .behavai-problem {
+       padding: 60px 0 0;
+     }
+     
+     .behavai-solution {
+       padding: 60px 0 85px;
+     }
+     
+     .behavai-research-section {
+       padding: 60px 0 40px;
+     }
+     
+     /* Header spacing */
+     .behavai-kickoff-header,
+     .behavai-problem-header,
+     .behavai-solution-header,
+     .behavai-research-header {
+       margin-bottom: 35px;
+     }
+     
+     .behavai-research-subsection {
+       margin-bottom: 70px;
+     }
+     
+     /* Typography */
+     .behavai-title,
+     .behavai-research-intro {
+       font-size: 1.4rem;
+       line-height: 1.4;
+     }
+     
+     /* Solution specific */
+     .behavai-solution-spark {
+       right: 0;
+       width: 52px;
+       top: -4px;
+     }
+     
+     /* Research & Discovery */
+     .behavai-discovery-circles {
+       gap: 0px;
+     }
+     
+     .behavai-discovery-arrow {
+       margin-top: -100px;
+       width: 50px;
+     }
+     
+     .behavai-discovery-circle {
+       width: 100px;
+       height: 100px;
+       
+       img {
+         width: 50px;
+         height: 50px;
+       }
+     }
+     
+     .behavai-discovery-stat {
+       font-size: 1.6rem;
+     }
+     
+     .behavai-landscape-table {
+       font-size: 0.85rem;
+     }
+     
+     .behavai-table-brand img {
+       height: 20px;
+     }
+     
+     .behavai-table-icon {
+       width: 18px;
+       height: 18px;
+     }
+     .behavai-quote-cards {
+           grid-template-columns: 1fr;
+           gap: 80px;
+           margin: -30px auto 40px;
+         }
+         .behavai-quote-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 15px 0 0 0;
+          }
    }
    
    /* SM: ≤ 625px */
    @media (max-width: #{tokens.$sm_breakpoint}) {
+     /* Section padding */
      .behavai-kickoff {
-       padding: 60px 0 80px;
+       padding: 50px 0 70px;
      }
-   
-     .behavai-kickoff-inner {
+     
+     .behavai-problem {
+       padding: 50px 0 0;
+     }
+     
+     .behavai-solution {
+       padding: 50px 0 75px;
+     }
+     
+     .behavai-research-section {
+       padding: 50px 0 20px;
+     }
+     
+     /* Container adjustments */
+     .behavai-kickoff-inner,
+     .behavai-problem-inner,
+     .behavai-solution-inner,
+     .behavai-research-subsection {
        @include container(var(--page-gutter-xs));
        padding: 0 var(--page-gutter-xs);
      }
-   
-     .behavai-kickoff-title {
+     
+     /* Header spacing */
+     .behavai-kickoff-header,
+     .behavai-problem-header,
+     .behavai-solution-header,
+     .behavai-research-header {
+       margin-bottom: 30px;
+     }
+     
+     .behavai-research-subsection {
+       margin-bottom: 60px;
+     }
+     
+     /* Typography */
+     .behavai-title,
+     .behavai-research-intro {
        font-size: 1.3rem;
        line-height: 1.45;
      }
-   
-     .behavai-kickoff-body p {
+     
+     .behavai-body p,
+     .behavai-research-text {
        font-size: 0.82rem;
      }
-   
-     .behavai-kickoff-caption {
+     
+     .behavai-caption {
        font-size: 0.9rem;
      }
+     
+     /* Kickoff specific */
+     .behavai-kickoff-body {
+       margin-bottom: 35px;
+     }
+     
+     /* Problem Space linear adjustments */
+     .behavai-linear-center {
+       font-size: 1rem;
+     }
+     
+     .behavai-linear-nodes {
+       flex-wrap: wrap;
+     }
+     
+     .behavai-linear-node-circle {
+       width: 55px;
+       height: 55px;
+       
+       img {
+         width: 28px;
+         height: 28px;
+       }
+     }
+     
+     /* When not wrapping, update line position for smaller circles */
+     @media (min-width: 480px) and (max-width: #{tokens.$sm_breakpoint}) {
+       .behavai-linear-nodes {
+         flex-wrap: nowrap;
+         
+         &::before {
+           display: block;
+           top: 27.5px;
+         }
+       }
+     }
+     
+     .behavai-linear-node-label {
+       font-size: 0.7rem;
+       max-width: 60px;
+     }
+     
+     /* Solution specific */
+     .behavai-solution-spark {
+       width: 46px;
+       top: -2px;
+     }
+     
+     .behavai-linear-star {
+       display: none;
+     }
+     
+     /* Research & Discovery */
+     .behavai-research-eyebrow {
+       font-size: 1.1rem;
+     }
+     
+     .behavai-discovery-circle {
+       width: 80px;
+       height: 80px;
+       
+       img {
+         width: 40px;
+         height: 40px;
+       }
+     }
+    //  .behavai-discovery-circles {
+    //     flex-direction: column;
+    //     align-items: center;
+    //     gap: 25px;
+    //   }
+      
+    //   .behavai-discovery-circle {
+    //     width: 90px;
+    //     height: 90px;
+        
+    //     img {
+    //       width: 45px;
+    //       height: 45px;
+    //     }
+    //   }
+     
+     .behavai-discovery-stat {
+       font-size: 1.5rem;
+     }
+     
+     .behavai-discovery-label {
+       font-size: 0.85rem;
+     }
+     
+     /* Table responsive - switch to stacked layout */
+     .behavai-landscape-table {
+       display: none;
+     }
+     
+     .behavai-landscape-visual::after {
+       content: "Competitive analysis available in desktop view";
+       @include tokens.type-mont-poj-light-body;
+       color: tokens.$primary;
+       font-size: 0.9rem;
+       text-align: center;
+       display: block;
+       padding: 30px 20px;
+       background: rgba(255, 255, 255, 0.05);
+       border-radius: 12px;
+     }
+     
+     .behavai-design-caption {
+       gap: 15px;
+       
+       span {
+         font-size: 0.9rem;
+       }
+       
+       img {
+         width: 50px;
+       }
+     }
+     .behavai-quote-cards {
+        margin: -30px auto 40px;
+      }
+      .behavai-quote-text {
+         font-size: 1rem;
+         line-height: 1.6;
+         margin: 15px 0 0 0;
+       }
    }
    
    /* XS: ≤ 464px */
    @media (max-width: #{tokens.$xs_breakpoint}) {
-     .behavai-kickoff {
-       padding: 50px 0 70px;
+     .pd-hero {
+       margin-top: tokens.$space-lg;
      }
-   
-     .behavai-kickoff-title {
+
+     /* Section padding */
+     .behavai-kickoff {
+       padding: 40px 0 60px;
+     }
+     
+     .behavai-problem {
+       padding: 45px 0 0 0;
+       margin-bottom: -60px;
+     }
+     
+     .behavai-solution {
+       padding: 45px 0 60px;
+     }
+     
+     .behavai-research-section {
+       padding: 40px 0 10px;
+     }
+     
+     /* Header spacing */
+     .behavai-kickoff-header,
+     .behavai-problem-header,
+     .behavai-solution-header,
+     .behavai-research-header {
+       margin-bottom: 25px;
+     }
+     
+    //  .behavai-research-subsection {
+    //    margin-bottom: 50px;
+    //  }
+     
+     /* Typography */
+     .behavai-eyebrow,
+     .behavai-research-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+     
+     .behavai-title,
+     .behavai-research-intro {
        font-size: 1.2rem;
        line-height: 1.4;
      }
+     
+     .behavai-body p,
+     .behavai-research-text {
+       font-size: 0.825rem;
+     }
+     
+     .behavai-caption {
+       font-size: 0.8rem;
+     }
+     
+     /* Kickoff specific */
+     .behavai-kickoff-body {
+       margin-bottom: 30px;
+     }
+     
+     /* Problem Space linear adjustments */
+     .behavai-linear-center {
+       font-size: 0.9rem;
+       max-width: 100%;
+     }
+     
+     .behavai-linear-nodes {
+       &::before {
+         top: 25px;
+       }
+     }
+     
+     .behavai-linear-node-circle {
+       width: 50px;
+       height: 50px;
+       
+       img {
+         width: 25px;
+         height: 25px;
+       }
+     }
+     
+     .behavai-linear-node-label {
+       font-size: 0.65rem;
+       max-width: 55px;
+     }
+     
+     .behavai-linear-star {
+       width: 18px;
+       display: none;
+     }
+     
+     /* Solution specific */
+     .behavai-solution-spark {
+       width: 40px;
+       top: 0;
+       right: 4px;
+     }
+
+     .behavai-discovery-circles {
+        gap: 10px;
+      }
+     
+     /* Research & Discovery */
+     .behavai-discovery-circle {
+       width: 70px;
+       height: 70px;
+       margin-bottom: 15px;
+       
+       img {
+         width: 35px;
+         height: 35px;
+       }
+     }
+
+    .behavai-discovery-arrow {
+        display: none;
+      }
+     
+     .behavai-discovery-stat {
+       font-size: 1.4rem;
+       margin-bottom: 8px;
+     }
+     
+     .behavai-discovery-label {
+       font-size: 0.8rem;
+       max-width: 140px;
+     }
+     .behavai-quote-cards {
+        gap: 40px;
+      }
+     
+     .behavai-quote-card {
+       padding: 25px 20px;
+     }
+     
+     .behavai-quote-icon {
+       width: 45px;
+       height: 45px;
+       top: -22px;
+       
+       img {
+         width: 22px;
+         height: 22px;
+       }
+     }
+     
+     .behavai-quote-text {
+       font-size: 0.85rem;
+       margin-top: 10px;
+     }
+     
+     .behavai-design-caption {
+       gap: 10px;
+       
+       span {
+         font-size: 0.8rem;
+       }
+       
+       img {
+         width: 40px;
+       }
+     }
+     .behavai-design-visual {
+        margin-top: 100px;
+      }
    }
-   

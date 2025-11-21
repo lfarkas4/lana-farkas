@@ -344,7 +344,7 @@ $track-loose: 0.2px !default;    /* looser for dark bg */
 
 @mixin body-strong-dark {
   font-weight: 550 !important;
-  color: $prisec;
+  // color: $prisec;
   letter-spacing: 0.05px;
 }
 
