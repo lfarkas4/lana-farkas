@@ -64,7 +64,7 @@
      display: grid;
      grid-template-columns: repeat(2, 1fr);
      gap: tokens.$space-xxl tokens.$space-lg;
-     margin: tokens.$space-lg 0 tokens.$space-4xl;
+     margin: (tokens.$space-lg - 4px) 0 tokens.$space-4xl;
    }
    
    
@@ -234,7 +234,7 @@
      display: grid;
      grid-template-columns: repeat(3, 1fr);
      gap: 60px tokens.$space-md;
-     margin-top: tokens.$space-lg;
+     margin-top: (tokens.$space-lg - 4px);
      margin-bottom: 35px;
    }
    
@@ -565,6 +565,8 @@
      .tag {
        font-size: 0.66rem;
        padding: 6px 9px;
+       font-weight: 450 !important;
+       letter-spacing: 0px;
      }
    
      .project-title {
@@ -573,13 +575,16 @@
        margin-top: 14px;
        line-height: 28px;
        letter-spacing: 0px;
+
+       font-weight: 500 !important;
+       letter-spacing: -0.2px;
      }
    
      .project-description {
        font-size: 0.825rem;
        line-height: 1.6;
-       font-weight: 400 !important;
-       letter-spacing: -0.05px;
+       font-weight: 425 !important;
+       letter-spacing: -0.2px;
      }
    
      .mini-projects-container {
@@ -593,19 +598,23 @@
        margin-bottom: 14px;
        margin-top: 20px;
        line-height: 28px;
+       font-weight: 500 !important;
+       letter-spacing: -0.2px;
      }
    
      .mini-description {
        font-size: 0.825rem;
        line-height: 1.6;
-       font-weight: 400 !important;
+       font-weight: 425 !important;
+       letter-spacing: -0.2px;
      }
    
      .section-title {
        font-size: 0.925rem;
-       letter-spacing: 0.75px;
+       letter-spacing: -0.2px;
        gap: 6px;
        margin-bottom: -25px;
+       font-weight: 450 !important;
      }
    
      .section-arrow {

@@ -361,12 +361,16 @@
      .hero-title {
        font-size: 1.3rem;
        margin-bottom: 35px;
+       font-weight: 450 !important;
+       letter-spacing: -0.2px;
      }
    
      .hero-tagline {
        font-size: 0.95rem;
        margin-top: 55px;
        margin-bottom: -10px;
+       font-weight: 450 !important;
+       letter-spacing: -0.2px;
        
        /* Multi-line layout for XS */
        --lh: 1.225rem;
@@ -422,7 +426,8 @@
      .hero-column p {
        font-size: 0.8rem;
        line-height: 1.5;
-       font-weight: 400 !important;
+       font-weight: 450 !important;
+       letter-spacing: -0.2px;
      }
    }
 
