@@ -284,7 +284,7 @@
   
     /* Optional: now that badges are gone, pull the hero up a bit */
     .pd-hero {
-      margin-top: tokens.$space-sm !important; // tweak if you want it closer/taller
+      margin-top: tokens.$space-xs !important; // tweak if you want it closer/taller
     }
 }
 
@@ -787,7 +787,7 @@
    
      .pd-meta {
        gap: 20px;
-       padding: 10px 10px tokens.$space-lg;
+       padding: 10px 10px tokens.$space-sm;
      }
    
      /* Card stacks - matches homepage behavior */
@@ -875,7 +875,7 @@
      /* Meta stays 2 columns even on phones */
      .pd-meta {
        gap: 20px;
-       padding: 10px 5px tokens.$space-lg;
+       padding: 10px 5px tokens.$space-sm;
      }
    
      .pd-meta__heading {

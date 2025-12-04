@@ -572,7 +572,7 @@
 }
 
 .insight-number-img {
-  width: 50px;   /* adjust to your PNG dimensions */
+  width: 40px;   /* adjust to your PNG dimensions */
   height: auto;
   display: block;
   flex-shrink: 0;
@@ -581,10 +581,10 @@
 /* Optional: tighten on small screens */
 @media (max-width: 767px) {
   .research-callout-img { width: min(520px, 100%); }
-  .insight-number-img { width: 65px; }
+  .insight-number-img { width: 35px; }
 }
 @media (max-width: #{tokens.$sm_breakpoint}) {
-  .insight-number-img { width: 45px; margin-bottom: 10px;}
+  .insight-number-img { width: 25px; margin-bottom: 10px;}
 
 }
    
