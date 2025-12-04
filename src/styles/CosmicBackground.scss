@@ -180,5 +180,10 @@
       transform-origin: 50% 40%;
       transform: translate3d(0, -10px, 0);
     }
+
+    .manual-star.s-xs { width: 6px;  height: 6px;  }  /* was 8px  */
+    .manual-star.s-sm { width: 8px;  height: 8px;  }  /* was 10px */
+    .manual-star.s-md { width: 10px; height: 10px; }  /* was 12px */
+    .manual-star.s-lg { width: 12px; height: 12px; }  /* was 14px */
   }
   
