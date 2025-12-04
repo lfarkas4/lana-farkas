@@ -2,6 +2,8 @@
    COSMIC BACKGROUND (manual SVG sparkles + manual circle dots)
    ================================================================ */
 
+   @use "./partials/tokens" as tokens;
+
    .cosmic-background {
     position: fixed;
     inset: 0;
@@ -11,7 +13,9 @@
     background: #07161a;
     overflow: hidden;
     pointer-events: none;
+    will-change: transform; // NEW
   }
+  
   
   /* ---------- background textures ---------- */
   .grain-layer {
@@ -134,30 +138,47 @@
     100% { transform: translate(0, 0) scale(1); }
   }
   
-  /* ---------- mobile polish ---------- */
-  @media (max-width: 768px) {
-    .nebula-layer { filter: blur(42px); opacity: .5; }
-  }
-  
   /* ================================================================
-     XS MOBILE SCALE-DOWN (≤ 465px): make all stars subtler
+     XS MOBILE SCALE-DOWN (≤ 465px)
+     - Make stars subtler + shift bg a bit more
      ================================================================ */
-  @media (max-width: 465px) {
-    /* shrink SVG sparkles */
-    .manual-star         { width: 9px;  height: 9px; }
-    .manual-star.s-xs    { width: 6px;  height: 6px; }
-    .manual-star.s-sm    { width: 8px;  height: 8px; }
-    .manual-star.s-md    { width: 9px;  height: 9px; }
-    .manual-star.s-lg    { width: 11px; height: 11px; }
-    .manual-star         { opacity: .82; }
+ 
+   @media (max-width:  #{tokens.$sm_breakpoint}) {
   
-    /* shrink dot field without wrecking positions */
-    .circle-stars {
-      transform: scale(.82);
-      transform-origin: 50% 45%;
+    /* Nebula: keep the look but stop the slow drift */
+    .nebula-layer {
+      animation: none;              /* was nebulaDrift */
+      filter: blur(36px);           /* slightly lighter blur */
+      opacity: 0.45;
     }
   
-    /* also dim the far layer a touch more on phones */
-    .circle-star { --maxO: clamp(.34, var(--maxO, .6), .6); }
+    /* Blobs: static glow only (animations are expensive on big blurs) */
+    .blob {
+      animation: none;              /* was blobFloat */
+      opacity: 0.24;
+    }
+  
+    /* Circle stars: keep glow, remove triangular drift path */
+    .circle-star {
+      animation: dotGlow 14s ease-in-out var(--glowDelay, 0s) infinite alternate;
+      transform: scale(0.75);
+    }
+  
+    .mover {
+      /* override the extra move-triangle animation */
+      animation: dotGlow 14s ease-in-out var(--glowDelay, 0s) infinite alternate;
+    }
+  
+    /* Sparkle stars: same twinkle, slightly shorter cycle */
+    .manual-star {
+      animation: twinkleUltraSlow 5s ease-in-out infinite;
+    }
+  
+    /* Slightly tuck/dim the field on mobile for readability */
+    .circle-stars {
+      transform: scale(0.2);
+      transform-origin: 50% 40%;
+      transform: translate3d(0, -10px, 0);
+    }
   }
   
