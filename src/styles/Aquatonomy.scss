@@ -1641,6 +1641,17 @@
      .takeaway-text {
        font-size: 0.825rem !important;
      }
+       /* ---- Disable fade-in / scroll reveals on very small screens ---- */
+  .reveal,
+  .reveal-up,
+  .reveal-in,
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
    }
    
    /* ================================================================

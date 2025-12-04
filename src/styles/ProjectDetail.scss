@@ -1086,4 +1086,14 @@
       font-size: 1.3rem;
       margin-bottom: -15px;
     }
+  /* 🔇 Turn off entrance animations for hero + meta on XS */
+  .pd-hero,
+  .pd-hero__eyebrow,
+  .pd-hero__title,
+  .pd-hero__subtitle,
+  .pd-hero__media,
+  .pd-meta__item {
+    animation: none !important;
+    // animation: fadeInUp 0.2s ease-out 0s both !important;
+  }
    }

@@ -1914,6 +1914,14 @@
      .behavai-kickoff {
        padding: 50px 0 70px;
      }
+
+     .behavai-kickoff-caption {
+      font-size: 0.9rem !important;
+    }
+     
+    .behavai-solution-caption {
+      font-size: 0.9rem !important;
+    }
      
      .behavai-problem {
        padding: 50px 0 0;
@@ -2209,7 +2217,14 @@
      .behavai-kickoff {
        padding: 40px 0 60px;
      }
+
+     .behavai-kickoff-caption {
+      font-size: 0.8rem !important;
+    }
      
+    .behavai-solution-caption {
+      font-size: 0.8rem !important;
+    }
      .behavai-problem {
        padding: 45px 0 0 0;
        margin-bottom: -60px;
@@ -2489,8 +2504,6 @@
         font-size: 0.8rem;
       }
 
-
-
       .reflection-caption {
         font-size: 0.8rem;
       }
@@ -2615,4 +2628,22 @@
   .pd-hero__award {
     display: none;
   }
+    /* ---- Disable fade-in / scroll reveals on very small screens ---- */
+    .behavai-solution-step.reveal,
+    .reveal,
+    .reveal-up,
+    .reveal-in,
+    [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+      transition: none !important;
+    }
+  
+    /* Also stop the hero pills from animating */
+    .nda-banner,
+    .pd-hero__award {
+      animation: none !important;
+    }
+  
 }
