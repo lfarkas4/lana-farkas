@@ -350,7 +350,7 @@
    /* XS: ≤ 464px (Small phones) */
    @media (max-width: #{tokens.$xs_breakpoint}) {
      .hero {
-       padding: 0 5vw 50px;
+       padding: 0 5vw 0px;
      }
    
      .font-cooper-italic-hello {

@@ -171,8 +171,8 @@
    /* Sparkle animation */
    .nav-sparkle {
      position: absolute;
-     top: 4px;
-     left: 1.75px;
+     top: 3.25px;
+     left: 0px;
      width: 12px;
      height: 12px;
      opacity: 0;
@@ -194,80 +194,105 @@
    }
    
    
-   /* ================================================================
-      6. MOBILE MENU
-      ================================================================ */
-   
-   /* Mobile menu icon */
-   .menu-icon {
-     display: none;
-     cursor: pointer;
-     font-size: 28px;
-     color: tokens.$primary;
-     z-index: 200;
-     transition: color 0.275s ease-in-out;
-     pointer-events: auto;
-   }
-   
-   .menu-icon:hover {
-     color: tokens.$secondary;
-   }
-   
-   /* Mobile dropdown background overlay */
-   .nav-background {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 0;
-     background: #03090b;
-     backdrop-filter: blur(12px);
-     z-index: 99;
-     transition: height 0.4s ease-in-out;
-   }
-   
-   .nav-background.active {
-     height: 100vh;
-   }
-   
-   /* Mobile nav container */
-   .nav-links-container {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 0;
-     opacity: 0;
-     visibility: hidden;
-     z-index: 150;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     transition: height 0.4s ease-in-out, opacity 0.4s ease-in-out;
-   }
-   
-   .nav-links-container.active {
-     height: 100vh;
-     opacity: 1;
-     visibility: visible;
-   }
-   
-   .nav-links-container .nav-links {
-     flex-direction: column;
-     gap: 20px;
-   }
-   
-   .nav-links-container .nav-link {
-     @include tokens.type-coop-nav-bold-mob;
-     transition: color 0.05s ease-in-out;
-     color: tokens.$prisec;
-   }
-   
-   .nav-links-container .nav-link-wrapper {
-     padding: 10px 26px;
-   }
-   
+/* ================================================================
+   6. MOBILE MENU  (perf-friendly)
+   ================================================================ */
+
+/* Mobile menu icon */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: tokens.$primary;
+  z-index: 200;
+  transition: color 0.275s ease-in-out;
+  pointer-events: auto;
+}
+
+.menu-icon:hover {
+  color: tokens.$secondary;
+}
+
+/* --- Background overlay (no height animation) --- */
+.nav-background {
+  position: fixed;
+  inset: 0; /* top/right/bottom/left: 0 */
+  background: #03090b;
+  backdrop-filter: blur(12px);
+  z-index: 99;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  /* Use transform + opacity (GPU-friendly) */
+  transform: translate3d(0, -10px, 0);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    visibility 0s linear 0.28s; /* delay hiding until after fade */
+}
+
+.nav-background.active {
+  opacity: 0.9;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    visibility 0s linear 0s; /* show immediately */
+}
+
+/* --- Mobile nav container (also no height animation) --- */
+.nav-links-container {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translate3d(0, -16px, 0);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    visibility 0s linear 0.32s;
+}
+
+.nav-links-container.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    visibility 0s linear 0s;
+}
+
+/* Stack the links vertically on mobile */
+.nav-links-container .nav-links {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-links-container .nav-link {
+  @include tokens.type-coop-nav-bold-mob;
+  transition: color 0.1s ease-in-out;
+  color: tokens.$prisec;
+}
+
+.nav-links-container .nav-link-wrapper {
+  padding: 10px 26px;
+}
+
    
    /* ================================================================
       7. HOVER EFFECTS
@@ -288,38 +313,43 @@
    
    /* LG: ≤ 991px (Tablets and below) */
    @media (max-width: #{tokens.$lg_breakpoint}) {
-     .nav-container {
-       padding: tokens.$space-xs tokens.$space-md tokens.$space-lg;
-     }
-   
-     .brand-logo img {
-       height: 40px;
-     }
-   
-     .custom-navbar {
-       top: 10px;
-     }
-   
-     .nav-bubble,
-     .nav-links-desktop {
-       display: none;
-     }
-   
-     .menu-icon {
-       display: flex;
-     }
-   
-     .resume-arrow {
-       font-size: tokens.$font-mont-display1;
-     }
-   }
-
-      @media (max-width: #{tokens.$sm_breakpoint}) {
-        .nav-container {
-          padding: tokens.$space-xs tokens.$space-md tokens.$space-sm;
-        }
-      }
-   
+    .nav-container {
+      padding: tokens.$space-xs tokens.$space-md tokens.$space-lg;
+    }
+  
+    .brand-logo img {
+      height: 40px;
+    }
+  
+    .custom-navbar {
+      top: 10px;
+    }
+  
+    .nav-bubble,
+    .nav-links-desktop {
+      display: none;
+    }
+  
+    .menu-icon {
+      display: flex;
+    }
+  
+    .resume-arrow {
+      font-size: tokens.$font-mont-display1;
+    }
+  
+    /* Lighter overlay on real mobile devices */
+    .nav-background {
+      backdrop-filter: none;
+      background: rgba(3, 9, 11, 1);
+    }
+  }
+  
+  @media (max-width: #{tokens.$sm_breakpoint}) {
+    .nav-container {
+      padding: tokens.$space-xs tokens.$space-md tokens.$space-sm;
+    }
+  }  
    
    /* ================================================================
       UTILITIES
