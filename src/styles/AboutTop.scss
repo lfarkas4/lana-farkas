@@ -490,7 +490,7 @@
    /* XS: 465px – 625px (Medium phones) */
    @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
      .about-top {
-       padding: 0 tokens.$padding-wide 50px;
+       padding: 0 tokens.$padding-wide 80px;
      }
    
      .about-wrapper {

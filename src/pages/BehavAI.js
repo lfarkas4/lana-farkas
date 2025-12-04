@@ -5,8 +5,9 @@ import NextProjectTeaser from "../components/NextProjectTeaser";
 import BehavaiKickoff from "../components/BehavaiKickoff";
 import BehavaiProblemSpace from "../components/BehavaiProblemSpace";
 import BehavaiSolutionPreview from "../components/BehavaiSolutionPreview";
+import BehavaiFinalSolution from "../components/BehavaiFinalSolution"; // NEW IMPORT
+import BehavaiImpactAndBeyond from "../components/BehavaiImpactAndBeyond";
 import BehavaiResearchDiscovery from "../components/BehavaiResearchDiscovery";
-import ComingSoonBanner from "../components/ComingSoonBanner";
 
 import { caseStudies } from "../data/ProjectsData";
 import useReveal from "../utils/useReveal";
@@ -83,16 +84,17 @@ export default function BehavAI() {
           </div>
 
           {/* Techstars award badge (replaces NDA pill) */}
-          <div className="pd-hero__award">
-            <img
-              src="/assets/tech-light.png"
-              alt="Techstars"
-              className="pd-hero__award-logo"
-            />
-            <span className="pd-hero__award-text">
-              🥇 1st Place Techstars Startup Weekend 2025
-            </span>
-          </div>
+          <div className="pd-hero__award nda-banner">
+  <img
+    src="/assets/techstars.png" // your darker logo
+    alt="Techstars Startup Weekend award"
+    className="pd-hero__award-logo nda-icon"
+  />
+  <span className="pd-hero__award-text nda-text">
+    🥇 1st Place Techstars Startup Weekend 2025
+  </span>
+</div>
+
 
           <h1 className="pd-hero__title">{data.title}</h1>
           <p className="pd-hero__subtitle">{data.description}</p>
@@ -148,8 +150,8 @@ export default function BehavAI() {
       <BehavaiProblemSpace />
       <BehavaiSolutionPreview />
       <BehavaiResearchDiscovery />
-      <ComingSoonBanner />
-
+      <BehavaiFinalSolution />
+      <BehavaiImpactAndBeyond />  {/* NEW SECTION ADDED HERE */}
 
       {/* Temporary while you build the rest of the sections */}
       <NextProjectTeaser currentSlug="behavai" nextSlug="aquatonomy" />

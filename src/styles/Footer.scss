@@ -327,3 +327,44 @@
        letter-spacing: -0.2px;
      }
    }
+
+   /* XS: ≤ 464px (Small phones) */
+@media (max-width: #{tokens.$xs_breakpoint}) {
+  .footer {
+    padding: 0 50px tokens.$space-sm;
+    margin-top: tokens.$space-lg;
+  }
+
+  .footer-main {
+    /* basically just acts as vertical spacing for the credit line */
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 0 0 tokens.$space-md;
+  }
+
+  .footer-line {
+    /* we’re hiding its contents anyway, so collapse it */
+    display: none;
+  }
+
+  /* Explicitly hide these pieces on XS and below */
+  .footer-thanks,
+  .footer-contact,
+  .footer-message {
+    display: none !important;
+  }
+
+  /* Travels wrapper is already hidden on smaller screens */
+  .footer-travels-wrapper {
+    display: none;
+  }
+
+  /* Keep only the credit, slightly tuned for small screens */
+  .footer-credit {
+    font-size: 0.65rem;
+    font-weight: 500 !important;
+    letter-spacing: -0.2px;
+    text-align: center;
+  }
+}

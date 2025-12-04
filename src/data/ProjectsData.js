@@ -12,7 +12,7 @@ export const caseStudies = [
       video: "/assets/dribbleshot.mp4",
       // image: "/assets/behavai-thumb.png",
       brandMark: "/assets/behavai-mark.png",   // ← add this
-      brandMarkH: "32px",               // ← per-project size
+      brandMarkH: "24px",               // ← per-project size
       meta: {
         role: "Founding Designer & Front-End Dev (CEO)",
         team: "2 co-founders + clinical advisors",

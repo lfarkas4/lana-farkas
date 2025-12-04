@@ -1,9 +1,157 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/AboutStuff.scss";
+
+// Spotify track data
+const spotifyTracks = [
+  { id: "5cxOC94379M1lUOww9SNLX", title: "Killer", row: "top" },
+  { id: "0jC4hSRcgcIN8qcfSN7Wkf", title: "Hold On", row: "top" },
+  { id: "4AvachE4yZUjWBBub9t8aT", title: "Into Sands", row: "top" },
+  { id: "0uiHiwJzQvWLTETzEZRxFG", title: "Pluto", row: "bottom" },
+  { id: "2TzPpF0yA5g8kzE0F59iX2", title: "Mood Ring", row: "bottom" }
+];
+
+// Individual Spotify embed component with lazy loading
+const SpotifyEmbed = ({ trackId, title }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const embedRef = useRef(null);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { 
+        rootMargin: '100px', // Start loading 100px before visible
+        threshold: 0.01 
+      }
+    );
+
+    if (embedRef.current) {
+      observer.observe(embedRef.current);
+    }
+
+    return () => {
+      if (embedRef.current) {
+        observer.unobserve(embedRef.current);
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  // Set timeout for loading
+  useEffect(() => {
+    if (isVisible && !isLoaded && !hasError) {
+      timeoutRef.current = setTimeout(() => {
+        if (!isLoaded) {
+          setHasError(true);
+        }
+      }, 10000); // 10 second timeout
+    }
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [isVisible, isLoaded, hasError]);
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+    setHasError(false);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  const handleError = () => {
+    setHasError(true);
+    setIsLoaded(false);
+  };
+
+  const handleRetry = () => {
+    setHasError(false);
+    setIsLoaded(false);
+    setIsVisible(true);
+  };
+
+  return (
+    <div ref={embedRef} className="spotify-embed-wrapper">
+      {/* Loading skeleton with subtle Spotify colors */}
+      {!isLoaded && !hasError && (
+        <div className="spotify-skeleton">
+          <div className="skeleton-content">
+            <div className="skeleton-image"></div>
+            <div className="skeleton-text">
+              <div className="skeleton-title"></div>
+              <div className="skeleton-artist"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error state */}
+      {hasError && (
+        <div className="spotify-error">
+          <p>Failed to load track</p>
+          <button onClick={handleRetry} className="retry-button">
+            Retry
+          </button>
+        </div>
+      )}
+
+      {/* Actual iframe - only render when visible */}
+      {isVisible && !hasError && (
+        <iframe
+          src={`https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0`}
+          width="100%"
+          height="84"
+          title={title}
+          style={{ 
+            borderRadius: "12px",
+            opacity: isLoaded ? 1 : 0,
+            transition: "opacity 0.3s ease"
+          }}
+          frameBorder="0"
+          onLoad={handleLoad}
+          onError={handleError}
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        />
+      )}
+    </div>
+  );
+};
 
 const AboutStuff = () => {
   const floatingCardsRef = useRef(null);
   const spotifyRef = useRef(null);
+
+  // Preconnect to Spotify domains for faster loading
+  useEffect(() => {
+    const link1 = document.createElement('link');
+    link1.rel = 'preconnect';
+    link1.href = 'https://open.spotify.com';
+    document.head.appendChild(link1);
+
+    const link2 = document.createElement('link');
+    link2.rel = 'dns-prefetch';
+    link2.href = 'https://open.spotify.com';
+    document.head.appendChild(link2);
+
+    return () => {
+      document.head.removeChild(link1);
+      document.head.removeChild(link2);
+    };
+  }, []);
 
   useEffect(() => {
     const observerOptions = {
@@ -39,6 +187,9 @@ const AboutStuff = () => {
     };
   }, []);
 
+  const topRowTracks = spotifyTracks.filter(track => track.row === "top");
+  const bottomRowTracks = spotifyTracks.filter(track => track.row === "bottom");
+
   return (
     <section className="about-cards">
       {/* Photocards Section */}
@@ -51,7 +202,7 @@ const AboutStuff = () => {
             <div className="frame hover-label" data-label="propogation nation ☘">
               <img src="/assets/stationary.png" alt="Card 1" className="floating-img" />
             </div>
-            <p className="floating-caption">i'm also a stationery junkie <span className="cooper-symbols">✍︎</span></p>
+            <p className="floating-caption">i'm also a stationery junkie <span className="cooper-symbols">✏︎</span></p>
           </div>
 
           <div className="floating-card rotate-toast offset-mid">
@@ -85,58 +236,22 @@ const AboutStuff = () => {
         </h3>
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">
-            <iframe
-              src="https://open.spotify.com/embed/track/5cxOC94379M1lUOww9SNLX?utm_source=generator&theme=0"
-              width="100%"
-              height="84"
-              title="Killer"
-              loading="lazy"
-              style={{ borderRadius: "12px" }}
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            ></iframe>
-            <iframe
-              src="https://open.spotify.com/embed/track/0jC4hSRcgcIN8qcfSN7Wkf?utm_source=generator&theme=0"
-              width="100%"
-              height="84"
-              title="Hold On"
-              loading="lazy"
-              style={{ borderRadius: "12px" }}
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            ></iframe>
-            <iframe
-              src="https://open.spotify.com/embed/track/4AvachE4yZUjWBBub9t8aT?utm_source=generator&theme=0"
-              width="100%"
-              height="84"
-              title="Into Sands"
-              loading="lazy"
-              style={{ borderRadius: "12px" }}
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            ></iframe>
+            {topRowTracks.map((track) => (
+              <SpotifyEmbed 
+                key={track.id} 
+                trackId={track.id} 
+                title={track.title}
+              />
+            ))}
           </div>
           <div className="spotify-row bottom-row">
-            <iframe
-              src="https://open.spotify.com/embed/track/0uiHiwJzQvWLTETzEZRxFG?utm_source=generator&theme=0"
-              width="100%"
-              height="84"
-              title="Pluto"
-              loading="lazy"
-              style={{ borderRadius: "12px" }}
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            ></iframe>
-            <iframe
-              src="https://open.spotify.com/embed/track/2TzPpF0yA5g8kzE0F59iX2?utm_source=generator&theme=0"
-              width="100%"
-              height="84"
-              title="Mood Ring"
-              loading="lazy"
-              style={{ borderRadius: "12px" }}
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            ></iframe>
+            {bottomRowTracks.map((track) => (
+              <SpotifyEmbed 
+                key={track.id} 
+                trackId={track.id} 
+                title={track.title}
+              />
+            ))}
           </div>
         </div>
       </div>

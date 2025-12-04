@@ -123,6 +123,7 @@
      margin: 6px 0 18px;
      animation: fadeInUp 0.3s ease 0.08s both;
    }
+
    
    /* Subtitle */
    .pd-hero__subtitle {
@@ -275,6 +276,16 @@
   .pd-hero__award-text {
     font-size: 0.7rem;
   }
+    /* 🔇 Hide badges on small screens for cleaner hero */
+    .nda-banner,
+    .pd-hero__award {
+      display: none;
+    }
+  
+    /* Optional: now that badges are gone, pull the hero up a bit */
+    .pd-hero {
+      margin-top: tokens.$space-sm !important; // tweak if you want it closer/taller
+    }
 }
 
 /* XS: ≤ 464px */
@@ -466,7 +477,7 @@
       ================================================================ */
    .next-project-section {
      position: relative;
-     margin-top: 100px;
+     margin-top: 145px;
      margin-bottom: -180px;
    }
    
@@ -591,7 +602,7 @@
    /* Scroll to top button */
    .np-scrolltop {
      position: absolute;
-     top: -50px;
+     top: -60px;
      right: -60px;
      
      display: inline-flex;
@@ -603,6 +614,7 @@
      font-style: normal;
      font-weight: 400;
      letter-spacing: 0.4px;
+     font-size: 0.9rem;
      
      background: none;
      border: none;
@@ -620,6 +632,11 @@
        transform: translateY(-3px);
      }
    }
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+    .np-scrolltop {
+      font-size: 1rem;
+    }
+  }
    
    .np-scrolltop__label {
      pointer-events: none;
@@ -724,6 +741,7 @@
    
      .next-project-section {
        margin-bottom: -120px;
+       margin-top: 120px;
      }
    
      .section-title1 {
@@ -811,7 +829,7 @@
    /* SM: ≤ 625px (Large Phones) */
    @media (max-width: #{tokens.$sm_breakpoint}) {
      .pd-hero {
-       margin-top: tokens.$space-xl;
+       margin-top: tokens.$space-md;
      }
    
      .project-detail-content {
@@ -943,7 +961,7 @@
      }
    
      .np-scrolltop {
-       font-size: 0.95rem;
+       font-size: 0.75rem;
        top: -50px;
        right: 0px;
      }
@@ -952,6 +970,30 @@
        font-size: 1.75rem;
        margin-bottom: -10px;
      }
+
+  .pd-hero {
+    margin-top: tokens.$space-xs;
+  }
+
+  .project-detail-content {
+    padding: 75px var(--page-gutter-xs) 90px;
+  }
+
+  /* existing NDA layout adjustments... */
+  .nda-banner {
+    left: var(--page-gutter-xs) - 10px;
+    right: auto;
+    top: -56px;
+    padding: 6px 14px 6px 10px;
+    gap: 7px;
+    white-space: nowrap;
+  }
+
+  /* 🟣 NEW: make NDA + award animate from bottom instead of top */
+  .nda-banner,
+  .pd-hero__award {
+    animation: fadeInUp 0.35s ease-out 0.08s both;
+  }
    }
    
    /* XS: ≤ 464px (Small Phones) */
@@ -960,7 +1002,7 @@
        font-size: 1.45rem;
      }
      .pd-hero {
-      margin-top: tokens.$space-xl;
+      margin-top: tokens.$space-sm;
     }
    
      .pd-hero__subtitle {
@@ -1045,5 +1087,3 @@
       margin-bottom: -15px;
     }
    }
-
-   
