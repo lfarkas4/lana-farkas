@@ -119,7 +119,7 @@
      display: flow-root;
      padding-top: clamp(60px, 8vw, 100px);
    
-     background: #E8EAF0;
+     background: #edeef2;
      border-top: 0;
      border-bottom: 0;
      padding-bottom: 0;
@@ -386,7 +386,7 @@
    
    .research-subsection {
      @include container();
-     margin-bottom: 80px;
+     margin-bottom: 90px;
      display: grid;
      grid-template-columns: 1fr 1fr;
      gap: 60px;
@@ -605,7 +605,7 @@
    .delivered-section {
      @include container();
      padding: 120px var(--page-gutter-desktop) 0;
-     margin-bottom: 80px;
+     margin-bottom: 90px;
      position: relative;
    }
    
@@ -1227,7 +1227,7 @@
      /* Delivered & Reflection */
      .delivered-section {
        padding: 120px var(--page-gutter-tablet) 0;
-       margin-bottom: 80px;
+       margin-bottom: 90px;
      }
    
      .delivered-title,

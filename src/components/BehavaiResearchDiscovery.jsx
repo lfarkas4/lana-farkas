@@ -129,92 +129,114 @@ export default function BehavaiResearchDiscovery() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="behavai-table-feature">
-                  AI-native ABA documentation
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
-                </td>
-              </tr>
-              <tr>
-                <td className="behavai-table-feature">
-                  Modular, card-based report builder
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
-                </td>
-              </tr>
-              <tr>
-                <td className="behavai-table-feature">
-                  Compatible with existing systems
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
-                </td>
-              </tr>
-              <tr>
-                <td className="behavai-table-feature">
-                  PHI-aware AI workflow
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
-                </td>
-              </tr>
-              <tr>
-                <td className="behavai-table-feature">
-                  Single flow to a shareable report
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
-                </td>
-                <td className="behavai-table-cell">
-                  <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
-                </td>
-              </tr>
-            </tbody>
+  {/* 1. ABA-specific documentation structure */}
+  <tr>
+    <td className="behavai-table-feature">
+      ABA-specific documentation structure
+    </td>
+    {/* CentralReach */}
+    <td className="behavai-table-cell">
+      <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
+    </td>
+    {/* RethinkBH */}
+    <td className="behavai-table-cell">
+      <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
+    </td>
+    {/* ChatGPT */}
+    <td className="behavai-table-cell">
+      <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
+    </td>
+    {/* BehavAI */}
+    <td className="behavai-table-cell">
+      <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
+    </td>
+  </tr>
+
+  {/* 2. AI assistance tailored to ABA reports */}
+  <tr>
+    <td className="behavai-table-feature">
+      AI assistance tailored to ABA reports
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
+    </td>
+  </tr>
+
+  {/* 3. PHI-safe, HIPAA-aligned AI workflow */}
+  <tr>
+    <td className="behavai-table-feature">
+      PHI-safe, HIPAA-aligned AI workflow
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
+    </td>
+  </tr>
+
+  {/* 4. Works on top of existing systems */}
+  <tr>
+    <td className="behavai-table-feature">
+      Works on top of existing systems
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
+    </td>
+    <td className="behavai-table-cell">
+      <img src="/assets/checkk.png" alt="Yes" className="behavai-table-icon" />
+    </td>
+  </tr>
+
+  {/* 5. AI layer for practice-management & billing tools */}
+  <tr>
+    <td className="behavai-table-feature">
+      AI layer for practice-management &amp; billing tools
+    </td>
+    {/* CentralReach */}
+    <td className="behavai-table-cell">
+      <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
+    </td>
+    {/* RethinkBH */}
+    <td className="behavai-table-cell">
+      <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
+    </td>
+    {/* ChatGPT */}
+    <td className="behavai-table-cell">
+      <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
+    </td>
+    {/* BehavAI */}
+    <td className="behavai-table-cell">
+      <img
+        src="/assets/checkk.png"
+        alt="Yes"
+        className="behavai-table-icon"
+      />
+    </td>
+  </tr>
+</tbody>
+
           </table>
         </div>
       </div>
@@ -238,7 +260,7 @@ export default function BehavaiResearchDiscovery() {
           </p>
           <p className="behavai-research-text">
             Every design choice focused on transparency and trust: clear 
-            structure, editable summaries, and modular cards that keep the 
+            structure, editable summaries, and straightforward tools that keep the 
             therapist's <strong>voice front and center</strong>.
           </p>
         </div>

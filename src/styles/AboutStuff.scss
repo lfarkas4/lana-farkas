@@ -9,8 +9,10 @@
       1. Container & Layout Variables
       2. Intro Text & Spotify Section
       3. Floating Photo Cards (Desktop Baseline)
+         3.1 Card Transform / Entrance
+         3.2 Paperclips
       4. Haiku Section
-      4.5 Entrance Animations
+      4.5 Section Entrance Animations
       5. Responsive Breakpoints (Desktop → Mobile)
       6. Container Units Fallback (Older Browsers)
       7. Spotify Embed Optimizations
@@ -21,20 +23,6 @@
       1. CONTAINER & LAYOUT VARIABLES
       ================================================================ */
    
-   /* Animatable float variable */
-   @property --floatY {
-     syntax: '<length>';
-     inherits: false;
-     initial-value: 0px;
-   }
-   
-   @keyframes floatYCard {
-     0%   { --floatY: 0px; }
-     50%  { --floatY: var(--floatRange, -18px); }
-     100% { --floatY: 0px; }
-   }
-   
-   /* Shared layout variables */
    .about-cards {
      --padX: clamp(50px, 8vw, 100px);
      --containerMax: 1360px;
@@ -144,11 +132,19 @@
      gap: var(--gap-base);
    }
    
-   /* Individual card */
+   /* Individual card
+      - No float / hover animation.
+      - Resting pose = rotated (per-card).
+      - Entrance: fade + slide + rotate from left/right.
+   */
    .floating-card {
      --cardW: clamp(300px, 25vw, 420px);
      --nudgeX: 0px;
-     --floatRange: -18px;
+     --tx: 0px;
+     --rotation: 0deg;          /* base rotation, overridden below */
+     --enterTilt: 8deg;         /* how dramatic the entry tilt is */
+     --enterDir: -1;            /* -1 = from "left", 1 = from "right" */
+     --staggerDelay: 0s;
    
      width: var(--cardW);
      display: flex;
@@ -158,8 +154,17 @@
      position: relative;
      margin: 0;
    
-     animation: floatYCard 4.6s ease-in-out infinite;
-     transform: translateX(var(--nudgeX)) translateY(var(--floatY, 0px)) rotate(var(--rotation));
+     opacity: 0;
+     transform:
+       translateX(var(--tx))
+       translateY(18px)
+       rotate(calc(var(--rotation) + var(--enterDir) * var(--enterTilt)));
+     transform-origin: center 80%;
+   
+     transition:
+       opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+       transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+     transition-delay: var(--staggerDelay);
    }
    
    /* Card rotations (desktop baseline) */
@@ -167,24 +172,52 @@
    .rotate-toast { --rotation: -1.16deg; }
    .rotate-craft { --rotation:  2.43deg; }
    
+   /* Entrance direction / staggering
+      - Left card: rotates in from LEFT (more negative).
+      - Middle + right: rotate in from RIGHT (more positive).
+   */
+   .floating-card:nth-child(1) {
+     --staggerDelay: 0.02s;
+     --enterDir: 1;
+   }
+   
+   .floating-card:nth-child(2) {
+     --staggerDelay: 0.10s;
+     --enterDir: -1;
+   }
+   
+   .floating-card:nth-child(3) {
+     --staggerDelay: 0.18s;
+     --enterDir: -1;
+   }
+   
    /* Desktop vertical offsets */
    .offset-left  { margin-top: tokens.$space-md; }
    .offset-mid   { margin-top: tokens.$space-3xl; }
    .offset-right { margin-top: tokens.$space-lg; }
    
+   /* When section scrolls into view, cards settle into their rotated pose */
+   .floating-card-section.is-visible .floating-card {
+     opacity: 1;
+     transform:
+       translateX(var(--tx))
+       translateY(0)
+       rotate(var(--rotation));
+   }
+   
    /* Card image */
    .floating-img {
-     width: 85%;
+     width: 95%;
      height: auto;
      display: block;
      margin-inline: auto;
-
+   
      border-radius: 20px;
      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.378);
      object-fit: cover;
    }
    
-   /* Card caption */
+   /* Card caption – always visible now, no hover state */
    .floating-caption {
      @include tokens.type-coop-display2;
      color: tokens.$prisec;
@@ -192,6 +225,9 @@
      line-height: 1.18;
      letter-spacing: 0.6px;
      margin-top: clamp(18px, calc(var(--cardW, 320px) * 0.09), 28px);
+   
+     opacity: 1;
+     transform: none;
    }
    
    /* Caption size scaling */
@@ -203,12 +239,12 @@
      );
    }
    
-   /* Float animation staggering */
-   .floating-card:nth-child(1) { animation-delay: 0s;   }
-   .floating-card:nth-child(2) { animation-delay: 0.5s; }
-   .floating-card:nth-child(3) { animation-delay: 1s;   }
    
-   /* Paperclip decorations */
+   /* ================================================================
+      3.2 PAPERCLIP DECORATIONS
+      (These rotate with the card because transform is on .floating-card)
+      ================================================================ */
+   
    .clip-wrapper,
    .clip-wrapper2,
    .clip-wrapper3 {
@@ -219,9 +255,26 @@
      top: 0;
    }
    
-   .clip-wrapper  { transform: translate(calc(var(--cardW, 320px) * 0.15), calc(var(--cardW, 320px) * -0.29)) rotate(-6deg); }
-   .clip-wrapper2 { transform: translate(calc(var(--cardW, 320px) * 0.30), calc(var(--cardW, 320px) * -0.28)) rotate(23deg); }
-   .clip-wrapper3 { transform: translate(calc(var(--cardW, 320px) * 0.20), calc(var(--cardW, 320px) * -0.27)) rotate(6deg); }
+   .clip-wrapper {
+     transform: translate(
+       calc(var(--cardW, 320px) * 0.15),
+       calc(var(--cardW, 320px) * -0.29)
+     ) rotate(-6deg);
+   }
+   
+   .clip-wrapper2 {
+     transform: translate(
+       calc(var(--cardW, 320px) * 0.30),
+       calc(var(--cardW, 320px) * -0.28)
+     ) rotate(23deg);
+   }
+   
+   .clip-wrapper3 {
+     transform: translate(
+       calc(var(--cardW, 320px) * 0.20),
+       calc(var(--cardW, 320px) * -0.27)
+     ) rotate(6deg);
+   }
    
    .clip-img {
      width: clamp(120px, calc(var(--cardW, 320px) * 0.55), 190px);
@@ -272,7 +325,7 @@
    
    
    /* ================================================================
-      4.5 ENTRANCE ANIMATIONS
+      4.5 SECTION ENTRANCE ANIMATIONS
       ================================================================ */
    
    @keyframes fadeInUp {
@@ -341,57 +394,6 @@
      }
    }
    
-   /* Safety band for Spotify: 992px – 1120px */
-   @media (min-width: #{tokens.$lg_breakpoint}) and (max-width: 1120px) {
-     .spotify-row,
-     .top-row,
-     .bottom-row {
-       width: min(100%, calc(100vw - 2 * var(--padX)));
-       margin: 0 auto;
-       --row-gap: clamp(12px, 2vw, 20px);
-       gap: var(--row-gap);
-     }
-   
-     .spotify-row iframe {
-       width: auto !important;
-       max-width: none !important;
-       min-width: 0;
-       box-sizing: border-box;
-       height: 84px;
-       flex: 0 1 auto;
-     }
-   
-     .top-row iframe {
-       flex-basis: calc((100% - (2 * var(--row-gap))) / 3);
-     }
-   
-     .bottom-row iframe {
-       flex-basis: calc((100% - (1 * var(--row-gap))) / 2);
-     }
-   
-     .spotify-row {
-       overflow: clip;
-     }
-   }
-   
-   /* Safety band: 992px – 1048px */
-   @media (min-width: #{tokens.$lg_breakpoint}) and (max-width: 1048px) {
-     .spotify-row {
-       gap: clamp(16px, 2vw, 24px);
-     }
-   
-     .spotify-row iframe {
-       max-width: 290px;
-     }
-   }
-   
-   /* Smooth laptop band: 992px – 1199px */
-   @media (max-width: calc(#{tokens.$xl_breakpoint} - 1px)) and (min-width: #{tokens.$lg_breakpoint}) {
-     .floating-card {
-       --cardW: min(clamp(300px, 25vw, 420px), var(--fitW));
-     }
-   }
-   
    /* MD: 768px – 991px (Tablets) */
    @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
      .extras-intro {
@@ -423,7 +425,7 @@
        padding: 0 var(--padX);
      }
    
-     /* Stacked / triangle-ish card layout with float + tilt */
+     /* Stacked / triangle-ish card layout */
      .floating-card-grid {
        container-type: inline-size;
        container-name: cardstack;
@@ -442,20 +444,21 @@
        --cardW: clamp(200px, 54cqw, 280px);
        --cardH: calc(var(--cardW) * var(--ratio));
        --tx: 0cqw;
-       --mt: 0px;
-       --floatRange: -16px;
    
-       margin-top: var(--mt);
-       animation-duration: 5.8s;
-       transform: translateX(var(--tx)) translateY(var(--floatY, 0px)) rotate(var(--rotation));
+       margin-top: var(--mt, 0px);
+       opacity: 1;
+       transform:
+         translateX(var(--tx))
+         translateY(0)
+         rotate(var(--rotation));
+       transition-delay: 0s;
      }
    
-     /* Mobile rotations for this band */
+     /* Mobile rotations + offsets for this band */
      .rotate-plant { --rotation: -5.5deg; }
      .rotate-toast { --rotation:  3deg;   }
      .rotate-craft { --rotation: -6deg;   }
    
-     /* Triangle offsets */
      .floating-card:nth-child(1) { --tx: -4cqw; --mt: calc(-0.15 * var(--cardH)); }
      .floating-card:nth-child(2) { --tx: 58cqw; --mt: calc(-0.50 * var(--cardH)); }
      .floating-card:nth-child(3) { --tx: -3cqw; --mt: calc(-0.41 * var(--cardH)); }
@@ -493,321 +496,301 @@
      }
    }
    
-/* XS: ≤ 625px (Phones and below) - Single column, NO float, NO tilt */
-@media (max-width: #{tokens.$sm_breakpoint}) {
-  .about-cards {
-    --padX: 7.5vw;
-    --captionMin: 1.25rem;
-    padding: 0 var(--padX);
-  }
-
-  /* Photocards - Single column layout, centered & echoing Spotify width */
-  .floating-card-grid {
-    container-type: inline-size;
-    container-name: onecol;
-    display: flex;
-    flex-direction: column !important;
-    align-items: center;
-    justify-content: flex-start;
-    width: min(100%, calc(100vw - 2 * var(--padX)));
-    max-width: 440px;
-    gap: 80px; /* bigger spacing between cards */
-    padding-inline: 0;
-    margin: 0 auto -60px;
-  }
-
-  .floating-card {
-    /* Slightly smaller so it doesn’t feel huge */
-    --cardW: clamp(230px, 88cqw, 360px);
-    --cardH: calc(var(--cardW) * 1.45);
-
-    width: var(--cardW);
-    margin-top: 0;
-
-    /* turn off floating + tilt */
-    animation: none !important;
-    transform: translateX(0) translateY(0) rotate(0deg);
-  }
-
-  /* Neutralize rotations for this band */
-  .rotate-plant,
-  .rotate-toast,
-  .rotate-craft {
-    --rotation: 0deg;
-  }
-
-  /* Bring clips down so they touch the image edge on mobile */
-  .clip-wrapper  {
-    transform: translate(
-      calc(var(--cardW, 320px) * 0.20),
-      calc(var(--cardW, 320px) * -0.24)
-    ) rotate(-6deg);
-  }
-
-  .clip-wrapper2 {
-    transform: translate(
-      calc(var(--cardW, 320px) * 0.34),
-      calc(var(--cardW, 320px) * -0.23)
-    ) rotate(23deg);
-  }
-
-  .clip-wrapper3 {
-    transform: translate(
-      calc(var(--cardW, 320px) * 0.24),
-      calc(var(--cardW, 320px) * -0.24)
-    ) rotate(6deg);
-  }
-
-  .clip-img {
-    width: clamp(115px, calc(var(--cardW) * 0.60), 160px);
-  }
-
-  /* Make captions a bit bigger on mobile */
-  .floating-caption {
-    font-size: 1.4rem !important;
-  }
-
-  /* Spotify - Single column */
-  .spotify-trapezoid {
-    width: 100%;
-  }
-
-  .spotify-row,
-  .top-row,
-  .bottom-row {
-    flex-direction: column !important;
-    align-items: stretch;
-    gap: 18px;
-    width: min(100%, calc(100vw - 2 * var(--padX)));
-    max-width: 440px;
-    margin: 0 auto;
-  }
-
-  .spotify-row iframe {
-    width: 100% !important;
-    max-width: none !important;
-  }
-}
-
-/* Typography + sizes: ≤ 464px (Small phones) */
-@media (max-width: #{tokens.$xs_breakpoint}) {
-  .about-cards {
-    --padX: 7.5vw;
-    --captionMin: 1.25rem;
-    padding: 0 var(--padX);
-  }
-
-  .floating-card-grid {
-    display: flex;
-    flex-direction: column !important;
-    align-items: center;
-    justify-content: flex-start;
-    width: min(100%, calc(100vw - 2 * var(--padX)));
-    max-width: 420px;
-    gap: 80px;
-    margin: 8px auto -60px;
-  }
-
-  .floating-card {
-    /* Slightly narrower on tiny phones */
-    --cardW: clamp(210px, 94cqw, 330px);
-    --cardH: 300px;
-
-    width: var(--cardW);
-    animation: none !important;
-    transform: translateX(0) translateY(0) rotate(0deg);
-  }
-
-  .clip-img {
-    width: clamp(80px, calc(var(--cardW) * 0.48), 150px);
-  }
-
-  /* Show/hide helpers */
-  .xs-only { display: inline; }
-  .xs-hide { display: none !important; }
-
-  /* Typography adjustments */
-  .extras-intro {
-    font-size: 1rem;
-    margin-bottom: 25px;
-    letter-spacing: 0px;
-    font-weight: 500 !important;
-  }
-
-  .cooper-spotify-heading {
-    @include tokens.type-coop-display-mid;
-    font-size: 1.1rem;
-    letter-spacing: 0.75px;
-  }
-
-  .haiku-text {
-    @include tokens.type-coop-display2-bold;
-    font-size: 1.45rem;
-    line-height: 1.55;
-    letter-spacing: 1px;
-  }
-
-  .haiku-text .xs-line {
-    display: block;
-  }
-
-  .haiku-text p {
-    margin: -3px 0;
-  }
-
-  .haiku-section {
-    margin-bottom: 100px;
-  }
-
-  .floating-caption {
-    @include tokens.type-coop-display2-bold;
-    font-size: 1.05rem !important;
-    letter-spacing: 0.75px;
-  }
-
-  .spotify-trapezoid {
-    width: 100%;
-    gap: 18px;
-  }
-
-  .spotify-row,
-  .top-row,
-  .bottom-row {
-    flex-direction: column !important;
-    align-items: stretch;
-    gap: 18px;
-    width: min(100%, calc(100vw - 2 * var(--padX)));
-    max-width: 440px;
-    margin: 0 auto;
-  }
-
-  .spotify-row iframe {
-    width: 100% !important;
-    max-width: none !important;
-  }
-}
-
-/* XXS: ≤ 375px (Smallest phones) */
-@media (max-width: #{tokens.$xxs_breakpoint}) {
-  .extras-intro {
-    font-size: 1rem;
-    margin-bottom: 25px;
-  }
-
-  .cooper-spotify-heading {
-    @include tokens.type-coop-display2-bold;
-    font-size: 1.1rem;
-    letter-spacing: 0.75px;
-  }
-
-  .haiku-text {
-    @include tokens.type-coop-display2-bold;
-    font-size: 1.45rem;
-    letter-spacing: 1px;
-  }
-
-  .haiku-section {
-    margin-bottom: 100px;
-  }
-
-  .floating-caption {
-    @include tokens.type-coop-display2-bold;
-    font-size: 1.05rem !important;
-    letter-spacing: 0.75px;
-  }
-
-  .spotify-trapezoid {
-    gap: 18px;
-  }
-}
-
-
-/* ================================================================
-   6. CONTAINER UNITS FALLBACK (Older Browsers)
-   ================================================================ */
-@supports not (width: 1cqw) {
-  /* Stacked layout fallback: 626px – 991px */
-  @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
-    .floating-card-grid {
-      padding-inline: tokens.$space-xs;
-    }
-
-    .floating-card {
-      --cardW: clamp(200px, 56vw, 300px);
-      --cardH: calc(var(--cardW) * 1.45);
-      --floatRange: -8px;
-
-      animation-duration: 6s;
-      transform: translateX(var(--tx, 0px)) translateY(var(--floatY, 0px)) rotate(var(--rotation));
-    }
-
-    .floating-card:nth-child(1) { --tx: -8vw; margin-top: 0; }
-    .floating-card:nth-child(2) { --tx: 30vw; margin-top: calc(-0.60 * var(--cardH)); }
-    .floating-card:nth-child(3) { --tx: -6vw; margin-top: calc(-1.00 * var(--cardH)); }
-  }
-
-  /* Single column fallback: ≤ 625px (no float, no tilt) */
-  @media (max-width: #{tokens.$sm_breakpoint}) {
-    .floating-card-grid {
-      max-width: 420px;
-      gap: 80px;
-      --stackShiftPx: 0px;
-      transform: translateX(var(--stackShiftPx));
-      margin: 0 auto -60px;
-    }
-
-    .floating-card {
-      --cardW: clamp(210px, 80vw, 340px);
-
-      width: var(--cardW);
-      animation: none !important;
-      transform: translateX(0) translateY(0) rotate(0deg);
-    }
-
-    .floating-card:nth-child(1),
-    .floating-card:nth-child(2),
-    .floating-card:nth-child(3) {
-      --nudgeXPx: 0;
-    }
-
-    .rotate-plant,
-    .rotate-toast,
-    .rotate-craft {
-      --rotation: 0deg;
-    }
-  }
-
-  /* Spotify fallback: ≤ 991px */
-  @media (max-width: #{tokens.$lg_breakpoint}) {
-    .spotify-row {
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .top-row,
-    .bottom-row {
-      flex-direction: column;
-      width: 100%;
-      max-width: 320px;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .spotify-row iframe {
-      max-width: 300px;
-      height: 84px;
-    }
-  }
-}
-
+   /* XS: ≤ 625px (Phones and below) - Single column, no tilt */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     .about-cards {
+       --padX: 7.5vw;
+       --captionMin: 1.25rem;
+       padding: 0 var(--padX);
+     }
+   
+     .floating-card-grid {
+       container-type: inline-size;
+       container-name: onecol;
+       display: flex;
+       flex-direction: column !important;
+       align-items: center;
+       justify-content: flex-start;
+       width: min(100%, calc(100vw - 2 * var(--padX)));
+       max-width: 440px;
+       gap: 80px;
+       padding-inline: 0;
+       margin: 0 auto -60px;
+     }
+   
+     .floating-card {
+       --cardW: clamp(230px, 88cqw, 360px);
+       --cardH: calc(var(--cardW) * 1.45);
+   
+       width: var(--cardW);
+       margin-top: 0;
+   
+       opacity: 1;
+       transform: translateX(0) translateY(0) rotate(0deg);
+       transition-delay: 0s;
+     }
+   
+     .rotate-plant,
+     .rotate-toast,
+     .rotate-craft {
+       --rotation: 0deg;
+     }
+   
+     .clip-wrapper  {
+       transform: translate(
+         calc(var(--cardW, 320px) * 0.20),
+         calc(var(--cardW, 320px) * -0.24)
+       ) rotate(-6deg);
+     }
+   
+     .clip-wrapper2 {
+       transform: translate(
+         calc(var(--cardW, 320px) * 0.34),
+         calc(var(--cardW, 320px) * -0.23)
+       ) rotate(23deg);
+     }
+   
+     .clip-wrapper3 {
+       transform: translate(
+         calc(var(--cardW, 320px) * 0.24),
+         calc(var(--cardW, 320px) * -0.24)
+       ) rotate(6deg);
+     }
+   
+     .clip-img {
+       width: clamp(115px, calc(var(--cardW) * 0.60), 160px);
+     }
+   
+     .floating-caption {
+       font-size: 1.4rem !important;
+     }
+   
+     /* Spotify - single column */
+     .spotify-trapezoid {
+       width: 100%;
+     }
+   
+     .spotify-row,
+     .top-row,
+     .bottom-row {
+       flex-direction: column !important;
+       align-items: stretch;
+       gap: 18px;
+       width: min(100%, calc(100vw - 2 * var(--padX)));
+       max-width: 440px;
+       margin: 0 auto;
+     }
+   
+     .spotify-row iframe {
+       width: 100% !important;
+       max-width: none !important;
+     }
+   }
+   
+   /* Typography + sizes: ≤ 464px (Small phones) */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .about-cards {
+       --padX: 7.5vw;
+       --captionMin: 1.25rem;
+       padding: 0 var(--padX);
+     }
+   
+     .floating-card-grid {
+       display: flex;
+       flex-direction: column !important;
+       align-items: center;
+       justify-content: flex-start;
+       width: min(100%, calc(100vw - 2 * var(--padX)));
+       max-width: 420px;
+       gap: 80px;
+       margin: 8px auto -60px;
+     }
+   
+     .floating-card {
+       --cardW: clamp(210px, 94cqw, 330px);
+       --cardH: 300px;
+   
+       width: var(--cardW);
+       opacity: 1;
+       transform: translateX(0) translateY(0) rotate(0deg);
+     }
+   
+     .clip-img {
+       width: clamp(80px, calc(var(--cardW) * 0.48), 150px);
+     }
+   
+     .xs-only { display: inline; }
+     .xs-hide { display: none !important; }
+   
+     .extras-intro {
+       font-size: 1rem;
+       margin-bottom: 25px;
+       letter-spacing: 0px;
+       font-weight: 500 !important;
+     }
+   
+     .cooper-spotify-heading {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.1rem;
+       letter-spacing: 0.75px;
+     }
+   
+     .haiku-text {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.45rem;
+       line-height: 1.55;
+       letter-spacing: 1px;
+     }
+   
+     .haiku-text .xs-line {
+       display: block;
+     }
+   
+     .haiku-text p {
+       margin: -3px 0;
+     }
+   
+     .haiku-section {
+       margin-bottom: 100px;
+     }
+   
+     .floating-caption {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.05rem !important;
+       letter-spacing: 0.75px;
+     }
+   
+     .spotify-trapezoid {
+       width: 100%;
+       gap: 18px;
+     }
+   
+     .spotify-row,
+     .top-row,
+     .bottom-row {
+       flex-direction: column !important;
+       align-items: stretch;
+       gap: 18px;
+       width: min(100%, calc(100vw - 2 * var(--padX)));
+       max-width: 440px;
+       margin: 0 auto;
+     }
+   
+     .spotify-row iframe {
+       width: 100% !important;
+       max-width: none !important;
+     }
+   }
+   
+   /* XXS: ≤ 375px (Smallest phones) */
+   @media (max-width: #{tokens.$xxs_breakpoint}) {
+     .extras-intro {
+       font-size: 1rem;
+       margin-bottom: 25px;
+     }
+   
+     .cooper-spotify-heading {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.1rem;
+       letter-spacing: 0.75px;
+     }
+   
+     .haiku-text {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.45rem;
+       letter-spacing: 1px;
+     }
+   
+     .haiku-section {
+       margin-bottom: 100px;
+     }
+   
+     .floating-caption {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.05rem !important;
+       letter-spacing: 0.75px;
+     }
+   
+     .spotify-trapezoid {
+       gap: 18px;
+     }
+   }
+   
+   
+   /* ================================================================
+      6. CONTAINER UNITS FALLBACK (Older Browsers)
+      ================================================================ */
+   @supports not (width: 1cqw) {
+     /* Stacked layout fallback: 626px – 991px */
+     @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
+       .floating-card-grid {
+         padding-inline: tokens.$space-xs;
+       }
+   
+       .floating-card {
+         --cardW: clamp(200px, 56vw, 300px);
+         --cardH: calc(var(--cardW) * 1.45);
+   
+         transform:
+           translateX(var(--tx, 0px))
+           translateY(0)
+           rotate(var(--rotation));
+         opacity: 1;
+       }
+   
+       .floating-card:nth-child(1) { --tx: -8vw; margin-top: 0; }
+       .floating-card:nth-child(2) { --tx: 30vw; margin-top: calc(-0.60 * var(--cardH)); }
+       .floating-card:nth-child(3) { --tx: -6vw; margin-top: calc(-1.00 * var(--cardH)); }
+     }
+   
+     /* Single column fallback: ≤ 625px */
+     @media (max-width: #{tokens.$sm_breakpoint}) {
+       .floating-card-grid {
+         max-width: 420px;
+         gap: 80px;
+         --stackShiftPx: 0px;
+         transform: translateX(var(--stackShiftPx));
+         margin: 0 auto -60px;
+       }
+   
+       .floating-card {
+         --cardW: clamp(210px, 80vw, 340px);
+   
+         width: var(--cardW);
+         transform: translateX(0) translateY(0) rotate(0deg);
+         opacity: 1;
+       }
+     }
+   
+     /* Spotify fallback: ≤ 991px */
+     @media (max-width: #{tokens.$lg_breakpoint}) {
+       .spotify-row {
+         flex-direction: column;
+         gap: 20px;
+         align-items: center;
+       }
+   
+       .top-row,
+       .bottom-row {
+         flex-direction: column;
+         width: 100%;
+         max-width: 320px;
+         gap: 20px;
+         justify-content: center;
+       }
+   
+       .spotify-row iframe {
+         max-width: 300px;
+         height: 84px;
+       }
+     }
+   }
+   
    
    /* ================================================================
       7. SPOTIFY EMBED OPTIMIZATIONS
-      Loading states with subtle Spotify-matching colors
       ================================================================ */
    
-   /* Embed wrapper */
    .spotify-embed-wrapper {
      position: relative;
      width: 100%;
@@ -821,20 +804,18 @@
      }
    }
    
-   /* Loading skeleton - Updated to match Spotify's dark theme */
    .spotify-skeleton {
      position: absolute;
      top: 0;
      left: 0;
      width: 100%;
      height: 84px;
-     background: #121212; /* Spotify's actual dark background */
+     background: #121212;
      background-size: 200% 100%;
      border-radius: 12px;
      overflow: hidden;
      z-index: 1;
    
-     /* Subtle shimmer effect */
      &::after {
        content: '';
        position: absolute;
@@ -862,7 +843,7 @@
      .skeleton-image {
        width: 60px;
        height: 60px;
-       background: #181818; /* Slightly lighter than background */
+       background: #181818;
        border-radius: 4px;
        flex-shrink: 0;
      }
@@ -889,13 +870,11 @@
      }
    }
    
-   /* Subtle shimmer animation */
    @keyframes shimmer {
      0%   { transform: translateX(0); }
      100% { transform: translateX(200%); }
    }
    
-   /* Error state - Matching Spotify's design language */
    .spotify-error {
      position: absolute;
      top: 0;
@@ -913,7 +892,7 @@
      z-index: 2;
    
      p {
-       color: #b3b3b3; /* Spotify's text grey */
+       color: #b3b3b3;
        font-size: 0.875rem;
        margin: 0;
      }
@@ -940,7 +919,6 @@
      }
    }
    
-   /* Responsive adjustments for loading states */
    @media (max-width: 991px) {
      .spotify-embed-wrapper {
        max-width: none;
@@ -952,7 +930,6 @@
      }
    }
    
-   /* Light mode adjustments (if your site supports it) */
    @media (prefers-color-scheme: light) {
      .spotify-skeleton {
        background: #1F1F1F;

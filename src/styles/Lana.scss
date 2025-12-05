@@ -86,8 +86,12 @@
   
     /* Start hidden; reveal when images are ready */
     & :is(.lana-piece) { animation-play-state: paused; opacity: 0; }
-    &.is-ready :is(.lana-piece) { animation-play-state: running; opacity: 1; transition: opacity 175ms ease; }
-  }
+    &.is-ready :is(.lana-piece) {
+      animation-play-state: running;
+      opacity: 1;
+      transition: opacity 260ms ease-out;
+    }
+      }
   
   .lana-piece {
     position: absolute;

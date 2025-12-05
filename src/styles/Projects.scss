@@ -40,16 +40,16 @@
       ================================================================ */
    .section-title {
     @include tokens.type-mont-display2;
-    font-style: italic;
+    // font-style: italic;
     color: tokens.$prisec;
      display: flex;
      align-items: center;
-     gap: 10px;
-     font-size: 1.25rem;
+     gap: 5px;
+     font-size: 1.15rem;
    }
    
    .section-arrow {
-     height: 1.1rem;
+     height: 0.95rem;
      width: auto;
      margin-bottom: -1px;
      margin-right: 5px;
@@ -302,53 +302,64 @@
    }
    
    
-   /* ================================================================
-      7. SCROLL ANIMATIONS
-      ================================================================ */
-   
-   /* Keyframes for scroll-triggered animations */
-   @keyframes fadeInUp {
-     from {
-       opacity: 0;
-       transform: translateY(40px);
-     }
-     to {
-       opacity: 1;
-       transform: translateY(0);
-     }
-   }
-   
-   @keyframes slideInFromBottom {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Section title animation - starts hidden */
-  .animate-section-title {
+/* ================================================================
+   7. SCROLL ANIMATIONS (aligned with hero)
+   ================================================================ */
+
+/* Section title: tiny lift + fade */
+@keyframes sectionFadeUp {
+  from {
     opacity: 0;
-    transform: translateY(5px);
+    transform: translateY(10px);
   }
-  
-  .is-visible .animate-section-title {
-    animation: slideInFromBottom 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-   
-   /* Project card animation - starts hidden */
-   .animate-project-card {
-     opacity: 0;
-     transform: translateY(5px);
-   }
-   
-   .is-visible .animate-project-card {
-     animation: fadeInUp 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-   }
-   
+}
+
+/* Project cards: gentle rise */
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Base states – hidden until .is-visible */
+.animate-section-title {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.animate-project-card {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+/* When section wrapper gets .is-visible from useScrollAnimation */
+.is-visible .animate-section-title {
+  animation: sectionFadeUp 0.40s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.is-visible .animate-project-card {
+  animation: cardFadeUp 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+/* Turn off animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-section-title,
+  .animate-project-card {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
    
    /* ================================================================
       8. RESPONSIVE BREAKPOINTS (Desktop → Mobile)

@@ -27,11 +27,11 @@
      justify-content: center;
      align-items: center;
      min-height: 85vh;
-     padding: tokens.$space-xs 0 tokens.$space-sm;
+     padding: tokens.$space-sm 0 tokens.$space-sm;
    }
    
    .scroll-cue-spacer {
-     height: 50px;
+     height: 40px;
    }
    
    .about-wrapper {
@@ -295,47 +295,53 @@
      }
    }
    
-   /* ================================================================
-   8. ENTRANCE ANIMATIONS
+/* ================================================================
+   8. ENTRANCE ANIMATIONS (Framer-style mount fade)
    ================================================================ */
 
-/* Fade in and slide up animation */
-@keyframes fadeInUp {
-  from {
+   @keyframes aboutFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Base state: invisible + paused until we mark the section as loaded */
+  .about-top .animate-fade-in {
     opacity: 0;
     transform: translateY(5px);
+    animation-name: aboutFadeUp;
+    animation-duration: 0.45s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: both;
+    animation-play-state: paused;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  /* When the JS sets .about-top-loaded, play the animations */
+  .about-top-loaded .animate-fade-in {
+    animation-play-state: running;
   }
-}
-
-/* Apply animations to each element with staggered delays */
-.about-photo-wrapper {
-  animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
-}
-
-.about-heading {
-  animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
-}
-
-.about-bio:nth-of-type(1) {
-  animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
-}
-
-.about-bio:nth-of-type(2) {
-  animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
-}
-
-.about-contact-block {
-  animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both;
-}
-
-.about-top .scroll-cue {
-  animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
-}
-
+  
+  /* Hard off switch (used when shouldAnimate === false) */
+  .about-top.no-animation .animate-fade-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* Accessibility: respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .about-top .animate-fade-in {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+  
 
 /* ================================================================
    9. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
@@ -586,15 +592,17 @@
        margin-top: tokens.$space-md;
      }
    
-     .about-photo-wrapper::before {
-       width: 105%;
-       height: 105%;
-     }
-   
-     /* Hide curved text overlay on XS */
-     .curved-text-svg {
-       display: none !important;
-     }
+  /* 🔇 Turn off ombre/glow on small phones */
+  .about-photo-wrapper::before {
+    /* Kill the glow entirely on very small phones */
+    content: none;
+    filter: none;
+  }
+
+  /* Hide curved text overlay on XS */
+  .curved-text-svg {
+    display: none !important;
+  }
    
      .about-intro {
        gap: tokens.$space-2xs;

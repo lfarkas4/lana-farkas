@@ -100,6 +100,7 @@
      @include tokens.type-coop-h1;
      color: tokens.$prisec;
      margin-bottom: 6px;
+     font-size: 1.175rem;
    }
    
    .hero-column p {
@@ -176,39 +177,68 @@
      }
    }
    
-  /* ================================================================
-     6. ENTRANCE ANIMATIONS
-     ================================================================ */
+/* ================================================================
+   6. ENTRANCE ANIMATIONS (Framer-style)
+   ================================================================ */
 
-  /* Fade in and slide up animation */
-  @keyframes fadeInUp {
-      from {
-       opacity: 0;
-       transform: translateY(5px);
-      }
-      to {
-       opacity: 1;
-       transform: translateY(0);
-      }
+/* 6.1 – Whole hero: soft fade + tiny lift */
+.hero {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.42s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.hero.hero-loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 6.2 – Element-level stagger (renamed to avoid collisions) */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Default state: hidden until animated */
+.animate-fade-in {
+  opacity: 0;
+  animation: heroFadeUp 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+/* “No animation” mode – used when skipping via navbar */
+.no-animation {
+  opacity: 1 !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Only actually run element animations once hero is marked loaded */
+.hero-loaded .animate-fade-in {
+  animation-play-state: running;
+}
+
+/* 6.3 – Respect reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
-  /* Initial state - elements hidden before animation */
-    .animate-fade-in {
-      opacity: 0;
-      animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  .animate-fade-in {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
   }
-
-  /* No animation - elements immediately visible */
-    .no-animation {
-      opacity: 1 !important;
-      animation: none !important;
-      transform: translateY(0) !important;
-  }
-
-  /* Ensure smooth loading */
-    .hero-loaded .animate-fade-in {
-      animation-play-state: running;
-  }
+}
    
    
    /* ================================================================
@@ -430,6 +460,9 @@
        line-height: 1.5;
        font-weight: 450 !important;
        letter-spacing: 0px;
+     }
+    .animate-fade-in {
+        animation-duration: 0.38s;
      }
    }
 
