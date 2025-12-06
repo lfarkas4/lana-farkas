@@ -62,7 +62,7 @@ export const caseStudies = [
       description:
         "Explored new learning models that empower students to shape their own educational journeys.",
       link: "/case-studies/stackbuilder",
-      video: "/assets/mamamia.mp4",
+      video: "/assets/mammamia.mp4",
       brandMark: "/assets/stack-mark.svg",
       brandMarkH: "20px",                // ← per-project size
       meta: {
