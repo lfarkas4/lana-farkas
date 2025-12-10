@@ -113,7 +113,7 @@ const Navigation = () => {
               {renderAnimatedLink("work", "work", "/", handleWorkClick)}
               {renderAnimatedLink("about", "about", "/about")}
               <a
-                href="/assets/lana_resume.pdf"
+                href="/assets/Lana_Farkas_Resume_2025.pdf"
                 className="nav-link"
                 target="_blank"
                 rel="noopener noreferrer"

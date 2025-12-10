@@ -9,7 +9,7 @@ export const caseStudies = [
         "Co-founded an AI-powered platform to optimize behavioral data in Applied Behavior Analysis (ABA) therapy.",
       link: "/case-studies/behavai",
       // Use one of these two keys (video takes precedence if both exist)
-      video: "/assets/dribbleshot.mp4",
+      video: "/assets/dribbleshot1.mov",
       // image: "/assets/behavai-thumb.png",
       brandMark: "/assets/behavai-mark.png",   // ← add this
       brandMarkH: "24px",               // ← per-project size
@@ -40,12 +40,12 @@ export const caseStudies = [
     },
     {
       slug: "hira",
-      title: "Thought Bubble: Guiding Cancer Care",
+      title: "Hira: Guiding Cancer Care",
       tags: ["Healthcare", "Wearables", "Patient Experience"],
       description:
         "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
       link: "/case-studies/hira",
-      image: "/assets/watchmock.svg",
+      image: "/assets/watchmock1.png",
       brandMark: "/assets/hira-mark.svg",
       brandMarkH: "45px",                // ← per-project size
       meta: {
@@ -113,7 +113,7 @@ export const caseStudies = [
       description:
         "Conceptualized mobile app to counter addictive technology through creative expression.",
       link: "/case-studies/lightthemuse",
-      video: "/assets/whatsapp3.mp4",
+      image: "/assets/whatsapp.png",
       brandMark: "/assets/lightthemuse-mark.svg",
       brandMarkH: "24px",                // ← per-project size
       meta: {
