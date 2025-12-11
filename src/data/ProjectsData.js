@@ -111,7 +111,7 @@ export const caseStudies = [
       slug: "lightthemuse",
       title: "Light the Muse",
       description:
-        "Designed mobile app to counter addictive technology through creative expression.",
+        "Ideated mobile app to counter addictive technology through creative expression.",
       link: "/case-studies/lightthemuse",
       image: "/assets/whatsapp.png",
       brandMark: "/assets/lightthemuse-mark.svg",
