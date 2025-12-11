@@ -9,7 +9,7 @@ export const caseStudies = [
         "Co-founded an AI-powered platform to optimize behavioral data in Applied Behavior Analysis (ABA) therapy.",
       link: "/case-studies/behavai",
       // Use one of these two keys (video takes precedence if both exist)
-      video: "/assets/dribbleshot1.mov",
+      video: "/assets/lala3.mp4",
       // image: "/assets/behavai-thumb.png",
       brandMark: "/assets/behavai-mark.png",   // ← add this
       brandMarkH: "24px",               // ← per-project size
@@ -45,7 +45,7 @@ export const caseStudies = [
       description:
         "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
       link: "/case-studies/hira",
-      image: "/assets/watchmock1.png",
+      image: "/assets/watchmock.svg",
       brandMark: "/assets/hira-mark.svg",
       brandMarkH: "45px",                // ← per-project size
       meta: {
