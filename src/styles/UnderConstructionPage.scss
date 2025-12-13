@@ -422,6 +422,7 @@
      .uc-subtitle {
        font-size: 0.8rem;
        line-height: 1.5;
+       max-width: 300px;
      }
      
      .uc-game__area {
@@ -430,12 +431,12 @@
      }
      
      .uc-orb {
-       width: 52px;
-       height: 52px;
+       width: 60px;
+       height: 60px;
      }
      
      .uc-orb__star {
-       font-size: 1.1rem;
+       font-size: 1.5rem;
      }
      
      .uc-game__start {
