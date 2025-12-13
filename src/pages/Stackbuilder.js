@@ -3,6 +3,7 @@ import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
 import ComingSoonBanner from "../components/ComingSoonBanner";
 import NextProjectTeaser from "../components/NextProjectTeaser";
+import UnderConstructionPage from "../components/UnderConstructionPage"; // NEW
 import { caseStudies } from "../data/ProjectsData";
 
 const iconMap = {
@@ -11,15 +12,33 @@ const iconMap = {
   Miro: "/assets/miro.svg",
 };
 
+// ═══════════════════════════════════════════════════════════════
+// Toggle this to switch between the placeholder and full case study
+// Set to `false` when you're ready to show the actual content
+// ═══════════════════════════════════════════════════════════════
+const SHOW_UNDER_CONSTRUCTION = true;
+
 export default function Stackbuilder() {
   const data = caseStudies.find((p) => p.slug === "stackbuilder");
   if (!data) return null;
+
+  // ════════════════════════════════════════════════════════════
+  // OPTION 1: Show the Under Construction page with mini-game
+  // ════════════════════════════════════════════════════════════
+  if (SHOW_UNDER_CONSTRUCTION) {
+    return <UnderConstructionPage projectName="Stackbuilder" />;
+  }
+
+  // ════════════════════════════════════════════════════════════
+  // OPTION 2: Show the full case study (your existing code below)
+  // ════════════════════════════════════════════════════════════
 
   const splitTeam = (txt) => {
     const parts = String(txt).split(" — ");
     return parts.length > 1 ? (
       <>
-        {parts[0]}:<br />
+        {parts[0]}:
+        <br />
         {parts.slice(1).join(" — ")}
       </>
     ) : (
@@ -86,7 +105,9 @@ export default function Stackbuilder() {
 
         <div className="pd-meta__item">
           <div className="pd-meta__heading">Timeline</div>
-          <div className="pd-meta__text">{splitTimeline(data.meta?.timeline)}</div>
+          <div className="pd-meta__text">
+            {splitTimeline(data.meta?.timeline)}
+          </div>
         </div>
 
         <div className="pd-meta__item">

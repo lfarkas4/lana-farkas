@@ -3,6 +3,7 @@ import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
 import ComingSoonBanner from "../components/ComingSoonBanner";
 import NextProjectTeaser from "../components/NextProjectTeaser";
+import UnderConstructionPage from "../components/UnderConstructionPage"; // NEW
 import { miniProjects } from "../data/ProjectsData";
 
 const iconMap = {
@@ -11,15 +12,34 @@ const iconMap = {
   Miro: "/assets/miro.svg",
 };
 
+// ═══════════════════════════════════════════════════════════════
+// Toggle this to switch between the placeholder and full case study
+// Set to `false` when you're ready to show the actual content
+// ═══════════════════════════════════════════════════════════════
+const SHOW_UNDER_CONSTRUCTION = true;
+
 export default function Moonranger() {
   const data = miniProjects.find((p) => p.slug === "moonranger");
   if (!data) return null;
 
+  // ════════════════════════════════════════════════════════════
+  // OPTION 1: Show the Under Construction page with mini-game
+  // ════════════════════════════════════════════════════════════
+  if (SHOW_UNDER_CONSTRUCTION) {
+    return <UnderConstructionPage projectName="Moonranger" />;
+  }
+
+  // ════════════════════════════════════════════════════════════
+  // OPTION 2: Show the full mini-project detail view
+  // (this preserves your existing structure + meta wiring)
+  // ════════════════════════════════════════════════════════════
+
   const splitTeam = (txt) => {
-    const parts = String(txt).split(" — ");
+    const parts = String(txt || "").split(" — ");
     return parts.length > 1 ? (
       <>
-        {parts[0]}:<br />
+        {parts[0]}:
+        <br />
         {parts.slice(1).join(" — ")}
       </>
     ) : (
@@ -28,12 +48,13 @@ export default function Moonranger() {
   };
 
   const splitTimeline = (txt) => {
-    const idx = String(txt).indexOf(" (");
+    const str = String(txt || "");
+    const idx = str.indexOf(" (");
     return idx > -1 ? (
       <>
-        {txt.slice(0, idx)}
+        {str.slice(0, idx)}
         <br />
-        {txt.slice(idx)}
+        {str.slice(idx)}
       </>
     ) : (
       txt
@@ -86,7 +107,9 @@ export default function Moonranger() {
 
         <div className="pd-meta__item">
           <div className="pd-meta__heading">Timeline</div>
-          <div className="pd-meta__text">{splitTimeline(data.meta?.timeline)}</div>
+          <div className="pd-meta__text">
+            {splitTimeline(data.meta?.timeline)}
+          </div>
         </div>
 
         <div className="pd-meta__item">

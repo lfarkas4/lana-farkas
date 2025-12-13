@@ -64,6 +64,10 @@
      border: 1px solid rgba(255, 255, 255, 0.12);
      box-shadow: 0 0 tokens.$space-xs rgba(0, 0, 0, 0.12);
      transition: transform 0.275s ease, box-shadow 0.3s ease;
+     background: rgba(10, 10, 13, 0.3);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 tokens.$space-xs rgba(0, 0, 0, 0.15);
    }
    
    .nav-bubble:hover {

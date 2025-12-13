@@ -1,0 +1,476 @@
+/* ================================================================
+   UNDER CONSTRUCTION PAGE - Spot the Star Game
+   ================================================================ */
+   @use './partials/tokens' as tokens;
+
+   /* ================================================================
+      1. PAGE CONTAINER
+      ================================================================ */
+   .uc-page {
+     position: relative;
+     min-height: 100vh;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     overflow: hidden;
+     /* No background - let the global CosmicBackground show through */
+   }
+   
+   
+   /* ================================================================
+      2. CENTRAL CONTENT
+      ================================================================ */
+   .uc-content {
+     position: relative;
+     z-index: 20;
+     text-align: center;
+     padding: 0 24px;
+     max-width: 500px;
+     
+     animation: ucContentFadeIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s both;
+   }
+   
+   @keyframes ucContentFadeIn {
+     from {
+       opacity: 0;
+       transform: translateY(16px);
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+   
+   /* Badge */
+   .uc-badge {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     
+     width: 60px;
+     height: 60px;
+     margin-bottom: 25px;
+     
+     background: rgba(255, 255, 255, 0.03);
+     border: 1px solid rgba(255, 255, 255, 0.06);
+     border-radius: 50%;
+     
+     animation: ucBadgePulse 3.5s ease-in-out infinite;
+   }
+   
+   .uc-badge__icon {
+     font-size: 1.6rem;
+   }
+   
+   @keyframes ucBadgePulse {
+     0%, 100% {
+       box-shadow: 
+         0 0 0 0 rgba(119, 0, 239, 0.08),
+         0 0 20px rgba(119, 0, 239, 0.04);
+     }
+     50% {
+       box-shadow: 
+         0 0 0 10px rgba(119, 0, 239, 0),
+         0 0 35px rgba(119, 0, 239, 0.08);
+     }
+   }
+   
+   /* Title */
+   .uc-title {
+     @include tokens.type-coop-display2-bold;
+     color: tokens.$prisec;
+     font-size: 1.95rem;
+     letter-spacing: 1px;
+     margin: 0 0 18px;
+     line-height: 1.3;
+   }
+   
+   /* Subtitle */
+   .uc-subtitle {
+     @include tokens.type-mont-body;
+     color: tokens.$primary;
+     font-size: 0.95rem;
+     line-height: 1.55;
+     margin: 0 0 40px;
+     opacity: 0.85;
+   }
+   
+   .uc-br-mobile {
+     display: none;
+   }
+   
+   
+   /* ================================================================
+      3. SPOT THE STAR GAME
+      ================================================================ */
+   .uc-game {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 16px;
+   }
+   
+   .uc-game__area {
+     position: relative;
+     width: 280px;
+     height: 100px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   
+   /* Start button */
+   .uc-game__start {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 10px;
+     
+     padding: 24px 40px;
+     background: rgba(255, 255, 255, 0.03);
+     border: 1px solid rgba(255, 255, 255, 0.08);
+     border-radius: 16px;
+     
+     cursor: pointer;
+     transition: all 0.3s ease;
+     
+     &:hover {
+       background: rgba(255, 255, 255, 0.06);
+       border-color: rgba(255, 255, 255, 0.12);
+       transform: scale(1.02);
+     }
+   }
+   
+   .uc-game__start-icon {
+     font-size: 1.5rem;
+     color: rgba(237, 237, 237, 0.8);
+     animation: startIconTwinkle 2s ease-in-out infinite;
+   }
+   
+   @keyframes startIconTwinkle {
+     0%, 100% { opacity: 0.6; transform: scale(0.9) rotate(0deg); }
+     50% { opacity: 1; transform: scale(1.1) rotate(180deg); }
+   }
+   
+   .uc-game__start-text {
+     @include tokens.type-mont-body;
+     font-size: 0.85rem;
+     color: tokens.$primary;
+     opacity: 0.7;
+     letter-spacing: 0.3px;
+   }
+   
+   /* Orbs container */
+   .uc-orbs {
+     position: relative;
+     width: 100%;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   
+   /* Individual orb */
+   .uc-orb {
+     position: absolute;
+     width: 64px;
+     height: 64px;
+     border-radius: 50%;
+     
+     background: radial-gradient(
+       circle at 30% 30%,
+       rgba(88, 69, 133, 0.45) 0%,
+       rgba(58, 44, 98, 0.65) 50%,
+       rgba(46, 29, 81, 0.85) 100%
+     );
+     
+     border: 1px solid rgba(109, 75, 163, 0.3);
+     box-shadow: 
+       0 4px 20px rgba(100, 60, 180, 0.3),
+       inset 0 -4px 12px rgba(0, 0, 0, 0.3),
+       inset 0 4px 12px rgba(255, 255, 255, 0.1);
+     
+     cursor: default;
+     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+     
+     display: flex;
+     align-items: center;
+     justify-content: center;
+    //  background: rgba(255, 255, 255, 0.03);
+     border: 1px solid rgba(255, 255, 255, 0.06);
+     box-shadow: 
+     0 0 0 0 rgba(119, 0, 239, 0.08),
+     0 0 20px rgba(119, 0, 239, 0.04);
+   }
+   
+   .uc-orb--clickable {
+     cursor: pointer;
+     
+     &:hover {
+       border-color: rgba(175, 148, 205, 0.5);
+       box-shadow: 
+         0 4px 24px rgba(150, 100, 220, 0.4),
+         inset 0 -4px 12px rgba(0, 0, 0, 0.3),
+         inset 0 4px 12px rgba(255, 255, 255, 0.15);
+     }
+   }
+   
+   .uc-orb--shuffling {
+     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+   }
+   
+   .uc-orb--correct {
+     border-color: rgba(100, 220, 150, 0.6) !important;
+     box-shadow: 
+       0 0 30px rgba(100, 220, 150, 0.4),
+       inset 0 -4px 12px rgba(0, 0, 0, 0.3),
+       inset 0 4px 12px rgba(255, 255, 255, 0.1) !important;
+   }
+   
+   .uc-orb--wrong {
+     border-color: rgba(220, 100, 100, 0.5) !important;
+     box-shadow: 
+       0 0 20px rgba(220, 100, 100, 0.3),
+       inset 0 -4px 12px rgba(0, 0, 0, 0.3),
+       inset 0 4px 12px rgba(255, 255, 255, 0.1) !important;
+   }
+   
+   /* Star inside orb */
+   .uc-orb__star {
+     font-size: 1.4rem;
+     color: rgba(237, 237, 237, 0.8);
+     text-shadow: 0 0 12px rgba(187, 184, 184, 0.446);
+     opacity: 0;
+     transform: scale(0.5);
+     transition: opacity 0.25s ease, transform 0.25s ease;
+   }
+   
+   .uc-orb__star--visible {
+     opacity: 1;
+     transform: scale(1);
+   }
+   
+   
+   /* ================================================================
+      4. GAME STATUS & FEEDBACK
+      ================================================================ */
+   .uc-game__status {
+     height: 24px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   
+   .uc-game__hint {
+     @include tokens.type-mont-body;
+     font-size: 0.8rem;
+     color: tokens.$primary;
+     opacity: 0.5;
+     letter-spacing: 0.3px;
+   }
+   
+   .uc-game__result {
+     @include tokens.type-mont-body;
+     font-size: 0.85rem;
+     font-weight: 500;
+     letter-spacing: 0.3px;
+     animation: resultPop 0.3s ease-out;
+   }
+   
+   .uc-game__result--correct {
+     color: rgba(100, 220, 150, 0.9);
+   }
+   
+   .uc-game__result--wrong {
+     color: rgba(220, 140, 140, 0.9);
+   }
+   
+   @keyframes resultPop {
+     0% { opacity: 0; transform: scale(0.8); }
+     100% { opacity: 1; transform: scale(1); }
+   }
+   
+   /* Score */
+   .uc-game__score {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     
+     padding: 6px 14px;
+     background: rgba(255, 255, 255, 0.04);
+     border: 1px solid rgba(255, 255, 255, 0.08);
+     border-radius: 999px;
+   }
+   
+   .uc-game__score-value {
+     @include tokens.type-mont-body;
+     font-size: 0.85rem;
+     font-weight: 500;
+     color: tokens.$primary;
+     font-variant-numeric: tabular-nums;
+   }
+   
+   .uc-game__streak {
+     font-size: 0.8rem;
+     animation: streakPulse 0.5s ease-out;
+   }
+   
+   @keyframes streakPulse {
+     0% { transform: scale(1.3); }
+     100% { transform: scale(1); }
+   }
+   
+   /* Play again button */
+   .uc-game__again {
+     @include tokens.type-mont-body;
+     font-size: 0.85rem;
+     font-weight: 450;
+     color: tokens.$prisec;
+     letter-spacing: 0.3px;
+     
+     padding: 10px 24px;
+     
+     background: rgba(255, 255, 255, 0.055);
+     border: 1px solid rgba(255, 255, 255, 0.1);
+     border-radius: 999px;
+     
+     cursor: pointer;
+     transition: all 0.25s ease;
+     
+     &:hover {
+       background: rgba(255, 255, 255, 0.1);
+       border-color: rgba(255, 255, 255, 0.2);
+       transform: scale(1.02);
+     }
+     
+     &:active {
+       transform: scale(0.98);
+     }
+   }
+   
+   
+   /* ================================================================
+      5. RESPONSIVE BREAKPOINTS
+      ================================================================ */
+   
+   /* Tablet */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     .uc-title {
+       font-size: 1.7rem;
+     }
+     
+     .uc-subtitle {
+       font-size: 0.9rem;
+     }
+   }
+   
+   /* Large phones */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     .uc-content {
+       padding: 0 20px;
+     }
+     
+     .uc-badge {
+       width: 52px;
+       height: 52px;
+       margin-bottom: 18px;
+     }
+     
+     .uc-badge__icon {
+       font-size: 1.4rem;
+     }
+     
+     .uc-title {
+       font-size: 1.5rem;
+     }
+     
+     .uc-subtitle {
+       font-size: 0.85rem;
+       margin-bottom: 28px;
+     }
+     
+     .uc-br-mobile {
+       display: block;
+     }
+     
+     .uc-game__area {
+       width: 240px;
+       height: 80px;
+     }
+     
+     .uc-orb {
+       width: 56px;
+       height: 56px;
+     }
+     
+     .uc-orb__star {
+       font-size: 1.2rem;
+     }
+   }
+   
+   /* Small phones */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .uc-content {
+       padding: 0 16px;
+     }
+     
+     .uc-title {
+       font-size: 1.35rem;
+     }
+     
+     .uc-subtitle {
+       font-size: 0.8rem;
+       line-height: 1.5;
+     }
+     
+     .uc-game__area {
+       width: 220px;
+       height: 72px;
+     }
+     
+     .uc-orb {
+       width: 52px;
+       height: 52px;
+     }
+     
+     .uc-orb__star {
+       font-size: 1.1rem;
+     }
+     
+     .uc-game__start {
+       padding: 20px 32px;
+     }
+     
+     .uc-game__again {
+       padding: 8px 20px;
+       font-size: 0.8rem;
+     }
+   }
+   
+   /* Reduced motion */
+   @media (prefers-reduced-motion: reduce) {
+     .uc-content,
+     .uc-badge,
+     .uc-orb,
+     .uc-orb__star,
+     .uc-game__start-icon,
+     .uc-game__result,
+     .uc-game__streak {
+       animation: none !important;
+     }
+     
+     .uc-content {
+       opacity: 1;
+       transform: none;
+     }
+     
+     .uc-orb {
+       transition: none;
+     }
+     
+     .uc-orb__star--visible {
+       opacity: 1;
+       transform: none;
+     }
+   }

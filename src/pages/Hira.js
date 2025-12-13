@@ -1,8 +1,12 @@
 // src/pages/Hira.js
+// EXAMPLE: How to use the UnderConstructionPage component
+// Toggle SHOW_UNDER_CONSTRUCTION to switch between placeholder and full case study
+
 import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
 import ComingSoonBanner from "../components/ComingSoonBanner";
 import NextProjectTeaser from "../components/NextProjectTeaser";
+import UnderConstructionPage from "../components/UnderConstructionPage"; // NEW
 import { caseStudies } from "../data/ProjectsData";
 
 const iconMap = {
@@ -11,10 +15,27 @@ const iconMap = {
   Miro: "/assets/miro.svg",
 };
 
+// ═══════════════════════════════════════════════════════════════
+// Toggle this to switch between the placeholder and full case study
+// Set to `false` when you're ready to show the actual content
+// ═══════════════════════════════════════════════════════════════
+const SHOW_UNDER_CONSTRUCTION = true;
+
 export default function Hira() {
   const data = caseStudies.find((p) => p.slug === "hira");
   if (!data) return null;
 
+  // ════════════════════════════════════════════════════════════
+  // OPTION 1: Show the Under Construction page with mini-game
+  // ════════════════════════════════════════════════════════════
+  if (SHOW_UNDER_CONSTRUCTION) {
+    return <UnderConstructionPage projectName="Hira" />;
+  }
+
+  // ════════════════════════════════════════════════════════════
+  // OPTION 2: Show the full case study (your existing code below)
+  // ════════════════════════════════════════════════════════════
+  
   const splitTeam = (txt) => {
     const parts = String(txt).split(" — ");
     return parts.length > 1 ? (
