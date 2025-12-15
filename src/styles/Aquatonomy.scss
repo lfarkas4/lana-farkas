@@ -480,7 +480,7 @@
    /* Insights */
    .research-insights {
      @include container();
-     margin: 100px auto 80px;
+     margin: 100px auto 90px;
    }
    
    .insights-header { margin-bottom: 60px; }
@@ -605,7 +605,7 @@
    .delivered-section {
      @include container();
      padding: 120px var(--page-gutter-desktop) 0;
-     margin-bottom: 110px;
+     margin-bottom: 120px;
      position: relative;
    }
    
@@ -738,7 +738,7 @@
    .takeaways-list {
      display: grid;
      gap: 10px;
-     margin-bottom: 50px;
+     margin-bottom: 80px;
    }
    
    .takeaway-item {
