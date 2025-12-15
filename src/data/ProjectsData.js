@@ -9,7 +9,7 @@ export const caseStudies = [
         "Co-founded an AI-powered platform to optimize behavioral data in Applied Behavior Analysis (ABA) therapy.",
       link: "/case-studies/behavai",
       // Use one of these two keys (video takes precedence if both exist)
-      video: "/assets/lala3.mp4",
+      video: "/assets/behavthumbb.mp4",
       // image: "/assets/behavai-thumb.png",
       brandMark: "/assets/behavai-mark.png",   // ← add this
       brandMarkH: "24px",               // ← per-project size
