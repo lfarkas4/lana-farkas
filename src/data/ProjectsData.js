@@ -45,9 +45,7 @@ export const caseStudies = [
       description:
         "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
       link: "/case-studies/hira",
-      image: "/assets/wat.png",
-      // image: "/assets/wad.webp",
-      // video: "/assets/WATCHTEST1.mp4",
+      video: "/assets/hiyasss.mp4",
       brandMark: "/assets/hira-mark.svg",
       brandMarkH: "45px",                // ← per-project size
       meta: {
@@ -64,7 +62,7 @@ export const caseStudies = [
       description:
         "Explored new learning models that empower students to shape their own educational journeys.",
       link: "/case-studies/stackbuilder",
-      video: "/assets/stacc.mp4",
+      video: "/assets/stacck.mp4",
       brandMark: "/assets/stack-mark.svg",
       brandMarkH: "20px",                // ← per-project size
       meta: {
