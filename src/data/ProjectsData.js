@@ -45,7 +45,7 @@ export const caseStudies = [
       description:
         "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
       link: "/case-studies/hira",
-      video: "/assets/hiyup.mp4",
+      video: "/assets/hiyuppp.mp4",
       brandMark: "/assets/hira-mark.svg",
       brandMarkH: "45px",                // ← per-project size
       meta: {
