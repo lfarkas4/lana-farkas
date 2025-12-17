@@ -9,7 +9,7 @@ export const caseStudies = [
         "Co-founded an AI-powered platform to optimize behavioral data in Applied Behavior Analysis (ABA) therapy.",
       link: "/case-studies/behavai",
       // Use one of these two keys (video takes precedence if both exist)
-      video: "/assets/behavthumbb.mp4",
+      video: "/assets/behhhup.mp4",
       // image: "/assets/behavai-thumb.png",
       brandMark: "/assets/behavai-mark.png",   // ← add this
       brandMarkH: "24px",               // ← per-project size
@@ -27,7 +27,7 @@ export const caseStudies = [
       description:
         "Designed key interactions and overall service for an autonomous underwater inspection system.",
       link: "/case-studies/aquatonomy",
-      video: "/assets/aquamock2.mp4", // <— this is the SAME file used on the grid
+      video: "/assets/aquahup.mp4", // <— this is the SAME file used on the grid
       // image: "/assets/aquatonomy-thumb.png",
       brandMark: "/assets/aquatonomy-mark.png",
       brandMarkH: "18px",                // ← per-project size
@@ -45,7 +45,9 @@ export const caseStudies = [
       description:
         "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
       link: "/case-studies/hira",
-      image: "/assets/watchmock1.png",
+      image: "/assets/wat.png",
+      // image: "/assets/wad.webp",
+      // video: "/assets/WATCHTEST1.mp4",
       brandMark: "/assets/hira-mark.svg",
       brandMarkH: "45px",                // ← per-project size
       meta: {
@@ -62,7 +64,7 @@ export const caseStudies = [
       description:
         "Explored new learning models that empower students to shape their own educational journeys.",
       link: "/case-studies/stackbuilder",
-      video: "/assets/stackkkkk.mp4",
+      video: "/assets/stacc.mp4",
       brandMark: "/assets/stack-mark.svg",
       brandMarkH: "20px",                // ← per-project size
       meta: {
@@ -97,7 +99,7 @@ export const caseStudies = [
       description:
         "Developed interactive game prototype using Arduino and digital fabrication tools.",
       link: "/case-studies/taptap",
-      image: "/assets/taptap1.png",
+      image: "/assets/taptap2.png",
       brandMark: "/assets/taptap-mark.svg",
       brandMarkH: "24px",                // ← per-project size
       meta: {
