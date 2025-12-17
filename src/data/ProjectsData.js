@@ -62,7 +62,7 @@ export const caseStudies = [
       description:
         "Explored new learning models that empower students to shape their own educational journeys.",
       link: "/case-studies/stackbuilder",
-      video: "/assets/stacck.mp4",
+      video: "/assets/stacc.mp4",
       brandMark: "/assets/stack-mark.svg",
       brandMarkH: "20px",                // ← per-project size
       meta: {
@@ -122,6 +122,6 @@ export const caseStudies = [
         timeline: "Aug – Dec 2024 (14 weeks)",
         tools: "Figma, Notion, Miro",
       },
-    },
+    }
   ];
   
