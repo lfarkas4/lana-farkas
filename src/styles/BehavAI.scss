@@ -931,7 +931,7 @@
    .behavai-impact {
     @include full-bleed;
     background: #f3f4f8;
-    padding: 80px 0 0;
+    padding: 80px 0 50px;
   }
   
   .behavai-impact-inner {
@@ -972,7 +972,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    margin: 20px auto 30px; // Tightened spacing
+    margin: 20px auto 40px; // Tightened spacing
     padding: 25px 40px;
     background: transparent;
     border-radius: 12px;
@@ -1066,7 +1066,7 @@
   .behavai-status {
     @include full-bleed;
     background: #f3f4f8;
-    padding: 100px 0 0;
+    padding: 50px 0 50px;
     margin-top: 0;
   }
   
@@ -1218,7 +1218,7 @@
   .behavai-reflection {
     @include full-bleed;
     background: #f3f4f8;
-    padding: 90px 0 100px;
+    padding: 50px 0 100px;
     margin-top: 0;
     position: relative; // For spark positioning
   }
