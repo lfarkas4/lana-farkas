@@ -150,7 +150,7 @@ export default function BehavAI() {
       <BehavaiProblemSpace />
       <BehavaiSolutionPreview />
       <BehavaiResearchDiscovery />
-      {/* <BehavaiFinalSolution /> */}
+      <BehavaiFinalSolution />
       <BehavaiImpactAndBeyond />  {/* NEW SECTION ADDED HERE */}
 
       {/* Temporary while you build the rest of the sections */}
