@@ -1,4 +1,5 @@
 import React from "react";
+import { Analytics } from "@vercel/analytics/next";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import Navigation from "./components/Navbar";
@@ -24,6 +25,7 @@ function AppContent() {
 
   return (
     <>
+      <Analytics />
       <CosmicBackground />
       {!isDetailPage && <Navigation />}
       <Routes>
