@@ -11,25 +11,25 @@ export default function BehavaiFinalSolution() {
       number: "1",
       heading: "Start from client data to draft a report",
       description: "Select a client, upload key documents, and add a few details to generate a structured draft report or dashboard.",
-      media: "/assets/behavai-trailer.mp4"
+      media: "/assets/solution1.mp4"
     },
     {
       number: "2",
       heading: "Shape the report layout to match your story",
       description: "Drag, drop, and edit sections, charts, and tables to customize the outline so it matches a client's progress.",
-      media: "/assets/behavai-trailer.mp4"
+      media: "/assets/solution2.mp4"
     },
     {
       number: "3",
-      heading: "Refine content with integrated AI assist",
-      description: "Highlight a section or card to clean up language, clarify details, or surface key insights with AI.",
-      media: "/assets/behavai-trailer.mp4"
+      heading: "Analyze content with integrated AI assist",
+      description: "Use AI Insights to review report trends, generate recommendations, and pull key takeaways.",
+      media: "/assets/solution3.mp4"
     },
     {
       number: "4",
       heading: "Share, review, and act on reports together",
       description: "Preview the report, invite collaborators to comment, and export or share with families and supervisors.",
-      media: "/assets/behavai-trailer.mp4"
+      media: "/assets/solution4.mp4"
     }
   ];
 
