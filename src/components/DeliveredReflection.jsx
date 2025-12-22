@@ -1,4 +1,3 @@
-// src/components/DeliveredReflection.jsx
 import React from "react";
 import useReveal from "../utils/useReveal";
 
@@ -47,69 +46,42 @@ export default function DeliveredReflection() {
               </h3>
 
               <p className="delivered-body">
-              We presented high-fidelity prototypes for handoff; these
-  materials are <strong className="hi">under NDA — please contact me for additional details</strong>.
-  Improvements are documented in the task flows and supporting artifacts,
-  summarized in three key outputs:
-</p>
+                We presented high-fidelity prototypes for handoff; these
+                materials are <strong className="hi">under NDA — please contact me for additional details</strong>.
+                Improvements are documented in the task flows and supporting artifacts,
+                summarized in two key product features:
+              </p>
             </div>
           </div>
 
-          {/* Block 2: Deliverables grid (stagger-in per card) */}
-          <div className="deliverables-grid" data-stagger-block>
-            <div className="deliverable-item">
-              <div className="deliverable-icon-wrapper">
-                <img
-                  src="/assets/operator.png"
-                  alt=""
-                  className="deliverable-icon"
-                  aria-hidden="true"
-                />
-              </div>
-              <div className="deliverable-content">
+          {/* Block 2: Deliverables gallery — images row, descriptions below */}
+          <div className="deliverables-gallery" data-stagger-block>
+            <div className="deliverables-gallery-item">
+              <img
+                src="/assets/hri.png"
+                alt="Operator Console interface showing mission control patterns"
+                className="deliverables-gallery-image"
+              />
+              <div className="deliverables-gallery-content">
                 <div className="deliverable-label">Deliverable #1</div>
-                <h4 className="deliverable-title">
-                  Operator Console Updates
-                </h4>
+                <h4 className="deliverable-title">Operator Console Updates</h4>
                 <p className="deliverable-text">
-                Mission control patterns that improved situational awareness and enabled shared route planning.
+                  Mission control patterns that improved situational awareness and enabled shared route planning.
                 </p>
               </div>
             </div>
 
-            <div className="deliverable-item">
-              <div className="deliverable-icon-wrapper">
-                <img
-                  src="/assets/3d.png"
-                  alt=""
-                  className="deliverable-icon"
-                  aria-hidden="true"
-                />
-              </div>
-              <div className="deliverable-content">
+            <div className="deliverables-gallery-item">
+              <img
+                src="/assets/3danalysis.png"
+                alt="3D Analysis Tools interface for reviewing scans and inspections"
+                className="deliverables-gallery-image"
+              />
+              <div className="deliverables-gallery-content">
                 <div className="deliverable-label">Deliverable #2</div>
                 <h4 className="deliverable-title">3D Analysis Tools</h4>
                 <p className="deliverable-text">
-                  Prototypes of new tools for reviewing scans, spotting defects,
-                  and verifying inspection data.
-                </p>
-              </div>
-            </div>
-
-            <div className="deliverable-item">
-              <div className="deliverable-icon-wrapper">
-                <img
-                  src="/assets/service.png"
-                  alt=""
-                  className="deliverable-icon"
-                  aria-hidden="true"
-                />
-              </div>
-              <div className="deliverable-content">
-                <div className="deliverable-label">Deliverable #3</div>
-                <h4 className="deliverable-title">Service Blueprint</h4>
-                <p className="deliverable-text">
-                  A systems map of people, tools, and environments to guide scaling beyond single missions.
+                  Prototypes of new tools for reviewing scans, spotting defects, and verifying inspection data.
                 </p>
               </div>
             </div>
@@ -122,7 +94,7 @@ export default function DeliveredReflection() {
             <div className="reflection-eyebrow">Reflection &amp; Takeaways</div>
 
             <h3 className="reflection-title">
-            Robotics taught me that <em>clarity beats complexity</em>, and research bridges <em>chaos</em> and <em>strategy</em>.
+              Robotics taught me that <em>clarity beats complexity</em>, and research bridges <em>chaos</em> and <em>strategy</em>.
 
               <img
                 src="/assets/bulb.png"
@@ -133,11 +105,11 @@ export default function DeliveredReflection() {
             </h3>
 
             <p className="reflection-body">
-  While this project felt overwhelming at first, I learned{" "}
-  <strong className="hi">design lives at the interface, not in the machine</strong>. My role wasn't
-  to master algorithms, but to <strong className="hi">build trust for operators</strong>. This shift
-  left me with three lessons to carry forward...
-</p>
+              While this project felt overwhelming at first, I learned{" "}
+              <strong className="hi">design lives at the interface, not in the machine</strong>. My role wasn't
+              to master algorithms, but to <strong className="hi">build trust for operators</strong>. This shift
+              left me with three lessons to carry forward...
+            </p>
           </div>
 
           <div className="takeaways-list" data-stagger-block>
@@ -148,7 +120,7 @@ export default function DeliveredReflection() {
                   Failure as a Design Input
                 </h4>
                 <p className="takeaway-text">
-                Reliability starts by designing for what goes wrong, not what should go right.
+                  Reliability starts by designing for what goes wrong, not what should go right.
                 </p>
               </div>
             </div>
@@ -160,7 +132,7 @@ export default function DeliveredReflection() {
                   Strategy in Real Contexts
                 </h4>
                 <p className="takeaway-text">
-                When process follows real people and contexts, decisions serve real needs.
+                  When process follows real people and contexts, decisions serve real needs.
                 </p>
               </div>
             </div>

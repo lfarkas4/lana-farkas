@@ -657,6 +657,100 @@
      grid-template-columns: repeat(3, 1fr);
      gap: tokens.$space-lg;
    }
+
+   /* ================================================================
+   DELIVERABLES GALLERY LAYOUT - ADD TO EXISTING SCSS
+   Place this in section 6 (DELIVERED & REFLECTION) of your stylesheet
+   ================================================================ */
+
+/* Gallery layout: two columns at desktop */
+.deliverables-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+.deliverables-gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.deliverables-gallery-image {
+  @include media-frame(light);
+}
+
+.deliverables-gallery-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+  margin: 0 8px;
+}
+
+.deliverables-gallery-content .deliverable-label {
+  margin-bottom: 2px;
+}
+
+.deliverables-gallery-content .deliverable-title {
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+/* ================================================================
+   RESPONSIVE OVERRIDES
+   ================================================================ */
+
+/* LG: ≤ 991px — stack to single column, full-width images */
+@media (max-width: #{tokens.$lg_breakpoint}) {
+  .deliverables-gallery {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Reflection images: also stack at LG */
+  .reflection-images {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .reflection-image {
+    margin-top: 0;
+  }
+}
+
+/* MD: ≤ 767px */
+@media (max-width: #{tokens.$md_breakpoint}) {
+  .deliverables-gallery {
+    gap: 35px;
+  }
+
+  .reflection-images {
+    gap: 35px !important;
+  }
+}
+
+/* SM: ≤ 625px */
+@media (max-width: #{tokens.$sm_breakpoint}) {
+  .deliverables-gallery {
+    gap: 30px;
+  }
+
+  .reflection-images {
+    gap: 30px !important;
+  }
+}
+
+/* XS: ≤ 464px */
+@media (max-width: #{tokens.$xs_breakpoint}) {
+  .deliverables-gallery {
+    gap: 25px;
+  }
+
+  .reflection-images {
+    gap: 25px !important;
+  }
+}
    
    .deliverable-item {
      display: flex;
