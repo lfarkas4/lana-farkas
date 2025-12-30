@@ -8,11 +8,9 @@ export const caseStudies = [
       description:
         "Co-founded an AI-powered platform to optimize behavioral data in Applied Behavior Analysis (ABA) therapy.",
       link: "/case-studies/behavai",
-      // Use one of these two keys (video takes precedence if both exist)
       video: "/assets/behhhup.mp4",
-      // image: "/assets/behavai-thumb.png",
-      brandMark: "/assets/behavai-mark.png",   // ← add this
-      brandMarkH: "24px",               // ← per-project size
+      brandMark: "/assets/behavai-mark.png",
+      brandMarkH: "24px",
       meta: {
         role: "Founding Designer & Front-End Dev (CEO)",
         team: "2 co-founders + clinical advisors",
@@ -27,10 +25,9 @@ export const caseStudies = [
       description:
         "Designed key interactions and overall service for an autonomous underwater inspection system.",
       link: "/case-studies/aquatonomy",
-      video: "/assets/aquahup.mp4", // <— this is the SAME file used on the grid
-      // image: "/assets/aquatonomy-thumb.png",
+      video: "/assets/aquahup.mp4",
       brandMark: "/assets/aquatonomy-mark.png",
-      brandMarkH: "18px",                // ← per-project size
+      brandMarkH: "18px",
       meta: {
         role: "Product Design & Research",
         team: "6 collaborators — Design, Research, Strategy",
@@ -46,15 +43,15 @@ export const caseStudies = [
         "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
       link: "/case-studies/hira",
       video: "/assets/hiyuppp.mp4",
-      brandMark: "/assets/hira-mark.svg",
-      brandMarkH: "45px",                // ← per-project size
+      brandMark: "/assets/hira-mark.png",
+      brandMarkH: "42px",
       meta: {
-        role: "Product Design",
-        team: "4 collaborators — Research, Design",
-        timeline: "Spring 2024",
-        tools: "Figma",
+        role: "Product Design & Research",
+        team: "3 collaborators — Design, Research",
+        timeline: "Jan – May 2025 (15 weeks)",
+        tools: "Figma, Swift",
       },
-    },
+    },    
     {
       slug: "stackbuilder",
       title: "Dynamic Learning with Stackbuilder",

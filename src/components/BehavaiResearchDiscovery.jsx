@@ -282,10 +282,9 @@ export default function BehavaiResearchDiscovery() {
               </div>
               <p className="behavai-quote-text">
                 <em>
-                  "I want an AI for notes and reports.{" "}
-                  <strong>Documentation NEVER ends</strong>. If someone makes 
+                  "I want an AI for notes because <strong>documentation NEVER ends</strong>. If someone makes 
                   robust tools for that,{" "}
-                  <strong>I will 100% pay a ransom for it</strong>."
+                  <strong>I'll 100% pay a ransom for it</strong>."
                 </em>
               </p>
             </div>
@@ -311,7 +310,7 @@ export default function BehavaiResearchDiscovery() {
               </div>
               <p className="behavai-quote-text">
                 <em>
-                  "AI is helpful for session notes… but I always have to{" "}
+                  "AI is helpful for session notes (…) but I always have to{" "}
                   <strong>remove identifying info first</strong>, which adds 
                   an extra step every time."
                 </em>

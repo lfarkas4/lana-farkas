@@ -11,8 +11,7 @@ import { caseStudies } from "../data/ProjectsData";
 
 const iconMap = {
   Figma: "/assets/figma.svg",
-  Notion: "/assets/notion.svg",
-  Miro: "/assets/miro.svg",
+  Swift: "/assets/swift.svg"
 };
 
 // ═══════════════════════════════════════════════════════════════
