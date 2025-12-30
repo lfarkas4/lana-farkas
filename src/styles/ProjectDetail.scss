@@ -608,7 +608,7 @@
      &:hover {
        color: tokens.$secondary;
        filter: brightness(1.5) drop-shadow(0 0 2px rgba(255, 255, 255, 0.25));
-       transform: translateY(-3px);
+       transform: translateY(-2px);
      }
    }
    @media (min-width: #{tokens.$xxl_breakpoint}) {
