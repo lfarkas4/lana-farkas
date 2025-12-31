@@ -52,7 +52,7 @@ const About = () => {
           />
           <img
             className="curved-text-svg"
-            src="/assets/text2.svg"
+            src="/assets/heeeey.png"
             alt="Curved text"
             loading="lazy"
           />
