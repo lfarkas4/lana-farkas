@@ -4,9 +4,9 @@ import "../styles/LoadingScreen.scss";
 // Randomized loading phrases
 const LOADING_PHRASES = [
   { text: 'listening to the', emphasis: 'universe' },
-  { text: 'tuning into the', emphasis: 'cosmos' },
-  { text: 'the stars are', emphasis: 'aligning' },
-  { text: "mapping the", emphasis: 'constellations' },
+  { text: 'dialing into the', emphasis: 'cosmos' },
+  { text: 'aligning the', emphasis: 'stars' },
+  { text: "tracing the", emphasis: 'constellations' },
 ];
 
 const LoadingScreen = ({ onLoadComplete }) => {
