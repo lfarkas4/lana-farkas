@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import Navigation from "./components/Navbar";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
+import LoadingScreen from "./components/LoadingScreen";
 
 import About from "./pages/About";
 import Home from "./pages/Home";
@@ -36,6 +37,26 @@ const gaPageview = (path) => {
 function AppContent() {
   const location = useLocation();
   const isDetailPage = location.pathname.startsWith("/case-studies/");
+  const isHomePage = location.pathname === "/";
+  
+  // Loading states
+  const [showLoading, setShowLoading] = useState(isHomePage); // Show loading screen
+  const [contentReady, setContentReady] = useState(!isHomePage); // Show main content
+  const [loadingMounted, setLoadingMounted] = useState(isHomePage); // Keep loading in DOM during fade
+
+  const handleLoadComplete = () => {
+    // Mark session as loaded
+    sessionStorage.setItem('portfolio-loaded', 'true');
+    
+    // Start showing content immediately (crossfade begins)
+    setContentReady(true);
+    
+    // After fade animation completes, unmount loading screen
+    setTimeout(() => {
+      setShowLoading(false);
+      setLoadingMounted(false);
+    }, 400);
+  };
 
   // Track SPA pageviews on route changes
   useEffect(() => {
@@ -74,12 +95,23 @@ function AppContent() {
     return () => document.removeEventListener("click", handleDocClick);
   }, []);
 
+  // Determine if we should show nav/footer
+  const showNavFooter = !isDetailPage && contentReady;
+
   return (
     <>
       <CosmicBackground />
-      {!isDetailPage && <Navigation />}
+      
+      {/* Loading Screen - stays mounted during fade for smooth crossfade */}
+      {loadingMounted && isHomePage && (
+        <LoadingScreen onLoadComplete={handleLoadComplete} />
+      )}
+      
+      {/* Navigation - hidden during loading and on detail pages */}
+      {showNavFooter && <Navigation />}
+      
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isLoading={!contentReady} />} />
         <Route path="/about" element={<About />} />
         <Route path="/case-studies/behavai" element={<BehavAI />} />
         <Route path="/case-studies/aquatonomy" element={<Aquatonomy />} />
@@ -89,7 +121,9 @@ function AppContent() {
         <Route path="/case-studies/taptap" element={<TapTap />} />
         <Route path="/case-studies/lightthemuse" element={<LightTheMuse />} />
       </Routes>
-      {!isDetailPage && <Footer />}
+      
+      {/* Footer - hidden during loading and on detail pages */}
+      {showNavFooter && <Footer />}
     </>
   );
 }
