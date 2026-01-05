@@ -1,128 +1,172 @@
-@use './partials/tokens'; // SCSS Example 
+@use "./partials/tokens" as tokens;
 
+/* ===== Floating keyframes (letters) ===== */
+@keyframes float-l {
+  0% { transform: translate(-50%, -50%) rotate(0.5deg); }
+  50% { transform: translate(calc(-50%), calc(-50% + 2%)) rotate(-4deg); }
+  100% { transform: translate(-50%, -50%) rotate(0.5deg); }
+}
+@keyframes float-a1 {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(calc(-50% + 2%), calc(-50% - 11%)) rotate(5deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+@keyframes float-n {
+  0% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+  50% { transform: translate(calc(-50% + 3%), calc(-50% + 5%)) rotate(-3deg); }
+  100% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+}
+@keyframes float-a2 {
+  0% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+  50% { transform: translate(calc(-50% + 6%), calc(-50% - 10%)) rotate(-4deg); }
+  100% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+}
 
+/* ===== Floating keyframes (decor) ===== */
+@keyframes float-halo {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(-50%, calc(-50% - 7%)) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+@keyframes float-orstar1 {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(calc(-50% + 4%), calc(-50% - 8%)) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+@keyframes float-redstar1 {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(calc(-50% + 4%), calc(-50% + 12%)); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes float-blustar3 {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(calc(-50% + 15%), calc(-50% + 5%)); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes float-blustar2 {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, calc(-50% - 16%)); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes float-blustar1 {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, calc(-50% - 10%)); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes float-redstar2 {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(calc(-50% - 1%), calc(-50% - 10%)); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes float-crown {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(calc(-50% + 5%), calc(-50% - 14%)) rotate(4deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
 
-/* main letters (my name hehe) */
-  @keyframes float-l {
-    0% { transform: translate(-50%, -50%) rotate(0.5deg); }
-    50% { transform: translate(calc(-50%), calc(-50% + 2%)) rotate(-4deg); }
-    100% { transform: translate(-50%, -50%) rotate(0.5deg); }
-  }
+/* ================================================================
+   Container
+   ================================================================ */
+.lana-container {
+  position: relative;
+  width: clamp(200px, 50vw + 200px, 740px);
+  aspect-ratio: 786.86 / 280.77;
+  margin: 0 auto;
+  margin-top: -25px;
+  margin-bottom: -20px;
+}
 
-  @keyframes float-a1 {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    50% { transform: translate(calc(-50% + 2%), calc(-50% - 11%)) rotate(5deg); }
-    100% { transform: translate(-50%, -50%) rotate(0deg); }
-  }
+/* Start hidden; reveal when images are ready */
+.lana-container :is(.lana-piece) {
+  animation-play-state: paused;
+  opacity: 0;
+}
+.lana-container.is-ready :is(.lana-piece) {
+  animation-play-state: running;
+  opacity: 1;
+  transition: opacity 260ms ease-out;
+}
 
-  @keyframes float-n {
-    0% { transform: translate(-50%, -50%) rotate(-0.5deg); }
-    50% { transform: translate(calc(-50% + 3%), calc(-50% + 5%)) rotate(-3deg); }
-    100% { transform: translate(-50%, -50%) rotate(-0.5deg); }
-  }
+/* Base piece styling */
+.lana-piece {
+  position: absolute;
+  width: 12%;
+  height: auto;
+  transform: translate3d(-50%, -50%, 0);
+  backface-visibility: hidden;
+  will-change: transform, filter;
+  pointer-events: none;
+  z-index: 2;
+  user-select: none;
 
-  @keyframes float-a2 {
-    0% { transform: translate(-50%, -50%) rotate(-0.5deg); }
-    50% { transform: translate(calc(-50% + 6%), calc(-50% - 10%)) rotate(-4deg); }
-    100% { transform: translate(-50%, -50%) rotate(-0.5deg); }
-  }
+  /* Helps PNG edges look a bit cleaner under transforms */
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
 
-/* sparkles & stuff */
-  @keyframes float-halo {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    50% { transform: translate(-50%, calc(-50% - 7%)) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(0deg); }
-  }
-  
-  @keyframes float-orstar1 {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    50% { transform: translate(calc(-50% + 4%), calc(-50% - 8%)) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(0deg); }
-  }
-  
-  @keyframes float-redstar1 {
-    0% { transform: translate(-50%, -50%); }
-    50% { transform: translate(calc(-50% + 4%), calc(-50% + 12%)); }
-    100% { transform: translate(-50%, -50%); }
-  }
-  
-  @keyframes float-blustar3 {
-    0% { transform: translate(-50%, -50%); }
-    50% { transform: translate(calc(-50% + 15%), calc(-50% + 5%)); }
-    100% { transform: translate(-50%, -50%); }
-  }
-  
-  @keyframes float-blustar2 {
-    0% { transform: translate(-50%, -50%); }
-    50% { transform: translate(-50%, calc(-50% - 16%)); }
-    100% { transform: translate(-50%, -50%); }
-  }
-  
-  @keyframes float-blustar1 {
-    0% { transform: translate(-50%, -50%); }
-    50% { transform: translate(-50%, calc(-50% - 10%)); }
-    100% { transform: translate(-50%, -50%); }
-  }
-  
-  @keyframes float-redstar2 {
-    0% { transform: translate(-50%, -50%); }
-    50% { transform: translate(calc(-50% - 1%), calc(-50% - 10%)); }
-    100% { transform: translate(-50%, -50%); }
-  }
+/* ================================================================
+   Letter shadows (tighter to avoid fuzzy PNG edges)
+   ================================================================ */
 
-  @keyframes float-crown {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    50% { transform: translate(calc(-50% + 5%), calc(-50% - 14%)) rotate(4deg); }
-    100% { transform: translate(-50%, -50%) rotate(0deg); }
-  }
-  
-  .lana-container {
-    position: relative;
-    width: clamp(200px, 50vw + 200px, 740px);
-    aspect-ratio: 786.86 / 280.77;
-    margin: 0 auto;
-    margin-top: -25px;
-    margin-bottom: -20px;
-  
-    /* Start hidden; reveal when images are ready */
-    & :is(.lana-piece) { animation-play-state: paused; opacity: 0; }
-    &.is-ready :is(.lana-piece) {
-      animation-play-state: running;
-      opacity: 1;
-      transition: opacity 260ms ease-out;
-    }
-      }
-  
-  .lana-piece {
-    position: absolute;
-    width: 12%;
-    height: auto;
-    transform: translate3d(-50%, -50%, 0); /* GPU + stable */
-    backface-visibility: hidden;
-    will-change: transform;
-    pointer-events: none;
-  }
-  
-  
-  /* Decorative stars and crown */
-  .orstar1-piece  { width: 8.2%; top: 23.75%; left: 12%; transform: translate(-50%, -50%); animation: float-orstar1 3.2s ease-in-out infinite; }
-  .redstar1-piece { width: 6%; top: 78%; left: 11.5%; transform: translate(-50%, -50%); animation: float-redstar1 3.15s ease-in-out infinite; }
-  .blustar3-piece { width: 5.3%; top: 52%; left: 4.5%; transform: translate(-50%, -50%); animation: float-blustar3 3.2s ease-in-out infinite; }
-  .blustar2-piece { width: 4%; top: 95%; left: 39.5%; transform: translate(-50%, -50%); animation: float-blustar2 3.15s ease-in-out infinite; }
-  .blustar1-piece { width: 4.1%; top: 42%; left: 91%; transform: translate(-50%, -50%); animation: float-blustar1 3.2s ease-in-out infinite; }
-  .redstar2-piece { width: 6%; top: 20%; left: 86%; transform: translate(-50%, -50%); animation: float-redstar2 3.15s ease-in-out infinite; }
-  .crown-piece    { width: 11.7%; top: 82%; left: 85.75%; transform: translate(-50%, -50%); animation: float-crown 3.1s ease-in-out infinite; }
+@keyframes letterGlowPulse {
+  0%, 100% { --pulse: 0.97; }
+  50%      { --pulse: 1.02; } /* tiny swing = less “breathing” blur */
+}
 
+.lana-letter {
+  --pulse: 1;
 
-  /* === Floating pieces with centered anchors === */
-  .l-piece    { width: 16.1%; top: 64%; left: 25.25%; transform: translate(-50%, -50%); animation: float-l 3.1s ease-in-out infinite; }
-  .a1-piece   { width: 16.9%; top: 56%; left: 39.5%; transform: translate(-50%, -50%); animation: float-a1 3.1s ease-in-out infinite; }
-  .n-piece    { width: 20.05%; top: 65.75%; left: 57.5%; transform: translate(-50%, -50%); animation: float-n 3.1s ease-in-out infinite; }
-  .a2-piece   { width: 18.9%; top: 59%; left: 75.25%; transform: translate(-50%, -50%); animation: float-a2 3.1s ease-in-out infinite; }
-  .halo-piece { width: 20.1%; top: 25%; left: 58%; transform: translate(-50%, -50%); animation: float-halo 3.1s ease-in-out infinite; }
+  filter:
+    /* 1) crisp edge keeper (tiny, tight) */
+    drop-shadow(0 0 1px rgba(0, 0, 0, 0.22))
 
-  @media (max-width: #{tokens.$xxs_breakpoint}) {
-    .lana-container {
-      width: 97vw;
-    }
-  }
+    /* 2) grounded depth (less blur than before) */
+    drop-shadow(0 10px 14px rgba(0, 0, 0, 0.14))
+
+    /* 3) inky purple core glow (tight radius) */
+    drop-shadow(
+      0 0 calc(5px * var(--pulse))
+      rgba(60, 0, 120, 0.14)
+    )
+
+    /* 4) outer bloom (very subtle + tighter radius so edges stay crisp) */
+    drop-shadow(
+      0 0 calc(9px * var(--pulse))
+      rgba(175, 120, 255, 0.05)
+    )
+
+    /* keep your richness but don’t brighten the edge halo */
+    saturate(1.25)
+    brightness(0.975);
+
+  animation: letterGlowPulse 9.2s ease-in-out infinite;
+  will-change: filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lana-letter { animation: none !important; }
+}
+
+/* ================================================================
+   Positions + sizes
+   ================================================================ */
+
+/* Decorative stars and crown */
+.orstar1-piece  { width: 8.2%; top: 23.75%; left: 12%;   animation: float-orstar1 3.2s ease-in-out infinite; }
+.redstar1-piece { width: 6%;   top: 78%;    left: 11.5%; animation: float-redstar1 3.15s ease-in-out infinite; }
+.blustar3-piece { width: 5.3%; top: 52%;    left: 4.5%;  animation: float-blustar3 3.2s ease-in-out infinite; }
+.blustar2-piece { width: 4%;   top: 95%;    left: 39.5%; animation: float-blustar2 3.15s ease-in-out infinite; }
+.blustar1-piece { width: 4.1%; top: 42%;    left: 91%;   animation: float-blustar1 3.2s ease-in-out infinite; }
+.redstar2-piece { width: 6%;   top: 20%;    left: 86%;   animation: float-redstar2 3.15s ease-in-out infinite; }
+.crown-piece    { width: 11.7%;top: 82%;    left: 85.75%;animation: float-crown 3.1s ease-in-out infinite; }
+
+/* Letters */
+.l-piece    { width: 16.1%; top: 64%;    left: 25.25%; animation: float-l 3.1s ease-in-out infinite; }
+.a1-piece   { width: 16.9%; top: 56%;    left: 39.5%;  animation: float-a1 3.1s ease-in-out infinite; }
+.n-piece    { width: 20.05%;top: 65.75%; left: 57.5%;  animation: float-n 3.1s ease-in-out infinite; }
+.a2-piece   { width: 18.9%; top: 59%;    left: 75.25%; animation: float-a2 3.1s ease-in-out infinite; }
+.halo-piece { width: 20.1%; top: 25%;    left: 58%;    animation: float-halo 3.1s ease-in-out infinite; }
+
+@media (max-width: #{tokens.$xxs_breakpoint}) {
+  .lana-container { width: 97vw; }
+}

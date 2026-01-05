@@ -13,12 +13,12 @@ const Hero = () => {
   useEffect(() => {
     // Check if we should skip hero animations (e.g., when scrolling to work section)
     const skipHeroAnimation = location.state?.skipHeroAnimation;
-    
+
     if (skipHeroAnimation) {
       // Skip hero animations, show content immediately
       setShouldAnimate(false);
       setIsLoaded(true);
-      
+
       // Clear the navigation state to prevent issues on refresh
       window.history.replaceState({}, document.title);
     } else {
@@ -29,54 +29,62 @@ const Hero = () => {
   }, [location.state]);
 
   return (
-    <section className={`hero ${isLoaded ? 'hero-loaded' : ''}`} id="home">
+    <section className={`hero ${isLoaded ? "hero-loaded" : ""}`} id="home">
       <div className="hero-inner-wrapper">
-        <h1 
-          className={`hero-title ${shouldAnimate ? 'animate-fade-in' : 'no-animation'}`} 
-          style={shouldAnimate ? { animationDelay: '0.1s' } : {}}
+        <h1
+          className={`hero-title ${
+            shouldAnimate ? "animate-fade-in" : "no-animation"
+          }`}
+          style={shouldAnimate ? { animationDelay: "0.1s" } : {}}
         >
           <span className="font-cooper-italic-hello">hello</span>, my name is
         </h1>
-        
+
         {/* Lana SVG logo - always animates */}
-        <div 
-          className={`${shouldAnimate ? 'animate-fade-in' : 'no-animation'}`}
-          style={shouldAnimate ? { animationDelay: '0.2s' } : {}}
+        <div
+          className={`${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
+          style={shouldAnimate ? { animationDelay: "0.2s" } : {}}
         >
           <Lana />
         </div>
 
         {/* Tagline */}
-        <p 
-          className={`hero-tagline ${shouldAnimate ? 'animate-fade-in' : 'no-animation'}`}
-          style={shouldAnimate ? { animationDelay: '0.3s' } : {}}
+        <p
+          className={`hero-tagline ${
+            shouldAnimate ? "animate-fade-in" : "no-animation"
+          }`}
+          style={shouldAnimate ? { animationDelay: "0.3s" } : {}}
         >
           {/* > XS (keeps your single <br /> before "cosmos") */}
           <span className="tagline-gtxs">
-            … a product futurist bringing <span className="font-cooper-italic-tag">clarity</span> to the{" "}
+            … a product futurist bringing{" "}
+            <span className="font-cooper-italic-tag">clarity</span> to the{" "}
             <br />
-            <span className="font-cooper-italic-tag">cosmos</span> of digital experiences.
+            <span className="font-cooper-italic-tag">cosmos</span> of digital
+            experiences.
           </span>
 
           {/* XS only (3 exact lines) */}
           <span className="tagline-xs">
             <span className="line">… a product futurist bringing</span>
             <span className="line">
-              clarity to the{" "}
-              cosmos of digital experiences.
+              clarity to the{" "}cosmos of digital experiences.
             </span>
           </span>
         </p>
 
         {/* Info columns */}
-        <div 
-          className={`hero-info ${shouldAnimate ? 'animate-fade-in' : 'no-animation'}`}
-          style={shouldAnimate ? { animationDelay: '0.4s' } : {}}
+        <div
+          className={`hero-info ${
+            shouldAnimate ? "animate-fade-in" : "no-animation"
+          }`}
+          style={shouldAnimate ? { animationDelay: "0.4s" } : {}}
         >
           <div className="hero-column">
             <h4 className="font-cooper-italic">previously learned</h4>
             <p>mhci @ carnegie mellon university</p>
           </div>
+
           <div className="hero-column">
             <h4 className="font-cooper-italic">currently building</h4>
             <p>
@@ -93,9 +101,11 @@ const Hero = () => {
         </div>
 
         {/* Scroll down arrow */}
-        <div 
-          className={`scroll-cue ${shouldAnimate ? 'animate-fade-in' : 'no-animation'}`}
-          style={shouldAnimate ? { animationDelay: '0.5s' } : {}}
+        <div
+          className={`scroll-cue ${
+            shouldAnimate ? "animate-fade-in" : "no-animation"
+          }`}
+          style={shouldAnimate ? { animationDelay: "0.5s" } : {}}
         >
           <div className="scroll-mouse">
             <div className="scroll-dot" />
