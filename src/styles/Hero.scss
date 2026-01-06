@@ -378,16 +378,11 @@
    }
    
 /* ================================================================
-   HERO SECTION - MOBILE (XS: ≤ 464px)
+   HERO SECTION - ORIGINAL XS: ≤ 464px (Small phones)
    ================================================================ */
    @media (max-width: #{tokens.$xs_breakpoint}) {
     .hero {
-      min-height: 100vh;
-      max-height: 100vh; // ← CRITICAL - constrains height
-      justify-content: flex-start;
-      padding: 0 5vw 0; // Changed from "10px 5vw 0"
-      padding-top: max(10vh, 3rem);
-      overflow: hidden; // ← Prevents content from exceeding bounds
+      padding: 10px 5vw 40px;
     }
   
     .font-cooper-italic-hello {
@@ -398,15 +393,15 @@
     .hero-title {
       font-size: 1.3rem;
       margin-bottom: 35px;
-      font-weight: 450;
+      font-weight: 450 !important;
       letter-spacing: 0px;
     }
   
     .hero-tagline {
       font-size: 1.075rem;
       margin-top: 55px;
-      margin-bottom: 0; /* Remove negative margin */
-      font-weight: 450;
+      margin-bottom: -10px;
+      font-weight: 450 !important;
       letter-spacing: 0px;
       
       /* Multi-line layout for XS */
@@ -414,6 +409,7 @@
       line-height: var(--lh);
       max-width: 28ch;
       margin-inline: auto;
+      margin-bottom: -20px;
     }
   
     .font-cooper-italic-tag {
@@ -437,13 +433,17 @@
       line-height: var(--lh);
     }
   
+    .hero-tagline .tagline-xs .line + .line {
+     //  margin-top: 0.15rem;
+    }
+  
     /* Info columns stack */
     .hero-info {
       flex-direction: column;
       align-items: center;
       gap: 10px;
+      margin-bottom: 60px;
       margin-top: 52px;
-      margin-bottom: 0; /* Remove bottom margin - scroll cue handles spacing */
     }
   
     .hero-column {
@@ -452,24 +452,17 @@
   
     .hero-column h4 {
       @include tokens.type-coop-display2-bold;
-      font-size: 0.95rem;
+      font-size: 0.95rem !important;
       letter-spacing: 0.75px;
     }
   
     .hero-column p {
       font-size: 0.8rem;
       line-height: 1.5;
-      font-weight: 450;
+      font-weight: 450 !important;
       letter-spacing: 0px;
     }
-  
-    /* CRITICAL: Scroll cue pushed to bottom */
-    .scroll-cue {
-      margin-top: auto; // Keep this
-      padding-top: clamp(2.5rem, 6vh, 3.5rem); // ADD THIS - creates space!
-      padding-bottom: clamp(1.5rem, 4vh, 2.5rem);
-    }
-  
+    
     .animate-fade-in {
       animation-duration: 0.38s;
     }
