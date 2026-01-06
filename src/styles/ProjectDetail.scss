@@ -456,7 +456,7 @@
       ================================================================ */
    .next-project-section {
      position: relative;
-     margin-top: 145px;
+     margin-top: 160px;
      margin-bottom: -180px;
    }
    
@@ -578,63 +578,307 @@
      opacity: 1;
    }
    
-   /* Scroll to top button */
-   .np-scrolltop {
-     position: absolute;
-     top: -60px;
-     right: -60px;
+  //  /* Scroll to top button */
+  //  .np-scrolltop {
+  //    position: absolute;
+  //    top: -60px;
+  //    right: -60px;
      
-     display: inline-flex;
-     align-items: center;
-     gap: 6px;
+  //    display: inline-flex;
+  //    align-items: center;
+  //    gap: 6px;
      
-     @include tokens.type-mont-footer;
-     color: tokens.$primary;
-     font-style: normal;
-     font-weight: 400;
-     letter-spacing: 0.4px;
-     font-size: 0.9rem;
+  //    @include tokens.type-mont-footer;
+  //    color: tokens.$primary;
+  //    font-style: normal;
+  //    font-weight: 400;
+  //    letter-spacing: 0.4px;
+  //    font-size: 0.9rem;
      
-     background: none;
-     border: none;
-     padding: 0;
+  //    background: none;
+  //    border: none;
+  //    padding: 0;
      
-     transition: color 0.275s ease, filter 0.275s ease, transform 0.275s ease;
-     cursor: pointer !important;
-     user-select: none;
-     pointer-events: auto;
-     z-index: 10;
+  //    transition: color 0.275s ease, filter 0.275s ease, transform 0.275s ease;
+  //    cursor: pointer !important;
+  //    user-select: none;
+  //    pointer-events: auto;
+  //    z-index: 10;
      
-     &:hover {
-       color: tokens.$secondary;
-       filter: brightness(1.5) drop-shadow(0 0 2px rgba(255, 255, 255, 0.25));
-       transform: translateY(-2px);
-     }
-   }
-   @media (min-width: #{tokens.$xxl_breakpoint}) {
-    .np-scrolltop {
-      font-size: 1rem;
+  //    &:hover {
+  //      color: tokens.$secondary;
+  //      filter: brightness(1.5) drop-shadow(0 0 2px rgba(255, 255, 255, 0.25));
+  //      transform: translateY(-2px);
+  //    }
+  //  }
+  //  @media (min-width: #{tokens.$xxl_breakpoint}) {
+  //   .np-scrolltop {
+  //     font-size: 1rem;
+  //   }
+  // }
+   
+  //  .np-scrolltop__label {
+  //    pointer-events: none;
+  //  }
+   
+  //  .np-scrolltop__arrow {
+  //    font-size: tokens.$font-mont-italic-footer;
+  //    vertical-align: middle;
+  //    margin-top: 2px;
+  //    transform: rotate(-45deg);
+  //    transition: filter 0.275s ease;
+  //    pointer-events: none;
+  //  }
+   
+  //  .np-scrolltop:hover .np-scrolltop__arrow {
+  //    filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
+  //  }
+   
+   
+
+/* =========================
+   Scroll to top (disc)
+   ========================= */
+
+   @keyframes npSpin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .np-scrolltop {
+    position: absolute !important;
+    /* Positioning handled by inline styles in component */
+    z-index: 10;
+  
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer !important;
+    user-select: none;
+    pointer-events: auto;
+  
+    &:focus-visible {
+      outline: 2px solid tokens.$secondary;
+      outline-offset: 6px;
+      border-radius: 999px;
     }
   }
-   
-   .np-scrolltop__label {
-     pointer-events: none;
-   }
-   
-   .np-scrolltop__arrow {
-     font-size: tokens.$font-mont-italic-footer;
-     vertical-align: middle;
-     margin-top: 2px;
-     transform: rotate(-45deg);
-     transition: filter 0.275s ease;
-     pointer-events: none;
-   }
-   
-   .np-scrolltop:hover .np-scrolltop__arrow {
-     filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
-   }
-   
-   
+  
+  .np-scrolltop--disc {
+    /* Base size for large screens */
+    width: 95px;
+    height: 95px;
+    border-radius: 999px;
+    position: relative;
+  
+    display: grid;
+    place-items: center;
+  
+    background: rgba(0, 0, 0, 0.65);
+    /* ✅ Match back button border exactly */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+  
+    transform-origin: center;
+    transition: transform 0.275s ease, background 0.275s ease, box-shadow 0.3s ease;
+  
+    /* ✅ EXACT back button hover: border does NOT change */
+    &:hover {
+      transform: scale(1.04);
+      background: rgba(14, 14, 23, 0.75);
+      box-shadow: 0 0 tokens.$space-sm rgba(0, 0, 0, 0.2);
+      /* border stays the same - don't change it */
+    }
+  
+    &:hover .np-scrolltop__center {
+      transform: translateY(-1.5px);
+    }
+  
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+  
+  /* Inset the ring so there's more padding between text and outer rim */
+  .np-scrolltop__ring {
+    position: absolute;
+    inset: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    animation: npSpin 14s linear infinite;
+  }
+  
+  .np-scrolltop__text {
+    fill: tokens.$prisec;
+    opacity: 0.92;
+    text-transform: lowercase;
+    /* Base size for large screens */
+    font-size: 30.5px;
+    letter-spacing: 2.2px;
+    font-weight: 500;
+    transition: fill 0.275s ease, filter 0.275s ease;
+  
+    /* ✅ Back button hover: color change and glow */
+    .np-scrolltop--disc:hover & {
+      fill: tokens.$secondary;
+      filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+    }
+  }
+  
+  .np-scrolltop__center {
+    background: transparent;
+    border: none;
+    display: grid;
+    place-items: center;
+  
+    transition: transform 0.25s ease;
+  }
+  
+  .np-scrolltop__arrow {
+    display: block;
+    color: tokens.$prisec;
+    font-size: 22px;
+  
+    /* Centers + nudges up a touch (Fi icons can look visually low) */
+    transform: translateX(0.5px) translateY(1.5px);
+    transition: color 0.275s ease, filter 0.275s ease;
+  
+    /* ✅ Back button hover: color change and glow */
+    .np-scrolltop--disc:hover & {
+      color: tokens.$secondary;
+      filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+    }
+  }
+  
+  /* Accessibility: reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .np-scrolltop__ring { animation: none !important; }
+    .np-scrolltop--disc { transition: none !important; }
+  }
+  
+  /* =============================================================================
+     RESPONSIVE BREAKPOINTS
+     Text gets BIGGER as screens get smaller
+     ============================================================================= */
+  
+  /* XL: ≤ 1365px (Standard Desktops) */
+  @media (max-width: #{tokens.$xl_breakpoint}) {
+    .np-scrolltop--disc {
+      width: 85px;
+      height: 85px;
+    }
+    
+    .np-scrolltop__text {
+      font-size: 31.5px;  /* ✅ Gets BIGGER: 30.5 → 31.5 */
+      letter-spacing: 2px;
+    }
+    
+    .np-scrolltop__arrow {
+      font-size: 20px;
+    }
+  }
+  
+  /* LG: ≤ 991px (Tablets & Small Laptops) */
+  @media (max-width: #{tokens.$lg_breakpoint}) {
+    .np-scrolltop--disc {
+      width: 75px;
+      height: 75px;
+    }
+    
+    .np-scrolltop__text {
+      font-size: 32px;  /* ✅ Gets BIGGER: 31.5 → 32 */
+      letter-spacing: 1.8px;
+    }
+    
+    .np-scrolltop__arrow {
+      font-size: 18px;
+    }
+    
+    .np-scrolltop__ring {
+      inset: 5px;
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+    }
+  }
+  
+  /* MD and below: ≤ 767px - HIDE BUTTON */
+  @media (max-width: #{tokens.$md_breakpoint}) {
+    .np-scrolltop--disc {
+      width: 75px;
+      height: 75px;
+    }
+    
+    .np-scrolltop__text {
+      font-size: 32px;  /* ✅ Gets BIGGER: 31.5 → 32 */
+      letter-spacing: 1.8px;
+    }
+    
+    .np-scrolltop__arrow {
+      font-size: 18px;
+    }
+    
+    .np-scrolltop__ring {
+      inset: 5px;
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+    }
+  }
+
+  @media (max-width: #{tokens.$sm_breakpoint}) {
+    .np-scrolltop {
+      display: none !important;
+    }
+  }
+  /* =============================================================================
+   SCROLL TO TOP BUTTON - POSITIONING (RIGHT EDGE)
+   Fixed distance from right edge at all breakpoints
+   ============================================================================= */
+
+/* Responsive positioning - stays close to right edge */
+
+/* Base: Desktop - 50px from right edge */
+.np-scrolltop-positioned {
+  /* Positioning mostly handled by inline styles */
+}
+
+
+/* XL: ≤ 1365px - Same distance */
+@media (min-width: #{tokens.$xl_breakpoint}) {
+  .np-scrolltop-positioned {
+    top: -25px !important;
+    right: -150px !important;
+  }
+}
+
+/* XL: ≤ 1365px - Same distance */
+@media (min-width: #{tokens.$lg_breakpoint}) {
+  .np-scrolltop-positioned {
+    top: -50px !important;
+    right: -100px !important;
+  }
+}
+
+/* LG: ≤ 991px (Tablets) - Slightly closer */
+@media (max-width: #{tokens.$lg_breakpoint}) {
+  .np-scrolltop-positioned {
+    right: -40px !important;
+  }
+}
+
+/* MD and below: ≤ 767px - HIDDEN */
+@media (max-width: #{tokens.$md_breakpoint}) {
+  .np-scrolltop-positioned {
+    top: -60px !important;
+    right: -10px !important;
+  }
+}
+
+/* MD and below: ≤ 767px - HIDDEN */
+@media (max-width: #{tokens.$sm_breakpoint}) {
+  .np-scrolltop-positioned {
+    display: none !important;
+  }
+}
+
    /* ================================================================
       11. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
       ================================================================ */
@@ -711,11 +955,6 @@
    
      .np-desc.project-description {
        font-size: 0.8rem;
-     }
-   
-     .np-scrolltop {
-       top: -60px;
-       right: -40px;
      }
    
      .next-project-section {
@@ -796,7 +1035,8 @@
      }
    
      .next-project-section {
-       margin-bottom: -75px;
+       margin-bottom: -100px;
+       margin-top: 120px;
      }
    
      .section-title1 {
@@ -939,12 +1179,6 @@
        line-height: 1.6;
      }
    
-     .np-scrolltop {
-       font-size: 0.75rem;
-       top: -50px;
-       right: 0px;
-     }
-   
      .section-title1 {
        font-size: 1.75rem;
        margin-bottom: -10px;
@@ -1050,14 +1284,9 @@
        font-weight: 400 !important;
      }
    
-     .np-scrolltop {
-       top: -55px;
-       right: 0px;
-       font-size: 0.8rem;
-     }
-   
      .next-project-section {
        margin-bottom: -85px;
+       margin-top: tokens.$space-xl;
      }
    
      .section-title1 {
@@ -1076,3 +1305,5 @@
     // animation: fadeInUp 0.2s ease-out 0s both !important;
   }
    }
+
+

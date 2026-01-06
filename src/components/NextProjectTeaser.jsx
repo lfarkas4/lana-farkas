@@ -2,46 +2,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { caseStudies, miniProjects } from "../data/ProjectsData";
-import { FiArrowUpRight } from "react-icons/fi";
+import ScrollToTopButton from "./ScrollToTopButton";
 import "../styles/ProjectDetail.scss";
 
 const NextProjectTeaser = ({ currentSlug, nextSlug }) => {
-  // Combine all projects
   const allProjects = [...caseStudies, ...miniProjects];
-  
-  // Find next project by slug
-  const next = allProjects.find(p => p.slug === nextSlug);
-
-  const handleScrollToTop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    document.body.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-  };
+  const next = allProjects.find((p) => p.slug === nextSlug);
 
   if (!next) return null;
 
   return (
     <section className="next-project-section" id="next-project">
       <div className="np-wrap">
+        {/* 
+          ✅ Positioned closer to RIGHT edge of screen
+          Using fixed offset from right edge instead of page gutters
+        */}
+        <ScrollToTopButton 
+          style={{ 
+            position: 'absolute',
+            top: '-10px',
+            right: '50px',  // Fixed distance from right edge
+            left: 'auto'
+          }} 
+          className="np-scrolltop-positioned"
+        />
+
         <div className="np-head">
           <h3 className="section-title1">
-          Explore more work <span className="cooper-symbols">⟢</span>
+            Explore more work<span className="cooper-symbols">⟢</span>
           </h3>
-          <button 
-            type="button"
-            className="np-scrolltop" 
-            aria-label="Scroll to top"
-            onClick={handleScrollToTop}
-            style={{ pointerEvents: 'auto' }}
-          >
-            <span className="np-scrolltop__label">scroll to top</span>
-            <FiArrowUpRight className="np-scrolltop__arrow" />
-          </button>
         </div>
 
         <Link to={next.link} className="np-card project-card-link">
@@ -67,8 +57,10 @@ const NextProjectTeaser = ({ currentSlug, nextSlug }) => {
           <div className="np-content">
             {next.tags && (
               <div className="np-tags project-tags">
-                {next.tags.map(tag => (
-                  <span className="tag" key={tag}>{tag}</span>
+                {next.tags.map((tag) => (
+                  <span className="tag" key={tag}>
+                    {tag}
+                  </span>
                 ))}
               </div>
             )}

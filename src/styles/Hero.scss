@@ -377,91 +377,100 @@
      }
    }
    
-   /* XS: ≤ 464px (Small phones) */
+/* ================================================================
+   HERO SECTION - MOBILE (XS: ≤ 464px)
+   ================================================================ */
    @media (max-width: #{tokens.$xs_breakpoint}) {
-     .hero {
-       padding: 10px 5vw 40px;
-     }
-   
-     .font-cooper-italic-hello {
-       @include tokens.type-coop-display2-bold;
-       font-size: 1.4rem;
-     }
-   
-     .hero-title {
-       font-size: 1.3rem;
-       margin-bottom: 35px;
-       font-weight: 450 !important;
-       letter-spacing: 0px;
-     }
-   
-     .hero-tagline {
-       font-size: 1.075rem;
-       margin-top: 55px;
-       margin-bottom: -10px;
-       font-weight: 450 !important;
-       letter-spacing: 0px;
-       
-       /* Multi-line layout for XS */
-       --lh: 1.5rem;
-       line-height: var(--lh);
-       max-width: 28ch;
-       margin-inline: auto;
-       margin-bottom: -20px;
-     }
-   
-     .font-cooper-italic-tag {
-       @include tokens.type-coop-display2-bold;
-       font-size: 0.975rem;
-       letter-spacing: 0.75px;
-       line-height: var(--lh);
-     }
-   
-     /* Swap to mobile text version */
-     .hero-tagline .tagline-gtxs {
-       display: none;
-     }
-   
-     .hero-tagline .tagline-xs {
-       display: block;
-     }
-   
-     .hero-tagline .tagline-xs .line {
-       display: block;
-       line-height: var(--lh);
-     }
-   
-     .hero-tagline .tagline-xs .line + .line {
-      //  margin-top: 0.15rem;
-     }
-   
-     /* Info columns stack */
-     .hero-info {
-       flex-direction: column;
-       align-items: center;
-       gap: 10px;
-       margin-bottom: 60px;
-       margin-top: 52px;
-
-     }
-   
-     .hero-column {
-       text-align: center;
-     }
-   
-     .hero-column h4 {
-       @include tokens.type-coop-display2-bold;
-       font-size: 0.95rem !important;
-       letter-spacing: 0.75px;
-     }
-   
-     .hero-column p {
-       font-size: 0.8rem;
-       line-height: 1.5;
-       font-weight: 450 !important;
-       letter-spacing: 0px;
-     }
+    .hero {
+      min-height: 100vh;
+      max-height: 100vh; // ← CRITICAL - constrains height
+      justify-content: flex-start;
+      padding: 0 5vw 0; // Changed from "10px 5vw 0"
+      padding-top: max(10vh, 3rem);
+      overflow: hidden; // ← Prevents content from exceeding bounds
+    }
+  
+    .font-cooper-italic-hello {
+      @include tokens.type-coop-display2-bold;
+      font-size: 1.4rem;
+    }
+  
+    .hero-title {
+      font-size: 1.3rem;
+      margin-bottom: 35px;
+      font-weight: 450;
+      letter-spacing: 0px;
+    }
+  
+    .hero-tagline {
+      font-size: 1.075rem;
+      margin-top: 55px;
+      margin-bottom: 0; /* Remove negative margin */
+      font-weight: 450;
+      letter-spacing: 0px;
+      
+      /* Multi-line layout for XS */
+      --lh: 1.5rem;
+      line-height: var(--lh);
+      max-width: 28ch;
+      margin-inline: auto;
+    }
+  
+    .font-cooper-italic-tag {
+      @include tokens.type-coop-display2-bold;
+      font-size: 0.975rem;
+      letter-spacing: 0.75px;
+      line-height: var(--lh);
+    }
+  
+    /* Swap to mobile text version */
+    .hero-tagline .tagline-gtxs {
+      display: none;
+    }
+  
+    .hero-tagline .tagline-xs {
+      display: block;
+    }
+  
+    .hero-tagline .tagline-xs .line {
+      display: block;
+      line-height: var(--lh);
+    }
+  
+    /* Info columns stack */
+    .hero-info {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 52px;
+      margin-bottom: 0; /* Remove bottom margin - scroll cue handles spacing */
+    }
+  
+    .hero-column {
+      text-align: center;
+    }
+  
+    .hero-column h4 {
+      @include tokens.type-coop-display2-bold;
+      font-size: 0.95rem;
+      letter-spacing: 0.75px;
+    }
+  
+    .hero-column p {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      font-weight: 450;
+      letter-spacing: 0px;
+    }
+  
+    /* CRITICAL: Scroll cue pushed to bottom */
+    .scroll-cue {
+      margin-top: auto; // Keep this
+      padding-top: clamp(2.5rem, 6vh, 3.5rem); // ADD THIS - creates space!
+      padding-bottom: clamp(1.5rem, 4vh, 2.5rem);
+    }
+  
     .animate-fade-in {
-        animation-duration: 0.38s;
-     }
-   }
+      animation-duration: 0.38s;
+    }
+  }

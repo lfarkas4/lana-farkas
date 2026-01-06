@@ -1299,7 +1299,7 @@
   }
   
   /* Only show spark on XXL screens */
-  @media (min-width: #{tokens.$xxl_breakpoint}) {
+  @media (min-width: #{tokens.$xxxl_breakpoint}) {
     .behavai-reflection-spark {
       display: block;
     }

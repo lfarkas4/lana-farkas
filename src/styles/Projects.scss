@@ -505,6 +505,10 @@
      .projects-container {
        grid-template-columns: 1fr;
      }
+     .projects-container {
+      gap: tokens.$space-lg tokens.$space-md;
+      margin-bottom: tokens.$space-3xl;
+    }
    
      .project-tags {
        gap: 6px;
@@ -513,7 +517,7 @@
      .mini-projects-container {
        display: flex;
        flex-direction: column;
-       gap: 75px;
+       gap: tokens.$space-lg;
      }
    
      .mini-project-card {
@@ -549,7 +553,7 @@
      }
    
      .section-title {
-       font-size: 1.175rem;
+       font-size: 1rem;
        gap: tokens.$space-2xs;
      }
    
@@ -558,78 +562,86 @@
      }
    }
    
-   /* XS: ≤ 464px (Small phones) */
-   @media (max-width: #{tokens.$xs_breakpoint}) {
-     .projects-section {
-       padding: 0 6.75vw;
-     }
-   
-     .projects-container {
-       grid-template-columns: 1fr;
-       gap: 45px;
-       margin-bottom: 100px;
-     }
-   
-     .project-tags {
-       gap: 4px;
-     }
-   
-     .tag {
-       font-size: 0.66rem;
-       padding: 6px 9px;
-       font-weight: 450 !important;
-       letter-spacing: 0px;
-     }
-   
-     .project-title {
-       font-size: 1.2rem;
-       margin-bottom: 14px;
-       margin-top: 14px;
-       line-height: 28px;
-       letter-spacing: 0px;
+   /* ================================================================
+   PROJECTS SECTION - MOBILE (XS: ≤ 464px)
+   ================================================================ */
+@media (max-width: #{tokens.$xs_breakpoint}) {
+  .projects-section {
+    padding: 0 6.75vw;
+    padding-top: clamp(3rem, 8vh, 4rem); /* Space from hero */
+  }
 
-       font-weight: 500 !important;
-       letter-spacing: 0px;
-     }
-   
-     .project-description {
-       font-size: 0.825rem;
-       line-height: 1.6;
-       font-weight: 425 !important;
-       letter-spacing: 0px;
-     }
-   
-     .mini-projects-container {
-       display: flex;
-       flex-direction: column;
-       gap: 45px;
-     }
-   
-     .mini-title {
-       font-size: 1.2rem;
-       margin-bottom: 14px;
-       margin-top: 20px;
-       line-height: 28px;
-       font-weight: 500 !important;
-       letter-spacing: 0px;
-     }
-   
-     .mini-description {
-       font-size: 0.825rem;
-       line-height: 1.6;
-       font-weight: 425 !important;
-       letter-spacing: 0px;
-     }
-   
-     .section-title {
-       font-size: 0.925rem;
-       letter-spacing: 0px;
-       gap: 6px;
-       margin-bottom: -25px;
-       font-weight: 450 !important;
-     }
-   
-     .section-arrow {
-       height: 0.9rem;
-     }
-   }
+  /* First element in projects should have extra top margin for breathing room */
+  .projects-wrapper > .section-title:first-child {
+    margin-top: 0; /* Or add small margin if needed: clamp(1rem, 3vh, 2rem) */
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    margin-bottom: 100px;
+    margin-top: tokens.$space-md; /* Consistent spacing after section title */
+  }
+
+  .project-tags {
+    gap: 4px;
+  }
+
+  .tag {
+    font-size: 0.66rem;
+    padding: 6px 9px;
+    font-weight: 450;
+    letter-spacing: 0px;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+    margin-top: 14px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: 0px;
+  }
+
+  .project-description {
+    font-size: 0.825rem;
+    line-height: 1.6;
+    font-weight: 425;
+    letter-spacing: 0px;
+  }
+
+  .mini-projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+  }
+
+  .mini-title {
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+    margin-top: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: 0px;
+  }
+
+  .mini-description {
+    font-size: 0.825rem;
+    line-height: 1.6;
+    font-weight: 425;
+    letter-spacing: 0px;
+  }
+
+  .section-title {
+    font-size: 0.925rem;
+    letter-spacing: 0px;
+    gap: 6px;
+    margin-bottom: tokens.$space-md; /* Consistent spacing before projects grid */
+    font-weight: 450;
+  }
+
+  .section-arrow {
+    height: 0.9rem;
+  }
+}
+
