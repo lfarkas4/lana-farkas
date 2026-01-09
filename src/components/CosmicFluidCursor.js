@@ -33,7 +33,7 @@ const CosmicFluidCursor = () => {
 
     // Config - BIGGER, WAY darker/subtle, more smokey and fluid
     const config = {
-      opacity: 0.16,
+      opacity: 0.18,
       baseRadius: 26,
       expansion: 2.2,
       curl: 70,
