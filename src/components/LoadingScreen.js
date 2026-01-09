@@ -4,9 +4,7 @@ import "../styles/LoadingScreen.scss";
 // Randomized loading phrases
 const LOADING_PHRASES = [
   { text: 'orbiting the', emphasis: 'unknown' },
-  { text: 'aligning the', emphasis: 'stars' },
   { text: 'wandering the', emphasis: 'cosmos' },
-  // { text: "tracing the", emphasis: 'constellations' },
   { text: "forging new", emphasis: 'galaxies' },
 ];
 
