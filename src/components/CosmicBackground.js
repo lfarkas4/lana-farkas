@@ -1,6 +1,7 @@
 // src/components/CosmicBackground.jsx
 import React from "react";
 import "../styles/CosmicBackground.scss";
+import CosmicFluidCursor from "./CosmicFluidCursor";
 
 /** SVG "sparkle" stars */
 const SPARKLE_STARS = [
@@ -77,102 +78,107 @@ function layerFor(r) {
   return { minO: 0.10, maxO: 0.44, haloMin: "0px", haloMax: "8px" };
 }
 
-export default function CosmicBackground() {
+export default function CosmicBackground({ showFluidCursor = false }) {
   return (
-    <div className="cosmic-background" aria-hidden>
-      {/* Background textures */}
-      <div className="grain-layer" />
-      <div className="nebula-layer" />
+    <>
+      <div className="cosmic-background" aria-hidden>
+        {/* Background textures */}
+        <div className="grain-layer" />
+        <div className="nebula-layer" />
 
-      {/* Readability overlays */}
-      <div className="star-dimmer" />
-      <div className="center-orb3" />
+        {/* Readability overlays */}
+        <div className="star-dimmer" />
+        <div className="center-orb3" />
 
-      {/* Circle dot stars */}
-      <div className="circle-stars stars-enter">
-        {CIRCLE_STARS.map((s, i) => {
-          const { minO, maxO, haloMin, haloMax } = layerFor(s.r);
-          const glowDur = `${7 + ((i * 37) % 80) / 10}s`;
-          const glowDelay = `calc(${s.delay || "0s"} + ${(i % 5) * 110}ms)`;
+        {/* Circle dot stars */}
+        <div className="circle-stars stars-enter">
+          {CIRCLE_STARS.map((s, i) => {
+            const { minO, maxO, haloMin, haloMax } = layerFor(s.r);
+            const glowDur = `${7 + ((i * 37) % 80) / 10}s`;
+            const glowDelay = `calc(${s.delay || "0s"} + ${(i % 5) * 110}ms)`;
 
-          const hue =
-            i % 6 === 0 ? 120 :
-            i % 5 === 0 ? 195 :
-            i % 4 === 0 ? 305 :
-            i % 3 === 0 ? 48 : 0;
+            const hue =
+              i % 6 === 0 ? 120 :
+              i % 5 === 0 ? 195 :
+              i % 4 === 0 ? 305 :
+              i % 3 === 0 ? 48 : 0;
 
-          return (
-            <span
-              key={`dot-${i}`}
-              className={`circle-star${s.move ? " mover" : ""}`}
+            return (
+              <span
+                key={`dot-${i}`}
+                className={`circle-star${s.move ? " mover" : ""}`}
+                style={{
+                  left: s.left,
+                  top: s.top,
+                  width: `${s.r}px`,
+                  height: `${s.r}px`,
+                  backgroundColor: s.color,
+                  "--minO": String(minO),
+                  "--maxO": String(maxO),
+                  "--haloMin": haloMin,
+                  "--haloMax": haloMax,
+                  "--glowDur": glowDur,
+                  "--glowDelay": glowDelay,
+                  "--dotHue": hue,
+                  "--ampX": s.move ? "10px" : "0px",
+                  "--ampY": s.move ? "8px" : "0px",
+                  "--pathDur": s.move ? `${18 + (i % 5) * 3}s` : "0s",
+                  "--pathDelay": s.move ? `${(i % 7) * 0.7}s` : "0s",
+                }}
+              />
+            );
+          })}
+        </div>
+
+        {/* SVG sparkle stars */}
+        <div className="manual-stars stars-enter">
+          {SPARKLE_STARS.map((s, i) => (
+            <img
+              key={`spark-${i}`}
+              className={`manual-star s-${s.size || "md"}`}
+              src="/assets/star-plain.svg"
+              alt=""
+              aria-hidden="true"
               style={{
                 left: s.left,
                 top: s.top,
-                width: `${s.r}px`,
-                height: `${s.r}px`,
-                backgroundColor: s.color,
-                "--minO": String(minO),
-                "--maxO": String(maxO),
-                "--haloMin": haloMin,
-                "--haloMax": haloMax,
-                "--glowDur": glowDur,
-                "--glowDelay": glowDelay,
-                "--dotHue": hue,
-                "--ampX": s.move ? "10px" : "0px",
-                "--ampY": s.move ? "8px" : "0px",
-                "--pathDur": s.move ? `${18 + (i % 5) * 3}s` : "0s",
-                "--pathDelay": s.move ? `${(i % 7) * 0.7}s` : "0s",
+                animationDelay: s.delay || `${(i * 3.2) % 12}s`,
               }}
             />
-          );
-        })}
+          ))}
+        </div>
+
+        {/* Floating particles (drift upward) */}
+        <div className="floating-particles stars-enter">
+          {FLOATING_PARTICLES.map((p, i) => (
+            <span
+              key={`float-${i}`}
+              className={`floating-particle${p.variant ? ` floating-particle--${p.variant}` : ""}`}
+              style={{
+                left: p.left,
+                bottom: "0",
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                "--float-dur": `${p.dur}s`,
+                "--drift-x": `${(i % 2 === 0 ? 1 : -1) * (10 + (i * 3) % 15)}px`,
+                "--max-opacity": 0.4 + (p.size / 10),
+                animationDelay: `${p.delay}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Blobs */}
+        <div className="blob blob1" />
+        <div className="blob blob2" />
+        <div className="blob blob3" />
+        <div className="blob blob4" />
+        <div className="blob blob5" />
+        <div className="blob blob6" />
       </div>
 
-      {/* SVG sparkle stars */}
-      <div className="manual-stars stars-enter">
-        {SPARKLE_STARS.map((s, i) => (
-          <img
-            key={`spark-${i}`}
-            className={`manual-star s-${s.size || "md"}`}
-            src="/assets/star-plain.svg"
-            alt=""
-            aria-hidden="true"
-            style={{
-              left: s.left,
-              top: s.top,
-              animationDelay: s.delay || `${(i * 3.2) % 12}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Floating particles (drift upward) */}
-      <div className="floating-particles stars-enter">
-        {FLOATING_PARTICLES.map((p, i) => (
-          <span
-            key={`float-${i}`}
-            className={`floating-particle${p.variant ? ` floating-particle--${p.variant}` : ""}`}
-            style={{
-              left: p.left,
-              bottom: "0",
-              width: `${p.size}px`,
-              height: `${p.size}px`,
-              "--float-dur": `${p.dur}s`,
-              "--drift-x": `${(i % 2 === 0 ? 1 : -1) * (10 + (i * 3) % 15)}px`,
-              "--max-opacity": 0.4 + (p.size / 10),
-              animationDelay: `${p.delay}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Blobs */}
-      <div className="blob blob1" />
-      <div className="blob blob2" />
-      <div className="blob blob3" />
-      <div className="blob blob4" />
-      <div className="blob blob5" />
-      <div className="blob blob6" />
-    </div>
+      {/* Conditionally render fluid cursor */}
+      {showFluidCursor && <CosmicFluidCursor />}
+    </>
   );
 }

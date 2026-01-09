@@ -377,3 +377,7 @@ html.cursor-native .clickable {
    body.no-animated-bg .background-anim {
      display: none !important;
    }
+   #root {
+    position: relative;
+    z-index: 1;
+  }

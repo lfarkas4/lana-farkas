@@ -38,22 +38,22 @@ function AppContent() {
   const location = useLocation();
   const isDetailPage = location.pathname.startsWith("/case-studies/");
   const isHomePage = location.pathname === "/";
-  
+
+  // ✅ Cosmic is ONLY on these pages
+  const isCosmicPage =
+    location.pathname === "/" ||
+    location.pathname === "/about" ||
+    location.pathname.startsWith("/under-construction"); // adjust if your route is different
+
   // Loading states
-  const [showLoading, setShowLoading] = useState(isHomePage); // Show loading screen
-  const [contentReady, setContentReady] = useState(!isHomePage); // Show main content
-  const [loadingMounted, setLoadingMounted] = useState(isHomePage); // Keep loading in DOM during fade
+  const [contentReady, setContentReady] = useState(!isHomePage);
+  const [loadingMounted, setLoadingMounted] = useState(isHomePage);
 
   const handleLoadComplete = () => {
-    // Mark session as loaded
-    sessionStorage.setItem('portfolio-loaded', 'true');
-    
-    // Start showing content immediately (crossfade begins)
+    sessionStorage.setItem("portfolio-loaded", "true");
     setContentReady(true);
-    
-    // After fade animation completes, unmount loading screen
+
     setTimeout(() => {
-      setShowLoading(false);
       setLoadingMounted(false);
     }, 400);
   };
@@ -72,7 +72,6 @@ function AppContent() {
       const hrefAttr = anchor.getAttribute("href");
       if (!hrefAttr) return;
 
-      // Normalize absolute URLs to path
       let path = hrefAttr;
       try {
         if (hrefAttr.startsWith("http")) {
@@ -100,19 +99,26 @@ function AppContent() {
 
   return (
     <>
-      <CosmicBackground />
-      
-      {/* Loading Screen - stays mounted during fade for smooth crossfade */}
+      {/* ✅ Only mount your cursor tracker + cosmic background on cosmic pages */}
+      {isCosmicPage && (
+        <CosmicBackground showFluidCursor={true} />
+      )}
+
+      {/* ✅ If your "CustomCursor" is also a tracker, gate it the same way */}
+      {isCosmicPage && <CustomCursor />}
+
+      {/* Loading Screen */}
       {loadingMounted && isHomePage && (
         <LoadingScreen onLoadComplete={handleLoadComplete} />
       )}
-      
-      {/* Navigation - hidden during loading and on detail pages */}
+
+      {/* Navigation */}
       {showNavFooter && <Navigation />}
-      
+
       <Routes>
         <Route path="/" element={<Home isLoading={!contentReady} />} />
         <Route path="/about" element={<About />} />
+
         <Route path="/case-studies/behavai" element={<BehavAI />} />
         <Route path="/case-studies/aquatonomy" element={<Aquatonomy />} />
         <Route path="/case-studies/hira" element={<Hira />} />
@@ -121,8 +127,8 @@ function AppContent() {
         <Route path="/case-studies/taptap" element={<TapTap />} />
         <Route path="/case-studies/lightthemuse" element={<LightTheMuse />} />
       </Routes>
-      
-      {/* Footer - hidden during loading and on detail pages */}
+
+      {/* Footer */}
       {showNavFooter && <Footer />}
     </>
   );
@@ -130,12 +136,9 @@ function AppContent() {
 
 function App() {
   return (
-    <>
-      <CustomCursor />
-      <Router>
-        <AppContent />
-      </Router>
-    </>
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 
