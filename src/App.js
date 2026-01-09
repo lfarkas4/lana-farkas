@@ -102,11 +102,11 @@ function AppContent() {
     <>
       {/* ✅ Only mount your cursor tracker + cosmic background on cosmic pages */}
       {isCosmicPage && (
-        <CosmicBackground showFluidCursor={true} />
+        <CosmicBackground showFluidCursor={contentReady} />
       )}
 
       {/* ✅ If your "CustomCursor" is also a tracker, gate it the same way */}
-      {isCosmicPage && <CustomCursor />}
+      {isCosmicPage && contentReady && <CustomCursor />}
 
       {/* Loading Screen */}
       {loadingMounted && isHomePage && (
