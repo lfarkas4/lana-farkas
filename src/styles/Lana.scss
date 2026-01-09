@@ -118,15 +118,15 @@
 
   filter:
     /* 1) crisp edge keeper (tiny, tight) */
-    drop-shadow(0 0 1px rgba(0, 0, 0, 0.22))
+    drop-shadow(0 0 1px rgba(0, 0, 0, 0.95))
 
     /* 2) grounded depth (less blur than before) */
-    drop-shadow(0 10px 14px rgba(0, 0, 0, 0.14))
+    drop-shadow(0 10px 14px rgba(0, 0, 0, 0.84))
 
     /* 3) inky purple core glow (tight radius) */
     drop-shadow(
       0 0 calc(5px * var(--pulse))
-      rgba(60, 0, 120, 0.14)
+      rgba(60, 0, 120, 0.24)
     )
 
     /* 4) outer bloom (very subtle + tighter radius so edges stay crisp) */
@@ -136,8 +136,8 @@
     )
 
     /* keep your richness but don’t brighten the edge halo */
-    saturate(1.25)
-    brightness(0.975);
+    saturate(1.35)
+    brightness(0.985);
 
   animation: letterGlowPulse 9.2s ease-in-out infinite;
   will-change: filter;
