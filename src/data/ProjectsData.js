@@ -37,7 +37,7 @@ export const caseStudies = [
     },
     {
       slug: "hira",
-      title: "Hira: Guiding Cancer Care",
+      title: "Hira Health: Guiding Cancer Care",
       tags: ["Healthcare", "Wearables", "Patient Experience"],
       description:
         "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
