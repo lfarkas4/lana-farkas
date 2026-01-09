@@ -44,7 +44,7 @@ const CosmicFluidCursor = () => {
 
     // ULTRA DARK palette
     const colors = [
-      { r: 5, g: 18, b: 45 },
+      { r: 5, g: 18, b: 60 },
       { r: 12, g: 15, b: 60 },
       { r: 18, g: 0, b: 50 },
       { r: 22, g: 1, b: 48 },

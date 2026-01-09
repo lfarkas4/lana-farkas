@@ -43,7 +43,8 @@ function AppContent() {
   const isCosmicPage =
     location.pathname === "/" ||
     location.pathname === "/about" ||
-    location.pathname.startsWith("/under-construction"); // adjust if your route is different
+    location.pathname.startsWith("/under-construction") ||
+    location.pathname.startsWith("/case-studies/"); // Include case study pages (for under construction)
 
   // Loading states
   const [contentReady, setContentReady] = useState(!isHomePage);
