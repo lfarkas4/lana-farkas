@@ -1,13 +1,14 @@
 // src/pages/Hira.js
-// EXAMPLE: How to use the UnderConstructionPage component
-// Toggle SHOW_UNDER_CONSTRUCTION to switch between placeholder and full case study
-
 import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
-import ComingSoonBanner from "../components/ComingSoonBanner";
 import NextProjectTeaser from "../components/NextProjectTeaser";
-import UnderConstructionPage from "../components/UnderConstructionPage"; // NEW
+import HiraOurChallenge from "../components/HiraOurChallenge";
+import HiraPatientJourney from "../components/HiraPatientJourney";
+import HiraTheConcept from "../components/HiraTheConcept";
+import UnderConstructionPage from "../components/UnderConstructionPage";
 import { caseStudies } from "../data/ProjectsData";
+import useReveal from "../utils/useReveal";
+import "../styles/Hira.scss";
 
 const iconMap = {
   Figma: "/assets/figma.svg",
@@ -21,6 +22,9 @@ const iconMap = {
 const SHOW_UNDER_CONSTRUCTION = true;
 
 export default function Hira() {
+  // Set up scroll-reveal for hero + meta - MUST be at the top before any returns
+  const heroScopeRef = useReveal();
+  
   const data = caseStudies.find((p) => p.slug === "hira");
   if (!data) return null;
 
@@ -32,9 +36,9 @@ export default function Hira() {
   }
 
   // ════════════════════════════════════════════════════════════
-  // OPTION 2: Show the full case study (your existing code below)
+  // OPTION 2: Show the full case study (your content below)
   // ════════════════════════════════════════════════════════════
-  
+
   const splitTeam = (txt) => {
     const parts = String(txt).split(" — ");
     return parts.length > 1 ? (
@@ -67,61 +71,73 @@ export default function Hira() {
 
   return (
     <ProjectDetailLayout>
-      {/* Hero Section */}
-      <section className="pd-hero">
-        <div className="pd-hero__eyebrow">
-          {data.brandMark && (
-            <img
-              className="pd-hero__brand"
-              src={data.brandMark}
-              alt=""
-              style={{ "--brand-h": data.brandMarkH || "18px" }}
-            />
-          )}
-        </div>
+      <div ref={heroScopeRef}>
+        {/* ===== HERO ===== */}
+        <section className="pd-hero reveal" aria-label="Hira Health case study hero">
+          <div className="pd-hero__eyebrow">
+            {data.brandMark && (
+              <img
+                className="pd-hero__brand"
+                src={data.brandMark}
+                alt=""
+                style={{ "--brand-h": data.brandMarkH || "18px" }}
+              />
+            )}
+          </div>
 
-        <h1 className="pd-hero__title">{data.title}</h1>
-        <p className="pd-hero__subtitle">{data.description}</p>
+          <h1 className="pd-hero__title">{data.title}</h1>
+          <p className="pd-hero__subtitle">{data.description}</p>
 
-        <div className="pd-hero__media">
-          {data.video ? (
-            <video src={data.video} autoPlay muted loop playsInline />
-          ) : (
-            data.image && <img src={data.image} alt={data.title} />
-          )}
-        </div>
-      </section>
+          <div className="pd-hero__media">
+            {data.video ? (
+              <video src={data.video} autoPlay muted loop playsInline />
+            ) : (
+              data.image && <img src={data.image} alt={data.title} />
+            )}
+          </div>
+        </section>
 
-      {/* Meta Section */}
-      <section className="pd-meta">
-        <div className="pd-meta__item">
-          <div className="pd-meta__heading">My Role</div>
-          <div className="pd-meta__text">{data.meta?.role}</div>
-        </div>
+        {/* ===== META STRIP ===== */}
+        <section className="pd-meta">
+          <div className="pd-meta__item reveal">
+            <div className="pd-meta__heading">My Role</div>
+            <div className="pd-meta__text">{data.meta?.role}</div>
+          </div>
 
-        <div className="pd-meta__item">
-          <div className="pd-meta__heading">Team</div>
-          <div className="pd-meta__text">{splitTeam(data.meta?.team)}</div>
-        </div>
+          <div className="pd-meta__item reveal">
+            <div className="pd-meta__heading">Team</div>
+            <div className="pd-meta__text">{splitTeam(data.meta?.team)}</div>
+          </div>
 
-        <div className="pd-meta__item">
-          <div className="pd-meta__heading">Timeline</div>
-          <div className="pd-meta__text">{splitTimeline(data.meta?.timeline)}</div>
-        </div>
+          <div className="pd-meta__item reveal">
+            <div className="pd-meta__heading">Timeline</div>
+            <div className="pd-meta__text">{splitTimeline(data.meta?.timeline)}</div>
+          </div>
 
-        <div className="pd-meta__item">
-          <div className="pd-meta__heading">Tools</div>
-          <ul className="pd-tools">
-            {tools.map((tool) => (
-              <li className="pd-tool" key={tool}>
-                <img className="pd-tool__icon" src={iconMap[tool]} alt={tool} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+          <div className="pd-meta__item reveal">
+            <div className="pd-meta__heading">Tools</div>
+            <ul className="pd-tools">
+              {tools.map((tool) => (
+                <li className="pd-tool" key={tool}>
+                  <img
+                    className="pd-tool__icon"
+                    src={iconMap[tool]}
+                    alt={tool}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </div>
 
-      <ComingSoonBanner />
+      {/* ===== CASE STUDY CONTENT ===== */}
+      <HiraOurChallenge />
+      <HiraPatientJourney />
+      <HiraTheConcept />
+
+      {/* Future sections will go here */}
+
       <NextProjectTeaser currentSlug="hira" nextSlug="stackbuilder" />
     </ProjectDetailLayout>
   );

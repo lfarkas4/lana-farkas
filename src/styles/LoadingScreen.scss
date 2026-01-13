@@ -1,8 +1,7 @@
 /* ================================================================
-   LOADING SCREEN - Minimal Line
-   Proper loading screen with asset preloading
+   LOADING SCREEN - Minimal Line (fade in + clean exit)
    ================================================================ */
-   @use './partials/tokens' as tokens;
+   @use "./partials/tokens" as tokens;
 
    /* ================================================================
       1. LOADING SCREEN CONTAINER
@@ -11,19 +10,35 @@
      position: fixed;
      inset: 0;
      z-index: 1000;
+   
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: center;
      gap: 32px;
+   
      background: transparent; // CosmicBackground shows through
-     opacity: 1;
-     transition: opacity 0.35s ease-out;
+   
+     /* start hidden so we can fade in */
+     opacity: 0;
+     transition: opacity 0.32s ease-out; // ✅ faster + matches JS FADE_OUT_MS
+     will-change: opacity;
+   
+     &.is-visible {
+       opacity: 1;
+     }
    
      &.is-exiting {
        opacity: 0;
        pointer-events: none;
      }
+   }
+   
+   /* Don’t run inner animations until container is visible */
+   .loading-screen:not(.is-visible) .line-wrapper,
+   .loading-screen:not(.is-visible) .loading-text {
+     animation: none !important;
+     opacity: 0 !important;
    }
    
    /* ================================================================
@@ -35,18 +50,30 @@
      background: rgba(255, 255, 255, 0.1);
      border-radius: 2px;
      overflow: hidden;
-     opacity: 0;
-     animation: wrapperFadeIn 0.4s ease-out 0.1s forwards;
    
-     /* Idle/Resting state - line holds full and pulses */
+     opacity: 0;
+   
+     /* ✅ bar + text fade in together */
+     animation: fadeInNow 0.18s ease-out 0.10s forwards;
+   
      &.is-resting .line-progress {
        animation: lineGlow 1.8s ease-in-out infinite;
        transform: scaleX(1);
      }
    }
    
-   @keyframes wrapperFadeIn {
-     to { opacity: 1; }
+   .loading-text {
+     text-align: center;
+     opacity: 0;
+   
+     /* ✅ bar + text fade in together */
+     animation: fadeInNow 0.18s ease-out 0.10s forwards;
+   }
+   
+   @keyframes fadeInNow {
+     to {
+       opacity: 1;
+     }
    }
    
    .line-progress {
@@ -59,42 +86,27 @@
    }
    
    @keyframes lineExpand {
-     0% { 
-       transform: scaleX(0) translateX(0); 
-     }
-     50% { 
-       transform: scaleX(1) translateX(0); 
-     }
-     100% { 
-       transform: scaleX(0) translateX(100px); 
-     }
+     0% { transform: scaleX(0) translateX(0); }
+     50% { transform: scaleX(1) translateX(0); }
+     100% { transform: scaleX(0) translateX(100px); }
    }
    
    @keyframes lineGlow {
-     0%, 100% { 
+     0%, 100% {
        opacity: 0.6;
        box-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
      }
-     50% { 
+     50% {
        opacity: 1;
-       box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 28px rgba(200, 220, 255, 0.35);
+       box-shadow:
+         0 0 16px rgba(255, 255, 255, 0.6),
+         0 0 28px rgba(200, 220, 255, 0.35);
      }
    }
    
    /* ================================================================
       3. LOADING TEXT
-      Styled to match Hero typography
       ================================================================ */
-   .loading-text {
-     text-align: center;
-     opacity: 0;
-     animation: textFadeIn 0.5s ease-out 0.2s forwards;
-   }
-   
-   @keyframes textFadeIn {
-     to { opacity: 1; }
-   }
-   
    .loading-tagline {
      font-family: tokens.$font-montserrat;
      font-weight: tokens.$mont-weight-400;
@@ -113,14 +125,12 @@
    
    /* ================================================================
       4. RESPONSIVE BREAKPOINTS
+      (keep your existing blocks, just ensure translateX matches widths)
       ================================================================ */
    
-   /* LG: 992px – 1199px */
+   /* LG */
    @media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
-     .line-wrapper {
-       width: 90px;
-     }
-   
+     .line-wrapper { width: 90px; }
      @keyframes lineExpand {
        0% { transform: scaleX(0) translateX(0); }
        50% { transform: scaleX(1) translateX(0); }
@@ -128,19 +138,10 @@
      }
    }
    
-   /* MD: 768px – 991px (Tablets) */
+   /* MD */
    @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
-     .line-wrapper {
-       width: 85px;
-     }
-   
-     .loading-tagline {
-       font-size: 1rem;
-   
-       em {
-         font-size: 1.1rem;
-       }
-     }
+     .line-wrapper { width: 85px; }
+     .loading-tagline { font-size: 1rem; em { font-size: 1.1rem; } }
    
      @keyframes lineExpand {
        0% { transform: scaleX(0) translateX(0); }
@@ -149,19 +150,10 @@
      }
    }
    
-   /* SM: 626px – 767px (Large phones) */
+   /* SM */
    @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
-     .line-wrapper {
-       width: 80px;
-     }
-   
-     .loading-tagline {
-       font-size: 0.95rem;
-   
-       em {
-         font-size: 1.05rem;
-       }
-     }
+     .line-wrapper { width: 80px; }
+     .loading-tagline { font-size: 0.95rem; em { font-size: 1.05rem; } }
    
      @keyframes lineExpand {
        0% { transform: scaleX(0) translateX(0); }
@@ -170,24 +162,14 @@
      }
    }
    
-   /* XS: 465px – 625px (Medium phones) */
+   /* XS */
    @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
-     .loading-screen {
-       gap: 28px;
-     }
-   
-     .line-wrapper {
-       width: 70px;
-     }
-   
+     .loading-screen { gap: 28px; }
+     .line-wrapper { width: 70px; }
      .loading-tagline {
        font-size: 0.9rem;
        letter-spacing: 0.3px;
-   
-       em {
-         font-size: 1rem;
-         letter-spacing: 0.75px;
-       }
+       em { font-size: 1rem; letter-spacing: 0.75px; }
      }
    
      @keyframes lineExpand {
@@ -197,16 +179,10 @@
      }
    }
    
-   /* XXS: ≤ 464px (Small phones) */
+   /* XXS */
    @media (max-width: #{tokens.$xs_breakpoint}) {
-     .loading-screen {
-       gap: 24px;
-     }
-   
-     .line-wrapper {
-       width: 60px;
-     }
-   
+     .loading-screen { gap: 24px; }
+     .line-wrapper { width: 60px; }
      .loading-tagline {
        font-size: 0.85rem;
        font-weight: 450;
@@ -237,211 +213,11 @@
        animation: none !important;
        opacity: 1 !important;
        transform: none !important;
+       transition: none !important;
      }
    
      .line-progress {
        transform: scaleX(1) !important;
      }
    }
-
-
-
-// /* ================================================================
-//    LOADING SCREEN
-//    ================================================================ */
-
-//    .loading-screen {
-//     position: fixed;
-//     inset: 0;
-//     z-index: 1000;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 40px;
-//     background: transparent; // CosmicBackground shows through
-//     opacity: 1;
-//     transition: opacity 0.25s ease-out;
-  
-//     &.is-exiting {
-//       opacity: 0;
-//       pointer-events: none;
-//     }
-//   }
-  
-//   /* Constellation SVG Container */
-//   .constellation-wrapper {
-//     position: relative;
-//     width: 160px;
-//     height: 160px;
-//     opacity: 0;
-//     transform: scale(0.95);
-//     animation: constellationEnter 0.5s ease-out 0.1s forwards;
-  
-//     /* Resting state - waiting for assets */
-//     &.is-resting {
-//       .constellation-star {
-//         animation: starGlowPulse 1.8s ease-in-out infinite;
-//       }
-  
-//       .constellation-line {
-//         animation: lineBreathe 2s ease-in-out infinite;
-//       }
-//     }
-//   }
-  
-//   .constellation-svg {
-//     width: 100%;
-//     height: 100%;
-//     filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
-//   }
-  
-//   /* Lines draw first - slower and smoother */
-//   .constellation-line {
-//     stroke: rgba(255, 255, 255, 0.35);
-//     stroke-width: 1;
-//     fill: none;
-//     stroke-linecap: round;
-//     stroke-dasharray: 200;
-//     stroke-dashoffset: 200;
-//     animation: drawLine 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-//   }
-  
-//   /* Stars appear as lines connect */
-//   .constellation-star {
-//     fill: rgba(255, 255, 255, 0.9);
-//     opacity: 0;
-//     transform-origin: center;
-//     transform-box: fill-box;
-//     animation: starAppear 0.4s ease forwards;
-//   }
-  
-//   /* Loading text - appears earlier */
-//   .loading-text {
-//     text-align: center;
-//     opacity: 0;
-//     transform: translateY(10px);
-//     animation: textEnter 0.5s ease-out 0.3s forwards;
-//   }
-  
-//   .loading-tagline {
-//     font-family: 'Montserrat', sans-serif;
-//     font-weight: 400;
-//     font-size: 0.95rem;
-//     color: rgba(255, 255, 255, 0.7);
-//     letter-spacing: 0.03em;
-  
-//     em {
-//       font-family: 'Cormorant Garamond', serif;
-//       font-style: italic;
-//       font-weight: 500;
-//       font-size: 1.1rem;
-//       color: rgba(255, 255, 255, 0.9);
-//     }
-//   }
-  
-//   /* ================================================================
-//      ANIMATIONS - Initial Draw
-//      ================================================================ */
-  
-//   @keyframes constellationEnter {
-//     to {
-//       opacity: 1;
-//       transform: scale(1);
-//     }
-//   }
-  
-//   @keyframes drawLine {
-//     to {
-//       stroke-dashoffset: 0;
-//     }
-//   }
-  
-//   @keyframes starAppear {
-//     to {
-//       opacity: 1;
-//     }
-//   }
-  
-//   @keyframes textEnter {
-//     to {
-//       opacity: 1;
-//       transform: translateY(0);
-//     }
-//   }
-  
-//   /* ================================================================
-//      ANIMATIONS - Resting/Idle State (Enhanced Glow & Pulse)
-//      ================================================================ */
-  
-//   @keyframes starGlowPulse {
-//     0%, 100% {
-//       opacity: 0.75;
-//       filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
-//       transform: scale(1);
-//     }
-//     50% {
-//       opacity: 1;
-//       filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)) 
-//               drop-shadow(0 0 16px rgba(200, 220, 255, 0.4));
-//       transform: scale(1.15);
-//     }
-//   }
-  
-//   @keyframes lineBreathe {
-//     0%, 100% {
-//       stroke-opacity: 0.3;
-//       filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.1));
-//     }
-//     50% {
-//       stroke-opacity: 0.55;
-//       filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.25));
-//     }
-//   }
-  
-//   /* Stagger the star pulses for organic feel */
-//   .is-resting .constellation-star {
-//     &:nth-child(1) { animation-delay: 0s; }
-//     &:nth-child(2) { animation-delay: 0.25s; }
-//     &:nth-child(3) { animation-delay: 0.5s; }
-//     &:nth-child(4) { animation-delay: 0.15s; }
-//     &:nth-child(5) { animation-delay: 0.4s; }
-//     &:nth-child(6) { animation-delay: 0.3s; }
-//     &:nth-child(7) { animation-delay: 0.55s; }
-//   }
-  
-//   /* ================================================================
-//      MOBILE
-//      ================================================================ */
-  
-//   @media (max-width: 768px) {
-//     .constellation-wrapper {
-//       width: 140px;
-//       height: 140px;
-//     }
-  
-//     .loading-tagline {
-//       font-size: 0.85rem;
-  
-//       em {
-//         font-size: 0.95rem;
-//       }
-//     }
-//   }
-  
-//   /* ================================================================
-//      REDUCED MOTION
-//      ================================================================ */
-  
-//   @media (prefers-reduced-motion: reduce) {
-//     .loading-screen,
-//     .constellation-wrapper,
-//     .constellation-line,
-//     .constellation-star,
-//     .loading-text {
-//       animation: none !important;
-//       opacity: 1 !important;
-//       transform: none !important;
-//       stroke-dashoffset: 0 !important;
-//     }
-//   }
+   

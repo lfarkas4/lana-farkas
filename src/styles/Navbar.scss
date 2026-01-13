@@ -375,3 +375,33 @@
    html.cursor-native .menu-icon {
      cursor: pointer !important;
    }
+
+
+   .custom-navbar {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0);
+    transition:
+      opacity 0.34s cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  
+  .custom-navbar.nav-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Make the star/logo feel softer too */
+  .custom-navbar .brand-logo img {
+    opacity: 0;
+    transform: translate3d(0, -3px, 0) scale(0.98);
+    transition:
+      opacity 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) 0.06s,
+      transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) 0.06s;
+  }
+  
+  .custom-navbar.nav-visible .brand-logo img {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  

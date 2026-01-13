@@ -1,0 +1,1401 @@
+/* ================================================================
+   HIRA HEALTH CASE STUDY
+   Consistent responsive design matching BehavAI and Aquatonomy
+   ================================================================ */
+
+   @use './partials/tokens' as tokens;
+
+   /* ================================================================
+      TABLE OF CONTENTS
+      ----------------------------------------------------------------
+      1. MIXINS & HELPERS
+      2. SHARED UTILITIES
+      3. SECTION: Our Challenge
+      4. SECTION: Patient Journey
+      5. SECTION: What We Heard
+      6. RESPONSIVE BREAKPOINTS (Unified)
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. MIXINS & HELPERS
+      ================================================================ */
+   
+   @mixin full-bleed {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   }
+   
+   @mixin container($pad: var(--page-gutter-desktop)) {
+     @include tokens.container-page($pad);
+   }
+   
+   @mixin media-frame($mode: light) {
+     width: 100%;
+     height: auto;
+     border-radius: 20px;
+     display: block;
+   
+     @if $mode == light {
+       border: 0.05px solid rgba(0, 0, 0, 0.05);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+     } @else {
+       border: 1px solid rgba(255, 255, 255, 0.1);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+     }
+   }
+   
+   
+   /* ================================================================
+      2. SHARED UTILITIES
+      ================================================================ */
+   
+   /* Consistent typography for headers */
+   .hira-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .hira-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   .hira-body {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     line-height: 1.65;
+     font-size: 1.075rem;
+   
+     p {
+       margin: 0;
+       font-size: inherit;
+       line-height: inherit;
+     }
+   }
+   
+   /* Highlight utility */
+   .hira-challenge {
+     .hi {
+       @include tokens.body-strong-light;
+       background: #C8D3F5;
+       padding: 0 0.25em;
+       border-radius: 4px;
+       -webkit-box-decoration-break: clone;
+       box-decoration-break: clone;
+     }
+   }
+   
+   /* Highlight for journey, heard, and concept sections */
+   .hira-journey,
+   .hira-heard,
+   .hira-concept {
+     .hi {
+       @include tokens.body-strong-light;
+       background: #C8D3F5;
+       padding: 0 0.25em;
+       border-radius: 4px;
+       -webkit-box-decoration-break: clone;
+       box-decoration-break: clone;
+     }
+   }
+   
+   /* Context helpers */
+   .is-light { strong { @include tokens.body-strong-light; } }
+   .is-dark  { strong { @include tokens.body-strong-dark; } }
+   
+   
+   /* ================================================================
+      3. SECTION: OUR CHALLENGE
+      ================================================================ */
+   
+   .hira-challenge {
+     @include full-bleed;
+     background: #eeeff2;
+     padding: 80px 0 100px;
+   }
+   
+   .hira-challenge-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-challenge-header {
+     margin-bottom: -5px; /* Tightened spacing */
+   }
+   
+   .hira-challenge-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-challenge-title {
+     @extend .hira-title;
+   }
+   
+   .hira-challenge-media {
+     width: 100%;
+     margin-bottom: 10px; /* Tightened spacing */
+     display: flex;
+     justify-content: center;
+   }
+   
+   .hira-challenge-image {
+     max-width: 100%;
+     height: auto;
+     display: block;
+     /* No frame/shadow - this is an illustrative graphic, not framed content */
+   }
+   
+   .hira-challenge-body {
+     @extend .hira-body;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   
+   /* ================================================================
+      4. SECTION: PATIENT JOURNEY
+      ================================================================ */
+   
+   .hira-journey {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 80px 0 60px; /* User increased bottom from 50px to 60px */
+   }
+   
+   .hira-journey-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-journey-header {
+     margin-bottom: 35px; /* Proper spacing like other sections */
+   }
+   
+   .hira-journey-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-journey-title {
+     @extend .hira-title;
+   }
+   
+   .hira-journey-body {
+     @extend .hira-body;
+     margin-bottom: 60px;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   /* Journey Map */
+   .hira-journey-map {
+     position: relative;
+     margin-top: 80px;
+   }
+   
+   /* Top connecting line */
+   .journey-line-wrapper {
+     position: relative;
+     width: 100%;
+     height: 0; /* Zero height wrapper */
+     margin-bottom: 40px; /* Space before columns */
+   }
+   
+   .journey-line {
+     position: absolute;
+     top: 0; /* Line at wrapper position */
+     left: 2%; /* Wider to span column width */
+     right: 2%;
+     height: 1px; /* Match BehavAI line thickness */
+     background: #d6d6d6;
+     z-index: 0;
+     
+     /* Arrow at the end of the line - USER UPDATED */
+     &::after {
+       content: '';
+       position: absolute;
+       right: -8px;
+       top: -4px;
+       width: 0;
+       height: 0;
+       border-left: 8px solid #d6d6d6;
+       border-top: 4.5px solid transparent;
+       border-bottom: 4.5px solid transparent;
+     }
+   }
+   
+   /* Remove separate arrow element */
+   .journey-arrow {
+     display: none;
+   }
+   
+   /* Three columns */
+   .journey-columns {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 50px;
+     max-width: 1100px;
+     margin: 0 auto;
+     position: relative;
+     margin-top: 100px; /* USER INCREASED from 0 to 100px */
+   }
+   
+   .journey-column {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     position: relative;
+     padding-top: 50px; /* Adjusted space for icon above */
+   }
+   
+   /* Icon circle - centered on top line */
+   .journey-icon-wrapper {
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+     background: #fdfeff; /* USER CHANGED from #f0f4ff to lighter #fdfeff */
+     border: 1px solid #d6d6d6; /* Match BehavAI thinner border */
+     display: grid;
+     place-items: center;
+     margin-bottom: 20px;
+     position: absolute;
+     top: -42px; /* Correct positioning to center on line */
+     left: 50%;
+     transform: translateX(-50%);
+     z-index: 2;
+   }
+   
+   .journey-icon {
+     width: 45px;
+     height: 45px;
+     object-fit: contain;
+   }
+   
+   /* Column title - with white background */
+   .journey-column-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.1rem;
+     font-weight: 600;
+     color: #000206;
+     margin: 0 0 8px 0;
+     background: #FAFAFE;
+     padding: 4px 12px;
+     border-radius: 6px;
+     position: relative;
+     z-index: 1;
+   }
+   
+   /* Column subtitle (blue with quotes) - with white background */
+   .journey-column-subtitle {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     font-weight: 450; /* USER CHANGED from 400 to 450 */
+     color: #0C6FFF;
+     margin: 0 0 30px 0;
+     background: #FAFAFE;
+     padding: 4px 12px;
+     border-radius: 6px;
+     position: relative;
+     z-index: 1;
+     
+     /* Add quotes */
+     &::before {
+       content: '"';
+     }
+     
+     &::after {
+       content: '"';
+     }
+   }
+   
+   /* Boxes container */
+   .journey-boxes {
+     position: relative;
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     padding-top: 20px; /* Space from title/subtitle to first box */
+   }
+   
+   /* Vertical dotted line behind boxes - extends from icon */
+   .journey-dotted-line {
+     position: absolute;
+     top: -100px; /* Extend up to reach icon */
+     left: 50%;
+     bottom: 0;
+     width: 1px; /* Match BehavAI line thickness */
+     background-image: linear-gradient(to bottom, #d6d6d6 50%, transparent 50%);
+     background-size: 1px 10px; /* Larger dashes */
+     background-repeat: repeat-y;
+     transform: translateX(-50%);
+     z-index: 0;
+   }
+   
+   /* Individual box */
+   .journey-box {
+     position: relative;
+     padding: 22px 20px 18px;
+     border-radius: 16px; /* Rounder corners */
+     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+     z-index: 1;
+     text-align: left;
+   }
+   
+   /* Box colors by phase */
+   .journey-box--pre {
+     background: #ECF1FF;
+   }
+   
+   .journey-box--during {
+     background: #D7E1FF;
+   }
+   
+   .journey-box--post {
+     background: #CCD9FF;
+   }
+   
+   /* Tag in top left */
+   .journey-box-tag {
+     display: inline-block;
+     background: #ffffff;
+     padding: 4px 10px;
+     border-radius: 6px;
+     font-family: tokens.$font-montserrat;
+     font-size: 0.7rem;
+     font-weight: 600;
+     letter-spacing: 0.5px;
+     text-transform: uppercase;
+     color: #000206;
+     margin-bottom: 12px;
+   }
+   
+   /* Box text */
+   .journey-box-text {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     line-height: 1.5;
+     color: #000206;
+     margin: 0;
+   }
+   
+   
+   /* ================================================================
+      5. SECTION: WHAT WE HEARD
+      ================================================================ */
+   
+   .hira-heard {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 50px 0 100px; /* USER INCREASED top from 40px to 50px */
+     margin-top: 0;
+   }
+   
+   .hira-heard-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-heard-header {
+     margin-bottom: 35px; /* Proper spacing like other sections */
+   }
+   
+   .hira-heard-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-heard-title {
+     @extend .hira-title;
+   }
+   
+   .hira-heard-body {
+     @extend .hira-body;
+     margin-bottom: 40px;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   /* Insight callout */
+   .hira-insight {
+     display: flex;
+     align-items: center;
+     gap: 18px;
+     background: #ECF1FF;
+     border-radius: 12px;
+     padding: 20px 28px;
+     margin-bottom: 60px;
+     max-width: 900px;
+   }
+   
+   .hira-insight-icon {
+     width: 28px;
+     height: 28px;
+     flex-shrink: 0;
+   }
+   
+   .hira-insight-text {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1rem;
+     line-height: 1.6;
+     color: #000206;
+     margin: 0;
+   
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   /* Images grid (like Aquatonomy) */
+   .hira-heard-images {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 50px;
+   }
+   
+   .hira-heard-image-item {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;
+   }
+   
+   .hira-heard-image {
+     @include media-frame(light);
+   }
+   
+   .hira-heard-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 0 8px;
+   }
+   
+   
+   /* ================================================================
+      6. SECTION: THE CONCEPT
+      ================================================================ */
+   
+   .hira-concept {
+     @include full-bleed;
+     background: #eeeff2;
+     padding: 80px 0 100px;
+   }
+   
+   .hira-concept-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-concept-header {
+     margin-bottom: 35px;
+   }
+   
+   .hira-concept-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-concept-title {
+     @extend .hira-title;
+   }
+   
+   .hira-concept-body {
+     @extend .hira-body;
+     margin-bottom: 60px;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   /* Concept Cards */
+   .hira-concept-cards {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 20px;
+     max-width: 1100px;
+     margin: 0 auto;
+   }
+   
+   .concept-card {
+     background: #ffffff;
+     border-radius: 16px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+     padding: 30px 30px 30px;
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+   }
+   
+   .concept-card-header {
+     display: flex;
+     align-items: flex-start;
+     justify-content: space-between;
+     gap: 16px;
+   }
+   
+   .concept-card-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.1rem;
+     font-weight: 600;
+     color: #000206;
+     margin-top: 14px;
+     flex: 1;
+     line-height: 1.3;
+   }
+   
+   .concept-card-icon {
+     width: 55px;
+     height: 55px;
+     object-fit: contain;
+     flex-shrink: 0;
+   }
+   
+   .concept-card-description {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     line-height: 1.6;
+     color: #000206;
+     margin: 0;
+   
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   
+   /* ================================================================
+      7. RESPONSIVE BREAKPOINTS (Unified)
+      ================================================================ */
+   
+   /* XL: ≤ 1200px */
+   @media (max-width: #{tokens.$xl_breakpoint}) {
+     /* Typography scaling */
+     .hira-challenge-eyebrow,
+     .hira-journey-eyebrow,
+     .hira-heard-eyebrow,
+     .hira-concept-eyebrow {
+       font-size: 1.1rem;
+     }
+     
+     .hira-challenge-title,
+     .hira-journey-title,
+     .hira-heard-title,
+     .hira-concept-title {
+       font-size: 1.75rem;
+       line-height: 1.35;
+     }
+   
+     .hira-challenge-body p,
+     .hira-journey-body p,
+     .hira-heard-body p,
+     .hira-concept-body p {
+       font-size: 0.95rem !important;
+     }
+   
+     /* Spacing adjustments */
+     .hira-challenge-header {
+       margin-bottom: 0px;
+     }
+   
+     .hira-journey-header,
+     .hira-heard-header,
+     .hira-concept-header {
+       margin-bottom: 30px; /* Reduced slightly for smaller screens */
+     }
+   
+     .hira-challenge-media {
+       margin-bottom: 12px;
+     }
+   
+     /* Journey map adjustments */
+     .journey-columns {
+       gap: 40px;
+     }
+   
+     .journey-column {
+       padding-top: 48px; /* Adjusted space for smaller icon */
+     }
+   
+     .journey-icon-wrapper {
+       width: 75px;
+       height: 75px;
+       top: -39px; /* Adjusted for smaller icon */
+     }
+   
+     .journey-icon {
+       width: 42px;
+       height: 42px;
+     }
+   
+     .journey-box {
+       border-radius: 14px;
+     }
+   
+     .journey-box-text {
+       font-size: 0.9rem;
+     }
+   
+     /* Heard section adjustments */
+     .hira-heard-images {
+       gap: 45px;
+     }
+   
+     /* Concept cards adjustments */
+     .hira-concept-cards {
+       gap: 18px;
+     }
+   
+     .concept-card {
+       padding: 26px 22px 22px;
+     }
+   
+     .concept-card-icon {
+       width: 45px;
+       height: 45px;
+     }
+   
+     .concept-card-description {
+       font-size: 0.9rem;
+     }
+   }
+   
+   /* LG: ≤ 991px */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     /* Section padding */
+     .hira-challenge {
+       padding: 70px 0 90px;
+     }
+   
+     .hira-journey {
+       padding: 70px 0 55px; /* Proportional to user's desktop change */
+     }
+   
+     .hira-heard {
+       padding: 45px 0 90px; /* Proportional to user's desktop change */
+     }
+   
+     .hira-concept {
+       padding: 70px 0 90px;
+     }
+   
+     /* Container adjustments */
+     .hira-challenge-inner,
+     .hira-journey-inner,
+     .hira-heard-inner,
+     .hira-concept-inner {
+       @include container(var(--page-gutter-tablet));
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     /* Header spacing */
+     .hira-challenge-header,
+     .hira-journey-header,
+     .hira-heard-header,
+     .hira-concept-header {
+       margin-bottom: 30px; /* Reduced from 35px for tablet */
+     }
+   
+     /* Typography */
+     .hira-challenge-title,
+     .hira-journey-title,
+     .hira-heard-title,
+     .hira-concept-title {
+       font-size: 1.5rem;
+     }
+   
+     /* Body text - STANDARDIZED at 0.95rem */
+     .hira-challenge-body p,
+     .hira-journey-body p,
+     .hira-heard-body p,
+     .hira-concept-body p {
+       font-size: 0.95rem !important;
+     }
+   
+     /* Media spacing */
+     .hira-challenge-media {
+       margin-bottom: 15px; /* Slightly more space on tablet */
+     }
+   
+     /* Journey map adjustments */
+     .hira-journey-body {
+       margin-bottom: 50px;
+     }
+   
+     .hira-journey-map {
+       margin-top: 60px;
+     }
+   
+     .journey-columns {
+       gap: 35px;
+     }
+   
+     .journey-column {
+       padding-top: 45px; /* Adjusted space for smaller icon */
+     }
+   
+     .journey-icon-wrapper {
+       width: 70px;
+       height: 70px;
+       top: -37px; /* Adjusted for smaller icon */
+     }
+   
+     .journey-icon {
+       width: 38px;
+       height: 38px;
+     }
+   
+     .journey-column-title {
+       font-size: 1rem;
+     }
+   
+     .journey-column-subtitle {
+       font-size: 0.9rem;
+     }
+   
+     .journey-box {
+       padding: 20px 18px 16px;
+       border-radius: 14px;
+     }
+   
+     .journey-box-text {
+       font-size: 0.88rem;
+     }
+   
+     /* Heard section adjustments */
+     .hira-heard-body {
+       margin-bottom: 35px;
+     }
+   
+     .hira-insight {
+       margin-bottom: 50px;
+       padding: 18px 24px;
+     }
+   
+     .hira-insight-icon {
+       width: 26px;
+       height: 26px;
+     }
+   
+     .hira-insight-text {
+       font-size: 0.95rem;
+     }
+   
+     .hira-heard-images {
+       gap: 40px;
+     }
+   
+     /* Concept section adjustments */
+     .hira-concept-body {
+       margin-bottom: 50px;
+     }
+   
+     .hira-concept-cards {
+       gap: 16px;
+     }
+   
+     .concept-card {
+       padding: 24px 20px 20px;
+     }
+   
+     .concept-card-title {
+       font-size: 1.05rem;
+     }
+   
+     .concept-card-icon {
+       width: 44px;
+       height: 44px;
+     }
+   
+     .concept-card-description {
+       font-size: 0.88rem;
+     }
+   }
+   
+   /* MD: ≤ 767px */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+     /* Section padding */
+     .hira-challenge {
+       padding: 60px 0 80px;
+     }
+   
+     .hira-journey {
+       padding: 60px 0 50px; /* Proportional to user's desktop change */
+     }
+   
+     .hira-heard {
+       padding: 40px 0 80px; /* Proportional to user's desktop change */
+     }
+   
+     .hira-concept {
+       padding: 60px 0 80px;
+     }
+   
+     /* Header spacing */
+     .hira-challenge-header {
+       margin-bottom: 8px; /* More breathing room */
+     }
+   
+     .hira-journey-header,
+     .hira-heard-header,
+     .hira-concept-header {
+       margin-bottom: 28px; /* Reduced for mobile */
+     }
+   
+     /* Typography */
+     .hira-challenge-title,
+     .hira-journey-title,
+     .hira-heard-title,
+     .hira-concept-title {
+       font-size: 1.4rem;
+       line-height: 1.4;
+     }
+   
+     /* Media spacing */
+     .hira-challenge-media {
+       margin-bottom: 18px; /* More breathing room */
+     }
+   
+     /* Journey map - STACK TO SINGLE COLUMN */
+     .hira-journey-body {
+       margin-bottom: 45px;
+     }
+   
+     .hira-journey-map {
+       margin-top: 50px;
+     }
+   
+     /* Hide top line and arrow on mobile */
+     .journey-line-wrapper {
+       display: none;
+     }
+   
+     .journey-columns {
+       grid-template-columns: 1fr;
+       gap: 60px; /* USER CHANGED from 80px to 60px */
+       max-width: 500px;
+       margin-top: 0; /* Reset */
+     }
+   
+     /* Reset column padding and icon positioning for stacked layout */
+     .journey-column {
+       padding-top: 0;
+     }
+   
+     /* Icon back to relative positioning when stacked - BIGGER FOR MOBILE */
+     .journey-icon-wrapper {
+       width: 85px; /* INCREASED from 75px */
+       height: 85px; /* INCREASED from 75px */
+       position: relative;
+       top: auto;
+       left: auto;
+       transform: none;
+       margin-bottom: 20px;
+     }
+   
+     .journey-icon {
+       width: 48px; /* INCREASED from 40px */
+       height: 48px; /* INCREASED from 40px */
+     }
+   
+     /* Title/Subtitle BIGGER for mobile */
+     .journey-column-title {
+       font-size: 1.15rem; /* INCREASED from 1.05rem */
+     }
+   
+     .journey-column-subtitle {
+       font-size: 1rem; /* INCREASED from 0.9rem */
+       margin-bottom: 25px;
+     }
+   
+     .journey-box {
+       padding: 18px 16px 14px;
+       border-radius: 14px;
+     }
+   
+     .journey-box-tag {
+       font-size: 0.68rem;
+     }
+   
+     .journey-box-text {
+       font-size: 0.85rem;
+     }
+   
+     /* Dotted line extends to icon circle on mobile */
+     .journey-dotted-line {
+       top: -110px; /* EXTENDED to reach bigger icon */
+     }
+   
+     /* Heard section */
+     .hira-heard-body {
+       margin-bottom: 32px;
+     }
+   
+     .hira-insight {
+       margin-bottom: 45px;
+       padding: 16px 22px;
+       gap: 15px;
+     }
+   
+     .hira-insight-icon {
+       width: 24px;
+       height: 24px;
+     }
+   
+     .hira-insight-text {
+       font-size: 0.9rem;
+     }
+   
+     /* Stack images on mobile */
+     .hira-heard-images {
+       grid-template-columns: 1fr;
+       gap: 35px;
+     }
+   
+     /* Concept section - stack cards */
+     .hira-concept-body {
+       margin-bottom: 45px;
+     }
+   
+     .hira-concept-cards {
+       grid-template-columns: 1fr;
+       gap: 25px;
+       max-width: 550px;
+     }
+   
+     .concept-card {
+       padding: 22px 20px 20px;
+     }
+   
+     .concept-card-title {
+       font-size: 1.1rem;
+     }
+   
+     .concept-card-icon {
+       width: 44px;
+       height: 44px;
+     }
+   
+     .concept-card-description {
+       font-size: 0.85rem;
+     }
+   }
+   
+   /* SM: ≤ 625px */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     /* Section padding */
+     .hira-challenge {
+       padding: 50px 0 70px;
+     }
+   
+     .hira-journey {
+       padding: 50px 0 45px; /* Proportional to user's desktop change */
+     }
+   
+     .hira-heard {
+       padding: 35px 0 70px; /* Proportional to user's desktop change */
+     }
+   
+     .hira-concept {
+       padding: 50px 0 70px;
+     }
+   
+     /* Container adjustments */
+     .hira-challenge-inner,
+     .hira-journey-inner,
+     .hira-heard-inner,
+     .hira-concept-inner {
+       @include container(var(--page-gutter-xs));
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     /* Header spacing */
+     .hira-challenge-header {
+       margin-bottom: 10px; /* More breathing room on mobile */
+     }
+   
+     .hira-journey-header,
+     .hira-heard-header,
+     .hira-concept-header {
+       margin-bottom: 25px; /* Reduced for small mobile */
+     }
+   
+     /* Typography */
+     .hira-challenge-eyebrow,
+     .hira-journey-eyebrow,
+     .hira-heard-eyebrow,
+     .hira-concept-eyebrow {
+       font-size: 1.1rem;
+     }
+   
+     .hira-challenge-title,
+     .hira-journey-title,
+     .hira-heard-title,
+     .hira-concept-title {
+       font-size: 1.3rem;
+       line-height: 1.45;
+     }
+   
+     /* ALL body text at 0.82rem */
+     .hira-challenge-body p,
+     .hira-journey-body p,
+     .hira-heard-body p,
+     .hira-concept-body p {
+       font-size: 0.82rem !important;
+     }
+   
+     /* Media spacing */
+     .hira-challenge-media {
+       margin-bottom: 20px; /* More breathing room on mobile */
+     }
+   
+     /* Journey map */
+     .hira-journey-body {
+       margin-bottom: 40px;
+     }
+   
+     .hira-journey-map {
+       margin-top: 45px;
+     }
+   
+     .journey-columns {
+       gap: 60px; /* USER CHANGED from 75px to 60px */
+       max-width: 450px;
+     }
+   
+     /* Maintain bigger icons on small mobile */
+     .journey-icon-wrapper {
+       width: 80px;
+       height: 80px;
+     }
+   
+     .journey-icon {
+       width: 45px;
+       height: 45px;
+     }
+   
+     .journey-column-title {
+       font-size: 1.1rem;
+     }
+   
+     .journey-column-subtitle {
+       font-size: 0.95rem;
+       margin-bottom: 22px;
+     }
+   
+     .journey-box {
+       padding: 16px 14px 12px;
+       border-radius: 14px;
+     }
+   
+     .journey-box-tag {
+       font-size: 0.65rem;
+       padding: 3px 8px;
+     }
+   
+     .journey-box-text {
+       font-size: 0.82rem;
+     }
+   
+     /* Dotted line extends to icon */
+     .journey-dotted-line {
+       top: -105px;
+     }
+   
+     /* Heard section */
+     .hira-heard-body {
+       margin-bottom: 30px;
+     }
+   
+     .hira-insight {
+       margin-bottom: 40px;
+       padding: 15px 20px;
+       gap: 14px;
+     }
+   
+     .hira-insight-icon {
+       width: 22px;
+       height: 22px;
+     }
+   
+     .hira-insight-text {
+       font-size: 0.85rem;
+     }
+   
+     .hira-heard-images {
+       gap: 30px;
+     }
+   
+     /* Concept section */
+     .hira-concept-body {
+       margin-bottom: 40px;
+     }
+   
+     .hira-concept-cards {
+       gap: 22px;
+       max-width: 500px;
+     }
+   
+     .concept-card {
+       padding: 20px 18px 18px;
+     }
+   
+     .concept-card-title {
+       font-size: 1.05rem;
+     }
+   
+     .concept-card-icon {
+       width: 42px;
+       height: 42px;
+     }
+   
+     .concept-card-description {
+       font-size: 0.82rem;
+     }
+   }
+   
+   /* XS: ≤ 464px */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     /* Section padding */
+     .hira-challenge {
+       padding: 40px 0 60px;
+     }
+   
+     .hira-journey {
+       padding: 40px 0 40px; /* Proportional to user's desktop change */
+     }
+   
+     .hira-heard {
+       padding: 30px 0 60px; /* Proportional to user's desktop change */
+     }
+   
+     .hira-concept {
+       padding: 40px 0 60px;
+     }
+   
+     /* Header spacing */
+     .hira-challenge-header {
+       margin-bottom: 12px; /* Most breathing room on smallest screens */
+     }
+   
+     .hira-journey-header,
+     .hira-heard-header,
+     .hira-concept-header {
+       margin-bottom: 22px; /* Reduced for smallest screens */
+     }
+   
+     /* Typography */
+     .hira-challenge-eyebrow,
+     .hira-journey-eyebrow,
+     .hira-heard-eyebrow,
+     .hira-concept-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-challenge-title,
+     .hira-journey-title,
+     .hira-heard-title,
+     .hira-concept-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     /* ALL body text at 0.825rem */
+     .hira-challenge-body p,
+     .hira-journey-body p,
+     .hira-heard-body p,
+     .hira-concept-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     /* Media spacing */
+     .hira-challenge-media {
+       margin-bottom: 22px; /* Most breathing room on smallest screens */
+     }
+   
+     /* Journey map */
+     .hira-journey-body {
+       margin-bottom: 35px;
+     }
+   
+     .hira-journey-map {
+       margin-top: 40px;
+     }
+   
+     .journey-columns {
+       gap: 50px; /* USER CHANGED from 70px to 50px */
+       max-width: 400px;
+     }
+   
+     /* Slightly smaller icons on XS */
+     .journey-icon-wrapper {
+       width: 75px;
+       height: 75px;
+     }
+   
+     .journey-icon {
+       width: 42px;
+       height: 42px;
+     }
+   
+     .journey-column-title {
+       font-size: 1.05rem;
+       margin-bottom: 6px;
+     }
+   
+     .journey-column-subtitle {
+       font-size: 0.9rem;
+       margin-bottom: 20px;
+     }
+   
+     .journey-box {
+       padding: 14px 12px 10px;
+       border-radius: 12px;
+     }
+   
+     .journey-box-tag {
+       font-size: 0.62rem;
+       padding: 3px 7px;
+       margin-bottom: 10px;
+     }
+   
+     .journey-box-text {
+       font-size: 0.78rem;
+       line-height: 1.45;
+     }
+   
+     /* Dotted line extends to icon */
+     .journey-dotted-line {
+       top: -100px;
+     }
+   
+     /* Heard section */
+     .hira-heard-body {
+       margin-bottom: 28px;
+     }
+   
+     .hira-insight {
+       margin-bottom: 35px;
+       padding: 14px 18px;
+       gap: 12px;
+     }
+   
+     .hira-insight-icon {
+       width: 20px;
+       height: 20px;
+     }
+   
+     .hira-insight-text {
+       font-size: 0.8rem;
+       line-height: 1.5;
+     }
+   
+     .hira-heard-images {
+       gap: 25px;
+     }
+   
+     /* Concept section */
+     .hira-concept-body {
+       margin-bottom: 35px;
+     }
+   
+     .hira-concept-cards {
+       gap: 20px;
+       max-width: 450px;
+     }
+   
+     .concept-card {
+       padding: 18px 16px 16px;
+     }
+   
+     .concept-card-title {
+       font-size: 1rem;
+     }
+   
+     .concept-card-icon {
+       width: 40px;
+       height: 40px;
+     }
+   
+     .concept-card-description {
+       font-size: 0.78rem;
+       line-height: 1.5;
+     }
+   
+     /* ---- Disable fade-in / scroll reveals on very small screens ---- */
+     .reveal,
+     .reveal-up,
+     .reveal-in,
+     [data-reveal] {
+       opacity: 1 !important;
+       transform: none !important;
+       animation: none !important;
+       transition: none !important;
+     }
+   }
+   
+   
+   /* ================================================================
+      BODY TEXT CONSISTENCY (parity across sections)
+      ================================================================ */
+   .hira-challenge-body p {
+     font-size: 1.075rem;
+     line-height: 1.65;
+   }
+   
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     .hira-challenge-body p {
+       font-size: 0.95rem !important;
+     }
+   }
+   
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     .hira-challenge-body p {
+       font-size: 0.82rem !important;
+     }
+   }
+   
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .hira-challenge-body p {
+       font-size: 0.825rem !important;
+     }
+   }

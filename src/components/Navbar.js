@@ -12,10 +12,20 @@ const gaEvent = (name, params = {}) => {
 
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // ✅ for soft entrance (prevents abrupt logo pop-in)
+  const [navVisible, setNavVisible] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  // ✅ fade in navbar on mount (next paint)
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setNavVisible(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -96,7 +106,11 @@ const Navigation = () => {
           <span className="nav-link-label">{label}</span>
 
           {isActive && !menuOpen && (
-            <svg className="nav-active-stroke" viewBox="0 0 180 100" preserveAspectRatio="none">
+            <svg
+              className="nav-active-stroke"
+              viewBox="0 0 180 100"
+              preserveAspectRatio="none"
+            >
               <path
                 id={`nav-path-${pathId}`}
                 className="nav-active-path"
@@ -118,11 +132,26 @@ const Navigation = () => {
       <div className="navbar-gradient" />
       <div className={`nav-background ${menuOpen ? "active" : ""}`} />
 
-      <Navbar expand="lg" expanded={menuOpen} className={`custom-navbar ${menuOpen ? "menu-open" : ""}`}>
+      <Navbar
+        expand="lg"
+        expanded={menuOpen}
+        className={`custom-navbar ${navVisible ? "nav-visible" : ""} ${
+          menuOpen ? "menu-open" : ""
+        }`}
+      >
         <div className="nav-container">
           {/* Logo - Always goes to top of homepage */}
-          <Navbar.Brand as={Link} to="/" className="brand-logo" onClick={handleLogoClick}>
-            <img src="/starlogolight.svg" alt="logo" className="logo hover-subtle" />
+          <Navbar.Brand
+            as={Link}
+            to="/"
+            className="brand-logo"
+            onClick={handleLogoClick}
+          >
+            <img
+              src="/starlogolight.svg"
+              alt="logo"
+              className="logo hover-subtle"
+            />
           </Navbar.Brand>
 
           {/* Desktop Nav */}

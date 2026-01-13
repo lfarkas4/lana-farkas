@@ -53,11 +53,12 @@ function AppContent() {
   const handleLoadComplete = () => {
     sessionStorage.setItem("portfolio-loaded", "true");
     setContentReady(true);
-
+  
     setTimeout(() => {
       setLoadingMounted(false);
-    }, 400);
+    }, 320); // ✅ match LoadingScreen FADE_OUT_MS / SCSS transition
   };
+  
 
   // Track SPA pageviews on route changes
   useEffect(() => {
