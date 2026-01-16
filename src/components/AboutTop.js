@@ -64,7 +64,7 @@ const About = () => {
             <span className="sliding-roles">
               <div className="roles-wrapper">
                 <span>product designer ✸</span>
-                <span>front-end developer ❒</span>
+                <span>front-end developer ⚡︎</span>
                 <span>visual designer ☻</span>
                 <span>user researcher ➹</span>
                 <span>product designer ✸</span>
