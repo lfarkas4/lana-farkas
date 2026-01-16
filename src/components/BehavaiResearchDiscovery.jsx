@@ -136,11 +136,11 @@ export default function BehavaiResearchDiscovery() {
     </td>
     {/* CentralReach */}
     <td className="behavai-table-cell">
-      <img src="/assets/checkkk.png" alt="Yes" className="behavai-table-icon" />
+      <img src="/assets/checks.png" alt="Yes" className="behavai-table-icon" />
     </td>
     {/* RethinkBH */}
     <td className="behavai-table-cell">
-      <img src="/assets/checkkk.png" alt="Yes" className="behavai-table-icon" />
+      <img src="/assets/checks.png" alt="Yes" className="behavai-table-icon" />
     </td>
     {/* ChatGPT */}
     <td className="behavai-table-cell">
@@ -148,7 +148,7 @@ export default function BehavaiResearchDiscovery() {
     </td>
     {/* BehavAI */}
     <td className="behavai-table-cell">
-      <img src="/assets/checkkk.png" alt="Yes" className="behavai-table-icon" />
+      <img src="/assets/checks.png" alt="Yes" className="behavai-table-icon" />
     </td>
   </tr>
 
@@ -164,10 +164,10 @@ export default function BehavaiResearchDiscovery() {
       <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
     </td>
     <td className="behavai-table-cell">
-      <img src="/assets/checkkk.png" alt="Yes" className="behavai-table-icon" />
+      <img src="/assets/checks.png" alt="Yes" className="behavai-table-icon" />
     </td>
     <td className="behavai-table-cell">
-      <img src="/assets/checkkk.png" alt="Yes" className="behavai-table-icon" />
+      <img src="/assets/checks.png" alt="Yes" className="behavai-table-icon" />
     </td>
   </tr>
 
@@ -177,16 +177,16 @@ export default function BehavaiResearchDiscovery() {
       PHI-safe, HIPAA-aligned AI workflow
     </td>
     <td className="behavai-table-cell">
-      <img src="/assets/checkkk.png" alt="Yes" className="behavai-table-icon" />
+      <img src="/assets/checks.png" alt="Yes" className="behavai-table-icon" />
     </td>
     <td className="behavai-table-cell">
-      <img src="/assets/checkkk.png" alt="Yes" className="behavai-table-icon" />
+      <img src="/assets/checks.png" alt="Yes" className="behavai-table-icon" />
     </td>
     <td className="behavai-table-cell">
       <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
     </td>
     <td className="behavai-table-cell">
-      <img src="/assets/checkkk.png" alt="Yes" className="behavai-table-icon" />
+      <img src="/assets/checks.png" alt="Yes" className="behavai-table-icon" />
     </td>
   </tr>
 
@@ -202,10 +202,10 @@ export default function BehavaiResearchDiscovery() {
       <img src="/assets/ex.png" alt="No" className="behavai-table-icon" />
     </td>
     <td className="behavai-table-cell">
-      <img src="/assets/checkkk.png" alt="Yes" className="behavai-table-icon" />
+      <img src="/assets/checks.png" alt="Yes" className="behavai-table-icon" />
     </td>
     <td className="behavai-table-cell">
-      <img src="/assets/checkkk.png" alt="Yes" className="behavai-table-icon" />
+      <img src="/assets/checks.png" alt="Yes" className="behavai-table-icon" />
     </td>
   </tr>
 
@@ -229,7 +229,7 @@ export default function BehavaiResearchDiscovery() {
     {/* BehavAI */}
     <td className="behavai-table-cell">
       <img
-        src="/assets/checkkk.png"
+        src="/assets/checks.png"
         alt="Yes"
         className="behavai-table-icon"
       />
