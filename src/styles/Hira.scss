@@ -122,7 +122,7 @@
    
    .hira-challenge {
      @include full-bleed;
-     background: #eeeff2;
+     background: rgb(234, 237, 246);
      padding: 80px 0 100px;
    }
    
@@ -510,7 +510,7 @@
    
    .hira-concept {
      @include full-bleed;
-     background: #eeeff2;
+     background: rgb(234, 237, 246);
      padding: 80px 0 100px;
    }
    
@@ -2149,7 +2149,7 @@
     display: flex;
     flex-direction: column;
     gap: tokens.$space-xs;
-    margin-bottom: 55px;
+    margin-bottom: 60px;
   
     p {
       font-size: 1.075rem;
@@ -2169,6 +2169,7 @@
     height: auto;
     display: block;
     border-radius: 18px;
+    margin-top: 40px;
   }
   @media (max-width: #{tokens.$xl_breakpoint}) {
     .hira-trust-eyebrow {
@@ -2319,7 +2320,7 @@
   
   .hira-trust-block {
     &:not(:last-child) {
-      margin-bottom: 95px;
+      margin-bottom: 120px;
     }
   }
   
@@ -2345,7 +2346,7 @@
     display: flex;
     flex-direction: column;
     gap: tokens.$space-xs;
-    margin-bottom: 55px;
+    margin-bottom: 60px;
   
     p {
       font-size: 1.075rem;
@@ -2377,7 +2378,7 @@
   .trust-sketch {
     position: relative;
     border-radius: 26px;
-    background: #eeeff2;
+    background: rgb(234, 237, 246);
     border: 2px solid var(--trust-stroke);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
     overflow: hidden;
@@ -2795,5 +2796,180 @@
   .trust-pill {
     top: 14px;
     left: 14px;
+  }
+  /* ================================================================
+   TRUST OUTRO (External Review + What I Learned)
+   Background: rgb(234, 237, 246)
+   ================================================================ */
+
+.hira-trust-outro {
+    @include full-bleed;
+    background: rgb(234, 237, 246);
+    padding: 90px 0 110px;
+  
+    /* enable your .hi highlight in this section */
+    .hi {
+      @include tokens.body-strong-light;
+      background: #c8d3f5;
+      padding: 0 6px;
+      border-radius: 6px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+  
+    /* reuse your existing side-by-side image styling, just add spacing */
+    .hira-heard-images {
+      margin-top: 60px;
+    }
+  }
+  
+  .hira-trust-outro-inner {
+    @include container();
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter-desktop);
+  }
+  
+  .hira-trust-outro-block {
+    margin-bottom: 120px;
+  
+    &--last {
+      margin-bottom: 0;
+    }
+  }
+  
+  .hira-trust-outro-header {
+    margin-bottom: 26px;
+  }
+  
+  /* ✅ Use your shared utilities (these are defined in Hira.scss) */
+  .hira-trust-outro-eyebrow {
+    @extend .hira-eyebrow;
+    margin: 0 0 10px;
+  }
+  
+  .hira-trust-outro-title {
+    @extend .hira-title;
+    margin: 0;
+  }
+  
+  .hira-trust-outro-body {
+    @extend .hira-body;
+  
+    /* override .hira-body p { margin: 0 } to allow paragraph spacing */
+    p {
+      margin: 0 0 18px;
+      line-height: 1.7;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  /* ========= Quote cards ========= */
+  
+  .hira-testimonial-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+    margin-top: 60px;
+  }
+  
+  .hira-testimonial-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 36px 34px 32px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    border: 0.5px solid rgba(0, 0, 0, 0.05);
+  
+    .testimonial-quote {
+      @extend .hira-body;
+      font-style: italic;
+      margin: 0 0 22px;
+      line-height: 1.75;
+  
+      /* stronger bold per your ask */
+      strong {
+        font-weight: 800;
+        font-style: italic;
+      }
+    }
+  
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+  
+    .author-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      object-fit: cover;
+      flex: 0 0 auto;
+    }
+  
+    .author-name {
+      @include tokens.body-strong-light;
+      margin-bottom: 2px;
+    }
+  
+    .author-role {
+      @extend .hira-body;
+      opacity: 0.82;
+      line-height: 1.25;
+    }
+  }
+  
+  /* ========= Responsive ========= */
+  
+  @media (max-width: #{tokens.$lg_breakpoint}) {
+    .hira-trust-outro {
+      padding: 78px 0 92px;
+    }
+  
+    .hira-trust-outro-inner {
+      @include container(var(--page-gutter-tablet));
+      padding: 0 var(--page-gutter-tablet);
+    }
+  
+    .hira-testimonial-cards {
+      grid-template-columns: 1fr;
+      max-width: 720px;
+    }
+  
+    .hira-testimonial-card {
+      padding: 32px 30px 28px;
+    }
+  }
+  
+  @media (max-width: #{tokens.$md_breakpoint}) {
+    .hira-trust-outro {
+      padding: 64px 0 78px;
+    }
+  
+    .hira-trust-outro-inner {
+      @include container(var(--page-gutter-mobile));
+      padding: 0 var(--page-gutter-mobile);
+    }
+  
+    .hira-trust-outro-block {
+      margin-bottom: 72px;
+    }
+  
+    .hira-testimonial-card .author-avatar {
+      width: 54px;
+      height: 54px;
+    }
+  }
+  
+  @media (max-width: #{tokens.$sm_breakpoint}) {
+    .hira-trust-outro {
+      padding: 58px 0 70px;
+    }
+  
+    .hira-testimonial-card {
+      padding: 28px 24px 24px;
+    }
   }
   

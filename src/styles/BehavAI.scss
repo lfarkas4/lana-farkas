@@ -119,7 +119,7 @@
    
    .behavai-kickoff {
      @include full-bleed;
-     background: #eeeff2;
+     background: rgb(234, 237, 246);
      padding: 80px 0 100px;
    }
    
@@ -511,7 +511,7 @@
    
    .behavai-solution {
      @include full-bleed;
-     background: #eeeff2;
+     background: rgb(234, 237, 246);
      padding: 80px 0 110px;
    }
    
@@ -930,7 +930,7 @@
 
    .behavai-impact {
     @include full-bleed;
-    background: #eeeff2;
+    background: rgb(234, 237, 246);
     padding: 80px 0 50px;
   }
   
@@ -1065,7 +1065,7 @@
   
   .behavai-status {
     @include full-bleed;
-    background: #eeeff2;
+    background: rgb(234, 237, 246);
     padding: 50px 0 40px;
     margin-top: 0;
   }
@@ -1217,7 +1217,7 @@
   
   .behavai-reflection {
     @include full-bleed;
-    background: #eeeff2;
+    background: rgb(234, 237, 246);
     padding: 50px 0 100px;
     margin-top: 0;
     position: relative; // For spark positioning
@@ -2537,7 +2537,7 @@
   align-items: center;
   gap: 10px;
 
-  background: #eeeff2;
+  background: rgb(234, 237, 246);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 999px;
   padding: 6px 28px 6px 22px;

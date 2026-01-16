@@ -7,6 +7,7 @@ import HiraPatientJourney from "../components/HiraPatientJourney";
 import HiraTheConcept from "../components/HiraTheConcept";
 import HiraSolution from "../components/HiraSolution";
 import HiraDesigningForTrust from "../components/HiraDesigningForTrust";
+import HiraTrustOutro from "../components/HiraTrustOutro";
 import UnderConstructionPage from "../components/UnderConstructionPage";
 import { caseStudies } from "../data/ProjectsData";
 import useReveal from "../utils/useReveal";
@@ -136,7 +137,7 @@ export default function Hira() {
       <HiraTheConcept />
       <HiraSolution />
       <HiraDesigningForTrust />
-    
+      <HiraTrustOutro />
 
       {/* Future sections will go here */}
 
