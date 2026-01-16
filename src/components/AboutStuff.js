@@ -19,29 +19,34 @@ const SpotifyEmbed = ({ trackId, title }) => {
   const timeoutRef = useRef(null);
 
   useEffect(() => {
+    // Once visible, we don't need to observe anymore
+    if (isVisible) return;
+
+    const el = embedRef.current; // ✅ capture once (fixes ESLint warning)
+    if (!el) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !isVisible) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
             setIsVisible(true);
             observer.unobserve(entry.target);
           }
         });
       },
-      { 
-        rootMargin: '100px', // Start loading 100px before visible
-        threshold: 0.01 
+      {
+        rootMargin: "100px", // Start loading 100px before visible
+        threshold: 0.01
       }
     );
 
-    if (embedRef.current) {
-      observer.observe(embedRef.current);
-    }
+    observer.observe(el);
 
     return () => {
-      if (embedRef.current) {
-        observer.unobserve(embedRef.current);
-      }
+      // ✅ cleanup uses captured element, not embedRef.current
+      observer.unobserve(el);
+      observer.disconnect();
+
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
@@ -116,7 +121,7 @@ const SpotifyEmbed = ({ trackId, title }) => {
           width="100%"
           height="84"
           title={title}
-          style={{ 
+          style={{
             borderRadius: "12px",
             opacity: isLoaded ? 1 : 0,
             transition: "opacity 0.3s ease"
@@ -137,14 +142,14 @@ const AboutStuff = () => {
 
   // Preconnect to Spotify domains for faster loading
   useEffect(() => {
-    const link1 = document.createElement('link');
-    link1.rel = 'preconnect';
-    link1.href = 'https://open.spotify.com';
+    const link1 = document.createElement("link");
+    link1.rel = "preconnect";
+    link1.href = "https://open.spotify.com";
     document.head.appendChild(link1);
 
-    const link2 = document.createElement('link');
-    link2.rel = 'dns-prefetch';
-    link2.href = 'https://open.spotify.com';
+    const link2 = document.createElement("link");
+    link2.rel = "dns-prefetch";
+    link2.href = "https://open.spotify.com";
     document.head.appendChild(link2);
 
     return () => {
@@ -156,39 +161,36 @@ const AboutStuff = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
+      rootMargin: "0px",
       threshold: 0.1
     };
 
     const observerCallback = (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
+          entry.target.classList.add("is-visible");
         }
       });
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    if (floatingCardsRef.current) {
-      observer.observe(floatingCardsRef.current);
-    }
-    if (spotifyRef.current) {
-      observer.observe(spotifyRef.current);
-    }
+    const floatingEl = floatingCardsRef.current; // ✅ capture once
+    const spotifyEl = spotifyRef.current;        // ✅ capture once
+
+    if (floatingEl) observer.observe(floatingEl);
+    if (spotifyEl) observer.observe(spotifyEl);
 
     return () => {
-      if (floatingCardsRef.current) {
-        observer.unobserve(floatingCardsRef.current);
-      }
-      if (spotifyRef.current) {
-        observer.unobserve(spotifyRef.current);
-      }
+      // ✅ cleanup uses captured elements, not refs
+      if (floatingEl) observer.unobserve(floatingEl);
+      if (spotifyEl) observer.unobserve(spotifyEl);
+      observer.disconnect();
     };
   }, []);
 
-  const topRowTracks = spotifyTracks.filter(track => track.row === "top");
-  const bottomRowTracks = spotifyTracks.filter(track => track.row === "bottom");
+  const topRowTracks = spotifyTracks.filter((track) => track.row === "top");
+  const bottomRowTracks = spotifyTracks.filter((track) => track.row === "bottom");
 
   return (
     <section className="about-cards">
@@ -202,7 +204,9 @@ const AboutStuff = () => {
             <div className="frame hover-label" data-label="propogation nation ☘">
               <img src="/assets/stationary.png" alt="Card 1" className="floating-img" />
             </div>
-            <p className="floating-caption">i'm also a stationery junkie <span className="cooper-symbols">✏︎</span></p>
+            <p className="floating-caption">
+              i'm also a stationery junkie <span className="cooper-symbols">✏︎</span>
+            </p>
           </div>
 
           <div className="floating-card rotate-toast offset-mid">
@@ -212,7 +216,9 @@ const AboutStuff = () => {
             <div className="frame hover-label" data-label="the best toast eva ＊">
               <img src="/assets/cafe.png" alt="Card 2" className="floating-img" />
             </div>
-            <p className="floating-caption">a hardcore cafe hopper <span className="cooper-symbols">☕︎</span></p>
+            <p className="floating-caption">
+              a hardcore cafe hopper <span className="cooper-symbols">☕︎</span>
+            </p>
           </div>
 
           <div className="floating-card rotate-craft offset-right">
@@ -222,7 +228,9 @@ const AboutStuff = () => {
             <div className="frame hover-label" data-label="my kind of therapy ✂">
               <img src="/assets/ghost.png" alt="Card 3" className="floating-img" />
             </div>
-            <p className="floating-caption">and a proud dog mom <span className="cooper-symbols">·ᴥ·</span></p>
+            <p className="floating-caption">
+              and a proud dog mom <span className="cooper-symbols">·ᴥ·</span>
+            </p>
           </div>
         </div>
       </section>
@@ -234,23 +242,17 @@ const AboutStuff = () => {
           <span className="xs-only">... a few tunes to </span>
           <span className="cooper-spotify-heading">remember me by!</span>
         </h3>
+
         <div className="spotify-trapezoid">
           <div className="spotify-row top-row">
             {topRowTracks.map((track) => (
-              <SpotifyEmbed 
-                key={track.id} 
-                trackId={track.id} 
-                title={track.title}
-              />
+              <SpotifyEmbed key={track.id} trackId={track.id} title={track.title} />
             ))}
           </div>
+
           <div className="spotify-row bottom-row">
             {bottomRowTracks.map((track) => (
-              <SpotifyEmbed 
-                key={track.id} 
-                trackId={track.id} 
-                title={track.title}
-              />
+              <SpotifyEmbed key={track.id} trackId={track.id} title={track.title} />
             ))}
           </div>
         </div>

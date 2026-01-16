@@ -25,7 +25,7 @@ export default function HiraOurChallenge() {
         <div className="hira-challenge-media">
           <img
             src="/assets/hira-graphic.png"
-            alt="Three photo cards showing gynecologic oncology care moments with icon stickers"
+            alt="Three cards showing gynecologic oncology care moments with icon stickers"
             className="hira-challenge-image"
           />
         </div>

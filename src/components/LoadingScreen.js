@@ -31,6 +31,7 @@ const LoadingScreen = ({ onLoadComplete }) => {
     if (hasCompletedRef.current) return;
 
     let isMounted = true;
+    let exitTimer = null;
 
     const criticalAssets = [
       "/assets/L@1x.png",
@@ -58,6 +59,11 @@ const LoadingScreen = ({ onLoadComplete }) => {
       setIsResting(false);
       setIsExiting(true);
       hasCompletedRef.current = true;
+
+      // ✅ Use FADE_OUT_MS so ESLint doesn't fail CI (and to sync with CSS fade)
+      exitTimer = setTimeout(() => {
+        if (isMounted) setIsVisible(false);
+      }, FADE_OUT_MS);
 
       // ✅ Tell parent immediately so hero/nav can mount BEHIND the fade-out
       // (next tick keeps this glitch-free)
@@ -114,6 +120,7 @@ const LoadingScreen = ({ onLoadComplete }) => {
       isMounted = false;
       clearTimeout(minTimer);
       clearTimeout(maxTimer);
+      if (exitTimer) clearTimeout(exitTimer);
     };
   }, [onLoadComplete]);
 
