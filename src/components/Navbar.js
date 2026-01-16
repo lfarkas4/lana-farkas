@@ -161,7 +161,7 @@ const Navigation = () => {
               {renderAnimatedLink("about", "about", "/about", handleAboutClick)}
 
               <a
-                href="/assets/Lana_Farkas_Resume_2025.pdf"
+                href="/assets/Lana_Farkas_Resume_2026.pdf"
                 className="nav-link"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -190,7 +190,7 @@ const Navigation = () => {
           {renderAnimatedLink("about", "about", "/about", handleAboutClick)}
 
           <a
-            href="/assets/lana_resume.pdf"
+            href="/assets/Lana_Farkas_Resume_2026.pdf"
             className="nav-link"
             target="_blank"
             rel="noopener noreferrer"

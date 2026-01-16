@@ -12,39 +12,124 @@ export default function HiraDesigningForTrust() {
       aria-label="Designing for Trust"
     >
       <div className="hira-trust-inner reveal">
-        <header className="hira-trust-header">
-          <p className="hira-trust-eyebrow">Designing for Trust</p>
+        {/* =========================================================
+            Subsection 1: Concept Iterations
+           ========================================================= */}
+        <div className="hira-trust-block">
+          <header className="hira-trust-header">
+            <p className="hira-trust-eyebrow">Concept Iterations</p>
 
-          <h2 className="hira-trust-title">
-            Hira is a supportive capture tool, not a medical decision-maker, designed
-            with <em>clear safety</em> and <em>consent boundaries</em>.
-          </h2>
-        </header>
+            <h2 className="hira-trust-title">
+              Early concepts gave Hira more “authority,” but feedback showed patients
+              wanted <em>less assumption</em> and <em>more control</em>.
+            </h2>
+          </header>
 
-        <div className="hira-trust-body">
-          <p>
-            In oncology care, product choices can introduce risk, so we scoped Hira
-            with explicit guardrails. It{" "}
-            <span className="hi">captures patient voice</span> and{" "}
-            <span className="hi">organizes it for recall</span>, but it does not
-            diagnose, triage, or recommend treatment.
-          </p>
+          <div className="hira-trust-body">
+            <p>
+              We explored {" "}<span className="hi">interpretation-first</span> drafts that inferred meaning from
+              symptoms, then narrowed Hira to capture and organization that
+              surfaces patterns without assigning meaning. 
+              </p>
+              <p>
+              The shift was quite simple. We found that the less Hira assumed, the{" "}
+              <span className="hi">more patients trusted it</span>.
+            </p>
+          </div>
 
-          <p>
-            Nudges are context-based reminders, and anything that leaves the system
-            is <span className="hi">user-initiated</span> and{" "}
-            <span className="hi">reviewable</span>. Patients can snooze, dismiss,
-            edit, or share, with privacy controls on by default.
-          </p>
+          <div
+            className="trust-iterations-grid"
+            aria-label="Concept sketches comparison"
+          >
+            {/* Left (Explored) */}
+            <div className="trust-sketch trust-sketch--blue">
+              <div className="trust-pill trust-pill--blue">Explored Direction</div>
+              <img
+                className="trust-sketch-image"
+                src="/assets/hirasket1.png"
+                alt="Early Hira sketch exploring interpretation-first meaning"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Arrow */}
+            <div className="trust-iterations-arrow" aria-hidden="true">
+  <img src="/assets/arrey.png" alt="" loading="lazy" />
+</div>
+
+            {/* Right (Final) */}
+            <div className="trust-sketch trust-sketch--green">
+              <div className="trust-pill trust-pill--green">Final Direction</div>
+              <img
+                className="trust-sketch-image"
+                src="/assets/hirasket2.png"
+                alt="Final Hira sketch focused on capture and organization"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Callouts */}
+            <div className="trust-callout trust-callout--blue">
+              <img
+                className="trust-callout-icon"
+                src="/assets/warn.png"
+                alt=""
+                loading="lazy"
+              />
+              <p className="trust-callout-text">
+                Suggests medical meaning and can steer decisions without clinical
+                context.
+              </p>
+            </div>
+
+            <div className="trust-callout trust-callout--green">
+              <img
+                className="trust-callout-icon"
+                src="/assets/lovee.png"
+                alt=""
+                loading="lazy"
+              />
+              <p className="trust-callout-text">
+                Supports recall and prep without telling the patient what it “means.”
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="hira-trust-media" aria-label="Safety and consent diagram">
-          <img
-            className="hira-trust-image"
-            src="/assets/hiragraphic2.png"
-            alt="Diagram illustrating Hira safety and consent boundaries"
-            loading="lazy"
-          />
+        {/* =========================================================
+            Subsection 2: Where Hira Fits
+           ========================================================= */}
+        <div className="hira-trust-block">
+          <header className="hira-trust-header">
+            <p className="hira-trust-eyebrow">Where Hira Fits</p>
+
+            <h2 className="hira-trust-title">
+              Hira strengthens <em>continuity of care</em> between visits while staying
+              outside <em>medical judgment</em>.
+            </h2>
+          </header>
+
+          <div className="hira-trust-body hira-trust-body--tight">
+            <p>
+              In oncology care, the wrong kind of “help” can{" "}
+              <span className="hi">create risk</span>, so Hira does not diagnose,
+              triage, or recommend treatment. Instead, it keeps patients’
+              observations organized and ready for{" "}
+              <span className="hi">care conversations</span>.
+            </p>
+          </div>
+
+          <div
+            className="hira-trust-media hira-trust-media--where"
+            aria-label="Where Hira fits graphic"
+          >
+            <img
+              className="hira-trust-image hira-trust-image--where"
+              src="/assets/hiragraph3.png"
+              alt="Graphic showing where Hira fits in continuity of care"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </section>
