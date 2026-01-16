@@ -50,14 +50,15 @@ export default function HiraTheConcept() {
           </h2>
         </header>
 
-        {/* Body */}
-        <div className="hira-concept-body">
-          <p>
-          We explored what forms of support could be embedded into cancer care workflows without requiring <span className="hi">more attention</span> from patients, especially when capacity is limited.          </p>
-          <p>
-            The direction we kept returning to was <span className="hi">lightweight capture</span> paired with <span className="hi">richer context</span>, something patients could use <span className="hi">in the moment</span> with minimal effort and revisit later when it is time to reflect, prepare, or follow through.
-          </p>
-        </div>
+{/* Body */}
+<div className="hira-concept-body">
+  <p>
+    We explored different ways to embed support into cancer care, and ultimately landed on{" "}
+    <span className="hi">voice recording</span> as <span className="hi">lightweight capture</span> that adds{" "}
+    richer context patients can use <span className="hi">in the moment</span> and
+    revisit later.
+  </p>
+</div>
 
         {/* Concept Cards */}
         <div className="hira-concept-cards">

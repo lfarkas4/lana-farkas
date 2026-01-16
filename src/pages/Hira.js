@@ -5,6 +5,8 @@ import NextProjectTeaser from "../components/NextProjectTeaser";
 import HiraOurChallenge from "../components/HiraOurChallenge";
 import HiraPatientJourney from "../components/HiraPatientJourney";
 import HiraTheConcept from "../components/HiraTheConcept";
+import HiraSolution from "../components/HiraSolution";
+import HiraDesigningForTrust from "../components/HiraDesigningForTrust";
 import UnderConstructionPage from "../components/UnderConstructionPage";
 import { caseStudies } from "../data/ProjectsData";
 import useReveal from "../utils/useReveal";
@@ -34,9 +36,6 @@ export default function Hira() {
   if (SHOW_UNDER_CONSTRUCTION) {
     return <UnderConstructionPage projectName="Hira" />;
   }
-
-  // ════════════════════════════════════════════════════════════
-  // OPTION 2: Show the full case study (your content below)
   // ════════════════════════════════════════════════════════════
 
   const splitTeam = (txt) => {
@@ -135,6 +134,9 @@ export default function Hira() {
       <HiraOurChallenge />
       <HiraPatientJourney />
       <HiraTheConcept />
+      <HiraSolution />
+      <HiraDesigningForTrust />
+    
 
       {/* Future sections will go here */}
 

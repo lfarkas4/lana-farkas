@@ -59,7 +59,7 @@ export const caseStudies = [
       description:
         "Explored new learning models that empower students to shape their own educational journeys.",
       link: "/case-studies/stackbuilder",
-      video: "/assets/stakks.mp4",
+      video: "/assets/stkat.mp4",
       brandMark: "/assets/stack-mark.svg",
       brandMarkH: "20px",                // ← per-project size
       meta: {
@@ -79,6 +79,7 @@ export const caseStudies = [
         "Refined mission interface for lunar rover in collaboration with NASA and CMU.",
       link: "/case-studies/moonranger",
       image: "/assets/moonthumb.png",
+      // video: "/assets/moon.mp4",
       brandMark: "/assets/moonranger-mark.svg",
       brandMarkH: "23px",                // ← per-project size
       meta: {

@@ -128,7 +128,7 @@ export default function HiraPatientJourney() {
           <div className="hira-heard-body">
             <p>
               During co-design, patients mapped how support should show up before, during, and after appointments, then{" "}
-              <span className="hi">built concepts for a virtual caregiver</span>. We looked for repeat themes across timing, tone, and desired behaviors.
+              <span className="hi">built concepts</span> for a <span className="hi">virtual caregiver</span>. We looked for repeat themes across timing, tone, and desired behaviors.
             </p>
           </div>
 

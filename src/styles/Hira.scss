@@ -232,8 +232,8 @@
    .journey-line {
      position: absolute;
      top: 0; /* Line at wrapper position */
-     left: 2%; /* Wider to span column width */
-     right: 2%;
+     left: 4%; /* Wider to span column width */
+     right: 4%;
      height: 1px; /* Match BehavAI line thickness */
      background: #d6d6d6;
      z-index: 0;
@@ -243,12 +243,12 @@
        content: '';
        position: absolute;
        right: -8px;
-       top: -4px;
+       top: -4.5px;
        width: 0;
        height: 0;
        border-left: 8px solid #d6d6d6;
-       border-top: 4.5px solid transparent;
-       border-bottom: 4.5px solid transparent;
+       border-top: 5px solid transparent;
+       border-bottom: 5px solid transparent;
      }
    }
    
@@ -457,7 +457,7 @@
      background: #ECF1FF;
      border-radius: 12px;
      padding: 20px 28px;
-     margin-bottom: 60px;
+     margin: 50px auto 60px; /* Centered with bottom margin */
      max-width: 900px;
    }
    
@@ -551,7 +551,7 @@
      display: grid;
      grid-template-columns: repeat(3, 1fr);
      gap: 20px;
-     max-width: 1100px;
+    //  max-width: 1100px;
      margin: 0 auto;
    }
    
@@ -1399,3 +1399,890 @@
        font-size: 0.825rem !important;
      }
    }
+/* ================================================================
+   HIRA SOLUTION SECTION
+   ONE continuous dark section (#03090b) with all solution content
+   ================================================================ */
+
+   /* ================================================================
+      MIXINS & HELPERS
+      ================================================================ */
+   
+   @mixin full-bleed {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   }
+   
+   @mixin container($pad: var(--page-gutter-desktop)) {
+     @include tokens.container-page($pad);
+   }
+   
+   /* ================================================================
+      MAIN SOLUTION SECTION
+      ================================================================ */
+   
+   .hira-solution {
+     @include full-bleed;
+     @include tokens.section-dark(80px, 100px);
+     background: #03090b;
+   }
+   
+   .hira-solution-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 25px var(--page-gutter-desktop);
+   }
+   
+   /* ================================================================
+      HERO: MEET HIRA
+      Asymmetric split - title takes ~69% width, watch takes ~31%
+      ================================================================ */
+   
+   .hira-solution-hero {
+     display: grid;
+     grid-template-columns: 11fr 5fr;
+     gap: 60px;
+     align-items: center;
+     margin-bottom: 40px;
+   }
+   
+   .hira-solution-hero-content {
+     display: flex;
+     flex-direction: column;
+     /* No gap here - let margin-bottom on eyebrow handle spacing */
+   }
+   
+   .hira-solution-hero-eyebrow {
+     @include tokens.type-mont-poj-dark-header;
+     color: tokens.$prisec;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .hira-solution-hero-title {
+     @include tokens.type-mont-poj-dark-headerintro;
+     color: tokens.$prisec;
+     line-height: 1.45;
+     letter-spacing: -0.025px;
+   
+     em {
+       font-style: italic;
+       font-weight: 400;
+     }
+   }
+   
+   .hira-solution-hero-media {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   
+   .hira-solution-hero-image {
+     width: 100%;
+     max-width: 320px; /* keep as-is */
+     height: auto;
+     display: block;
+   }
+   
+   /* ================================================================
+      DEMOS: WATCH & MOBILE
+      Watch demos stay side-by-side until SM breakpoint
+      Mobile demos stay side-by-side until SM breakpoint
+      ================================================================ */
+   
+   .hira-solution-demo {
+     display: grid;
+   
+     /* WATCH demos: balanced sizing */
+     grid-template-columns: 1fr 2.5fr;
+   
+     gap: 50px;
+     align-items: center;
+     margin-bottom: -10px;
+   }
+   
+   /* Reverse layout (content left, media right) */
+   .hira-solution-demo--reverse {
+     grid-template-columns: 2.5fr 1fr;
+   
+     .hira-solution-demo-media {
+       order: 2;
+     }
+   
+     .hira-solution-demo-content {
+       order: 1;
+     }
+   }
+   
+   /* MOBILE demos: phone bigger than watch */
+   .hira-solution-demo--mobile {
+     grid-template-columns: 1fr 2fr;
+     margin-top: -40px;
+   
+     &.hira-solution-demo--reverse {
+       grid-template-columns: 2fr 1fr;
+     }
+   }
+   
+   .hira-solution-demo-media {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-width: 0;
+   }
+   
+   .hira-solution-demo-content {
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+     min-width: 0;
+   }
+   
+   /* Videos: let grid columns control sizing */
+   .hira-solution-demo-video {
+     width: 100%;
+     height: auto;
+     display: block;
+     border-radius: 20px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+   }
+   
+   .hira-solution-demo-video--mobile {
+     /* No max-width, grid controls size */
+   }
+   
+   .hira-solution-demo-heading {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.35rem;
+     font-weight: 500;
+     color: tokens.$prisec;
+     line-height: 1.4;
+     margin: 0;
+   }
+   
+   .hira-solution-demo-number {
+     color: #0c6fff;
+     font-style: italic;
+     font-weight: 500;
+     margin-right: 8px;
+   }
+   
+   .hira-solution-demo-description {
+     @include tokens.type-mont-poj-light-body;
+     color: tokens.$primary;
+     line-height: 1.65;
+     font-size: 1.075rem;
+     margin: 0;
+     letter-spacing: 0.075px;
+   }
+   
+   /* ================================================================
+      LIVE CONTEXT SECTION
+      ================================================================ */
+   
+   .hira-live-context {
+     margin-bottom: 180px;
+   }
+   
+   .hira-live-context-header {
+     margin-bottom: 100px;
+     margin-top: 145px;
+   }
+   
+   .hira-live-context-eyebrow {
+     @include tokens.type-mont-poj-dark-header;
+     color: tokens.$prisec;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .hira-live-context-title {
+     @include tokens.type-mont-poj-dark-headerintro;
+     color: tokens.$prisec;
+     line-height: 1.45;
+     letter-spacing: -0.025px;
+   
+     em {
+       font-style: italic;
+       font-weight: 400;
+     }
+   }
+   
+   .hira-live-context-visual {
+     width: 100%;
+     max-width: 1200px;
+     margin: 0 auto;
+     display: flex;
+     justify-content: center;
+   }
+   
+   .hira-live-context-image {
+     width: 100%;
+     height: auto;
+     display: block;
+   }
+   
+   /* ================================================================
+      MOBILE COMPANION INTRO
+      ================================================================ */
+   
+   .hira-mobile-intro {
+     margin-bottom: 160px;
+   }
+   
+   .hira-mobile-intro-eyebrow {
+     @include tokens.type-mont-poj-dark-header;
+     color: tokens.$prisec;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .hira-mobile-intro-title {
+     @include tokens.type-mont-poj-dark-headerintro;
+     color: tokens.$prisec;
+     line-height: 1.45;
+   
+     em {
+       font-style: italic;
+       font-weight: 400;
+     }
+   }
+   
+   /* ================================================================
+      RESPONSIVE BREAKPOINTS
+      (Preserve your spacing/typography rules, and tune min widths down)
+      ================================================================ */
+   
+   /* XL: ≤ 1200px */
+   @media (max-width: #{tokens.$xl_breakpoint}) {
+     /* Hero */
+     .hira-solution-hero-title {
+       font-size: 1.75rem;
+     }
+   
+     .hira-solution-hero {
+       gap: 50px;
+       margin-bottom: 70px;
+     }
+   
+     .hira-solution-hero-image {
+       max-width: 280px;
+     }
+   
+     /* Demos - balanced sizing */
+     .hira-solution-demo {
+       gap: 45px;
+       margin-bottom: 50px;
+       grid-template-columns: 1fr 2.3fr;
+     }
+   
+     .hira-solution-demo--reverse {
+       grid-template-columns: 2.3fr 1fr;
+     }
+   
+     .hira-solution-demo--mobile {
+       grid-template-columns: 1fr 1.8fr;
+       margin-top: -30px;
+   
+       &.hira-solution-demo--reverse {
+         grid-template-columns: 1.8fr 1fr;
+       }
+     }
+   
+     .hira-solution-demo-heading {
+       font-size: 1.25rem;
+     }
+   
+     .hira-solution-demo-description {
+       font-size: 0.95rem;
+     }
+   
+     /* Live Context - maintain proportional vertical spacing */
+     .hira-live-context {
+       margin-bottom: 160px;
+     }
+   
+     .hira-live-context-header {
+       margin-bottom: 70px;
+       margin-top: 130px;
+     }
+   
+     .hira-live-context-title {
+       font-size: 1.75rem;
+     }
+   
+     /* Mobile Intro */
+     .hira-mobile-intro {
+       margin-bottom: 140px;
+     }
+   
+     .hira-mobile-intro-title {
+       font-size: 1.75rem;
+     }
+   }
+   
+   /* LG: ≤ 991px */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     /* Overall section */
+     .hira-solution {
+       padding: 70px 0 90px;
+     }
+   
+     .hira-solution-inner {
+       @include container(var(--page-gutter-tablet));
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     /* Hero - stack to single column */
+     .hira-solution-hero {
+       grid-template-columns: 1fr;
+       gap: 40px;
+       margin-bottom: 60px;
+     }
+   
+     .hira-solution-hero-content {
+       order: 1;
+     }
+   
+     .hira-solution-hero-media {
+       order: 2;
+     }
+   
+     .hira-solution-hero-title {
+       font-size: 1.5rem;
+     }
+   
+     .hira-solution-hero-image {
+       max-width: 300px;
+     }
+   
+     /* Watch Demos - NOW STACK at LG */
+     .hira-solution-demo,
+     .hira-solution-demo--reverse {
+       grid-template-columns: 1fr;
+       gap: 20px;
+       margin-bottom: 100px;
+     }
+
+     /* When stacked: content (description) first, then media (video) */
+     .hira-solution-demo .hira-solution-demo-content {
+       order: 1;
+     }
+   
+     .hira-solution-demo .hira-solution-demo-media {
+       order: 2;
+     }
+   
+     /* Override the reverse class ordering when stacked */
+     .hira-solution-demo--reverse .hira-solution-demo-content {
+       order: 1;
+     }
+   
+     .hira-solution-demo--reverse .hira-solution-demo-media {
+       order: 2;
+     }
+
+     /* Constrain video width when stacked */
+     .hira-solution-demo-video {
+       max-width: 300px;
+       margin: 0 auto;
+     }
+
+     /* Mobile Demos - also stacked */
+     .hira-solution-demo--mobile,
+     .hira-solution-demo--mobile.hira-solution-demo--reverse {
+       grid-template-columns: 1fr;
+       gap: 20px;
+       margin-top: 20px;
+       margin-bottom: 100px;
+     }
+
+     .hira-solution-demo-video--mobile {
+       max-width: 360px;
+       margin: 0 auto;
+     }
+
+     .hira-solution-demo-heading {
+       font-size: 1.15rem;
+     }
+   
+     .hira-solution-demo-description {
+       font-size: 0.95rem;
+     }
+
+     /* Live Context - increased spacing for section separation */
+     .hira-live-context {
+       margin-bottom: 140px;
+     }
+   
+     .hira-live-context-header {
+       margin-bottom: 60px;
+       margin-top: 120px;
+     }
+   
+     .hira-live-context-title {
+       font-size: 1.5rem;
+     }
+   
+     /* Mobile Intro - reduced spacing to connect with mobile demos */
+     .hira-mobile-intro {
+       margin-bottom: 60px;
+     }
+   
+     .hira-mobile-intro-title {
+       font-size: 1.5rem;
+     }
+   }
+   
+   /* MD: ≤ 767px */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+     /* Overall section */
+     .hira-solution {
+       padding: 60px 0 80px;
+     }
+   
+     /* Hero */
+     .hira-solution-hero {
+       gap: 35px;
+       margin-bottom: 50px;
+     }
+   
+     .hira-solution-hero-title {
+       font-size: 1.4rem;
+       line-height: 1.4;
+     }
+   
+     .hira-solution-hero-image {
+       max-width: 260px;
+     }
+   
+     /* Watch Demos - already stacked from LG, adjust sizes */
+     .hira-solution-demo,
+     .hira-solution-demo--reverse {
+       gap: 20px;
+       margin-bottom: 100px;
+     }
+
+     .hira-solution-demo-video {
+       max-width: 280px;
+     }
+
+     /* Mobile Demos */
+     .hira-solution-demo--mobile,
+     .hira-solution-demo--mobile.hira-solution-demo--reverse {
+       gap: 20px;
+       margin-bottom: 100px;
+     }
+
+     .hira-solution-demo-video--mobile {
+       max-width: 320px;
+     }
+
+     .hira-solution-demo-heading {
+       font-size: 1.1rem;
+     }
+   
+     .hira-solution-demo-description {
+       font-size: 0.95rem;
+     }
+   
+     /* Live Context - increased spacing for section separation */
+     .hira-live-context {
+       margin-bottom: 140px;
+     }
+   
+     .hira-live-context-header {
+       margin-bottom: 55px;
+       margin-top: 110px;
+     }
+   
+     .hira-live-context-title {
+       font-size: 1.4rem;
+     }
+   
+     /* Mobile Intro - reduced spacing to connect with mobile demos */
+     .hira-mobile-intro {
+       margin-bottom: 60px;
+     }
+   
+     .hira-mobile-intro-title {
+       font-size: 1.4rem;
+     }
+   }
+   
+   /* SM: ≤ 625px */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     /* Overall section */
+     .hira-solution {
+       padding: 50px 0 70px;
+     }
+   
+     .hira-solution-inner {
+       @include container(var(--page-gutter-xs));
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     /* Hero */
+     .hira-solution-hero {
+       gap: 30px;
+       margin-bottom: 45px;
+     }
+   
+     .hira-solution-hero-eyebrow {
+       font-size: 1.1rem;
+     }
+   
+     .hira-solution-hero-title {
+       font-size: 1.3rem;
+       line-height: 1.45;
+     }
+   
+     .hira-solution-hero-image {
+       max-width: 220px;
+     }
+   
+     /* Watch Demos - already stacked from MD, adjust sizes */
+     .hira-solution-demo,
+     .hira-solution-demo--reverse {
+       gap: 18px;
+       margin-bottom: 110px;
+     }
+   
+     .hira-solution-demo-video {
+       max-width: 260px;
+     }
+   
+     /* Mobile Demos */
+     .hira-solution-demo--mobile,
+     .hira-solution-demo--mobile.hira-solution-demo--reverse {
+       gap: 18px;
+       margin-bottom: 110px;
+     }
+   
+     .hira-solution-demo-video--mobile {
+       max-width: 300px;
+     }
+   
+     .hira-solution-demo-heading {
+       font-size: 1rem;
+     }
+   
+     .hira-solution-demo-description {
+       font-size: 0.82rem;
+     }
+   
+     /* Live Context - increased spacing for section separation */
+     .hira-live-context {
+       margin-bottom: 140px;
+     }
+   
+     .hira-live-context-header {
+       margin-bottom: 50px;
+       margin-top: 100px;
+     }
+   
+     .hira-live-context-eyebrow {
+       font-size: 1.1rem;
+     }
+   
+     .hira-live-context-title {
+       font-size: 1.3rem;
+     }
+   
+     /* Mobile Intro - reduced spacing to connect with mobile demos */
+     .hira-mobile-intro {
+       margin-bottom: 60px;
+     }
+   
+     .hira-mobile-intro-eyebrow {
+       font-size: 1.1rem;
+     }
+   
+     .hira-mobile-intro-title {
+       font-size: 1.3rem;
+     }
+   }
+   
+   /* XS: ≤ 464px */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     /* Overall section */
+     .hira-solution {
+       padding: 40px 0 60px;
+     }
+   
+     /* Hero */
+     .hira-solution-hero {
+       gap: 25px;
+       margin-bottom: 40px;
+     }
+   
+     .hira-solution-hero-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-solution-hero-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .hira-solution-hero-image {
+       max-width: 180px;
+     }
+   
+     /* Demos - already stacked from MD, adjust sizes */
+     .hira-solution-demo,
+     .hira-solution-demo--reverse {
+       gap: 16px;
+       margin-bottom: 100px;
+     }
+   
+     .hira-solution-demo-video {
+       max-width: 240px;
+     }
+   
+     .hira-solution-demo--mobile,
+     .hira-solution-demo--mobile.hira-solution-demo--reverse {
+       gap: 16px;
+       margin-bottom: 100px;
+       margin-top: 15px;
+     }
+   
+     .hira-solution-demo-video--mobile {
+       max-width: 260px;
+     }
+   
+     .hira-solution-demo-heading {
+       font-size: 0.95rem;
+     }
+   
+     .hira-solution-demo-description {
+       font-size: 0.825rem;
+       line-height: 1.6;
+     }
+   
+     /* Live Context - increased spacing for section separation */
+     .hira-live-context {
+       margin-bottom: 130px;
+     }
+   
+     .hira-live-context-header {
+       margin-bottom: 40px;
+       margin-top: 80px;
+     }
+   
+     .hira-live-context-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-live-context-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     /* Mobile Intro - reduced spacing to connect with mobile demos */
+     .hira-mobile-intro {
+       margin-bottom: 50px;
+     }
+   
+     .hira-mobile-intro-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-mobile-intro-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     /* Disable scroll reveals on very small screens */
+     .hira-solution .reveal {
+       opacity: 1 !important;
+       transform: none !important;
+       animation: none !important;
+       transition: none !important;
+     }
+   }
+   
+   /* ================================================================
+   SECTION: DESIGNING FOR TRUST
+   ================================================================ */
+
+.hira-trust {
+    @include full-bleed;
+    background: #fafafe;
+    padding: 80px 0 100px;
+  }
+  
+  .hira-trust-inner {
+    @include container();
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter-desktop);
+  }
+  
+  .hira-trust-header {
+    margin-bottom: 35px;
+  }
+  
+  .hira-trust-eyebrow {
+    @extend .hira-eyebrow;
+  }
+  
+  .hira-trust-title {
+    @extend .hira-title;
+  
+    em {
+      font-style: italic;
+      font-weight: 425;
+    }
+  }
+  
+  .hira-trust-body {
+    @extend .hira-body;
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$space-xs;
+    margin-bottom: 55px;
+  
+    p {
+      font-size: 1.075rem;
+      line-height: 1.65;
+    }
+  }
+  
+  .hira-trust-media {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hira-trust-image {
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+  }
+  @media (max-width: #{tokens.$xl_breakpoint}) {
+    .hira-trust-eyebrow {
+      font-size: 1.1rem;
+    }
+  
+    .hira-trust-title {
+      font-size: 1.75rem;
+      line-height: 1.35;
+    }
+  
+    .hira-trust-body p {
+      font-size: 0.95rem !important;
+    }
+  
+    .hira-trust {
+      padding: 75px 0 95px;
+    }
+  
+    .hira-trust-body {
+      margin-bottom: 50px;
+    }
+  
+    .hira-trust-image {
+      border-radius: 16px;
+    }
+  }
+  @media (max-width: #{tokens.$lg_breakpoint}) {
+    .hira-trust {
+      padding: 70px 0 90px;
+    }
+  
+    .hira-trust-inner {
+      @include container(var(--page-gutter-tablet));
+      padding: 0 var(--page-gutter-tablet);
+    }
+  
+    .hira-trust-title {
+      font-size: 1.5rem;
+    }
+  
+    .hira-trust-body p {
+      font-size: 0.95rem !important;
+    }
+  
+    .hira-trust-body {
+      margin-bottom: 45px;
+    }
+  }
+  @media (max-width: #{tokens.$md_breakpoint}) {
+    .hira-trust {
+      padding: 60px 0 80px;
+    }
+  
+    .hira-trust-title {
+      font-size: 1.4rem;
+      line-height: 1.4;
+    }
+  
+    .hira-trust-body {
+      margin-bottom: 40px;
+    }
+  
+    .hira-trust-image {
+      border-radius: 14px;
+    }
+  }
+  @media (max-width: #{tokens.$sm_breakpoint}) {
+    .hira-trust {
+      padding: 50px 0 70px;
+    }
+  
+    .hira-trust-inner {
+      @include container(var(--page-gutter-xs));
+      padding: 0 var(--page-gutter-xs);
+    }
+  
+    .hira-trust-eyebrow {
+      font-size: 1.1rem;
+    }
+  
+    .hira-trust-title {
+      font-size: 1.3rem;
+      line-height: 1.45;
+    }
+  
+    .hira-trust-body p {
+      font-size: 0.82rem !important;
+    }
+  
+    .hira-trust-body {
+      margin-bottom: 35px;
+    }
+  }
+  @media (max-width: #{tokens.$xs_breakpoint}) {
+    .hira-trust {
+      padding: 40px 0 60px;
+    }
+  
+    .hira-trust-eyebrow {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+  
+    .hira-trust-title {
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+  
+    .hira-trust-body p {
+      font-size: 0.825rem !important;
+    }
+  
+    .hira-trust-image {
+      border-radius: 12px;
+    }
+  }
