@@ -6,9 +6,11 @@ import HiraOurChallenge from "../components/HiraOurChallenge";
 import HiraPatientJourney from "../components/HiraPatientJourney";
 import HiraTheConcept from "../components/HiraTheConcept";
 import HiraSolution from "../components/HiraSolution";
-import HiraDesigningForTrust from "../components/HiraDesigningForTrust";
 import HiraTrustOutro from "../components/HiraTrustOutro";
 import UnderConstructionPage from "../components/UnderConstructionPage";
+import HiraWhatWeHeard from "../components/HiraWhatWeHeard";
+import HiraProductPivot from "../components/HiraProductPivot";
+
 import { caseStudies } from "../data/ProjectsData";
 import useReveal from "../utils/useReveal";
 import "../styles/Hira.scss";
@@ -22,7 +24,7 @@ const iconMap = {
 // Toggle this to switch between the placeholder and full case study
 // Set to `false` when you're ready to show the actual content
 // ═══════════════════════════════════════════════════════════════
-const SHOW_UNDER_CONSTRUCTION = true;
+const SHOW_UNDER_CONSTRUCTION = false;
 
 export default function Hira() {
   // Set up scroll-reveal for hero + meta - MUST be at the top before any returns
@@ -132,12 +134,15 @@ export default function Hira() {
       </div>
 
       {/* ===== CASE STUDY CONTENT ===== */}
-      <HiraOurChallenge />
-      <HiraPatientJourney />
-      <HiraTheConcept />
-      <HiraSolution />
-      <HiraDesigningForTrust />
-      <HiraTrustOutro />
+<HiraOurChallenge />
+<HiraPatientJourney />
+<HiraTheConcept />
+<HiraWhatWeHeard />
+<HiraProductPivot />
+<HiraSolution />
+<HiraTrustOutro />
+
+      
 
       {/* Future sections will go here */}
 

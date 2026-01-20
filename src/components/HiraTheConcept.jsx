@@ -44,7 +44,7 @@ export default function HiraTheConcept() {
       <div className="hira-concept-inner reveal">
         {/* Header */}
         <header className="hira-concept-header">
-          <p className="hira-concept-eyebrow">The Concept</p>
+          <p className="hira-concept-eyebrow">Where We Landed</p>
           <h2 className="hira-concept-title">
             A <em>listening-first</em> wearable that helps patients <em>capture</em> what <em>matters</em> without adding friction.
           </h2>
@@ -53,8 +53,8 @@ export default function HiraTheConcept() {
 {/* Body */}
 <div className="hira-concept-body">
   <p>
-    We explored different ways to embed support into cancer care, and ultimately landed on{" "}
-    <span className="hi">voice recording</span> as <span className="hi">lightweight capture</span> that adds{" "}
+    We explored different ways to embed support into cancer care, and ultimately landed on an {" "}
+    <span className="hi">ambient listening</span> wearable as <span className="hi">lightweight capture</span> that adds{" "}
     richer context patients can use <span className="hi">in the moment</span> and
     revisit later.
   </p>

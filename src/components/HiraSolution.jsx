@@ -16,18 +16,10 @@ export default function HiraSolution() {
         {/* ===== HERO: MEET HIRA ===== */}
         <div className="hira-solution-hero reveal">
           <div className="hira-solution-hero-content">
-            <p className="hira-solution-hero-eyebrow">The Solution</p>
+            <p className="hira-solution-hero-eyebrow">Final Solution</p>
             <h2 className="hira-solution-hero-title">
-              Meet Hira, a quiet WatchOS voice space for <em>talking points</em>, <em>patterns</em>, and <em>follow-through</em>.
+              Meet Hira, A WatchOS tool designed to help patients <em>feel heard</em>, <em>stay grounded</em>, and leave appointments with <em>clarity</em>.
             </h2>
-          </div>
-
-          <div className="hira-solution-hero-media">
-            <img
-              src="/assets/hiramock.png"
-              alt="Hira app on Apple Watch showing activity rings and health data"
-              className="hira-solution-hero-image"
-            />
           </div>
         </div>
 
@@ -35,7 +27,7 @@ export default function HiraSolution() {
         <div className="hira-solution-demo reveal">
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hira1.mp4"
+              src="/assets/hirra4.mp4"
               autoPlay
               muted
               loop
@@ -67,7 +59,7 @@ export default function HiraSolution() {
 
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hira1.mp4"
+              src="/assets/hirrra.mp4"
               autoPlay
               muted
               loop
@@ -81,7 +73,7 @@ export default function HiraSolution() {
         <div className="hira-solution-demo reveal">
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hira1.mp4"
+              src="/assets/hirrrra3.mp4"
               autoPlay
               muted
               loop
@@ -110,11 +102,14 @@ export default function HiraSolution() {
           </header>
 
           <div className="hira-live-context-visual">
-            <img
-              src="/assets/hira-live-context.png"
-              alt="Hira's live context visualization showing contextual notifications around Apple Watch"
-              className="hira-live-context-image"
-            />
+          <video
+      src="/assets/nutif.mp4"
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="hira-live-context-image"
+    />
           </div>
         </div>
 
@@ -130,7 +125,7 @@ export default function HiraSolution() {
         <div className="hira-solution-demo hira-solution-demo--mobile reveal">
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hiramob1.mp4"
+              src="/assets/hick2.mp4"
               autoPlay
               muted
               loop
@@ -162,7 +157,7 @@ export default function HiraSolution() {
 
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hiramob1.mp4"
+              src="/assets/hick_1.mp4"
               autoPlay
               muted
               loop

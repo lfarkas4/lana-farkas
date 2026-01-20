@@ -60,6 +60,7 @@ export const caseStudies = [
         "Explored new learning models that empower students to shape their own educational journeys.",
       link: "/case-studies/stackbuilder",
       video: "/assets/stokat.mp4",
+      // image: "/assets/musify.png",
       brandMark: "/assets/stack-mark.svg",
       brandMarkH: "20px",                // ← per-project size
       meta: {
@@ -112,6 +113,7 @@ export const caseStudies = [
         "Ideated mobile app to counter addictive technology through creative expression.",
       link: "/case-studies/lightthemuse",
       image: "/assets/whatsapp.png",
+            // video: "/assets/stokat.mp4",
       brandMark: "/assets/lightthemuse-mark.svg",
       brandMarkH: "24px",                // ← per-project size
       meta: {

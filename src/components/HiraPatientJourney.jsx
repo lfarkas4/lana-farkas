@@ -4,14 +4,15 @@ import useReveal from "../utils/useReveal";
 
 export default function HiraPatientJourney() {
   const journeySectionRef = useReveal();
-  const heardSectionRef = useReveal();
+  const hmwSectionRef = useReveal();
+  const directionsSectionRef = useReveal();
 
   const journeyColumns = [
     {
       icon: "/assets/waiting.png",
       title: "Pre Appt.",
       subtitle: "The Waiting Room",
-      color: "pre", // Will map to box color #ECF1FF
+      color: "pre",
       boxes: [
         { tag: "PAIN", text: "Anxiety builds before the visit" },
         { tag: "TASK", text: "Remember questions and symptoms" },
@@ -22,7 +23,7 @@ export default function HiraPatientJourney() {
       icon: "/assets/exam.png",
       title: "During Appt.",
       subtitle: "Inside the Exam Room",
-      color: "during", // Will map to box color #D7E1FF
+      color: "during",
       boxes: [
         { tag: "PAIN", text: "Information moves too fast" },
         { tag: "TASK", text: "Ask the right questions in the moment" },
@@ -33,7 +34,7 @@ export default function HiraPatientJourney() {
       icon: "/assets/visit.png",
       title: "Post Appt.",
       subtitle: "Leaving the Visit",
-      color: "post", // Will map to box color #CCD9FF
+      color: "post",
       boxes: [
         { tag: "PAIN", text: "Details blur after the visit" },
         { tag: "TASK", text: "Make sense of next steps and updates" },
@@ -55,15 +56,22 @@ export default function HiraPatientJourney() {
           <header className="hira-journey-header">
             <p className="hira-journey-eyebrow">The Patient Journey</p>
             <h2 className="hira-journey-title">
-              Care spans <em>before</em>, <em>during</em>, and <em>after</em> appointments, and each phase asks patients to remember something different.
+              Observing appointments firsthand showed us exactly where <em>support breaks down</em> and <em>anxiety builds</em>.
             </h2>
           </header>
 
           {/* Body */}
           <div className="hira-journey-body">
             <p>
-              After observing appointments and provider charting firsthand at UPMC Magee-Womens Hospital, we mapped the moments where care feels{" "}
-              <span className="hi">hardest to keep track of</span>.
+              To find where support could have the greatest impact, we shadowed appointments, observed 
+              provider charting, and sat in waiting rooms at UPMC. What emerged was a{" "}
+              <span className="hi">critical inflection point</span>: the appointment itself.
+            </p>
+
+            <p>
+              This is where knowledge transfers, treatment paths shift, and understanding can change in minutes. 
+              Patients walk in with <span className="hi">questions they've rehearsed for days</span>. 
+              They walk out <span className="hi">struggling to recall the answers</span>.
             </p>
           </div>
 
@@ -109,56 +117,122 @@ export default function HiraPatientJourney() {
         </div>
       </section>
 
-      {/* ===== WHAT WE HEARD SECTION ===== */}
+      {/* ===== HOW MIGHT WE SECTION (with SVG curve) ===== */}
       <section
-        ref={heardSectionRef}
-        className="hira-heard is-light"
-        aria-label="Hira Health co-design insights"
+        ref={hmwSectionRef}
+        className="hira-hmw is-light"
+        aria-label="How Might We framing"
       >
-        <div className="hira-heard-inner reveal">
+        {/* SVG Curve - placed on top */}
+        <img
+          src="/assets/bluecurve.svg"
+          alt=""
+          className="hira-hmw-curve"
+          aria-hidden="true"
+        />
+
+        <div className="hira-hmw-inner reveal">
           {/* Header */}
-          <header className="hira-heard-header">
-            <p className="hira-heard-eyebrow">What We Heard</p>
-            <h2 className="hira-heard-title">
-              We asked patients at UPMC Magee-Womens Hospital to design their <em>"dream"</em> support for their <em>treatment experience</em>.
+          <header className="hira-hmw-header">
+            <p className="hira-hmw-eyebrow">Framing the Opportunity</p>
+            
+            <h2 className="hira-hmw-title">
+              <span>
+                How might we help patients <em>capture</em>, <em>organize</em>, and <em>revisit</em> what 
+                matters before, during, and after appointments?
+              </span>
+              <img
+  src="/assets/spark-dark.svg"
+  alt=""
+  className="hira-hmw-spark"
+  aria-hidden="true"
+/>
             </h2>
           </header>
 
           {/* Body */}
-          <div className="hira-heard-body">
+          <div className="hira-hmw-body">
             <p>
-              During co-design, patients mapped how support should show up before, during, and after appointments, then{" "}
-              <span className="hi">built concepts</span> for a <span className="hi">virtual caregiver</span>. We looked for repeat themes across timing, tone, and desired behaviors.
+              The problem wasn't a lack of care. It was a <span className="hi">lack of continuity</span>. 
+              Patients needed a way to hold onto fleeting moments and carry them into the next conversation.
             </p>
           </div>
 
-          {/* Insight callout */}
-          <div className="hira-insight">
-            <img src="/assets/nda.svg" alt="" className="hira-insight-icon" />
-            <p className="hira-insight-text">
-              <strong>Insight:</strong> Not every moment needs a response. Patients want to be heard first, then supported to act.
+          {/* Visual: Simple flow showing capture → organize → revisit */}
+          <div className="hira-hmw-flow" aria-label="Design direction flow">
+            <div className="hmw-flow-item">
+              <div className="hmw-flow-icon">
+                <img src="/assets/capture.png" alt="" />
+              </div>
+              <span className="hmw-flow-label">Capture</span>
+            </div>
+
+            <div className="hmw-flow-arrow" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#085FDD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+
+            <div className="hmw-flow-item">
+              <div className="hmw-flow-icon">
+                <img src="/assets/organize.png" alt="" />
+              </div>
+              <span className="hmw-flow-label">Organize</span>
+            </div>
+
+            <div className="hmw-flow-arrow" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#085FDD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+
+            <div className="hmw-flow-item">
+              <div className="hmw-flow-icon">
+                <img src="/assets/revisit.png" alt="" />
+              </div>
+              <span className="hmw-flow-label">Revisit</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== EXPLORED DIRECTIONS SECTION ===== */}
+      <section
+        ref={directionsSectionRef}
+        className="hira-directions is-light"
+        aria-label="Explored directions"
+      >
+        <div className="hira-directions-inner reveal">
+          {/* Header */}
+          <header className="hira-directions-header">
+            <p className="hira-directions-eyebrow">Explored Directions</p>
+            <h2 className="hira-directions-title">
+              We mapped out possible directions, weighing tradeoffs across <em>patient effort</em> and <em>contextual fit</em>.
+            </h2>
+          </header>
+
+          {/* Body */}
+          <div className="hira-directions-body">
+            <p>
+              We ran several activities that helped us <span className="hi">find trends in our research</span> and 
+              pinpoint a solution where we could help patients capture, organize, and revisit what matters.
+            </p>
+
+            <p>
+              After brainstorming themes, we organized a <span className="hi">rough mind map</span> to see 
+              the potential of different ideas and discussed the <span className="hi">pros and cons</span> of 
+              each direction based on our findings.
             </p>
           </div>
-
-          {/* Images */}
-          <div className="hira-heard-images">
-            <div className="hira-heard-image-item">
-              <img
-                src="/assets/co-design.png"
-                alt="Co-design session with patients and caregivers"
-                className="hira-heard-image"
-              />
-              <p className="hira-heard-caption">Co-design with patients and caregivers.</p>
-            </div>
-
-            <div className="hira-heard-image-item">
-              <img
-                src="/assets/virtual.png"
-                alt="Participant-created virtual caregiver concepts"
-                className="hira-heard-image"
-              />
-              <p className="hira-heard-caption">Participant-created "virtual caregiver" concepts.</p>
-            </div>
+          
+          {/* Mind Map Image */}
+          <div className="hira-directions-media">
+            <img
+              src="/assets/mindmap.png"
+              alt="Mind mapping activity showing different concept directions"
+              className="hira-directions-image"
+            />
+            <p className="hira-directions-caption">Finding clarity through a brain dump!</p>
           </div>
         </div>
       </section>
