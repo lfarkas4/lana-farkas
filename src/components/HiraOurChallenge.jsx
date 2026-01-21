@@ -16,7 +16,7 @@ export default function HiraOurChallenge() {
         <header className="hira-challenge-header">
           <p className="hira-challenge-eyebrow">Our Challenge</p>
           <h2 className="hira-challenge-title">
-            Gynecologic oncology care is clinically excellent — but it can still feel{" "}
+            Gynecologic oncology care is clinically excellent, but it can still feel{" "}
             <em>confusing</em>, <em>isolating</em>, and <em>overwhelming</em>.
           </h2>
         </header>

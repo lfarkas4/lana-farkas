@@ -7,7 +7,7 @@ import BehavaiAboutABA from "../components/BehavaiAboutABA"; // NEW: How We Lear
 import BehavaiProblemSpace from "../components/BehavaiProblemSpace";
 import BehavaiSolutionPreview from "../components/BehavaiSolutionPreview";
 import BehavaiResearchDiscovery from "../components/BehavaiResearchDiscovery";
-// import BehavaiDesignChallenge from "../components/BehavaiDesignChallenge";
+import BehavaiDesignChallenge from "../components/BehavaiDesignChallenge";
 import BehavaiFinalSolution from "../components/BehavaiFinalSolution";
 import BehavaiImpactAndBeyond from "../components/BehavaiImpactAndBeyond";
 
@@ -153,7 +153,7 @@ export default function BehavAI() {
       <BehavaiProblemSpace />
       <BehavaiSolutionPreview />
       <BehavaiResearchDiscovery />
-      {/* <BehavaiDesignChallenge /> */}
+      <BehavaiDesignChallenge />
       <BehavaiFinalSolution />
       <BehavaiImpactAndBeyond />
 

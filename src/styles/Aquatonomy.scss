@@ -119,7 +119,7 @@
      display: flow-root;
      padding-top: clamp(60px, 8vw, 100px);
    
-     background: rgb(234, 237, 246);
+     background: rgb(236, 239, 247);
      border-top: 0;
      border-bottom: 0;
      padding-bottom: 0;
@@ -597,7 +597,7 @@
      @include tokens.section-light(0, 100px); /* top handled by curve */
      margin-top: 0;
      position: relative;
-     background: rgb(234, 237, 246);
+     background: rgb(236, 239, 247);
    }
    
    /* flipped curve lives INSIDE this section (first child) */

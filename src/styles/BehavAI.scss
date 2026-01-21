@@ -119,7 +119,7 @@
    
    .behavai-kickoff {
      @include full-bleed;
-     background: rgb(234, 237, 246);
+     background: rgb(236, 239, 247);
      padding: 80px 0 100px;
    }
    
@@ -511,7 +511,7 @@
    
    .behavai-solution {
      @include full-bleed;
-     background: rgb(234, 237, 246);
+     background: rgb(236, 239, 247);
      padding: 80px 0 110px;
    }
    
@@ -930,7 +930,7 @@
 
    .behavai-impact {
     @include full-bleed;
-    background: rgb(234, 237, 246);
+    background: rgb(236, 239, 247);
     padding: 80px 0 50px;
   }
   
@@ -1065,7 +1065,7 @@
   
   .behavai-status {
     @include full-bleed;
-    background: rgb(234, 237, 246);
+    background: rgb(236, 239, 247);
     padding: 50px 0 40px;
     margin-top: 0;
   }
@@ -1217,7 +1217,7 @@
   
   .behavai-reflection {
     @include full-bleed;
-    background: rgb(234, 237, 246);
+    background: rgb(236, 239, 247);
     padding: 50px 0 100px;
     margin-top: 0;
     position: relative; // For spark positioning
@@ -2203,6 +2203,7 @@
       .progress-number {
         font-size: 1.5rem;
       }
+      
    }
    
    /* XS: ≤ 464px */
@@ -2504,6 +2505,17 @@
 
       .reflection-caption {
         font-size: 0.8rem;
+      }
+      .behavai-challenge-eyebrow,
+      .behavai-iterations-eyebrow {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+    
+      .behavai-challenge-title,
+      .behavai-iterations-title {
+        font-size: 1.3rem;
+        line-height: 1.45;
       }
    }
 
@@ -2970,3 +2982,610 @@
       padding: 0 var(--page-gutter-tablet);
     }
   }
+
+
+/* ========================================
+   BEHAVAI DESIGN CHALLENGE & ITERATIONS
+   ======================================== */
+
+
+   /* Helper Mixins */
+   @mixin full-bleed {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   }
+   
+   @mixin container($pad: var(--page-gutter-desktop)) {
+     @include tokens.container-page($pad);
+   }
+   
+   /* ========================================
+      BEHAVAI DESIGN CHALLENGE SECTION
+      ======================================== */
+   
+   .behavai-challenge {
+     @include full-bleed;
+     background: rgb(236, 239, 247);
+     padding: 80px 0 60px;
+   }
+   
+   .behavai-challenge-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .behavai-challenge-header {
+     margin-bottom: 50px;
+   }
+   
+   .behavai-challenge-eyebrow {
+     @extend .behavai-eyebrow;
+   }
+   
+   .behavai-challenge-title {
+     @extend .behavai-title;
+   }
+   
+   .behavai-challenge-body {
+     @extend .behavai-body;
+     margin-bottom: 60px;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   }
+   
+   /* Constraint Cards Grid */
+   .behavai-constraint-cards {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 24px;
+     margin: 0 auto;
+     max-width: 1100px;
+   }
+   
+   .behavai-constraint-card {
+     background: #ffffff;
+     border-radius: 16px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+     padding: 24px 28px;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+   
+   .constraint-card-label {
+     @include tokens.type-mont-poj-light-header;
+     font-size: 0.75rem;
+     font-weight: 550;
+     color: #3b82f6;
+     text-transform: uppercase;
+     letter-spacing: 0.12em;
+     margin-bottom: 2px;
+     margin-top: 6px;
+   }
+   
+   .constraint-card-header {
+     display: flex;
+     align-items: flex-start;
+     justify-content: space-between;
+     gap: 16px;
+     margin-bottom: 2px;
+   }
+   
+   .constraint-card-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.15rem;
+     font-weight: 600;
+     color: #000206;
+     flex: 1;
+     line-height: 1.3;
+     margin: 0;
+     margin-top: 6px;
+   }
+   
+   .constraint-card-icon {
+     width: 70px;
+     height: 70px;
+     object-fit: contain;
+     flex-shrink: 0;
+     margin-top: -25px;
+   }
+   
+   .constraint-card-description {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     line-height: 1.5;
+     color: #000206;
+     margin: 0;
+   }
+   
+   /* ========================================
+      BEHAVAI ITERATIONS SECTION
+      ======================================== */
+   
+   .behavai-iterations {
+     @include full-bleed;
+     background: rgb(236, 239, 247);
+     padding: 60px 0 110px;
+   }
+   
+   .behavai-iterations-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .behavai-iterations-header {
+     margin-bottom: 50px;
+   }
+   
+   .behavai-iterations-eyebrow {
+     @extend .behavai-eyebrow;
+   }
+   
+   .behavai-iterations-title {
+     @extend .behavai-title;
+   }
+   
+   .behavai-iterations-body {
+     @extend .behavai-body;
+     margin-bottom: 60px;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   }
+   
+   /* Iterations List */
+   .behavai-iterations-list {
+     display: flex;
+     flex-direction: column;
+     gap: 100px;
+     max-width: 1100px;
+     margin: 0 auto;
+   }
+   
+   .behavai-iteration {
+     display: flex;
+     flex-direction: column;
+     gap: 28px;
+   }
+   
+   .behavai-iteration-header {
+     display: flex;
+     align-items: center;
+     gap: 12px;
+     flex-wrap: wrap;
+   }
+   
+   .behavai-iteration-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.4rem;
+     font-weight: 500;
+     color: #000206;
+     margin: 0;
+     line-height: 1.4;
+   }
+   
+   .behavai-iteration-number {
+     color: #3b82f6;
+     font-weight: 600;
+   }
+   
+   .behavai-iteration-badge {
+     @include tokens.type-mont-poj-light-header;
+     font-size: 0.7rem;
+     padding: 4px 12px;
+     background: #3b82f6;
+     color: white;
+     border-radius: 20px;
+     text-transform: uppercase;
+     letter-spacing: 0.08em;
+     white-space: nowrap;
+   }
+   
+   .behavai-iteration-media {
+     width: 100%;
+     border-radius: 12px;
+     overflow: hidden;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+     border: 3px solid transparent;
+     transition: border-color 0.3s ease;
+   }
+   
+   .behavai-iteration--chosen .behavai-iteration-media {
+     border-color: #3b82f6;
+     box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
+   }
+   
+   .behavai-iteration-image {
+     width: 100%;
+     height: auto;
+     display: block;
+   }
+   
+   .behavai-iteration-feedback {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 20px;
+     margin-top: 4px;
+   }
+   
+   .behavai-feedback-column {
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+   }
+   
+   .behavai-feedback-card {
+     display: flex;
+     align-items: flex-start;
+     gap: 10px;
+     background: #ffffff;
+     border-radius: 10px;
+     padding: 16px 18px;
+     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+   
+     .feedback-icon {
+       width: 22px;
+       height: 22px;
+       flex-shrink: 0;
+       margin-top: 2px;
+     }
+   
+     span {
+       @include tokens.type-mont-poj-light-body;
+       font-size: 0.93rem;
+       line-height: 1.55;
+       color: #000206;
+       flex: 1;
+     }
+   }
+   
+   /* ========================================
+      RESPONSIVE BREAKPOINTS
+      ======================================== */
+   
+   /* LG: ≤ 991px */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     .behavai-challenge,
+     .behavai-iterations {
+       padding: 70px 0 50px;
+     }
+
+     .behavai-iterations {
+      padding: 60px 0 95px;
+    }
+   
+     .behavai-challenge-inner,
+     .behavai-iterations-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .behavai-challenge-header,
+     .behavai-iterations-header {
+       margin-bottom: 40px;
+     }
+   
+     .behavai-challenge-title,
+     .behavai-iterations-title {
+       font-size: 1.6rem;
+     }
+   
+     .behavai-challenge-body,
+     .behavai-iterations-body {
+       margin-bottom: 50px;
+   
+       p {
+         font-size: 0.95rem !important;
+       }
+     }
+   
+     .behavai-constraint-cards {
+       gap: 20px;
+     }
+   
+     .behavai-constraint-card {
+       padding: 22px 26px;
+     }
+   
+     .constraint-card-title {
+       font-size: 1.1rem;
+     }
+   
+     .constraint-card-icon {
+       width: 60px;
+       height: 60px;
+     }
+   
+     .constraint-card-description {
+       font-size: 0.92rem;
+     }
+   
+     .behavai-iterations-list {
+       gap: 60px;
+     }
+   
+     .behavai-iteration {
+       gap: 24px;
+     }
+   
+     .behavai-feedback-column {
+       gap: 10px;
+     }
+   
+     .behavai-iteration-title {
+       font-size: 1.3rem;
+     }
+   
+     .behavai-feedback-card span {
+       font-size: 0.91rem;
+     }
+   }
+   
+   /* MD: ≤ 767px */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+     .behavai-challenge,
+     .behavai-iterations {
+       padding: 60px 0 40px;
+     }
+     .behavai-iterations {
+       padding: 60px 0 85px;
+     }
+   
+     .behavai-challenge-inner,
+     .behavai-iterations-inner {
+       padding: 0 var(--page-gutter-md);
+     }
+   
+     .behavai-challenge-header,
+     .behavai-iterations-header {
+       margin-bottom: 35px;
+     }
+   
+     .behavai-challenge-title,
+     .behavai-iterations-title {
+       font-size: 1.4rem;
+       line-height: 1.4;
+     }
+   
+     .behavai-challenge-body,
+     .behavai-iterations-body {
+       margin-bottom: 40px;
+     }
+   
+     .behavai-constraint-cards {
+       grid-template-columns: 1fr;
+       gap: 16px;
+       max-width: 600px;
+     }
+   
+     .behavai-iterations-list {
+       gap: 50px;
+     }
+   
+     .behavai-iteration {
+       gap: 20px;
+     }
+   
+     .behavai-iteration-feedback {
+       grid-template-columns: 1fr;
+       gap: 16px;
+     }
+   
+     .behavai-feedback-column {
+       gap: 10px;
+     }
+   
+     .behavai-iteration-media {
+       border-radius: 10px;
+     }
+   
+     .behavai-feedback-card {
+       padding: 14px 16px;
+     }
+   
+     .behavai-iteration-title {
+       font-size: 1.25rem;
+     }
+   }
+   
+   /* SM: ≤ 625px */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     .behavai-challenge,
+     .behavai-iterations {
+       padding: 50px 0 35px;
+     }
+
+     .behavai-iterations {
+      padding: 60px 0 75px;
+    }
+   
+     .behavai-challenge-inner,
+     .behavai-iterations-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .behavai-challenge-header,
+     .behavai-iterations-header {
+       margin-bottom: 30px;
+     }
+   
+     .behavai-challenge-eyebrow,
+     .behavai-iterations-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .behavai-challenge-title,
+     .behavai-iterations-title {
+       font-size: 1.3rem;
+       line-height: 1.45;
+     }
+   
+     .behavai-challenge-body,
+     .behavai-iterations-body {
+       margin-bottom: 35px;
+   
+       p {
+         font-size: 0.82rem !important;
+       }
+     }
+   
+     .behavai-constraint-card {
+       padding: 18px 22px;
+     }
+   
+     .constraint-card-label {
+       font-size: 0.72rem;
+       font-weight: 600;
+     }
+   
+     .constraint-card-title {
+       font-size: 1.05rem;
+     }
+   
+     .constraint-card-icon {
+       width: 56px;
+       height: 56px;
+     }
+   
+     .constraint-card-description {
+       font-size: 0.9rem;
+     }
+   
+     .behavai-iterations-list {
+       gap: 45px;
+     }
+   
+     .behavai-iteration {
+       gap: 18px;
+     }
+   
+     .behavai-feedback-column {
+       gap: 9px;
+     }
+   
+     .behavai-iteration-title {
+       font-size: 1.15rem;
+       flex-basis: 100%;
+     }
+   
+     .behavai-iteration-badge {
+       font-size: 0.68rem;
+       padding: 4px 11px;
+     }
+   
+     .behavai-iteration-header {
+       gap: 10px;
+     }
+   
+     .behavai-feedback-card {
+       gap: 9px;
+       padding: 13px 15px;
+   
+       .feedback-icon {
+         width: 20px;
+         height: 20px;
+       }
+   
+       span {
+         font-size: 0.88rem;
+       }
+     }
+     .behavai-challenge-eyebrow,
+     .behavai-iterations-eyebrow {
+       font-size: 1.1rem;
+       margin-bottom: 10px;
+     }
+   
+     .behavai-challenge-title,
+     .behavai-iterations-title {
+       font-size: 1.3rem;
+       line-height: 1.45;
+     }
+   }
+   
+   /* XS: ≤ 465px */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .behavai-challenge,
+     .behavai-iterations {
+       padding: 40px 0 30px;
+     }
+
+     .behavai-iterations {
+      padding: 60px 0 60px;
+    }
+   
+     .behavai-challenge-header,
+     .behavai-iterations-header {
+       margin-bottom: 25px;
+     }
+   
+     .behavai-challenge-eyebrow,
+     .behavai-iterations-eyebrow {
+       font-size: 0.9rem;
+     }
+   
+     .behavai-challenge-title,
+     .behavai-iterations-title {
+       font-size: 1.15rem;
+       line-height: 1.35;
+     }
+   
+     .behavai-challenge-body,
+     .behavai-iterations-body {
+       margin-bottom: 30px;
+   
+       p {
+         font-size: 0.82rem !important;
+         line-height: 1.6;
+       }
+     }
+   
+     .behavai-constraint-card {
+       padding: 16px 20px;
+     }
+   
+     .constraint-card-icon {
+       width: 52px;
+       height: 52px;
+     }
+   
+     .behavai-iterations-list {
+       gap: 40px;
+     }
+   
+     .behavai-iteration {
+       gap: 16px;
+     }
+   
+     .behavai-feedback-card {
+       padding: 12px 14px;
+     }
+   
+     .behavai-iteration-title {
+       font-size: 1.1rem;
+     }
+   }
+
+   @media (max-width: #{tokens.$md_breakpoint}) {
+      .behavai-challenge-inner,
+      .behavai-iterations-inner {
+        padding: 0 var(--page-gutter-tablet); /* Change from --page-gutter-md to --page-gutter-tablet */
+      }
+  }
+
+  @media (max-width: #{tokens.$sm_breakpoint}) {
+    .behavai-challenge-inner,
+    .behavai-iterations-inner {
+      padding: 0 var(--page-gutter-xs); /* Change from --page-gutter-md to --page-gutter-tablet */
+    }
+}

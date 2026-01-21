@@ -3,176 +3,208 @@ import React from "react";
 import useReveal from "../utils/useReveal";
 
 export default function BehavaiDesignChallenge() {
-  const sectionRef = useReveal();
+  const challengeRef = useReveal();
   const iterationsRef = useReveal();
 
+  const constraints = [
+    {
+      number: "1",
+      title: "Legacy Systems",
+      description: "Built for billing and compliance, not modern workflows or AI integration.",
+      icon: "/assets/zcomputer.png"
+    },
+    {
+      number: "2",
+      title: "Therapist Skepticism",
+      description: "AI-generated reports feel robotic and risk losing the therapist's authentic voice",
+      icon: "/assets/skeptic.png"
+    },
+    {
+      number: "3",
+      title: "HIPAA & Privacy",
+      description: "Client data must stay protected, and public AI tools aren't an option.",
+      icon: "/assets/lockandkey.png"
+    },
+    {
+      number: "4",
+      title: "Fragmented Data",
+      description: "Session notes, goals, and progress live scattered across different systems and formats",
+      icon: "/assets/swwoparrows.png"
+    }
+  ];
+
+  const iterations = [
+    {
+      number: "1",
+      title: "Live preview side-by-side AI generation",
+      image: "/assets/iteration1.png",
+      pros: [
+        "Instant visibility into what AI is generating",
+        "Therapists can see and edit in real-time"
+      ],
+      cons: [
+        "Felt too passive — therapists were just watching AI work",
+        "No clear path to customize structure or flow"
+      ],
+      chosen: false
+    },
+    {
+      number: "2",
+      title: "Chatbot copilot working alongside user",
+      image: "/assets/iteration2.png",
+      pros: [
+        "Gave therapists more agency — they could ask for help",
+        "Flexible support without taking over the document"
+      ],
+      cons: [
+        "Too much effort trying to prompt the correct response",
+        "Switching between chat and document felt disjointed"
+      ],
+      chosen: false
+    },
+    {
+      number: "3",
+      title: "Dynamic modular cards with AI assist for creation and editing",
+      image: "/assets/iteration3.png",
+      pros: [
+        "AI suggests, therapist decides — clear division of control",
+        "Drag-and-drop structure gives full layout flexibility",
+        "Section-by-section editing keeps changes manageable"
+      ],
+      cons: [
+        "Requires more initial setup than auto-generation",
+        "Slightly steeper learning curve for new users"
+      ],
+      chosen: true
+    }
+  ];
+
   return (
-    <section
-      ref={sectionRef}
-      className="behavai-design-challenge is-dark"
-      aria-label="BehavAI design challenge"
-    >
-      <div className="behavai-design-challenge-inner reveal">
-        {/* Header */}
-        <header className="behavai-design-challenge-header">
-          <p className="behavai-design-challenge-eyebrow">Design Challenge</p>
-          <h2 className="behavai-design-challenge-title">
-            Translating <em>messy clinical workflows</em> into an interface where{" "}
-            <em>AI assists without taking over</em>.
-          </h2>
-        </header>
+    <>
+      {/* ===== DESIGN CHALLENGE SECTION ===== */}
+      <section
+        ref={challengeRef}
+        className="behavai-challenge is-light"
+        aria-label="BehavAI design challenge"
+      >
+        <div className="behavai-challenge-inner reveal">
+          {/* Header */}
+          <header className="behavai-challenge-header">
+            <p className="behavai-challenge-eyebrow">Design Constraints</p>
+            <h2 className="behavai-challenge-title">
+              Understanding the <em>constraints</em> of integrating AI into workflows that needed structure <em>before automation</em>.
+            </h2>
+          </header>
 
-        {/* The Core Challenge */}
-        <div className="behavai-design-challenge-body">
-          <p>
-            We knew <strong>what</strong> therapists needed—faster documentation—but the{" "}
-            <strong>how</strong> was much harder.{" "}
-            <span className="hi">
-              We had to design an AI workflow that fit into a chaotic, unpredictable process
-            </span>{" "}
-            where every client is different, every session brings new data, and no two reports 
-            look the same.
-          </p>
-          <p>
-            The central tension:{" "}
-            <span className="hi">
-              How do we give therapists AI-powered speed without removing their control, 
-              voice, or clinical judgment?
-            </span>
-          </p>
-        </div>
+          {/* Body */}
+          <div className="behavai-challenge-body">
+            <p>
+              ABA workflows are <span className="hi">messy by necessity</span>. Therapists juggle legacy systems, paper notes, and strict compliance rules while protecting client privacy.
+            We needed to <span className="hi">understand these constraints</span> deeply before designing anything.
+            </p>
+          </div>
 
-        {/* Key Design Decisions */}
-        <div className="behavai-design-decisions">
-          <h3 className="behavai-design-decisions-heading">
-            Three decisions that shaped the entire experience
-          </h3>
-
-          <div className="behavai-design-decision-cards">
-            {/* Decision 1 */}
-            <div className="behavai-decision-card">
-              <div className="behavai-decision-number">1</div>
-              <h4 className="behavai-decision-heading">
-                Dark UI to reduce cognitive load during long documentation sessions
-              </h4>
-              <p className="behavai-decision-text">
-                Therapists often write reports at the end of exhausting days. A{" "}
-                <strong>dark grey-blue background</strong> reduces eye strain and creates 
-                a calmer, more focused workspace—especially for extended use.
-              </p>
-            </div>
-
-            {/* Decision 2 */}
-            <div className="behavai-decision-card">
-              <div className="behavai-decision-number">2</div>
-              <h4 className="behavai-decision-heading">
-                Modular, editable components instead of full AI-generated drafts
-              </h4>
-              <p className="behavai-decision-text">
-                Early on, we tested a side-by-side AI generation model where the system 
-                would draft entire reports. But therapists felt{" "}
-                <strong>locked into AI's structure</strong> and had to regenerate repeatedly 
-                to get it right. We pivoted to <strong>modular cards</strong> that therapists 
-                can drag, edit, and rearrange—keeping AI suggestive, not prescriptive.
-              </p>
-            </div>
-
-            {/* Decision 3 */}
-            <div className="behavai-decision-card">
-              <div className="behavai-decision-number">3</div>
-              <h4 className="behavai-decision-heading">
-                Transparent AI insights rather than black-box recommendations
-              </h4>
-              <p className="behavai-decision-text">
-                Instead of just saying <em>"Here's what you should write,"</em> we show{" "}
-                <strong>which data points led to each AI suggestion</strong>. Therapists 
-                can see the reasoning, edit freely, and maintain ownership over the final output.
-              </p>
-            </div>
+          {/* Constraint Cards */}
+          <div className="behavai-constraint-cards reveal">
+            {constraints.map((constraint, index) => (
+              <div 
+                key={index} 
+                className="behavai-constraint-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="constraint-card-label">Constraint {constraint.number}</div>
+                <div className="constraint-card-header">
+                  <h3 className="constraint-card-title">{constraint.title}</h3>
+                  <img 
+                    src={constraint.icon} 
+                    alt="" 
+                    className="constraint-card-icon"
+                  />
+                </div>
+                <p className="constraint-card-description">
+                  {constraint.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* Iteration Journey */}
-        <div ref={iterationsRef} className="behavai-design-iterations reveal">
-          <h3 className="behavai-iterations-heading">
-            From rigid AI outputs to flexible, human-centered collaboration
-          </h3>
+      {/* ===== KEY ITERATIONS SECTION ===== */}
+      <section
+        ref={iterationsRef}
+        className="behavai-iterations is-light"
+        aria-label="BehavAI key iterations"
+      >
+        <div className="behavai-iterations-inner reveal">
+          {/* Header */}
+          <header className="behavai-iterations-header">
+            <p className="behavai-iterations-eyebrow">Key Iterations</p>
+            <h2 className="behavai-iterations-title">
+              We iterated from rigid AI drafts to <em>flexible</em>, <em>therapist-led collaboration</em>.
+            </h2>
+          </header>
 
-          <div className="behavai-iteration-timeline">
-            {/* Iteration 1 */}
-            <div className="behavai-iteration-step">
-              <div className="behavai-iteration-label">
-                <span className="behavai-iteration-tag">Early Concept</span>
-              </div>
-              <div className="behavai-iteration-content">
-                <img
-                  src="/assets/iteration-v1-wireframe.png"
-                  alt="Early side-by-side AI generation concept"
-                  className="behavai-iteration-img"
-                />
-                <div className="behavai-iteration-text">
-                  <h4>Side-by-Side AI Generation</h4>
-                  <p>
-                    AI generates full report drafts next to a blank editor. Therapists 
-                    review and edit—but found themselves constantly regenerating when 
-                    the structure didn't fit their needs.
-                  </p>
-                  <p className="behavai-iteration-insight">
-                    <strong>Why we moved on:</strong> AI felt like it was in control, 
-                    not the therapist.
-                  </p>
+          {/* Body */}
+          <div className="behavai-iterations-body">
+            <p>
+              After mapping existing workflows and testing early concepts with therapists, we ran through multiple approaches to <span className="hi">find the right balance</span>.
+            Each iteration taught us more about how to keep the therapist in <span className="hi">control of their narrative</span>.
+            </p>
+          </div>
+
+          {/* Iterations */}
+          <div className="behavai-iterations-list">
+            {iterations.map((iteration, index) => (
+              <div 
+                key={index} 
+                className={`behavai-iteration ${iteration.chosen ? 'behavai-iteration--chosen' : ''} reveal`}
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <div className="behavai-iteration-header">
+                  <h3 className="behavai-iteration-title">
+                  <span className="behavai-iteration-number">{iteration.number}.</span>
+                  {" "}{iteration.title}
+                  </h3>
+                  {iteration.chosen && (
+                    <span className="behavai-iteration-badge">Chosen Design</span>
+                  )}
+                </div>
+
+                <div className="behavai-iteration-media">
+                  <img 
+                    src={iteration.image} 
+                    alt={`Iteration ${iteration.number}: ${iteration.title}`}
+                    className="behavai-iteration-image"
+                  />
+                </div>
+
+                <div className="behavai-iteration-feedback">
+                  {/* Pros Column (Left) */}
+                  <div className="behavai-feedback-column">
+                    {iteration.pros.map((pro, i) => (
+                      <div key={`pro-${i}`} className="behavai-feedback-card behavai-feedback-card--pro">
+                        <img src="/assets/pro.png" alt="" className="feedback-icon" />
+                        <span>{pro}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Cons Column (Right) */}
+                  <div className="behavai-feedback-column">
+                    {iteration.cons.map((con, i) => (
+                      <div key={`con-${i}`} className="behavai-feedback-card behavai-feedback-card--con">
+                        <img src="/assets/con.png" alt="" className="feedback-icon" />
+                        <span>{con}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Arrow */}
-            <div className="behavai-iteration-arrow">
-              <img src="/assets/down-arrow.svg" alt="" aria-hidden="true" />
-            </div>
-
-            {/* Iteration 2 */}
-            <div className="behavai-iteration-step">
-              <div className="behavai-iteration-label">
-                <span className="behavai-iteration-tag">Refined Concept</span>
-              </div>
-              <div className="behavai-iteration-content">
-                <img
-                  src="/assets/iteration-v2-wireframe.png"
-                  alt="Modular card-based interface concept"
-                  className="behavai-iteration-img"
-                />
-                <div className="behavai-iteration-text">
-                  <h4>Modular, Editable Cards</h4>
-                  <p>
-                    AI suggests content in <strong>discrete, movable sections</strong>—
-                    charts, tables, text blocks. Therapists drag, drop, edit, and build 
-                    their own narrative structure while AI fills in the gaps.
-                  </p>
-                  <p className="behavai-iteration-insight">
-                    <strong>Why this worked:</strong> Therapists stay in the driver's seat. 
-                    AI becomes a tool, not a replacement.
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-
-        {/* Key Insight */}
-        <div className="behavai-design-challenge-insight">
-          <img 
-            src="/assets/lightbulb-icon.svg" 
-            alt="" 
-            className="behavai-insight-icon"
-            aria-hidden="true"
-          />
-          <p className="behavai-insight-text">
-            The breakthrough wasn't about making AI smarter—it was about{" "}
-            <strong>designing interactions where AI adapts to the therapist</strong>, 
-            not the other way around.
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
