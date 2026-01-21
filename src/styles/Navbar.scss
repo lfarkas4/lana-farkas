@@ -405,3 +405,16 @@
     transform: translate3d(0, 0, 0) scale(1);
   }
   
+
+  /* --- Logo hover should override the nav-visible entrance transform --- */
+.custom-navbar.nav-visible .brand-logo img.hover-subtle:hover {
+  transform: translate3d(0, 0, 0) scale(1.08) rotate(-3deg);
+  filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+}
+
+/* Optional: smoother hover (your current hover transition is basically instant) */
+.custom-navbar .brand-logo img.hover-subtle {
+  display: inline-block;
+  will-change: transform, filter;
+  transition: transform 0.2s ease, filter 0.2s ease, opacity 0.34s ease;
+}

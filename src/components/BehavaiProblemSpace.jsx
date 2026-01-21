@@ -74,22 +74,26 @@ export default function BehavaiProblemSpace() {
       <div className="behavai-problem-inner reveal">
         {/* Header */}
         <header className="behavai-problem-header">
-          <p className="behavai-problem-eyebrow">Problem Space</p>
+          <p className="behavai-problem-eyebrow">The Core Problem</p>
           <h2 className="behavai-problem-title">
-            Behavioral therapy runs on client data, but{" "}
-            <em>documentation</em> steals a <em>lot of time</em> from therapists.
+          On top of existing challenges, outdated <em>documentation tools</em> steal 
+          hours from already overwhelmed providers.
           </h2>
         </header>
 
         {/* Body copy */}
         <div className="behavai-problem-body">
           <p>
-            <span className="hi">Applied Behavior Analysis (ABA)</span> is a
+            {/* <span className="hi">Applied Behavior Analysis (ABA)</span> is a
             widely used, evidence-based therapy for autism and related
             conditions. Each session generates hours of documentation, yet the{" "}
             <span className="hi">tools haven't kept pace for decades</span> — even
             though documentation is still how teams track goals and prove
-            outcomes for their clients.
+            outcomes for their clients. */}
+            Applied Behavior Analysis requires detailed session-by-session data collection to 
+            track client progress, yet the tools haven't <span className="hi">evolved in decades</span>. Therapists 
+            juggle multiple <span className="hi">disconnected systems</span>, spending most of their workday on 
+            paperwork instead of client care.
           </p>
         </div>
 

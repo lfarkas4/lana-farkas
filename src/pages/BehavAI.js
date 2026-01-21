@@ -3,11 +3,13 @@ import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
 import NextProjectTeaser from "../components/NextProjectTeaser";
 import BehavaiKickoff from "../components/BehavaiKickoff";
+import BehavaiAboutABA from "../components/BehavaiAboutABA"; // NEW: How We Learned About ABA
 import BehavaiProblemSpace from "../components/BehavaiProblemSpace";
 import BehavaiSolutionPreview from "../components/BehavaiSolutionPreview";
-import BehavaiFinalSolution from "../components/BehavaiFinalSolution"; // NEW IMPORT
-import BehavaiImpactAndBeyond from "../components/BehavaiImpactAndBeyond";
 import BehavaiResearchDiscovery from "../components/BehavaiResearchDiscovery";
+import BehavaiDesignChallenge from "../components/BehavaiDesignChallenge"; // NEW: Design Challenge
+import BehavaiFinalSolution from "../components/BehavaiFinalSolution";
+import BehavaiImpactAndBeyond from "../components/BehavaiImpactAndBeyond";
 
 import { caseStudies } from "../data/ProjectsData";
 import useReveal from "../utils/useReveal";
@@ -147,11 +149,13 @@ export default function BehavAI() {
 
       {/* ===== CASE STUDY CONTENT ===== */}
       <BehavaiKickoff />
+      <BehavaiAboutABA />  {/* NEW: How We Learned About ABA */}
       <BehavaiProblemSpace />
       <BehavaiSolutionPreview />
       <BehavaiResearchDiscovery />
+      {/* <BehavaiDesignChallenge /> */}
       <BehavaiFinalSolution />
-      <BehavaiImpactAndBeyond />  {/* NEW SECTION ADDED HERE */}
+      <BehavaiImpactAndBeyond />
 
       {/* Temporary while you build the rest of the sections */}
       <NextProjectTeaser currentSlug="behavai" nextSlug="aquatonomy" />

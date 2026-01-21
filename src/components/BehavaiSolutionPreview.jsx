@@ -38,11 +38,11 @@ export default function BehavaiSolutionPreview() {
         <header className="behavai-solution-header">
           <p className="behavai-solution-eyebrow">Solution Preview</p>
           <h2 className="behavai-solution-title">
-            Introducing BehavAI, an AI-powered reporting workflow{" "}
-            <span className="behavai-solution-title-break">
-              that turns <em>session notes</em> into <em>clear progress</em>.
-            </span>
-          </h2>
+  Introducing BehavAI, an <em>AI layer</em> that transforms scattered{" "}
+  <span className="behavai-solution-title-break">
+    <em>session data</em> into structured, <em>shareable progress reports</em>.
+  </span>
+</h2>
 
           <img
             src="/assets/spark-six-dark.svg"

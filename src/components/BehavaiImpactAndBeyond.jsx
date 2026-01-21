@@ -54,7 +54,6 @@ export default function BehavaiImpactAndBeyond() {
               From a classroom idea to <em>real traction</em> in the ABA community.
             </h2>
           </header>
-
           {/* Body */}
           <div className="behavai-impact-body">
             <p>
