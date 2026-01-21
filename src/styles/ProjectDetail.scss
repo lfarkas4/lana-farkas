@@ -833,14 +833,6 @@
    Fixed distance from right edge at all breakpoints
    ============================================================================= */
 
-/* Responsive positioning - stays close to right edge */
-
-/* Base: Desktop - 50px from right edge */
-.np-scrolltop-positioned {
-  /* Positioning mostly handled by inline styles */
-}
-
-
 /* XL: ≤ 1365px - Same distance */
 @media (min-width: #{tokens.$xl_breakpoint}) {
   .np-scrolltop-positioned {
