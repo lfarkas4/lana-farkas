@@ -50,7 +50,7 @@ export default function BehavaiDesignChallenge() {
     },
     {
       number: "2",
-      title: "Chatbot copilot working alongside user",
+      title: "Copilot for drafting and polishing reports",
       image: "/assets/iteration2.png",
       pros: [
         "Gave therapists more agency — they could ask for help",
