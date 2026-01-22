@@ -2871,7 +2871,7 @@
      }
    
      .behavai-about-aba-inner {
-       padding: 0 var(--page-gutter-md);
+       padding: 0 var(--page-gutter-md) !important;
      }
    
      .behavai-about-aba-header {
@@ -2900,7 +2900,7 @@
      }
    
      .behavai-about-aba-inner {
-       padding: 0 var(--page-gutter-xs);
+       padding: 0 var(--page-gutter-xs) !important;
      }
    
      .behavai-about-aba-header {
@@ -3588,4 +3588,18 @@
     .behavai-iterations-inner {
       padding: 0 var(--page-gutter-xs); /* Change from --page-gutter-md to --page-gutter-tablet */
     }
+}
+
+@media (max-width: #{tokens.$md_breakpoint}) {
+
+  .behavai-about-aba-inner {
+    padding: 0 var(--page-gutter-tablet) !important;
+  }
+}
+
+@media (max-width: #{tokens.$sm_breakpoint}) {
+
+  .behavai-about-aba-inner {
+    padding: 0 var(--page-gutter-xs) !important;
+  }
 }

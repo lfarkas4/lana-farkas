@@ -2,6 +2,7 @@
 import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
 import NextProjectTeaser from "../components/NextProjectTeaser";
+import ScrollProgressBar from "../components/ScrollProgressBar";
 import HiraOurChallenge from "../components/HiraOurChallenge";
 import HiraPatientJourney from "../components/HiraPatientJourney";
 import HiraTheConcept from "../components/HiraTheConcept";
@@ -73,6 +74,9 @@ export default function Hira() {
 
   return (
     <ProjectDetailLayout>
+      {/* Scroll Progress Bar */}
+      <ScrollProgressBar />
+
       <div ref={heroScopeRef}>
         {/* ===== HERO ===== */}
         <section className="pd-hero reveal" aria-label="Hira Health case study hero">

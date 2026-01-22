@@ -153,7 +153,7 @@ export default function HiraPatientJourney() {
           {/* Body */}
           <div className="hira-hmw-body">
             <p>
-              The problem wasn't a lack of care. It was a <span className="hi">lack of continuity</span>. 
+              The problem wasn't a lack of care, it was a <span className="hi">lack of continuity</span>. 
               Patients needed a way to hold onto fleeting moments and carry them into the next conversation.
             </p>
           </div>

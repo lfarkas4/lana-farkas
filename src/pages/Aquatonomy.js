@@ -6,6 +6,7 @@ import OverviewSection from "../components/OverviewSection";
 import NDABanner from "../components/NDABanner";
 import ProblemSpace from "../components/ProblemSpace";
 import NextProjectTeaser from "../components/NextProjectTeaser";
+import ScrollProgressBar from "../components/ScrollProgressBar";
 import { caseStudies } from "../data/ProjectsData";
 import "../styles/Aquatonomy.scss";
 import SolutionImpact from "../components/SolutionImpact";
@@ -61,6 +62,9 @@ export default function Aquatonomy() {
 
   return (
     <ProjectDetailLayout>
+    {/* Scroll Progress Bar */}
+    <ScrollProgressBar />
+    
       {/* attach revealRef so .reveal / .reveal-block can animate */}
       <div ref={revealRef}>
         {/* ===== HERO ===== */}

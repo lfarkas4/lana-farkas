@@ -2,6 +2,7 @@
 import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
 import NextProjectTeaser from "../components/NextProjectTeaser";
+import ScrollProgressBar from "../components/ScrollProgressBar";
 import BehavaiKickoff from "../components/BehavaiKickoff";
 import BehavaiAboutABA from "../components/BehavaiAboutABA"; // NEW: How We Learned About ABA
 import BehavaiProblemSpace from "../components/BehavaiProblemSpace";
@@ -68,6 +69,9 @@ export default function BehavAI() {
 
   return (
     <ProjectDetailLayout>
+      {/* Scroll Progress Bar */}
+      <ScrollProgressBar />
+      
       <div ref={heroScopeRef}>
         {/* ===== HERO ===== */}
         <section

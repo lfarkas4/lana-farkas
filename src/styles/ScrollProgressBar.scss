@@ -1,0 +1,96 @@
+/* ================================================================
+   SCROLL PROGRESS BAR COMPONENT
+   Reusable progress bar for case study pages
+   ================================================================ */
+
+   @use "./partials/tokens" as tokens;
+
+   .scroll-progress-container {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 6px;
+     background: #FAFAFE;
+     z-index: 9999;
+     overflow: visible;
+     pointer-events: none;
+     /* Start hidden above the viewport and faded out */
+     transform: translateY(-100%);
+     opacity: 0;
+     transition: 
+       transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+       opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+   }
+   
+   /* Slide down and fade in when scrolling starts */
+   .scroll-progress-container--visible {
+     transform: translateY(0);
+     opacity: 1;
+   }
+   
+   .scroll-progress-bar {
+     height: 100%;
+     background: #839cf6;
+     background: #bdccfc;
+     background: #5194ff;
+     border-radius: 0 4px 4px 0;
+     border-radius: 0 0px 0px 0;
+     /* Only transition opacity, not width - width should update instantly */
+     transition: opacity 0.3s ease;
+     transform-origin: left;
+     min-width: 0;
+     will-change: width;
+     /* GPU acceleration for smoother animation */
+     transform: translateZ(0);
+     backface-visibility: hidden;
+   }
+   
+   /* Ensure visibility */
+   .scroll-progress-bar[style*="width: 0"] {
+     opacity: 0;
+   }
+   
+   .scroll-progress-bar:not([style*="width: 0%"]) {
+     opacity: 1;
+     min-width: 10px;
+   }
+   
+   /* ================================================================
+      RESPONSIVE BREAKPOINTS
+      ================================================================ */
+   
+   /* MD: ≤ 768px (Tablets) */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+     .scroll-progress-container {
+       height: 6px;
+     }
+     
+     .scroll-progress-bar {
+        border-radius: 0 0px 0px 0;
+        min-width: 8px;
+     }
+   }
+   
+   /* SM: ≤ 626px (Larger phones / small tablets) */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     .scroll-progress-container {
+       height: 5px;
+     }
+     
+     .scroll-progress-bar {
+        border-radius: 0 0px 0px 0;
+        min-width: 6px;
+     }
+   }
+   
+   /* XS: ≤ 465px (Small mobile) */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .scroll-progress-container {
+       display: none;
+     }
+     
+     .scroll-progress-bar {
+        display: none;
+     }
+   }
