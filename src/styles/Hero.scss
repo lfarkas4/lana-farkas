@@ -40,13 +40,13 @@
    .font-cooper-italic-hello {
      @include tokens.type-coop-display1;
      color: tokens.$prisec;
-     font-size: 2.05rem;
+     font-size: 2.075rem;
    }
    
    .hero-title {
      @include tokens.type-mont-display1;
      color: tokens.$prisec;
-     font-size: 1.85rem;
+     font-size: 1.875rem;
      
      cursor: default;
      user-select: none;
