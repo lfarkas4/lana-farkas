@@ -56,19 +56,27 @@ const Hero = ({ isLoading = false }) => {
           style={shouldAnimate ? { animationDelay: "0.3s" } : {}}
         >
           {/* > XS (keeps your single <br /> before "cosmos") */}
-          <span className="tagline-gtxs">
+          {/* <span className="tagline-gtxs">
             … a product futurist bringing{" "}
             <span className="font-cooper-italic-tag">clarity</span> to the{" "}
             <br />
             <span className="font-cooper-italic-tag">cosmos</span> of digital
             experiences.
-          </span>
+          </span> */}
+<span className="tagline-gtxs">
+  … a product designer translating{" "}
+  <span className="font-cooper-italic-tag">insight</span> into{" "}
+  <br />
+  <span className="font-cooper-italic-tag">interface</span> from concept to launch.
+</span>
+
+
 
           {/* XS only (3 exact lines) */}
           <span className="tagline-xs">
-            <span className="line">… a product futurist bringing</span>
+            <span className="line">… a product designer translating</span>
             <span className="line">
-              clarity to the cosmos of digital experiences.
+              insight into interface from concept to launch.
             </span>
           </span>
         </p>
