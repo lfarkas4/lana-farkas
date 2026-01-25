@@ -1,0 +1,12 @@
+# Git LFS Configuration for Portfolio
+# This file tells Git which files to handle with LFS (Large File Storage)
+
+# Track all SVG files with Git LFS
+*.svg filter=lfs diff=lfs merge=lfs -text
+
+# Track PNG files if they're large (optional - can uncomment if needed)
+# *.png filter=lfs diff=lfs merge=lfs -text
+
+# Track SVGs in specific folders
+assets/*.svg filter=lfs diff=lfs merge=lfs -text
+public/assets/*.svg filter=lfs diff=lfs merge=lfs -text
