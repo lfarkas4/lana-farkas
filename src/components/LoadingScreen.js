@@ -7,14 +7,13 @@ const LOADING_PHRASES = [
   { text: "forging new", emphasis: "galaxies" },
 ];
 
-// ✅ Must match .loading-screen transition in SCSS
+// Must match .loading-screen transition in SCSS
 const FADE_OUT_MS = 320;
 
 const LoadingScreen = ({ onLoadComplete }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const [isResting, setIsResting] = useState(false);
-
   const hasCompletedRef = useRef(false);
 
   const [phrase] = useState(
@@ -33,7 +32,9 @@ const LoadingScreen = ({ onLoadComplete }) => {
     let isMounted = true;
     let exitTimer = null;
 
+    // All critical assets that must load before showing Hero
     const criticalAssets = [
+      // Lana component images (these are the big files)
       "/assets/L@1x.png",
       "/assets/L@2x.png",
       "/assets/A1@1x.png",
@@ -44,6 +45,21 @@ const LoadingScreen = ({ onLoadComplete }) => {
       "/assets/A2@2x.png",
       "/assets/halo@1x.png",
       "/assets/halo@2x.png",
+      "/assets/orstar1@1x.png",
+      "/assets/orstar1@2x.png",
+      "/assets/redstar1@1x.png",
+      "/assets/redstar1@2x.png",
+      "/assets/blustar3@1x.png",
+      "/assets/blustar3@2x.png",
+      "/assets/blustar2@1x.png",
+      "/assets/blustar2@2x.png",
+      "/assets/blustar1@1x.png",
+      "/assets/blustar1@2x.png",
+      "/assets/redstar2@1x.png",
+      "/assets/redstar2@2x.png",
+      "/assets/crown@1x.png",
+      "/assets/crown@2x.png",
+      // Other important assets
       "/starlogolight.svg",
       "/assets/spark.svg",
     ];
@@ -60,13 +76,12 @@ const LoadingScreen = ({ onLoadComplete }) => {
       setIsExiting(true);
       hasCompletedRef.current = true;
 
-      // ✅ Use FADE_OUT_MS so ESLint doesn't fail CI (and to sync with CSS fade)
+      // Start fade-out
       exitTimer = setTimeout(() => {
         if (isMounted) setIsVisible(false);
       }, FADE_OUT_MS);
 
-      // ✅ Tell parent immediately so hero/nav can mount BEHIND the fade-out
-      // (next tick keeps this glitch-free)
+      // Tell parent immediately so hero can start appearing
       setTimeout(() => {
         if (isMounted) onLoadComplete?.();
       }, 0);
@@ -75,9 +90,13 @@ const LoadingScreen = ({ onLoadComplete }) => {
     const checkComplete = () => {
       if (!isMounted) return;
 
+      // CRITICAL: Only complete when BOTH conditions are met
+      // This ensures the loading screen ALWAYS shows for at least minDisplayTime
+      // but stays longer if assets aren't ready
       if (assetsReady && minTimeReached) {
         complete();
       } else if (minTimeReached && !assetsReady) {
+        // Minimum time reached but assets still loading - show resting state
         setIsResting(true);
       }
     };
@@ -90,23 +109,26 @@ const LoadingScreen = ({ onLoadComplete }) => {
       }
     };
 
+    // Preload all critical assets
     criticalAssets.forEach((src) => {
       const img = new Image();
       img.onload = onAssetLoad;
       img.onerror = () => {
         console.warn(`Failed to preload: ${src}`);
-        onAssetLoad();
+        onAssetLoad(); // Count it anyway to prevent infinite loading
       };
       img.src = src;
     });
 
-    const minDisplayTime = 1400; // ✅ shorter so the site feels snappier
+    // Minimum display time - loading screen ALWAYS shows for at least this long
+    const minDisplayTime = 1600;
     const minTimer = setTimeout(() => {
       minTimeReached = true;
       checkComplete();
     }, minDisplayTime);
 
-    const maxWaitTime = 8000;
+    // Maximum wait time (safety fallback)
+    const maxWaitTime = 10000;
     const maxTimer = setTimeout(() => {
       if (!hasCompletedRef.current && isMounted) {
         console.warn("Loading timeout reached, proceeding anyway");

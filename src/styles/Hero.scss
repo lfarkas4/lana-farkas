@@ -193,6 +193,12 @@
   will-change: opacity, transform;
 }
 
+/* Hidden while loading screen is active */
+.hero.hero-loading {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .hero.hero-loaded {
   opacity: 1;
   transform: translateY(0);

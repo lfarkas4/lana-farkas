@@ -4,10 +4,9 @@ import "../styles/Hero.scss";
 import useShootingStar from "../utils/shootingstar";
 import Lana from "./Lana";
 
-const Hero = () => {
+const Hero = ({ isLoading = false }) => {
   useShootingStar();
   const location = useLocation();
-  const [isLoaded, setIsLoaded] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(true);
 
   useEffect(() => {
@@ -17,19 +16,20 @@ const Hero = () => {
     if (skipHeroAnimation) {
       // Skip hero animations, show content immediately
       setShouldAnimate(false);
-      setIsLoaded(true);
 
       // Clear the navigation state to prevent issues on refresh
       window.history.replaceState({}, document.title);
     } else {
       // Play full entrance animations
       setShouldAnimate(true);
-      setIsLoaded(true);
     }
   }, [location.state]);
 
   return (
-    <section className={`hero ${isLoaded ? "hero-loaded" : ""}`} id="home">
+    <section 
+      className={`hero ${isLoading ? "hero-loading" : "hero-loaded"}`} 
+      id="home"
+    >
       <div className="hero-inner-wrapper">
         <h1
           className={`hero-title ${
@@ -68,7 +68,7 @@ const Hero = () => {
           <span className="tagline-xs">
             <span className="line">… a product futurist bringing</span>
             <span className="line">
-              clarity to the{" "}cosmos of digital experiences.
+              clarity to the cosmos of digital experiences.
             </span>
           </span>
         </p>

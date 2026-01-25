@@ -39,26 +39,25 @@ function AppContent() {
   const isDetailPage = location.pathname.startsWith("/case-studies/");
   const isHomePage = location.pathname === "/";
 
-  // ✅ Cosmic is ONLY on these pages
+  // Cosmic is ONLY on these pages
   const isCosmicPage =
     location.pathname === "/" ||
     location.pathname === "/about" ||
     location.pathname.startsWith("/under-construction") ||
-    location.pathname.startsWith("/case-studies/"); // Include case study pages (for under construction)
+    location.pathname.startsWith("/case-studies/");
 
-  // Loading states
-  const [contentReady, setContentReady] = useState(!isHomePage);
-  const [loadingMounted, setLoadingMounted] = useState(isHomePage);
+  // Loading states - ALWAYS show loading screen on homepage
+  const [showLoading, setShowLoading] = useState(isHomePage);
+  const [loadingComplete, setLoadingComplete] = useState(!isHomePage);
 
   const handleLoadComplete = () => {
-    sessionStorage.setItem("portfolio-loaded", "true");
-    setContentReady(true);
-  
+    setLoadingComplete(true);
+    
+    // Keep loading screen mounted briefly for fade-out animation
     setTimeout(() => {
-      setLoadingMounted(false);
-    }, 320); // ✅ match LoadingScreen FADE_OUT_MS / SCSS transition
+      setShowLoading(false);
+    }, 320); // Match LoadingScreen FADE_OUT_MS
   };
-  
 
   // Track SPA pageviews on route changes
   useEffect(() => {
@@ -97,28 +96,28 @@ function AppContent() {
   }, []);
 
   // Determine if we should show nav/footer
-  const showNavFooter = !isDetailPage && contentReady;
+  const showNavFooter = !isDetailPage && loadingComplete;
 
   return (
     <>
-      {/* ✅ Only mount your cursor tracker + cosmic background on cosmic pages */}
+      {/* Cosmic background and cursor tracker on cosmic pages */}
       {isCosmicPage && (
-        <CosmicBackground showFluidCursor={contentReady} />
+        <CosmicBackground showFluidCursor={loadingComplete} />
       )}
 
-      {/* ✅ If your "CustomCursor" is also a tracker, gate it the same way */}
-      {isCosmicPage && contentReady && <CustomCursor />}
+      {isCosmicPage && loadingComplete && <CustomCursor />}
 
-      {/* Loading Screen */}
-      {loadingMounted && isHomePage && (
+      {/* Loading Screen - renders as overlay */}
+      {showLoading && (
         <LoadingScreen onLoadComplete={handleLoadComplete} />
       )}
 
-      {/* Navigation */}
+      {/* Navigation - hidden during loading */}
       {showNavFooter && <Navigation />}
 
+      {/* Main content - ALWAYS rendered (Hero loads behind loading screen) */}
       <Routes>
-        <Route path="/" element={<Home isLoading={!contentReady} />} />
+        <Route path="/" element={<Home isLoading={!loadingComplete} />} />
         <Route path="/about" element={<About />} />
 
         <Route path="/case-studies/behavai" element={<BehavAI />} />
@@ -130,7 +129,7 @@ function AppContent() {
         <Route path="/case-studies/lightthemuse" element={<LightTheMuse />} />
       </Routes>
 
-      {/* Footer */}
+      {/* Footer - hidden during loading */}
       {showNavFooter && <Footer />}
     </>
   );
