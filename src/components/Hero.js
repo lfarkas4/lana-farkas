@@ -76,7 +76,7 @@ const Hero = ({ isLoading = false }) => {
           <span className="tagline-xs">
             <span className="line">… a product designer translating</span>
             <span className="line">
-              insight into interfaces, from concept to launch.
+              insights into interfaces from concept to launch.
             </span>
           </span>
         </p>
