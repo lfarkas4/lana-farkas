@@ -72,17 +72,15 @@ const About = () => {
             </span>
             <br />
             <span className="cooper-tagline">
-            crafting new ideas into real products.
+            asking 'what if' and building the answer.
             </span>
           </h2>
 
           <p {...withAnim("about-bio", 0.26)}>
-            For me, design is about more than just functionality — it&apos;s
-            about creating unforgettable experiences that shape how people
-            engage with technology. This passion has led me to work across
-            industries like tech, robotics, healthcare, and education, where I
-            focus on forming interfaces and designing interactions for emerging
-            technologies.
+            For me, design isn't just about solving problems — it&apos;s
+            about experimenting with possibilities that change how people interact with technology.
+            This approach has taken me across tech, robotics, healthcare, and education, where 
+            I prototype and test interfaces for emerging technologies that haven't been built before.
           </p>
 
           <p {...withAnim("about-bio", 0.34)}>

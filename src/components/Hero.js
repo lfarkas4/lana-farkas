@@ -64,7 +64,7 @@ const Hero = ({ isLoading = false }) => {
             experiences.
           </span> */}
 <span className="tagline-gtxs">
-  … a product designer translating{" "}
+  … a product designer turning{" "}
   <span className="font-cooper-italic-tag">insights</span> into{" "}
   <br />
   <span className="font-cooper-italic-tag">interfaces</span> from concept to launch.
@@ -74,7 +74,7 @@ const Hero = ({ isLoading = false }) => {
 
           {/* XS only (3 exact lines) */}
           <span className="tagline-xs">
-            <span className="line">… a product designer translating</span>
+            <span className="line">… a product designer turning</span>
             <span className="line">
               insights into interfaces from concept to launch.
             </span>
