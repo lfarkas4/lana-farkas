@@ -171,7 +171,7 @@ export default function HiraTrustOutro() {
               <p className="hira-trust-outro-eyebrow">What I Learned</p>
 
               <h2 className="hira-trust-outro-title">
-                The <em>hard conversations</em> were the ones that mattered most,
+                The <em>hard conversations</em> were the ones that <em>mattered most</em>,
                 and they shaped everything we built.
               </h2>
             </header>
