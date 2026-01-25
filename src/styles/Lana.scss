@@ -136,8 +136,8 @@
     )
 
     /* keep your richness but don’t brighten the edge halo */
-    saturate(1.35)
-    brightness(0.985);
+    saturate(1.5)
+    brightness(0.975);
 
   animation: letterGlowPulse 9.2s ease-in-out infinite;
   will-change: filter;
