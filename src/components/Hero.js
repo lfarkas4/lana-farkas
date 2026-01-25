@@ -96,7 +96,7 @@ const Hero = ({ isLoading = false }) => {
           <div className="hero-column">
             <h4 className="font-cooper-italic">currently building</h4>
             <p>
-              product design systems @{" "}
+            digital design systems @{" "}
               <a
                 href="https://www.tutors.plus/"
                 target="_blank"
