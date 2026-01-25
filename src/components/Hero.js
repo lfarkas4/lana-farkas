@@ -65,9 +65,9 @@ const Hero = ({ isLoading = false }) => {
           </span> */}
 <span className="tagline-gtxs">
   … a product designer translating{" "}
-  <span className="font-cooper-italic-tag">insight</span> into{" "}
+  <span className="font-cooper-italic-tag">insights</span> into{" "}
   <br />
-  <span className="font-cooper-italic-tag">interface</span> from concept to launch.
+  <span className="font-cooper-italic-tag">interfaces</span> from concept to launch.
 </span>
 
 
@@ -76,7 +76,7 @@ const Hero = ({ isLoading = false }) => {
           <span className="tagline-xs">
             <span className="line">… a product designer translating</span>
             <span className="line">
-              insight into interface from concept to launch.
+              insight into interfaces, from concept to launch.
             </span>
           </span>
         </p>

@@ -72,7 +72,7 @@ const About = () => {
             </span>
             <br />
             <span className="cooper-tagline">
-              adding a lil’ magic to everyday tech.
+            crafting new ideas into real products.
             </span>
           </h2>
 
