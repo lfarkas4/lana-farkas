@@ -64,10 +64,10 @@ const Hero = ({ isLoading = false }) => {
             experiences.
           </span> */}
 <span className="tagline-gtxs">
-  … a product designer turning{" "}
-  <span className="font-cooper-italic-tag">insights</span> into{" "}
+  … a product designer translating{" "}
+  <span className="font-cooper-italic-tag">insights</span> 
   <br />
-  <span className="font-cooper-italic-tag">interfaces</span> from concept to launch.
+  into{" "}<span className="font-cooper-italic-tag">interfaces</span> ready for launch.
 </span>
 
 

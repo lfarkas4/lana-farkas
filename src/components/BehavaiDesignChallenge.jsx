@@ -16,7 +16,7 @@ export default function BehavaiDesignChallenge() {
     {
       number: "2",
       title: "Therapist Skepticism",
-      description: "AI-generated reports feel robotic and risk losing the therapist's authentic voice",
+      description: "AI-generated reports feel robotic and risk losing the therapist's authentic voice.",
       icon: "/assets/skeptic.png"
     },
     {
@@ -28,7 +28,7 @@ export default function BehavaiDesignChallenge() {
     {
       number: "4",
       title: "Fragmented Data",
-      description: "Session notes, goals, and progress live scattered across different systems and formats",
+      description: "Session notes, goals, and progress live scattered across different systems and formats.",
       icon: "/assets/swwoparrows.png"
     }
   ];
