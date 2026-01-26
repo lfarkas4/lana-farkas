@@ -4,31 +4,31 @@ import useReveal from "../utils/useReveal";
 
 export default function BehavaiFinalSolution() {
   const sectionRef = useReveal();
-  const stepsRef = useReveal(); // Separate ref for better loading
+  const stepsRef = useReveal();
 
   const solutionSteps = [
     {
       number: "1",
       heading: "Start from client data to draft a report",
-      description: "Select a client, upload key documents, and add a few details to generate a structured draft report or dashboard.",
+      description: "Client information and session notes are uploaded to generate a structured draft based on patterns across sessions.",
       media: "/assets/solution1.mp4"
     },
     {
       number: "2",
-      heading: "Shape the report layout to match your story",
-      description: "Drag, drop, and edit sections, charts, and tables to customize the outline so it matches a client's progress.",
+      heading: "Shape the report layout to match the story",
+      description: "Drag-and-drop sections adapt to each client's progress, emphasizing breakthroughs or ongoing areas of growth.",
       media: "/assets/solution2.mp4"
     },
     {
       number: "3",
       heading: "Analyze content with integrated AI assist",
-      description: "Use AI Insights to review report trends, generate recommendations, and pull key takeaways.",
+      description: "AI Insights surface trends across weeks of data to inform clinical judgment and support intervention strategies.",
       media: "/assets/solution3.mp4"
     },
     {
       number: "4",
       heading: "Share, review, and act on reports together",
-      description: "Preview the report, invite collaborators to comment, and export or share with families and supervisors.",
+      description: "Reports can be previewed, annotated, and exported in formats suitable for families or clinical supervisors.",
       media: "/assets/solution4.mp4"
     }
   ];
@@ -44,7 +44,7 @@ export default function BehavaiFinalSolution() {
         <header className="behavai-final-solution-header">
           <p className="behavai-final-solution-eyebrow">Final Solution</p>
           <h2 className="behavai-final-solution-title">
-            Take a closer look at how our platform turns{" "}
+            Take a closer look at how the platform turns{" "}
             <em>raw session data</em> into{" "}
             <em>decision-ready reports</em>.
           </h2>

@@ -5,6 +5,7 @@ import NextProjectTeaser from "../components/NextProjectTeaser";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 import BehavaiKickoff from "../components/BehavaiKickoff";
 import BehavaiAboutABA from "../components/BehavaiAboutABA"; // NEW: How We Learned About ABA
+import BehavaiMeetOurUsers from "../components/BehavaiMeetOurUsers";
 import BehavaiProblemSpace from "../components/BehavaiProblemSpace";
 import BehavaiSolutionPreview from "../components/BehavaiSolutionPreview";
 import BehavaiResearchDiscovery from "../components/BehavaiResearchDiscovery";
@@ -153,7 +154,8 @@ export default function BehavAI() {
 
       {/* ===== CASE STUDY CONTENT ===== */}
       <BehavaiKickoff />
-      <BehavaiAboutABA />  {/* NEW: How We Learned About ABA */}
+      <BehavaiAboutABA />
+      <BehavaiMeetOurUsers />
       <BehavaiProblemSpace />
       <BehavaiSolutionPreview />
       <BehavaiResearchDiscovery />

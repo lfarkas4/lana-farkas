@@ -177,7 +177,7 @@
    .behavai-problem {
      @include full-bleed;
      background: #FAFAFE;
-     padding: 80px 0 180px;
+     padding: 80px 0 200px;
    }
    
    .behavai-problem-inner {
@@ -3155,7 +3155,7 @@
    .behavai-iteration {
      display: flex;
      flex-direction: column;
-     gap: 28px;
+     gap: 40px;
    }
    
    .behavai-iteration-header {
@@ -3176,7 +3176,7 @@
    
    .behavai-iteration-number {
      color: #3b82f6;
-     font-weight: 600;
+     font-weight: 550;
    }
    
    .behavai-iteration-badge {
@@ -3310,11 +3310,11 @@
      }
    
      .behavai-iterations-list {
-       gap: 60px;
+       gap: 80px;
      }
    
      .behavai-iteration {
-       gap: 24px;
+       gap: 30px;
      }
    
      .behavai-feedback-column {
@@ -3368,11 +3368,11 @@
      }
    
      .behavai-iterations-list {
-       gap: 50px;
+       gap: 60px;
      }
    
      .behavai-iteration {
-       gap: 20px;
+       gap: 30px;
      }
    
      .behavai-iteration-feedback {
@@ -3462,11 +3462,11 @@
      }
    
      .behavai-iterations-list {
-       gap: 45px;
+       gap: 60px;
      }
    
      .behavai-iteration {
-       gap: 18px;
+       gap: 25px;
      }
    
      .behavai-feedback-column {
@@ -3564,7 +3564,7 @@
      }
    
      .behavai-iteration {
-       gap: 16px;
+       gap: 20px;
      }
    
      .behavai-feedback-card {
@@ -3602,4 +3602,371 @@
   .behavai-about-aba-inner {
     padding: 0 var(--page-gutter-xs) !important;
   }
+}
+
+
+
+/* ================================================================
+   SECTION: MEET OUR USERS
+   Two-card layout introducing user personas (RBT & BCBA)
+   ================================================================ */
+
+   .behavai-users {
+    @include full-bleed;
+    background: #FAFAFE;
+    padding: 80px 0 20px;
+  }
+  
+  .behavai-users-inner {
+    @include container();
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter-desktop);
+  }
+  
+  .behavai-users-header {
+    margin-bottom: 50px;
+  }
+  
+  .behavai-users-eyebrow {
+    @extend .behavai-eyebrow;
+  }
+  
+  .behavai-users-title {
+    @extend .behavai-title;
+  }
+  
+  .behavai-users-body {
+    @extend .behavai-body;
+    margin-bottom: 60px;
+  
+    p {
+      font-size: 1.075rem;
+      line-height: 1.65;
+    }
+  }
+  
+  /* User Cards Grid */
+  .behavai-users-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 0px auto;
+    margin-top: 60px;
+  }
+  
+  /* Individual User Card - styled like Hira WWH insight cards */
+  .behavai-user-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 30px 40px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  /* Badge - styled exactly like behavai-iteration-badge */
+  .behavai-user-badge {
+    @include tokens.type-mont-poj-light-header;
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+  
+  /* Icon Circle - bigger and centered */
+  .behavai-user-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #F6F8FE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    align-self: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(157, 157, 157, 0.207);
+    
+    img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+  }
+  
+  /* Title Wrapper - centered */
+  .behavai-user-title-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Title & Subtitle - centered */
+  .behavai-user-title {
+    font-family: tokens.$font-montserrat;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #000206;
+    margin: 0;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+  
+  .behavai-user-subtitle {
+    font-size: 1.15rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #666666;
+    letter-spacing: 0;
+  }
+  
+  /* Heading - centered */
+  .behavai-user-heading {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #000206;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Divider Line */
+  .behavai-user-divider {
+    width: 100%;
+    height: 1px;
+    background: #E5E7EB;
+    margin: 4px 0;
+  }
+  
+  /* Responsibilities Section - left aligned */
+  .behavai-user-responsibilities {
+    width: 100%;
+    align-self: flex-start;
+  }
+  
+  .behavai-user-responsibilities-title {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000206;
+    margin: 10px 0 12px 0;
+    letter-spacing: -0.01em;
+  }
+  
+  .behavai-user-responsibilities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+    li {
+      @include tokens.type-mont-poj-light-body;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #000206;
+      padding-left: 24px;
+      position: relative;
+      letter-spacing: -0.01em;
+  
+      &::before {
+        content: "✦";
+        position: absolute;
+        left: 0;
+        color: #085FDD;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  /* ================================================================
+     RESPONSIVE: MEET OUR USERS
+     ================================================================ */
+  
+  /* Tablet (landscape) */
+  @media (max-width: 1024px) {
+    .behavai-users {
+      padding: 60px 0 80px;
+    }
+  
+    .behavai-users-inner {
+      padding: 0 var(--page-gutter-tablet);
+    }
+  
+    .behavai-users-header {
+      margin-bottom: 40px;
+    }
+  
+    .behavai-users-body {
+      margin-bottom: 50px;
+    }
+  
+    .behavai-users-cards {
+      gap: 24px;
+    }
+  
+    .behavai-user-card {
+      padding: 26px 26px 26px;
+    }
+  
+    .behavai-user-icon {
+      width: 90px;
+      height: 90px;
+  
+      img {
+        width: 54px;
+        height: 54px;
+      }
+    }
+  }
+  
+  /* Tablet (portrait) and below */
+  @media (max-width: 768px) {
+    .behavai-users {
+      padding: 50px 0 60px;
+    }
+  
+    .behavai-users-inner {
+      padding: 0 var(--page-gutter-mobile);
+    }
+  
+    .behavai-users-header {
+      margin-bottom: 35px;
+    }
+  
+    .behavai-users-body {
+      margin-bottom: 40px;
+  
+      p {
+        font-size: 1rem;
+      }
+    }
+  
+    .behavai-users-cards {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  
+    .behavai-user-card {
+      padding: 24px 24px 24px;
+    }
+  
+    .behavai-user-icon {
+      width: 80px;
+      height: 80px;
+  
+      img {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  
+    .behavai-user-title {
+      font-size: 1.15rem;
+    }
+  
+    .behavai-user-subtitle {
+      font-size: 0.95rem;
+    }
+  
+    .behavai-user-heading {
+      font-size: 0.95rem;
+    }
+  
+    .behavai-user-responsibilities-title {
+      font-size: 0.9rem;
+    }
+  
+    .behavai-user-responsibilities-list li {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Mobile (small) */
+  @media (max-width: 480px) {
+    .behavai-users {
+      padding: 40px 0 50px;
+    }
+  
+    .behavai-users-header {
+      margin-bottom: 30px;
+    }
+  
+    .behavai-users-body {
+      margin-bottom: 35px;
+    }
+  
+    .behavai-user-card {
+      padding: 22px 22px 22px;
+      gap: 14px;
+    }
+  
+    .behavai-user-badge {
+      font-size: 0.65rem;
+      padding: 4px 10px;
+    }
+  
+    .behavai-user-icon {
+      width: 75px;
+      height: 75px;
+  
+      img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  
+    .behavai-user-title {
+      font-size: 1.1rem;
+    }
+  
+    .behavai-user-responsibilities-list {
+      gap: 8px;
+    }
+  }
+
+
+  @media (max-width: #{tokens.$md_breakpoint}) {
+    .behavai-users-inner {
+      padding: 0 var(--page-gutter-tablet) !important;
+    }
+  }
+  
+  @media (max-width: #{tokens.$sm_breakpoint}) {
+    .behavai-users-inner {
+      padding: 0 var(--page-gutter-xs) !important;
+    }
+  }
+
+
+/* ================================================================
+   ADDITIONAL STYLES FOR DESIGN ITERATIONS
+   Updated Pro/Con Card Styling
+   ================================================================ */
+
+/* Update iteration label styling */
+.behavai-iteration-label {
+  color: #3b82f6;
+  font-weight: 550;
+  font-style: normal;
 }

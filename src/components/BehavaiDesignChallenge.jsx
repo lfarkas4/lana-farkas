@@ -36,6 +36,7 @@ export default function BehavaiDesignChallenge() {
   const iterations = [
     {
       number: "1",
+      label: "Iteration 1",
       title: "Live preview side-by-side AI generation",
       image: "/assets/iteration1.png",
       pros: [
@@ -43,37 +44,42 @@ export default function BehavaiDesignChallenge() {
         "Therapists can see and edit in real-time"
       ],
       cons: [
-        "Felt too passive — therapists were just watching AI work",
-        "No clear path to customize structure or flow"
+        "Providers felt like passive observers, watching AI work without being able to guide the output",
+        "Clinical narratives lost their authentic voice and felt generic",
+        "No way for BCBAs to emphasize specific client progress or concerns"
       ],
       chosen: false
     },
     {
       number: "2",
+      label: "Iteration 2",
       title: "Copilot for drafting and polishing reports",
       image: "/assets/iteration2.png",
       pros: [
-        "Gave therapists more agency — they could ask for help",
+        "Gave therapists more agency, so they could ask for help when needed",
         "Flexible support without taking over the document"
       ],
       cons: [
-        "Too much effort trying to prompt the correct response",
-        "Switching between chat and document felt disjointed"
+        "Context-switching between chat and document created cognitive overhead for BCBAs",
+        "Difficult to prompt AI for the specific clinical language providers needed",
+        "Reports still required substantial editing to match their professional voice"
       ],
       chosen: false
     },
     {
       number: "3",
+      label: "Iteration 3",
       title: "Dynamic modular cards with AI assist for creation and editing",
       image: "/assets/iteration3.png",
       pros: [
-        "AI suggests, therapist decides — clear division of control",
+        "Clear division of control: AI suggests structure, provider decides content",
+        "Section-by-section editing helps BCBAs maintain their clinical voice",
+        "Flexible layout lets providers emphasize what matters for each unique client",
         "Drag-and-drop structure gives full layout flexibility",
-        "Section-by-section editing keeps changes manageable"
       ],
       cons: [
-        "Requires more initial setup than auto-generation",
-        "Slightly steeper learning curve for new users"
+        "Requires more upfront setup compared to automatic generation",
+        "Slightly steeper learning curve for providers new to the platform"
       ],
       chosen: true
     }
@@ -141,15 +147,14 @@ export default function BehavaiDesignChallenge() {
           <header className="behavai-iterations-header">
             <p className="behavai-iterations-eyebrow">Key Iterations</p>
             <h2 className="behavai-iterations-title">
-              We iterated from rigid AI drafts to <em>flexible</em>, <em>therapist-led collaboration</em>.
+              We explored different approaches to find the right balance between <em>AI assistance</em> and <em>provider control</em>.
             </h2>
           </header>
 
           {/* Body */}
           <div className="behavai-iterations-body">
             <p>
-              After mapping existing workflows and testing early concepts with therapists, we ran through multiple approaches to <span className="hi">find the right balance</span>.
-            Each iteration taught us more about how to keep the therapist in <span className="hi">control of their narrative</span>.
+              Each iteration explored a different level of AI involvement in the documentation process. We tested approaches ranging from <span className="hi">AI-led automation</span> to <span className="hi">provider-led collaboration</span>, learning how much control therapists actually wanted.
             </p>
           </div>
 
@@ -163,8 +168,8 @@ export default function BehavaiDesignChallenge() {
               >
                 <div className="behavai-iteration-header">
                   <h3 className="behavai-iteration-title">
-                  <span className="behavai-iteration-number">{iteration.number}.</span>
-                  {" "}{iteration.title}
+                    <span className="behavai-iteration-label">{iteration.label}:</span>
+                    {" "}{iteration.title}
                   </h3>
                   {iteration.chosen && (
                     <span className="behavai-iteration-badge">Chosen Design</span>
@@ -174,7 +179,7 @@ export default function BehavaiDesignChallenge() {
                 <div className="behavai-iteration-media">
                   <img 
                     src={iteration.image} 
-                    alt={`Iteration ${iteration.number}: ${iteration.title}`}
+                    alt={`${iteration.label}: ${iteration.title}`}
                     className="behavai-iteration-image"
                   />
                 </div>

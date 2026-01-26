@@ -27,8 +27,8 @@ export default function BehavaiResearchDiscovery() {
           <p className="behavai-research-text">
             <strong>We shadowed an ABA practice</strong>, surveyed{" "}
             <strong>150+ therapists</strong>, and conducted{" "}
-            <strong>15+ in-depth interviews</strong> with BCBAs and RBTs to map 
-            how therapy data moves across sessions → supervisors → insurers.
+            <strong>15+ in-depth interviews</strong> to map how therapy data flows from RBT sessions 
+            to BCBA analysis to insurer reporting. 
           </p>
         </div>
 
@@ -60,7 +60,7 @@ export default function BehavaiResearchDiscovery() {
               </div>
               <div className="behavai-discovery-stat">~3</div>
               <div className="behavai-discovery-label">
-                different systems used per client
+                data tracking systems per client
               </div>
             </div>
 
@@ -100,10 +100,12 @@ export default function BehavaiResearchDiscovery() {
 
         <div className="behavai-research-body">
           <p className="behavai-research-text">
-            We saw BehavAI not as a replacement, but as a{" "}
-            <strong>layer of intelligence</strong> — an add-on that fits 
-            seamlessly into <strong>existing systems</strong> while 
-            modernizing the documentation process.
+          We analyzed leading <strong>ABA practice management systems</strong> like 
+          CentralReach and RethinkBH alongside general-purpose AI tools such as ChatGPT.
+          </p>
+          <p className="behavai-research-text">
+          Our goal was to  find where an <strong>AI documentation layer</strong> could add value without 
+          forcing clinics to abandon their <strong>current infrastructure</strong>.
           </p>
         </div>
 
@@ -246,7 +248,7 @@ export default function BehavaiResearchDiscovery() {
       ========================= */}
       <div className="behavai-research-subsection behavai-research-subsection--last reveal">
         <div className="behavai-research-header">
-          <p className="behavai-research-eyebrow">Design Foundation</p>
+          <p className="behavai-research-eyebrow">What We Heard</p>
           <h3 className="behavai-research-intro">
             Therapists needed support, <em>not automation</em> — so that's 
             what we designed for.

@@ -76,8 +76,7 @@ export default function BehavaiProblemSpace() {
         <header className="behavai-problem-header">
           <p className="behavai-problem-eyebrow">The Core Problem</p>
           <h2 className="behavai-problem-title">
-          On top of existing challenges, outdated <em>documentation tools</em> steal 
-          hours from already overwhelmed providers.
+          The tools meant to <em>track progress</em> have become the <em>biggest obstacle</em> to delivering care.
           </h2>
         </header>
 
@@ -90,10 +89,8 @@ export default function BehavaiProblemSpace() {
             <span className="hi">tools haven't kept pace for decades</span> — even
             though documentation is still how teams track goals and prove
             outcomes for their clients. */}
-            Applied Behavior Analysis requires detailed session-by-session data collection to 
-            track client progress, yet the tools haven't <span className="hi">evolved in decades</span>. Therapists 
-            juggle multiple <span className="hi">disconnected systems</span>, spending most of their workday on 
-            paperwork instead of client care.
+            ABA therapy requires detailed session-by-session data collection to <span className="hi">track client progress</span>, yet 
+            the tools haven't evolved in decades. Providers face constant <span className="hi">context switching</span> that makes even simple tasks unnecessarily complex.
           </p>
         </div>
 
@@ -117,7 +114,7 @@ export default function BehavaiProblemSpace() {
 
             {/* Center phrase */}
             <p className="behavai-problem-web-center">
-              In a maze of disconnected tools, it's time for something that{" "}
+              In a maze of disconnected touchpoints, it's time for something that{" "}
               <em>truly connects care</em>.
             </p>
 
