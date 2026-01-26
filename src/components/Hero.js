@@ -74,9 +74,12 @@ const Hero = ({ isLoading = false }) => {
 
           {/* XS only (3 exact lines) */}
           <span className="tagline-xs">
-            <span className="line">… a product designer turning</span>
+            <span className="line">… a product designer translating</span>
             <span className="line">
-              insights into interfaces from concept to launch.
+              insights into interfaces
+            </span>
+            <span className="line">
+              ready for launch.
             </span>
           </span>
         </p>
