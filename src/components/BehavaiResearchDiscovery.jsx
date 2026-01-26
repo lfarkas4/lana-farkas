@@ -248,7 +248,7 @@ export default function BehavaiResearchDiscovery() {
       ========================= */}
       <div className="behavai-research-subsection behavai-research-subsection--last reveal">
         <div className="behavai-research-header">
-          <p className="behavai-research-eyebrow">What We Learned</p>
+          <p className="behavai-research-eyebrow">The Guiding Truth</p>
           <h3 className="behavai-research-intro">
             Therapists needed support, <em>not automation</em> — so that's 
             what we designed for.
