@@ -107,7 +107,7 @@ const About = () => {
               </a>
               <a
                 className="about-icons-links"
-                href="mailto:lfarkas@andrew.cmu.edu"
+                href="mailto:lanarobfark@gmail.com"
               >
                 <img src="/assets/email.svg" alt="Email" loading="lazy" />
               </a>

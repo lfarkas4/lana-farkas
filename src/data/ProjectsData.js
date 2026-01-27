@@ -12,7 +12,7 @@ export const caseStudies = [
       brandMark: "/assets/behavai-mark.png",
       brandMarkH: "24px",
       meta: {
-        role: "Founding Designer & Front-End Dev (CEO)",
+        role: "Founding Designer & Front-End Developer",
         team: "2 co-founders + clinical advisors",
         timeline: "Jan 2025 – Present (pre-launch)",
         tools: "Figma, GitHub, React",

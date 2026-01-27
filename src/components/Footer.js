@@ -24,7 +24,7 @@ const Footer = () => {
               <a href="https://www.linkedin.com/in/lana-farkas-66bb0a246" target="_blank" rel="noopener noreferrer">
                 <img src="/assets/linkedin.svg" alt="LinkedIn" />
               </a>
-              <a href="mailto:lfarkas@andrew.cmu.edu">
+              <a href="mailto:lanarobfark@gmail.com">
                 <img src="/assets/email.svg" alt="Email" />
               </a>
               <a href="https://github.com/lfarkas4" target="_blank" rel="noopener noreferrer">
