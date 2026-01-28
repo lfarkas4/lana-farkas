@@ -113,14 +113,13 @@ export const caseStudies = [
         "Ideated mobile app to counter addictive technology through creative expression.",
       link: "/case-studies/lightthemuse",
       image: "/assets/whatsapp.png",
-            // video: "/assets/stokat.mp4",
       brandMark: "/assets/lightthemuse-mark.svg",
       brandMarkH: "24px",                // ← per-project size
       meta: {
-        role: "Product Design & Research",
-        team: "6 collaborators — Design, Research, Strategy",
-        timeline: "Aug – Dec 2024 (14 weeks)",
-        tools: "Figma, Notion, Miro",
+        role: "Product Design & Ideation",
+        team: "3 collaborators — Design, Strategy",
+        timeline: "24-hour hackathon, Toronto 2024",
+        tools: "Figma, Miro",
       },
     }
   ];
