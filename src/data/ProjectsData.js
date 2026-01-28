@@ -29,7 +29,7 @@ export const caseStudies = [
       brandMark: "/assets/aquatonomy-mark.png",
       brandMarkH: "18px",
       meta: {
-        role: "Product Design & Research",
+        role: "Product Strategy <br />& UX Design",
         team: "6 collaborators — Design, Research, Strategy",
         timeline: "Aug – Dec 2024 (14 weeks)",
         tools: "Figma, Notion, Miro",
@@ -46,7 +46,7 @@ export const caseStudies = [
       brandMark: "/assets/hira-mark.png",
       brandMarkH: "42px",
       meta: {
-        role: "Product Design & Research",
+        role: "UX Research & Service Design",
         team: "3 collaborators — Design, Research",
         timeline: "Jan – May 2025 (15 weeks)",
         tools: "Figma, Swift",

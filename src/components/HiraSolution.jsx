@@ -103,7 +103,8 @@ export default function HiraSolution() {
 
           <div className="hira-live-context-visual">
           <video
-      src="/assets/nutif.mp4"
+      // src="/assets/nutif.mp4"
+      src="/assets/hora.mp4"
       autoPlay
       muted
       loop
