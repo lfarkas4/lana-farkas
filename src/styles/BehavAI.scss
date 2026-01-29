@@ -3685,7 +3685,6 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: #F6F8FE;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3693,7 +3692,9 @@
     align-self: center;
     margin-bottom: 10px;
     margin-top: 10px;
-    box-shadow: 0 2px 8px rgba(157, 157, 157, 0.207);
+    background: #f4f7ff;
+    border: 5px solid #fdfdff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     
     img {
       width: 70px;
