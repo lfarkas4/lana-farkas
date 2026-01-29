@@ -3,10 +3,10 @@ import "../styles/AboutStuff.scss";
 
 // Spotify track data
 const spotifyTracks = [
-  { id: "5cxOC94379M1lUOww9SNLX", title: "Mood Ring", row: "top" },
-  { id: "0jC4hSRcgcIN8qcfSN7Wkf", title: "2 Much Pride", row: "top" },
-  { id: "4AvachE4yZUjWBBub9t8aT", title: "Wild And Alone", row: "top" },
-  { id: "0uiHiwJzQvWLTETzEZRxFG", title: "Co-Star", row: "bottom" },
+  { id: "3vxvz0JoRDvnx2jG9oPljA", title: "Love You Anyway", row: "top" },
+  { id: "34VDj911PQh8B1BXYoOMLq", title: "Running Away", row: "top" },
+  { id: "7hNPcyHhNYLCtTFa5bxvX1", title: "A Dream With a Baseball Player", row: "top" },
+  { id: "0HrsOXHxl421JdkscJY1mE", title: "My Turn", row: "bottom" },
   { id: "1fZztBfI3x4UtWwWXXZk89", title: "WAITIN", row: "bottom" }
 ];
 
