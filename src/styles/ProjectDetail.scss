@@ -339,15 +339,15 @@
    .pd-tools {
      display: flex;
      align-items: center;
-     gap: 12px;
+     gap: 8px;
      padding: 2px 0 0;
      list-style: none;
      margin: 0;
    }
    
    .pd-tool {
-     width: tokens.$space-md;
-     height: tokens.$space-md;
+     width: 40px;
+     height: 40px;
      display: grid;
      place-items: center;
    }
@@ -1096,7 +1096,7 @@
      }
    
      .pd-tools {
-       gap: 12px;
+       gap: 8px;
      }
    
      .pd-tool {
@@ -1299,3 +1299,7 @@
    }
 
 
+   .pd-meta__text {
+    white-space: pre-line;
+  }
+  

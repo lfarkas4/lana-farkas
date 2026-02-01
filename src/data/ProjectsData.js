@@ -29,7 +29,7 @@ export const caseStudies = [
       brandMark: "/assets/aquatonomy-mark.png",
       brandMarkH: "18px",
       meta: {
-        role: "Product Strategy <br />& UX Design",
+        role: "Product Strategy \n & UX Design",
         team: "6 collaborators — Design, Research, Strategy",
         timeline: "Aug – Dec 2024 (14 weeks)",
         tools: "Figma, Notion, Miro",
@@ -46,7 +46,7 @@ export const caseStudies = [
       brandMark: "/assets/hira-mark.png",
       brandMarkH: "42px",
       meta: {
-        role: "UX Research & Service Design",
+        role: "UX Research & \nService Design",
         team: "3 collaborators — Design, Research",
         timeline: "Jan – May 2025 (15 weeks)",
         tools: "Figma, Swift",
@@ -93,17 +93,16 @@ export const caseStudies = [
     {
       slug: "taptap",
       title: "Tap-Tap Revolution",
-      description:
-        "Developed interactive game prototype using Arduino and digital fabrication tools.",
+      description: "Developed interactive game prototype using Arduino and digital fabrication tools.",
       link: "/case-studies/taptap",
       image: "/assets/taptap2.png",
       brandMark: "/assets/taptap-mark.svg",
-      brandMarkH: "24px",                // ← per-project size
+      brandMarkH: "24px",
       meta: {
-        role: "Product Design & Research",
-        team: "6 collaborators — Design, Research, Strategy",
-        timeline: "Aug – Dec 2024 (14 weeks)",
-        tools: "Figma, Notion, Miro",
+        role: "Hardware Design & Code Integration",
+        team: "3 collaborators — Design, Engineering",
+        timeline: "Jan – Feb 2025 (7 weeks)",
+        tools: "Arduino, Fusion",
       },
     },
     {

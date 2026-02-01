@@ -7,9 +7,8 @@ import UnderConstructionPage from "../components/UnderConstructionPage"; // NEW
 import { miniProjects } from "../data/ProjectsData";
 
 const iconMap = {
-  Figma: "/assets/figma.svg",
-  Notion: "/assets/notion.svg",
-  Miro: "/assets/miro.svg",
+  Arduino: "/assets/arduino.svg",
+  Fusion: "/assets/fusion.svg",
 };
 
 // ═══════════════════════════════════════════════════════════════
