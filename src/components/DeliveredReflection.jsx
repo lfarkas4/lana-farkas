@@ -41,7 +41,7 @@ export default function DeliveredReflection() {
               <div className="delivered-eyebrow">What We Delivered</div>
 
               <h3 className="delivered-title">
-                We delivered operational refinements, validated features, and a
+                We delivered operational improvements, validated features, and a
                 blueprint for <em>future growth.</em>
               </h3>
 
@@ -94,7 +94,7 @@ export default function DeliveredReflection() {
             <div className="reflection-eyebrow">Reflection &amp; Takeaways</div>
 
             <h3 className="reflection-title">
-              Robotics taught me that <em>clarity beats complexity</em>, and research bridges <em>chaos</em> and <em>strategy</em>.
+            Robotics taught me that research turns <em>uncertainty</em> into <em>direction</em> when stakes are real.
 
               <img
                 src="/assets/bulb.png"

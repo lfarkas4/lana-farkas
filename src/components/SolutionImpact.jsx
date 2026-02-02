@@ -53,13 +53,12 @@ export default function SolutionImpact() {
         </h3>
 
         <div className="si-body">
-          <p>
-            On day one, <strong className="hi">operators showed us where the console failed them</strong> 
-            — unclear modes, too many clicks, no single place to act. Our approach was to{" "}
-            <strong className="hi">cut ambiguity at every step</strong>: we centered decisions, made
-            state obvious, and kept a simple history so teams never lose
-            the thread!
-          </p>
+        <p>
+  On day one, operators showed us <strong className="hi">where the console broke down</strong>.
+  Modes were hard to read, key actions took too many clicks, and there was no clear place to act.
+  </p>
+  <p>
+  We redesigned the workflow to remove guesswork at every step by <strong className="hi">reducing steps</strong> to take action and adding a <strong className="hi">simple history</strong> so teams can stay on track.</p>
         </div>
       </div> {/* ← this was missing */}
 
