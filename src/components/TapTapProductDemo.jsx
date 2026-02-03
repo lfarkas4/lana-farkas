@@ -30,7 +30,7 @@ export default function TapTapProductDemo() {
           />
           <p className="taptap-demo-caption">
             Unfortunately, I&apos;m not the best at playing it
-            (,,•᷄﹏‎•᷅,,)
+            (ᵕ•_•)
           </p>
         </div>
       </div>
