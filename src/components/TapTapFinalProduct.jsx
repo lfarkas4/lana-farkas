@@ -53,7 +53,7 @@ export default function TapTapFinalProduct() {
           <video
             ref={videoRef}
             className="taptap-final-video"
-            src="/assets/taspeed.mp4"
+            src="/assets/speedtap.mp4"
             muted
             loop
             playsInline

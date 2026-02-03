@@ -24,7 +24,7 @@ export default function TapTapProductDemo() {
         <div className="taptap-demo-media">
           <video
             className="taptap-demo-video"
-            src="/assets/finap.mp4"
+            src="/assets/finaltap.mp4"
             controls
             playsInline
           />
