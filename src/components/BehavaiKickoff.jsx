@@ -49,7 +49,7 @@ export default function BehavAIKickoff() {
             playsInline
           />
           <p className="behavai-kickoff-caption">
-            Me and my co-founder working hard (•̀ᴗ•́ )و
+            Me and my co-founder working hard ٩(•̀ᴗ•́ )و
           </p>
         </div>
       </div>
