@@ -18,8 +18,8 @@ import TapTapProductDemo from "../components/TapTapProductDemo";
 import TapTapWhatILearned from "../components/TapTapWhatILearned";
 
 const iconMap = {
-  Arduino: "/assets/arduino.svg",
-  Fusion: "/assets/fusion.svg",
+  Arduino: "/assets/arduino.png",
+  Fusion: "/assets/fusion.png",
 };
 
 // ═══════════════════════════════════════════════════════════════
