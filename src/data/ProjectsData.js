@@ -112,7 +112,7 @@ export const caseStudies = [
         "Ideated mobile app to counter addictive technology through creative expression.",
       link: "/case-studies/lightthemuse",
       image: "/assets/whatsapp.png",
-      brandMark: "/assets/lightthemuse-mark.svg",
+      brandMark: "/assets/lightthemuse-mark.png",
       brandMarkH: "24px",                // ← per-project size
       meta: {
         role: "Product Design & Ideation",

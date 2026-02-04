@@ -1,0 +1,896 @@
+/* ================================================================
+   LIGHT THE MUSE — MINI PROJECT CASE STUDY
+   Token-for-token port of TapTap What I Learned structure.
+   Single section: The Challenge (header + body + side-by-side images).
+   ================================================================ */
+
+   @use './partials/tokens' as tokens;
+   @use './partials/reveal';
+   
+   
+   /* ================================================================
+      MIXINS & HELPERS
+      ================================================================ */
+   
+   @mixin full-bleed {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   }
+   
+   /* Inner content container aligned to site gutters */
+   @mixin container($pad: var(--page-gutter-desktop)) {
+     @include tokens.container-page($pad);
+   }
+   
+   /* Framed media (rounded + subtle border/shadow) — light variant */
+   @mixin media-frame($mode: light) {
+     width: 100%;
+     height: auto;
+     border-radius: 20px;
+     display: block;
+   
+     @if $mode == light {
+       border: 0.05px solid rgba(0, 0, 0, 0.05);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+     } @else {
+       border: 1px solid rgba(255, 255, 255, 0.1);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+     }
+   }
+   
+   
+   /* ================================================================
+      TABLE OF CONTENTS
+      1. The Challenge (LightTheMuseChallenge)
+      2. Our Hypothesis (LightTheMuseHypothesis)
+      3. Reframing the Problem (LightTheMuseReframing)
+      4. RESPONSIVE BREAKPOINTS
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. SECTION: THE CHALLENGE (LightTheMuseChallenge)
+      Token-for-token from .taptap-learned: same bg, padding, header
+      margin, body gap/margin, side-by-side images 2-col grid.
+      ================================================================ */
+   
+   .light-challenge {
+     @include full-bleed;
+     background: rgb(236, 239, 247);      /* taptap-learned bg */
+     padding: 100px 0 100px;              /* taptap-learned */
+     position: relative;
+   }
+   
+   .light-challenge-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   /* ── Header ── */
+   .light-challenge-header {
+     margin-bottom: 50px;                 /* taptap-learned-header */
+   }
+   
+   .light-challenge-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .light-challenge-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* ── Body ── */
+   .light-challenge-body {
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;               /* taptap-learned-body gap */
+     margin-bottom: 50px;                 /* taptap-learned-body margin-bottom */
+   
+     p {
+       @include tokens.type-mont-poj-light-body;
+       color: #000206;
+       font-size: 1.075rem;               /* taptap-learned-body p */
+       line-height: 1.65;
+       margin: 0;
+   
+       strong { @include tokens.body-strong-light; }
+     }
+   }
+   
+   /* Closing italic highlight paragraph — mirrors overview-closing */
+   .light-challenge-closing {
+     margin-top: 8px !important;
+   
+     em {
+       font-style: italic;
+       font-weight: 600 !important;
+       color: #000000;
+     }
+   }
+   
+   /* ── Side-by-side images ── */
+   .light-challenge-images {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 50px;                           /* taptap-learned-images gap */
+     margin-top: 60px;                    /* taptap-learned-images margin-top */
+   }
+   
+   .light-challenge-image-item {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;                           /* taptap-learned-image-item gap */
+   }
+   
+   .light-challenge-image {
+     @include media-frame(light);  /* taptap-learned-image */
+   }
+   
+   .light-challenge-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 0 8px;                       /* taptap-learned-caption */
+   }
+   
+   /* ── Highlight utilities ── */
+   .light-challenge,
+   .light-hypothesis,
+   .light-reframing {
+     .hi {
+       @include tokens.body-strong-light;
+       background: #C8D3F5;               /* aquatonomy overview .hi */
+       padding: 0 .25em;
+       border-radius: 4px;
+       -webkit-box-decoration-break: clone;
+       box-decoration-break: clone;
+     }
+   
+     /* Italic closing highlight — mirrors overview .hi--closing */
+     .hi--closing {
+       font-style: italic;
+       font-weight: 600;
+     }
+   }
+   
+   
+   /* ================================================================
+      2. SECTION: OUR HYPOTHESIS (LightTheMuseHypothesis)
+      Token-for-token from behavai-about-aba: 1.9fr/2.4fr grid, media
+      left (negative margin pull) + body right with .hi highlights.
+      ================================================================ */
+   
+   .light-hypothesis {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 100px 0 0;           /* behavai-about-aba */
+   }
+   
+   .light-hypothesis-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   /* ── Header ── */
+   .light-hypothesis-header {
+     margin-bottom: 10px;          /* behavai-about-aba-header */
+   }
+   
+   .light-hypothesis-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin: 0 0 12px 0;
+     letter-spacing: -0.1px;
+   }
+   
+   .light-hypothesis-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+     margin: 0;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* ── Content Grid (Image Left + Text Right) ── */
+   .light-hypothesis-content {
+     display: grid;
+     grid-template-columns: 1.9fr 2.4fr;   /* behavai-about-aba ratio */
+     gap: 110px;                           /* behavai-about-aba gap */
+     align-items: center;
+   }
+   
+   /* Left: Media */
+   .light-hypothesis-media {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     margin-left: -100px;                  /* behavai negative pull */
+     margin-top: 40px;
+   }
+   
+   .hypothesis-image {
+     width: 110%;                          /* behavai overflow */
+     max-width: 660px;
+     height: auto;
+     display: block;
+   }
+   
+   /* Right: Body Text */
+   .light-hypothesis-body {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;                            /* behavai body gap */
+     margin-top: -20px;                    /* behavai optical pull */
+   
+     p {
+       margin: 0;
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   
+   /* ================================================================
+      3. SECTION: REFRAMING THE PROBLEM (LightTheMuseReframing)
+      Token-for-token from hira-concept: header + body + 3-col card
+      grid. Each card is white bg, 16px radius, flex column, header
+      row (title left + icon right 55px), description with strong.
+      ================================================================ */
+   
+   .light-reframing {
+     @include full-bleed;
+     background: #FAFAFE;            /* same as hypothesis */
+     padding: 80px 0 100px;          /* hira-concept */
+   }
+   
+   .light-reframing-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   /* ── Header ── */
+   .light-reframing-header {
+     margin-bottom: 50px;            /* hira-concept-header */
+   }
+   
+   .light-reframing-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin: 0 0 12px 0;
+     letter-spacing: -0.1px;
+   }
+   
+   .light-reframing-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+     margin: 0;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* ── Body ── */
+   .light-reframing-body {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     margin-bottom: 60px;            /* hira-concept-body margin-bottom */
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+       margin: 0;
+     }
+   }
+   
+   /* ── Principle Cards (3-col grid) ── */
+   .light-reframing-cards {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);   /* hira 3-col */
+     gap: 20px;                               /* hira gap */
+     margin: 0 auto;
+   }
+   
+   .light-principle-card {
+     background: #ffffff;
+     border-radius: 16px;                     /* hira card radius */
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+     padding: 30px 30px 30px;                 /* hira card padding */
+     display: flex;
+     flex-direction: column;
+     gap: 16px;                               /* hira card gap */
+   }
+   
+   .light-principle-card-header {
+     display: flex;
+     align-items: flex-start;
+     justify-content: space-between;
+     gap: 16px;
+   }
+   
+   .light-principle-card-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.1rem;                       /* hira card title size */
+     font-weight: 600;
+     color: #000206;
+     margin-top: 14px;                        /* hira optical alignment */
+     flex: 1;
+     line-height: 1.3;
+   }
+   
+   .light-principle-card-icon {
+     width: 55px;                             /* hira icon size */
+     height: 55px;
+     object-fit: contain;
+     flex-shrink: 0;
+   }
+   
+   .light-principle-card-description {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;                      /* hira card description */
+     line-height: 1.6;
+     color: #000206;
+     margin: 0;
+   
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   
+   /* ================================================================
+      4. RESPONSIVE BREAKPOINTS
+      ================================================================ */
+   
+   /* ── Page gutters (match ProjectDetail.scss) ── */
+   :root {
+     --page-gutter-desktop: 17.2vw;
+     --page-gutter-tablet: 12vw;
+     --page-gutter-xs: 8vw;
+   }
+   
+   
+   @media (max-width: #{tokens.$xl_breakpoint}) {
+
+   .light-hypothesis-header {
+    margin-bottom: 40px;
+
+  }
+}
+
+
+
+   /* ── LG: ≤ 992px ────────────────────────────────────────────── */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+   
+     /* ─── Our Hypothesis ─── */
+     .light-hypothesis {
+       padding: 80px 0 0;
+     }
+   
+     .light-hypothesis-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .light-hypothesis-header {
+       margin-bottom: 40px;
+     }
+   
+     .light-hypothesis-title {
+       font-size: 1.5rem;
+     }
+   
+     .light-hypothesis-content {
+       grid-template-columns: 1fr;
+       gap: 60px;
+     }
+   
+     .light-hypothesis-media {
+       margin-left: 0;
+       margin-top: 0;
+       justify-content: center;
+       order: 2;
+     }
+   
+     .light-hypothesis-body {
+       margin-top: 0;
+       order: 1;
+     }
+   
+     /* ─── Reframing the Problem ─── */
+     .light-reframing {
+       padding: 75px 0 95px;
+     }
+   
+     .light-reframing-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .light-reframing-header {
+       margin-bottom: 28px;
+     }
+   
+     .light-reframing-body {
+       margin-bottom: 50px;
+       gap: 16px;
+     }
+   
+     .light-reframing-cards {
+       gap: 18px;
+     }
+   
+     .light-principle-card {
+       padding: 26px 26px 26px;
+       gap: 14px;
+     }
+   
+     .light-principle-card-title {
+       font-size: 1.05rem;
+     }
+   
+     .light-principle-card-icon {
+       width: 50px;
+       height: 50px;
+     }
+   
+     .light-principle-card-description {
+       font-size: 0.92rem;
+     }
+   
+     /* ─── The Challenge ─── */
+     .light-challenge {
+       padding: 70px 0 90px;              /* taptap-learned LG */
+     }
+   
+     .light-challenge-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .light-challenge-images {
+       grid-template-columns: 1fr;        /* stack at LG */
+       gap: 40px;
+       margin-top: 45px;
+     }
+     .hypothesis-image {
+      max-width: 500px;
+      margin-left: -60px;
+    }
+   }
+   
+   
+   /* ── MD: ≤ 767px ────────────────────────────────────────────── */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+   
+     /* ─── Our Hypothesis ─── */
+     .light-hypothesis {
+       padding: 60px 0 0;
+     }
+   
+     .light-hypothesis-header {
+       margin-bottom: 35px;
+     }
+   
+     .light-hypothesis-title {
+       font-size: 1.4rem;
+       line-height: 1.4;
+     }
+   
+     .light-hypothesis-content {
+       gap: 35px;
+     }
+   
+     .hypothesis-image {
+       max-width: 500px;
+       margin-left: -60px;
+     }
+   
+     /* ─── Reframing the Problem ─── */
+     .light-reframing {
+       padding: 60px 0 80px;
+     }
+   
+     .light-reframing-header {
+       margin-bottom: 25px;
+     }
+   
+     .light-reframing-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .light-reframing-title {
+       font-size: 1.5rem;
+     }
+   
+     .light-reframing-body {
+       margin-bottom: 40px;
+     }
+   
+     .light-reframing-body p {
+       font-size: 1rem;
+     }
+   
+     .light-reframing-cards {
+       grid-template-columns: 1fr;         /* stack at MD */
+       gap: 16px;
+     }
+   
+     .light-principle-card {
+       padding: 24px 24px 24px;
+       border-radius: 14px;
+     }
+   
+     .light-principle-card-title {
+       font-size: 1rem;
+     }
+   
+     .light-principle-card-icon {
+       width: 48px;
+       height: 48px;
+     }
+   
+     .light-principle-card-description {
+       font-size: 0.9rem;
+     }
+   
+     /* ─── The Challenge ─── */
+     .light-challenge {
+       padding: 60px 0 80px;              /* taptap-learned MD */
+     }
+   
+     .light-challenge-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .light-challenge-header {
+       margin-bottom: 28px;
+     }
+   
+     .light-challenge-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .light-challenge-title {
+       font-size: 1.5rem;
+     }
+   
+     .light-challenge-body {
+       margin-bottom: 40px;
+     }
+   
+     .light-challenge-body p {
+       font-size: 1rem;
+     }
+   
+     .light-challenge-images {
+       grid-template-columns: 1fr !important;
+       gap: 35px;
+       margin-top: 40px;
+     }
+   
+     .light-challenge-image {
+       border-radius: 16px;
+     }
+   
+     .light-challenge-caption {
+       font-size: 0.95rem !important;
+     }
+   }
+   
+   
+   /* ── SM: ≤ 625px ────────────────────────────────────────────── */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+   
+     /* ─── Our Hypothesis ─── */
+     .light-hypothesis {
+       padding: 50px 0 0;
+     }
+   
+     .light-hypothesis-inner {
+       padding: 0 var(--page-gutter-xs) !important;
+     }
+   
+     .light-hypothesis-header {
+       margin-bottom: 30px;
+     }
+   
+     .light-hypothesis-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .light-hypothesis-title {
+       font-size: 1.3rem;
+       line-height: 1.45;
+     }
+   
+     .light-hypothesis-content {
+       gap: 30px;
+     }
+   
+     .light-hypothesis-body {
+       gap: 16px;
+     }
+   
+     .light-hypothesis-body p {
+       font-size: 0.82rem !important;
+     }
+   
+     /* ─── Reframing the Problem ─── */
+     .light-reframing {
+       padding: 50px 0 70px;
+     }
+   
+     .light-reframing-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .light-reframing-header {
+       margin-bottom: 22px;
+     }
+   
+     .light-reframing-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .light-reframing-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .light-reframing-body {
+       margin-bottom: 35px;
+       gap: 14px;
+     }
+   
+     .light-reframing-body p {
+       font-size: 0.95rem;
+     }
+   
+     .light-reframing-cards {
+       gap: 14px;
+     }
+   
+     .light-principle-card {
+       padding: 20px 20px 20px;
+       border-radius: 14px;
+       gap: 12px;
+     }
+   
+     .light-principle-card-title {
+       font-size: 0.95rem;
+       margin-top: 10px;
+     }
+   
+     .light-principle-card-icon {
+       width: 45px;
+       height: 45px;
+     }
+   
+     .light-principle-card-description {
+       font-size: 0.88rem;
+     }
+   
+     /* ─── The Challenge ─── */
+     .light-challenge {
+       padding: 50px 0 70px;              /* taptap-learned SM */
+     }
+   
+     .light-challenge-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .light-challenge-header {
+       margin-bottom: 22px;
+     }
+   
+     .light-challenge-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .light-challenge-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .light-challenge-body {
+       gap: 14px;
+       margin-bottom: 35px;
+     }
+   
+     .light-challenge-body p {
+       font-size: 0.95rem;
+     }
+   
+     .light-challenge-images {
+       gap: 30px;
+       margin-top: 35px;
+     }
+   
+     .light-challenge-image {
+       border-radius: 14px;
+     }
+   
+     .light-challenge-caption {
+       font-size: 0.9rem !important;
+     }
+   }
+   
+   
+   /* ── XS: ≤ 464px ────────────────────────────────────────────── */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+   
+     /* ─── Our Hypothesis ─── */
+     .light-hypothesis {
+       padding: 40px 0 0;
+     }
+   
+     .light-hypothesis-inner {
+       padding: 0 var(--page-gutter-xs) !important;
+     }
+   
+     .light-hypothesis-header {
+       margin-bottom: 25px;
+     }
+   
+     .light-hypothesis-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .light-hypothesis-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .light-hypothesis-content {
+       gap: 25px;
+     }
+   
+     .light-hypothesis-body {
+       gap: 12px;
+     }
+   
+     .light-hypothesis-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     /* ─── Reframing the Problem ─── */
+     .light-reframing {
+       padding: 40px 0 60px;
+     }
+   
+     .light-reframing-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .light-reframing-header {
+       margin-bottom: 22px;
+     }
+   
+     .light-reframing-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .light-reframing-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .light-reframing-body {
+       margin-bottom: 30px;
+       gap: 12px;
+     }
+   
+     .light-reframing-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .light-reframing-cards {
+       gap: 12px;
+     }
+   
+     .light-principle-card {
+       padding: 18px 16px 18px;
+       border-radius: 12px;
+       gap: 10px;
+     }
+   
+     .light-principle-card-title {
+       font-size: 0.9rem;
+       margin-top: 8px;
+     }
+   
+     .light-principle-card-icon {
+       width: 40px;
+       height: 40px;
+     }
+   
+     .light-principle-card-description {
+       font-size: 0.8rem;
+       line-height: 1.5;
+     }
+   
+     /* ─── The Challenge ─── */
+     .light-challenge {
+       padding: 40px 0 60px;              /* taptap-learned XS */
+     }
+   
+     .light-challenge-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .light-challenge-header {
+       margin-bottom: 22px;
+     }
+   
+     .light-challenge-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .light-challenge-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .light-challenge-body {
+       gap: 12px;
+       margin-bottom: 30px;
+     }
+   
+     .light-challenge-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .light-challenge-images {
+       gap: 25px;
+       margin-top: 30px;
+     }
+   
+     .light-challenge-image {
+       border-radius: 12px;
+     }
+   
+     .light-challenge-caption {
+       font-size: 0.8rem !important;
+     }
+   
+     /* ── Disable scroll-reveal animations on very small screens ── */
+     .reveal,
+     .reveal--up,
+     .reveal-in,
+     [data-reveal] {
+       opacity: 1 !important;
+       transform: none !important;
+       animation: none !important;
+       transition: none !important;
+     }
+   }

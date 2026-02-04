@@ -1,10 +1,15 @@
 // src/pages/LightTheMuse.js
 import React from "react";
 import ProjectDetailLayout from "../components/ProjectDetailLayout";
-import ComingSoonBanner from "../components/ComingSoonBanner";
 import NextProjectTeaser from "../components/NextProjectTeaser";
 import UnderConstructionPage from "../components/UnderConstructionPage"; // NEW
+import ScrollProgressBar from "../components/ScrollProgressBar";
 import { miniProjects } from "../data/ProjectsData";
+import LightTheMuseChallenge from "../components/LightTheMuseChallenge";
+import useReveal from "../utils/useReveal";
+import "../styles/LightTheMuse.scss";
+import LightTheMuseHypothesis from "../components/LightTheMuseHypothesis";
+import LightTheMuseReframing from "../components/LightTheMuseReframing";
 
 const iconMap = {
   Figma: "/assets/figma.svg",
@@ -16,10 +21,11 @@ const iconMap = {
 // Toggle this to switch between the placeholder and full mini-case
 // Set to `false` when you're ready to show the actual content
 // ═══════════════════════════════════════════════════════════════
-const SHOW_UNDER_CONSTRUCTION = false;
+const SHOW_UNDER_CONSTRUCTION = true;
 
 export default function LightTheMuse() {
   const data = miniProjects.find((p) => p.slug === "lightthemuse");
+  const revealRef = useReveal();
   if (!data) return null;
 
   // ════════════════════════════════════════════════════════════
@@ -68,8 +74,13 @@ export default function LightTheMuse() {
 
   return (
     <ProjectDetailLayout>
-      {/* Hero Section */}
-      <section className="pd-hero">
+      {/* Scroll Progress Bar */}
+      <ScrollProgressBar />
+
+      {/* attach revealRef so .reveal / .reveal-block can animate */}
+      <div ref={revealRef}>
+        {/* Hero Section */}
+        <section className="pd-hero reveal">
         <div className="pd-hero__eyebrow">
           {data.brandMark && (
             <img
@@ -95,24 +106,24 @@ export default function LightTheMuse() {
 
       {/* Meta Section */}
       <section className="pd-meta">
-        <div className="pd-meta__item">
+        <div className="pd-meta__item reveal">
           <div className="pd-meta__heading">My Role</div>
           <div className="pd-meta__text">{data.meta?.role}</div>
         </div>
 
-        <div className="pd-meta__item">
+        <div className="pd-meta__item reveal">
           <div className="pd-meta__heading">Team</div>
           <div className="pd-meta__text">{splitTeam(data.meta?.team)}</div>
         </div>
 
-        <div className="pd-meta__item">
+        <div className="pd-meta__item reveal">
           <div className="pd-meta__heading">Timeline</div>
           <div className="pd-meta__text">
             {splitTimeline(data.meta?.timeline)}
           </div>
         </div>
 
-        <div className="pd-meta__item">
+        <div className="pd-meta__item reveal">
           <div className="pd-meta__heading">Tools</div>
           <ul className="pd-tools">
             {tools.map((tool) => (
@@ -124,7 +135,17 @@ export default function LightTheMuse() {
         </div>
       </section>
 
-      <ComingSoonBanner />
+      {/* ===== CASE STUDY CONTENT ===== */}
+      <LightTheMuseChallenge />
+      <LightTheMuseHypothesis />
+      <LightTheMuseReframing />
+
+
+      {/* Future sections will go here */}
+
+      </div>
+      {/* End revealRef wrapper */}
+
       <NextProjectTeaser currentSlug="lightthemuse" nextSlug="moonranger" />
     </ProjectDetailLayout>
   );
