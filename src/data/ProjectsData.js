@@ -14,7 +14,7 @@ export const caseStudies = [
       meta: {
         role: "Founding Designer & Front-End Developer",
         team: "2 co-founders + clinical advisors",
-        timeline: "Jan 2025 – Present (pre-launch)",
+        timeline: "Jan 2025 – Apr 2025 (15 weeks)",
         tools: "Figma, GitHub, React",
       },
     },
