@@ -35,7 +35,7 @@ export default function HiraProductPivot() {
           <figure className="hira-pivot-card">
             <div className="hira-pivot-tag">BEFORE</div>
             <img
-              src="/assets/sket1.png"
+              src="/assets/sket1.webp"
               alt="Before concept sketch"
               className="hira-pivot-image"
             />
@@ -54,7 +54,7 @@ export default function HiraProductPivot() {
           <figure className="hira-pivot-card">
             <div className="hira-pivot-tag">AFTER</div>
             <img
-              src="/assets/skett2.png"
+              src="/assets/skett2.webp"
               alt="After concept sketch"
               className="hira-pivot-image"
             />

@@ -21,7 +21,7 @@ export default function TapTapAssignment() {
           {/* Left: Media */}
           <div className="taptap-assignment-media">
             <img
-              src="/assets/cmumaker.png"
+              src="/assets/cmumaker.webp"
               alt="CMU's largest maker space"
               className="taptap-assignment-image"
             />

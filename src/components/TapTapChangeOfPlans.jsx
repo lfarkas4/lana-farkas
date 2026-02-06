@@ -49,7 +49,7 @@ export default function TapTapChangeOfPlans() {
           {/* Left: Media */}
           <div className="taptap-plans-media">
             <img
-              src="/assets/hsm3.png"
+              src="/assets/hsm3.webp"
               alt="High School Musical 3 dance mat"
               className="taptap-plans-image"
             />

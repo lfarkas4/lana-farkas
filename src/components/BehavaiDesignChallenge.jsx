@@ -38,7 +38,7 @@ export default function BehavaiDesignChallenge() {
       number: "1",
       label: "Iteration 1",
       title: "Live preview side-by-side AI generation",
-      image: "/assets/iteration1.png",
+      image: "/assets/iteration1.webp",
       pros: [
         "Instant visibility into what AI is generating",
         "Therapists can see and edit in real-time"
@@ -54,7 +54,7 @@ export default function BehavaiDesignChallenge() {
       number: "2",
       label: "Iteration 2",
       title: "Copilot for drafting and polishing reports",
-      image: "/assets/iteration2.png",
+      image: "/assets/iteration2.webp",
       pros: [
         "Gave therapists more agency, so they could ask for help when needed",
         "Flexible support without taking over the document"
@@ -70,7 +70,7 @@ export default function BehavaiDesignChallenge() {
       number: "3",
       label: "Iteration 3",
       title: "Dynamic modular cards with AI assist for creation and editing",
-      image: "/assets/iteration3.png",
+      image: "/assets/iteration3.webp",
       pros: [
         "Clear division of control: AI suggests structure, provider decides content",
         "Section-by-section editing helps BCBAs maintain their clinical voice",

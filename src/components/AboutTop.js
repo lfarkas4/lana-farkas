@@ -45,7 +45,7 @@ const About = () => {
       <div className="about-wrapper">
         <div {...withAnim("about-photo-wrapper", 0.1)}>
           <img
-            src="/assets/lana-about1.png"
+            src="/assets/lanabout.webp"
             alt="Lana"
             className="about-photo"
             loading="lazy"

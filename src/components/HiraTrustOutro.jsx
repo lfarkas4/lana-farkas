@@ -45,7 +45,7 @@ export default function HiraTrustOutro() {
 
               <div className="testimonial-author">
                 <img
-                  src="/assets/sarahtaylor.png"
+                  src="/assets/sarahtaylor.webp"
                   alt="Dr. Sarah Taylor"
                   className="author-avatar"
                   loading="lazy"
@@ -66,7 +66,7 @@ export default function HiraTrustOutro() {
 
               <div className="testimonial-author">
                 <img
-                  src="/assets/gracecampbell.png"
+                  src="/assets/gracecampbell.webp"
                   alt="Grace Campbell"
                   className="author-avatar"
                   loading="lazy"
@@ -198,7 +198,7 @@ export default function HiraTrustOutro() {
             <div className="hira-heard-images">
               <div className="hira-heard-image-item">
                 <img
-                  src="/assets/storyboard.png"
+                  src="/assets/storyboard.webp"
                   alt="Storyboarding session"
                   className="hira-heard-image"
                   loading="lazy"
@@ -210,7 +210,7 @@ export default function HiraTrustOutro() {
 
               <div className="hira-heard-image-item">
                 <img
-                  src="/assets/critique.png"
+                  src="/assets/critique.webp"
                   alt="Critique session"
                   className="hira-heard-image"
                   loading="lazy"

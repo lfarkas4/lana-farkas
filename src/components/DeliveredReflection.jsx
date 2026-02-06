@@ -58,7 +58,7 @@ export default function DeliveredReflection() {
           <div className="deliverables-gallery" data-stagger-block>
             <div className="deliverables-gallery-item">
               <img
-                src="/assets/hri.png"
+                src="/assets/hri.webp"
                 alt="Operator Console interface showing mission control patterns"
                 className="deliverables-gallery-image"
               />
@@ -73,7 +73,7 @@ export default function DeliveredReflection() {
 
             <div className="deliverables-gallery-item">
               <img
-                src="/assets/3danalysis.png"
+                src="/assets/3danalysis.webp"
                 alt="3D Analysis Tools interface for reviewing scans and inspections"
                 className="deliverables-gallery-image"
               />
@@ -153,7 +153,7 @@ export default function DeliveredReflection() {
           <div className="reflection-images" data-stagger-block>
             <div className="reflection-image-item">
               <img
-                src="/assets/aqpic6.jpg"
+                src="/assets/aqpic6.webp"
                 alt="Designer working on foam core prototype"
                 className="reflection-image"
               />
@@ -164,7 +164,7 @@ export default function DeliveredReflection() {
 
             <div className="reflection-image-item">
               <img
-                src="/assets/aqpic7.jpg"
+                src="/assets/aqpic7.webp"
                 alt="Aquatonomy robot in natural habitat"
                 className="reflection-image"
               />

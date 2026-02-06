@@ -27,7 +27,7 @@ export default function LightTheMuseAnswer() {
 
           <div className="light-answer-hero-media">
             <img
-              src="/assets/mocklight.png"
+              src="/assets/mocklight.webp"
               alt="Light the Muse app mockup"
               className="light-answer-hero-image"
             />

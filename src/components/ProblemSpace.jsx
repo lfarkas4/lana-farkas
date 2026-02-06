@@ -83,7 +83,7 @@ export default function ProblemSpace() {
       <div className="pw-images reveal-block" data-stagger-block>
         <div className="pw-image-item">
           <img
-            src="/assets/aqpic1.jpg"
+            src="/assets/aqpic1.webp"
             alt="Team learning how the robot works"
             className="pw-image"
           />
@@ -94,7 +94,7 @@ export default function ProblemSpace() {
 
         <div className="pw-image-item">
           <img
-            src="/assets/aqpic2.jpg"
+            src="/assets/aqpic2.webp"
             alt="Field testing deployment"
             className="pw-image"
           />

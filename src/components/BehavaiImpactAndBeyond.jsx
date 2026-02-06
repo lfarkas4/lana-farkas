@@ -82,7 +82,7 @@ export default function BehavaiImpactAndBeyond() {
                 “BehavAI can turn the data we already collect into regulation-ready reports (…) <strong>freeing more time for clients</strong>.”
               </p>
               <div className="testimonial-author">
-                <img src="/assets/pfp1.png" alt="Laura Cwynar" className="author-avatar" />
+                <img src="/assets/pfp1.webp" alt="Laura Cwynar" className="author-avatar" />
                 <div className="author-info">
                   <div className="author-name">Laura Cwynar</div>
                   <div className="author-role">Founder & Executive Director, <br></br>Allegheny Behavior Analysis Services</div>
@@ -96,7 +96,7 @@ export default function BehavaiImpactAndBeyond() {
               “BehavAI could <strong>transform how we monitor client progress</strong> (…) and help us catch issues much earlier across centers.”
               </p>
               <div className="testimonial-author">
-                <img src="/assets/pfp2.png" alt="Laura Cwynar" className="author-avatar" />
+                <img src="/assets/pfp2.webp" alt="Laura Cwynar" className="author-avatar" />
                 <div className="author-info">
                   <div className="author-name">Andrea Lavigne</div>
                   <div className="author-role">Chief of Service Delivery,<br></br> Autism Care Partners</div>
@@ -171,7 +171,7 @@ export default function BehavaiImpactAndBeyond() {
             {/* Left: Media */}
             <div className="behavai-reflection-media">
               <img
-                src="/assets/demopitch.png"
+                src="/assets/demopitch.webp"
                 alt="BehavAI team pitching at Demo Day"
                 className="reflection-image"
               />

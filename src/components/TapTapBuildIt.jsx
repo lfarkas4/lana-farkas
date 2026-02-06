@@ -11,7 +11,7 @@ const buildSteps = [
     callout: "/assets/tapcallout1.png",
     calloutAlt:
       "Finding: Testing each connection individually confirmed that all supplies functioned properly.",
-    image: "/assets/tappic1.png",
+    image: "/assets/tappic1.webp",
     imageAlt: "Hand wiring components onto a breadboard with colored buttons",
     caption: "Laying out the initial circuit with all components.",
     reverse: false, // image left, content right
@@ -24,7 +24,7 @@ const buildSteps = [
     callout: "/assets/tapcallout2.png",
     calloutAlt:
       "Finding: Modular code structure made debugging and testing individual features faster.",
-    image: "/assets/tappic2.png",
+    image: "/assets/tappic2.webp",
     imageAlt: "Arduino board with wires connected on a desk",
     caption: "Testing the code to confirm it's functional.",
     reverse: true, // content left, image right
@@ -37,7 +37,7 @@ const buildSteps = [
     callout: "/assets/tapcallout3.png",
     calloutAlt:
       "Finding: Digital precision ensures pieces fit together properly without gaps or adjustments.",
-    image: "/assets/tappic3.png",
+    image: "/assets/tappic3.webp",
     imageAlt: "Person monitoring acrylic sheet inside a FusionPro laser cutter",
     caption: "Monitoring  our acrylic in the laser cutter.",
     reverse: false,
@@ -50,7 +50,7 @@ const buildSteps = [
     callout: "/assets/tapcallout4.png",
     calloutAlt:
       "Finding: Assembly involved fine-tuning wire length and alignment of components.",
-    image: "/assets/tappic4.png",
+    image: "/assets/tappic4.webp",
     imageAlt: "Completed TapTap game prototype on a table with coloured buttons lit",
     caption: "Finally putting everything together!",
     reverse: true,

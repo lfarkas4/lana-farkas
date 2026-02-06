@@ -46,7 +46,7 @@ export default function TapTapWhatILearned() {
         <div className="taptap-learned-images">
           <div className="taptap-learned-image-item">
             <img
-              src="/assets/tappic5.png"
+              src="/assets/tappic5.webp"
               alt="Team working together in the lab"
               className="taptap-learned-image"
               loading="lazy"
@@ -58,7 +58,7 @@ export default function TapTapWhatILearned() {
 
           <div className="taptap-learned-image-item">
             <img
-              src="/assets/tappic6.png"
+              src="/assets/tappic6.webp"
               alt="Completed TapTap game prototype"
               className="taptap-learned-image"
               loading="lazy"

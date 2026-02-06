@@ -28,7 +28,7 @@ export default function LightTheMuseHypothesis() {
           {/* Left: Media */}
           <div className="light-hypothesis-media">
             <img
-              src="/assets/scrollmedia.png"
+              src="/assets/scrollmedia.webp"
               alt="Person scrolling on phone with overlay icons"
               className="hypothesis-image"
             />

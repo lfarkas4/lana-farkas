@@ -30,7 +30,7 @@ export default function ResearchDiscovery() {
         {/* left/media */}
         <div className="research-media reveal-block">
           <img
-            src="/assets/aqpic3.jpg"
+            src="/assets/aqpic3.webp"
             alt="Team reviewing console workflows on wall"
             className="research-image"
           />
@@ -67,7 +67,7 @@ export default function ResearchDiscovery() {
         {/* left/media */}
         <div className="research-media reveal-block">
           <img
-            src="/assets/aqpic4.jpg"
+            src="/assets/aqpic4.webp"
             alt="Team observing field operations"
             className="research-image"
           />
@@ -104,7 +104,7 @@ export default function ResearchDiscovery() {
         {/* left/media */}
         <div className="research-media reveal-block">
           <img
-            src="/assets/aqpic5.jpg"
+            src="/assets/aqpic5.webp"
             alt="Physical prototype for bodystorming"
             className="research-image"
           />

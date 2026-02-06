@@ -79,7 +79,7 @@ export const caseStudies = [
       description:
         "Refined mission interface for lunar rover in collaboration with NASA and CMU.",
       link: "/case-studies/moonranger",
-      image: "/assets/moonthumb.png",
+      image: "/assets/moonthumb.webp",
       // video: "/assets/moon.mp4",
       brandMark: "/assets/moonranger-mark.svg",
       brandMarkH: "23px",                // ← per-project size
@@ -95,7 +95,7 @@ export const caseStudies = [
       title: "Tap-Tap Revolution",
       description: "Developed interactive game prototype using Arduino and digital fabrication tools.",
       link: "/case-studies/taptap",
-      image: "/assets/taptap2.png",
+      image: "/assets/taptap2.webp",
       brandMark: "/assets/tech.png",
       brandMarkH: "24px",
       meta: {
@@ -111,7 +111,7 @@ export const caseStudies = [
       description:
         "Ideated mobile app to counter addictive technology through creative expression.",
       link: "/case-studies/lightthemuse",
-      image: "/assets/whatsapp.png",
+      image: "/assets/whatsapp.webp",
       brandMark: "/assets/lightthemuse-mark.png",
       brandMarkH: "24px",                // ← per-project size
       meta: {

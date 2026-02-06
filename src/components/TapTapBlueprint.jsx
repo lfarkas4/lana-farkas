@@ -51,7 +51,7 @@ export default function TapTapBlueprint() {
         {/* Media — full container width, no caption (directions pattern, media-first) */}
         <div className="taptap-blueprint-media">
           <img
-            src="/assets/blueprint.png"
+            src="/assets/blueprint.webp"
             alt="Wiring diagram showing Arduino Uno connected to breadboard, LEDs, buttons, OLED display, and piezo buzzer"
             className="taptap-blueprint-image"
           />

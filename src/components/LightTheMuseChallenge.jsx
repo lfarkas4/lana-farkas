@@ -49,7 +49,7 @@ export default function LightTheMuseChallenge() {
         <div className="light-challenge-images">
           <div className="light-challenge-image-item">
             <img
-              src="/assets/lightpic1.png"
+              src="/assets/lightpic1.webp"
               alt="Team members working together at the hackathon"
               className="light-challenge-image"
               loading="lazy"
@@ -61,7 +61,7 @@ export default function LightTheMuseChallenge() {
 
           <div className="light-challenge-image-item">
             <img
-              src="/assets/lightpic2.png"
+              src="/assets/lightpic2.webp"
               alt="Whiteboard sketches and wireframes"
               className="light-challenge-image"
               loading="lazy"

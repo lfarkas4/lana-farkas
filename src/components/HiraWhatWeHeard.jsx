@@ -35,7 +35,7 @@ export default function HiraWhatWeHeard() {
         <div className="hira-wwh-activities" data-stagger-block>
           <div className="hira-wwh-activity">
             <img
-              src="/assets/co-design.png"
+              src="/assets/co-design.webp"
               alt="Co-design workshop activity with participants mapping experiences"
               className="hira-wwh-activity-image"
             />
@@ -50,7 +50,7 @@ export default function HiraWhatWeHeard() {
 
           <div className="hira-wwh-activity">
             <img
-              src="/assets/virtual.png"
+              src="/assets/virtual.webp"
               alt='Cutout templates used to design an ideal "virtual caregiver"'
               className="hira-wwh-activity-image"
             />

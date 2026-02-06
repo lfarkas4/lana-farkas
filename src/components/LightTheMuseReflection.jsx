@@ -70,7 +70,7 @@ export default function LightTheMuseReflection() {
         <div className="light-reflection-images reveal">
           <div className="light-reflection-image-item">
             <img
-              src="/assets/nametag.png"
+              src="/assets/nametag.webp"
               alt="Team nametags from the design sprint"
               className="light-reflection-image"
             />
@@ -81,7 +81,7 @@ export default function LightTheMuseReflection() {
 
           <div className="light-reflection-image-item">
             <img
-              src="/assets/canada.png"
+              src="/assets/canada.webp"
               alt="Toronto skyline memories"
               className="light-reflection-image"
             />

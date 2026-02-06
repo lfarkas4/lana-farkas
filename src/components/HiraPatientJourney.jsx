@@ -228,7 +228,7 @@ export default function HiraPatientJourney() {
           {/* Mind Map Image */}
           <div className="hira-directions-media">
             <img
-              src="/assets/mindmap.png"
+              src="/assets/mindmap.webp"
               alt="Mind mapping activity showing different concept directions"
               className="hira-directions-image"
             />

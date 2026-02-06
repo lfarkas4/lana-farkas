@@ -26,7 +26,7 @@ export default function BehavaiAboutABA() {
           {/* Left: Media */}
           <div className="behavai-about-aba-media">
             <img
-              src="/assets/abagraphic.png"
+              src="/assets/abagraphic.webp"
               alt="ABA therapy illustration"
               className="about-aba-image"
             />

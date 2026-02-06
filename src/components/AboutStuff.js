@@ -201,8 +201,8 @@ const AboutStuff = () => {
             <div className="clip-wrapper">
               <img src="/assets/clip.png" alt="clip" className="clip-img" />
             </div>
-            <div className="frame hover-label" data-label="propogation nation ☘">
-              <img src="/assets/stationary.png" alt="Card 1" className="floating-img" />
+            <div className="frame hover-label" data-label="stationary">
+              <img src="/assets/stationary.webp" alt="Card 1" className="floating-img" />
             </div>
             <p className="floating-caption">
               i'm also a stationery junkie <span className="cooper-symbols">✏︎</span>
@@ -213,8 +213,8 @@ const AboutStuff = () => {
             <div className="clip-wrapper2">
               <img src="/assets/clip.png" alt="clip" className="clip-img" />
             </div>
-            <div className="frame hover-label" data-label="the best toast eva ＊">
-              <img src="/assets/cafe.png" alt="Card 2" className="floating-img" />
+            <div className="frame hover-label" data-label="cafe">
+              <img src="/assets/cafe.webp" alt="Card 2" className="floating-img" />
             </div>
             <p className="floating-caption">
               a hardcore cafe hopper <span className="cooper-symbols">☕︎</span>
@@ -225,8 +225,8 @@ const AboutStuff = () => {
             <div className="clip-wrapper3">
               <img src="/assets/clip.png" alt="clip" className="clip-img" />
             </div>
-            <div className="frame hover-label" data-label="my kind of therapy ✂">
-              <img src="/assets/ghost.png" alt="Card 3" className="floating-img" />
+            <div className="frame hover-label" data-label="ghost doggie">
+              <img src="/assets/ghost.webp" alt="Card 3" className="floating-img" />
             </div>
             <p className="floating-caption">
               and a proud dog mom <span className="cooper-symbols">·ᴥ·</span>
