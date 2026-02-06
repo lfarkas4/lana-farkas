@@ -64,8 +64,8 @@ export default function HiraPatientJourney() {
           <div className="hira-journey-body">
             <p>
               To find where support could have the greatest impact, we shadowed appointments, observed 
-              provider charting, and sat in waiting rooms at UPMC. What emerged was a{" "}
-              <span className="hi">critical inflection point</span>: the appointment itself.
+              provider charting, and sat in waiting rooms at UPMC. What emerged was a
+              critical inflection point: <span className="hi">the appointment itself</span>.
             </p>
 
             <p>

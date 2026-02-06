@@ -51,7 +51,7 @@ export default function LightTheMuseReframing() {
           <p className="light-reframing-eyebrow">Reframing the Problem</p>
 
           <h2 className="light-reframing-title">
-            What if technology gave just <em>enough inspiration</em> to start
+            What if technology gave just enough <em>inspiration</em> to start
             creating, without <em>dictating the outcome</em>?
           </h2>
         </header>
