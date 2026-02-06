@@ -68,7 +68,7 @@ const Hero = ({ isLoading = false }) => {
   … a product designer translating{" "}
   <span className="font-cooper-italic-tag">insights</span>
   <br />
-  into{" "}<span className="font-cooper-italic-tag">experiences</span> built for launch.
+  into{" "}<span className="font-cooper-italic-tag">interfaces</span> ready for launch.
 </span>
 
 
