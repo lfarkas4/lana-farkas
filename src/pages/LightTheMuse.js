@@ -10,6 +10,10 @@ import useReveal from "../utils/useReveal";
 import "../styles/LightTheMuse.scss";
 import LightTheMuseHypothesis from "../components/LightTheMuseHypothesis";
 import LightTheMuseReframing from "../components/LightTheMuseReframing";
+import LightTheMuseAnswer from "../components/LightTheMuseAnswer";
+import LightTheMuseFeatures from "../components/LightTheMuseFeatures";
+import LightTheMuseReflection from "../components/LightTheMuseReflection";
+
 
 const iconMap = {
   Figma: "/assets/figma.svg",
@@ -139,6 +143,9 @@ export default function LightTheMuse() {
       <LightTheMuseChallenge />
       <LightTheMuseHypothesis />
       <LightTheMuseReframing />
+      <LightTheMuseAnswer />
+      <LightTheMuseFeatures />
+      <LightTheMuseReflection />
 
 
       {/* Future sections will go here */}

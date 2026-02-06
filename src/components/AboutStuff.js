@@ -6,7 +6,7 @@ const spotifyTracks = [
   { id: "3vxvz0JoRDvnx2jG9oPljA", title: "Love You Anyway", row: "top" },
   { id: "34VDj911PQh8B1BXYoOMLq", title: "Running Away", row: "top" },
   { id: "7hNPcyHhNYLCtTFa5bxvX1", title: "A Dream With a Baseball Player", row: "top" },
-  { id: "0HrsOXHxl421JdkscJY1mE", title: "My Turn", row: "bottom" },
+  { id: "4eVUPMhqGFcmxo6cjv9KqA", title: "Time Moves Slow", row: "bottom" },
   { id: "1fZztBfI3x4UtWwWXXZk89", title: "WAITIN", row: "bottom" }
 ];
 

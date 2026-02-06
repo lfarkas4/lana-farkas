@@ -63,13 +63,13 @@ const Hero = ({ isLoading = false }) => {
             <span className="font-cooper-italic-tag">cosmos</span> of digital
             experiences.
           </span> */}
+
 <span className="tagline-gtxs">
   … a product designer translating{" "}
-  <span className="font-cooper-italic-tag">insights</span> 
+  <span className="font-cooper-italic-tag">insights</span>
   <br />
-  into{" "}<span className="font-cooper-italic-tag">interfaces</span> ready for launch.
+  into{" "}<span className="font-cooper-italic-tag">experiences</span> built for launch.
 </span>
-
 
 
           {/* XS only (3 exact lines) */}

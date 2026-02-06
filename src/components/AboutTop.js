@@ -72,7 +72,7 @@ const About = () => {
             </span>
             <br />
             <span className="cooper-tagline">
-            asking 'what if' and building the answer.
+            asking 'what if' and crafting the answer.
             </span>
           </h2>
 
