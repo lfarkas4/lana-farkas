@@ -25,7 +25,7 @@ const iconMap = {
 // Toggle this to switch between the placeholder and full mini-case
 // Set to `false` when you're ready to show the actual content
 // ═══════════════════════════════════════════════════════════════
-const SHOW_UNDER_CONSTRUCTION = false;
+const SHOW_UNDER_CONSTRUCTION = true;
 
 export default function LightTheMuse() {
   const data = miniProjects.find((p) => p.slug === "lightthemuse");
