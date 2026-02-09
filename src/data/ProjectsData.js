@@ -8,7 +8,7 @@ export const caseStudies = [
       description:
         "Co-founded an AI-powered platform to optimize behavioral data in Applied Behavior Analysis (ABA) therapy.",
       link: "/case-studies/behavai",
-      video: "/assets/behhhup.mp4",
+      video: "/assets/behhhup@1.mp4",
       brandMark: "/assets/behavai-mark.png",
       brandMarkH: "24px",
       meta: {
@@ -25,7 +25,7 @@ export const caseStudies = [
       description:
         "Designed key interactions and overall service for an autonomous underwater inspection system.",
       link: "/case-studies/aquatonomy",
-      video: "/assets/aquahup.mp4",
+      video: "/assets/aquahup@1.mp4",
       brandMark: "/assets/aquatonomy-mark.png",
       brandMarkH: "18px",
       meta: {
@@ -42,7 +42,7 @@ export const caseStudies = [
       description:
         "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
       link: "/case-studies/hira",
-      video: "/assets/hvra1.mp4",
+      video: "/assets/hvra1@1.mp4",
       brandMark: "/assets/hira-mark.png",
       brandMarkH: "42px",
       meta: {
@@ -59,7 +59,7 @@ export const caseStudies = [
       description:
         "Explored new learning models that empower students to shape their own educational journeys.",
       link: "/case-studies/stackbuilder",
-      video: "/assets/stvk.mp4",
+      video: "/assets/stvk@1.mp4",
       // image: "/assets/musify.png",
       brandMark: "/assets/stack-mark.svg",
       brandMarkH: "20px",                // ← per-project size
