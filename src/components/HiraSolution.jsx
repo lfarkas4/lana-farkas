@@ -27,7 +27,7 @@ export default function HiraSolution() {
         <div className="hira-solution-demo reveal">
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hirra4.mp4"
+              src="/assets/hirra4@1.mp4"
               autoPlay
               muted
               loop
@@ -59,7 +59,7 @@ export default function HiraSolution() {
 
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hirrra.mp4"
+              src="/assets/hirrra@1.mp4"
               autoPlay
               muted
               loop
@@ -73,7 +73,7 @@ export default function HiraSolution() {
         <div className="hira-solution-demo reveal">
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hirrrra3.mp4"
+              src="/assets/hirrrra3@1.mp4"
               autoPlay
               muted
               loop
@@ -104,7 +104,7 @@ export default function HiraSolution() {
           <div className="hira-live-context-visual">
           <video
       // src="/assets/nutif.mp4"
-      src="/assets/hora.mp4"
+      src="/assets/hora@1.mp4"
       autoPlay
       muted
       loop
@@ -126,7 +126,7 @@ export default function HiraSolution() {
         <div className="hira-solution-demo hira-solution-demo--mobile reveal">
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hick2.mp4"
+              src="/assets/hick2@1.mp4"
               autoPlay
               muted
               loop
@@ -158,7 +158,7 @@ export default function HiraSolution() {
 
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hick_1.mp4"
+              src="/assets/hick_1@1.mp4"
               autoPlay
               muted
               loop
