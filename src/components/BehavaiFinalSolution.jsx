@@ -11,25 +11,25 @@ export default function BehavaiFinalSolution() {
       number: "1",
       heading: "Start from client data to draft a report",
       description: "Client information and session notes are uploaded to generate a structured draft based on patterns across sessions.",
-      media: "/assets/solution1.mp4"
+      media: "/assets/solution1@1.mp4"
     },
     {
       number: "2",
       heading: "Shape the report layout to match the story",
       description: "Drag-and-drop sections adapt to each client's progress, emphasizing breakthroughs or ongoing areas of growth.",
-      media: "/assets/solution2.mp4"
+      media: "/assets/solution2@1.mp4"
     },
     {
       number: "3",
       heading: "Analyze content with integrated AI assist",
       description: "AI Insights surface trends across weeks of data to inform clinical judgment and support intervention strategies.",
-      media: "/assets/solution3.mp4"
+      media: "/assets/solution3@1.mp4"
     },
     {
       number: "4",
       heading: "Share, review, and act on reports together",
       description: "Reports can be previewed, annotated, and exported in formats suitable for families or clinical supervisors.",
-      media: "/assets/solution4.mp4"
+      media: "/assets/solution4@1.mp4"
     }
   ];
 

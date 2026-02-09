@@ -42,7 +42,7 @@ export default function BehavAIKickoff() {
         {/* Media underneath */}
         <div className="behavai-kickoff-media">
           <video
-            src="/assets/behavai-worksesh.mp4"
+            src="/assets/behavai-worksesh@1.mp4"
             autoPlay
             muted
             loop

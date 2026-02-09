@@ -58,7 +58,7 @@ export default function BehavaiSolutionPreview() {
   <video
     ref={videoRef}
     className="behavai-solution-video"
-    src="/assets/behavai-trailer.mp4"
+    src="/assets/behavai-trailer@1.mp4"
     muted
     loop
     playsInline
