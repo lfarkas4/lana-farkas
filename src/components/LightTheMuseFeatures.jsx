@@ -25,7 +25,7 @@ export default function LightTheMuseFeatures() {
         <div className="light-features-demo reveal">
           <div className="light-features-demo-media">
             <video
-              src="/assets/hick2.mp4"
+              src="/assets/muse1.mp4"
               autoPlay
               muted
               loop
@@ -57,7 +57,7 @@ export default function LightTheMuseFeatures() {
 
           <div className="light-features-demo-media">
             <video
-              src="/assets/hick2.mp4"
+              src="/assets/muse2.mp4"
               autoPlay
               muted
               loop
@@ -71,7 +71,7 @@ export default function LightTheMuseFeatures() {
         <div className="light-features-demo reveal">
           <div className="light-features-demo-media">
             <video
-              src="/assets/hick2.mp4"
+              src="/assets/musee3.mp4"
               autoPlay
               muted
               loop
@@ -103,7 +103,7 @@ export default function LightTheMuseFeatures() {
 
           <div className="light-features-demo-media">
             <video
-              src="/assets/hick2.mp4"
+              src="/assets/muse4.mp4"
               autoPlay
               muted
               loop
