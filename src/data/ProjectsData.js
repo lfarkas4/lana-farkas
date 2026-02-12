@@ -9,7 +9,7 @@ export const caseStudies = [
         "Co-founded an AI-powered platform to optimize behavioral data in Applied Behavior Analysis (ABA) therapy.",
       link: "/case-studies/behavai",
       video: "/assets/behhhup@1.mp4",
-      brandMark: "/assets/behavai-mark.png",
+      brandMark: "/assets/behavai-mark.webp",
       brandMarkH: "24px",
       meta: {
         role: "Founding Designer & Front-End Developer",
@@ -26,7 +26,7 @@ export const caseStudies = [
         "Designed key interactions and overall service for an autonomous underwater inspection system.",
       link: "/case-studies/aquatonomy",
       video: "/assets/aquahup@1.mp4",
-      brandMark: "/assets/aquatonomy-mark.png",
+      brandMark: "/assets/aquatonomy-mark.webp",
       brandMarkH: "18px",
       meta: {
         role: "Product Strategy \n & UX Design",
@@ -43,7 +43,7 @@ export const caseStudies = [
         "Conceptualized a wearable experience to support patients through cancer care at UPMC Magee-Womens Hospital.",
       link: "/case-studies/hira",
       video: "/assets/hvra1@1.mp4",
-      brandMark: "/assets/hira-mark.png",
+      brandMark: "/assets/hira-mark.webp",
       brandMarkH: "42px",
       meta: {
         role: "UX Research & \nService Design",
@@ -61,7 +61,7 @@ export const caseStudies = [
       link: "/case-studies/stackbuilder",
       video: "/assets/stvk@1.mp4",
       // image: "/assets/musify.png",
-      brandMark: "/assets/stack-mark.svg",
+      brandMark: "/assets/stack-mark.webp",
       brandMarkH: "20px",                // ← per-project size
       meta: {
         role: "Product Designer",
@@ -81,7 +81,7 @@ export const caseStudies = [
       link: "/case-studies/moonranger",
       image: "/assets/moonthumb.webp",
       // video: "/assets/moon.mp4",
-      brandMark: "/assets/moonranger-mark.svg",
+      brandMark: "/assets/moonranger-mark.webp",
       brandMarkH: "23px",                // ← per-project size
       meta: {
         role: "Product Design & Research",
@@ -96,7 +96,7 @@ export const caseStudies = [
       description: "Developed interactive game prototype using Arduino and digital fabrication tools.",
       link: "/case-studies/taptap",
       image: "/assets/taptap2.webp",
-      brandMark: "/assets/tech.png",
+      brandMark: "/assets/tech.webp",
       brandMarkH: "24px",
       meta: {
         role: "Hardware Design & Code Integration",
@@ -112,7 +112,7 @@ export const caseStudies = [
         "Ideated mobile app to counter addictive technology through creative expression.",
       link: "/case-studies/lightthemuse",
       image: "/assets/whatsapp.webp",
-      brandMark: "/assets/lightthemuse-mark.png",
+      brandMark: "/assets/lightthemuse-mark.webp",
       brandMarkH: "24px",                // ← per-project size
       meta: {
         role: "Product Design & Ideation",
