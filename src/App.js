@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import Navigation from "./components/Navbar";
@@ -39,22 +39,52 @@ function AppContent() {
   const isDetailPage = location.pathname.startsWith("/case-studies/");
   const isHomePage = location.pathname === "/";
 
-  // Cosmic is ONLY on these pages
   const isCosmicPage =
     location.pathname === "/" ||
     location.pathname === "/about" ||
     location.pathname.startsWith("/under-construction") ||
     location.pathname.startsWith("/case-studies/");
 
-  // Loading states - ALWAYS show loading screen on homepage
+  /**
+   * ✅ Loader should run ONLY on initial page load (mount),
+   * and ONLY if you enter on "/".
+   * No sessionStorage/localStorage (those prevent showing on refresh).
+   */
+  const didInitRef = useRef(false);
+
   const [showLoading, setShowLoading] = useState(isHomePage);
   const [loadingComplete, setLoadingComplete] = useState(!isHomePage);
 
+  const hideLoadingTimeoutRef = useRef(null);
+  const clearHideTimeout = () => {
+    if (hideLoadingTimeoutRef.current) {
+      clearTimeout(hideLoadingTimeoutRef.current);
+      hideLoadingTimeoutRef.current = null;
+    }
+  };
+
+  // Ensure initial state matches the entry route (runs once)
+  useEffect(() => {
+    if (didInitRef.current) return;
+    didInitRef.current = true;
+
+    if (location.pathname === "/") {
+      setShowLoading(true);
+      setLoadingComplete(false);
+    } else {
+      setShowLoading(false);
+      setLoadingComplete(true);
+    }
+
+    return () => clearHideTimeout();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleLoadComplete = () => {
     setLoadingComplete(true);
-    
-    // Keep loading screen mounted briefly for fade-out animation
-    setTimeout(() => {
+
+    clearHideTimeout();
+    hideLoadingTimeoutRef.current = setTimeout(() => {
       setShowLoading(false);
     }, 320); // Match LoadingScreen FADE_OUT_MS
   };
@@ -75,9 +105,7 @@ function AppContent() {
 
       let path = hrefAttr;
       try {
-        if (hrefAttr.startsWith("http")) {
-          path = new URL(hrefAttr).pathname;
-        }
+        if (hrefAttr.startsWith("http")) path = new URL(hrefAttr).pathname;
       } catch (_) {}
 
       if (!path.startsWith("/case-studies/")) return;
@@ -95,27 +123,20 @@ function AppContent() {
     return () => document.removeEventListener("click", handleDocClick);
   }, []);
 
-  // Determine if we should show nav/footer
+  // Original behavior: nav/footer only after loadingComplete
   const showNavFooter = !isDetailPage && loadingComplete;
 
   return (
     <>
-      {/* Cosmic background and cursor tracker on cosmic pages */}
-      {isCosmicPage && (
-        <CosmicBackground showFluidCursor={loadingComplete} />
-      )}
-
+      {isCosmicPage && <CosmicBackground showFluidCursor={loadingComplete} />}
       {isCosmicPage && loadingComplete && <CustomCursor />}
 
-      {/* Loading Screen - renders as overlay */}
-      {showLoading && (
-        <LoadingScreen onLoadComplete={handleLoadComplete} />
-      )}
+      {/* ✅ Loader shows on initial page load only (if entry route is "/") */}
+      {showLoading && <LoadingScreen onLoadComplete={handleLoadComplete} />}
 
-      {/* Navigation - hidden during loading */}
+      {/* Navigation/Footer hidden during initial loading */}
       {showNavFooter && <Navigation />}
 
-      {/* Main content - ALWAYS rendered (Hero loads behind loading screen) */}
       <Routes>
         <Route path="/" element={<Home isLoading={!loadingComplete} />} />
         <Route path="/about" element={<About />} />
@@ -129,7 +150,6 @@ function AppContent() {
         <Route path="/case-studies/lightthemuse" element={<LightTheMuse />} />
       </Routes>
 
-      {/* Footer - hidden during loading */}
       {showNavFooter && <Footer />}
     </>
   );

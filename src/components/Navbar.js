@@ -13,13 +13,13 @@ const gaEvent = (name, params = {}) => {
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // ✅ for soft entrance (prevents abrupt logo pop-in)
+  // ✅ soft entrance (pairs with Navbar.scss .custom-navbar.nav-visible)
   const [navVisible, setNavVisible] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => setMenuOpen((v) => !v);
 
   // ✅ fade in navbar on mount (next paint)
   useEffect(() => {
@@ -35,7 +35,6 @@ const Navigation = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Scroll to projects section
   const scrollToProjects = () => {
     const projectsSection = document.querySelector(".projects-section");
     if (projectsSection) {
@@ -43,7 +42,6 @@ const Navigation = () => {
     }
   };
 
-  // Handle "Work" link click
   const handleWorkClick = (e) => {
     e.preventDefault();
 
@@ -59,9 +57,7 @@ const Navigation = () => {
       scrollToProjects();
     } else {
       navigate("/", { state: { skipHeroAnimation: true } });
-      setTimeout(() => {
-        scrollToProjects();
-      }, 100);
+      setTimeout(scrollToProjects, 100);
     }
   };
 
@@ -140,7 +136,6 @@ const Navigation = () => {
         }`}
       >
         <div className="nav-container">
-          {/* Logo - Always goes to top of homepage */}
           <Navbar.Brand
             as={Link}
             to="/"
@@ -151,10 +146,12 @@ const Navigation = () => {
               src="/starlogolight.svg"
               alt="logo"
               className="logo hover-subtle"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </Navbar.Brand>
 
-          {/* Desktop Nav */}
           <div className="nav-links-desktop nav-bubble">
             <Nav className="nav-links">
               {renderAnimatedLink("work", "work", "/", handleWorkClick)}
@@ -176,14 +173,12 @@ const Navigation = () => {
             </Nav>
           </div>
 
-          {/* Hamburger Icon */}
           <div className="menu-icon" onClick={toggleMenu}>
             {menuOpen ? <FiX /> : <FiMenu />}
           </div>
         </div>
       </Navbar>
 
-      {/* Mobile Dropdown Nav */}
       <div className={`nav-links-container ${menuOpen ? "active" : ""}`}>
         <Nav className="nav-links">
           {renderAnimatedLink("work", "work", "/", handleWorkClick)}

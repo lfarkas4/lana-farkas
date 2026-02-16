@@ -1,8 +1,60 @@
 // src/pages/Projects.js
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Projects.scss";
 import { caseStudies, miniProjects } from "../data/ProjectsData";
 import useScrollAnimation from "../utils/useScrollAnimation";
+
+/**
+ * Case studies only: lazy-load MP4 when near viewport.
+ * Poster shows immediately (so the card feels “ready”).
+ */
+const LazyThumbVideo = ({ mp4, poster, className }) => {
+  const videoRef = useRef(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    // Fallback: load immediately
+    if (typeof IntersectionObserver === "undefined") {
+      setShouldLoad(true);
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px", threshold: 0.01 }
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      className={className}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="none"
+      poster={poster}
+      controls={false}
+      disablePictureInPicture
+      controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"
+    >
+      {shouldLoad && mp4 ? <source src={mp4} type="video/mp4" /> : null}
+    </video>
+  );
+};
 
 const Projects = () => {
   const [caseStudiesRef, caseStudiesVisible] = useScrollAnimation({ threshold: 0.1 });
@@ -12,7 +64,10 @@ const Projects = () => {
     <section className="projects-section" id="work">
       <div className="projects-wrapper">
         {/* Case Studies Section */}
-        <div ref={caseStudiesRef} className={`case-studies-section ${caseStudiesVisible ? 'is-visible' : ''}`}>
+        <div
+          ref={caseStudiesRef}
+          className={`case-studies-section ${caseStudiesVisible ? "is-visible" : ""}`}
+        >
           <h3 className="section-title animate-section-title">
             <img src="/assets/spark.svg" alt="Arrow" className="section-arrow" />
             case studies
@@ -20,38 +75,36 @@ const Projects = () => {
 
           <div className="projects-container">
             {caseStudies.map((project, index) => (
-              <Link 
-                to={project.link} 
-                className="project-card-link animate-project-card" 
+              <Link
+                to={project.link}
+                className="project-card-link animate-project-card"
                 key={project.slug}
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
                 <div className="project-card">
                   <div className="project-thumbnail">
                     {project.video ? (
-                      <video
-                        src={project.video}
+                      <LazyThumbVideo
+                        mp4={project.video}
+                        poster={project.poster}
                         className="thumbnail-media"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        controls={false}
-                        disablePictureInPicture
-                        controlsList="nodownload noplaybackrate"
                       />
                     ) : (
                       <img
                         src={project.image}
                         alt={project.title}
                         className="thumbnail-media"
+                        loading={index < 2 ? "eager" : "lazy"}
+                        decoding="async"
                       />
                     )}
                   </div>
 
                   <div className="project-tags">
                     {project.tags.map((tag) => (
-                      <span className="tag" key={tag}>{tag}</span>
+                      <span className="tag" key={tag}>
+                        {tag}
+                      </span>
                     ))}
                   </div>
 
@@ -65,8 +118,11 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* Mini Projects Section */}
-        <div ref={miniProjectsRef} className={`mini-projects-section ${miniProjectsVisible ? 'is-visible' : ''}`}>
+        {/* Mini Projects Section (RESTORED behavior: plain <img>, no extra fade logic) */}
+        <div
+          ref={miniProjectsRef}
+          className={`mini-projects-section ${miniProjectsVisible ? "is-visible" : ""}`}
+        >
           <h3 className="section-title animate-section-title">
             <img src="/assets/spark.svg" alt="Arrow" className="section-arrow" />
             mini projects
@@ -74,33 +130,21 @@ const Projects = () => {
 
           <div className="mini-projects-container">
             {miniProjects.map((mini, index) => (
-              <Link 
-                to={mini.link} 
-                className="project-card-link animate-project-card" 
+              <Link
+                to={mini.link}
+                className="project-card-link animate-project-card"
                 key={mini.slug}
                 style={{ animationDelay: `${0.1 + index * 0.05}s` }}
               >
                 <div className="project-card mini-project-card">
                   <div className="project-thumbnail">
-                    {mini.video ? (
-                      <video
-                        src={mini.video}
-                        className="thumbnail-media"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        controls={false}
-                        disablePictureInPicture
-                        controlsList="nodownload noplaybackrate"
-                      />
-                    ) : (
-                      <img
-                        src={mini.image}
-                        alt={mini.title}
-                        className="thumbnail-media"
-                      />
-                    )}
+                    <img
+                      src={mini.image}
+                      alt={mini.title}
+                      className="thumbnail-media"
+                      loading="eager"
+                      decoding="async"
+                    />
                   </div>
 
                   <div className="mini-content">

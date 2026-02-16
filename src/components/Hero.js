@@ -128,3 +128,53 @@ const Hero = ({ isLoading = false }) => {
 };
 
 export default Hero;
+
+
+
+{/* <span className="tagline-gtxs">
+  … a product designer translating{" "} 
+
+  <span className="font-cooper-italic-tag">insights</span>  <br />{" "}
+  into{" "}<span className="font-cooper-italic-tag">interfaces</span> ready for launch.
+</span> */}
+
+{/* <span className="tagline-gtxs">
+  … a product designer who plays in{" "}
+  <span className="font-cooper-italic-tag">prototypes</span>
+  <br />
+  and craft meets code{" "}<span className="font-cooper-italic-tag"></span>.
+</span> */}
+
+
+{/* <span className="tagline-gtxs">
+  … a product designer turning{" "} 
+
+  <span className="font-cooper-italic-tag">playful {" "}prototypes</span>{" "} <br />
+into{" "}<span className="font-cooper-italic-tag">experiences</span> ready for launch.
+</span> */}
+
+
+
+{/* <span className="tagline-gtxs">
+  … a product designer translating{" "} 
+
+  <span className="font-cooper-italic-tag">insights</span>  <br />{" "}
+  into{" "}<span className="font-cooper-italic-tag">interfaces</span> ready for launch.
+</span> */}
+
+{/* <span className="tagline-gtxs">
+  … a product designer who plays in{" "} 
+
+  <span className="font-cooper-italic-tag">prototypes</span>  <br />{" "}
+  and builds{" "}<span className="font-cooper-italic-tag">ideas</span> ready to ship.
+</span> */}
+
+{/* … a product designer{" "}
+<span className="font-cooper-italic-tag">playing in prototypes</span> <br />{" "}
+and{" "}<span className="font-cooper-italic-tag">building products</span> ready to ship. */}
+
+{/* <span className="tagline-xs">
+  <span className="line">… a product designer who plays</span>
+  <span className="line">in prototypes and ships</span>
+  <span className="line">real products.</span>
+</span> */}

@@ -3,6 +3,12 @@
    ================================================================ */
    @use "./partials/tokens" as tokens;
 
+   .loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+  }  
+
    /* ================================================================
       1. LOADING SCREEN CONTAINER
       ================================================================ */
@@ -82,7 +88,7 @@
      background: rgba(255, 255, 255, 0.85);
      border-radius: 2px;
      transform-origin: left;
-     animation: lineExpand 1.6s ease-in-out infinite;
+     animation: lineExpand 1.4s ease-in-out infinite;
    }
    
    @keyframes lineExpand {

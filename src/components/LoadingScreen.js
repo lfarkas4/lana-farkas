@@ -7,7 +7,6 @@ const LOADING_PHRASES = [
   { text: "forging new", emphasis: "galaxies" },
 ];
 
-// Must match .loading-screen transition in SCSS
 const FADE_OUT_MS = 320;
 
 const LoadingScreen = ({ onLoadComplete }) => {
@@ -20,7 +19,6 @@ const LoadingScreen = ({ onLoadComplete }) => {
     () => LOADING_PHRASES[Math.floor(Math.random() * LOADING_PHRASES.length)]
   );
 
-  // Fade-in on next paint
   useEffect(() => {
     const raf = requestAnimationFrame(() => setIsVisible(true));
     return () => cancelAnimationFrame(raf);
@@ -32,41 +30,25 @@ const LoadingScreen = ({ onLoadComplete }) => {
     let isMounted = true;
     let exitTimer = null;
 
-    // All critical assets that must load before showing Hero
+    // ✅ Critical = letters (webp) + halo (png) + logo
     const criticalAssets = [
-      // Lana component images (these are the big files)
-      "/assets/L@1x.png",
-      "/assets/L@2x.png",
-      "/assets/A1@1x.png",
-      "/assets/A1@2x.png",
-      "/assets/N@1x.png",
-      "/assets/N@2x.png",
-      "/assets/A2@1x.png",
-      "/assets/A2@2x.png",
+      "/assets/L@1x.webp",
+      "/assets/L@2x.webp",
+      "/assets/A1@1x.webp",
+      "/assets/A1@2x.webp",
+      "/assets/N@1x.webp",
+      "/assets/N@2x.webp",
+      "/assets/A2@1x.webp",
+      "/assets/A2@2x.webp",
       "/assets/halo@1x.png",
       "/assets/halo@2x.png",
-      "/assets/orstar1@1x.png",
-      "/assets/orstar1@2x.png",
-      "/assets/redstar1@1x.png",
-      "/assets/redstar1@2x.png",
-      "/assets/blustar3@1x.png",
-      "/assets/blustar3@2x.png",
-      "/assets/blustar2@1x.png",
-      "/assets/blustar2@2x.png",
-      "/assets/blustar1@1x.png",
-      "/assets/blustar1@2x.png",
-      "/assets/redstar2@1x.png",
-      "/assets/redstar2@2x.png",
-      "/assets/crown@1x.png",
-      "/assets/crown@2x.png",
-      // Other important assets
       "/starlogolight.svg",
-      "/assets/spark.svg",
     ];
 
     let loadedCount = 0;
     let assetsReady = false;
     let minTimeReached = false;
+
     const totalAssets = criticalAssets.length;
 
     const complete = () => {
@@ -76,12 +58,10 @@ const LoadingScreen = ({ onLoadComplete }) => {
       setIsExiting(true);
       hasCompletedRef.current = true;
 
-      // Start fade-out
       exitTimer = setTimeout(() => {
         if (isMounted) setIsVisible(false);
       }, FADE_OUT_MS);
 
-      // Tell parent immediately so hero can start appearing
       setTimeout(() => {
         if (isMounted) onLoadComplete?.();
       }, 0);
@@ -90,13 +70,9 @@ const LoadingScreen = ({ onLoadComplete }) => {
     const checkComplete = () => {
       if (!isMounted) return;
 
-      // CRITICAL: Only complete when BOTH conditions are met
-      // This ensures the loading screen ALWAYS shows for at least minDisplayTime
-      // but stays longer if assets aren't ready
       if (assetsReady && minTimeReached) {
         complete();
       } else if (minTimeReached && !assetsReady) {
-        // Minimum time reached but assets still loading - show resting state
         setIsResting(true);
       }
     };
@@ -109,26 +85,24 @@ const LoadingScreen = ({ onLoadComplete }) => {
       }
     };
 
-    // Preload all critical assets
     criticalAssets.forEach((src) => {
       const img = new Image();
       img.onload = onAssetLoad;
       img.onerror = () => {
         console.warn(`Failed to preload: ${src}`);
-        onAssetLoad(); // Count it anyway to prevent infinite loading
+        onAssetLoad();
       };
       img.src = src;
     });
 
-    // Minimum display time - loading screen ALWAYS shows for at least this long
+    // ✅ Faster min time (still feels intentional)
     const minDisplayTime = 1600;
     const minTimer = setTimeout(() => {
       minTimeReached = true;
       checkComplete();
     }, minDisplayTime);
 
-    // Maximum wait time (safety fallback)
-    const maxWaitTime = 10000;
+    const maxWaitTime = 8000;
     const maxTimer = setTimeout(() => {
       if (!hasCompletedRef.current && isMounted) {
         console.warn("Loading timeout reached, proceeding anyway");
