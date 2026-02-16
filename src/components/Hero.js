@@ -26,21 +26,19 @@ const Hero = ({ isLoading = false }) => {
   }, [location.state]);
 
   return (
-    <section 
-      className={`hero ${isLoading ? "hero-loading" : "hero-loaded"}`} 
+    <section
+      className={`hero ${isLoading ? "hero-loading" : "hero-loaded"}`}
       id="home"
     >
       <div className="hero-inner-wrapper">
         <h1
-          className={`hero-title ${
-            shouldAnimate ? "animate-fade-in" : "no-animation"
-          }`}
+          className={`hero-title ${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
           style={shouldAnimate ? { animationDelay: "0.1s" } : {}}
         >
           <span className="font-cooper-italic-hello">hello</span>, my name is
         </h1>
 
-        {/* Lana SVG logo - always animates */}
+        {/* Lana logo */}
         <div
           className={`${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
           style={shouldAnimate ? { animationDelay: "0.2s" } : {}}
@@ -50,45 +48,28 @@ const Hero = ({ isLoading = false }) => {
 
         {/* Tagline */}
         <p
-          className={`hero-tagline ${
-            shouldAnimate ? "animate-fade-in" : "no-animation"
-          }`}
+          className={`hero-tagline ${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
           style={shouldAnimate ? { animationDelay: "0.3s" } : {}}
         >
-          {/* > XS (keeps your single <br /> before "cosmos") */}
-          {/* <span className="tagline-gtxs">
-            … a product futurist bringing{" "}
-            <span className="font-cooper-italic-tag">clarity</span> to the{" "}
+          <span className="tagline-gtxs">
+            … a product designer translating{" "}
+            <span className="font-cooper-italic-tag">insights</span>
             <br />
-            <span className="font-cooper-italic-tag">cosmos</span> of digital
-            experiences.
-          </span> */}
+            into <span className="font-cooper-italic-tag">interfaces</span> ready for
+            launch.
+          </span>
 
-<span className="tagline-gtxs">
-  … a product designer translating{" "}
-  <span className="font-cooper-italic-tag">insights</span>
-  <br />
-  into{" "}<span className="font-cooper-italic-tag">interfaces</span> ready for launch.
-</span>
-
-
-          {/* XS only (3 exact lines) */}
+          {/* XS only */}
           <span className="tagline-xs">
             <span className="line">… a product designer translating</span>
-            <span className="line">
-              insights into interfaces
-            </span>
-            <span className="line">
-              ready for launch.
-            </span>
+            <span className="line">insights into interfaces</span>
+            <span className="line">ready for launch.</span>
           </span>
         </p>
 
         {/* Info columns */}
         <div
-          className={`hero-info ${
-            shouldAnimate ? "animate-fade-in" : "no-animation"
-          }`}
+          className={`hero-info ${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
           style={shouldAnimate ? { animationDelay: "0.4s" } : {}}
         >
           <div className="hero-column">
@@ -99,23 +80,17 @@ const Hero = ({ isLoading = false }) => {
           <div className="hero-column">
             <h4 className="font-cooper-italic">currently building</h4>
             <p>
-            digital design systems @{" "}
-              <a
-                href="https://www.tutors.plus/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              digital design systems @{" "}
+              <a href="https://www.tutors.plus/" target="_blank" rel="noopener noreferrer">
                 plus
               </a>
             </p>
           </div>
         </div>
 
-        {/* Scroll down arrow */}
+        {/* Scroll cue */}
         <div
-          className={`scroll-cue ${
-            shouldAnimate ? "animate-fade-in" : "no-animation"
-          }`}
+          className={`scroll-cue ${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
           style={shouldAnimate ? { animationDelay: "0.5s" } : {}}
         >
           <div className="scroll-mouse">
@@ -128,53 +103,3 @@ const Hero = ({ isLoading = false }) => {
 };
 
 export default Hero;
-
-
-
-{/* <span className="tagline-gtxs">
-  … a product designer translating{" "} 
-
-  <span className="font-cooper-italic-tag">insights</span>  <br />{" "}
-  into{" "}<span className="font-cooper-italic-tag">interfaces</span> ready for launch.
-</span> */}
-
-{/* <span className="tagline-gtxs">
-  … a product designer who plays in{" "}
-  <span className="font-cooper-italic-tag">prototypes</span>
-  <br />
-  and craft meets code{" "}<span className="font-cooper-italic-tag"></span>.
-</span> */}
-
-
-{/* <span className="tagline-gtxs">
-  … a product designer turning{" "} 
-
-  <span className="font-cooper-italic-tag">playful {" "}prototypes</span>{" "} <br />
-into{" "}<span className="font-cooper-italic-tag">experiences</span> ready for launch.
-</span> */}
-
-
-
-{/* <span className="tagline-gtxs">
-  … a product designer translating{" "} 
-
-  <span className="font-cooper-italic-tag">insights</span>  <br />{" "}
-  into{" "}<span className="font-cooper-italic-tag">interfaces</span> ready for launch.
-</span> */}
-
-{/* <span className="tagline-gtxs">
-  … a product designer who plays in{" "} 
-
-  <span className="font-cooper-italic-tag">prototypes</span>  <br />{" "}
-  and builds{" "}<span className="font-cooper-italic-tag">ideas</span> ready to ship.
-</span> */}
-
-{/* … a product designer{" "}
-<span className="font-cooper-italic-tag">playing in prototypes</span> <br />{" "}
-and{" "}<span className="font-cooper-italic-tag">building products</span> ready to ship. */}
-
-{/* <span className="tagline-xs">
-  <span className="line">… a product designer who plays</span>
-  <span className="line">in prototypes and ships</span>
-  <span className="line">real products.</span>
-</span> */}
