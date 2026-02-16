@@ -74,10 +74,7 @@
      align-items: flex-start;
    }
    
-   /* IMPORTANT:
-      This element also gets the fade-up animation class (animate-project-card),
-      so do NOT use transition: all here, or it fights the animation transform/opacity.
-   */
+   /* ✅ IMPORTANT: don't transition "all" on the link wrapper (causes jank) */
    .project-card-link {
      text-decoration: none;
      color: inherit;
@@ -85,9 +82,7 @@
      border-radius: 12px;
      cursor: pointer;
      pointer-events: auto;
-   
-     /* keep hover feeling crisp without interfering with entry animation */
-     transition: filter 0.3s ease;
+     transition: none;
    }
    
    .project-card-link:focus-visible {
@@ -104,9 +99,8 @@
      overflow: hidden;
      position: relative;
      border: 0.5px solid rgba(42, 42, 43, 0.35);
-     transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-     will-change: box-shadow;
    }
    
    html:not(.cursor-native) .project-thumbnail:hover {
@@ -138,30 +132,43 @@
      object-fit: cover;
      border-radius: 12px;
      transform: scale(1.06) !important;
-     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-       filter 0.4s ease !important;
+     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease !important;
      z-index: 1;
-     will-change: transform, filter;
    
      /* Hide all video controls on mobile */
      &::-webkit-media-controls {
        display: none !important;
      }
+   
      &::-webkit-media-controls-enclosure {
        display: none !important;
      }
+   
      &::-webkit-media-controls-panel {
        display: none !important;
      }
+   
      &::-webkit-media-controls-play-button {
        display: none !important;
      }
+   
      &::-webkit-media-controls-start-playback-button {
        display: none !important;
      }
    
      /* Prevent video interaction */
      pointer-events: none;
+   }
+   
+   /* ✅ Mini thumbs: fade-in on decode/load without breaking hover */
+   .thumbnail-media.mini-thumb {
+     opacity: 0;
+     will-change: opacity, transform;
+     transition: opacity 0.28s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease !important;
+   }
+   
+   .thumbnail-media.mini-thumb.is-loaded {
+     opacity: 1;
    }
    
    /* Hover interactions - scale and subtle brightness */
@@ -208,14 +215,8 @@
      gap: 10px;
      margin-bottom: 18px;
      margin-top: 22px;
-     transition: color 0.3s ease, opacity 0.3s ease;
+     transition: color 0.3s ease;
      opacity: 0.95;
-   
-     display: -webkit-box;
-     -webkit-box-orient: vertical;
-     overflow: hidden;
-     word-wrap: break-word;
-     text-overflow: ellipsis;
    }
    
    .project-card-link:hover .project-title {
@@ -230,12 +231,6 @@
      transition: color 0.3s ease, opacity 0.3s ease;
      opacity: 0.9;
      letter-spacing: 0.25px;
-   
-     display: -webkit-box;
-     -webkit-box-orient: vertical;
-     overflow: hidden;
-     word-wrap: break-word;
-     text-overflow: ellipsis;
    }
    
    .project-card-link:hover .project-description {
@@ -275,7 +270,7 @@
      @include tokens.type-mont-display2-bold;
      color: tokens.$prisec;
      margin-bottom: 18px;
-     transition: color 0.3s ease, opacity 0.3s ease;
+     transition: color 0.3s ease;
      opacity: 0.95;
    }
    
@@ -299,63 +294,59 @@
    
    /* ================================================================
       6. TEXT CLAMPING & OVERFLOW
-      (handled in .project-title/.project-description above)
       ================================================================ */
+   .project-title {
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+     word-wrap: break-word;
+     text-overflow: ellipsis;
+   }
+   
+   .project-description {
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+     word-wrap: break-word;
+     text-overflow: ellipsis;
+   }
    
    /* ================================================================
       7. SCROLL ANIMATIONS (aligned with hero)
       ================================================================ */
    
-   /* Section title: tiny lift + fade */
    @keyframes sectionFadeUp {
-     from {
-       opacity: 0;
-       transform: translate3d(0, 10px, 0);
-     }
-     to {
-       opacity: 1;
-       transform: translate3d(0, 0, 0);
-     }
+     from { opacity: 0; transform: translate3d(0, 10px, 0); }
+     to   { opacity: 1; transform: translate3d(0, 0, 0); }
    }
    
-   /* Project cards: gentle rise */
    @keyframes cardFadeUp {
-     from {
-       opacity: 0;
-       transform: translate3d(0, 20px, 0);
-     }
-     to {
-       opacity: 1;
-       transform: translate3d(0, 0, 0);
-     }
+     from { opacity: 0; transform: translate3d(0, 14px, 0); }
+     to   { opacity: 1; transform: translate3d(0, 0, 0); }
    }
    
    /* Base states – hidden until .is-visible */
    .animate-section-title {
      opacity: 0;
-     transform: translate3d(0, 5px, 0);
+     transform: translate3d(0, 6px, 0);
      will-change: opacity, transform;
    }
    
    .animate-project-card {
      opacity: 0;
-     transform: translate3d(0, 5px, 0);
+     transform: translate3d(0, 6px, 0);
      will-change: opacity, transform;
-   
-     /* ensure entry animation isn't affected by transitions */
      transition: none !important;
    }
    
-   /* When section wrapper gets .is-visible from useScrollAnimation */
    .is-visible .animate-section-title {
-     animation: sectionFadeUp 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+     animation: sectionFadeUp 0.40s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
    }
    
    .is-visible .animate-project-card {
      animation: cardFadeUp 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
    }
    
-   /* Turn off animations if user prefers reduced motion */
    @media (prefers-reduced-motion: reduce) {
      .animate-section-title,
      .animate-project-card {
@@ -369,14 +360,14 @@
       8. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
       ================================================================ */
    
-   /* XXL: ≥ 1600px (Extra large desktops) */
+   /* XXL: ≥ 1600px */
    @media (min-width: #{tokens.$xxl_breakpoint}) {
      .projects-section {
        padding: 0 tokens.$padding-wide;
      }
    }
    
-   /* XL: 1200px – 1599px (Large desktops) */
+   /* XL: 1200px – 1599px */
    @media (max-width: #{tokens.$xxl_breakpoint}) and (min-width: #{tokens.$xl_breakpoint}) {
      .projects-section {
        padding: 0 tokens.$padding-wide;
@@ -387,7 +378,7 @@
      }
    }
    
-   /* LG: 992px – 1199px (Small laptops) */
+   /* LG: 992px – 1199px */
    @media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
      .projects-section {
        padding: 0 tokens.$padding-wide;
@@ -423,24 +414,21 @@
      }
    }
    
-   /* MD: 768px – 991px (Tablets) */
+   /* MD: 768px – 991px */
    @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
      .projects-section {
        padding: 0 tokens.$padding-wide;
      }
    
-     /* Main projects stack to single column */
      .projects-container {
        grid-template-columns: 1fr;
      }
    
-     /* Mini projects stack to single column */
      .mini-projects-container {
        grid-template-columns: 1fr;
        gap: 45px;
      }
    
-     /* Mini project card becomes horizontal */
      .mini-project-card {
        flex-direction: row;
        align-items: center;
@@ -462,7 +450,7 @@
      }
    }
    
-   /* SM: 626px – 767px (Large phones) */
+   /* SM: 626px – 767px */
    @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
      .projects-section {
        padding: 0 tokens.$padding-wide;
@@ -472,7 +460,6 @@
        grid-template-columns: 1fr;
      }
    
-     /* Mini projects fully vertical */
      .mini-projects-container {
        display: flex;
        flex-direction: column;
@@ -499,7 +486,7 @@
      }
    }
    
-   /* XS: 465px – 625px (Medium phones) */
+   /* XS: 465px – 625px */
    @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
      .projects-section {
        padding: 0 tokens.$padding-wide;

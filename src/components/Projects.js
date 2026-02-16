@@ -1,9 +1,63 @@
-// src/pages/Projects.js
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Projects.scss";
 import { caseStudies, miniProjects } from "../data/ProjectsData";
 import useScrollAnimation from "../utils/useScrollAnimation";
+
+/**
+ * Fade-in image once it finishes decoding.
+ * (Prevents pop-in/jank when the card animates but image decode lags.)
+ */
+const FadeInImage = ({
+  src,
+  alt,
+  className,
+  loading = "lazy",
+  fetchPriority = "auto",
+  fadeOnLoad = true,
+}) => {
+  const [loaded, setLoaded] = useState(!fadeOnLoad);
+
+  useEffect(() => {
+    if (!fadeOnLoad) return;
+
+    let canceled = false;
+    const img = new Image();
+    img.src = src;
+
+    const done = () => {
+      if (!canceled) setLoaded(true);
+    };
+
+    // decode() ensures it's ready to paint (best anti-jank)
+    if (img.decode) {
+      img.decode().then(done).catch(done);
+    } else {
+      img.onload = done;
+      img.onerror = done;
+    }
+
+    return () => {
+      canceled = true;
+    };
+  }, [src, fadeOnLoad]);
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={`${className} ${loaded ? "is-loaded" : ""}`}
+      loading={loading}
+      decoding="async"
+      fetchPriority={fetchPriority}
+      onLoad={() => {
+        // fallback: if fadeOnLoad=false we still mark loaded
+        if (!fadeOnLoad) setLoaded(true);
+      }}
+      onError={() => setLoaded(true)}
+    />
+  );
+};
 
 /**
  * Case studies only: lazy-load MP4 when near viewport.
@@ -118,7 +172,7 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* Mini Projects Section (RESTORED behavior: plain <img>, no extra fade logic) */}
+        {/* Mini Projects Section */}
         <div
           ref={miniProjectsRef}
           className={`mini-projects-section ${miniProjectsVisible ? "is-visible" : ""}`}
@@ -138,12 +192,13 @@ const Projects = () => {
               >
                 <div className="project-card mini-project-card">
                   <div className="project-thumbnail">
-                    <img
+                    <FadeInImage
                       src={mini.image}
                       alt={mini.title}
-                      className="thumbnail-media"
-                      loading="eager"
-                      decoding="async"
+                      className="thumbnail-media mini-thumb"
+                      loading="lazy"
+                      fetchPriority="low"
+                      fadeOnLoad={true}
                     />
                   </div>
 
