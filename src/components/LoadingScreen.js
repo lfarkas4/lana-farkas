@@ -7,6 +7,7 @@ const LOADING_PHRASES = [
   { text: "forging new", emphasis: "galaxies" },
 ];
 
+// Must match .loading-screen transition in SCSS
 const FADE_OUT_MS = 320;
 
 const LoadingScreen = ({ onLoadComplete }) => {
@@ -19,6 +20,7 @@ const LoadingScreen = ({ onLoadComplete }) => {
     () => LOADING_PHRASES[Math.floor(Math.random() * LOADING_PHRASES.length)]
   );
 
+  // Fade-in on next paint
   useEffect(() => {
     const raf = requestAnimationFrame(() => setIsVisible(true));
     return () => cancelAnimationFrame(raf);
@@ -30,8 +32,9 @@ const LoadingScreen = ({ onLoadComplete }) => {
     let isMounted = true;
     let exitTimer = null;
 
-    // ✅ Critical = letters (webp) + halo (png) + logo
+    // ✅ Critical = letters (webp) + halo/stars/crown (png) + logo + spark
     const criticalAssets = [
+      // Letters (webp)
       "/assets/L@1x.webp",
       "/assets/L@2x.webp",
       "/assets/A1@1x.webp",
@@ -40,15 +43,35 @@ const LoadingScreen = ({ onLoadComplete }) => {
       "/assets/N@2x.webp",
       "/assets/A2@1x.webp",
       "/assets/A2@2x.webp",
+
+      // Halo (png)
       "/assets/halo@1x.png",
       "/assets/halo@2x.png",
+
+      // Stars + crown (png)
+      "/assets/orstar1@1x.png",
+      "/assets/orstar1@2x.png",
+      "/assets/redstar1@1x.png",
+      "/assets/redstar1@2x.png",
+      "/assets/blustar3@1x.png",
+      "/assets/blustar3@2x.png",
+      "/assets/blustar2@1x.png",
+      "/assets/blustar2@2x.png",
+      "/assets/blustar1@1x.png",
+      "/assets/blustar1@2x.png",
+      "/assets/redstar2@1x.png",
+      "/assets/redstar2@2x.png",
+      "/assets/crown@1x.png",
+      "/assets/crown@2x.png",
+
+      // Other important UI assets
       "/starlogolight.svg",
+      "/assets/spark.svg",
     ];
 
     let loadedCount = 0;
     let assetsReady = false;
     let minTimeReached = false;
-
     const totalAssets = criticalAssets.length;
 
     const complete = () => {
@@ -58,10 +81,12 @@ const LoadingScreen = ({ onLoadComplete }) => {
       setIsExiting(true);
       hasCompletedRef.current = true;
 
+      // Start fade-out
       exitTimer = setTimeout(() => {
         if (isMounted) setIsVisible(false);
       }, FADE_OUT_MS);
 
+      // Tell parent immediately so hero can start appearing
       setTimeout(() => {
         if (isMounted) onLoadComplete?.();
       }, 0);
@@ -85,23 +110,37 @@ const LoadingScreen = ({ onLoadComplete }) => {
       }
     };
 
+    // ✅ Preload + decode (reduces stagger/choppy reveal)
     criticalAssets.forEach((src) => {
       const img = new Image();
-      img.onload = onAssetLoad;
+
+      img.onload = () => {
+        if (img.decode) {
+          img
+            .decode()
+            .catch(() => {})
+            .finally(onAssetLoad);
+        } else {
+          onAssetLoad();
+        }
+      };
+
       img.onerror = () => {
         console.warn(`Failed to preload: ${src}`);
-        onAssetLoad();
+        onAssetLoad(); // Count it anyway to prevent infinite loading
       };
+
       img.src = src;
     });
 
-    // ✅ Faster min time (still feels intentional)
+    // ✅ Minimum display time (keep your 1600ms)
     const minDisplayTime = 1600;
     const minTimer = setTimeout(() => {
       minTimeReached = true;
       checkComplete();
     }, minDisplayTime);
 
+    // Safety fallback
     const maxWaitTime = 8000;
     const maxTimer = setTimeout(() => {
       if (!hasCompletedRef.current && isMounted) {

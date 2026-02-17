@@ -9,31 +9,52 @@ export default function Lana() {
     const wrap = wrapRef.current;
     if (!wrap) return;
 
-    // Only gate "ready" on letters + halo
-    const criticalImgs = Array.from(
-      wrap.querySelectorAll('img[data-critical="true"]')
-    );
+    const imgs = Array.from(wrap.querySelectorAll("img"));
+    let cancelled = false;
 
-    if (criticalImgs.length === 0) {
-      setReady(true);
-      return;
-    }
+    const waitForImg = (img) =>
+      new Promise((resolve) => {
+        const done = () => {
+          // decode() prevents “half-painted” / choppy reveals
+          if (typeof img.decode === "function") {
+            img
+              .decode()
+              .catch(() => {}) // ignore decode errors
+              .finally(resolve);
+          } else {
+            resolve();
+          }
+        };
 
-    let remaining = 0;
+        // already loaded?
+        if (img.complete && img.naturalWidth > 0) return done();
 
-    const mark = () => {
-      remaining -= 1;
-      if (remaining <= 0) setReady(true);
+        // wait for load/error
+        const onLoad = () => {
+          cleanup();
+          done();
+        };
+        const onError = () => {
+          cleanup();
+          resolve(); // don’t block forever
+        };
+        const cleanup = () => {
+          img.removeEventListener("load", onLoad);
+          img.removeEventListener("error", onError);
+        };
+
+        img.addEventListener("load", onLoad);
+        img.addEventListener("error", onError);
+      });
+
+    (async () => {
+      await Promise.all(imgs.map(waitForImg));
+      if (!cancelled) setReady(true);
+    })();
+
+    return () => {
+      cancelled = true;
     };
-
-    criticalImgs.forEach((img) => {
-      if (img.complete && img.naturalWidth > 0) return;
-      remaining += 1;
-      img.addEventListener("load", mark, { once: true });
-      img.addEventListener("error", mark, { once: true });
-    });
-
-    if (remaining === 0) setReady(true);
   }, []);
 
   return (
@@ -42,9 +63,8 @@ export default function Lana() {
       className={`lana-container ${ready ? "is-ready" : ""}`}
       aria-hidden="true"
     >
-      {/* Letters (WEBP) - CRITICAL */}
+      {/* Letters — WEBP (1x/2x) */}
       <img
-        data-critical="true"
         src="/assets/L@1x.webp"
         srcSet="/assets/L@1x.webp 1x, /assets/L@2x.webp 2x"
         alt=""
@@ -54,7 +74,6 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        data-critical="true"
         src="/assets/A1@1x.webp"
         srcSet="/assets/A1@1x.webp 1x, /assets/A1@2x.webp 2x"
         alt=""
@@ -64,7 +83,6 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        data-critical="true"
         src="/assets/N@1x.webp"
         srcSet="/assets/N@1x.webp 1x, /assets/N@2x.webp 2x"
         alt=""
@@ -74,7 +92,6 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        data-critical="true"
         src="/assets/A2@1x.webp"
         srcSet="/assets/A2@1x.webp 1x, /assets/A2@2x.webp 2x"
         alt=""
@@ -84,9 +101,8 @@ export default function Lana() {
         decoding="async"
       />
 
-      {/* Halo (PNG) - CRITICAL */}
+      {/* Decor — keep PNGs (1x/2x) */}
       <img
-        data-critical="true"
         src="/assets/halo@1x.png"
         srcSet="/assets/halo@1x.png 1x, /assets/halo@2x.png 2x"
         alt=""
@@ -95,15 +111,12 @@ export default function Lana() {
         fetchPriority="high"
         decoding="async"
       />
-
-      {/* Stars + crown (PNG) - NON-CRITICAL */}
       <img
         src="/assets/orstar1@1x.png"
         srcSet="/assets/orstar1@1x.png 1x, /assets/orstar1@2x.png 2x"
         alt=""
         className="lana-piece orstar1-piece"
         draggable="false"
-        fetchPriority="low"
         decoding="async"
       />
       <img
@@ -112,7 +125,6 @@ export default function Lana() {
         alt=""
         className="lana-piece redstar1-piece"
         draggable="false"
-        fetchPriority="low"
         decoding="async"
       />
       <img
@@ -121,7 +133,6 @@ export default function Lana() {
         alt=""
         className="lana-piece blustar3-piece"
         draggable="false"
-        fetchPriority="low"
         decoding="async"
       />
       <img
@@ -130,7 +141,6 @@ export default function Lana() {
         alt=""
         className="lana-piece blustar2-piece"
         draggable="false"
-        fetchPriority="low"
         decoding="async"
       />
       <img
@@ -139,7 +149,6 @@ export default function Lana() {
         alt=""
         className="lana-piece blustar1-piece"
         draggable="false"
-        fetchPriority="low"
         decoding="async"
       />
       <img
@@ -148,7 +157,6 @@ export default function Lana() {
         alt=""
         className="lana-piece redstar2-piece"
         draggable="false"
-        fetchPriority="low"
         decoding="async"
       />
       <img
@@ -157,7 +165,6 @@ export default function Lana() {
         alt=""
         className="lana-piece crown-piece"
         draggable="false"
-        fetchPriority="low"
         decoding="async"
       />
     </div>
