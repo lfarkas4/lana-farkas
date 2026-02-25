@@ -14,7 +14,8 @@
      background: #07161a;
      overflow: hidden;
      pointer-events: none;
-     will-change: transform;
+     /* Removed will-change: transform — on Safari/iOS this creates a new stacking
+        context that breaks position:fixed descendants and disrupts layout flow. */
    }
    
    

@@ -111,15 +111,22 @@ const LoadingScreen = ({ onLoadComplete }) => {
     };
 
     // ✅ Preload + decode (reduces stagger/choppy reveal)
+    // Safari note: img.decode() can hang indefinitely on mobile Safari.
+    // We wrap it with a 1.5s timeout fallback so a slow decode never stalls loading.
     criticalAssets.forEach((src) => {
       const img = new Image();
 
       img.onload = () => {
         if (img.decode) {
+          // Race decode() against a 1.5s timeout — whichever wins, we proceed
+          const decodeTimeout = setTimeout(onAssetLoad, 1500);
           img
             .decode()
             .catch(() => {})
-            .finally(onAssetLoad);
+            .finally(() => {
+              clearTimeout(decodeTimeout);
+              onAssetLoad();
+            });
         } else {
           onAssetLoad();
         }

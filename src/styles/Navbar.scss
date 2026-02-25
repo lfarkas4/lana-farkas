@@ -59,15 +59,12 @@
      align-items: center;
      padding: 7px tokens.$space-xs 9px 28px;
      border-radius: 999px;
-     background: rgba(14, 14, 23, 0.215);
-     backdrop-filter: blur(16px);
-     border: 1px solid rgba(255, 255, 255, 0.12);
-     box-shadow: 0 0 tokens.$space-xs rgba(0, 0, 0, 0.12);
-     transition: transform 0.275s ease, box-shadow 0.3s ease;
      background: rgba(10, 10, 13, 0.3);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 tokens.$space-xs rgba(0, 0, 0, 0.15);
+     backdrop-filter: blur(16px);
+     -webkit-backdrop-filter: blur(16px); /* Safari */
+     border: 1px solid rgba(255, 255, 255, 0.12);
+     box-shadow: 0 0 tokens.$space-xs rgba(0, 0, 0, 0.15);
+     transition: transform 0.275s ease, box-shadow 0.3s ease;
    }
    
    .nav-bubble:hover {
@@ -223,6 +220,7 @@
   inset: 0; /* top/right/bottom/left: 0 */
   background: #03090b;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari */
   z-index: 99;
 
   opacity: 0;
@@ -301,8 +299,10 @@
    /* ================================================================
       7. HOVER EFFECTS
       ================================================================ */
+   /* .hover-subtle base is intentionally minimal — real transition is on
+      .custom-navbar .brand-logo img.hover-subtle further down. */
    .hover-subtle {
-     transition: transform 0.0001s ease, filter 0.001s ease;
+     transition: transform 0.2s ease, filter 0.2s ease;
    }
    
    .hover-subtle:hover {

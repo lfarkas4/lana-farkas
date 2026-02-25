@@ -69,20 +69,30 @@
    ================================================================ */
 .lana-container {
   position: relative;
+  /* clamp() with a simple calc — more Safari-safe than aspect-ratio + clamp combo */
   width: clamp(200px, 50vw + 200px, 740px);
-  aspect-ratio: 786.86 / 280.77;
+  /* padding-top % is relative to width — replicates aspect-ratio 786.86/280.77 ≈ 35.68% */
+  height: 0;
+  padding-top: 35.68%;
   margin: 0 auto;
   margin-top: -16px;
   margin-bottom: -18px;
+
+  /* Safari: avoid any stacking-context side-effects from will-change here */
+  -webkit-transform: translateZ(0);
 }
 
 /* Start hidden; reveal when images are ready */
+/* 
+ * Safari bug: animation-play-state:paused on opacity:0 elements can permanently
+ * prevent them from appearing. Use visibility instead of pausing animations,
+ * and let the opacity transition handle the reveal.
+ */
 .lana-container :is(.lana-piece) {
-  animation-play-state: paused;
   opacity: 0;
+  /* Do NOT set animation-play-state:paused — causes Safari to freeze elements */
 }
 .lana-container.is-ready :is(.lana-piece) {
-  animation-play-state: running;
   opacity: 1;
   transition: opacity 260ms ease-out;
 }
@@ -92,16 +102,17 @@
   position: absolute;
   width: 12%;
   height: auto;
+  /* top/left % are relative to the container width in absolute positioning,
+     but since we use padding-top trick the bounding box is the full padded area */
   transform: translate3d(-50%, -50%, 0);
   backface-visibility: hidden;
-  will-change: transform, filter;
+  -webkit-backface-visibility: hidden; /* Safari */
+  will-change: transform;
   pointer-events: none;
   z-index: 2;
   user-select: none;
-
-  /* Helps PNG edges look a bit cleaner under transforms */
   image-rendering: auto;
-  -webkit-font-smoothing: antialiased;
+  /* -webkit-font-smoothing only applies to text, removed from img elements */
 }
 
 /* ================================================================
@@ -140,7 +151,8 @@
     brightness(0.975);
 
   animation: letterGlowPulse 9.2s ease-in-out infinite;
-  will-change: filter;
+  /* will-change: filter causes Safari to allocate a separate compositing layer
+     per letter which can exhaust GPU memory on mobile. Removed. */
 }
 
 @media (prefers-reduced-motion: reduce) {

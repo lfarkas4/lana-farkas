@@ -54,7 +54,10 @@
    .about-photo-wrapper {
      position: relative;
      width: clamp(250px, 28vw, 440px);
-     aspect-ratio: 1 / 1;
+     /* aspect-ratio: 1/1 replaced with explicit height for Safari compatibility.
+        Safari handles aspect-ratio inconsistently with clamp() widths and absolute
+        children. Using the same width value as height gives us a square. */
+     height: clamp(250px, 28vw, 440px);
      flex-shrink: 0;
      padding: tokens.$space-lg 20px 0 20px;
      box-sizing: border-box;
@@ -244,6 +247,14 @@
    /* ================================================================
       7. SCROLL CUE
       ================================================================ */
+   /* .scroll-cue-wrapper is the animation target (replaces the previously
+      doubled .scroll-cue wrapper/child pattern) */
+   .scroll-cue-wrapper {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+
    .scroll-cue {
      display: flex;
      justify-content: center;
@@ -310,20 +321,22 @@
     }
   }
   
-  /* Base state: invisible + paused until we mark the section as loaded */
+  /* Base state: invisible. 
+     Safari fix: DO NOT use animation-play-state:paused on opacity:0 elements —
+     Safari can permanently freeze them. Instead, animation only runs once .about-top-loaded
+     is added, using animation-name:none as the "off" state. */
   .about-top .animate-fade-in {
     opacity: 0;
     transform: translateY(5px);
-    animation-name: aboutFadeUp;
+    animation-name: none; /* paused via "no animation" until loaded class fires */
     animation-duration: 0.45s;
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     animation-fill-mode: both;
-    animation-play-state: paused;
   }
   
-  /* When the JS sets .about-top-loaded, play the animations */
+  /* When JS adds .about-top-loaded, swap in the real animation name to trigger it */
   .about-top-loaded .animate-fade-in {
-    animation-play-state: running;
+    animation-name: aboutFadeUp;
   }
   
   /* Hard off switch (used when shouldAnimate === false) */
@@ -619,7 +632,7 @@
      .cooper-tagline {
        @include tokens.type-coop-display2-bold;
        font-size: 1.4rem;
-       line-height: 1.5px;
+       line-height: 1.5; /* Fixed: was 1.5px (typo) — line-height should be unitless */
      }
    
      .about-bio {

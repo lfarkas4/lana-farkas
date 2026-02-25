@@ -129,11 +129,12 @@ const About = () => {
 
       {/* Scroll cue outside the shifted content */}
       <div className="scroll-cue-spacer" />
-      <div {...withAnim("scroll-cue", 0.5)}>
-        <div className="scroll-cue">
-          <div className="scroll-mouse">
-            <div className="scroll-dot" />
-          </div>
+      {/* Fixed: previously spread withAnim("scroll-cue") onto a wrapper div, which applied
+          .scroll-cue layout styles to the outer element AND the inner one. Now the animation
+          class lives directly on the single .scroll-cue element. */}
+      <div {...withAnim("scroll-cue scroll-cue-wrapper", 0.5)}>
+        <div className="scroll-mouse">
+          <div className="scroll-dot" />
         </div>
       </div>
     </section>

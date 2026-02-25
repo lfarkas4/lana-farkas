@@ -32,6 +32,16 @@
      cursor: default;
      user-select: none;
    }
+
+   /* Safari doesn't always stretch flex children correctly without explicit width.
+      This wrapper ensures centered layout is consistent across all browsers. */
+   .hero-inner-wrapper {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+   }
    
    
    /* ================================================================

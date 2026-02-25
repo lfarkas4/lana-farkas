@@ -15,12 +15,17 @@ export default function Lana() {
     const waitForImg = (img) =>
       new Promise((resolve) => {
         const done = () => {
-          // decode() prevents “half-painted” / choppy reveals
+          // decode() prevents choppy reveals.
+          // Safari fix: wrap decode() in a 1.5s timeout - Safari can stall indefinitely.
           if (typeof img.decode === "function") {
+            const decodeTimeout = setTimeout(resolve, 1500);
             img
               .decode()
-              .catch(() => {}) // ignore decode errors
-              .finally(resolve);
+              .catch(() => {})
+              .finally(() => {
+                clearTimeout(decodeTimeout);
+                resolve();
+              });
           } else {
             resolve();
           }
