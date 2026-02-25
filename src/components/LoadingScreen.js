@@ -141,7 +141,7 @@ const LoadingScreen = ({ onLoadComplete }) => {
     });
 
     // ✅ Minimum display time (keep your 1600ms)
-    const minDisplayTime = 1600;
+    const minDisplayTime = window.innerWidth < 768 ? 2200 : 1600;
     const minTimer = setTimeout(() => {
       minTimeReached = true;
       checkComplete();

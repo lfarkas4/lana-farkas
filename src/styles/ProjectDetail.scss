@@ -34,6 +34,18 @@
        transform: translateY(0);
      }
    }
+
+   /* Variant that lands at 0.9 — used for brandmark so opacity stays subdued */
+   @keyframes fadeInUpSubtle {
+     from {
+       opacity: 0;
+       transform: translateY(30px);
+     }
+     to {
+       opacity: 0.9;
+       transform: translateY(0);
+     }
+   }
    @keyframes fadeInDown {
     from {
       opacity: 0;
@@ -43,6 +55,10 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 0.9; }
   }
    
    /* ================================================================
@@ -105,9 +121,13 @@
      height: var(--brand-h, 18px);
      width: auto;
      max-height: tokens.$space-lg;
-     opacity: 0.9;
      display: inline-block;
      vertical-align: middle;
+     /* Own entrance animation — matches the NDA/award badge speed (0.35s ease-out)
+        but uses fadeInUp so it rises with the rest of the hero content.
+        Fires on mount (no IntersectionObserver dependency) so it never snaps in. */
+     opacity: 0;
+     animation: fadeIn 0.25s ease-out 0.05s both;
    }
    
    .pd-hero__brand-text {
@@ -1197,7 +1217,7 @@
   /* 🟣 NEW: make NDA + award animate from bottom instead of top */
   .nda-banner,
   .pd-hero__award {
-    animation: fadeInUp 0.35s ease-out 0.08s both;
+    animation: fadeInUpSubtle 0.35s ease-out 0.08s both;
   }
    }
    
@@ -1289,11 +1309,13 @@
   /* 🔇 Turn off entrance animations for hero + meta on XS */
   .pd-hero,
   .pd-hero__eyebrow,
+  .pd-hero__brand,
   .pd-hero__title,
   .pd-hero__subtitle,
   .pd-hero__media,
   .pd-meta__item {
     animation: none !important;
+    opacity: 1 !important; /* reset opacity:0 starting state on brand */
     // animation: fadeInUp 0.2s ease-out 0s both !important;
   }
    }
@@ -1302,4 +1324,3 @@
    .pd-meta__text {
     white-space: pre-line;
   }
-  
