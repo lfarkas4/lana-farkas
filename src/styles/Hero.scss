@@ -320,7 +320,13 @@
    /* SM: 626px – 767px (Large phones) */
    @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
      .hero {
-       padding: 0 5vw 60px;
+       padding: 60px 5vw 40px;
+       justify-content: flex-start;
+       min-height: unset;
+     }
+
+     .scroll-cue {
+       margin-top: 28px;
      }
    
      .font-cooper-italic-hello {
@@ -353,7 +359,13 @@
    /* XS: 465px – 625px (Medium phones) */
    @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
      .hero {
-       padding: 0 5vw 50px;
+       padding: 60px 5vw 40px;
+       justify-content: flex-start;
+       min-height: unset;
+     }
+
+     .scroll-cue {
+       margin-top: 28px;
      }
    
      .font-cooper-italic-hello {
@@ -400,7 +412,9 @@
    ================================================================ */
    @media (max-width: #{tokens.$xs_breakpoint}) {
     .hero {
-      padding: 10px 5vw 40px;
+      padding: 50px 5vw 40px;
+      justify-content: flex-start;
+      min-height: unset;
     }
   
     .font-cooper-italic-hello {
@@ -460,8 +474,12 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      margin-bottom: 60px;
+      margin-bottom: 30px; /* was 60px — reduced to keep scroll cue in viewport */
       margin-top: 52px;
+    }
+
+    .scroll-cue {
+      margin-top: 20px; /* was 50px — tighter on small phones */
     }
   
     .hero-column {
