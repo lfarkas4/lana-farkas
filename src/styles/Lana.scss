@@ -147,7 +147,7 @@
     )
 
     /* keep your richness but don’t brighten the edge halo */
-    saturate(1.62)
+    saturate(1.74)
     brightness(0.975);
 
   animation: letterGlowPulse 9.2s ease-in-out infinite;

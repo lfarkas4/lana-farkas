@@ -3,12 +3,14 @@ import "../styles/AboutStuff.scss";
 
 // Spotify track data
 const spotifyTracks = [
-  { id: "3vxvz0JoRDvnx2jG9oPljA", title: "Love You Anyway", row: "top" },
+  { id: "3cxqVYtrpDyAC4faMJgB9A", title: "Hypnosis", row: "top" },
   { id: "34VDj911PQh8B1BXYoOMLq", title: "Running Away", row: "top" },
   { id: "7hNPcyHhNYLCtTFa5bxvX1", title: "A Dream With a Baseball Player", row: "top" },
-  { id: "4eVUPMhqGFcmxo6cjv9KqA", title: "Time Moves Slow", row: "bottom" },
+  { id: "0vMr3GXZJi1IIIWE8bBJuZ", title: "Plants", row: "bottom" },
   { id: "1fZztBfI3x4UtWwWXXZk89", title: "WAITIN", row: "bottom" }
 ];
+
+
 
 // Individual Spotify embed component with lazy loading
 const SpotifyEmbed = ({ trackId, title }) => {
