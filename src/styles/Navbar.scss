@@ -25,7 +25,8 @@
      justify-content: space-between;
      align-items: center;
      width: 100%;
-     padding: 10px 50px;
+     /* Fluid padding — stays proportionate on wide screens without over-stretching */
+     padding: 10px clamp(50px, 4vw, 80px);
    }
    
    .custom-navbar {

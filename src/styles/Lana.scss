@@ -70,7 +70,7 @@
 .lana-container {
   position: relative;
   /* clamp() with a simple calc — more Safari-safe than aspect-ratio + clamp combo */
-  width: clamp(200px, 50vw + 200px, 740px);
+  width: clamp(200px, 50vw + 200px, 760px);
   /* padding-top % is relative to width — replicates aspect-ratio 786.86/280.77 ≈ 35.68% */
   height: 0;
   padding-top: 35.68%;

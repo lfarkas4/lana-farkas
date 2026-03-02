@@ -358,9 +358,9 @@
    /* XXL: ≥ 1600px (Extra large desktops) */
    @media (min-width: #{tokens.$xxl_breakpoint}) {
      .about-cards {
-       --padX: 100px;
+       --padX: clamp(50px, 4vw, 80px);
      }
-   
+
      .floating-card-grid {
        gap: var(--gap-base);
      }
@@ -369,9 +369,9 @@
    /* XL: 1200px – 1599px (Large desktops) */
    @media (min-width: #{tokens.$xl_breakpoint}) {
      .about-cards {
-       --padX: 100px;
+       --padX: clamp(50px, 4vw, 80px);
      }
-   
+
      .floating-card-grid {
        gap: var(--gap-base);
      }
@@ -972,4 +972,3 @@
        }
      }
    }
-   

@@ -99,7 +99,7 @@
      overflow: hidden;
      position: relative;
      border: 0.5px solid rgba(42, 42, 43, 0.35);
-     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+     transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
    }
    
@@ -132,7 +132,8 @@
      object-fit: cover;
      border-radius: 12px;
      transform: scale(1.06) !important;
-     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease !important;
+     /* Leave: marginally snappier snap-back */
+     transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.4s ease !important;
      z-index: 1;
    
      /* Hide all video controls on mobile */
@@ -164,7 +165,7 @@
    .thumbnail-media.mini-thumb {
      opacity: 0;
      will-change: opacity, transform;
-     transition: opacity 0.28s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease !important;
+     transition: opacity 0.28s ease, transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.4s ease !important;
    }
    
    .thumbnail-media.mini-thumb.is-loaded {
@@ -176,6 +177,8 @@
    .project-card-link:focus-visible .thumbnail-media {
      transform: scale(1) !important;
      filter: brightness(0.95);
+     /* Hover-enter: marginally more gradual zoom-out */
+     transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.45s ease !important;
    }
    
    /* Tags */
@@ -364,6 +367,38 @@
    @media (min-width: #{tokens.$xxl_breakpoint}) {
      .projects-section {
        padding: 0 tokens.$padding-wide;
+     }
+
+     .projects-wrapper {
+       max-width: tokens.$container-xxl;
+     }
+
+     .section-title {
+       font-size: 1.275rem;
+     }
+
+     .section-arrow {
+       height: 1.05rem;
+     }
+
+     .project-title {
+       font-size: 1.5rem;
+     }
+
+     .project-description {
+       font-size: 0.975rem;
+     }
+
+     .mini-title {
+       font-size: 1.5rem;
+     }
+
+     .mini-description {
+       font-size: 0.975rem;
+     }
+
+     .tag {
+       font-size: 0.9rem;
      }
    }
    
@@ -617,7 +652,7 @@
        font-size: 0.925rem;
        letter-spacing: 0px;
        gap: 6px;
-       margin-bottom: -25px;
+       margin-bottom: -16px;
        font-weight: 450 !important;
      }
    
@@ -625,4 +660,3 @@
        height: 0.9rem;
      }
    }
-   

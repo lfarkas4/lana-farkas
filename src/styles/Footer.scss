@@ -20,7 +20,7 @@
       ================================================================ */
    .footer {
      margin-top: tokens.$space-3xl;
-     padding: 0 tokens.$space-xl tokens.$space-sm;
+     padding: 0 clamp(50px, 4vw, 80px) tokens.$space-sm;
      position: relative;
      z-index: 1;
    }
@@ -267,8 +267,8 @@
    /* XS: ≤ 464px (Small phones) */
    @media (max-width: #{tokens.$xs_breakpoint}) {
      .footer {
-       padding: 0 50px tokens.$space-sm;
        margin-top: tokens.$space-xxl;
+       /* outer padding inherits base clamp(50px, 4vw, 80px) — no override needed */
      }
    
      .footer-main {
@@ -328,11 +328,11 @@
      }
    }
 
-   /* XS: ≤ 464px (Small phones) */
+   /* XS: ≤ 464px (Small phones) — collapsed layout, credit only */
 @media (max-width: #{tokens.$xs_breakpoint}) {
   .footer {
-    padding: 0 50px tokens.$space-sm;
     margin-top: tokens.$space-lg;
+    /* outer padding inherits base clamp(50px, 4vw, 80px) — no override needed */
   }
 
   .footer-main {

@@ -350,8 +350,8 @@
    /* XXL: ≥ 1600px (Extra large desktops) */
    @media (min-width: #{tokens.$xxl_breakpoint}) {
      .about-wrapper {
-       max-width: 1300px;
-       padding: 0 6vw;
+       max-width: tokens.$container-xxl;
+       padding: 0 clamp(50px, 4vw, 80px);
      }
    }
    
@@ -389,9 +389,11 @@
    }
    
    /* MD: 768px – 991px (Tablets) */
-   @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
+   @media (max-width: calc(#{tokens.$lg_breakpoint} - 1px)) and (min-width: #{tokens.$md_breakpoint}) {
      .about-top {
-       padding: 0 tokens.$padding-wide 70px;
+       padding: 22px tokens.$padding-wide 70px;
+       justify-content: flex-start;
+       min-height: 70vh;
      }
    
      /* Layout stacks vertically */
@@ -455,7 +457,9 @@
    /* SM: 626px – 767px (Large phones) */
    @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
      .about-top {
-       padding: 0 tokens.$padding-wide 60px;
+       padding: 22px tokens.$padding-wide 60px;
+       justify-content: flex-start;
+       min-height: unset;
      }
    
      .about-wrapper {
@@ -496,7 +500,9 @@
    /* XS: 465px – 625px (Medium phones) */
    @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
      .about-top {
-       padding: 0 tokens.$padding-wide 80px;
+       padding: 22px tokens.$padding-wide 80px;
+       justify-content: flex-start;
+       min-height: unset;
      }
    
      .about-wrapper {
@@ -576,13 +582,15 @@
    /* XS: ≤ 464px (Small phones) */
    @media (max-width: #{tokens.$xs_breakpoint}) {
      .about-top {
-       padding: 0 7.5vw tokens.$space-lg;
+       padding: 18px 7.5vw tokens.$space-lg;
+       justify-content: flex-start;
+       min-height: unset;
      }
    
      .about-wrapper {
        flex-direction: column;
        align-items: center;
-       gap: 35px;
+       gap: 45px;
        padding: 0;
      }
    
@@ -658,7 +666,7 @@
      }
    
      .roles-wrapper span {
-       height: var(--step);
+      //  height: var(--step);
        line-height: var(--step);
      }
    
