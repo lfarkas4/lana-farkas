@@ -3,11 +3,11 @@ import "../styles/AboutStuff.scss";
 
 // Spotify track data
 const spotifyTracks = [
-  { id: "3cxqVYtrpDyAC4faMJgB9A", title: "Hypnosis", row: "top" },
-  { id: "34VDj911PQh8B1BXYoOMLq", title: "Running Away", row: "top" },
-  { id: "7hNPcyHhNYLCtTFa5bxvX1", title: "A Dream With a Baseball Player", row: "top" },
-  { id: "0vMr3GXZJi1IIIWE8bBJuZ", title: "Plants", row: "bottom" },
-  { id: "1fZztBfI3x4UtWwWXXZk89", title: "WAITIN", row: "bottom" }
+  { id: "6y0Etr2KJr0sdcEp7ajoUK", title: "Cosmic Girl", row: "top" },
+  { id: "2mlCfcprMj3aOUX2uYuQEE", title: "Wallflower", row: "top" },
+  { id: "6GVrDwaAuGOida6c7eYjLl", title: "Don't Forget It", row: "top" },
+  { id: "7fax7NlxOq2X9kMZw8QLE2", title: "Tailwhip", row: "bottom" },
+  { id: "7reX35Qt5uap48Bx0pLWn3", title: "You're My", row: "bottom" }
 ];
 
 
