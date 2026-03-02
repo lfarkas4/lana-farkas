@@ -391,7 +391,7 @@
    /* MD: 768px – 991px (Tablets) */
    @media (max-width: calc(#{tokens.$lg_breakpoint} - 1px)) and (min-width: #{tokens.$md_breakpoint}) {
      .about-top {
-       padding: 35px tokens.$padding-wide 70px;
+       padding: 15px tokens.$padding-wide 70px;
        justify-content: flex-start;
        min-height: 70vh;
      }
@@ -457,7 +457,7 @@
    /* SM: 626px – 767px (Large phones) */
    @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
      .about-top {
-       padding: 35px tokens.$padding-wide 60px;
+       padding: 15px tokens.$padding-wide 60px;
        justify-content: flex-start;
        min-height: unset;
      }
@@ -500,7 +500,7 @@
    /* XS: 465px – 625px (Medium phones) */
    @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
      .about-top {
-       padding: 35px tokens.$padding-wide 80px;
+       padding: 15px tokens.$padding-wide 80px;
        justify-content: flex-start;
        min-height: unset;
      }
@@ -582,7 +582,7 @@
    /* XS: ≤ 464px (Small phones) */
    @media (max-width: #{tokens.$xs_breakpoint}) {
      .about-top {
-       padding: 28px 7.5vw tokens.$space-lg;
+       padding: 10px 7.5vw tokens.$space-lg;
        justify-content: flex-start;
        min-height: unset;
      }
