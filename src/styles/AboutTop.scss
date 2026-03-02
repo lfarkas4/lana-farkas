@@ -65,7 +65,7 @@
      object-fit: cover;
    }
    
-   /* Glowing background effect */
+   /* Glowing background effect — hidden until photo loads */
    .about-photo-wrapper::before {
      content: "";
      position: absolute;
@@ -81,6 +81,13 @@
      filter: blur(40px);
      z-index: -1;
      pointer-events: none;
+     opacity: 0;
+     transition: opacity 0.4s ease;
+   }
+
+   /* Reveal glow once photo has loaded */
+   .about-photo-wrapper.photo-loaded::before {
+     opacity: 1;
    }
    
    
@@ -474,6 +481,17 @@
        padding: 35px 15px 15px 15px;
        margin-top: tokens.$space-md;
      }
+
+     .curved-text-svg {
+      position: absolute;
+      top: 16%;
+      left: 29%;
+      transform: translate(-50%, -50%) rotate(-0.5deg);
+      width: 84.5%;
+      height: auto;
+      pointer-events: none;
+      z-index: 2;
+    }
    
      .about-intro {
        width: 100%;
@@ -577,6 +595,16 @@
        95% { transform: translateY(-3.6em); }
        100% { transform: translateY(-4.8em); }
      }
+     .curved-text-svg {
+      position: absolute;
+      top: 16%;
+      left: 29%;
+      transform: translate(-50%, -50%) rotate(-0.5deg);
+      width: 84.5%;
+      height: auto;
+      pointer-events: none;
+      z-index: 2;
+    }
    }
    
    /* XS: ≤ 464px (Small phones) */
@@ -609,7 +637,7 @@
 
   /* Hide curved text overlay on XS */
   .curved-text-svg {
-    display: none !important;
+    display: none;
   }
    
      .about-intro {

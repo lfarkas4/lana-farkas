@@ -12,13 +12,22 @@ export default function Lana() {
     const imgs = Array.from(wrap.querySelectorAll("img"));
     let cancelled = false;
 
+    // Fast path: if all images are already cached by the browser,
+    // reveal immediately without waiting for decode() - avoids the
+    // "blank Lana on nav from About" flash entirely.
+    const allCached = imgs.every((img) => img.complete && img.naturalWidth > 0);
+    if (allCached) {
+      setReady(true);
+      return;
+    }
+
     const waitForImg = (img) =>
       new Promise((resolve) => {
         const done = () => {
-          // decode() prevents choppy reveals.
-          // Safari fix: wrap decode() in a 1.5s timeout - Safari can stall indefinitely.
           if (typeof img.decode === "function") {
-            const decodeTimeout = setTimeout(resolve, 1500);
+            // Reduced from 1500ms - cached assets decode near-instantly,
+            // long timeouts just delay the reveal on repeated visits.
+            const decodeTimeout = setTimeout(resolve, 400);
             img
               .decode()
               .catch(() => {})
@@ -31,18 +40,10 @@ export default function Lana() {
           }
         };
 
-        // already loaded?
         if (img.complete && img.naturalWidth > 0) return done();
 
-        // wait for load/error
-        const onLoad = () => {
-          cleanup();
-          done();
-        };
-        const onError = () => {
-          cleanup();
-          resolve(); // don’t block forever
-        };
+        const onLoad = () => { cleanup(); done(); };
+        const onError = () => { cleanup(); resolve(); };
         const cleanup = () => {
           img.removeEventListener("load", onLoad);
           img.removeEventListener("error", onError);
@@ -68,7 +69,6 @@ export default function Lana() {
       className={`lana-container ${ready ? "is-ready" : ""}`}
       aria-hidden="true"
     >
-      {/* Letters — WEBP (1x/2x) */}
       <img
         src="/assets/L@1x.webp"
         srcSet="/assets/L@1x.webp 1x, /assets/L@2x.webp 2x"
@@ -105,8 +105,6 @@ export default function Lana() {
         fetchPriority="high"
         decoding="async"
       />
-
-      {/* Decor — keep PNGs (1x/2x) */}
       <img
         src="/assets/halo@1x.png"
         srcSet="/assets/halo@1x.png 1x, /assets/halo@2x.png 2x"

@@ -4,7 +4,6 @@ import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/Navbar.scss";
 
-// --- GA helper ---
 const gaEvent = (name, params = {}) => {
   if (!window.gtag) return;
   window.gtag("event", name, params);
@@ -12,8 +11,6 @@ const gaEvent = (name, params = {}) => {
 
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // ✅ soft entrance (pairs with Navbar.scss .custom-navbar.nav-visible)
   const [navVisible, setNavVisible] = useState(false);
 
   const location = useLocation();
@@ -21,7 +18,6 @@ const Navigation = () => {
 
   const toggleMenu = () => setMenuOpen((v) => !v);
 
-  // ✅ fade in navbar on mount (next paint)
   useEffect(() => {
     const raf = requestAnimationFrame(() => setNavVisible(true));
     return () => cancelAnimationFrame(raf);
@@ -42,6 +38,8 @@ const Navigation = () => {
     }
   };
 
+  const isMobile = () => window.innerWidth < 992;
+
   const handleWorkClick = (e) => {
     e.preventDefault();
 
@@ -53,6 +51,18 @@ const Navigation = () => {
 
     setMenuOpen(false);
 
+    // On mobile, skip the scroll-to-projects — content may not be rendered yet
+    // and the scroll fires before the DOM is ready. Just go to the top of home.
+    if (isMobile()) {
+      if (location.pathname !== "/") {
+        navigate("/");
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
+
+    // Desktop: scroll to projects as before
     if (location.pathname === "/") {
       scrollToProjects();
     } else {

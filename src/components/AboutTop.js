@@ -1,13 +1,13 @@
 // src/components/AboutTop.js
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/AboutTop.scss";
 
 const About = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(true);
+  const photoWrapperRef = useRef(null);
 
   useEffect(() => {
-    // Respect prefers-reduced-motion
     if (typeof window !== "undefined" && window.matchMedia) {
       const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
       if (mq.matches) {
@@ -16,12 +16,27 @@ const About = () => {
       }
     }
 
-    // Let the browser paint once, then mark section as loaded
     const id = window.requestAnimationFrame(() => {
       setIsLoaded(true);
     });
 
     return () => window.cancelAnimationFrame(id);
+  }, []);
+
+  const handlePhotoLoad = () => {
+    if (photoWrapperRef.current) {
+      photoWrapperRef.current.classList.add("photo-loaded");
+    }
+  };
+
+  // If photo is already cached, apply class immediately on mount
+  useEffect(() => {
+    const wrapper = photoWrapperRef.current;
+    if (!wrapper) return;
+    const img = wrapper.querySelector(".about-photo");
+    if (img && img.complete && img.naturalWidth > 0) {
+      wrapper.classList.add("photo-loaded");
+    }
   }, []);
 
   const rootClasses = [
@@ -41,14 +56,14 @@ const About = () => {
 
   return (
     <section className={rootClasses} id="about">
-      {/* Wrap the main content in a shifted container */}
       <div className="about-wrapper">
-        <div {...withAnim("about-photo-wrapper", 0.1)}>
+        <div {...withAnim("about-photo-wrapper", 0.1)} ref={photoWrapperRef}>
           <img
             src="/assets/lanabout.webp"
             alt="Lana"
             className="about-photo"
             loading="lazy"
+            onLoad={handlePhotoLoad}
           />
           <img
             className="curved-text-svg"
@@ -86,7 +101,7 @@ const About = () => {
           <p {...withAnim("about-bio", 0.34)}>
             I recently earned a{" "}
             <span className="light-bold">
-              Master’s in Human-Computer Interaction
+              Master's in Human-Computer Interaction
             </span>{" "}
             at{" "}
             <span className="light-bold">Carnegie Mellon University</span>.{" "}
@@ -127,11 +142,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Scroll cue outside the shifted content */}
       <div className="scroll-cue-spacer" />
-      {/* Fixed: previously spread withAnim("scroll-cue") onto a wrapper div, which applied
-          .scroll-cue layout styles to the outer element AND the inner one. Now the animation
-          class lives directly on the single .scroll-cue element. */}
       <div {...withAnim("scroll-cue scroll-cue-wrapper", 0.5)}>
         <div className="scroll-mouse">
           <div className="scroll-dot" />
