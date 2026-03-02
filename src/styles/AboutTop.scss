@@ -391,7 +391,7 @@
    /* MD: 768px – 991px (Tablets) */
    @media (max-width: calc(#{tokens.$lg_breakpoint} - 1px)) and (min-width: #{tokens.$md_breakpoint}) {
      .about-top {
-       padding: 22px tokens.$padding-wide 70px;
+       padding: 35px tokens.$padding-wide 70px;
        justify-content: flex-start;
        min-height: 70vh;
      }
@@ -457,7 +457,7 @@
    /* SM: 626px – 767px (Large phones) */
    @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
      .about-top {
-       padding: 22px tokens.$padding-wide 60px;
+       padding: 35px tokens.$padding-wide 60px;
        justify-content: flex-start;
        min-height: unset;
      }
@@ -470,7 +470,7 @@
      }
    
      .about-photo-wrapper {
-       width: clamp(230px, 50vw, 345px);
+       width: clamp(270px, 60vw, 390px);
        padding: 35px 15px 15px 15px;
        margin-top: tokens.$space-md;
      }
@@ -500,7 +500,7 @@
    /* XS: 465px – 625px (Medium phones) */
    @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
      .about-top {
-       padding: 22px tokens.$padding-wide 80px;
+       padding: 35px tokens.$padding-wide 80px;
        justify-content: flex-start;
        min-height: unset;
      }
@@ -513,7 +513,7 @@
      }
    
      .about-photo-wrapper {
-       width: clamp(210px, 55vw, 300px);
+       width: clamp(250px, 68vw, 340px);
        padding: tokens.$space-md 10px 10px 10px;
        margin-top: tokens.$space-lg;
      }
@@ -582,7 +582,7 @@
    /* XS: ≤ 464px (Small phones) */
    @media (max-width: #{tokens.$xs_breakpoint}) {
      .about-top {
-       padding: 18px 7.5vw tokens.$space-lg;
+       padding: 28px 7.5vw tokens.$space-lg;
        justify-content: flex-start;
        min-height: unset;
      }
@@ -595,7 +595,7 @@
      }
    
      .about-photo-wrapper {
-       width: clamp(200px, 80vw, 260px);
+       width: clamp(220px, 88vw, 300px);
        padding: 0; /* Remove top padding when curved text hidden */
        margin-top: tokens.$space-md;
      }
