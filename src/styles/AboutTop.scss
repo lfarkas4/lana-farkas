@@ -356,10 +356,50 @@
    
    /* XXL: ≥ 1600px (Extra large desktops) */
    @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .about-top {
+       min-height: 92vh;
+       margin-top: -40px;
+     }
+
      .about-wrapper {
        max-width: tokens.$container-xxl;
        padding: 0 clamp(50px, 4vw, 80px);
+       gap: tokens.$space-3xl;
      }
+
+     .about-photo-wrapper {
+       width: clamp(280px, 30vw, 520px);
+     }
+
+     .about-heading {
+       font-size: 1.75rem;
+     }
+
+     .cooper-tagline {
+       font-size: 2rem;
+     }
+
+     .about-bio {
+       font-size: 1.05rem;
+     }
+
+     .about-chat-message {
+       font-size: 1.05rem;
+     }
+
+     .about-icons img {
+       width: 32px;
+     }
+     .curved-text-svg {
+      position: absolute;
+      top: 16%;
+      left: 28%;
+      transform: translate(-50%, -50%) rotate(-0.75deg);
+      width: 83.5%;
+      height: auto;
+      pointer-events: none;
+      z-index: 2;
+    }
    }
    
    /* XL: 1200px – 1599px (Large desktops) */

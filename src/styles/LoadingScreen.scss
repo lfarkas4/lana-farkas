@@ -134,6 +134,22 @@
       (keep your existing blocks, just ensure translateX matches widths)
       ================================================================ */
    
+   /* XXL */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .loading-screen { gap: 40px; }
+     .line-wrapper { width: 130px; }
+     .loading-tagline {
+       font-size: 1.2rem;
+       em { font-size: 1.35rem; }
+     }
+
+     @keyframes lineExpand {
+       0% { transform: scaleX(0) translateX(0); }
+       50% { transform: scaleX(1) translateX(0); }
+       100% { transform: scaleX(0) translateX(130px); }
+     }
+   }
+
    /* LG */
    @media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
      .line-wrapper { width: 90px; }
@@ -226,4 +242,3 @@
        transform: scaleX(1) !important;
      }
    }
-   

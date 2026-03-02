@@ -88,7 +88,8 @@ export default function UnderConstructionPage({ projectName = "This project" }) 
   // Get visual position for an orb
   const getOrbStyle = (orbIndex) => {
     const visualPos = orbPositions[orbIndex];
-    const xOffset = (visualPos - 1) * 80; // -80px, 0, +80px
+    const spacing = window.innerWidth >= 1600 ? 100 : 80; // wider spacing at XXL
+    const xOffset = (visualPos - 1) * spacing;
     return {
       transform: `translateX(${xOffset}px)`,
     };

@@ -315,7 +315,34 @@
    /* ================================================================
       8. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
       ================================================================ */
-   
+
+   /* XXL: ≥ 1600px */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .nav-container {
+       padding: 14px clamp(60px, 4vw, 100px);
+     }
+
+     .brand-logo img {
+       height: 52px;
+     }
+
+     .nav-bubble {
+       padding: 9px tokens.$space-sm 11px 32px;
+     }
+
+     .nav-links {
+       gap: 20px;
+     }
+
+     .nav-link-label {
+       font-size: 1.1rem;
+     }
+
+     .custom-navbar {
+       top: 26px;
+     }
+   }
+
    /* LG: ≤ 991px (Tablets and below) */
    @media (max-width: #{tokens.$lg_breakpoint}) {
     .nav-container {

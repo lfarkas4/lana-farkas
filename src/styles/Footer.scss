@@ -131,7 +131,38 @@
    /* ================================================================
       6. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
       ================================================================ */
-   
+
+   /* XXL: ≥ 1600px */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .footer {
+       padding: 0 clamp(60px, 4vw, 100px) tokens.$space-sm;
+     }
+
+     .footer-main {
+       padding: 80px 0 90px;
+     }
+
+     .footer-thanks {
+       font-size: 1.85rem;
+     }
+
+     .footer-travels {
+       font-size: 1.1rem;
+     }
+
+     .footer-message {
+       font-size: 1.1rem;
+     }
+
+     .footer-icons img {
+       width: 32px;
+     }
+
+     .footer-credit {
+       font-size: 0.85rem;
+     }
+   }
+
    /* LG: 768px – 991px (Tablets) */
    @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
      .footer-thanks {

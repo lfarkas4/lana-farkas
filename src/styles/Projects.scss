@@ -319,12 +319,12 @@
       ================================================================ */
    
    @keyframes sectionFadeUp {
-     from { opacity: 0; transform: translate3d(0, 10px, 0); }
+     from { opacity: 0; transform: translate3d(0, 7px, 0); }
      to   { opacity: 1; transform: translate3d(0, 0, 0); }
    }
    
    @keyframes cardFadeUp {
-     from { opacity: 0; transform: translate3d(0, 14px, 0); }
+     from { opacity: 0; transform: translate3d(0, 10px, 0); }
      to   { opacity: 1; transform: translate3d(0, 0, 0); }
    }
    
@@ -343,11 +343,11 @@
    }
    
    .is-visible .animate-section-title {
-     animation: sectionFadeUp 0.40s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+     animation: sectionFadeUp 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
    }
    
    .is-visible .animate-project-card {
-     animation: cardFadeUp 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+     animation: cardFadeUp 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
    }
    
    @media (prefers-reduced-motion: reduce) {
@@ -374,31 +374,31 @@
      }
 
      .section-title {
-       font-size: 1.275rem;
+       font-size: 1.4rem;
      }
 
      .section-arrow {
-       height: 1.05rem;
+       height: 1.15rem;
      }
 
      .project-title {
-       font-size: 1.5rem;
+       font-size: 1.65rem;
      }
 
      .project-description {
-       font-size: 0.975rem;
+       font-size: 1.05rem;
      }
 
      .mini-title {
-       font-size: 1.5rem;
+       font-size: 1.65rem;
      }
 
      .mini-description {
-       font-size: 0.975rem;
+       font-size: 1.05rem;
      }
 
      .tag {
-       font-size: 0.9rem;
+       font-size: 0.95rem;
      }
    }
    

@@ -266,35 +266,41 @@
    /* XXL: ≥ 1600px (Extra large desktops) */
    @media (min-width: #{tokens.$xxl_breakpoint}) {
      .hero {
-       padding: tokens.$space-xs 5vw 70px;
+       padding: 0 5vw 70px;
+       min-height: 92vh;
+       margin-top: -20px;
      }
 
      .hero-title {
-       font-size: 1.975rem;
+       font-size: 2.2rem;
      }
 
      .font-cooper-italic-hello {
-       font-size: 2.175rem;
+       font-size: 2.4rem;
      }
 
      .hero-tagline {
-       font-size: 1.5rem;
+       font-size: 1.65rem;
      }
 
      .font-cooper-italic-tag {
-       font-size: 1.6rem;
+       font-size: 1.75rem;
      }
 
      .hero-column h4 {
-       font-size: 1.275rem;
+       font-size: 1.4rem;
      }
 
      .hero-column p {
-       font-size: 1rem;
+       font-size: 1.1rem;
      }
 
      .hero-info {
-       gap: 120px;
+       gap: 140px;
+     }
+
+     .scroll-cue {
+       margin-top: 60px;
      }
    }
    
@@ -315,9 +321,9 @@
    /* MD: 768px – 991px (Tablets) */
    @media (max-width: calc(#{tokens.$lg_breakpoint} - 1px)) and (min-width: #{tokens.$md_breakpoint}) {
      .hero {
-       padding: 45px 5vw 60px;
-       justify-content: flex-start;
-       min-height: 70vh;
+      padding: 4px 5vw 60px;
+      justify-content: flex-start;
+       min-height: unset;
      }
    
      .font-cooper-italic-hello {
@@ -350,7 +356,7 @@
    /* SM: 626px – 767px (Large phones) */
    @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
      .hero {
-       padding: 45px 5vw 40px;
+       padding: 4px 5vw 60px;
        justify-content: flex-start;
        min-height: unset;
      }

@@ -354,6 +354,76 @@
       5. RESPONSIVE BREAKPOINTS
       ================================================================ */
    
+   /* XXL: ≥ 1600px */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .uc-content {
+       max-width: 580px;
+     }
+
+     .uc-badge {
+       width: 68px;
+       height: 68px;
+       margin-bottom: 28px;
+     }
+
+     .uc-badge__icon {
+       font-size: 1.8rem;
+     }
+
+     .uc-title {
+       font-size: 2.2rem;
+     }
+
+     .uc-subtitle {
+       font-size: 1.05rem;
+       margin-bottom: 46px;
+     }
+
+     .uc-game__area {
+       width: 320px;
+       height: 115px;
+     }
+
+     .uc-orb {
+       width: 74px;
+       height: 74px;
+     }
+
+     .uc-orb__star {
+       font-size: 1.6rem;
+     }
+
+     .uc-game__start {
+       padding: 28px 48px;
+       gap: 12px;
+     }
+
+     .uc-game__start-icon {
+       font-size: 1.8rem;
+     }
+
+     .uc-game__start-text {
+       font-size: 0.95rem;
+     }
+
+     .uc-game__hint {
+       font-size: 0.9rem;
+     }
+
+     .uc-game__result {
+       font-size: 0.95rem;
+     }
+
+     .uc-game__score-value {
+       font-size: 0.95rem;
+     }
+
+     .uc-game__again {
+       font-size: 0.95rem;
+       padding: 11px 28px;
+     }
+   }
+
    /* Tablet */
    @media (max-width: #{tokens.$lg_breakpoint}) {
      .uc-title {

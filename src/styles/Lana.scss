@@ -94,7 +94,7 @@
 }
 .lana-container.is-ready :is(.lana-piece) {
   opacity: 1;
-  transition: opacity 120ms ease-out;
+  transition: opacity 260ms ease-out;
 }
 
 /* Base piece styling */
@@ -178,6 +178,10 @@
 .n-piece    { width: 20.05%;top: 65.75%; left: 57.5%;  animation: float-n 3.1s ease-in-out infinite; }
 .a2-piece   { width: 18.9%; top: 59%;    left: 75.25%; animation: float-a2 3.1s ease-in-out infinite; }
 .halo-piece { width: 20.1%; top: 25%;    left: 58%;    animation: float-halo 3.1s ease-in-out infinite; }
+
+@media (min-width: #{tokens.$xxl_breakpoint}) {
+  .lana-container { width: clamp(200px, 50vw + 200px, 875px); }
+}
 
 @media (max-width: #{tokens.$xxs_breakpoint}) {
   .lana-container { width: 97vw; }

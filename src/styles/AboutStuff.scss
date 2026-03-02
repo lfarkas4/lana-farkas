@@ -331,7 +331,7 @@
    @keyframes fadeInUp {
      from {
        opacity: 0;
-       transform: translateY(5px);
+       transform: translateY(10px);
      }
      to {
        opacity: 1;
@@ -342,12 +342,12 @@
    /* Section animation - starts hidden */
    .animate-section {
      opacity: 0;
-     transform: translateY(5px);
+     transform: translateY(10px);
    }
    
    /* Trigger animations when visible */
    .is-visible.animate-section {
-     animation: fadeInUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+     animation: fadeInUp 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
    }
    
    
@@ -359,10 +359,36 @@
    @media (min-width: #{tokens.$xxl_breakpoint}) {
      .about-cards {
        --padX: clamp(50px, 4vw, 80px);
+       --containerMax: 1720px;
      }
 
      .floating-card-grid {
        gap: var(--gap-base);
+     }
+
+     .extras-intro {
+       font-size: 1.5rem;
+       max-width: 1380px;
+     }
+
+     .cooper-spotify-heading {
+       font-size: 1.7rem;
+     }
+
+     .spotify-heading {
+       font-size: 1.5rem;
+     }
+
+     .haiku-text {
+       font-size: 2.75rem;
+     }
+
+     .floating-caption {
+       font-size: 1.55rem !important;
+     }
+
+     .floating-card {
+       --cardW: min(clamp(440px, 31vw, 610px), var(--fitW));
      }
    }
    
