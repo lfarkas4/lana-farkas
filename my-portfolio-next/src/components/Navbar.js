@@ -12,13 +12,17 @@ const gaEvent = (name, params = {}) => {
 
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [navVisible, setNavVisible] = useState(false);
+
+  // On return visits this session, show navbar immediately — no fade-in flash
+  const isReturn = typeof window !== "undefined" && sessionStorage.getItem("heroSeen");
+  const [navVisible, setNavVisible] = useState(!!isReturn);
 
   const router = useRouter();
 
   const toggleMenu = () => setMenuOpen((v) => !v);
 
   useEffect(() => {
+    if (isReturn) return; // already visible
     const raf = requestAnimationFrame(() => setNavVisible(true));
     return () => cancelAnimationFrame(raf);
   }, []);
@@ -101,6 +105,7 @@ export default function Navigation() {
 
   const renderAnimatedLink = (label, pathId, route, onClick) => {
     const isActive = router.pathname === route;
+    const isDesktop = typeof window !== "undefined" && window.innerWidth > 992;
 
     return (
       <Link
@@ -111,8 +116,8 @@ export default function Navigation() {
         <span className="nav-link-wrapper">
           <span className="nav-link-label">{label}</span>
 
-          {/* Active stroke + spark (matches your SCSS expectations) */}
-          {isActive && !menuOpen && (
+          {/* Active stroke + spark — desktop only, never in mobile menu */}
+          {isActive && !menuOpen && isDesktop && (
             <svg className="nav-active-stroke" viewBox="0 0 180 100" preserveAspectRatio="none">
               <path
                 id={`nav-path-${pathId}`}
@@ -122,7 +127,7 @@ export default function Navigation() {
             </svg>
           )}
 
-          {isActive && !menuOpen && (
+          {isActive && !menuOpen && isDesktop && (
             <img src="/assets/spark.svg" alt="sparkle" className="nav-sparkle" />
           )}
         </span>

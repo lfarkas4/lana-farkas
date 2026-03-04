@@ -107,7 +107,7 @@ export default function BehavAI() {
 
           <div className="pd-hero__media">
             {data.video ? (
-              <video src={heroVideoSrc} autoPlay muted loop playsInline />
+              <video src={heroVideoSrc} poster={data.poster} autoPlay muted loop playsInline />
             ) : (
               data.image && <img src={data.image} alt={data.title} />
             )}
