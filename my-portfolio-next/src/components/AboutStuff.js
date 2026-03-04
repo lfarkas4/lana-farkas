@@ -10,13 +10,12 @@ const spotifyTracks = [
   { id: "7reX35Qt5uap48Bx0pLWn3", title: "You're My", row: "bottom" },
 ];
 
-// Individual Spotify embed — loads immediately (no lazy intersection delay)
+// Individual Spotify embed
 const SpotifyEmbed = ({ trackId, title }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const timeoutRef = useRef(null);
 
-  // Start 10s timeout on mount
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
       if (!isLoaded) setHasError(true);
@@ -42,7 +41,6 @@ const SpotifyEmbed = ({ trackId, title }) => {
 
   return (
     <div className="spotify-embed-wrapper">
-      {/* Skeleton shows while iframe loads */}
       {!isLoaded && !hasError && (
         <div className="spotify-skeleton">
           <div className="skeleton-content">
@@ -55,7 +53,6 @@ const SpotifyEmbed = ({ trackId, title }) => {
         </div>
       )}
 
-      {/* Error state */}
       {hasError && (
         <div className="spotify-error">
           <p>Failed to load track</p>
@@ -65,7 +62,6 @@ const SpotifyEmbed = ({ trackId, title }) => {
         </div>
       )}
 
-      {/* iframe renders immediately — no intersection observer delay */}
       {!hasError && (
         <iframe
           src={`https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0`}
@@ -87,27 +83,47 @@ const SpotifyEmbed = ({ trackId, title }) => {
   );
 };
 
+// Reusable skeleton so we're not repeating inline JSX
+const SpotifySkeleton = ({ trackId }) => (
+  <div key={trackId} className="spotify-embed-wrapper">
+    <div className="spotify-skeleton">
+      <div className="skeleton-content">
+        <div className="skeleton-image"></div>
+        <div className="skeleton-text">
+          <div className="skeleton-title"></div>
+          <div className="skeleton-artist"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const AboutStuff = () => {
-  // ✅ Matches Projects.js — useScrollAnimation instead of hand-rolled observer
   const [floatingCardsRef, floatingCardsVisible] = useScrollAnimation({ threshold: 0.1 });
-  const [spotifyRef, spotifyVisible] = useScrollAnimation({ threshold: 0.1 });
+  const [spotifyRef, spotifyVisible] = useScrollAnimation({ threshold: 0.05 });
 
-  // Preconnect to Spotify for faster iframe loads
+  // Tracks whether iframes should be injected into the DOM yet
+  const [shouldLoadSpotify, setShouldLoadSpotify] = useState(false);
+  const preloadRef = useRef(null);
+
+  // Start loading iframes 800px before the section enters the viewport
+  // so they have time to initialize before the user actually sees them
   useEffect(() => {
-    const link1 = document.createElement("link");
-    link1.rel = "preconnect";
-    link1.href = "https://open.spotify.com";
-    document.head.appendChild(link1);
+    const el = preloadRef.current;
+    if (!el) return;
 
-    const link2 = document.createElement("link");
-    link2.rel = "dns-prefetch";
-    link2.href = "https://open.spotify.com";
-    document.head.appendChild(link2);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadSpotify(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "1600px 0px", threshold: 0 }
+    );
 
-    return () => {
-      document.head.removeChild(link1);
-      document.head.removeChild(link2);
-    };
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   const topRowTracks = spotifyTracks.filter((t) => t.row === "top");
@@ -159,28 +175,35 @@ const AboutStuff = () => {
         </div>
       </section>
 
-      {/* Spotify Section */}
-      <div
-        ref={spotifyRef}
-        className={`spotify-block animate-section ${spotifyVisible ? "is-visible" : ""}`}
-      >
-        <h3 className="extras-intro">
-          <span className="xs-hide">... and here's a few tunes to </span>
-          <span className="xs-only">... a few tunes to </span>
-          <span className="cooper-spotify-heading">remember me by!</span>
-        </h3>
+      {/* preloadRef sits at the top of the spotify section so the 800px
+          rootMargin fires while the user is still on the photocards above */}
+      <div ref={preloadRef}>
+        <div
+          ref={spotifyRef}
+          className={`spotify-block animate-section ${spotifyVisible ? "is-visible" : ""}`}
+        >
+          <h3 className="extras-intro">
+            <span className="xs-hide">... and here's a few tunes to </span>
+            <span className="xs-only">... a few tunes to </span>
+            <span className="cooper-spotify-heading">remember me by!</span>
+          </h3>
 
-        <div className="spotify-trapezoid">
-          <div className="spotify-row top-row">
-            {topRowTracks.map((track) => (
-              <SpotifyEmbed key={track.id} trackId={track.id} title={track.title} />
-            ))}
-          </div>
+          <div className="spotify-trapezoid">
+            <div className="spotify-row top-row">
+              {topRowTracks.map((track) =>
+                shouldLoadSpotify
+                  ? <SpotifyEmbed key={track.id} trackId={track.id} title={track.title} />
+                  : <SpotifySkeleton key={track.id} trackId={track.id} />
+              )}
+            </div>
 
-          <div className="spotify-row bottom-row">
-            {bottomRowTracks.map((track) => (
-              <SpotifyEmbed key={track.id} trackId={track.id} title={track.title} />
-            ))}
+            <div className="spotify-row bottom-row">
+              {bottomRowTracks.map((track) =>
+                shouldLoadSpotify
+                  ? <SpotifyEmbed key={track.id} trackId={track.id} title={track.title} />
+                  : <SpotifySkeleton key={track.id} trackId={track.id} />
+              )}
+            </div>
           </div>
         </div>
       </div>
