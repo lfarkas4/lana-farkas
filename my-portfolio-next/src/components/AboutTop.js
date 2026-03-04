@@ -6,6 +6,14 @@ const About = () => {
   const [shouldAnimate, setShouldAnimate] = useState(true);
   const photoWrapperRef = useRef(null);
 
+  // On return visits this session, animate in quicker
+  const isReturn = typeof window !== "undefined" && sessionStorage.getItem("heroSeen");
+
+  // Delays: full on first visit, snappier on return navigation
+  const delays = isReturn
+    ? { photo: 0, heading: 0.05, bio1: 0.08, bio2: 0.11, contact: 0.14, scroll: 0.17 }
+    : { photo: 0.1, heading: 0.18, bio1: 0.26, bio2: 0.34, contact: 0.42, scroll: 0.5 };
+
   useEffect(() => {
     if (typeof window !== "undefined" && window.matchMedia) {
       const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -56,7 +64,7 @@ const About = () => {
   return (
     <section className={rootClasses} id="about">
       <div className="about-wrapper">
-        <div {...withAnim("about-photo-wrapper", 0.1)} ref={photoWrapperRef}>
+        <div {...withAnim("about-photo-wrapper", delays.photo)} ref={photoWrapperRef}>
           <img
             src="/assets/lanabout.webp"
             alt="Lana"
@@ -73,7 +81,7 @@ const About = () => {
         </div>
 
         <div className="about-intro">
-          <h2 {...withAnim("about-heading", 0.18)}>
+          <h2 {...withAnim("about-heading", delays.heading)}>
             I&apos;m a{" "}
             <span className="sliding-roles">
               <div className="roles-wrapper">
@@ -90,14 +98,14 @@ const About = () => {
             </span>
           </h2>
 
-          <p {...withAnim("about-bio", 0.26)}>
+          <p {...withAnim("about-bio", delays.bio1)}>
             For me, design isn't just about solving problems — it&apos;s
             about experimenting with possibilities that change how people interact with technology.
             This approach has taken me across tech, robotics, healthcare, and education, where 
             I prototype and test experiences for emerging technologies that haven't been built before.
           </p>
 
-          <p {...withAnim("about-bio", 0.34)}>
+          <p {...withAnim("about-bio", delays.bio2)}>
             I recently earned a{" "}
             <span className="light-bold">
               Master's in Human-Computer Interaction
@@ -109,7 +117,7 @@ const About = () => {
             <span className="light-bold">B.A. in Cognitive Science</span>.
           </p>
 
-          <div {...withAnim("about-contact-block", 0.42)}>
+          <div {...withAnim("about-contact-block", delays.contact)}>
             <div className="about-icons">
               <a
                 className="about-icons-links"
@@ -142,7 +150,7 @@ const About = () => {
       </div>
 
       <div className="scroll-cue-spacer" />
-      <div {...withAnim("scroll-cue scroll-cue-wrapper", 0.5)}>
+      <div {...withAnim("scroll-cue scroll-cue-wrapper", delays.scroll)}>
         <div className="scroll-mouse">
           <div className="scroll-dot" />
         </div>

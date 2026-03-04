@@ -22,7 +22,7 @@ export default function useScrollAnimation(options = {}) {
         }
       },
       {
-        root: document.body, // ⭐ Use document.body as scroll container
+        root: null, // Use the viewport as scroll container
         threshold: options.threshold || 0.1,
         rootMargin: options.rootMargin || '0px 0px -50px 0px',
       }

@@ -6,20 +6,25 @@ const Hero = ({ isLoading = false }) => {
   useShootingStar();
   const [shouldAnimate, setShouldAnimate] = useState(true);
 
+  // True on first visit this session, false on page-to-page navigation
+  const isReturn = typeof window !== "undefined" && sessionStorage.getItem("heroSeen");
+
+  // Delays: full on first visit, snappier on return navigation
+  const delays = isReturn
+    ? { title: "0s", lana: "0.05s", tagline: "0.1s", info: "0.15s", scroll: "0.2s" }
+    : { title: "0.1s", lana: "0.2s", tagline: "0.3s", info: "0.4s", scroll: "0.5s" };
+
   const skipHeroAnimation = false;
   useEffect(() => {
-    // Check if we should skip hero animations (e.g., when scrolling to work section)
-
     if (skipHeroAnimation) {
-      // Skip hero animations, show content immediately
       setShouldAnimate(false);
-
-      // Clear the navigation state to prevent issues on refresh
       window.history.replaceState({}, document.title);
     } else {
-      // Play full entrance animations
       setShouldAnimate(true);
     }
+
+    // Mark that the hero has been seen this session
+    sessionStorage.setItem("heroSeen", "true");
   }, []);
 
   return (
@@ -30,7 +35,7 @@ const Hero = ({ isLoading = false }) => {
       <div className="hero-inner-wrapper">
         <h1
           className={`hero-title ${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
-          style={shouldAnimate ? { animationDelay: "0.1s" } : {}}
+          style={shouldAnimate ? { animationDelay: delays.title } : {}}
         >
           <span className="font-cooper-italic-hello">hello</span>, my name is
         </h1>
@@ -38,7 +43,7 @@ const Hero = ({ isLoading = false }) => {
         {/* Lana logo */}
         <div
           className={`${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
-          style={shouldAnimate ? { animationDelay: "0.2s" } : {}}
+          style={shouldAnimate ? { animationDelay: delays.lana } : {}}
         >
           <Lana />
         </div>
@@ -46,7 +51,7 @@ const Hero = ({ isLoading = false }) => {
         {/* Tagline */}
         <p
           className={`hero-tagline ${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
-          style={shouldAnimate ? { animationDelay: "0.3s" } : {}}
+          style={shouldAnimate ? { animationDelay: delays.tagline } : {}}
         >
           <span className="tagline-gtxs">
             … a product designer translating{" "}
@@ -67,7 +72,7 @@ const Hero = ({ isLoading = false }) => {
         {/* Info columns */}
         <div
           className={`hero-info ${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
-          style={shouldAnimate ? { animationDelay: "0.4s" } : {}}
+          style={shouldAnimate ? { animationDelay: delays.info } : {}}
         >
           <div className="hero-column">
             <h4 className="font-cooper-italic">previously learned</h4>
@@ -88,7 +93,7 @@ const Hero = ({ isLoading = false }) => {
         {/* Scroll cue */}
         <div
           className={`scroll-cue ${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
-          style={shouldAnimate ? { animationDelay: "0.5s" } : {}}
+          style={shouldAnimate ? { animationDelay: delays.scroll } : {}}
         >
           <div className="scroll-mouse">
             <div className="scroll-dot" />

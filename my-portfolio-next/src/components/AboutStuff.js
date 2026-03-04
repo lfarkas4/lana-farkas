@@ -83,48 +83,9 @@ const SpotifyEmbed = ({ trackId, title }) => {
   );
 };
 
-// Reusable skeleton so we're not repeating inline JSX
-const SpotifySkeleton = ({ trackId }) => (
-  <div key={trackId} className="spotify-embed-wrapper">
-    <div className="spotify-skeleton">
-      <div className="skeleton-content">
-        <div className="skeleton-image"></div>
-        <div className="skeleton-text">
-          <div className="skeleton-title"></div>
-          <div className="skeleton-artist"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 const AboutStuff = () => {
   const [floatingCardsRef, floatingCardsVisible] = useScrollAnimation({ threshold: 0.1 });
   const [spotifyRef, spotifyVisible] = useScrollAnimation({ threshold: 0.05 });
-
-  // Tracks whether iframes should be injected into the DOM yet
-  const [shouldLoadSpotify, setShouldLoadSpotify] = useState(false);
-  const preloadRef = useRef(null);
-
-  // Start loading iframes 800px before the section enters the viewport
-  // so they have time to initialize before the user actually sees them
-  useEffect(() => {
-    const el = preloadRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoadSpotify(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "1600px 0px", threshold: 0 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const topRowTracks = spotifyTracks.filter((t) => t.row === "top");
   const bottomRowTracks = spotifyTracks.filter((t) => t.row === "bottom");
@@ -175,35 +136,29 @@ const AboutStuff = () => {
         </div>
       </section>
 
-      {/* preloadRef sits at the top of the spotify section so the 800px
-          rootMargin fires while the user is still on the photocards above */}
-      <div ref={preloadRef}>
-        <div
-          ref={spotifyRef}
-          className={`spotify-block animate-section ${spotifyVisible ? "is-visible" : ""}`}
-        >
-          <h3 className="extras-intro">
-            <span className="xs-hide">... and here's a few tunes to </span>
-            <span className="xs-only">... a few tunes to </span>
-            <span className="cooper-spotify-heading">remember me by!</span>
-          </h3>
+      {/* Spotify Section — iframes load immediately on mount since this
+          is a dedicated /about page with no competing heavy content */}
+      <div
+        ref={spotifyRef}
+        className={`spotify-block animate-section ${spotifyVisible ? "is-visible" : ""}`}
+      >
+        <h3 className="extras-intro">
+          <span className="xs-hide">... and here's a few tunes to </span>
+          <span className="xs-only">... a few tunes to </span>
+          <span className="cooper-spotify-heading">remember me by!</span>
+        </h3>
 
-          <div className="spotify-trapezoid">
-            <div className="spotify-row top-row">
-              {topRowTracks.map((track) =>
-                shouldLoadSpotify
-                  ? <SpotifyEmbed key={track.id} trackId={track.id} title={track.title} />
-                  : <SpotifySkeleton key={track.id} trackId={track.id} />
-              )}
-            </div>
+        <div className="spotify-trapezoid">
+          <div className="spotify-row top-row">
+            {topRowTracks.map((track) => (
+              <SpotifyEmbed key={track.id} trackId={track.id} title={track.title} />
+            ))}
+          </div>
 
-            <div className="spotify-row bottom-row">
-              {bottomRowTracks.map((track) =>
-                shouldLoadSpotify
-                  ? <SpotifyEmbed key={track.id} trackId={track.id} title={track.title} />
-                  : <SpotifySkeleton key={track.id} trackId={track.id} />
-              )}
-            </div>
+          <div className="spotify-row bottom-row">
+            {bottomRowTracks.map((track) => (
+              <SpotifyEmbed key={track.id} trackId={track.id} title={track.title} />
+            ))}
           </div>
         </div>
       </div>

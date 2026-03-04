@@ -2,18 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 
 export default function Lana() {
   const wrapRef = useRef(null);
-  const [ready, setReady] = useState(false);
+
+  // On return page visits this session, images are cached — show immediately
+  const isReturn = typeof window !== "undefined" && sessionStorage.getItem("heroSeen");
+  const [ready, setReady] = useState(!!isReturn);
 
   useEffect(() => {
+    // Already showing on return visits
+    if (isReturn) return;
+
     const wrap = wrapRef.current;
     if (!wrap) return;
 
     const imgs = Array.from(wrap.querySelectorAll("img"));
     let cancelled = false;
 
-    // Fast path: if all images are already cached by the browser,
-    // reveal immediately without waiting for decode() - avoids the
-    // "blank Lana on nav from About" flash entirely.
     const allCached = imgs.every((img) => img.complete && img.naturalWidth > 0);
     if (allCached) {
       setReady(true);
@@ -24,8 +27,6 @@ export default function Lana() {
       new Promise((resolve) => {
         const done = () => {
           if (typeof img.decode === "function") {
-            // Reduced from 1500ms - cached assets decode near-instantly,
-            // long timeouts just delay the reveal on repeated visits.
             const decodeTimeout = setTimeout(resolve, 400);
             img
               .decode()
@@ -70,7 +71,7 @@ export default function Lana() {
     >
       <img
         src="/assets/L@1x.webp"
-        srcSet="/assets/L@1x.webp 1x, /assets/L@2x.webp 2x"
+        srcSet="/assets/L@1x.webp 1x, /assets/L@3x.webp 2x, /assets/L@3x.webp 3x"
         alt=""
         className="lana-piece l-piece lana-letter"
         draggable="false"
@@ -79,7 +80,7 @@ export default function Lana() {
       />
       <img
         src="/assets/A1@1x.webp"
-        srcSet="/assets/A1@1x.webp 1x, /assets/A1@2x.webp 2x"
+        srcSet="/assets/A1@1x.webp 1x, /assets/A1@3x.webp 2x, /assets/A1@3x.webp 3x"
         alt=""
         className="lana-piece a1-piece lana-letter"
         draggable="false"
@@ -88,7 +89,7 @@ export default function Lana() {
       />
       <img
         src="/assets/N@1x.webp"
-        srcSet="/assets/N@1x.webp 1x, /assets/N@2x.webp 2x"
+        srcSet="/assets/N@1x.webp 1x, /assets/N@3x.webp 2x, /assets/N@3x.webp 3x"
         alt=""
         className="lana-piece n-piece lana-letter"
         draggable="false"
@@ -97,7 +98,7 @@ export default function Lana() {
       />
       <img
         src="/assets/A2@1x.webp"
-        srcSet="/assets/A2@1x.webp 1x, /assets/A2@2x.webp 2x"
+        srcSet="/assets/A2@1x.webp 1x, /assets/A2@3x.webp 2x, /assets/A2@3x.webp 3x"
         alt=""
         className="lana-piece a2-piece lana-letter"
         draggable="false"
@@ -106,7 +107,7 @@ export default function Lana() {
       />
       <img
         src="/assets/halo@1x.png"
-        srcSet="/assets/halo@1x.png 1x, /assets/halo@2x.png 2x"
+        srcSet="/assets/halo@1x.png 1x, /assets/halo@3x.webp 2x, /assets/halo@3x.webp 3x"
         alt=""
         className="lana-piece halo-piece"
         draggable="false"
@@ -115,7 +116,7 @@ export default function Lana() {
       />
       <img
         src="/assets/orstar1@1x.png"
-        srcSet="/assets/orstar1@1x.png 1x, /assets/orstar1@2x.png 2x"
+        srcSet="/assets/orstar1@1x.png 1x, /assets/orstar1@3x.webp 2x, /assets/orstar1@3x.webp 3x"
         alt=""
         className="lana-piece orstar1-piece"
         draggable="false"
@@ -123,7 +124,7 @@ export default function Lana() {
       />
       <img
         src="/assets/redstar1@1x.png"
-        srcSet="/assets/redstar1@1x.png 1x, /assets/redstar1@2x.png 2x"
+        srcSet="/assets/redstar1@1x.png 1x, /assets/redstar1@3x.webp 2x, /assets/redstar1@3x.webp 3x"
         alt=""
         className="lana-piece redstar1-piece"
         draggable="false"
@@ -131,7 +132,7 @@ export default function Lana() {
       />
       <img
         src="/assets/blustar3@1x.png"
-        srcSet="/assets/blustar3@1x.png 1x, /assets/blustar3@2x.png 2x"
+        srcSet="/assets/blustar3@1x.png 1x, /assets/blustar3@3x.webp 2x, /assets/blustar3@3x.webp 3x"
         alt=""
         className="lana-piece blustar3-piece"
         draggable="false"
@@ -139,7 +140,7 @@ export default function Lana() {
       />
       <img
         src="/assets/blustar2@1x.png"
-        srcSet="/assets/blustar2@1x.png 1x, /assets/blustar2@2x.png 2x"
+        srcSet="/assets/blustar2@1x.png 1x, /assets/blustar2@3x.webp 2x, /assets/blustar2@3x.webp 3x"
         alt=""
         className="lana-piece blustar2-piece"
         draggable="false"
@@ -147,7 +148,7 @@ export default function Lana() {
       />
       <img
         src="/assets/blustar1@1x.png"
-        srcSet="/assets/blustar1@1x.png 1x, /assets/blustar1@2x.png 2x"
+        srcSet="/assets/blustar1@1x.png 1x, /assets/blustar1@3x.webp 2x, /assets/blustar1@3x.webp 3x"
         alt=""
         className="lana-piece blustar1-piece"
         draggable="false"
@@ -155,7 +156,7 @@ export default function Lana() {
       />
       <img
         src="/assets/redstar2@1x.png"
-        srcSet="/assets/redstar2@1x.png 1x, /assets/redstar2@2x.png 2x"
+        srcSet="/assets/redstar2@1x.png 1x, /assets/redstar2@3x.webp 2x, /assets/redstar2@3x.webp 3x"
         alt=""
         className="lana-piece redstar2-piece"
         draggable="false"
@@ -163,7 +164,7 @@ export default function Lana() {
       />
       <img
         src="/assets/crown@1x.png"
-        srcSet="/assets/crown@1x.png 1x, /assets/crown@2x.png 2x"
+        srcSet="/assets/crown@1x.png 1x, /assets/crown@3x.webp 2x, /assets/crown@3x.webp 3x"
         alt=""
         className="lana-piece crown-piece"
         draggable="false"
