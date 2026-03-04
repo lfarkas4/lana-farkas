@@ -1,5 +1,5 @@
 // src/components/CosmicBackground.jsx
-import React from "react";
+import React, { useRef } from "react";
 import "../styles/CosmicBackground.scss";
 import CosmicFluidCursor from "./CosmicFluidCursor";
 
@@ -54,18 +54,18 @@ const CIRCLE_STARS = [
 
 /** Floating particles that drift upward */
 const FLOATING_PARTICLES = [
-  { left: "8%",  size: 5, dur: 16, delay: 0,  variant: "" },
-  { left: "15%", size: 7, dur: 20, delay: 3,  variant: "warm" },
-  { left: "22%", size: 4, dur: 18, delay: 7,  variant: "purple" },
-  { left: "32%", size: 6, dur: 22, delay: 2,  variant: "" },
-  { left: "42%", size: 7, dur: 17, delay: 9,  variant: "warm" },
-  { left: "52%", size: 4, dur: 19, delay: 4,  variant: "" },
+  { left: "8%", size: 5, dur: 16, delay: 0, variant: "" },
+  { left: "15%", size: 7, dur: 20, delay: 3, variant: "warm" },
+  { left: "22%", size: 4, dur: 18, delay: 7, variant: "purple" },
+  { left: "32%", size: 6, dur: 22, delay: 2, variant: "" },
+  { left: "42%", size: 7, dur: 17, delay: 9, variant: "warm" },
+  { left: "52%", size: 4, dur: 19, delay: 4, variant: "" },
   { left: "62%", size: 5, dur: 21, delay: 11, variant: "purple" },
-  { left: "72%", size: 7, dur: 16, delay: 6,  variant: "" },
-  { left: "80%", size: 4, dur: 23, delay: 1,  variant: "warm" },
-  { left: "88%", size: 6, dur: 18, delay: 8,  variant: "" },
-  { left: "95%", size: 7, dur: 20, delay: 5,  variant: "purple" },
-  { left: "5%",  size: 5, dur: 19, delay: 13, variant: "warm" },
+  { left: "72%", size: 7, dur: 16, delay: 6, variant: "" },
+  { left: "80%", size: 4, dur: 23, delay: 1, variant: "warm" },
+  { left: "88%", size: 6, dur: 18, delay: 8, variant: "" },
+  { left: "95%", size: 7, dur: 20, delay: 5, variant: "purple" },
+  { left: "5%", size: 5, dur: 19, delay: 13, variant: "warm" },
 ];
 
 /** Map radius → brightness "layer" */
@@ -73,12 +73,25 @@ function layerFor(r) {
   if (r >= 6) {
     return { minO: 0.36, maxO: 0.84, haloMin: "1px", haloMax: "12px" };
   } else if (r === 5) {
-    return { minO: 0.22, maxO: 0.70, haloMin: "1px", haloMax: "10px" };
+    return { minO: 0.22, maxO: 0.7, haloMin: "1px", haloMax: "10px" };
   }
-  return { minO: 0.10, maxO: 0.44, haloMin: "0px", haloMax: "8px" };
+  return { minO: 0.1, maxO: 0.44, haloMin: "0px", haloMax: "8px" };
+}
+
+function pctToPx(pctString, basePx) {
+  // "16%" -> 0.16 * basePx
+  const n = parseFloat(String(pctString).replace("%", ""));
+  if (Number.isNaN(n)) return pctString; // safe fallback
+  return `${(n / 100) * basePx}px`;
 }
 
 export default function CosmicBackground({ showFluidCursor = false }) {
+  // Freeze vertical star placement based on the viewport height at mount time.
+  // Horizontal (left: "%") stays responsive; vertical (top) becomes fixed px.
+  const baseHeightRef = useRef(
+    typeof window !== "undefined" ? window.innerHeight : 900
+  );
+
   return (
     <>
       <div className="cosmic-background" aria-hidden>
@@ -98,18 +111,23 @@ export default function CosmicBackground({ showFluidCursor = false }) {
             const glowDelay = `calc(${s.delay || "0s"} + ${(i % 5) * 110}ms)`;
 
             const hue =
-              i % 6 === 0 ? 120 :
-              i % 5 === 0 ? 195 :
-              i % 4 === 0 ? 305 :
-              i % 3 === 0 ? 48 : 0;
+              i % 6 === 0
+                ? 120
+                : i % 5 === 0
+                ? 195
+                : i % 4 === 0
+                ? 305
+                : i % 3 === 0
+                ? 48
+                : 0;
 
             return (
               <span
                 key={`dot-${i}`}
                 className={`circle-star${s.move ? " mover" : ""}`}
                 style={{
-                  left: s.left,
-                  top: s.top,
+                  left: s.left, // keep horizontal responsive
+                  top: pctToPx(s.top, baseHeightRef.current), // freeze vertical
                   width: `${s.r}px`,
                   height: `${s.r}px`,
                   backgroundColor: s.color,
@@ -140,8 +158,8 @@ export default function CosmicBackground({ showFluidCursor = false }) {
               alt=""
               aria-hidden="true"
               style={{
-                left: s.left,
-                top: s.top,
+                left: s.left, // keep horizontal responsive
+                top: pctToPx(s.top, baseHeightRef.current), // freeze vertical
                 animationDelay: s.delay || `${(i * 3.2) % 12}s`,
               }}
             />
@@ -153,15 +171,19 @@ export default function CosmicBackground({ showFluidCursor = false }) {
           {FLOATING_PARTICLES.map((p, i) => (
             <span
               key={`float-${i}`}
-              className={`floating-particle${p.variant ? ` floating-particle--${p.variant}` : ""}`}
+              className={`floating-particle${
+                p.variant ? ` floating-particle--${p.variant}` : ""
+              }`}
               style={{
                 left: p.left,
                 bottom: "0",
                 width: `${p.size}px`,
                 height: `${p.size}px`,
                 "--float-dur": `${p.dur}s`,
-                "--drift-x": `${(i % 2 === 0 ? 1 : -1) * (10 + (i * 3) % 15)}px`,
-                "--max-opacity": 0.4 + (p.size / 10),
+                "--drift-x": `${
+                  (i % 2 === 0 ? 1 : -1) * (10 + ((i * 3) % 15))
+                }px`,
+                "--max-opacity": 0.4 + p.size / 10,
                 animationDelay: `${p.delay}s`,
               }}
             />

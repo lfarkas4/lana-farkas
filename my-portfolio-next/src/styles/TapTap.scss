@@ -1,0 +1,2334 @@
+/* ================================================================
+   TAPTAP MINI PROJECT
+   ================================================================ */
+
+   @use './partials/tokens' as tokens;
+   @use './partials/reveal';
+   
+   /* ================================================================
+      TABLE OF CONTENTS
+      ----------------------------------------------------------------
+      1. MIXINS & HELPERS
+      2. SHARED UTILITIES (.hi highlight, context helpers)
+      3. SECTION: The Assignment (TapTapAssignment)
+      4. SECTION: Our Big Idea (TapTapIdea)
+      5. SECTION: Reality Check (TapTapRealityCheck)
+      6. SECTION: Change of Plans (TapTapChangeOfPlans)
+      7. SECTION: The Blueprint (TapTapBlueprint)
+      8. SECTION: Bringing It to Life (TapTapBuildIt)
+      9. SECTION: Final Product (TapTapFinalProduct)
+     10. SECTION: Product Demo (TapTapProductDemo)
+     11. SECTION: What I Learned (TapTapWhatILearned)
+     12. RESPONSIVE BREAKPOINTS
+         - XL  ≤ 1200px
+         - LG  ≤ 992px
+         - MD  ≤ 767px
+         - SM  ≤ 625px
+         - XS  ≤ 464px
+         - XXL ≥ 1440px
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. MIXINS & HELPERS
+      ================================================================ */
+   
+   /* Full-bleed breakout — identical to Aquatonomy / Hira */
+   @mixin full-bleed {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   }
+   
+   /* Inner content container aligned to site gutters */
+   @mixin container($pad: var(--page-gutter-desktop)) {
+     @include tokens.container-page($pad);
+   }
+   
+   /* Framed media (rounded + subtle border/shadow) — light variant */
+   @mixin media-frame($mode: light) {
+     width: 100%;
+     height: auto;
+     border-radius: 20px;
+     display: block;
+   
+     @if $mode == light {
+       border: 0.05px solid rgba(0, 0, 0, 0.05);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+     } @else {
+       border: 1px solid rgba(255, 255, 255, 0.1);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+     }
+   }
+   
+   
+   /* ================================================================
+      2. SHARED UTILITIES
+      ================================================================ */
+   
+   /* Context helpers — normalise <strong> across bg modes */
+   .is-light { strong { @include tokens.body-strong-light; } }
+   .is-dark  { strong { @include tokens.body-strong-dark; } }
+   
+   /* .hi highlight — scoped to every light section in TapTap.
+      Exact token match: body-strong-light weight + #C8D3F5 bg
+      (same as Aquatonomy .overview-section .hi & Hira global .hi) */
+   .taptap-assignment,
+   .taptap-idea,
+   .taptap-reality,
+   .taptap-plans,
+   .taptap-blueprint,
+   .taptap-final,
+   .taptap-demo,
+   .taptap-learned {
+     .hi {
+       @include tokens.body-strong-light;
+       background: #C8D3F5;
+       padding: 0 .25em;
+       border-radius: 4px;
+       -webkit-box-decoration-break: clone;
+       box-decoration-break: clone;
+     }
+   }
+   
+   
+   /* ================================================================
+      3. SECTION: THE ASSIGNMENT
+      Structure mirrors .overview-section exactly:
+        - full-bleed wrapper
+        - .header  (eyebrow + title, full container width)
+        - .inner   (1fr 1fr grid: media left | body right)
+      ================================================================ */
+   
+   .taptap-assignment {
+     @include full-bleed;
+   
+     background: rgb(236, 239, 247);   /* exact Aquatonomy overview bg */
+     border-top: 0;
+     border-bottom: 0;
+     padding-top: clamp(60px, 8vw, 100px);   /* matches overview-section */
+     padding-bottom: 0;
+     display: flow-root;
+   
+     /* Spark decoration — user's adjusted values */
+     --spark-w: 75px;
+     --spark-right: calc(var(--page-gutter-desktop) - 90px);
+     --spark-top: auto;
+     --spark-bottom: 90px;
+   }
+   
+   /* ── Header (eyebrow + title) ── */
+   .taptap-assignment-header {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto 50px;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .taptap-assignment-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .taptap-assignment-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+     max-width: 100%;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;   /* matches overview-title-light & hira-title em */
+     }
+   }
+   
+   /* ── Split grid (media | body) ── */
+   .taptap-assignment-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+     padding-bottom: 120px;         /* matches overview-inner */
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 60px;                     /* matches overview-inner gap */
+     align-items: start;
+   }
+   
+   /* ── Left: Media column ── */
+   .taptap-assignment-media {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;                     /* matches overview-media gap */
+   }
+   
+   .taptap-assignment-image {
+     @include media-frame(light);   /* border-radius 20px, shadow, border */
+   }
+   
+   .taptap-assignment-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 0 8px;                 /* matches overview-caption */
+   }
+   
+   /* ── Right: Body column ── */
+   .taptap-assignment-content {
+     display: flex;
+     flex-direction: column;
+   }
+   
+   .taptap-assignment-body {
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;         /* matches overview-body gap */
+   
+     p {
+       @include tokens.type-mont-poj-light-body;
+       color: #000206;
+       line-height: 1.65;
+       margin: 0;
+       font-size: 1.075rem;         /* matches overview-body p baseline */
+   
+       strong { @include tokens.body-strong-light; }
+     }
+   }
+   
+   
+   /* ── Floating spark decoration (bottom-right) ── */
+   .taptap-assignment-spark {
+     position: absolute;
+     width: var(--spark-w);
+     height: auto;
+     right: var(--spark-right);
+     top: var(--spark-top);
+     bottom: var(--spark-bottom);
+     pointer-events: none;
+     z-index: 5;
+   }
+   
+   
+   /* ================================================================
+      4. SECTION: OUR BIG IDEA
+      Full-width video above body text.
+      Mirrors BehavAI kickoff layout but with media-first order
+      and no caption.
+      ================================================================ */
+   
+   .taptap-idea {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 80px 0 100px;         /* matches behavai-kickoff */
+   }
+   
+   .taptap-idea-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .taptap-idea-header {
+     margin-bottom: 50px;           /* matches behavai-kickoff-header */
+   }
+   
+   .taptap-idea-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .taptap-idea-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* Video block — full container width, sits above body */
+   .taptap-idea-media {
+     margin-bottom: 60px;           /* matches behavai-kickoff-body margin-bottom */
+   }
+   
+   .taptap-idea-video {
+     @include media-frame(light);
+     width: 100%;
+     height: 320px;                 /* matches behavai-kickoff-media video height */
+     max-height: 46vh;
+     object-fit: cover;
+     object-position: center center;
+   }
+   
+   /* Body — two paragraphs below the video */
+   .taptap-idea-body {
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   
+     p {
+       @include tokens.type-mont-poj-light-body;
+       color: #000206;
+       line-height: 1.65;
+       margin: 0;
+       font-size: 1.075rem;
+   
+       strong { @include tokens.body-strong-light; }
+     }
+   }
+   
+   
+   /* ================================================================
+      5. SECTION: REALITY CHECK
+      Mini section with SVG curve background + spark.
+      Mirrors hira-hmw exactly: curve is absolute bg,
+      content is z-index 1, spark floats inside title row.
+      ================================================================ */
+   
+   .taptap-reality {
+     @include full-bleed;
+     position: relative;
+     overflow: hidden;
+     background: #FAFAFE;
+     padding: clamp(180px, 10vw, 200px) 0 clamp(160px, 8vw, 180px);   /* hira-hmw */
+   }
+   
+   /* Curve — absolute, fills section, stretched to bleed */
+   .taptap-reality-curve {
+     position: absolute;
+     inset: 0;
+     left: 50%;
+     max-width: none;
+     width: 100vw;
+     height: 100%;
+     transform: translateX(-50%) scaleX(2);       /* user's scaleX(2) */
+     transform-origin: center;
+     object-fit: fill;
+     pointer-events: none;
+     z-index: 0;
+     display: block;
+   }
+   
+   /* Content above curve — user's margin-top: -30px */
+   .taptap-reality-inner {
+     position: relative;
+     z-index: 1;
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+     margin-top: -30px;
+   }
+   
+   .taptap-reality-header {
+     margin-bottom: 50px;           /* hira-hmw-header */
+     position: relative;
+   }
+   
+   .taptap-reality-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   /* Title row — flex so spark floats to the right, same as hira-hmw-title */
+   .taptap-reality-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+     position: relative;
+     display: flex;
+     align-items: flex-start;
+     gap: 20px;
+   
+     span {
+       flex: 1;
+     }
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* Spark — user's adjusted values */
+   .taptap-reality-spark {
+     position: absolute;
+     right: -100px;
+     top: -80px;
+     height: auto;
+     pointer-events: none;
+     z-index: 5;
+     width: 85px;
+     rotate: 10deg;
+   }
+   
+   /* Body */
+   .taptap-reality-body {
+     display: flex;
+     flex-direction: column;
+     gap: 20px;                     /* hira-hmw-body gap */
+   
+     p {
+       @include tokens.type-mont-poj-light-body;
+       color: #000206;
+       font-size: 1.075rem;         /* hira-hmw-body p */
+       line-height: 1.65;
+       margin: 0;
+   
+       strong { @include tokens.body-strong-light; }
+     }
+   }
+   
+   
+   /* ================================================================
+      6. SECTION: CHANGE OF PLANS
+      Overview-style 1fr 1fr grid (header above, media left, body
+      right) followed by a 2×2 insight-card grid below.
+      Grid mirrors .overview-inner / .taptap-assignment-inner.
+      Cards mirror .hira-wwh-insight-card token-for-token.
+      ================================================================ */
+   
+   .taptap-plans {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 80px 0 100px;
+   }
+   
+   .taptap-plans-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   /* ── Header — user's margin-bottom: 60px ── */
+   .taptap-plans-header {
+     margin-bottom: 60px;
+   }
+   
+   .taptap-plans-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .taptap-plans-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* ── 1fr 1fr grid — user's margin-bottom: 80px ── */
+   .taptap-plans-grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 60px;                     /* overview-inner gap */
+     align-items: start;
+     margin-bottom: 80px;           /* user's value */
+   }
+   
+   /* ── Left: Media ── */
+   .taptap-plans-media {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;
+   }
+   
+   .taptap-plans-image {
+     @include media-frame(light);
+   }
+   
+   .taptap-plans-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 0 8px;
+   }
+   
+   /* ── Right: Body ── */
+   .taptap-plans-content {
+     display: flex;
+     flex-direction: column;
+   }
+   
+   .taptap-plans-body {
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   
+     p {
+       @include tokens.type-mont-poj-light-body;
+       color: #000206;
+       line-height: 1.65;
+       margin: 0;
+       font-size: 1.075rem;
+   
+       strong { @include tokens.body-strong-light; }
+     }
+   }
+   
+   /* ── Insight cards (2×2 grid) — token-for-token from hira-wwh ── */
+   .taptap-plans-insights {
+     margin-top: 50px;              /* hira-wwh-insights */
+   }
+   
+   .taptap-plans-insights-grid {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 20px;                     /* hira-wwh-insights-grid */
+   }
+   
+   .taptap-plans-insight-card {
+     background: #ffffff;
+     border-radius: 16px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+     padding: 30px;                 /* hira-wwh-insight-card */
+     display: flex;
+     flex-direction: row;
+     align-items: flex-start;
+     gap: 16px;
+   }
+   
+   /* Number circle */
+   .taptap-plans-insight-number {
+     font-family: tokens.$font-montserrat;
+     font-size: 1.2rem;
+     font-weight: 600;
+     color: #085FDD;
+     background: #ECF1FF;
+     width: 55px;
+     height: 55px;
+     border-radius: 50%;
+     display: grid;
+     place-items: center;
+     flex-shrink: 0;
+   }
+   
+   .taptap-plans-insight-content {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
+     padding-top: 6px;
+   }
+   
+   .taptap-plans-insight-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.1rem;
+     font-weight: 600;
+     color: #000206;
+     line-height: 1.3;
+     margin: 0;
+   }
+   
+   .taptap-plans-insight-text {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     line-height: 1.6;
+     color: #000206;
+     margin: 0;
+   }
+   
+   /* ── spark-disco — bottom-right floating decoration.
+      Hidden at all sizes; turned on ONLY inside the XXL
+      min-width query so it never shows below 1440px.       ── */
+   .taptap-plans-spark {
+     position: absolute;
+     width: 87px;
+     height: auto;
+     right: calc(var(--page-gutter-desktop) - 50px);
+     bottom: 530px;
+     pointer-events: none;
+     z-index: 5;
+     display: none;                 /* hidden by default */
+   }
+   
+   
+   /* ================================================================
+      7. SECTION: THE BLUEPRINT
+      Full-width media above body (hira-directions pattern,
+      media-first, no caption).  Below: GAMEPLAY LOOP label +
+      single-column stack of horizontal step cards.
+      Card shell = behavai-constraint-card (white, 16px radius,
+      subtle shadow, column gap).  Header row inside each card =
+      concept-card-header (icon left, title right).
+      Label colour shifted to muted slate (#5a6e7f) so it doesn't
+      collide with the blue (#085FDD) step titles.
+      ================================================================ */
+   
+   .taptap-blueprint {
+     @include full-bleed;
+     background: rgb(236, 239, 247);   /* same as assignment bg */
+     padding: 80px 0 100px;
+   }
+   
+   .taptap-blueprint-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   /* ── Header ── */
+   .taptap-blueprint-header {
+     margin-bottom: 50px;           /* directions-header margin-bottom */
+   }
+   
+   .taptap-blueprint-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .taptap-blueprint-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* ── Full-width media (no caption) ── */
+   .taptap-blueprint-media {
+     margin-bottom: 60px;           /* directions-body margin-bottom */
+   }
+   
+   .taptap-blueprint-image {
+     @include media-frame(light);
+     width: 100%;
+     height: auto;
+   }
+   
+   /* ── Body ── */
+   .taptap-blueprint-body {
+     display: flex;
+     flex-direction: column;
+     gap: 20px;                     /* directions-body gap */
+     margin-bottom: 70px;           /* breathing room before step cards */
+   
+     p {
+       @include tokens.type-mont-poj-light-body;
+       color: #000206;
+       font-size: 1.075rem;         /* directions-body p */
+       line-height: 1.65;
+       margin: 0;
+   
+       strong { @include tokens.body-strong-light; }
+     }
+   }
+   
+   /* ── Gameplay loop step cards ── */
+   
+   /* Label — constraint-card-label shape, colour shifted to muted slate */
+   .taptap-blueprint-steps-label {
+     @include tokens.type-mont-poj-light-header;
+     font-size: 0.75rem;            /* constraint-card-label */
+     font-weight: 550;
+     color: #5a6e7f;                /* muted blue-grey, not #3b82f6 */
+     text-transform: uppercase;
+     letter-spacing: 0.12em;
+     margin-bottom: 18px;
+     margin-top: 6px;
+   }
+   
+   /* Single-column list of cards */
+   .taptap-blueprint-steps-list {
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+   }
+   
+   /* Each step card — constraint-card outer shell */
+   .taptap-blueprint-step-card {
+     background: #ffffff;
+     border-radius: 16px;           /* constraint-card */
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+     padding: 24px 28px;            /* constraint-card padding */
+     display: flex;
+     flex-direction: row;           /* horizontal: icon | content */
+     align-items: center;           /* icon stays vertically centred as text wraps */
+     gap: 20px;
+   }
+   
+   /* Icon — concept-card-icon sizing */
+   .taptap-blueprint-step-icon {
+     width: 55px;                   /* concept-card-icon width */
+     height: 55px;
+     object-fit: contain;
+     flex-shrink: 0;
+   }
+   
+   /* Content column */
+   .taptap-blueprint-step-content {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     gap: 6px;
+   }
+   
+   /* Step title — blue bold, #085FDD matches insight-number & design system */
+   .taptap-blueprint-step-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.1rem;            /* concept-card-title */
+     font-weight: 600;
+     color: #085FDD;
+     line-height: 1.3;
+     margin: 0;
+   }
+   
+   /* Step description — constraint-card-description tokens */
+   .taptap-blueprint-step-description {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;            /* constraint-card-description */
+     line-height: 1.6;
+     color: #000206;
+     margin: 0;
+   }
+   
+   
+   /* ================================================================
+      8. SECTION: BRINGING IT TO LIFE (TapTapBuildIt)
+      Token-for-token port of .research-section (Aquatonomy).
+      Dark bg, alternating 1fr/1fr grid, callout PNGs below each
+      text block.  No insights block — not in this case study.
+      ================================================================ */
+   
+   .taptap-build {
+     @include full-bleed;
+     @include tokens.section-dark(80px, 10px);   /* research-section */
+   }
+   
+   /* ── Header ── */
+   .taptap-build-header {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto 80px;                        /* research-header margin-bottom */
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .taptap-build-eyebrow {
+     @include tokens.type-mont-poj-dark-header;
+     color: tokens.$prisec;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .taptap-build-intro {
+     @include tokens.type-mont-poj-dark-headerintro;
+     color: tokens.$prisec;
+     line-height: 1.45;
+     letter-spacing: -0.025px;
+   
+     em { font-style: italic; font-weight: 400; }
+   }
+   
+   /* ── Subsection grid ── */
+   .taptap-build-subsection {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto 90px;                        /* research-subsection margin-bottom */
+     padding: 0 var(--page-gutter-desktop);
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 60px;                                  /* research-subsection gap */
+     align-items: center;
+   }
+   
+   /* .reverse flips order — content left, media right */
+   .taptap-build-subsection.reverse {
+     .taptap-build-media   { order: 2; }
+     .taptap-build-content { order: 1; }
+   }
+   
+   /* ── Media column ── */
+   .taptap-build-media {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;                                  /* research-media gap */
+   }
+   
+   .taptap-build-image {
+     @include media-frame(dark);                 /* research-image */
+   }
+   
+   .taptap-build-caption {
+     @include tokens.type-caption-dark;
+     color: tokens.$primary;
+     text-align: center;
+     margin: 0 8px;                              /* research-caption */
+   }
+   
+   /* ── Content column ── */
+   .taptap-build-content {
+     display: flex;
+     flex-direction: column;
+     gap: 24px;                                  /* research-content gap */
+     margin-top: -45px;                          /* research-content optical pull-up */
+   }
+   
+   .taptap-build-subtitle {
+     font-family: tokens.$font-montserrat;
+     font-size: 1.75rem;                         /* research-subtitle */
+     font-weight: 500;
+     letter-spacing: 0.2px;
+     color: tokens.$prisec;
+     line-height: 1.3;
+     margin: 0;
+   }
+   
+   .taptap-build-text {
+     @include tokens.type-mont-poj-light-body;
+     color: tokens.$primary;
+     line-height: 1.65;
+     margin: 0;
+     letter-spacing: 0.075px;
+   
+     strong { @include tokens.body-strong-dark; }
+   }
+   
+   /* ── Callout notecard (PNG) ── */
+   .taptap-build-callout-img {
+     width: min(600px, 100%);                    /* research-callout-img */
+     height: auto;
+     display: block;
+     margin: 10px 0 0;                           /* research-callout margin-top */
+   }
+   
+   
+   /* ================================================================
+      9. SECTION: FINAL PRODUCT (TapTapFinalProduct)
+      Assignment-style 1fr/1fr grid.  Left column holds a looping
+      muted video (auto-play on scroll); right column is body copy.
+      Mirrors .taptap-assignment-inner token-for-token.
+      ================================================================ */
+   
+   .taptap-final {
+     @include full-bleed;
+     background: #FAFAFE;   /* same as assignment */
+     padding-top: clamp(60px, 8vw, 100px);
+     padding-bottom: 0;
+     display: flow-root;
+   }
+   
+   /* ── Header ── */
+   .taptap-final-header {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto 50px;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .taptap-final-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .taptap-final-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* ── 1fr 1fr grid ── */
+   .taptap-final-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+     padding-bottom: 80px;          /* user-adjusted */
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 60px;                     /* assignment-inner gap */
+     align-items: start;
+   }
+   
+   /* ── Left: Video column ── */
+   .taptap-final-media {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;                     /* assignment-media gap */
+   }
+   
+   .taptap-final-video {
+     @include media-frame(light);
+     width: 100%;
+     height: auto;
+     display: block;
+     border-radius: 20px;
+   }
+   
+   .taptap-final-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 0 8px;
+   }
+   
+   /* ── Right: Body column ── */
+   .taptap-final-content {
+     display: flex;
+     flex-direction: column;
+   }
+   
+   .taptap-final-body {
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   
+     p {
+       @include tokens.type-mont-poj-light-body;
+       color: #000206;
+       line-height: 1.65;
+       margin: 0;
+       font-size: 1.075rem;
+   
+       strong { @include tokens.body-strong-light; }
+     }
+   }
+   
+   
+   /* ── spark-happy (XXL-only, mirrors spark-disco) ── */
+   .taptap-final-spark {
+     position: absolute;
+     width: 90px;
+     height: auto;
+     right: calc(var(--page-gutter-desktop) - 75px);
+     bottom: 90px;
+     pointer-events: none;
+     z-index: 5;
+     display: none;                  /* hidden below XXL */
+   }
+   
+   
+   /* ================================================================
+     10. SECTION: PRODUCT DEMO (TapTapProductDemo)
+      Full-width video with native browser controls (audio on).
+      Token-for-token from .behavai-solution: same bg, padding,
+      header margin, video frame, caption.
+      ================================================================ */
+   
+   .taptap-demo {
+     @include full-bleed;
+     background: #FAFAFE;   /* behavai-solution bg */
+     padding: 10px 0 110px;           /* user-adjusted */
+   }
+   
+   .taptap-demo-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   /* ── Header ── */
+   .taptap-demo-header {
+     margin-bottom: 50px;              /* behavai-solution-header */
+   }
+   
+   .taptap-demo-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .taptap-demo-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* ── Full-width video ── */
+   .taptap-demo-media {
+     width: 100%;
+     text-align: center;             /* behavai-solution-media */
+   }
+   
+   .taptap-demo-video {
+     @include media-frame(light);
+     display: block;
+     width: 100%;
+     height: auto;
+     max-height: none;
+     object-fit: cover;
+   }
+   
+   .taptap-demo-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 18px 8px 0;             /* behavai-solution-caption margin-top */
+   }
+   
+   
+   /* ================================================================
+     11. SECTION: WHAT I LEARNED (TapTapWhatILearned)
+      Token-for-token port of the Hira "What I Learned" subsection
+      inside .hira-trust-outro.  Same bg, padding, header margin,
+      body gap/margin, and the side-by-side heard-images grid.
+      ================================================================ */
+   
+   .taptap-learned {
+     @include full-bleed;
+     background: rgb(236, 239, 247);   /* exact Hira outro bg */
+     padding: 80px 0 100px;           /* hira-trust-outro */
+     position: relative;
+   }
+   
+   .taptap-learned-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   /* ── Header ── */
+   .taptap-learned-header {
+     margin-bottom: 50px;              /* hira-trust-outro-header */
+   }
+   
+   .taptap-learned-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .taptap-learned-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* ── Body ── */
+   .taptap-learned-body {
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;            /* hira-trust-outro-body gap */
+     margin-bottom: 50px;              /* hira-trust-outro-body margin-bottom */
+   
+     p {
+       @include tokens.type-mont-poj-light-body;
+       color: #000206;
+       font-size: 1.075rem;            /* hira-trust-outro-body p */
+       line-height: 1.65;
+       margin: 0;
+   
+       strong { @include tokens.body-strong-light; }
+     }
+   }
+   
+   /* ── Side-by-side images ── */
+   .taptap-learned-images {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 50px;                        /* hira-heard-images gap */
+     margin-top: 60px;                 /* hira-heard-images margin-top */
+   }
+   
+   .taptap-learned-image-item {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;                        /* hira-heard-image-item gap */
+   }
+   
+   .taptap-learned-image {
+     @include media-frame(light);      /* hira-heard-image */
+   }
+   
+   .taptap-learned-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 0 8px;                    /* hira-heard-caption */
+   }
+   
+   
+   /* ================================================================
+     12. RESPONSIVE BREAKPOINTS
+      ================================================================ */
+   
+   /* ── XL: ≤ 1200px ───────────────────────────────────────────── */
+   @media (max-width: #{tokens.$xl_breakpoint}) {
+   
+     /* Assignment spark — user's values */
+     .taptap-assignment {
+       --spark-w: 80px;
+       --spark-right: calc(var(--page-gutter-desktop) - 110px);
+       --spark-bottom: 100px;
+     }
+   }
+   
+   /* ── LG: ≤ 992px ────────────────────────────────────────────── */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+   
+     /* ─── Assignment ─── */
+     .taptap-assignment {
+       padding-top: 75px;
+     }
+   
+     .taptap-assignment-header {
+       padding: 0 var(--page-gutter-tablet);
+       margin-bottom: 40px;
+     }
+   
+     .taptap-assignment-title {
+       font-size: 1.5rem;
+       line-height: 1.35;
+     }
+   
+     .taptap-assignment-inner {
+       padding: 0 var(--page-gutter-tablet);
+       grid-template-columns: 1fr !important;
+       gap: 40px !important;
+       padding-bottom: 56px !important;
+     }
+   
+     .taptap-assignment-content { order: 1 !important; }
+     .taptap-assignment-media   { order: 2 !important; margin-top: 10px; }
+   
+     .taptap-assignment-body p {
+       font-size: 0.95rem !important;
+     }
+   
+     .taptap-assignment-caption {
+       font-size: 1rem !important;
+     }
+   
+     .taptap-assignment-spark { display: none !important; }
+   
+     /* ─── Our Big Idea ─── */
+     .taptap-idea {
+       padding: 60px 0 80px;
+     }
+   
+     .taptap-idea-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .taptap-idea-header {
+       margin-bottom: 40px;
+     }
+   
+     .taptap-idea-title {
+       font-size: 1.5rem;
+       line-height: 1.35;
+     }
+   
+     .taptap-idea-video {
+       height: 280px;
+     }
+   
+     .taptap-idea-body p {
+       font-size: 0.95rem;
+     }
+   
+     /* ─── Reality Check ─── (mirrors hira-hmw LG) */
+     .taptap-reality {
+       background: #EFF1FA;         /* hira-hmw LG bg swap */
+       padding: 80px 0 90px;
+     }
+   
+     .taptap-reality-curve {
+       display: none;               /* curve hidden at LG */
+     }
+   
+     .taptap-reality-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .taptap-reality-header {
+       margin-bottom: 28px;
+     }
+   
+     .taptap-reality-spark {
+       display: none;               /* spark hidden at LG — same as hira */
+     }
+   
+     .taptap-reality-title {
+       font-size: 1.5rem;
+       line-height: 1.35;
+     }
+   
+     .taptap-reality-body {
+       gap: 16px;
+     }
+   
+     .taptap-reality-body p {
+       font-size: 0.95rem;
+     }
+   
+     /* ─── Change of Plans ─── */
+     .taptap-plans {
+       padding: 60px 0 80px;
+     }
+   
+     .taptap-plans-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .taptap-plans-header {
+       margin-bottom: 40px;
+     }
+   
+     .taptap-plans-title {
+       font-size: 1.5rem;
+       line-height: 1.35;
+     }
+   
+     /* grid stacks — text first, image below */
+     .taptap-plans-grid {
+       grid-template-columns: 1fr;
+       gap: 40px;
+       margin-bottom: 50px;
+     }
+   
+     .taptap-plans-content { order: 1; }
+     .taptap-plans-media   { order: 2; margin-top: 10px; }
+   
+     .taptap-plans-body p {
+       font-size: 0.95rem;
+     }
+   
+     .taptap-plans-caption {
+       font-size: 1rem;
+     }
+   
+     /* cards — LG (from hira) */
+     .taptap-plans-insights-grid {
+       gap: 18px;
+     }
+   
+     .taptap-plans-insight-card {
+       padding: 26px;
+       gap: 14px;
+     }
+   
+     .taptap-plans-insight-number {
+       width: 50px;
+       height: 50px;
+       font-size: 1rem;
+     }
+   
+     .taptap-plans-insight-title {
+       font-size: 1.05rem;
+     }
+   
+     .taptap-plans-insight-text {
+       font-size: 0.92rem;
+     }
+   
+     /* ─── What I Learned ─── */
+     .taptap-learned {
+       padding: 70px 0 90px;           /* hira-trust-outro LG */
+     }
+   
+     .taptap-learned-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .taptap-learned-images {
+       grid-template-columns: 1fr;     /* hira stacks at LG */
+       gap: 40px;
+       margin-top: 45px;
+     }
+   
+     /* ─── Final Product ─── */
+   
+     .taptap-final-header {
+       padding: 0 var(--page-gutter-tablet);
+       margin-bottom: 40px;
+     }
+   
+     .taptap-final-title {
+       font-size: 1.5rem;
+       line-height: 1.35;
+     }
+   
+     .taptap-final-inner {
+       padding: 0 var(--page-gutter-tablet);
+       grid-template-columns: 1fr !important;
+       gap: 40px !important;
+       padding-bottom: 56px !important;
+     }
+   
+     /* text first, video below */
+     .taptap-final-content { order: 1 !important; }
+     .taptap-final-media   { order: 2 !important; margin-top: 10px; }
+   
+     .taptap-final-body p {
+       font-size: 0.95rem !important;
+     }
+   
+     .taptap-final-caption {
+       font-size: 1rem !important;
+     }
+   
+     /* ─── Product Demo ─── */
+     .taptap-demo {
+       padding: 75px 0 95px;         /* behavai-solution LG */
+     }
+   
+     .taptap-demo-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .taptap-demo-header {
+       margin-bottom: 40px;
+     }
+   
+     .taptap-demo-title {
+       font-size: 1.5rem;
+       line-height: 1.35;
+     }
+   
+     /* ─── Bringing It to Life ─── */
+   
+     .taptap-build-header {
+       padding: 0 var(--page-gutter-tablet);
+       margin-bottom: 65px;
+     }
+   
+     .taptap-build-intro { font-size: 1.5rem !important; }
+   
+     .taptap-build-subsection {
+       padding: 0 var(--page-gutter-tablet);
+       margin-bottom: 70px;
+       grid-template-columns: 1fr !important;
+       gap: 25px !important;
+     }
+   
+     /* force media-first at LG regardless of .reverse */
+     .taptap-build-subsection .taptap-build-media   { order: 1 !important; }
+     .taptap-build-subsection .taptap-build-content { order: 2 !important; }
+   
+     .taptap-build-content  { margin-top: 0; }
+     .taptap-build-subtitle { font-size: 1.6rem; }
+     .taptap-build-text     { font-size: 0.95rem !important; }
+     .taptap-build-caption  { display: none !important; }   /* research hides captions at LG */
+   
+     /* ─── The Blueprint ─── */
+   
+     .taptap-blueprint-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .taptap-blueprint-header {
+       margin-bottom: 40px;
+     }
+   
+     .taptap-blueprint-title {
+       font-size: 1.5rem;
+       line-height: 1.35;
+     }
+   
+     .taptap-blueprint-body {
+       margin-bottom: 55px;
+     }
+   
+     .taptap-blueprint-body p {
+       font-size: 0.95rem;
+     }
+   
+     /* step cards — LG (constraint LG tokens) */
+     .taptap-blueprint-step-card {
+       padding: 22px 26px;          /* constraint LG */
+     }
+   
+     .taptap-blueprint-step-icon {
+       width: 50px;
+       height: 50px;
+     }
+   
+     .taptap-blueprint-step-title {
+       font-size: 1.05rem;
+     }
+   
+     .taptap-blueprint-step-description {
+       font-size: 0.92rem;
+     }
+   }
+   
+   /* ── MD: ≤ 767px ────────────────────────────────────────────── */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+   
+     /* ─── Assignment ─── */
+     .taptap-assignment {
+       padding-top: 60px;
+     }
+   
+     .taptap-assignment-header {
+       margin-bottom: 35px;
+     }
+   
+     .taptap-assignment-title {
+       max-width: 100%;
+       font-size: 1.5rem;
+     }
+   
+     .taptap-assignment-inner {
+       grid-template-columns: 1fr;
+       gap: 40px;
+       padding-bottom: 64px !important;
+     }
+   
+     .taptap-assignment-content { order: 1; }
+     .taptap-assignment-media   { order: 2; margin-top: 10px; }
+   
+     .taptap-assignment-body p {
+       font-size: 0.95rem;
+     }
+   
+     .taptap-assignment-caption {
+       font-size: 0.95rem !important;
+     }
+   
+     /* ─── Our Big Idea ─── */
+     .taptap-idea {
+       padding: 50px 0 70px;
+     }
+   
+     .taptap-idea-header {
+       margin-bottom: 35px;
+     }
+   
+     .taptap-idea-title {
+       font-size: 1.5rem;
+     }
+   
+     .taptap-idea-video {
+       height: 240px;
+     }
+   
+     .taptap-idea-body p {
+       font-size: 0.95rem;
+     }
+   
+     /* ─── Reality Check ─── (mirrors hira-hmw MD) */
+     .taptap-reality {
+       padding: 70px 0 80px;
+     }
+   
+     .taptap-reality-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .taptap-reality-header {
+       margin-bottom: 25px;
+     }
+   
+     .taptap-reality-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .taptap-reality-title {
+       font-size: 1.5rem;
+     }
+   
+     .taptap-reality-body p {
+       font-size: 1rem;
+     }
+   
+     /* ─── Change of Plans ─── */
+     .taptap-plans {
+       padding: 50px 0 70px;
+     }
+   
+     .taptap-plans-header {
+       margin-bottom: 35px;
+     }
+   
+     .taptap-plans-title {
+       font-size: 1.5rem;
+     }
+   
+     .taptap-plans-body p {
+       font-size: 0.95rem;
+     }
+   
+     .taptap-plans-caption {
+       font-size: 0.95rem !important;
+     }
+   
+     /* cards — MD (stack to 1fr, from hira) */
+     .taptap-plans-insights {
+       margin-top: 40px;
+     }
+   
+     .taptap-plans-insights-grid {
+       grid-template-columns: 1fr;
+       gap: 16px;
+     }
+   
+     .taptap-plans-insight-card {
+       padding: 24px;
+       gap: 14px;
+       border-radius: 14px;
+     }
+   
+     .taptap-plans-insight-number {
+       width: 48px;
+       height: 48px;
+       font-size: 0.95rem;
+     }
+   
+     .taptap-plans-insight-content {
+       padding-top: 4px;
+     }
+   
+     .taptap-plans-insight-title {
+       font-size: 1rem;
+     }
+   
+     .taptap-plans-insight-text {
+       font-size: 0.9rem;
+     }
+   
+     /* ─── What I Learned ─── */
+     .taptap-learned {
+       padding: 60px 0 80px;           /* hira-trust-outro MD */
+     }
+   
+     .taptap-learned-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .taptap-learned-header {
+       margin-bottom: 28px;
+     }
+   
+     .taptap-learned-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .taptap-learned-title {
+       font-size: 1.5rem;
+     }
+   
+     .taptap-learned-body {
+       margin-bottom: 40px;
+     }
+   
+     .taptap-learned-body p {
+       font-size: 1rem;
+     }
+   
+     .taptap-learned-images {
+       grid-template-columns: 1fr !important;
+       gap: 35px;
+       margin-top: 40px;
+     }
+   
+     .taptap-learned-image {
+       border-radius: 16px;
+     }
+   
+     .taptap-learned-caption {
+       font-size: 0.95rem !important;
+     }
+   
+     /* ─── Final Product ─── */
+     .taptap-final {
+       padding-top: 60px;
+     }
+   
+     .taptap-final-title {
+       font-size: 1.5rem;
+     }
+   
+     .taptap-final-inner {
+       grid-template-columns: 1fr;
+       gap: 40px;
+       padding-bottom: 64px !important;
+     }
+   
+     .taptap-final-content { order: 1; }
+     .taptap-final-media   { order: 2; margin-top: 10px; }
+   
+     .taptap-final-body p {
+       font-size: 0.95rem;
+     }
+   
+     .taptap-final-caption {
+       font-size: 0.95rem !important;
+     }
+   
+     /* ─── Product Demo ─── */
+     .taptap-demo {
+       padding: 60px 0 85px;         /* behavai-solution MD */
+     }
+   
+     .taptap-demo-header {
+       margin-bottom: 35px;
+     }
+   
+     .taptap-demo-title {
+       font-size: 1.5rem;
+     }
+   
+     .taptap-demo-caption {
+       font-size: 0.95rem !important;
+     }
+   
+     /* ─── Bringing It to Life ─── */
+     .taptap-build { padding: 60px 0 0; }
+     .taptap-build-intro  { font-size: 1.35rem; }
+   
+     .taptap-build-subsection {
+       grid-template-columns: 1fr;
+       gap: 40px;
+       margin-bottom: 65px;
+     }
+   
+     .taptap-build-content  { margin-top: 0; }
+     .taptap-build-subtitle { font-size: 1.3rem !important; }
+   
+     /* keep media-first even on .reverse */
+     .taptap-build-subsection.reverse {
+       .taptap-build-media   { order: 1; }
+       .taptap-build-content { order: 2; }
+     }
+   
+     /* ─── The Blueprint ─── */
+     .taptap-blueprint {
+       padding: 50px 0 70px;
+     }
+   
+     .taptap-blueprint-title {
+       font-size: 1.5rem;
+     }
+   
+     .taptap-blueprint-body {
+       margin-bottom: 50px;
+     }
+   
+     .taptap-blueprint-body p {
+       font-size: 0.95rem;
+     }
+   
+     /* step cards — MD */
+     .taptap-blueprint-steps-list {
+       gap: 14px;
+     }
+   
+     .taptap-blueprint-step-card {
+       padding: 20px 24px;
+       border-radius: 14px;
+     }
+   
+     .taptap-blueprint-step-icon {
+       width: 48px;
+       height: 48px;
+     }
+   
+     .taptap-blueprint-step-title {
+       font-size: 1rem;
+     }
+   
+     .taptap-blueprint-step-description {
+       font-size: 0.9rem;
+     }
+   }
+   
+   /* ── SM: ≤ 625px ────────────────────────────────────────────── */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+   
+     /* ─── Assignment ─── */
+     .taptap-assignment {
+       padding-top: 50px;
+     }
+   
+     .taptap-assignment-header {
+       padding: 0 var(--page-gutter-xs);
+       margin-bottom: 30px;
+     }
+   
+     .taptap-assignment-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-assignment-inner {
+       padding: 0 var(--page-gutter-xs);
+       gap: 35px;
+       padding-bottom: 52px !important;
+     }
+   
+     .taptap-assignment-body p {
+       font-size: 0.82rem !important;
+     }
+   
+     .taptap-assignment-caption {
+       font-size: 0.9rem !important;
+     }
+   
+     /* ─── Our Big Idea ─── */
+     .taptap-idea {
+       padding: 45px 0 60px;
+     }
+   
+     .taptap-idea-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .taptap-idea-header {
+       margin-bottom: 28px;
+     }
+   
+     .taptap-idea-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-idea-video {
+       height: 200px;
+     }
+   
+     .taptap-idea-body p {
+       font-size: 0.82rem !important;
+     }
+   
+     /* ─── Reality Check ─── (mirrors hira-hmw SM) */
+     .taptap-reality {
+       padding: 60px 0 70px;
+     }
+   
+     .taptap-reality-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .taptap-reality-header {
+       margin-bottom: 22px;
+     }
+   
+     .taptap-reality-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .taptap-reality-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-reality-body {
+       gap: 14px;
+     }
+   
+     .taptap-reality-body p {
+       font-size: 0.95rem;
+     }
+   
+     /* ─── Change of Plans ─── */
+     .taptap-plans {
+       padding: 45px 0 60px;
+     }
+   
+     .taptap-plans-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .taptap-plans-header {
+       margin-bottom: 28px;
+     }
+   
+     .taptap-plans-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-plans-grid {
+       gap: 35px;
+       margin-bottom: 40px;
+     }
+   
+     .taptap-plans-body p {
+       font-size: 0.82rem !important;
+     }
+   
+     .taptap-plans-caption {
+       font-size: 0.9rem !important;
+     }
+   
+     /* cards — SM (from hira) */
+     .taptap-plans-insights {
+       margin-top: 35px;
+     }
+   
+     .taptap-plans-insights-grid {
+       gap: 14px;
+     }
+   
+     .taptap-plans-insight-card {
+       padding: 20px;
+       border-radius: 14px;
+       gap: 12px;
+     }
+   
+     .taptap-plans-insight-number {
+       width: 45px;
+       height: 45px;
+       font-size: 0.9rem;
+     }
+   
+     .taptap-plans-insight-content {
+       padding-top: 2px;
+       gap: 6px;
+     }
+   
+     .taptap-plans-insight-title {
+       font-size: 0.95rem;
+     }
+   
+     .taptap-plans-insight-text {
+       font-size: 0.85rem;
+     }
+   
+     /* ─── What I Learned ─── */
+     .taptap-learned {
+       padding: 50px 0 70px;           /* hira-trust-outro SM */
+     }
+   
+     .taptap-learned-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .taptap-learned-header {
+       margin-bottom: 22px;
+     }
+   
+     .taptap-learned-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .taptap-learned-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-learned-body {
+       gap: 14px;
+       margin-bottom: 35px;
+     }
+   
+     .taptap-learned-body p {
+       font-size: 0.95rem;
+     }
+   
+     .taptap-learned-images {
+       gap: 30px;
+       margin-top: 35px;
+     }
+   
+     .taptap-learned-image {
+       border-radius: 14px;
+     }
+   
+     .taptap-learned-caption {
+       font-size: 0.9rem !important;
+     }
+   
+     /* ─── Final Product ─── */
+     .taptap-final {
+       padding-top: 50px;
+     }
+   
+     .taptap-final-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-final-inner {
+       padding: 0 var(--page-gutter-xs);
+       gap: 35px;
+       padding-bottom: 52px !important;
+     }
+   
+     .taptap-final-body p {
+       font-size: 0.82rem !important;
+     }
+   
+     .taptap-final-caption {
+       font-size: 0.9rem !important;
+     }
+   
+     /* ─── Product Demo ─── */
+     .taptap-demo {
+       padding: 50px 0 75px;         /* behavai-solution SM */
+     }
+   
+     .taptap-demo-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .taptap-demo-header {
+       margin-bottom: 30px;
+     }
+   
+     .taptap-demo-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-demo-caption {
+       font-size: 0.9rem !important;
+     }
+   
+     /* ─── Bringing It to Life ─── */
+     .taptap-build { padding: 50px 0 0; }
+   
+     .taptap-build-intro { font-size: 1.3rem !important; line-height: 1.45; }
+   
+     .taptap-build-subsection {
+       padding: 0 var(--page-gutter-xs);
+       gap: 35px;
+       margin-bottom: 60px;
+     }
+   
+     .taptap-build-subtitle { font-size: 1.25rem !important; }
+   
+     .taptap-build-text,
+     .taptap-build-caption  { font-size: 0.82rem !important; }
+   
+     .taptap-build-callout-img { width: 100%; }
+   
+     /* ─── The Blueprint ─── */
+     .taptap-blueprint {
+       padding: 45px 0 60px;
+     }
+   
+     .taptap-blueprint-header {
+       margin-bottom: 28px;
+     }
+   
+     .taptap-blueprint-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-blueprint-body {
+       margin-bottom: 42px;
+     }
+   
+     .taptap-blueprint-body p {
+       font-size: 0.82rem !important;
+     }
+   
+     /* step cards — SM (constraint SM tokens) */
+     .taptap-blueprint-steps-label {
+       font-size: 0.72rem;          /* constraint SM label */
+     }
+   
+     .taptap-blueprint-steps-list {
+       gap: 12px;
+     }
+   
+     .taptap-blueprint-step-card {
+       padding: 18px 22px;          /* constraint SM */
+       gap: 16px;
+     }
+   
+     .taptap-blueprint-step-icon {
+       width: 44px;                 /* constraint SM icon */
+       height: 44px;
+     }
+   
+     .taptap-blueprint-step-title {
+       font-size: 1.05rem;          /* constraint SM title */
+     }
+   
+     .taptap-blueprint-step-description {
+       font-size: 0.85rem;
+     }
+   }
+   
+   /* ── XS: ≤ 464px ────────────────────────────────────────────── */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+   
+     /* ─── Assignment ─── */
+     .taptap-assignment {
+       padding-top: 40px;
+     }
+   
+     .taptap-assignment-header {
+       margin-bottom: 25px;
+     }
+   
+     .taptap-assignment-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .taptap-assignment-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-assignment-inner {
+       gap: 30px;
+     }
+   
+     .taptap-assignment-body p {
+       font-size: 0.825rem !important;
+       line-height: 1.6;
+     }
+   
+     .taptap-assignment-caption {
+       font-size: 0.8rem !important;
+     }
+   
+     /* ─── Our Big Idea ─── */
+     .taptap-idea {
+       padding: 35px 0 50px;
+     }
+   
+     .taptap-idea-header {
+       margin-bottom: 22px;
+     }
+   
+     .taptap-idea-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .taptap-idea-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-idea-video {
+       height: 180px;
+     }
+   
+     .taptap-idea-body p {
+       font-size: 0.825rem !important;
+       line-height: 1.6;
+     }
+   
+     /* ─── Reality Check ─── (mirrors hira-hmw XS) */
+     .taptap-reality {
+       padding: 50px 0 60px;
+     }
+   
+     .taptap-reality-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .taptap-reality-header {
+       margin-bottom: 22px;
+     }
+   
+     .taptap-reality-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .taptap-reality-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-reality-body {
+       gap: 12px;
+     }
+   
+     .taptap-reality-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     /* ─── Change of Plans ─── */
+     .taptap-plans {
+       padding: 35px 0 50px;
+     }
+   
+     .taptap-plans-header {
+       margin-bottom: 22px;
+     }
+   
+     .taptap-plans-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .taptap-plans-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-plans-grid {
+       gap: 30px;
+       margin-bottom: 35px;
+     }
+   
+     .taptap-plans-body p {
+       font-size: 0.825rem !important;
+       line-height: 1.6;
+     }
+   
+     .taptap-plans-caption {
+       font-size: 0.8rem !important;
+     }
+   
+     /* cards — XS (from hira) */
+     .taptap-plans-insights {
+       margin-top: 30px;
+     }
+   
+     .taptap-plans-insights-grid {
+       gap: 12px;
+     }
+   
+     .taptap-plans-insight-card {
+       padding: 18px 16px;
+       gap: 12px;
+       border-radius: 12px;
+     }
+   
+     .taptap-plans-insight-number {
+       width: 40px;
+       height: 40px;
+       font-size: 0.85rem;
+     }
+   
+     .taptap-plans-insight-content {
+       padding-top: 0;
+       gap: 5px;
+     }
+   
+     .taptap-plans-insight-title {
+       font-size: 0.9rem;
+     }
+   
+     .taptap-plans-insight-text {
+       font-size: 0.8rem;
+       line-height: 1.5;
+     }
+   
+     /* ─── What I Learned ─── */
+     .taptap-learned {
+       padding: 40px 0 60px;           /* hira-trust-outro XS */
+     }
+   
+     .taptap-learned-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .taptap-learned-header {
+       margin-bottom: 22px;
+     }
+   
+     .taptap-learned-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .taptap-learned-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-learned-body {
+       gap: 12px;
+       margin-bottom: 30px;
+     }
+   
+     .taptap-learned-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .taptap-learned-images {
+       gap: 25px;
+       margin-top: 30px;
+     }
+   
+     .taptap-learned-image {
+       border-radius: 12px;
+     }
+   
+     .taptap-learned-caption {
+       font-size: 0.8rem !important;
+     }
+   
+     /* ─── Final Product ─── */
+     .taptap-final {
+       padding-top: 40px;
+     }
+   
+     .taptap-final-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .taptap-final-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-final-inner {
+       gap: 30px;
+     }
+   
+     .taptap-final-body p {
+       font-size: 0.825rem !important;
+       line-height: 1.6;
+     }
+   
+     .taptap-final-caption {
+       font-size: 0.8rem !important;
+     }
+   
+     /* ─── Product Demo ─── */
+     .taptap-demo {
+       padding: 45px 0 60px;         /* behavai-solution XS */
+     }
+   
+     .taptap-demo-header {
+       margin-bottom: 25px;
+     }
+   
+     .taptap-demo-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .taptap-demo-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-demo-caption {
+       font-size: 0.8rem !important;
+     }
+   
+     /* ─── Bringing It to Life ─── */
+     .taptap-build { padding: 40px 0 0; }
+   
+     .taptap-build-intro { font-size: 1.2rem !important; line-height: 1.4; }
+   
+     .taptap-build-subsection {
+       padding: 0 var(--page-gutter-xs);
+       gap: 28px;
+       margin-bottom: 50px;
+     }
+   
+     .taptap-build-subtitle { font-size: 1.2rem !important; }
+   
+     .taptap-build-text,
+     .taptap-build-caption  { font-size: 0.825rem !important; }
+   
+     .taptap-build-callout-img { width: 100%; }
+   
+     /* ─── The Blueprint ─── */
+     .taptap-blueprint {
+       padding: 35px 0 50px;
+     }
+   
+     .taptap-blueprint-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .taptap-blueprint-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .taptap-blueprint-body {
+       margin-bottom: 36px;
+     }
+   
+     .taptap-blueprint-body p {
+       font-size: 0.825rem !important;
+       line-height: 1.6;
+     }
+   
+     /* step cards — XS (constraint XS tokens) */
+     .taptap-blueprint-steps-label {
+       font-size: 0.7rem;
+       margin-bottom: 14px;
+     }
+   
+     .taptap-blueprint-steps-list {
+       gap: 10px;
+     }
+   
+     .taptap-blueprint-step-card {
+       padding: 16px 20px;          /* constraint XS */
+       gap: 14px;
+       border-radius: 12px;
+     }
+   
+     .taptap-blueprint-step-icon {
+       width: 40px;                 /* constraint XS icon */
+       height: 40px;
+     }
+   
+     .taptap-blueprint-step-title {
+       font-size: 0.95rem;
+     }
+   
+     .taptap-blueprint-step-description {
+       font-size: 0.8rem;
+       line-height: 1.5;
+     }
+   
+     /* ── Disable scroll-reveal animations on very small screens ── */
+     .reveal,
+     .reveal--up,
+     .reveal-in,
+     [data-reveal] {
+       opacity: 1 !important;
+       transform: none !important;
+       animation: none !important;
+       transition: none !important;
+     }
+   }
+   
+   /* ── XXL: ≥ 1440px ──────────────────────────────────────────── */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+   
+     /* Assignment spark — user's values */
+     .taptap-assignment {
+       --spark-w: 95px;
+       --spark-right: calc(var(--page-gutter-desktop) + 10px);
+       --spark-top: auto;
+       --spark-bottom: 140px;
+     }
+   
+     /* Reality spark — mirrors hira-hmw-spark XXL */
+     .taptap-reality-spark {
+       width: 85px;
+       right: -75px;
+       top: -100px;
+     }
+   
+     /* Plans spark-disco — visible ONLY at XXL and above */
+     .taptap-plans-spark {
+       display: block;
+     }
+   
+     /* Final Product spark — visible only at XXL */
+     .taptap-final-spark {
+       display: block;
+     }
+   }

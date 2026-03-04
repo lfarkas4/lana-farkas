@@ -19,6 +19,7 @@ import LightTheMuse from "./pages/LightTheMuse";
 import "./styles/Global.scss";
 import CosmicBackground from "./components/CosmicBackground";
 
+
 // --- GA helpers (no extra files needed) ---
 const gaEvent = (name, params = {}) => {
   if (!window.gtag) return;
@@ -40,10 +41,8 @@ function AppContent() {
   const isHomePage = location.pathname === "/";
 
   const isCosmicPage =
-    location.pathname === "/" ||
-    location.pathname === "/about" ||
-    location.pathname.startsWith("/under-construction") ||
-    location.pathname.startsWith("/case-studies/");
+  location.pathname === "/" ||
+  location.pathname === "/about";
 
   /**
    * ✅ Loader should run ONLY on initial page load (mount),

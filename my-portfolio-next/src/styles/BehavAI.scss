@@ -1,0 +1,3972 @@
+/* ================================================================
+   BEHAVAI CASE STUDY - PROPERLY ORGANIZED SCSS
+   Consistent responsive design across all sections
+   ================================================================ */
+
+   @use "./partials/tokens" as tokens;
+
+   /* ================================================================
+      TABLE OF CONTENTS
+      ----------------------------------------------------------------
+      1. MIXINS & HELPERS
+      2. SHARED UTILITIES
+      3. SECTION: Kickoff
+      4. SECTION: Problem Space
+      5. SECTION: Solution Preview
+      6. SECTION: Research & Discovery (dark)
+      7. SECTION: Final Solution
+      8. SECTION: Impact & Traction
+      9. SECTION: Current Status
+      10. SECTION: Reflection
+      11. RESPONSIVE BREAKPOINTS (Unified)
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. MIXINS & HELPERS
+      ================================================================ */
+   
+   @mixin full-bleed {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   }
+   
+   @mixin container($pad: var(--page-gutter-desktop)) {
+     @include tokens.container-page($pad);
+   }
+   
+   @mixin media-frame($mode: light) {
+     width: 100%;
+     height: auto;
+     border-radius: 20px;
+     display: block;
+   
+     @if $mode == light {
+       border: 0.05px solid rgba(0, 0, 0, 0.05);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+     } @else {
+       border: 1px solid rgba(255, 255, 255, 0.1);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+     }
+   }
+   
+   
+   /* ================================================================
+      2. SHARED UTILITIES
+      ================================================================ */
+   
+   /* Consistent typography for headers */
+   .behavai-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .behavai-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   .behavai-body {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     line-height: 1.65;
+     font-size: 1.075rem;
+   
+     p {
+       margin: 0;
+       font-size: inherit;
+       line-height: inherit;
+     }
+   }
+   
+   /* Highlight utility */
+   .hi {
+     @include tokens.body-strong-light;
+     background: #C8D3F5;
+     padding: 0 0.25em;
+     border-radius: 4px;
+     -webkit-box-decoration-break: clone;
+     box-decoration-break: clone;
+   }
+   
+   /* Caption style */
+   .behavai-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 0 8px;
+   }
+   
+   /* Context helpers */
+   .is-light { strong { @include tokens.body-strong-light; } }
+   .is-dark  { strong { @include tokens.body-strong-dark; } }
+   
+   
+   /* ================================================================
+      3. SECTION: KICKOFF
+      ================================================================ */
+   
+   .behavai-kickoff {
+     @include full-bleed;
+     background: rgb(236, 239, 247);
+     padding: 80px 0 100px;
+   }
+   
+   .behavai-kickoff-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .behavai-kickoff-header {
+     margin-bottom: 50px;
+   }
+   
+   .behavai-kickoff-eyebrow {
+     @extend .behavai-eyebrow;
+   }
+   
+   .behavai-kickoff-title {
+     @extend .behavai-title;
+   }
+   
+   .behavai-kickoff-body {
+     @extend .behavai-body;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+     margin-bottom: 60px;
+   }
+   
+   .behavai-kickoff-media {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;
+   
+     video, img {
+       @include media-frame(light);
+       width: 100%;
+       height: 320px;
+       max-height: 46vh;
+       object-fit: cover;
+       object-position: center center;
+     }
+   }
+   
+   .behavai-kickoff-caption {
+     @extend .behavai-caption;
+   }
+   
+   
+   /* ================================================================
+      4. SECTION: PROBLEM SPACE
+      ================================================================ */
+   
+   .behavai-problem {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 80px 0 200px;
+   }
+   
+   .behavai-problem-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .behavai-problem-header {
+     margin-bottom: 50px;
+   }
+   
+   .behavai-problem-eyebrow {
+     @extend .behavai-eyebrow;
+   }
+   
+   .behavai-problem-title {
+     @extend .behavai-title;
+   }
+   
+   .behavai-problem-body {
+     @extend .behavai-body;
+     margin-bottom: 48px;
+   }
+   
+   /* WEB VIEW (Desktop) */
+   .behavai-problem-web {
+     display: flex;
+     justify-content: center;
+   }
+   
+   .behavai-problem-web-inner {
+     position: relative;
+     width: min(900px, 100%);
+     aspect-ratio: 16 / 9;
+     margin: -65px auto;
+   }
+   
+   .behavai-problem-web-lines {
+     position: absolute;
+     top: -3%;
+     inset: 0;
+     width: 103%;
+     height: 105%;
+     pointer-events: none;
+   }
+   
+   .behavai-problem-web-center {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+     min-width: 34rem;
+   
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.35rem;
+     font-weight: 550;
+     line-height: 1.35;
+     color: #000206;
+     z-index: 1;
+     
+     em {
+       font-style: italic;
+       font-weight: 400;
+     }
+   }
+   
+   /* LINEAR VIEW (Mobile) - Hidden by default */
+   .behavai-problem-linear {
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     gap: 40px;
+     margin: 0 auto;
+   }
+   
+   .behavai-linear-center {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.1rem;
+     font-weight: 550;
+     text-align: center;
+     color: #000206;
+     max-width: 90%;
+     margin-bottom: 20px;
+     
+     em {
+       font-style: italic;
+       font-weight: 400;
+     }
+   }
+   
+   .behavai-linear-nodes {
+     position: relative;
+     display: flex;
+     align-items: flex-start;
+     justify-content: space-between;
+     width: 100%;
+     max-width: 100%;
+     padding: 0 10px;
+     
+     &::before {
+       content: '';
+       position: absolute;
+       top: 30px;
+       left: 40px;
+       right: 40px;
+       height: 1px;
+       background: #d6d6d6;
+       z-index: 0;
+     }
+   }
+   
+   .behavai-linear-node {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 2px;
+     z-index: 2;
+     flex: 0 0 auto;
+   }
+   
+   .behavai-linear-node-circle {
+     width: 60px;
+     height: 60px;
+     border-radius: 50%;
+     background: #f0f4ff;
+     border: 1px solid #d6d6d6;
+     display: grid;
+     place-items: center;
+     position: relative;
+     
+     img {
+       width: 32px;
+       height: 32px;
+       object-fit: contain;
+     }
+   }
+   
+   .behavai-linear-node-label {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.75rem;
+     color: #000206;
+     text-align: center;
+     line-height: 1.2;
+     max-width: 70px;
+   }
+   
+   /* Linear view stars */
+   .behavai-linear-stars {
+     position: relative;
+     width: 100%;
+     height: 60px;
+     margin-top: 20px;
+   }
+   
+   .behavai-linear-star {
+     position: absolute;
+     width: 20px;
+     height: auto;
+     animation: star-twinkle 3s ease-in-out infinite;
+     
+     &--one {
+       top: -230px;
+       left: 8%;
+     }
+     
+     &--two {
+       top: -35px;
+       left: 38%;
+       transform: translateX(-50%);
+       animation-delay: 1s;
+     }
+     
+     &--three {
+       top: -200px;
+       right: 15%;
+       animation-delay: 2s;
+     }
+   }
+   
+   /* NODES with floating animations (Desktop) */
+   .behavai-node {
+     position: absolute;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     z-index: 2;
+   }
+   
+   .behavai-node-circle {
+     width: 75px;
+     height: 75px;
+     border-radius: 50%;
+     background: rgb(244, 247, 255);
+     border: 1px solid #d6d6d6;
+     display: grid;
+     place-items: center;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     
+     img {
+       width: 45px;
+       height: 45px;
+       object-fit: contain;
+     }
+   }
+   
+   .behavai-node-label {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.9rem;
+     color: #000206;
+     text-align: center;
+     line-height: 0.5;
+     margin-top: 8px;
+   }
+   
+   /* Node positions with animations */
+   .behavai-node--top-left {
+     top: 16%;
+     left: 10%;
+     animation: float-node-1 8s ease-in-out infinite;
+   }
+   
+   .behavai-node--left {
+     top: 52%;
+     left: -6%;
+     animation: float-node-2 7s ease-in-out infinite;
+   }
+   
+   .behavai-node--bottom {
+     bottom: -6%;
+     left: 50%;
+     transform: translateX(-50%);
+     animation: float-node-3 9s ease-in-out infinite;
+   }
+   
+   .behavai-node--right {
+     top: 54%;
+     right: -3%;
+     animation: float-node-4 6s ease-in-out infinite;
+   }
+   
+   .behavai-node--top-right {
+     top: 14%;
+     right: 20%;
+     animation: float-node-5 7.5s ease-in-out infinite;
+   }
+   
+   /* Floating animations */
+   @keyframes float-node-1 {
+     0%, 100% { transform: translate(0, 0); }
+     25% { transform: translate(18px, -18px); }
+     50% { transform: translate(-6px, 16px); }
+     75% { transform: translate(6px, 2px); }
+   }
+   
+   @keyframes float-node-2 {
+     0%, 100% { transform: translate(0px, -3px); }
+     20% { transform: translate(25px, 20px); }
+     40% { transform: translate(16px, 34px); }
+     60% { transform: translate(-4px, 18px); }
+     80% { transform: translate(6px, 12px); }
+   }
+   
+   @keyframes float-node-3 {
+     0%, 100% { transform: translateX(-40%) translateY(0); }
+     30% { transform: translateX(-100%) translateY(-5px); }
+     60% { transform: translateX(calc(-50% + 12px)) translateY(-8px); }
+     90% { transform: translateX(calc(-30% - 2px)) translateY(10px); }
+   }
+   
+   @keyframes float-node-4 {
+     0%, 100% { transform: translate(0, 0); }
+     15% { transform: translate(-18px, -20px); }
+     35% { transform: translate(8px, 8px); }
+     55% { transform: translate(10px, -12px); }
+     75% { transform: translate(-12px, 4px); }
+   }
+   
+   @keyframes float-node-5 {
+     0%, 100% { transform: translate(0, 0); }
+     25% { transform: translate(-20px, 8px); }
+     50% { transform: translate(10px, 4px); }
+     75% { transform: translate(-14px, -6px); }
+   }
+   
+   /* Stars with twinkling */
+   .behavai-problem-star {
+     position: absolute;
+     width: 25px;
+     height: auto;
+     pointer-events: none;
+     z-index: 3;
+   }
+   
+   .behavai-problem-star--one {
+     top: 20%;
+     left: -2%;
+     transform: translateX(-50%);
+     animation: star-twinkle 3s ease-in-out infinite;
+   }
+   
+   .behavai-problem-star--two {
+     top: 90%;
+     left: 20%;
+     animation: star-twinkle 3.5s ease-in-out infinite 0.8s;
+   }
+   
+   .behavai-problem-star--three {
+     top: 30%;
+     right: 5%;
+     animation: star-twinkle 4s ease-in-out infinite 1.6s;
+   }
+   
+   @keyframes star-twinkle {
+     0%, 100% {
+       opacity: 0.3;
+       transform: scale(0.8) rotate(0deg);
+     }
+     50% {
+       opacity: 1;
+       transform: scale(1.1) rotate(180deg);
+     }
+   }
+   
+   
+   /* ================================================================
+      5. SECTION: SOLUTION PREVIEW
+      ================================================================ */
+   
+   .behavai-solution {
+     @include full-bleed;
+     background: rgb(236, 239, 247);
+     padding: 80px 0 110px;
+   }
+   
+   .behavai-solution-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .behavai-solution-header {
+     position: relative;
+     margin-bottom: 50px;
+   }
+   
+   .behavai-solution-eyebrow {
+     @extend .behavai-eyebrow;
+   }
+   
+   .behavai-solution-title {
+     @extend .behavai-title;
+   }
+   
+   .behavai-solution-title-break {
+     display: block;
+   }
+   
+   .behavai-solution-spark {
+     position: absolute;
+     top: -30px;
+     right: 0%;
+     width: 70px;
+     height: auto;
+     pointer-events: none;
+   }
+   
+   .behavai-solution-media {
+     width: 100%;
+     margin: 0 auto;
+     text-align: center;
+   }
+   
+   .behavai-solution-video {
+     @include media-frame(light);
+     display: block;
+     width: 100%;
+     height: auto;
+     max-height: none;
+     object-fit: cover;
+   }
+   
+   .behavai-solution-caption {
+     @extend .behavai-caption;
+     margin-top: 18px;
+   }
+   
+   
+   /* ================================================================
+      6. SECTION: RESEARCH & DISCOVERY (dark)
+      ================================================================ */
+   
+   .behavai-research-section {
+     @include full-bleed;
+     @include tokens.section-dark(80px, 100px);
+   }
+   
+   .behavai-research-subsection {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto 100px;
+     padding: 0 var(--page-gutter-desktop);
+     
+     &--last {
+       margin-bottom: 0;
+     }
+   }
+   
+   .behavai-research-header {
+     margin-bottom: 35px;
+   }
+   
+   .behavai-research-eyebrow {
+     @include tokens.type-mont-poj-dark-header;
+     color: tokens.$prisec;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .behavai-research-intro {
+     @include tokens.type-mont-poj-dark-headerintro;
+     color: tokens.$prisec;
+     line-height: 1.45;
+     letter-spacing: -0.025px;
+   
+     em { 
+       font-style: italic; 
+       font-weight: 400; 
+     }
+   }
+   
+   .behavai-research-body {
+     margin-bottom: 50px;
+   }
+   
+   .behavai-research-text {
+     @include tokens.type-mont-poj-light-body;
+     color: tokens.$primary;
+     line-height: 1.65;
+     font-size: 1.075rem;
+     margin: 0 0 tokens.$space-xs 0;
+     letter-spacing: 0.075px;
+   
+     strong { 
+       @include tokens.body-strong-dark; 
+     }
+     
+     &:last-child {
+       margin-bottom: 0;
+     }
+   }
+   
+   /* User Discovery Visual - Circles */
+   .behavai-discovery-visual {
+     width: 100%;
+   }
+   
+   .behavai-discovery-circles {
+     display: flex;
+     align-items: flex-start;
+     justify-content: center;
+     gap: 30px;
+     max-width: 900px;
+     margin: 0 auto;
+   }
+   
+   .behavai-discovery-item {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     flex: 0 1 200px;
+   }
+   
+   .behavai-discovery-circle {
+     width: 180px;
+     height: 180px;
+     border-radius: 50%;
+     background: #F6F8FE;
+     border: 2px solid #C3C3C3;
+     display: grid;
+     place-items: center;
+     margin-bottom: 20px;
+     
+     img {
+       width: 100px;
+       height: 100px;
+       object-fit: contain;
+     }
+   }
+   
+   .behavai-discovery-stat {
+     font-family: tokens.$font-montserrat;
+     font-size: 3rem;
+     font-weight: 525;
+     color: tokens.$prisec;
+     line-height: 1;
+     margin-bottom: 10px;
+   }
+   
+   .behavai-discovery-label {
+     @include tokens.type-mont-poj-light-body;
+     color: tokens.$primary;
+     font-size: 0.95rem;
+     line-height: 1.4;
+     max-width: 160px;
+   }
+   
+   .behavai-discovery-arrow {
+     width: 80px;
+     height: auto;
+     align-self: center;
+     margin-top: -90px; // Center vertically with circles
+   }
+   
+   /* Landscape Analysis Visual - Table */
+   .behavai-landscape-visual {
+     overflow-x: auto;
+   }
+   
+   .behavai-landscape-table {
+     width: 100%;
+     max-width: 900px;
+     margin: 0 auto;
+     border-collapse: separate;
+     border-spacing: 0;
+   }
+   
+   .behavai-landscape-table th,
+   .behavai-landscape-table td {
+     padding: 18px 15px;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+   }
+   
+   .behavai-table-feature {
+     @include tokens.type-mont-poj-light-body;
+     color: tokens.$primary;
+     text-align: left;
+     font-size: 0.95rem;
+     padding-left: 0;
+     min-width: 240px;
+   }
+   
+   .behavai-table-brand {
+     text-align: center;
+     vertical-align: middle;
+     width: 120px;
+     
+     img {
+       height: 26px;
+       width: auto;
+       display: inline-block;
+       filter: brightness(0.9);
+     }
+     
+     &--ours img {
+       filter: none;
+     }
+   }
+   
+   .behavai-table-cell {
+     text-align: center;
+     vertical-align: middle;
+   }
+   
+   .behavai-table-icon {
+     width: 30px;
+     height: 30px;
+     display: inline-block;
+   }
+   
+   /* Design Foundation Visual - Quote Cards */
+   .behavai-design-visual {
+     position: relative;
+     max-width: 1000px;
+     margin-top: 120px;
+     margin-left: auto;
+     margin-right: auto;
+   }
+   
+   .behavai-design-spark {
+     position: absolute;
+     top: -80px;
+     right: 10px;
+     width: 70px;
+     height: auto;
+     z-index: 10;
+     rotate: -12deg;
+   }
+   
+   .behavai-quote-cards {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 30px;
+     margin-bottom: 50px;
+     margin-left: auto;
+     margin-right: auto;
+     max-width: 1000px
+   }
+   
+   .behavai-quote-card {
+     background: #FAFAFE;
+     border-radius: 16px;
+     padding: 60px 50px 55px;
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+   }
+   
+   .behavai-quote-icon {
+     position: absolute;
+     top: -45px;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+     background: #EDF1FC;
+     border: 5px solid #FAFAFE;
+     display: grid;
+     place-items: center;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     
+     img {
+       width: 45px;
+       height: 45px;
+       object-fit: contain;
+     }
+   }
+   
+   .behavai-quote-text {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     font-size: 1rem;
+     line-height: 1.6;
+     text-align: center;
+     
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   .behavai-design-caption {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 20px;
+     
+     span {
+       @include tokens.type-mont-poj-light-body;
+       color: tokens.$primary;
+       font-size: 1.1rem;
+     }
+     
+     img {
+       width: 60px;
+       height: auto;
+     }
+   }
+   
+
+/* ================================================================
+   7. SECTION: FINAL SOLUTION
+   ================================================================ */
+
+   .behavai-final-solution {
+    @include full-bleed;
+    background: #FAFAFE;
+    padding: 80px 0 110px;
+  }
+  
+  .behavai-final-solution-inner {
+    @include container();
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter-desktop);
+  }
+  
+  .behavai-final-solution-header {
+    margin-bottom: 50px;
+  }
+  
+  .behavai-final-solution-eyebrow {
+    @extend .behavai-eyebrow;
+  }
+  
+  .behavai-final-solution-title {
+    @extend .behavai-title;
+  }
+  
+  /* Solution Steps Container */
+  .behavai-final-solution-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+  }
+  
+  /* Individual Step */
+  .behavai-solution-step {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    
+    &.reveal {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+  }
+  
+  .behavai-solution-step-heading {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: #000206;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    margin-top: 0px;
+  }
+  
+  .behavai-solution-step-number {
+    color: #0C6FFF;
+    font-style: italic;
+    font-weight: 500;
+    margin-right: 2px;
+  }
+  
+  .behavai-solution-step-description {
+    @extend .behavai-body;
+    font-size: 1.075rem;
+  }
+  
+  .behavai-solution-step-media {
+    width: 100%;
+  }
+  
+  .behavai-solution-step-video {
+    @include media-frame(light);
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+
+/* ================================================================
+   8. SECTION: IMPACT & TRACTION
+   ================================================================ */
+
+   .behavai-impact {
+    @include full-bleed;
+    background: rgb(236, 239, 247);
+    padding: 80px 0 50px;
+  }
+  
+  .behavai-impact-inner {
+    @include container();
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter-desktop);
+  }
+  
+  .behavai-impact-header {
+    margin-bottom: 50px;
+  }
+  
+  .behavai-impact-eyebrow {
+    @extend .behavai-eyebrow;
+  }
+  
+  .behavai-impact-title {
+    @extend .behavai-title;
+  }
+  
+  .behavai-impact-body {
+    @extend .behavai-body;
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$space-xs;
+    margin-bottom: 60px;
+    
+    p {
+      font-size: 1.075rem;
+      line-height: 1.65;
+    }
+  }
+  
+  /* Techstars Badge - NO WHITE BACKGROUND */
+  .behavai-techstars-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px auto 40px; // Tightened spacing
+    padding: 25px 40px;
+    background: transparent;
+    border-radius: 12px;
+    box-shadow: none;
+    width: fit-content;
+  }
+  
+  .techstars-logo {
+    height: 40px;
+    width: auto;
+  }
+  
+  .techstars-text {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #000206;
+  }
+  
+  /* Testimonial Cards */
+  .behavai-testimonial-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    // Remove max-width to span full width
+    margin: 0 auto;
+  }
+  
+  .behavai-testimonial-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 40px 35px 35px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .testimonial-quote {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: #000206;
+    margin: 0;
+  
+    strong {
+      font-weight: 600;
+      font-style: italic;
+    }
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  
+  .author-avatar {
+    width: 60px; // Increased size
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .author-name {
+    @include tokens.type-mont-poj-light-body;
+    font-weight: 600; // More prominent
+    color: #000206;
+    font-size: 1.05rem; // Larger
+  }
+  
+  .author-role {
+    @include tokens.type-mont-poj-light-body;
+    color: #666666;
+    font-size: 0.8rem; // Smaller for hierarchy
+    line-height: 1.3;
+  }
+  
+  /* ================================================================
+     9. SECTION: CURRENT STATUS
+     ================================================================ */
+  
+  .behavai-status {
+    @include full-bleed;
+    background: rgb(236, 239, 247);
+    padding: 50px 0 40px;
+    margin-top: 0;
+  }
+  
+  .behavai-status-inner {
+    @include container();
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter-desktop);
+  }
+  
+  .behavai-status-header {
+    margin-bottom: 50px;
+  }
+  
+  .behavai-status-eyebrow {
+    @extend .behavai-eyebrow;
+  }
+  
+  .behavai-status-title {
+    @extend .behavai-title;
+  }
+  
+  .behavai-status-body {
+    @extend .behavai-body;
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$space-xs;
+    margin-bottom: 80px;
+    
+    p {
+      font-size: 1.075rem;
+      line-height: 1.65;
+    }
+  }
+  
+  /* Progress Timeline - FIXED STRUCTURE */
+  .behavai-progress-timeline {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .progress-line {
+    position: absolute;
+    top: 185px; // Through middle of circles (icon 90px + gap 12px + label ~40px + number circle 35px from top)
+    left: 12%;
+    right: 12%;
+    height: 3px;
+    background: #FFFFFF; // White line
+    z-index: 0;
+  }
+  
+  .progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+    flex: 0 0 auto;
+    max-width: 180px;
+    text-align: center;
+  }
+  
+  .progress-icon {
+    width: 90px; // Bigger icon
+    height: 90px;
+    object-fit: contain;
+    order: 1;
+  }
+  
+  .progress-label {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 0.9rem;
+    color: #000206;
+    line-height: 1.3;
+    min-height: 2.6em;
+    order: 2; // Label UNDER icon
+  }
+  
+  .progress-number-wrapper {
+    position: relative;
+    width: 60px; // Smaller number wrapper
+    height: 60px;
+    border-radius: 50%;
+    background: #f8faff;
+    border: 4px solid #FFFFFF; // White border
+    display: grid;
+    place-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    order: 3;
+  }
+  
+  .progress-number {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 2rem; // Smaller number
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1;
+  }
+  
+  .progress-status {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    order: 4;
+  }
+  
+  /* Status-specific colors */
+  .progress-step--complete {
+    .progress-number {
+      color: #0C6FFF;
+    }
+  
+    .progress-status {
+      color: #0C6FFF;
+      font-weight: 600;
+    }
+  }
+  
+  .progress-step--progress {
+    .progress-number {
+      color: #4088F0;
+    }
+  
+    .progress-status {
+      color: #4088F0;
+      font-style: italic;
+    }
+  }
+  
+  .progress-step--next {
+    .progress-number {
+      color: #AABDD9;
+    }
+  
+    .progress-status {
+      color: #AABDD9;
+    }
+  }
+  
+  /* ================================================================
+     10. SECTION: REFLECTION
+     ================================================================ */
+  
+  .behavai-reflection {
+    @include full-bleed;
+    background: rgb(236, 239, 247);
+    padding: 50px 0 100px;
+    margin-top: 0;
+    position: relative; // For spark positioning
+  }
+  
+  .behavai-reflection-inner {
+    @include container();
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter-desktop);
+  }
+  
+  .behavai-reflection-header {
+    margin-bottom: 50px;
+  }
+  
+  .behavai-reflection-eyebrow {
+    @extend .behavai-eyebrow;
+  }
+  
+  .behavai-reflection-title {
+    @extend .behavai-title;
+  }
+  
+  /* Side-by-side content grid */
+  .behavai-reflection-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+  }
+  
+  /* Left: Media */
+  .behavai-reflection-media {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .reflection-image {
+    @include media-frame(light);
+    width: 100%;
+    height: auto;
+    margin-top: 0px !important;
+  }
+  
+  .reflection-caption {
+    @include tokens.type-caption-light;
+    color: #000206;
+    text-align: center;
+    margin: 0 8px;
+  }
+  
+  /* Right: Text */
+  .behavai-reflection-body {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$space-xs;
+  
+    p {
+      @include tokens.type-mont-poj-light-body;
+      color: #000206;
+      font-size: 1.075rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+  }
+  
+  /* Spark wand for XXL screens only */
+  .behavai-reflection-spark {
+    position: absolute;
+    bottom: 145px;
+    right: calc(var(--page-gutter-desktop) + 20px);
+    width: 130px;
+    height: auto;
+    pointer-events: none;
+    z-index: 5;
+    display: none; // Hidden by default
+  }
+  
+  /* Only show spark on XXL screens */
+  @media (min-width: #{tokens.$xxxl_breakpoint}) {
+    .behavai-reflection-spark {
+      display: block;
+    }
+  }
+  
+  /* Highlight utility scoped for these sections */
+  .behavai-impact,
+  .behavai-status,
+  .behavai-reflection {
+    .hi {
+      @include tokens.body-strong-light;
+      background: #C8D3F5;
+      padding: 0 0.25em;
+      border-radius: 4px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+  }
+  
+  
+   /* ================================================================
+      11. RESPONSIVE BREAKPOINTS (Unified)
+      ================================================================ */
+   
+   @media (max-width: 1245px) {
+     .behavai-solution-title-break {
+       display: inline;
+     }
+   }
+
+   /* XL: ≤ 1200px */
+   @media (max-width: #{tokens.$xl_breakpoint}) {
+     /* Shared typography scaling */
+     .behavai-eyebrow {
+       font-size: 1.1rem;
+     }
+     
+     .behavai-title {
+       font-size: 1.75rem;
+       line-height: 1.35;
+     }
+     
+     /* Problem Space adjustments */
+     .behavai-problem-web-center {
+       font-size: 1.2rem;
+       min-width: 28rem;
+     }
+     
+     .behavai-node-circle {
+       width: 70px;
+       height: 70px;
+       
+       img {
+         width: 40px;
+         height: 40px;
+       }
+     }
+     
+     .behavai-node-label {
+       font-size: 0.85rem;
+     }
+     
+     /* Solution specific */
+     .behavai-solution-spark {
+       right: -6%;
+       width: 60px;
+       top: -20px;
+     }
+     
+     /* Research & Discovery */
+     .behavai-research-intro {
+       font-size: 1.75rem;
+     }
+     
+     .behavai-discovery-circle {
+       width: 140px;
+       height: 140px;
+       
+       img {
+         width: 80px;
+         height: 80px;
+       }
+     }
+     .behavai-discovery-stat {
+       font-size: 1.85rem;
+     }
+     .behavai-discovery-arrow {
+        width: 60px;
+      }
+      
+  /* Design Foundation Visual - Quote Cards */
+  .behavai-design-spark {
+    top: -80px;
+    right: -10px;
+    width: 70px;
+    rotate: -16deg;
+  }
+  
+  .behavai-quote-card {
+    border-radius: 16px;
+    padding: 60px 40px 55px;
+  }
+  
+  .behavai-quote-icon {
+    top: -45px;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    
+    img {
+      width: 45px;
+      height: 45px;
+    }
+  }
+  
+  .behavai-quote-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 15px 0 0 0;
+  }
+  
+  .behavai-design-caption {
+    gap: 20px;
+  }
+  
+  /* Final Solution */
+  .behavai-final-solution-header {
+    margin-bottom: 65px;
+  }
+  
+  .behavai-final-solution-steps {
+    gap: 85px;
+  }
+  
+  .behavai-solution-step-heading {
+    font-size: 1.25rem;
+  }
+  
+  /* Impact & Beyond sections */
+  .techstars-text {
+    font-size: 1.05rem;
+  }
+
+  .testimonial-quote {
+    font-size: 1rem;
+  }
+
+  .behavai-progress-timeline {
+    max-width: 800px;
+  }
+   }
+   
+   /* LG: ≤ 991px - STANDARDIZED BODY TEXT AT 0.95rem */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     /* Section padding adjustments */
+     .behavai-kickoff {
+       padding: 70px 0 90px;
+     }
+     
+     .behavai-problem {
+       padding: 45px 0 145px;
+     }
+     
+     .behavai-solution {
+       padding: 75px 0 95px;
+     }
+     
+     .behavai-research-section {
+       padding: 70px 0 60px;
+     }
+     
+     .behavai-final-solution {
+       padding: 75px 0 95px;
+     }
+     
+     .behavai-impact,
+     .behavai-status {
+       padding: 80px 0 0;
+     }
+     .behavai-reflection {
+      padding: 80px 0 80px;
+    }
+
+     /* Container adjustments */
+     .behavai-kickoff-inner,
+     .behavai-problem-inner,
+     .behavai-solution-inner,
+     .behavai-research-subsection,
+     .behavai-final-solution-inner,
+     .behavai-impact-inner,
+     .behavai-status-inner,
+     .behavai-reflection-inner {
+       @include container(var(--page-gutter-tablet));
+       padding: 0 var(--page-gutter-tablet);
+     }
+     
+     /* Header spacing */
+     .behavai-kickoff-header,
+     .behavai-problem-header,
+     .behavai-solution-header,
+     .behavai-research-header,
+     .behavai-final-solution-header,
+     .behavai-impact-header,
+     .behavai-status-header,
+     .behavai-reflection-header {
+       margin-bottom: 40px;
+     }
+     
+     .behavai-research-subsection {
+       margin-bottom: 80px;
+     }
+     
+     /* Typography - STANDARDIZED */
+     .behavai-title,
+     .behavai-research-intro {
+       font-size: 1.5rem;
+     }
+     
+     /* ALL BODY TEXT AT 0.95rem like Aquatonomy */
+     .behavai-body p,
+     .behavai-caption,
+     .behavai-research-text,
+     .behavai-kickoff-body p,
+     .behavai-problem-body p,
+     .behavai-impact-body p,
+     .behavai-status-body p,
+     .behavai-reflection-body p,
+     .behavai-solution-step-description {
+       font-size: 0.95rem !important;
+     }
+     
+     /* Kickoff specific */
+     .behavai-kickoff-body {
+       margin-bottom: 40px;
+     }
+     
+     /* Problem Space specific */
+     .behavai-problem-web-center {
+       font-size: 1.1rem;
+       max-width: 24rem;
+       width: 90%;
+     }
+     
+     .behavai-node-circle {
+       width: 65px;
+       height: 65px;
+       
+       img {
+         width: 38px;
+         height: 38px;
+       }
+     }
+     
+     /* Solution specific */
+     .behavai-solution-spark {
+       display: none;
+     }
+     
+     /* Research & Discovery */
+     .behavai-discovery-circles {
+       gap: 0px;
+     }
+     
+     .behavai-discovery-circle {
+       width: 120px;
+       height: 120px;
+       
+       img {
+         width: 60px;
+         height: 60px;
+       }
+     }
+     
+     .behavai-discovery-arrow {
+       width: 60px;
+     }
+     
+     .behavai-discovery-stat {
+       font-size: 1.7rem;
+     }
+     
+     .behavai-discovery-label {
+       font-size: 0.9rem;
+     }
+     
+     .behavai-quote-cards {
+       gap: 20px;
+     }
+     
+     .behavai-design-spark {
+       display: none;
+     }
+     .behavai-quote-card {
+        border-radius: 16px;
+        padding: 60px 30px 55px;
+      }
+      
+      .behavai-quote-icon {
+        top: -45px;
+        left: 50%;
+        width: 80px;
+        height: 80px;
+        
+        img {
+          width: 45px;
+          height: 45px;
+        }
+      }
+      
+      .behavai-quote-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 15px 0 0 0;
+      }
+      
+      /* Final Solution */
+      .behavai-final-solution-steps {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      
+      .behavai-solution-step-heading {
+        font-size: 1.15rem;
+        margin-bottom: 14px;
+      }
+      
+      /* Impact & Beyond */
+      .behavai-techstars-badge {
+        padding: 20px 30px;
+        margin: 30px auto 50px; // Tighter spacing
+      }
+
+      .techstars-logo {
+        height: 35px;
+      }
+
+      .techstars-text {
+        font-size: 1rem;
+      }
+
+      .behavai-testimonial-cards {
+        grid-template-columns: 1fr;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      
+      .author-avatar {
+        width: 55px;
+        height: 55px;
+      }
+      
+      .author-name {
+        font-size: 1rem;
+      }
+      
+      .author-role {
+        font-size: 0.75rem;
+      }
+
+      .progress-step {
+        max-width: 150px;
+      }
+
+      .progress-icon {
+        width: 70px;
+        height: 70px;
+      }
+
+      .progress-number-wrapper {
+        width: 60px;
+        height: 60px;
+      }
+
+      .progress-number {
+        font-size: 1.75rem;
+      }
+      
+      .progress-line {
+        top: 153px; // Adjusted for smaller sizes (70px icon + 12px gap + 40px label + 31px to middle of circle)
+      }
+
+      .behavai-reflection-content {
+        grid-template-columns: 1fr; // Stack at LG breakpoint
+        gap: 40px;
+        
+        // Reorder when stacked - body first, then media
+        .behavai-reflection-body {
+          order: 1;
+        }
+        
+        .behavai-reflection-media {
+          order: 2;
+        }
+      }
+   }
+   
+   /* MD: ≤ 767px - SWITCH TO LINEAR LAYOUT */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+     /* Hide web view, show linear view */
+     .behavai-problem-web {
+       display: none !important;
+     }
+     
+     .behavai-problem-linear {
+       display: flex !important;
+     }
+     
+     /* Section padding */
+     .behavai-kickoff {
+       padding: 60px 0 80px;
+     }
+     
+     .behavai-problem {
+       padding: 60px 0 0;
+     }
+     
+     .behavai-solution {
+       padding: 60px 0 85px;
+     }
+     
+     .behavai-research-section {
+       padding: 60px 0 40px;
+     }
+     
+     .behavai-final-solution {
+       padding: 60px 0 85px;
+     }
+     .behavai-final-solution-steps {
+      gap: 60px;
+    }
+     
+     .behavai-impact,
+     .behavai-status {
+       padding: 60px 0 0;
+     }
+     .behavai-reflection {
+      padding: 80px 0 80px;
+    }
+     
+     /* Header spacing */
+     .behavai-kickoff-header,
+     .behavai-problem-header,
+     .behavai-solution-header,
+     .behavai-research-header,
+     .behavai-final-solution-header,
+     .behavai-impact-header,
+     .behavai-status-header,
+     .behavai-reflection-header {
+       margin-bottom: 35px;
+     }
+     
+     .behavai-research-subsection {
+       margin-bottom: 70px;
+     }
+     
+     .behavai-impact-body,
+     .behavai-status-body {
+       margin-bottom: 40px;
+     }
+     
+     /* Typography */
+     .behavai-title,
+     .behavai-research-intro {
+       font-size: 1.4rem;
+       line-height: 1.4;
+     }
+     
+     /* Solution specific */
+     .behavai-solution-spark {
+       right: 0;
+       width: 52px;
+       top: -4px;
+     }
+     
+     /* Research & Discovery */
+     .behavai-discovery-circles {
+       gap: 0px;
+     }
+     
+     .behavai-discovery-arrow {
+       margin-top: -100px;
+       width: 50px;
+     }
+     
+     .behavai-discovery-circle {
+       width: 100px;
+       height: 100px;
+       
+       img {
+         width: 50px;
+         height: 50px;
+       }
+     }
+     
+     .behavai-discovery-stat {
+       font-size: 1.6rem;
+     }
+     
+     .behavai-landscape-table {
+       font-size: 0.85rem;
+     }
+     
+     .behavai-table-brand img {
+       height: 20px;
+     }
+     
+     .behavai-table-icon {
+       width: 18px;
+       height: 18px;
+     }
+     .behavai-quote-cards {
+           grid-template-columns: 1fr;
+           gap: 80px;
+           margin: -30px auto 40px;
+         }
+         .behavai-quote-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 15px 0 0 0;
+          }
+          
+      /* Final Solution */
+      .behavai-solution-step {
+        gap: 20px;
+      }
+
+      .behavai-solution-step-heading {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+      }
+      
+      /* Impact & Beyond */
+      .behavai-techstars-badge {
+        flex-direction: column;
+        gap: 15px;
+        padding: 25px 20px;
+        margin: 25px auto 40px; // Even tighter spacing
+      }
+      
+      .testimonial-quote {
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+      
+      .author-avatar {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .author-name {
+        font-size: 0.95rem;
+      }
+      
+      .author-role {
+        font-size: 0.72rem;
+      }
+
+      .behavai-progress-timeline {
+        padding: 0;
+      }
+
+      .progress-line {
+        display: none;
+      }
+
+      .behavai-progress-timeline {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap:75px;
+        max-width: 400px;
+        margin-top: 90px;
+      }
+
+      .progress-step {
+        max-width: 100%;
+      }
+      
+      .progress-icon {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .progress-number-wrapper {
+        width: 55px;
+        height: 55px;
+      }
+      
+      .progress-number {
+        font-size: 1.5rem;
+      }
+
+      .behavai-reflection-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        
+        // Ensure body comes first when stacked
+        .behavai-reflection-body {
+          order: 1;
+        }
+        
+        .behavai-reflection-media {
+          order: 2;
+        }
+      }
+   }
+   
+   /* SM: ≤ 625px */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     /* Section padding */
+     .behavai-kickoff {
+       padding: 50px 0 70px;
+     }
+
+     .behavai-kickoff-caption {
+      font-size: 0.9rem !important;
+    }
+     
+    .behavai-solution-caption {
+      font-size: 0.9rem !important;
+    }
+     
+     .behavai-problem {
+       padding: 50px 0 0;
+     }
+     
+     .behavai-solution {
+       padding: 50px 0 75px;
+     }
+     
+     .behavai-research-section {
+       padding: 50px 0 20px;
+     }
+     
+     .behavai-final-solution {
+       padding: 50px 0 75px;
+     }
+
+     .behavai-impact,
+     .behavai-status {
+       padding: 50px 0 0;
+     }
+     .behavai-reflection {
+      padding: 60px 0 75px;
+    }
+     
+     /* Container adjustments */
+     .behavai-kickoff-inner,
+     .behavai-problem-inner,
+     .behavai-solution-inner,
+     .behavai-research-subsection,
+     .behavai-final-solution-inner,
+     .behavai-impact-inner,
+     .behavai-status-inner,
+     .behavai-reflection-inner {
+       @include container(var(--page-gutter-xs));
+       padding: 0 var(--page-gutter-xs);
+     }
+     
+     /* Header spacing */
+     .behavai-kickoff-header,
+     .behavai-problem-header,
+     .behavai-solution-header,
+     .behavai-research-header,
+     .behavai-final-solution-header,
+     .behavai-impact-header,
+     .behavai-status-header,
+     .behavai-reflection-header {
+       margin-bottom: 30px;
+     }
+     
+     .behavai-research-subsection {
+       margin-bottom: 60px;
+     }
+     
+     /* Typography */
+     .behavai-title,
+     .behavai-research-intro {
+       font-size: 1.3rem;
+       line-height: 1.45;
+     }
+     
+     /* ALL body text at 0.82rem */
+     .behavai-body p,
+     .behavai-research-text,
+     .behavai-kickoff-body p,
+     .behavai-problem-body p,
+     .behavai-impact-body p,
+     .behavai-status-body p,
+     .behavai-reflection-body p,
+     .behavai-solution-step-description {
+       font-size: 0.82rem !important;
+     }
+     
+     .behavai-caption {
+       font-size: 0.9rem;
+     }
+     
+     /* Kickoff specific */
+     .behavai-kickoff-body {
+       margin-bottom: 35px;
+     }
+     
+     /* Problem Space linear adjustments */
+     .behavai-linear-center {
+       font-size: 1rem;
+     }
+     
+     .behavai-linear-nodes {
+       flex-wrap: wrap;
+     }
+     
+     .behavai-linear-node-circle {
+       width: 55px;
+       height: 55px;
+       
+       img {
+         width: 28px;
+         height: 28px;
+       }
+     }
+     
+     /* When not wrapping, update line position for smaller circles */
+     @media (min-width: 480px) and (max-width: #{tokens.$sm_breakpoint}) {
+       .behavai-linear-nodes {
+         flex-wrap: nowrap;
+         
+         &::before {
+           display: block;
+           top: 27.5px;
+         }
+       }
+     }
+     
+     .behavai-linear-node-label {
+       font-size: 0.7rem;
+       max-width: 60px;
+     }
+     
+     /* Solution specific */
+     .behavai-solution-spark {
+       width: 46px;
+       top: -2px;
+     }
+     
+     .behavai-linear-star {
+       display: none;
+     }
+     
+     /* Research & Discovery */
+     .behavai-research-eyebrow {
+       font-size: 1.1rem;
+     }
+     
+     .behavai-discovery-circle {
+       width: 80px;
+       height: 80px;
+       
+       img {
+         width: 40px;
+         height: 40px;
+       }
+     }
+     
+     .behavai-discovery-stat {
+       font-size: 1.5rem;
+     }
+     
+     .behavai-discovery-label {
+       font-size: 0.85rem;
+     }
+     
+     /* Table responsive - switch to stacked layout */
+     .behavai-landscape-table {
+       display: none;
+     }
+     
+     .behavai-landscape-visual::after {
+       content: "Competitive analysis available in desktop view";
+       @include tokens.type-mont-poj-light-body;
+       color: tokens.$primary;
+       font-size: 0.9rem;
+       text-align: center;
+       display: block;
+       padding: 30px 20px;
+       background: rgba(255, 255, 255, 0.05);
+       border-radius: 12px;
+     }
+     
+     .behavai-design-caption {
+       gap: 15px;
+       
+       span {
+         font-size: 0.9rem;
+       }
+       
+       img {
+         width: 50px;
+       }
+     }
+     .behavai-quote-cards {
+        margin: -30px auto 40px;
+      }
+      .behavai-quote-text {
+         font-size: 1rem;
+         line-height: 1.6;
+         margin: 15px 0 0 0;
+       }
+       
+       /* Final Solution */
+       .behavai-solution-step-heading {
+         font-size: 1rem;
+         margin-bottom: 10px;
+       }
+       
+       .behavai-final-solution-steps {
+         gap: 50px;
+       }
+       
+       /* Impact & Beyond */
+       .behavai-techstars-badge {
+         margin: 20px auto 35px; // Very tight spacing
+       }
+       
+       .techstars-logo {
+         height: 30px;
+       }
+
+       .techstars-text {
+         font-size: 0.9rem;
+       }
+
+       .testimonial-quote {
+         font-size: 0.95rem;
+         line-height: 1.6;
+       }
+       
+       .behavai-testimonial-card {
+         padding: 35px 30px 30px;
+       }
+
+       .author-avatar {
+         width: 45px;
+         height: 45px;
+       }
+
+       .author-name {
+         font-size: 0.9rem;
+         font-weight: 600;
+       }
+
+       .author-role {
+         font-size: 0.7rem;
+         line-height: 1.2;
+       }
+
+       .progress-label {
+         font-size: 0.85rem;
+       }
+
+       .progress-icon {
+         width: 50px;
+         height: 50px;
+       }
+
+       .progress-number-wrapper {
+         width: 50px;
+         height: 50px;
+         border: 3px solid #FFFFFF;
+       }
+
+       .progress-number {
+         font-size: 1.3rem;
+       }
+
+       .progress-status {
+         font-size: 0.85rem;
+       }
+
+      .behavai-progress-timeline {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap:45px;
+        max-width: 400px;
+        margin-top: 90px;
+      }
+
+      .progress-step {
+        max-width: 100%;
+      }
+      
+      .progress-icon {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .progress-number-wrapper {
+        width: 45px;
+        height: 45px;
+      }
+      
+      .progress-number {
+        font-size: 1.5rem;
+      }
+      
+   }
+   
+   /* XS: ≤ 464px */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .pd-hero {
+       margin-top: tokens.$space-lg;
+     }
+
+     /* Section padding */
+     .behavai-kickoff {
+       padding: 40px 0 60px;
+     }
+
+     .behavai-kickoff-caption {
+      font-size: 0.8rem !important;
+    }
+     
+    .behavai-solution-caption {
+      font-size: 0.8rem !important;
+    }
+     .behavai-problem {
+       padding: 45px 0 0 0;
+       margin-bottom: -60px;
+     }
+     
+     .behavai-solution {
+       padding: 45px 0 60px;
+     }
+     
+     .behavai-research-section {
+       padding: 40px 0 10px;
+     }
+     
+     .behavai-final-solution {
+       padding: 45px 0 60px;
+     }
+
+     .behavai-impact,
+     .behavai-status {
+       padding: 45px 0 0;
+     }
+     .behavai-reflection {
+      padding: 50px 0 60px;
+    }
+     
+     /* Header spacing */
+     .behavai-kickoff-header,
+     .behavai-problem-header,
+     .behavai-solution-header,
+     .behavai-research-header,
+     .behavai-final-solution-header,
+     .behavai-impact-header,
+     .behavai-status-header,
+     .behavai-reflection-header {
+       margin-bottom: 25px;
+     }
+     
+     /* Typography */
+     .behavai-eyebrow,
+     .behavai-research-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+     
+     .behavai-title,
+     .behavai-research-intro {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+     
+     /* ALL body text at 0.825rem */
+     .behavai-body p,
+     .behavai-research-text,
+     .behavai-kickoff-body p,
+     .behavai-problem-body p,
+     .behavai-impact-body p,
+     .behavai-status-body p,
+     .behavai-reflection-body p,
+     .behavai-solution-step-description {
+       font-size: 0.825rem !important;
+     }
+     
+     .behavai-caption {
+       font-size: 0.8rem;
+     }
+     
+     /* Kickoff specific */
+     .behavai-kickoff-body {
+       margin-bottom: 30px;
+     }
+     
+     /* Problem Space linear adjustments */
+     .behavai-linear-center {
+       font-size: 0.9rem;
+       max-width: 100%;
+     }
+     
+     .behavai-linear-nodes {
+       &::before {
+         top: 25px;
+       }
+     }
+     
+     .behavai-linear-node-circle {
+       width: 50px;
+       height: 50px;
+       
+       img {
+         width: 25px;
+         height: 25px;
+       }
+     }
+     
+     .behavai-linear-node-label {
+       font-size: 0.65rem;
+       max-width: 55px;
+     }
+     
+     .behavai-linear-star {
+       width: 18px;
+       display: none;
+     }
+     
+     /* Solution specific */
+     .behavai-solution-spark {
+       width: 40px;
+       top: 0;
+       right: 4px;
+     }
+
+     .behavai-discovery-circles {
+        gap: 10px;
+      }
+     
+     /* Research & Discovery */
+     .behavai-discovery-circle {
+       width: 70px;
+       height: 70px;
+       margin-bottom: 15px;
+       
+       img {
+         width: 35px;
+         height: 35px;
+       }
+     }
+
+    .behavai-discovery-arrow {
+        display: none;
+      }
+     
+     .behavai-discovery-stat {
+       font-size: 1.4rem;
+       margin-bottom: 8px;
+     }
+     
+     .behavai-discovery-label {
+       font-size: 0.8rem;
+       max-width: 140px;
+     }
+     .behavai-quote-cards {
+        gap: 40px;
+      }
+     
+     .behavai-quote-card {
+       padding: 25px 20px;
+     }
+     
+     .behavai-quote-icon {
+       width: 45px;
+       height: 45px;
+       top: -28px;
+       
+       img {
+         width: 22px;
+         height: 22px;
+       }
+     }
+     
+     .behavai-quote-text {
+       font-size: 0.85rem;
+       margin-top: 10px;
+     }
+     
+     .behavai-design-caption {
+       gap: 10px;
+       
+       span {
+         font-size: 0.8rem;
+       }
+       
+       img {
+         width: 40px;
+       }
+     }
+     .behavai-design-visual {
+        margin-top: 100px;
+      }
+      
+      /* Final Solution */
+      .behavai-final-solution-eyebrow {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .behavai-final-solution-title {
+        font-size: 1.2rem;
+        line-height: 1.4;
+      }
+
+      .behavai-final-solution-steps {
+        gap: 40px;
+      }
+
+      .behavai-solution-step-heading {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+      }
+      
+      /* Impact & Beyond */
+      .behavai-impact-eyebrow,
+      .behavai-status-eyebrow,
+      .behavai-reflection-eyebrow {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .behavai-impact-title,
+      .behavai-status-title,
+      .behavai-reflection-title {
+        font-size: 1.2rem;
+        line-height: 1.4;
+      }
+
+      .behavai-techstars-badge {
+        margin: 20px auto 35px;
+        padding: 20px 15px;
+      }
+
+      .techstars-logo {
+        height: 25px;
+      }
+
+      .techstars-text {
+        font-size: 0.85rem;
+      }
+
+      .behavai-testimonial-card {
+        padding: 30px 25px 25px;
+      }
+
+      .testimonial-quote {
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      .author-avatar {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .author-name {
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      
+      .author-role {
+        font-size: 0.68rem;
+        line-height: 1.2;
+      }
+
+      .behavai-progress-timeline {
+        // grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 60px;
+      }
+      
+      .progress-icon {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .progress-number-wrapper {
+        width: 45px;
+        height: 45px;
+        border: 3px solid #FFFFFF;
+      }
+      
+      .progress-number {
+        font-size: 1.2rem;
+      }
+      
+      .progress-label {
+        font-size: 0.8rem;
+      }
+      
+      .progress-status {
+        font-size: 0.8rem;
+      }
+
+      .reflection-caption {
+        font-size: 0.8rem;
+      }
+      .behavai-challenge-eyebrow,
+      .behavai-iterations-eyebrow {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+    
+      .behavai-challenge-title,
+      .behavai-iterations-title {
+        font-size: 1.3rem;
+        line-height: 1.45;
+      }
+   }
+
+   /* === BODY TEXT CONSISTENCY === */
+   @keyframes fadeInUp {
+     from {
+       opacity: 0;
+       transform: translateY(20px);
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+
+
+
+
+
+/* =====techstars banner adjustments===== */
+/* ===== techstars + NDA banner shared pill ===== */
+/* ===== techstars + NDA banner shared pill ===== */
+
+.nda-banner,
+.pd-hero__award {
+  position: absolute;
+  top: -45px;
+  right: -100px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  background: rgb(240, 240, 240);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  padding: 6px 28px 6px 22px;
+
+  animation: fadeInDown 0.35s ease-out 0.05s both;
+  z-index: 10;
+}
+
+/* NDA icon (round) */
+.nda-icon {
+  width: 24px;
+  height: 26px;
+  display: block;
+}
+
+/* Techstars wordmark – keep aspect ratio + prevent squish */
+.pd-hero__award-logo {
+  height: 26px;    // main size, stays consistent
+  width: auto;
+  display: block;
+  flex-shrink: 0;  // don't let flexbox squeeze it
+}
+
+/* Text inside pill */
+.nda-text,
+.pd-hero__award-text {
+  @include tokens.type-mont-poj-light-body;
+  color: #0E1117;
+  font-size: 0.85rem;
+  font-weight: 450;
+  white-space: nowrap;
+}
+
+/* ===== match original responsive behavior ===== */
+
+/* LG: ≤ 991px */
+@media (max-width: #{tokens.$lg_breakpoint}) {
+  .nda-banner {
+    top: -55px;
+    right: -10px;
+    padding: 6px 18px 6px 12px;
+    gap: 8px;
+  }
+  .pd-hero__award {
+    top: -55px;
+    right: -10px;
+    padding: 6px 18px 6px 12px;
+    gap: 8px;
+  }
+
+  .nda-text,
+  .pd-hero__award-text {
+    font-size: 0.82rem;
+  }
+
+}
+
+/* MD: ≤ 767px */
+@media (max-width: #{tokens.$md_breakpoint}) {
+  .nda-banner,
+  .pd-hero__award {
+    top: -55px;
+    right: -10px;
+    padding: 6px 18px 6px 12px;
+    gap: 7px;
+  }
+
+  .nda-text,
+  .pd-hero__award-text {
+    font-size: 0.75rem;
+  }
+
+}
+
+/* SM: ≤ 625px — scoot to left gutter, still keep logo size */
+@media (max-width: #{tokens.$sm_breakpoint}) {
+  .nda-banner,
+  .pd-hero__award {
+    display: none;
+  }
+}
+
+/* XS: ≤ 464px — hide both pills */
+@media (max-width: #{tokens.$xs_breakpoint}) {
+  .nda-banner,
+  .pd-hero__award {
+    display: none;
+  }
+    /* ---- Disable fade-in / scroll reveals on very small screens ---- */
+    .behavai-solution-step.reveal,
+    .reveal,
+    .reveal-up,
+    .reveal-in,
+    [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+      transition: none !important;
+    }
+  
+    /* Also stop the hero pills from animating */
+    .nda-banner,
+    .pd-hero__award {
+      animation: none !important;
+    }
+  
+}
+
+
+
+/* ================================================================
+   BEHAVAI ABOUT ABA SECTION
+   Image-left, text-right layout (matches Reflection section)
+   Background: #FAFAFE
+   ================================================================ */
+
+   @mixin full-bleed {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   }
+   
+   /* ================================================================
+      ABOUT ABA SECTION - MAIN
+      ================================================================ */
+   
+   .behavai-about-aba {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 100px 0 0;
+   }
+   
+   .behavai-about-aba-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   /* ================================================================
+      HEADER
+      ================================================================ */
+   
+   .behavai-about-aba-header {
+     margin-bottom: 60px;
+   }
+   
+   .behavai-about-aba-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin: 0 0 12px 0;
+     letter-spacing: -0.1px;
+   }
+   
+   .behavai-about-aba-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+     margin: 0;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   /* ================================================================
+      CONTENT GRID (Image Left + Text Right)
+      ================================================================ */
+   
+   .behavai-about-aba-content {
+     display: grid;
+     grid-template-columns: 1.9fr 2.4fr; // Slightly adjust ratio
+     gap: 110px;
+     align-items: center;
+   }
+   
+   /* Left: Media */
+   .behavai-about-aba-media {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     margin-left: -100px;
+     margin-top: 40px;
+   }
+   
+   .about-aba-image {
+     width: 110%;
+     max-width: 700px;
+     height: auto;
+     display: block;
+   }
+   
+   /* Right: Body Text */
+   .behavai-about-aba-body {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     margin-top: -20px;
+   
+     p {
+       margin: 0;
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   
+     .hi {
+       @include tokens.body-strong-light;
+       background: #C8D3F5;
+       padding: 0 0.25em;
+       border-radius: 4px;
+       -webkit-box-decoration-break: clone;
+       box-decoration-break: clone;
+     }
+   
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   /* ================================================================
+      RESPONSIVE BREAKPOINTS
+      ================================================================ */
+   
+   /* XL: ≤ 1200px */
+   @media (max-width: #{tokens.$xl_breakpoint}) {
+     .behavai-about-aba-eyebrow {
+       font-size: 1.1rem;
+     }
+     
+     .behavai-about-aba-title {
+       font-size: 1.75rem;
+       line-height: 1.35;
+     }
+   
+     .behavai-about-aba-content {
+       gap: 80px;
+     }
+   
+     .behavai-about-aba-media {
+       margin-left: -80px;
+     }
+   
+     .about-aba-image {
+       max-width: 650px;
+     }
+     .behavai-about-aba-header {
+      margin-bottom: 20px;
+    }
+   }
+
+      /* XL: ≤ 1200px */
+      @media (min-width: #{tokens.$xl_breakpoint}) {
+        .behavai-about-aba-header {
+         margin-bottom: 10px !important;
+       }
+      }
+       /* XL: ≤ 1200px */
+       @media (max-width: 1360px) {
+        .behavai-about-aba-header {
+         margin-bottom: 60px;
+       }
+      }
+   
+   /* LG: ≤ 991px - STANDARDIZED BODY TEXT AT 0.95rem */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     .behavai-about-aba {
+       padding: 80px 0 0;
+     }
+   
+     .behavai-about-aba-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .behavai-about-aba-header {
+       margin-bottom: 40px;
+     }
+   
+     .behavai-about-aba-title {
+       font-size: 1.5rem;
+     }
+   
+     .behavai-about-aba-content {
+       grid-template-columns: 1fr; // Stack at LG
+       gap: 60px;
+     }
+   
+     .behavai-about-aba-media {
+       margin-left: 0; // Reset negative margin
+       margin-top: 0;
+       justify-content: center;
+       order: 2; // Image goes below text
+     }
+   
+     .behavai-about-aba-body {
+       margin-top: 0;
+       order: 1; // Text comes first
+   
+       p {
+         font-size: 0.95rem !important; // Standardized body text
+       }
+     }
+   
+     .about-aba-image {
+       max-width: 600px;
+       width: 100%;
+       margin-left: -100px;
+     }
+   }
+
+   
+   /* MD: ≤ 767px */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+     .behavai-about-aba {
+       padding: 60px 0 0;
+     }
+   
+     .behavai-about-aba-inner {
+       padding: 0 var(--page-gutter-md) !important;
+     }
+   
+     .behavai-about-aba-header {
+       margin-bottom: 35px;
+     }
+   
+     .behavai-about-aba-title {
+       font-size: 1.4rem;
+       line-height: 1.4;
+     }
+   
+     .behavai-about-aba-content {
+       gap: 35px;
+     }
+   
+     .about-aba-image {
+       max-width: 500px;
+      margin-left: -60px;
+    }
+   }
+   
+   /* SM: ≤ 625px */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     .behavai-about-aba {
+       padding: 50px 0 0;
+     }
+   
+     .behavai-about-aba-inner {
+       padding: 0 var(--page-gutter-xs) !important;
+     }
+   
+     .behavai-about-aba-header {
+       margin-bottom: 30px;
+     }
+   
+     .behavai-about-aba-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .behavai-about-aba-title {
+       font-size: 1.3rem;
+       line-height: 1.45;
+     }
+   
+     .behavai-about-aba-content {
+       gap: 30px;
+     }
+   
+     .behavai-about-aba-body {
+       gap: 16px;
+   
+       p {
+         font-size: 0.82rem !important; // Match SM breakpoint standard
+       }
+     }
+   
+     .about-aba-image {
+       max-width: 380px;
+     }
+     .about-aba-image {
+      margin-top: 20px;
+      max-width: 450px;
+     margin-left: -50px;
+   }
+   }
+   
+   /* XS: ≤ 480px */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .behavai-about-aba {
+       padding: 40px 0 0;
+     }
+   
+     .behavai-about-aba-header {
+       margin-bottom: 25px;
+     }
+   
+     .behavai-about-aba-eyebrow {
+       font-size: 0.85rem;
+     }
+   
+     .behavai-about-aba-title {
+       font-size: 1.15rem;
+       line-height: 1.35;
+     }
+   
+     .behavai-about-aba-content {
+       gap: 25px;
+     }
+   
+     .about-aba-image {
+       max-width: 320px;
+     }
+   
+     .behavai-about-aba-body {
+       gap: 14px;
+   
+       p {
+         font-size: 0.82rem !important;
+         line-height: 1.6;
+       }
+     }
+   }
+
+
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+    .behavai-about-aba-inner {
+      padding: 0 var(--page-gutter-tablet);
+    }
+  }
+
+
+/* ========================================
+   BEHAVAI DESIGN CHALLENGE & ITERATIONS
+   ======================================== */
+
+
+   /* Helper Mixins */
+   @mixin full-bleed {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   }
+   
+   @mixin container($pad: var(--page-gutter-desktop)) {
+     @include tokens.container-page($pad);
+   }
+   
+   /* ========================================
+      BEHAVAI DESIGN CHALLENGE SECTION
+      ======================================== */
+   
+   .behavai-challenge {
+     @include full-bleed;
+     background: rgb(236, 239, 247);
+     padding: 80px 0 60px;
+   }
+   
+   .behavai-challenge-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .behavai-challenge-header {
+     margin-bottom: 50px;
+   }
+   
+   .behavai-challenge-eyebrow {
+     @extend .behavai-eyebrow;
+   }
+   
+   .behavai-challenge-title {
+     @extend .behavai-title;
+   }
+   
+   .behavai-challenge-body {
+     @extend .behavai-body;
+     margin-bottom: 60px;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   }
+   
+   /* Constraint Cards Grid */
+   .behavai-constraint-cards {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 24px;
+     margin: 0 auto;
+   }
+   
+   .behavai-constraint-card {
+     background: #ffffff;
+     border-radius: 16px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+     padding: 24px 28px;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+   
+   .constraint-card-label {
+     @include tokens.type-mont-poj-light-header;
+     font-size: 0.75rem;
+     font-weight: 550;
+     color: #3b82f6;
+     text-transform: uppercase;
+     letter-spacing: 0.12em;
+     margin-bottom: 2px;
+     margin-top: 6px;
+   }
+   
+   .constraint-card-header {
+     display: flex;
+     align-items: flex-start;
+     justify-content: space-between;
+     gap: 16px;
+     margin-bottom: 2px;
+   }
+   
+   .constraint-card-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.15rem;
+     font-weight: 600;
+     color: #000206;
+     flex: 1;
+     line-height: 1.3;
+     margin: 0;
+     margin-top: 6px;
+   }
+   
+   .constraint-card-icon {
+     width: 70px;
+     height: 70px;
+     object-fit: contain;
+     flex-shrink: 0;
+     margin-top: -25px;
+     margin-right: 20px;
+   }
+   
+   .constraint-card-description {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     line-height: 1.5;
+     color: #000206;
+     margin: 0;
+   }
+   
+   /* ========================================
+      BEHAVAI ITERATIONS SECTION
+      ======================================== */
+   
+   .behavai-iterations {
+     @include full-bleed;
+     background: rgb(236, 239, 247);
+     padding: 60px 0 110px;
+   }
+   
+   .behavai-iterations-inner {
+     @include container();
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .behavai-iterations-header {
+     margin-bottom: 50px;
+   }
+   
+   .behavai-iterations-eyebrow {
+     @extend .behavai-eyebrow;
+   }
+   
+   .behavai-iterations-title {
+     @extend .behavai-title;
+   }
+   
+   .behavai-iterations-body {
+     @extend .behavai-body;
+     margin-bottom: 60px;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   }
+   
+   /* Iterations List */
+   .behavai-iterations-list {
+     display: flex;
+     flex-direction: column;
+     gap: 100px;
+     margin: 0 auto;
+   }
+   
+   .behavai-iteration {
+     display: flex;
+     flex-direction: column;
+     gap: 40px;
+   }
+   
+   .behavai-iteration-header {
+     display: flex;
+     align-items: center;
+     gap: 12px;
+     flex-wrap: wrap;
+   }
+   
+   .behavai-iteration-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.4rem;
+     font-weight: 500;
+     color: #000206;
+     margin: 0;
+     line-height: 1.4;
+   }
+   
+   .behavai-iteration-number {
+     color: #3b82f6;
+     font-weight: 550;
+   }
+   
+   .behavai-iteration-badge {
+     @include tokens.type-mont-poj-light-header;
+     font-size: 0.7rem;
+     padding: 4px 12px;
+     background: #3b82f6;
+     color: white;
+     border-radius: 20px;
+     text-transform: uppercase;
+     letter-spacing: 0.08em;
+     white-space: nowrap;
+   }
+   
+   .behavai-iteration-media {
+     width: 100%;
+     border-radius: 12px;
+     overflow: hidden;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+     border: 3px solid transparent;
+     transition: border-color 0.3s ease;
+   }
+   
+   .behavai-iteration--chosen .behavai-iteration-media {
+     border-color: #3b82f6;
+     box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
+   }
+   
+   .behavai-iteration-image {
+     width: 100%;
+     height: auto;
+     display: block;
+   }
+   
+   .behavai-iteration-feedback {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 20px;
+     margin-top: 4px;
+   }
+   
+   .behavai-feedback-column {
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+   }
+   
+   .behavai-feedback-card {
+     display: flex;
+     align-items: flex-start;
+     gap: 10px;
+     background: #ffffff;
+     border-radius: 10px;
+     padding: 16px 18px;
+     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+   
+     .feedback-icon {
+       width: 22px;
+       height: 22px;
+       flex-shrink: 0;
+       margin-top: 2px;
+     }
+   
+     span {
+       @include tokens.type-mont-poj-light-body;
+       font-size: 0.93rem;
+       line-height: 1.55;
+       color: #000206;
+       flex: 1;
+     }
+   }
+   
+   /* ========================================
+      RESPONSIVE BREAKPOINTS
+      ======================================== */
+   
+   /* LG: ≤ 991px */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     .behavai-challenge,
+     .behavai-iterations {
+       padding: 70px 0 50px;
+     }
+
+     .behavai-iterations {
+      padding: 60px 0 95px;
+    }
+   
+     .behavai-challenge-inner,
+     .behavai-iterations-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .behavai-challenge-header,
+     .behavai-iterations-header {
+       margin-bottom: 40px;
+     }
+   
+     .behavai-challenge-title,
+     .behavai-iterations-title {
+       font-size: 1.6rem;
+     }
+   
+     .behavai-challenge-body,
+     .behavai-iterations-body {
+       margin-bottom: 50px;
+   
+       p {
+         font-size: 0.95rem !important;
+       }
+     }
+   
+     .behavai-constraint-cards {
+       gap: 20px;
+     }
+   
+     .behavai-constraint-card {
+       padding: 22px 26px;
+     }
+   
+     .constraint-card-title {
+       font-size: 1.1rem;
+     }
+   
+     .constraint-card-icon {
+       width: 60px;
+       height: 60px;
+     }
+   
+     .constraint-card-description {
+       font-size: 0.92rem;
+     }
+   
+     .behavai-iterations-list {
+       gap: 80px;
+     }
+   
+     .behavai-iteration {
+       gap: 30px;
+     }
+   
+     .behavai-feedback-column {
+       gap: 10px;
+     }
+   
+     .behavai-iteration-title {
+       font-size: 1.3rem;
+     }
+   
+     .behavai-feedback-card span {
+       font-size: 0.91rem;
+     }
+   }
+   
+   /* MD: ≤ 767px */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+     .behavai-challenge,
+     .behavai-iterations {
+       padding: 60px 0 40px;
+     }
+     .behavai-iterations {
+       padding: 60px 0 85px;
+     }
+   
+     .behavai-challenge-inner,
+     .behavai-iterations-inner {
+       padding: 0 var(--page-gutter-md);
+     }
+   
+     .behavai-challenge-header,
+     .behavai-iterations-header {
+       margin-bottom: 35px;
+     }
+   
+     .behavai-challenge-title,
+     .behavai-iterations-title {
+       font-size: 1.4rem;
+       line-height: 1.4;
+     }
+   
+     .behavai-challenge-body,
+     .behavai-iterations-body {
+       margin-bottom: 40px;
+     }
+   
+     .behavai-constraint-cards {
+       grid-template-columns: 1fr;
+       gap: 16px;
+       max-width: 600px;
+     }
+   
+     .behavai-iterations-list {
+       gap: 60px;
+     }
+   
+     .behavai-iteration {
+       gap: 30px;
+     }
+   
+     .behavai-iteration-feedback {
+       grid-template-columns: 1fr;
+       gap: 16px;
+     }
+   
+     .behavai-feedback-column {
+       gap: 10px;
+     }
+   
+     .behavai-iteration-media {
+       border-radius: 10px;
+     }
+   
+     .behavai-feedback-card {
+       padding: 14px 16px;
+     }
+   
+     .behavai-iteration-title {
+       font-size: 1.25rem;
+     }
+   }
+   
+   /* SM: ≤ 625px */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     .behavai-challenge,
+     .behavai-iterations {
+       padding: 50px 0 35px;
+     }
+
+     .behavai-iterations {
+      padding: 60px 0 75px;
+    }
+   
+     .behavai-challenge-inner,
+     .behavai-iterations-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .behavai-challenge-header,
+     .behavai-iterations-header {
+       margin-bottom: 30px;
+     }
+   
+     .behavai-challenge-eyebrow,
+     .behavai-iterations-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .behavai-challenge-title,
+     .behavai-iterations-title {
+       font-size: 1.3rem;
+       line-height: 1.45;
+     }
+   
+     .behavai-challenge-body,
+     .behavai-iterations-body {
+       margin-bottom: 35px;
+   
+       p {
+         font-size: 0.82rem !important;
+       }
+     }
+   
+     .behavai-constraint-card {
+       padding: 18px 22px;
+     }
+   
+     .constraint-card-label {
+       font-size: 0.72rem;
+       font-weight: 600;
+     }
+   
+     .constraint-card-title {
+       font-size: 1.05rem;
+     }
+   
+     .constraint-card-icon {
+       width: 56px;
+       height: 56px;
+     }
+   
+     .constraint-card-description {
+       font-size: 0.9rem;
+     }
+   
+     .behavai-iterations-list {
+       gap: 60px;
+     }
+   
+     .behavai-iteration {
+       gap: 25px;
+     }
+   
+     .behavai-feedback-column {
+       gap: 9px;
+     }
+   
+     .behavai-iteration-title {
+       font-size: 1.15rem;
+       flex-basis: 100%;
+     }
+   
+     .behavai-iteration-badge {
+       font-size: 0.68rem;
+       padding: 4px 11px;
+     }
+   
+     .behavai-iteration-header {
+       gap: 10px;
+     }
+   
+     .behavai-feedback-card {
+       gap: 9px;
+       padding: 13px 15px;
+   
+       .feedback-icon {
+         width: 20px;
+         height: 20px;
+       }
+   
+       span {
+         font-size: 0.88rem;
+       }
+     }
+     .behavai-challenge-eyebrow,
+     .behavai-iterations-eyebrow {
+       font-size: 1.1rem;
+       margin-bottom: 10px;
+     }
+   
+     .behavai-challenge-title,
+     .behavai-iterations-title {
+       font-size: 1.3rem;
+       line-height: 1.45;
+     }
+   }
+   
+   /* XS: ≤ 465px */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .behavai-challenge,
+     .behavai-iterations {
+       padding: 40px 0 30px;
+     }
+
+     .behavai-iterations {
+      padding: 60px 0 60px;
+    }
+   
+     .behavai-challenge-header,
+     .behavai-iterations-header {
+       margin-bottom: 25px;
+     }
+   
+     .behavai-challenge-eyebrow,
+     .behavai-iterations-eyebrow {
+       font-size: 0.9rem;
+     }
+   
+     .behavai-challenge-title,
+     .behavai-iterations-title {
+       font-size: 1.15rem;
+       line-height: 1.35;
+     }
+   
+     .behavai-challenge-body,
+     .behavai-iterations-body {
+       margin-bottom: 30px;
+   
+       p {
+         font-size: 0.82rem !important;
+         line-height: 1.6;
+       }
+     }
+   
+     .behavai-constraint-card {
+       padding: 16px 20px;
+     }
+   
+     .constraint-card-icon {
+       width: 52px;
+       height: 52px;
+     }
+   
+     .behavai-iterations-list {
+       gap: 40px;
+     }
+   
+     .behavai-iteration {
+       gap: 20px;
+     }
+   
+     .behavai-feedback-card {
+       padding: 12px 14px;
+     }
+   
+     .behavai-iteration-title {
+       font-size: 1.1rem;
+     }
+   }
+
+   @media (max-width: #{tokens.$md_breakpoint}) {
+      .behavai-challenge-inner,
+      .behavai-iterations-inner {
+        padding: 0 var(--page-gutter-tablet); /* Change from --page-gutter-md to --page-gutter-tablet */
+      }
+  }
+
+  @media (max-width: #{tokens.$sm_breakpoint}) {
+    .behavai-challenge-inner,
+    .behavai-iterations-inner {
+      padding: 0 var(--page-gutter-xs); /* Change from --page-gutter-md to --page-gutter-tablet */
+    }
+}
+
+@media (max-width: #{tokens.$md_breakpoint}) {
+
+  .behavai-about-aba-inner {
+    padding: 0 var(--page-gutter-tablet) !important;
+  }
+}
+
+@media (max-width: #{tokens.$sm_breakpoint}) {
+
+  .behavai-about-aba-inner {
+    padding: 0 var(--page-gutter-xs) !important;
+  }
+}
+
+
+
+/* ================================================================
+   SECTION: MEET OUR USERS
+   Two-card layout introducing user personas (RBT & BCBA)
+   ================================================================ */
+
+   .behavai-users {
+    @include full-bleed;
+    background: #FAFAFE;
+    padding: 80px 0 20px;
+  }
+  
+  .behavai-users-inner {
+    @include container();
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter-desktop);
+  }
+  
+  .behavai-users-header {
+    margin-bottom: 50px;
+  }
+  
+  .behavai-users-eyebrow {
+    @extend .behavai-eyebrow;
+  }
+  
+  .behavai-users-title {
+    @extend .behavai-title;
+  }
+  
+  .behavai-users-body {
+    @extend .behavai-body;
+    margin-bottom: 60px;
+  
+    p {
+      font-size: 1.075rem;
+      line-height: 1.65;
+    }
+  }
+  
+  /* User Cards Grid */
+  .behavai-users-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 0px auto;
+    margin-top: 60px;
+  }
+  
+  /* Individual User Card - styled like Hira WWH insight cards */
+  .behavai-user-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 30px 40px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  /* Badge - styled exactly like behavai-iteration-badge */
+  .behavai-user-badge {
+    @include tokens.type-mont-poj-light-header;
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+  
+  /* Icon Circle - bigger and centered */
+  .behavai-user-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    align-self: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background: #f4f7ff;
+    border: 5px solid #fdfdff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    
+    img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+  }
+  
+  /* Title Wrapper - centered */
+  .behavai-user-title-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Title & Subtitle - centered */
+  .behavai-user-title {
+    font-family: tokens.$font-montserrat;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #000206;
+    margin: 0;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+  
+  .behavai-user-subtitle {
+    font-size: 1.15rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #666666;
+    letter-spacing: 0;
+  }
+  
+  /* Heading - centered */
+  .behavai-user-heading {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #000206;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Divider Line */
+  .behavai-user-divider {
+    width: 100%;
+    height: 1px;
+    background: #E5E7EB;
+    margin: 4px 0;
+  }
+  
+  /* Responsibilities Section - left aligned */
+  .behavai-user-responsibilities {
+    width: 100%;
+    align-self: flex-start;
+  }
+  
+  .behavai-user-responsibilities-title {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000206;
+    margin: 10px 0 12px 0;
+    letter-spacing: -0.01em;
+  }
+  
+  .behavai-user-responsibilities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+    li {
+      @include tokens.type-mont-poj-light-body;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #000206;
+      padding-left: 24px;
+      position: relative;
+      letter-spacing: -0.01em;
+  
+      &::before {
+        content: "✦";
+        position: absolute;
+        left: 0;
+        color: #085FDD;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  /* ================================================================
+     RESPONSIVE: MEET OUR USERS
+     ================================================================ */
+  
+  /* Tablet (landscape) */
+  @media (max-width: 1024px) {
+    .behavai-users {
+      padding: 60px 0 80px;
+    }
+  
+    .behavai-users-inner {
+      padding: 0 var(--page-gutter-tablet);
+    }
+  
+    .behavai-users-header {
+      margin-bottom: 40px;
+    }
+  
+    .behavai-users-body {
+      margin-bottom: 50px;
+    }
+  
+    .behavai-users-cards {
+      gap: 24px;
+    }
+  
+    .behavai-user-card {
+      padding: 26px 26px 26px;
+    }
+  
+    .behavai-user-icon {
+      width: 90px;
+      height: 90px;
+  
+      img {
+        width: 54px;
+        height: 54px;
+      }
+    }
+  }
+  
+  /* Tablet (portrait) and below */
+  @media (max-width: 768px) {
+    .behavai-users {
+      padding: 50px 0 60px;
+    }
+  
+    .behavai-users-inner {
+      padding: 0 var(--page-gutter-mobile);
+    }
+  
+    .behavai-users-header {
+      margin-bottom: 35px;
+    }
+  
+    .behavai-users-body {
+      margin-bottom: 40px;
+  
+      p {
+        font-size: 1rem;
+      }
+    }
+  
+    .behavai-users-cards {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  
+    .behavai-user-card {
+      padding: 24px 24px 24px;
+    }
+  
+    .behavai-user-icon {
+      width: 80px;
+      height: 80px;
+  
+      img {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  
+    .behavai-user-title {
+      font-size: 1.15rem;
+    }
+  
+    .behavai-user-subtitle {
+      font-size: 0.95rem;
+    }
+  
+    .behavai-user-heading {
+      font-size: 0.95rem;
+    }
+  
+    .behavai-user-responsibilities-title {
+      font-size: 0.9rem;
+    }
+  
+    .behavai-user-responsibilities-list li {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Mobile (small) */
+  @media (max-width: 480px) {
+    .behavai-users {
+      padding: 40px 0 50px;
+    }
+  
+    .behavai-users-header {
+      margin-bottom: 30px;
+    }
+  
+    .behavai-users-body {
+      margin-bottom: 35px;
+    }
+  
+    .behavai-user-card {
+      padding: 22px 22px 22px;
+      gap: 14px;
+    }
+  
+    .behavai-user-badge {
+      font-size: 0.65rem;
+      padding: 4px 10px;
+    }
+  
+    .behavai-user-icon {
+      width: 75px;
+      height: 75px;
+  
+      img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  
+    .behavai-user-title {
+      font-size: 1.1rem;
+    }
+  
+    .behavai-user-responsibilities-list {
+      gap: 8px;
+    }
+  }
+
+
+  @media (max-width: #{tokens.$md_breakpoint}) {
+    .behavai-users-inner {
+      padding: 0 var(--page-gutter-tablet) !important;
+    }
+  }
+  
+  @media (max-width: #{tokens.$sm_breakpoint}) {
+    .behavai-users-inner {
+      padding: 0 var(--page-gutter-xs) !important;
+    }
+  }
+
+
+/* ================================================================
+   ADDITIONAL STYLES FOR DESIGN ITERATIONS
+   Updated Pro/Con Card Styling
+   ================================================================ */
+
+/* Update iteration label styling */
+.behavai-iteration-label {
+  color: #3b82f6;
+  font-weight: 550;
+  font-style: normal;
+}

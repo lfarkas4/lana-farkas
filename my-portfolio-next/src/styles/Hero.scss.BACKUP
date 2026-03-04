@@ -1,0 +1,542 @@
+/* ================================================================
+   HERO SECTION
+   Landing page hero with name, tagline, and info columns
+   ================================================================ */
+   @use './partials/tokens' as tokens;
+
+   /* ================================================================
+      TABLE OF CONTENTS
+      1. Container & Layout
+      2. Introduction Text (Hello, Name)
+      3. Tagline (Product Futurist)
+      4. Info Columns (Previous/Current)
+      5. Scroll Cue Animation
+      6. Entrance Animations
+      7. Responsive Breakpoints (Desktop → Mobile)
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. CONTAINER & LAYOUT
+      ================================================================ */
+   .hero {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     min-height: 85vh;
+     padding: tokens.$space-xs 0 tokens.$space-xxl;
+     
+     /* Prevent text selection for UI elements */
+     cursor: default;
+     user-select: none;
+   }
+
+   /* Safari doesn't always stretch flex children correctly without explicit width.
+      This wrapper ensures centered layout is consistent across all browsers. */
+   .hero-inner-wrapper {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+   }
+   
+   
+   /* ================================================================
+      2. INTRODUCTION TEXT (Hello, Name)
+      ================================================================ */
+   .font-cooper-italic-hello {
+     @include tokens.type-coop-display1;
+     color: tokens.$prisec;
+     font-size: 2.075rem;
+   }
+   
+   .hero-title {
+     @include tokens.type-mont-display1;
+     color: tokens.$prisec;
+     font-size: 1.875rem;
+     
+     cursor: default;
+     user-select: none;
+   }
+   
+   
+   /* ================================================================
+      3. TAGLINE (Product Futurist)
+      ================================================================ */
+   .font-cooper-italic-tag {
+     @include tokens.type-coop-display2;
+     color: tokens.$prisec;
+   }
+   
+   .hero-tagline {
+     @include tokens.type-mont-display2;
+     color: tokens.$prisec;
+     line-height: 1.29;
+     margin: tokens.$space-xl auto tokens.$space-xs;
+     margin-bottom: -15px;
+     
+     cursor: default;
+     user-select: none;
+   }
+   
+   /* Responsive text swap: desktop vs mobile versions */
+   .hero-tagline .tagline-gtxs {
+     display: inline; /* Desktop version */
+   }
+   
+   .hero-tagline .tagline-xs {
+     display: none; /* Mobile version hidden by default */
+   }
+   
+   
+   /* ================================================================
+      4. INFO COLUMNS (Previous/Current)
+      ================================================================ */
+   .hero-info {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 100px;
+     margin-top: tokens.$space-lg;
+   }
+   
+   .hero-column {
+     text-align: center;
+   }
+   
+   .hero-column h4 {
+     @include tokens.type-coop-h1;
+     color: tokens.$prisec;
+     margin-bottom: 6px;
+     font-size: 1.175rem;
+   }
+   
+   .hero-column p {
+     @include tokens.type-mont-body;
+     color: tokens.$primary;
+     margin: 5px 0;
+     letter-spacing: 0.25px;
+   }
+   
+   /* Link hover animation */
+   .hero-column a {
+     color: tokens.$primary;
+     text-decoration: underline;
+     transition: filter 0.2s ease;
+     
+     &:hover {
+       filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
+     }
+   }
+   
+   
+   /* ================================================================
+      5. SCROLL CUE ANIMATION
+      ================================================================ */
+   .scroll-cue {
+     margin-top: 50px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   
+   .scroll-mouse {
+     width: 20px;
+     height: 32px;
+     border: 2px solid tokens.$primary;
+     border-radius: 14px;
+     display: flex;
+     justify-content: center;
+     align-items: flex-start;
+     box-sizing: border-box;
+     position: relative;
+   }
+   
+   .scroll-dot {
+     width: 4px;
+     height: 4px;
+     background-color: tokens.$prisec;
+     border-radius: 50%;
+     position: absolute;
+     top: 7px;
+     animation: scrollBounce 1.8s ease-in-out infinite;
+   }
+   
+   @keyframes scrollBounce {
+     0% {
+       transform: translateY(0) scale(0);
+       opacity: 0;
+     }
+     5% {
+       transform: translateY(0) scale(1);
+       opacity: 1;
+     }
+     50% {
+       transform: translateY(10px) scale(1);
+       opacity: 1;
+     }
+     80% {
+       transform: translateY(10px) scale(0);
+       opacity: 0;
+     }
+     100% {
+       transform: translateY(0) scale(0);
+       opacity: 0;
+     }
+   }
+   
+/* ================================================================
+   6. ENTRANCE ANIMATIONS (Framer-style)
+   ================================================================ */
+
+/* 6.1 – Whole hero: soft fade + tiny lift */
+.hero {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.42s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Hidden while loading screen is active */
+.hero.hero-loading {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero.hero-loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 6.2 – Element-level stagger (renamed to avoid collisions) */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Default state: hidden until animated */
+.animate-fade-in {
+  opacity: 0;
+  animation: heroFadeUp 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+/* “No animation” mode – used when skipping via navbar */
+.no-animation {
+  opacity: 1 !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Only actually run element animations once hero is marked loaded */
+.hero-loaded .animate-fade-in {
+  animation-play-state: running;
+}
+
+/* 6.3 – Respect reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .animate-fade-in {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+   
+   
+   /* ================================================================
+      7. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
+      ================================================================ */
+   
+   /* XXL: ≥ 1600px (Extra large desktops) */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .hero {
+       padding: 0 5vw 70px;
+       min-height: 92vh;
+       margin-top: -20px;
+     }
+
+     .hero-title {
+       font-size: 2.2rem;
+     }
+
+     .font-cooper-italic-hello {
+       font-size: 2.4rem;
+     }
+
+     .hero-tagline {
+       font-size: 1.65rem;
+     }
+
+     .font-cooper-italic-tag {
+       font-size: 1.75rem;
+     }
+
+     .hero-column h4 {
+       font-size: 1.4rem;
+     }
+
+     .hero-column p {
+       font-size: 1.1rem;
+     }
+
+     .hero-info {
+       gap: 140px;
+     }
+
+     .scroll-cue {
+       margin-top: 60px;
+     }
+   }
+   
+   /* XL: 1200px – 1599px (Large desktops) */
+   @media (max-width: #{tokens.$xxl_breakpoint}) and (min-width: #{tokens.$xl_breakpoint}) {
+     .hero {
+       padding: tokens.$space-xs 5vw 70px;
+     }
+   }
+   
+   /* LG: 992px – 1199px (Small laptops) */
+   @media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
+     .hero {
+       padding: tokens.$space-xs 5vw 70px;
+     }
+   }
+   
+   /* MD: 768px – 991px (Tablets) */
+   @media (max-width: calc(#{tokens.$lg_breakpoint} - 1px)) and (min-width: #{tokens.$md_breakpoint}) {
+     .hero {
+      padding: 4px 5vw 60px;
+      justify-content: flex-start;
+       min-height: unset;
+     }
+   
+     .font-cooper-italic-hello {
+       font-size: 1.8rem;
+     }
+   
+     .hero-title {
+       font-size: 1.65rem;
+       margin-bottom: tokens.$space-md;
+     }
+   
+     .hero-tagline {
+       font-size: 1.2rem;
+       margin-bottom: -10px;
+     }
+   
+     .font-cooper-italic-tag {
+       font-size: 1.3rem;
+     }
+   
+     .hero-info {
+       gap: 60px;
+     }
+   
+     .hero-column {
+       text-align: center;
+     }
+   }
+   
+   /* SM: 626px – 767px (Large phones) */
+   @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
+     .hero {
+       padding: 4px 5vw 60px;
+       justify-content: flex-start;
+       min-height: unset;
+     }
+
+     .scroll-cue {
+       margin-top: 28px;
+     }
+   
+     .font-cooper-italic-hello {
+       font-size: 1.8rem;
+     }
+
+     .hero-title {
+       font-size: 1.65rem;
+       margin-bottom: tokens.$space-md;
+     }
+   
+     .hero-tagline {
+       font-size: 1.2rem;
+       margin-bottom: -10px;
+     }
+   
+     .font-cooper-italic-tag {
+       font-size: 1.3rem;
+     }
+   
+     .hero-info {
+       gap: 60px;
+     }
+   
+     .hero-column {
+       text-align: center;
+     }
+   }
+   
+   /* XS: 465px – 625px (Medium phones) */
+   @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
+     .hero {
+       padding: 45px 5vw 40px;
+       justify-content: flex-start;
+       min-height: unset;
+     }
+
+     .scroll-cue {
+       margin-top: 28px;
+     }
+   
+     .font-cooper-italic-hello {
+       font-size: 1.6rem;
+     }
+   
+     .hero-title {
+       font-size: 1.45rem;
+       margin-bottom: tokens.$space-md;
+     }
+   
+     .hero-tagline {
+       font-size: 1rem;
+       margin-top: 60px;
+       margin-bottom: -15px;
+     }
+   
+     .font-cooper-italic-tag {
+       font-size: 1.15rem;
+     }
+   
+     /* Info columns stack vertically */
+     .hero-info {
+       flex-direction: column;
+       align-items: center;
+       gap: 10px;
+     }
+   
+     .hero-column {
+       text-align: center;
+     }
+   
+     .hero-column h4 {
+       font-size: 1.1rem;
+     }
+   
+     .hero-column p {
+       font-size: 0.8rem;
+     }
+   }
+   
+/* ================================================================
+   HERO SECTION - ORIGINAL XS: ≤ 464px (Small phones)
+   ================================================================ */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+    .hero {
+      padding: 38px 5vw 40px;
+      justify-content: flex-start;
+      min-height: unset;
+    }
+  
+    .font-cooper-italic-hello {
+      @include tokens.type-coop-display2-bold;
+      font-size: 1.4rem;
+    }
+  
+    .hero-title {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      font-weight: 450 !important;
+      letter-spacing: 0px;
+    }
+  
+    .hero-tagline {
+      font-size: 1.05rem;
+      margin-top: 50px;
+      margin-bottom: -10px;
+      font-weight: 450 !important;
+      letter-spacing: 0px;
+      
+      /* Multi-line layout for XS */
+      --lh: 1.5rem;
+      line-height: var(--lh);
+      max-width: 28ch;
+      margin-inline: auto;
+      margin-bottom: -20px;
+    }
+  
+    .font-cooper-italic-tag {
+      @include tokens.type-coop-display2-bold;
+      font-size: 0.975rem;
+      letter-spacing: 0.75px;
+      line-height: var(--lh);
+    }
+  
+    /* Swap to mobile text version */
+    .hero-tagline .tagline-gtxs {
+      display: none;
+    }
+  
+    .hero-tagline .tagline-xs {
+      display: block;
+    }
+  
+    .hero-tagline .tagline-xs .line {
+      display: block;
+      line-height: var(--lh);
+    }
+  
+    .hero-tagline .tagline-xs .line + .line {
+     //  margin-top: 0.15rem;
+    }
+  
+    /* Info columns stack */
+    .hero-info {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px; /* was 60px — reduced to keep scroll cue in viewport */
+      margin-top: 52px;
+    }
+
+    .scroll-cue {
+      margin-top: 20px; /* was 50px — tighter on small phones */
+    }
+  
+    .hero-column {
+      text-align: center;
+    }
+  
+    .hero-column h4 {
+      @include tokens.type-coop-display2-bold;
+      font-size: 0.95rem !important;
+      letter-spacing: 0.75px;
+      margin-top: 16px;
+    }
+  
+    .hero-column p {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      font-weight: 450 !important;
+      letter-spacing: 0px;
+    }
+    
+    .animate-fade-in {
+      animation-duration: 0.38s;
+    }
+  }

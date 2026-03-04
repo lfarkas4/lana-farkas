@@ -1,0 +1,4159 @@
+/* ================================================================
+   HIRA HEALTH CASE STUDY
+   Reorganized & Fixed for Consistent Responsive Design
+   Matching BehavAI and Aquatonomy patterns
+   ================================================================ */
+
+   @use './partials/tokens' as tokens;
+
+   /* ================================================================
+      TABLE OF CONTENTS
+      ----------------------------------------------------------------
+      1. MIXINS & HELPERS
+      2. SHARED UTILITIES
+      3. SECTION: Our Challenge (HiraOurChallenge)
+      4. SECTION: Patient Journey (HiraPatientJourney)
+         4a. The Patient Journey
+         4b. How Might We (HMW)
+         4c. Explored Directions
+      5. SECTION: The Concept (HiraTheConcept)
+      6. SECTION: What We Heard (HiraWhatWeHeard)
+      7. SECTION: Product Pivot (HiraProductPivot)
+      8. SECTION: The Solution (HiraSolution) - Dark
+      9. SECTION: Designing for Trust (HiraDesigningForTrust)
+      10. SECTION: Trust Outro (HiraTrustOutro)
+      11. RESPONSIVE BREAKPOINTS (Unified)
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. MIXINS & HELPERS
+      ================================================================ */
+   
+   @mixin full-bleed {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
+   }
+   
+   @mixin container($pad: var(--page-gutter-desktop)) {
+     @include tokens.container-page($pad);
+   }
+   
+   @mixin media-frame($mode: light) {
+     width: 100%;
+     height: auto;
+     border-radius: 20px;
+     display: block;
+   
+     @if $mode == light {
+       border: 0.05px solid rgba(0, 0, 0, 0.05);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+     } @else {
+       border: 1px solid rgba(255, 255, 255, 0.1);
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+     }
+   }
+   
+   
+   /* ================================================================
+      2. SHARED UTILITIES
+      ================================================================ */
+   
+   /* Consistent typography for headers - BASE STYLES */
+   .hira-eyebrow {
+     @include tokens.type-mont-poj-light-header;
+     color: #060e1d;
+     margin: 0 0 12px 0;
+     letter-spacing: -0.1px;
+   }
+   
+   .hira-title {
+     @include tokens.type-mont-poj-light-headerintro;
+     color: #000206;
+     margin: 0;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   .hira-body {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     line-height: 1.65;
+     font-size: 1.075rem;
+   
+     p {
+       margin: 0;
+       font-size: inherit;
+       line-height: inherit;
+     }
+   }
+   
+   /* Highlight utility - GLOBAL for all light sections */
+   .hira-challenge,
+   .hira-journey,
+   .hira-hmw,
+   .hira-directions,
+   .hira-concept,
+   .hira-wwh,
+   .hira-pivot,
+   .hira-impact,
+   .hira-trust,
+   .hira-trust-outro {
+     .hi {
+       @include tokens.body-strong-light;
+       background: #C8D3F5;
+       padding: 0 0.25em;
+       border-radius: 4px;
+       -webkit-box-decoration-break: clone;
+       box-decoration-break: clone;
+     }
+   }
+   
+   /* Context helpers */
+   .is-light { strong { @include tokens.body-strong-light; } }
+   .is-dark  { strong { @include tokens.body-strong-dark; } }
+   
+   
+   /* ================================================================
+      3. SECTION: OUR CHALLENGE (HiraOurChallenge)
+      ================================================================ */
+   
+   .hira-challenge {
+     @include full-bleed;
+     background: rgb(236, 239, 247);
+     padding: 80px 0 120px;
+   }
+   
+   .hira-challenge-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-challenge-header {
+     margin-bottom: 50px;
+   }
+   
+   .hira-challenge-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-challenge-title {
+     @extend .hira-title;
+   }
+   
+   .hira-challenge-media {
+     width: 100%;
+     margin-bottom: 10px;
+     display: flex;
+     justify-content: center;
+   }
+   
+   .hira-challenge-image {
+     max-width: 100%;
+     height: auto;
+     display: block;
+     margin-top: -50px;
+   }
+   
+   .hira-challenge-body {
+     @extend .hira-body;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   
+   /* ================================================================
+      4. SECTION: PATIENT JOURNEY (HiraPatientJourney)
+      ================================================================ */
+   
+   /* ================================================================
+      4a. THE PATIENT JOURNEY
+      ================================================================ */
+   
+   .hira-journey {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 80px 0 20px;
+   }
+   
+   .hira-journey-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-journey-header {
+     margin-bottom: 50px;
+   }
+   
+   .hira-journey-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-journey-title {
+     @extend .hira-title;
+   }
+   
+   .hira-journey-body {
+     @extend .hira-body;
+     margin-bottom: 120px;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   /* Journey Map */
+   .hira-journey-map {
+     position: relative;
+     margin-top: 80px;
+   }
+   
+   /* Top connecting line */
+   .journey-line-wrapper {
+     position: relative;
+     width: 100%;
+     height: 0;
+     margin-bottom: 40px;
+   }
+   
+   .journey-line {
+     position: absolute;
+     top: 0;
+     left: 4%;
+     right: 4%;
+     height: 1px;
+     background: #d6d6d6;
+     z-index: 0;
+     
+     &::after {
+       content: '';
+       position: absolute;
+       right: -8px;
+       top: -4.5px;
+       width: 0;
+       height: 0;
+       border-left: 8px solid #d6d6d6;
+       border-top: 5px solid transparent;
+       border-bottom: 5px solid transparent;
+     }
+   }
+   
+   .journey-arrow {
+     display: none;
+   }
+   
+   /* Three columns */
+   .journey-columns {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 50px;
+     max-width: 1100px;
+     margin: 0 auto;
+     position: relative;
+     margin-top: 100px;
+     margin-bottom: 80px;
+   }
+   
+   .journey-column {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     position: relative;
+     padding-top: 50px;
+   }
+   
+   /* Icon circle */
+   .journey-icon-wrapper {
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+     background: #fdfeff;
+     border: 1px solid #d6d6d6;
+     display: grid;
+     place-items: center;
+     margin-bottom: 20px;
+     position: absolute;
+     top: -42px;
+     left: 50%;
+     transform: translateX(-50%);
+     z-index: 2;
+   }
+   
+   .journey-icon {
+     width: 45px;
+     height: 45px;
+     object-fit: contain;
+   }
+   
+   .journey-column-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.1rem;
+     font-weight: 600;
+     color: #000206;
+     margin: 0 0 8px 0;
+     background: #FAFAFE;
+     padding: 4px 12px;
+     border-radius: 6px;
+     position: relative;
+     z-index: 1;
+   }
+   
+   .journey-column-subtitle {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     font-weight: 450;
+     color: #0C6FFF;
+     margin: 0 0 30px 0;
+     background: #FAFAFE;
+     padding: 4px 12px;
+     border-radius: 6px;
+     position: relative;
+     z-index: 1;
+     
+     &::before { content: '"'; }
+     &::after { content: '"'; }
+   }
+   
+   /* Boxes container */
+   .journey-boxes {
+     position: relative;
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     padding-top: 20px;
+   }
+   
+   /* Vertical dotted line */
+   .journey-dotted-line {
+     position: absolute;
+     top: -100px;
+     left: 50%;
+     bottom: 0;
+     width: 1px;
+     background-image: linear-gradient(to bottom, #d6d6d6 50%, transparent 50%);
+     background-size: 1px 10px;
+     background-repeat: repeat-y;
+     transform: translateX(-50%);
+     z-index: 0;
+   }
+   
+   /* Individual box */
+   .journey-box {
+     position: relative;
+     padding: 22px 20px 18px;
+     border-radius: 16px;
+     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+     z-index: 1;
+     text-align: left;
+   }
+   
+   .journey-box--pre { background: #ECF1FF; }
+   .journey-box--during { background: #D7E1FF; }
+   .journey-box--post { background: #CCD9FF; }
+   
+   /* Tag in top left */
+   .journey-box-tag {
+     display: inline-block;
+     background: #ffffff;
+     padding: 4px 10px;
+     border-radius: 6px;
+     font-family: tokens.$font-montserrat;
+     font-size: 0.7rem;
+     font-weight: 600;
+     letter-spacing: 0.5px;
+     text-transform: uppercase;
+     color: #000206;
+     margin-bottom: 12px;
+   }
+   
+   .journey-box-text {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     line-height: 1.5;
+     color: #000206;
+     margin: 0;
+   }
+   
+   
+   /* ================================================================
+      4b. HOW MIGHT WE (HMW) - with SVG curve
+      ================================================================ */
+   
+   .hira-hmw {
+     @include full-bleed;
+     position: relative;
+     overflow: hidden;
+     background: #FAFAFE;
+     padding: clamp(180px, 10vw, 200px) 0 clamp(160px, 8vw, 180px);
+   }
+   
+   /* curve becomes an absolute background */
+   .hira-hmw-curve {
+     position: absolute;
+     inset: 0;
+     left: 50%;
+     max-width: none;
+     width: 100vw;
+     height: 100%;
+     transform: translateX(-50%) scaleX(1.8);
+     transform-origin: center;
+     object-fit: fill;
+     pointer-events: none;
+     z-index: 0;
+     display: block;
+   }
+   
+   /* content above curve */
+   .hira-hmw-inner {
+     position: relative;
+     z-index: 1;
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-hmw-header {
+     margin-bottom: 50px;
+     position: relative;
+   }
+   
+   .hira-hmw-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-hmw-title {
+     @extend .hira-title;
+     position: relative;
+     display: flex;
+     align-items: flex-start;
+     gap: 20px;
+   
+     span {
+       flex: 1;
+     }
+   }
+   
+   /* Spark decoration */
+   .hira-hmw-spark {
+     position: absolute;
+     right: -90px;
+     top: -60px;
+     height: auto;
+     pointer-events: none;
+     z-index: 5;
+     width: 80px;
+     rotate: 10deg;
+   }
+   
+   .hira-hmw-body {
+     @extend .hira-body;
+     margin-bottom: 50px;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   /* Flow visualization: Capture → Organize → Revisit */
+   .hira-hmw-flow {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 24px;
+     flex-wrap: wrap;
+   }
+   
+   .hmw-flow-item {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 12px;
+   }
+   
+   .hmw-flow-icon {
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+     background: #fdfeff;
+     border: 1px solid #d6d6d6;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+     display: grid;
+     place-items: center;
+   
+     img {
+       width: 48px;
+       height: 48px;
+       object-fit: contain;
+     }
+   }
+   
+   .hmw-flow-label {
+     font-family: tokens.$font-montserrat;
+     font-size: 0.95rem;
+     font-weight: 500;
+     color: #000206;
+     letter-spacing: 0.3px;
+   }
+   
+   .hmw-flow-arrow {
+     color: #085FDD;
+     margin-bottom: 30px;
+   
+     svg {
+       width: 28px;
+       height: 28px;
+     }
+   }
+   
+   
+   /* ================================================================
+      4c. EXPLORED DIRECTIONS
+      ================================================================ */
+   
+   .hira-directions {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 20px 0 100px;
+   }
+   
+   .hira-directions-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-directions-header {
+     margin-bottom: 50px;
+     /* FIXED: Removed problematic margin-top that caused background bleed */
+     margin-top: 0;
+     padding-top: 60px;
+   }
+   
+   .hira-directions-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-directions-title {
+     @extend .hira-title;
+   }
+   
+   .hira-directions-body {
+     @extend .hira-body;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     margin-bottom: 60px;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   .hira-directions-media {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;
+   }
+   
+   .hira-directions-image {
+     @include media-frame(light);
+     width: 100%;
+     height: auto;
+   }
+   
+   .hira-directions-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 0 8px;
+   }
+   
+   
+   /* ================================================================
+      5. SECTION: THE CONCEPT (HiraTheConcept)
+      ================================================================ */
+   
+   .hira-concept {
+     @include full-bleed;
+     background: rgb(236, 239, 247);
+     padding: 80px 0 100px;
+   }
+   
+   .hira-concept-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-concept-header {
+     margin-bottom: 50px;
+   }
+   
+   .hira-concept-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-concept-title {
+     @extend .hira-title;
+   }
+   
+   .hira-concept-body {
+     @extend .hira-body;
+     margin-bottom: 60px;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   /* Concept Cards */
+   .hira-concept-cards {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 20px;
+     margin: 0 auto;
+   }
+   
+   .concept-card {
+     background: #ffffff;
+     border-radius: 16px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+     padding: 30px 30px 30px;
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+   }
+   
+   .concept-card-header {
+     display: flex;
+     align-items: flex-start;
+     justify-content: space-between;
+     gap: 16px;
+   }
+   
+   .concept-card-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.1rem;
+     font-weight: 600;
+     color: #000206;
+     margin-top: 14px;
+     flex: 1;
+     line-height: 1.3;
+   }
+   
+   .concept-card-icon {
+     width: 55px;
+     height: 55px;
+     object-fit: contain;
+     flex-shrink: 0;
+   }
+   
+   .concept-card-description {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     line-height: 1.6;
+     color: #000206;
+     margin: 0;
+   
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   
+   /* ================================================================
+      6. SECTION: WHAT WE HEARD (HiraWhatWeHeard)
+      ================================================================ */
+   
+   .hira-wwh {
+     @include full-bleed;
+     background: #FAFAFE;
+     padding: 100px 0 100px;
+   }
+   
+   .hira-wwh-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-wwh-header {
+     margin-bottom: 60px;
+   }
+   
+   .hira-wwh-header--spaced {
+     margin-top: 120px;
+   }
+   
+   .hira-wwh-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-wwh-title {
+     @extend .hira-title;
+     margin-bottom: 50px;
+   }
+   
+   .hira-wwh-body {
+     @extend .hira-body;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   /* Activities Gallery - styled after Aquatonomy deliverables-gallery */
+   .hira-wwh-activities {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 50px;
+     margin-bottom: 0;
+   }
+   
+   .hira-wwh-activity {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;
+   }
+   
+   .hira-wwh-activity-image {
+     @include media-frame(light);
+   }
+   
+   .hira-wwh-activity-content {
+     display: flex;
+     flex-direction: column;
+     gap: 4px;
+     text-align: center;
+     margin: 0 8px;
+   }
+   
+   /* Activity Label - matches Aquatonomy deliverable-label */
+   .hira-wwh-activity-label {
+     @include tokens.type-label-sm-light;
+     color: #060e1d;
+     margin-bottom: -15px;
+   }
+   
+   /* Activity Title - matches Aquatonomy deliverable-title */
+   .hira-wwh-activity-title {
+     @include tokens.type-title-md-light;
+     color: #000206;
+     margin-bottom: 12px;
+   }
+   
+   /* Activity Text - matches Aquatonomy deliverable-text */
+   .hira-wwh-activity-text {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     line-height: 1.6;
+     margin: 0;
+   }
+   
+   /* Key Insights Section */
+   .hira-wwh-insights {
+     margin-top: 50px;
+   }
+   
+   .hira-wwh-insights-label {
+     @include tokens.type-label-sm-light;
+     color: #060e1d;
+     margin-bottom: 24px;
+   }
+   
+   .hira-wwh-insights-grid {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 20px;
+     margin-bottom: 50px;
+   }
+   
+   /* Insight Card - styled to match concept-card */
+   .hira-wwh-insight-card {
+     background: #ffffff;
+     border-radius: 16px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+     padding: 30px 30px 30px;
+     display: flex;
+     flex-direction: row;
+     align-items: flex-start;
+     gap: 16px;
+   }
+   
+   /* Number circle */
+   .hira-wwh-insight-number {
+     font-family: tokens.$font-montserrat;
+     font-size: 1.2rem;
+     font-weight: 600;
+     color: #085FDD;
+     background: #ECF1FF;
+     width: 55px;
+     height: 55px;
+     border-radius: 50%;
+     display: grid;
+     place-items: center;
+     flex-shrink: 0;
+   }
+   
+   .hira-wwh-insight-content {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
+     padding-top: 6px;
+   }
+   
+   /* Insight Title - matches concept-card-title weight */
+   .hira-wwh-insight-title {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.1rem;
+     font-weight: 600;
+     color: #000206;
+     line-height: 1.3;
+     margin: 0;
+   }
+   
+   /* Insight Text - matches concept-card-description */
+   .hira-wwh-insight-text {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     line-height: 1.6;
+     color: #000206;
+     margin: 0;
+   }
+   
+   /* Transition Line */
+   .hira-wwh-transition {
+     @include tokens.type-mont-poj-light-body;
+     color: #000206;
+     line-height: 1.65;
+     font-style: italic;
+     padding-top: 30px;
+     border-top: 1px solid #e0e0e0;
+     margin: 0;
+     text-align: center;  /* Add this line */
+   
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   
+   /* ================================================================
+      7. SECTION: PRODUCT PIVOT (HiraProductPivot)
+      ================================================================ */
+   
+   .hira-pivot {
+     @include full-bleed;
+     background: rgb(236, 239, 247);
+     padding: 80px 0 120px;
+   }
+   
+   .hira-pivot-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-pivot-header {
+     margin-bottom: 60px;
+   }
+   
+   .hira-pivot-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-pivot-title {
+     @extend .hira-title;
+     margin-bottom: 50px;
+   }
+   
+   .hira-pivot-body {
+     @extend .hira-body;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   /* Before/After Comparison */
+   .hira-pivot-compare {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 40px;
+     flex-wrap: nowrap;
+   }
+   
+   .hira-pivot-card {
+     position: relative;
+     flex: 1;
+     max-width: 420px;
+     min-width: 280px;
+     margin: 0;
+   }
+   
+   /* Pivot Tag - DARK background, LIGHT text */
+   .hira-pivot-tag {
+     position: absolute;
+     top: 16px;
+     left: 16px;
+     background: #03090b;
+     padding: 6px 14px;
+     border-radius: 8px;
+     font-family: tokens.$font-montserrat;
+     font-size: 0.7rem;
+     font-weight: 600;
+     letter-spacing: 0.5px;
+     text-transform: uppercase;
+     color: #ffffff;
+     z-index: 2;
+     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+   }
+   
+   .hira-pivot-image {
+     @include media-frame(light);
+     width: 100%;
+   }
+   
+   /* FIXED: Pivot Caption - styled like insight titles (thicker/bigger) */
+   .hira-pivot-caption {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.05rem;
+     font-weight: 550;
+     color: #000206;
+     text-align: center;
+     margin: 18px 8px 0;
+     line-height: 1.4;
+   }
+   
+   .hira-pivot-arrow {
+     width: 50px;
+     height: auto;
+     flex-shrink: 0;
+   }
+   
+   
+   /* ================================================================
+      8. SECTION: THE SOLUTION (HiraSolution) - Dark
+      ================================================================ */
+   
+   .hira-solution {
+     @include full-bleed;
+     @include tokens.section-dark(80px, 120px);
+     background: #03090b;
+   }
+   
+   .hira-solution-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 25px var(--page-gutter-desktop);
+   }
+   
+   .hira-solution-hero-content {
+     display: flex;
+     flex-direction: column;
+   }
+   
+   .hira-solution-hero-eyebrow {
+     @include tokens.type-mont-poj-dark-header;
+     color: tokens.$prisec;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .hira-solution-hero-title {
+     @include tokens.type-mont-poj-dark-headerintro;
+     color: tokens.$prisec;
+     line-height: 1.45;
+     letter-spacing: -0.025px;
+     margin-bottom: 80px;
+   
+     em {
+       font-style: italic;
+       font-weight: 400;
+     }
+   }
+   
+   /* Demos */
+   .hira-solution-demo {
+     display: grid;
+     grid-template-columns: 1fr 2fr;
+     gap: 50px;
+     align-items: center;
+     margin-bottom: -10px;
+   }
+   
+   .hira-solution-demo--reverse {
+     grid-template-columns: 2fr 1fr;
+   
+     .hira-solution-demo-media { order: 2; }
+     .hira-solution-demo-content { order: 1; }
+   }
+   
+   .hira-solution-demo--mobile {
+     grid-template-columns: 1fr 2fr;
+     margin-top: -40px;
+   
+     &.hira-solution-demo--reverse {
+       grid-template-columns: 2fr 1fr;
+     }
+   }
+   
+   .hira-solution-demo-media {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-width: 0;
+   }
+   
+   .hira-solution-demo-content {
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+     min-width: 0;
+   }
+   
+   .hira-solution-demo-video {
+     width: 100%;
+     height: auto;
+     display: block;
+     border-radius: 20px;
+   }
+   
+   .hira-solution-demo-heading {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1.35rem;
+     font-weight: 500;
+     color: tokens.$prisec;
+     line-height: 1.4;
+     margin: 0;
+   }
+   
+   .hira-solution-demo-number {
+     color: #0c6fff;
+     font-style: italic;
+     font-weight: 500;
+     margin-right: 8px;
+   }
+   
+   .hira-solution-demo-description {
+     @include tokens.type-mont-poj-light-body;
+     color: tokens.$primary;
+     line-height: 1.65;
+     font-size: 1.075rem;
+     margin: 0;
+     letter-spacing: 0.075px;
+   }
+   
+   /* Live Context */
+   .hira-live-context {
+     margin-bottom: 180px;
+   }
+   
+   .hira-live-context-header {
+     margin-bottom: 60px;
+     margin-top: 145px;
+   }
+   
+   .hira-live-context-eyebrow {
+     @include tokens.type-mont-poj-dark-header;
+     color: tokens.$prisec;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .hira-live-context-title {
+     @include tokens.type-mont-poj-dark-headerintro;
+     color: tokens.$prisec;
+     line-height: 1.45;
+     letter-spacing: -0.025px;
+   
+     em {
+       font-style: italic;
+       font-weight: 400;
+     }
+   }
+   
+   .hira-live-context-visual {
+     width: 100%;
+     max-width: 1200px;
+     margin: 0 auto;
+     display: flex;
+     justify-content: center;
+   }
+   
+   .hira-live-context-image {
+     width: 110%;
+     height: auto;
+     display: block;
+   }
+   
+   /* Mobile Companion Intro */
+   .hira-mobile-intro {
+     margin-bottom: 160px;
+   }
+   
+   .hira-mobile-intro-eyebrow {
+     @include tokens.type-mont-poj-dark-header;
+     color: tokens.$prisec;
+     margin-bottom: 15px;
+     letter-spacing: -0.1px;
+   }
+   
+   .hira-mobile-intro-title {
+     @include tokens.type-mont-poj-dark-headerintro;
+     color: tokens.$prisec;
+     line-height: 1.45;
+   
+     em {
+       font-style: italic;
+       font-weight: 400;
+     }
+   }
+   
+   
+   /* ================================================================
+      9. SECTION: DESIGNING FOR TRUST (HiraDesigningForTrust)
+      ================================================================ */
+   
+   .hira-trust {
+     @include full-bleed;
+     background: #fafafe;
+     padding: 80px 0 100px;
+   }
+   
+   .hira-trust-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-trust-block {
+     &:not(:last-child) {
+       margin-bottom: 120px;
+     }
+   }
+   
+   .hira-trust-header {
+     margin-bottom: 35px;
+   }
+   
+   .hira-trust-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-trust-title {
+     @extend .hira-title;
+   
+     em {
+       font-style: italic;
+       font-weight: 425;
+     }
+   }
+   
+   .hira-trust-body {
+     @extend .hira-body;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+     margin-bottom: 60px;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   .hira-trust-body--tight {
+     margin-bottom: 40px;
+   }
+   
+   /* Where Hira Fits - Media */
+   .hira-trust-media--where {
+     margin-top: 20px;
+   }
+   
+   .hira-trust-image--where {
+     width: 100%;
+     max-width: 900px;
+     margin: 0 auto;
+     display: block;
+   }
+   
+   
+   /* ================================================================
+      10. SECTION: TRUST OUTRO (HiraTrustOutro)
+      ================================================================ */
+   
+   .hira-trust-outro {
+     @include full-bleed;
+     background: rgb(236, 239, 247);
+     padding: 100px 0 100px;
+   }
+   
+   .hira-trust-outro-inner {
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+     padding: 0 var(--page-gutter-desktop);
+   }
+   
+   .hira-trust-outro-block {
+     &:not(:last-child) {
+       margin-bottom: 110px;
+     }
+   }
+   
+   .hira-trust-outro-block--last {
+     margin-bottom: 0;
+   }
+   
+   .hira-trust-outro-header {
+     margin-bottom: 50px;
+   }
+   
+   .hira-trust-outro-eyebrow {
+     @extend .hira-eyebrow;
+   }
+   
+   .hira-trust-outro-title {
+     @extend .hira-title;
+   }
+   
+   .hira-trust-outro-body {
+     @extend .hira-body;
+     display: flex;
+     flex-direction: column;
+     gap: tokens.$space-xs;
+     margin-bottom: 50px;
+   
+     p {
+       font-size: 1.075rem;
+       line-height: 1.65;
+     }
+   }
+   
+   /* Testimonial Cards */
+   .hira-testimonial-cards {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 20px;
+     margin-top: 60px;
+   }
+   
+   .hira-testimonial-card {
+     background: #ffffff;
+     border-radius: 18px;
+     padding: 35px 30px 28px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+   }
+   
+   .testimonial-quote {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 1rem;
+     line-height: 1.65;
+     color: #000206;
+     margin: 0;
+   
+     strong {
+       @include tokens.body-strong-light;
+     }
+   }
+   
+   .testimonial-author {
+     display: flex;
+     align-items: center;
+     gap: 14px;
+   }
+   
+   .author-avatar {
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     object-fit: cover;
+   }
+   
+   .author-info {
+     display: flex;
+     flex-direction: column;
+     gap: 2px;
+   }
+   
+   .author-name {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.95rem;
+     font-weight: 600;
+     color: #000206;
+   }
+   
+   .author-role {
+     @include tokens.type-mont-poj-light-body;
+     font-size: 0.85rem;
+     color: #666;
+   }
+   
+   /* What I Learned Images */
+   .hira-trust-outro .hira-heard-images {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 50px;
+     margin-top: 60px;
+   }
+   
+   .hira-trust-outro .hira-heard-image-item {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;
+   }
+   
+   .hira-trust-outro .hira-heard-image {
+     @include media-frame(light);
+   }
+   
+   .hira-trust-outro .hira-heard-caption {
+     @include tokens.type-caption-light;
+     color: #000206;
+     text-align: center;
+     margin: 0 8px;
+   }
+   
+   /* ================================================================
+   STEP 2: Add BASE STYLES after .hira-trust-outro .hira-heard-caption
+   (after line 1359)
+   ================================================================ */
+
+/* Perceived Impact Section */
+.hira-impact {
+    @include full-bleed;
+    background: #FAFAFE;
+    padding: 100px 0;
+  }
+  
+  .hira-impact-inner {
+    max-width: tokens.$container-page-max;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter-desktop);
+  }
+  
+  .hira-impact-header {
+    margin-bottom: 50px;
+  }
+  
+  .hira-impact-eyebrow {
+    @extend .hira-eyebrow;
+  }
+  
+  .hira-impact-title {
+    @extend .hira-title;
+  }
+  
+  .hira-impact-body {
+    @extend .hira-body;
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$space-xs;
+  
+    p {
+      font-size: 1.075rem;
+      line-height: 1.65;
+    }
+  }
+  
+  /* Stat Callout - Redesigned */
+  .hira-impact-callout {
+    background: rgb(239, 242, 251);
+    border-radius: 20px;
+    padding: 30px 75px;
+    margin: 60px 0;
+    border-left: 4px solid #085FDD;
+  }
+  
+  .callout-stats {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px !important;
+    margin-bottom: 30px;
+  }
+  
+  .callout-stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  
+  .callout-number {
+    font-family: tokens.$font-montserrat;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #085FDD;
+    line-height: 1;
+  }
+  
+  .callout-label {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 1rem;
+    color: #000206;
+    line-height: 1.5;
+  }
+  
+  .callout-divider {
+    display: flex;
+    align-items: center;
+    padding-top: 18px; /* Align with the number baseline */
+  
+    span {
+      @include tokens.type-mont-poj-light-body;
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+      white-space: nowrap;
+    }
+  }
+  
+  .callout-context {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 1rem;
+    color: #085FDD;
+    line-height: 1.6;
+    margin: 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(8, 95, 221, 0.15);
+  
+    strong {
+      @include tokens.body-strong-light;
+      color: #085FDD;
+    }
+  }
+  
+  /* Trust Outro Spacing Fixes */
+  .hira-trust-outro .hira-trust-outro-block:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Add bottom padding to External Review section before Impact */
+  .hira-trust-outro:not(.hira-trust-outro--continued) {
+    padding-bottom: 0;
+  }
+  
+  /* What I Learned section needs top padding */
+  .hira-trust-outro--continued {
+    padding-top: 100px;
+  }
+
+  /* Space between External Review (grey) and Perceived Impact (white) */
+section.hira-trust-outro > .hira-trust-outro-inner {
+    margin-bottom: 100px;
+  }
+
+    /* =========================================
+   Perceived Impact – Stat Callout Enhancements
+   ========================================= */
+
+.hira-impact-callout {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Optional “Did you know?” + source row */
+  .callout-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  
+  .callout-kicker {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(8, 95, 221, 0.10);
+    color: #085FDD;
+  }
+  
+  .callout-source {
+    @include tokens.type-mont-poj-light-body;
+    font-size: 0.85rem;
+    color: rgba(0, 2, 6, 0.70);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  
+  /* Make the stats layout more “designed” and responsive */
+  .callout-stats {
+    display: grid; /* overrides your current flex */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+  
+  .callout-stat-item {
+    padding-right: 10px;
+  }
+  
+  .callout-number {
+    font-size: clamp(2.75rem, 4.5vw, 3.5rem); /* keeps your current max */
+    letter-spacing: -0.02em;
+  }
+  
+  .callout-label {
+    max-width: 34ch;
+  }
+  
+  
+  /* Each stat row: number + label */
+.callout-stat-item {
+    display: flex;
+    align-items: flex-end; /* <- key: aligns to bottom line */
+    gap: 16px;
+  }
+  
+  /* Keep the big number from pushing alignment weirdly */
+  .callout-number {
+    line-height: 1;
+    display: inline-block;
+  }
+  
+  /* Let the label wrap naturally */
+  .callout-label {
+    line-height: 1.4;
+    display: block;
+  }
+  
+   
+   /* ================================================================
+      11. RESPONSIVE BREAKPOINTS (Unified)
+      ================================================================ */
+   
+   /* LG: ≤ 992px - CRITICAL TYPOGRAPHY FIX */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+     
+     /* === GLOBAL TYPOGRAPHY FIXES FOR LG === */
+     /* Headers should go from 1.925rem to 1.5rem */
+     .hira-challenge-title,
+     .hira-journey-title,
+     .hira-hmw-title,
+     .hira-directions-title,
+     .hira-concept-title,
+     .hira-wwh-title,
+     .hira-pivot-title,
+     .hira-solution-hero-title,
+     .hira-live-context-title,
+     .hira-mobile-intro-title,
+     .hira-trust-title,
+     .hira-trust-outro-title,
+     .hira-impact-title {
+       font-size: 1.5rem;
+       line-height: 1.35;
+     }
+     
+     /* Body text should go from 1.075rem to 0.95rem */
+     .hira-challenge-body p,
+     .hira-journey-body p,
+     .hira-hmw-body p,
+     .hira-directions-body p,
+     .hira-concept-body p,
+     .hira-wwh-body p,
+     .hira-pivot-body p,
+     .hira-trust-body p,
+     .hira-trust-outro-body p,
+     .hira-impact-body p {
+       font-size: 0.95rem;
+       line-height: 1.65;
+     }
+     
+     /* === Our Challenge === */
+     .hira-challenge {
+       padding: 75px 0 95px;
+     }
+     
+     .hira-challenge-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+     
+     .hira-challenge-header {
+       margin-bottom: 50px;
+     }
+   
+     /* === Patient Journey === */
+     .hira-journey {
+       padding: 75px 0 50px;
+     }
+     
+     .hira-journey-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-journey-header {
+       margin-bottom: 28px;
+     }
+   
+     .hira-journey-body {
+       margin-bottom: 120px !important;
+       gap: 16px;
+     }
+   
+     .hira-journey-map {
+       margin-top: 60px;
+     }
+   
+     .journey-columns {
+       gap: 40px;
+       margin-top: 80px;
+     }
+   
+     .journey-icon-wrapper {
+       width: 75px;
+       height: 75px;
+     }
+   
+     .journey-icon {
+       width: 40px;
+       height: 40px;
+     }
+   
+     /* === HMW Section === */
+     .hira-hmw {
+       background: #EFF1FA;
+       padding: 80px 0 90px;
+     }
+   
+     .hira-hmw-curve {
+       display: none;
+     }
+   
+     .hira-hmw-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-hmw-header {
+       margin-bottom: 28px;
+     }
+   
+     .hira-hmw-spark {
+       display: none;
+     }
+   
+     .hira-hmw-body {
+       margin-bottom: 40px;
+     }
+   
+     .hmw-flow-icon {
+       width: 70px;
+       height: 70px;
+   
+       img {
+         width: 35px;
+         height: 35px;
+       }
+     }
+   
+     /* === Directions Section === */
+     .hira-directions {
+       padding: 0 0 95px;
+       /* FIXED: Ensure background extends properly */
+       background: #FAFAFE;
+     }
+     
+     .hira-directions-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-directions-header {
+       margin-bottom: 28px;
+       padding-top: 80px;
+       margin-top: 0;
+     }
+   
+     .hira-directions-body {
+       gap: 16px;
+       margin-bottom: 40px;
+     }
+   
+     /* === The Concept === */
+     .hira-concept {
+       padding: 75px 0 95px;
+     }
+     
+     .hira-concept-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-concept-header {
+       margin-bottom: 28px;
+     }
+   
+     .hira-concept-body {
+       margin-bottom: 50px;
+       gap: 16px;
+     }
+   
+     .hira-concept-cards {
+       gap: 18px;
+     }
+   
+     .concept-card {
+       padding: 26px 26px 26px;
+       gap: 14px;
+     }
+   
+     .concept-card-title {
+       font-size: 1.05rem;
+     }
+   
+     .concept-card-icon {
+       width: 50px;
+       height: 50px;
+     }
+   
+     .concept-card-description {
+       font-size: 0.92rem;
+     }
+   
+     /* === What We Heard === */
+     .hira-wwh {
+       padding: 75px 0 95px;
+     }
+     
+     .hira-wwh-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-wwh-header {
+       margin-bottom: 40px;
+     }
+   
+     .hira-wwh-header--spaced {
+       margin-top: 80px;
+     }
+   
+     /* FIXED: Activities stack at LG like Aquatonomy deliverables-gallery */
+     .hira-wwh-activities {
+       grid-template-columns: 1fr;
+       gap: 40px;
+     }
+   
+     .hira-wwh-activity-title {
+       font-size: 1.4rem !important;
+     }
+   
+     .hira-wwh-activity-text {
+       font-size: 0.95rem !important;
+     }
+   
+     .hira-wwh-insights-grid {
+       gap: 18px;
+     }
+   
+     .hira-wwh-insight-card {
+       padding: 26px 26px 26px;
+       gap: 14px;
+     }
+   
+     .hira-wwh-insight-number {
+       width: 50px;
+       height: 50px;
+       font-size: 1rem;
+     }
+   
+     .hira-wwh-insight-title {
+       font-size: 1.05rem;
+     }
+   
+     .hira-wwh-insight-text {
+       font-size: 0.92rem;
+     }
+   
+     /* === Product Pivot === */
+     .hira-pivot {
+       padding: 75px 0 95px;
+     }
+     
+     .hira-pivot-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-pivot-compare {
+       gap: 35px;
+     }
+   
+     .hira-pivot-arrow {
+       width: 45px;
+     }
+   
+     .hira-pivot-caption {
+       font-size: 1rem;
+     }
+   
+     /* === Solution === */
+     .hira-solution {
+       padding: 60px 0 100px;
+     }
+     
+     .hira-solution-inner {
+       padding: 25px var(--page-gutter-tablet);
+     }
+   
+     .hira-solution-hero-title {
+       margin-bottom: 60px;
+     }
+   
+     .hira-solution-demo {
+       gap: 40px;
+     }
+   
+     .hira-solution-demo-heading {
+       font-size: 1.2rem;
+     }
+   
+     .hira-solution-demo-description {
+       font-size: 0.95rem;
+     }
+   
+     .hira-live-context {
+       margin-bottom: 140px;
+     }
+   
+     .hira-live-context-header {
+       margin-bottom: 80px;
+       margin-top: 120px;
+     }
+   
+     .hira-mobile-intro {
+       margin-bottom: 120px;
+     }
+   
+     /* === Trust === */
+     .hira-trust {
+       padding: 75px 0 95px;
+     }
+     
+     .hira-trust-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-trust-block {
+       &:not(:last-child) {
+         margin-bottom: 100px;
+       }
+     }
+   
+     /* === Trust Outro === */
+     .hira-trust-outro {
+       padding: 70px 0 90px;
+     }
+     
+     .hira-trust-outro-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-testimonial-cards {
+       gap: 18px;
+       margin-top: 60px;
+     }
+   
+     .hira-testimonial-card {
+       padding: 30px 26px 24px;
+       gap: 18px;
+     }
+   
+     .testimonial-quote {
+       font-size: 0.95rem;
+     }
+   
+     .author-avatar {
+       width: 48px;
+       height: 48px;
+     }
+   
+     .author-name {
+       font-size: 0.9rem;
+     }
+   
+     .author-role {
+       font-size: 0.82rem;
+     }
+   
+     .hira-trust-outro .hira-heard-images {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-top: 45px;
+      }
+  /* === Perceived Impact === */
+  .hira-impact {
+    padding: 70px 0;
+  }
+
+  .hira-impact-inner {
+    padding: 0 var(--page-gutter-tablet);
+  }
+
+  .hira-impact-callout {
+    padding: 40px 45px;
+    margin: 45px 0;
+  }
+
+  .callout-stats {
+    gap: 30px;
+  }
+
+  .callout-number {
+    font-size: 3rem;
+  }
+
+  .callout-label {
+    font-size: 0.95rem;
+  }
+
+  .callout-divider {
+    padding-top: 14px;
+  }
+
+  .callout-divider span {
+    font-size: 0.85rem;
+  }
+
+  .callout-context {
+    font-size: 0.95rem;
+    padding-top: 20px;
+  }
+
+  .hira-trust-outro--continued {
+    padding-top: 70px;
+  }
+
+
+   }
+   
+   /* MD: ≤ 767px */
+   @media (max-width: #{tokens.$md_breakpoint}) {
+     
+     /* === Our Challenge === */
+     .hira-challenge {
+       padding: 60px 0 80px;
+     }
+     
+     .hira-challenge-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-challenge-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-challenge-title {
+       font-size: 1.5rem;
+     }
+   
+     .hira-challenge-body p {
+       font-size: 1rem;
+     }
+   
+     /* === Patient Journey === */
+     .hira-journey {
+       padding: 60px 0 40px;
+     }
+     
+     .hira-journey-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-journey-header {
+       margin-bottom: 25px;
+     }
+   
+     .hira-journey-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-journey-title {
+       font-size: 1.5rem;
+     }
+   
+     .hira-journey-body {
+       margin-bottom: 120px !important;
+     }
+   
+     .hira-journey-body p {
+       font-size: 1rem;
+     }
+   
+     .hira-journey-map {
+       margin-top: 50px;
+     }
+   
+     .journey-columns {
+       gap: 35px;
+       margin-top: 70px;
+     }
+   
+     .journey-icon-wrapper {
+       width: 70px;
+       height: 70px;
+     }
+   
+     .journey-icon {
+       width: 38px;
+       height: 38px;
+     }
+   
+     .journey-column-title {
+       font-size: 1rem;
+     }
+   
+     .journey-column-subtitle {
+       font-size: 0.9rem;
+       margin-bottom: 25px;
+     }
+   
+     .journey-box {
+       padding: 18px 16px 14px;
+     }
+   
+     .journey-box-tag {
+       font-size: 0.65rem;
+       padding: 3px 8px;
+       margin-bottom: 10px;
+     }
+   
+     .journey-box-text {
+       font-size: 0.9rem;
+     }
+   
+     /* === HMW Section === */
+     .hira-hmw {
+       padding: 70px 0 80px;
+     }
+     
+     .hira-hmw-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-hmw-header {
+       margin-bottom: 25px;
+     }
+   
+     .hira-hmw-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-hmw-title {
+       font-size: 1.5rem;
+     }
+   
+     .hira-hmw-body {
+       margin-bottom: 35px;
+     }
+   
+     .hira-hmw-body p {
+       font-size: 1rem;
+     }
+   
+     .hira-hmw-flow {
+       gap: 18px;
+     }
+   
+     .hmw-flow-icon {
+       width: 65px;
+       height: 65px;
+   
+       img {
+         width: 32px;
+         height: 32px;
+       }
+     }
+   
+     .hmw-flow-label {
+       font-size: 0.9rem;
+     }
+   
+     .hmw-flow-arrow {
+       margin-bottom: 24px;
+   
+       svg {
+         width: 24px;
+         height: 24px;
+       }
+     }
+   
+     /* === Directions Section === */
+     .hira-directions {
+       padding: 0 0 70px;
+     }
+     
+     .hira-directions-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-directions-header {
+       margin-bottom: 25px;
+       padding-top: 70px;
+     }
+   
+     .hira-directions-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-directions-title {
+       font-size: 1.5rem;
+     }
+   
+     .hira-directions-body {
+       margin-bottom: 35px;
+     }
+   
+     .hira-directions-body p {
+       font-size: 1rem;
+     }
+   
+     .hira-directions-image {
+       border-radius: 16px;
+     }
+   
+     .hira-directions-caption {
+       font-size: 0.9rem;
+     }
+   
+     /* === The Concept === */
+     .hira-concept {
+       padding: 60px 0 80px;
+     }
+     
+     .hira-concept-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-concept-header {
+       margin-bottom: 25px;
+     }
+   
+     .hira-concept-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-concept-title {
+       font-size: 1.5rem;
+     }
+   
+     .hira-concept-body {
+       margin-bottom: 40px;
+     }
+   
+     .hira-concept-body p {
+       font-size: 1rem;
+     }
+   
+     /* FIXED: Concept cards stack at MD */
+     .hira-concept-cards {
+       grid-template-columns: 1fr;
+       gap: 16px;
+     }
+   
+     .concept-card {
+       padding: 24px 24px 24px;
+       border-radius: 14px;
+     }
+   
+     .concept-card-title {
+       font-size: 1rem;
+     }
+   
+     .concept-card-icon {
+       width: 48px;
+       height: 48px;
+     }
+   
+     .concept-card-description {
+       font-size: 0.9rem;
+     }
+   
+     /* === What We Heard === */
+     .hira-wwh {
+       padding: 60px 0 80px;
+     }
+     
+     .hira-wwh-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-wwh-header {
+       margin-bottom: 35px;
+     }
+   
+     .hira-wwh-header--spaced {
+       margin-top: 70px;
+     }
+   
+     .hira-wwh-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-wwh-title {
+       font-size: 1.5rem;
+       margin-bottom: 20px;
+     }
+   
+     .hira-wwh-body p {
+       font-size: 1rem;
+     }
+   
+     .hira-wwh-activities {
+       gap: 35px;
+     }
+   
+     .hira-wwh-activity-image {
+       border-radius: 16px;
+     }
+   
+     .hira-wwh-activity-label {
+       font-size: 0.9rem !important;
+     }
+   
+     .hira-wwh-activity-title {
+       font-size: 1.3rem !important;
+     }
+   
+     .hira-wwh-activity-text {
+       font-size: 0.95rem !important;
+     }
+   
+     .hira-wwh-insights {
+       margin-top: 40px;
+     }
+   
+     /* FIXED: Insight cards stack at MD like concept cards */
+     .hira-wwh-insights-grid {
+       grid-template-columns: 1fr;
+       gap: 16px;
+       margin-bottom: 40px;
+     }
+   
+     .hira-wwh-insight-card {
+       padding: 24px 24px 24px;
+       gap: 14px;
+       border-radius: 14px;
+     }
+   
+     .hira-wwh-insight-number {
+       width: 48px;
+       height: 48px;
+       font-size: 0.95rem;
+     }
+   
+     .hira-wwh-insight-content {
+       padding-top: 4px;
+     }
+   
+     .hira-wwh-insight-title {
+       font-size: 1rem;
+     }
+   
+     .hira-wwh-insight-text {
+       font-size: 0.9rem;
+     }
+   
+     .hira-wwh-transition {
+       font-size: 0.95rem !important;
+     }
+   
+     /* === Product Pivot === */
+     .hira-pivot {
+       padding: 60px 0 80px;
+     }
+     
+     .hira-pivot-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-pivot-header {
+       margin-bottom: 40px;
+     }
+   
+     .hira-pivot-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-pivot-title {
+       font-size: 1.5rem;
+       margin-bottom: 20px;
+     }
+   
+     .hira-pivot-body p {
+       font-size: 1rem;
+     }
+   
+     /* FIXED: Pivot layout stacks with arrow underneath, pointing down */
+     .hira-pivot-compare {
+       flex-direction: column;
+       gap: 10px;
+       gap: 45px !important;
+     }
+   
+     .hira-pivot-card {
+       max-width: 100%;
+       min-width: 0;
+       width: 100%;
+     }
+   
+     .hira-pivot-image {
+       border-radius: 16px;
+     }
+   
+     .hira-pivot-tag {
+       padding: 5px 12px;
+       font-size: 0.65rem;
+     }
+   
+     .hira-pivot-caption {
+       font-size: 0.95rem;
+     }
+   
+     /* FIXED: Arrow rotates to point downward and sits between cards */
+     .hira-pivot-arrow {
+       width: 40px;
+       transform: rotate(90deg) !important;
+       order: 1;
+       margin: 15px 0;
+     }
+   
+     .hira-pivot-card:first-of-type {
+       order: 0;
+     }
+   
+     .hira-pivot-card:last-of-type {
+       order: 2;
+     }
+   
+     /* === Solution === */
+     .hira-solution {
+       padding: 40px 0 0;
+     }
+     
+     .hira-solution-inner {
+       padding: 25px var(--page-gutter-tablet);
+     }
+   
+     .hira-solution-hero-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-solution-hero-title {
+       font-size: 1.5rem;
+       margin-bottom: 50px;
+     }
+   
+     .hira-solution-demo {
+       grid-template-columns: 1fr;
+       gap: 40px;
+       margin-bottom: 100px;
+     }
+   
+     .hira-solution-demo--reverse {
+       grid-template-columns: 1fr;
+   
+       .hira-solution-demo-media { order: 1; }
+       .hira-solution-demo-content { order: 2; }
+     }
+   
+     .hira-solution-demo--mobile {
+       grid-template-columns: 1fr;
+       margin-top: 0;
+   
+       &.hira-solution-demo--reverse {
+         grid-template-columns: 1fr;
+       }
+     }
+   
+     .hira-solution-demo-video {
+       max-width: 300px;
+       margin: 0 auto;
+       border-radius: 16px;
+     }
+   
+     .hira-solution-demo-heading {
+       font-size: 1.1rem;
+       text-align: center;
+     }
+   
+     .hira-solution-demo-description {
+       font-size: 0.95rem;
+       text-align: center;
+     }
+   
+     .hira-live-context {
+       margin-bottom: 100px;
+     }
+   
+     .hira-live-context-header {
+       margin-bottom: 60px;
+       margin-top: 80px;
+     }
+   
+     .hira-live-context-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-live-context-title {
+       font-size: 1.5rem;
+     }
+   
+     .hira-mobile-intro {
+       margin-bottom: 80px;
+     }
+   
+     .hira-mobile-intro-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-mobile-intro-title {
+       font-size: 1.5rem;
+     }
+   
+     /* === Trust === */
+     .hira-trust {
+       padding: 60px 0 80px;
+     }
+     
+     .hira-trust-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-trust-header {
+       margin-bottom: 28px;
+     }
+   
+     .hira-trust-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-trust-title {
+       font-size: 1.5rem;
+     }
+   
+     .hira-trust-body {
+       margin-bottom: 40px;
+     }
+   
+     .hira-trust-body p {
+       font-size: 1rem;
+     }
+   
+     .hira-trust-block {
+       &:not(:last-child) {
+         margin-bottom: 80px;
+       }
+     }
+   
+     /* === Trust Outro === */
+     .hira-trust-outro {
+       padding: 60px 0 80px;
+     }
+     
+     .hira-trust-outro-inner {
+       padding: 0 var(--page-gutter-tablet);
+     }
+   
+     .hira-trust-outro-header {
+       margin-bottom: 28px;
+     }
+   
+     .hira-trust-outro-eyebrow {
+       font-size: 1.05rem;
+     }
+   
+     .hira-trust-outro-title {
+       font-size: 1.5rem;
+     }
+   
+     .hira-trust-outro-body {
+       margin-bottom: 40px;
+     }
+   
+     .hira-trust-outro-body p {
+       font-size: 1rem;
+     }
+   
+     .hira-trust-outro-block {
+       &:not(:last-child) {
+         margin-bottom: 80px;
+       }
+     }
+   
+     .hira-testimonial-cards {
+       grid-template-columns: 1fr;
+       gap: 16px;
+       margin-top: 40px;
+     }
+   
+     .hira-testimonial-card {
+       padding: 26px 24px 22px;
+       gap: 16px;
+       border-radius: 16px;
+     }
+   
+     .testimonial-quote {
+       font-size: 0.92rem !important;
+       line-height: 1.6;
+     }
+   
+     .author-avatar {
+       width: 46px;
+       height: 46px;
+     }
+   
+     .author-name {
+       font-size: 0.88rem;
+     }
+   
+     .author-role {
+       font-size: 0.8rem;
+     }
+   
+     .hira-trust-outro .hira-heard-images {
+       grid-template-columns: 1fr !important;;
+       gap: 35px;
+       margin-top: 40px;
+     }
+   
+     .hira-trust-outro .hira-heard-image {
+       border-radius: 16px;
+     }
+   
+     .hira-trust-outro .hira-heard-caption {
+       font-size: 0.95rem !important;
+     }
+
+    /* === Perceived Impact === */
+    .hira-impact {
+        padding: 60px 0;
+      }
+  
+      .hira-impact-inner {
+        padding: 0 var(--page-gutter-tablet);
+      }
+  
+      .hira-impact-header {
+        margin-bottom: 28px;
+      }
+  
+      .hira-impact-eyebrow {
+        font-size: 1.05rem;
+      }
+  
+      .hira-impact-title {
+        font-size: 1.5rem;
+      }
+  
+      .hira-impact-body p {
+        font-size: 1rem;
+      }
+  
+      .hira-impact-callout {
+        padding: 32px 35px;
+        margin: 40px 0;
+        border-radius: 16px;
+      }
+  
+      .callout-stats {
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 24px;
+      }
+  
+      .callout-stat-item {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 14px;
+      }
+  
+      .callout-number {
+        font-size: 2.5rem;
+        min-width: 90px;
+      }
+  
+      .callout-label {
+        font-size: 0.92rem;
+      }
+  
+      .callout-divider {
+        padding-top: 0;
+        padding-left: 0;
+      }
+  
+      .callout-divider span {
+        font-size: 0.8rem;
+        color: #888;
+      }
+  
+      .callout-context {
+        font-size: 0.92rem;
+        padding-top: 18px;
+      }
+  
+      .hira-trust-outro--continued {
+        padding-top: 60px;
+      }
+      section.hira-trust-outro > .hira-trust-outro-inner {
+        margin-bottom: 70px;
+      }
+
+      .callout-stats {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    
+      .callout-meta {
+        margin-bottom: 45px;
+      }
+      
+  
+   }
+   
+   /* SM: ≤ 626px */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     
+     /* === CONSOLIDATED BODY TEXT FIX FOR SM === */
+     .hira-challenge-body p,
+     .hira-journey-body p,
+     .hira-hmw-body p,
+     .hira-directions-body p,
+     .hira-concept-body p,
+     .hira-wwh-body p,
+     .hira-pivot-body p,
+     .hira-trust-body p,
+     .hira-trust-outro-body p,
+     .hira-impact-body p {
+       font-size: 0.82rem !important;
+       line-height: 1.65;
+     }
+     
+     /* === Our Challenge === */
+     .hira-challenge {
+       padding: 50px 0 70px;
+     }
+     
+     .hira-challenge-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-challenge-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-challenge-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .hira-challenge-body {
+       gap: 14px;
+     }
+   
+     .hira-challenge-body p {
+       font-size: 0.95rem;
+     }
+   
+     /* === Patient Journey === */
+     .hira-journey {
+       padding: 50px 0 30px;
+     }
+     
+     .hira-journey-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-journey-header {
+       margin-bottom: 22px;
+     }
+   
+     .hira-journey-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-journey-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .hira-journey-body {
+       margin-bottom: 100px !important;
+       gap: 14px;
+     }
+   
+     .hira-journey-body p {
+       font-size: 0.95rem;
+     }
+   
+     .hira-journey-map {
+       margin-top: 40px;
+     }
+   
+     .journey-line-wrapper {
+       display: none;
+     }
+   
+     .journey-columns {
+       grid-template-columns: 1fr;
+       gap: 100px;
+       margin-top: 0;
+       max-width: 400px;
+     }
+   
+     .journey-column {
+       padding-top: 60px;
+     }
+   
+     .journey-icon-wrapper {
+       width: 65px;
+       height: 65px;
+       top: -35px;
+     }
+   
+     .journey-icon {
+       width: 35px;
+       height: 35px;
+     }
+   
+     .journey-column-title {
+       font-size: 1rem;
+       margin-bottom: 6px;
+     }
+   
+     .journey-column-subtitle {
+       font-size: 0.88rem;
+       margin-bottom: 22px;
+     }
+   
+     .journey-dotted-line {
+       top: -60px;
+     }
+   
+     .journey-box {
+       padding: 16px 14px 12px;
+       border-radius: 14px;
+     }
+   
+     .journey-box-tag {
+       font-size: 0.62rem;
+     }
+   
+     .journey-box-text {
+       font-size: 0.88rem;
+     }
+   
+     /* === HMW Section === */
+     .hira-hmw {
+       padding: 60px 0 70px;
+     }
+     
+     .hira-hmw-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-hmw-header {
+       margin-bottom: 22px;
+     }
+   
+     .hira-hmw-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-hmw-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+
+     .hira-hmw-body {
+       margin-bottom: 30px;
+       gap: 14px;
+     }
+   
+     .hira-hmw-body p {
+       font-size: 0.95rem;
+     }
+   
+     .hira-hmw-flow {
+       gap: 14px;
+     }
+   
+     .hmw-flow-icon {
+       width: 58px;
+       height: 58px;
+   
+       img {
+         width: 28px;
+         height: 28px;
+       }
+     }
+   
+     .hmw-flow-label {
+       font-size: 0.85rem;
+     }
+   
+     .hmw-flow-arrow {
+       margin-bottom: 20px;
+   
+       svg {
+         width: 20px;
+         height: 20px;
+       }
+     }
+   
+     /* === Directions Section === */
+     .hira-directions {
+       padding: 0 0 60px;
+     }
+     
+     .hira-directions-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-directions-header {
+       margin-bottom: 22px;
+       padding-top: 60px;
+     }
+   
+     .hira-directions-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-directions-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .hira-directions-body {
+       gap: 14px;
+       margin-bottom: 30px;
+     }
+   
+     .hira-directions-body p {
+       font-size: 0.95rem;
+     }
+   
+     .hira-directions-image {
+       border-radius: 14px;
+     }
+   
+     .hira-directions-caption {
+       font-size: 0.85rem;
+     }
+   
+     /* === The Concept === */
+     .hira-concept {
+       padding: 50px 0 70px;
+     }
+     
+     .hira-concept-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-concept-header {
+       margin-bottom: 22px;
+     }
+   
+     .hira-concept-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-concept-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .hira-concept-body {
+       margin-bottom: 35px;
+       gap: 14px;
+     }
+   
+     .hira-concept-body p {
+       font-size: 0.95rem;
+     }
+   
+     .hira-concept-cards {
+       gap: 14px;
+     }
+   
+     .concept-card {
+       padding: 20px 20px 20px;
+       border-radius: 14px;
+       gap: 12px;
+     }
+   
+     .concept-card-title {
+       font-size: 0.95rem;
+       margin-top: 10px;
+     }
+   
+     .concept-card-icon {
+       width: 45px;
+       height: 45px;
+     }
+   
+     .concept-card-description {
+       font-size: 0.85rem;
+     }
+   
+     /* === What We Heard === */
+     .hira-wwh {
+       padding: 50px 0 70px;
+     }
+     
+     .hira-wwh-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-wwh-header {
+       margin-bottom: 30px;
+     }
+   
+     .hira-wwh-header--spaced {
+       margin-top: 60px;
+     }
+   
+     .hira-wwh-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-wwh-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+       margin-bottom: 18px;
+     }
+   
+     .hira-wwh-body {
+       gap: 14px;
+     }
+   
+     .hira-wwh-body p {
+       font-size: 0.95rem;
+     }
+   
+     .hira-wwh-activities {
+       gap: 35px;
+     }
+   
+     .hira-wwh-activity-image {
+       border-radius: 14px;
+     }
+   
+     .hira-wwh-activity-label {
+       font-size: 0.85rem !important;
+     }
+   
+     .hira-wwh-activity-title {
+       font-size: 1.25rem !important;
+     }
+   
+     .hira-wwh-activity-text {
+       font-size: 0.85rem !important;
+     }
+   
+     .hira-wwh-insights {
+       margin-top: 35px;
+     }
+   
+     .hira-wwh-insights-label {
+       font-size: 0.9rem !important;
+       margin-bottom: 20px;
+     }
+   
+     .hira-wwh-insights-grid {
+       gap: 14px;
+       margin-bottom: 35px;
+     }
+   
+     .hira-wwh-insight-card {
+       padding: 20px 20px 20px;
+       border-radius: 14px;
+       gap: 12px;
+     }
+   
+     .hira-wwh-insight-number {
+       width: 45px;
+       height: 45px;
+       font-size: 0.9rem;
+     }
+   
+     .hira-wwh-insight-content {
+       padding-top: 2px;
+       gap: 6px;
+     }
+   
+     .hira-wwh-insight-title {
+       font-size: 0.95rem;
+     }
+   
+     .hira-wwh-insight-text {
+       font-size: 0.85rem;
+     }
+   
+     .hira-wwh-transition {
+       font-size: 0.85rem !important;
+       padding-top: 25px;
+     }
+   
+     /* === Product Pivot === */
+     .hira-pivot {
+       padding: 50px 0 70px;
+     }
+     
+     .hira-pivot-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-pivot-header {
+       margin-bottom: 35px;
+     }
+   
+     .hira-pivot-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-pivot-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+       margin-bottom: 18px;
+     }
+   
+     .hira-pivot-body {
+       gap: 14px;
+     }
+   
+     .hira-pivot-body p {
+       font-size: 0.95rem;
+     }
+   
+     .hira-pivot-compare {
+       gap: 8px;
+     }
+   
+     .hira-pivot-image {
+       border-radius: 14px;
+     }
+   
+     .hira-pivot-tag {
+       top: 14px;
+       left: 14px;
+       padding: 5px 10px;
+       font-size: 0.62rem;
+     }
+   
+     .hira-pivot-caption {
+       font-size: 0.9rem;
+       font-weight: 550;
+     }
+   
+     .hira-pivot-arrow {
+       width: 35px;
+       margin: 12px 0;
+     }
+   
+     /* === Solution === */
+     .hira-solution {
+       padding: 20px 0 20px;
+     }
+     
+     .hira-solution-inner {
+       padding: 20px var(--page-gutter-xs);
+     }
+   
+     .hira-solution-hero-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-solution-hero-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+       margin-bottom: 40px;
+     }
+   
+     .hira-solution-demo {
+       gap: 40px;
+       margin-bottom: 60px;
+     }
+   
+     .hira-solution-demo-video {
+       max-width: 250px;
+       border-radius: 14px;
+     }
+   
+     .hira-solution-demo-heading {
+       font-size: 1rem;
+     }
+   
+     .hira-solution-demo-description {
+       font-size: 0.85rem;
+     }
+   
+     .hira-live-context {
+       margin-bottom: 80px;
+     }
+   
+     .hira-live-context-header {
+       margin-bottom: 50px;
+       margin-top: 60px;
+     }
+   
+     .hira-live-context-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-live-context-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .hira-mobile-intro {
+       margin-bottom: 60px;
+     }
+   
+     .hira-mobile-intro-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-mobile-intro-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     /* === Trust === */
+     .hira-trust {
+       padding: 50px 0 70px;
+     }
+     
+     .hira-trust-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-trust-header {
+       margin-bottom: 22px;
+     }
+   
+     .hira-trust-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-trust-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .hira-trust-body {
+       gap: 14px;
+       margin-bottom: 35px;
+     }
+   
+     .hira-trust-body p {
+       font-size: 0.95rem;
+     }
+   
+     .hira-trust-block {
+       &:not(:last-child) {
+         margin-bottom: 60px;
+       }
+     }
+   
+     /* === Trust Outro === */
+     .hira-trust-outro {
+       padding: 50px 0 70px;
+     }
+     
+     .hira-trust-outro-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-trust-outro-header {
+       margin-bottom: 22px;
+     }
+   
+     .hira-trust-outro-eyebrow {
+       font-size: 1rem;
+       margin-bottom: 12px;
+     }
+   
+     .hira-trust-outro-title {
+       font-size: 1.3rem;
+       line-height: 1.4;
+     }
+   
+     .hira-trust-outro-body {
+       gap: 14px;
+       margin-bottom: 35px;
+     }
+   
+     .hira-trust-outro-body p {
+       font-size: 0.95rem;
+     }
+   
+     .hira-trust-outro-block {
+       &:not(:last-child) {
+         margin-bottom: 60px;
+       }
+     }
+   
+     .hira-testimonial-cards {
+       gap: 14px;
+       margin-top: 35px;
+     }
+   
+     .hira-testimonial-card {
+       padding: 20px 20px 18px;
+       gap: 14px;
+       border-radius: 14px;
+     }
+   
+     .testimonial-quote {
+       font-size: 0.88rem !important;
+       line-height: 1.6;
+     }
+   
+     .author-avatar {
+       width: 42px;
+       height: 42px;
+     }
+   
+     .author-name {
+       font-size: 0.85rem;
+     }
+   
+     .author-role {
+       font-size: 0.78rem;
+     }
+   
+     .hira-trust-outro .hira-heard-images {
+       gap: 30px;
+       margin-top: 35px;
+     }
+   
+     .hira-trust-outro .hira-heard-image {
+       border-radius: 14px;
+     }
+   
+     .hira-trust-outro .hira-heard-caption {
+       font-size: 0.9rem !important;
+     }
+    /* === Perceived Impact === */
+    .hira-impact {
+        padding: 50px 0;
+      }
+  
+      .hira-impact-inner {
+        padding: 0 var(--page-gutter-xs);
+      }
+  
+      .hira-impact-header {
+        margin-bottom: 22px;
+      }
+  
+      .hira-impact-eyebrow {
+        font-size: 1rem;
+        margin-bottom: 12px;
+      }
+  
+      .hira-impact-title {
+        font-size: 1.3rem;
+        line-height: 1.4;
+      }
+  
+      .hira-impact-body {
+        gap: 14px;
+      }
+  
+      .hira-impact-body p {
+        font-size: 0.95rem;
+      }
+  
+      .hira-impact-callout {
+        padding: 24px 24px;
+        margin: 35px 0;
+        border-radius: 14px;
+        border-left-width: 3px;
+      }
+  
+      .callout-stats {
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+  
+      .callout-stat-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+  
+      .callout-number {
+        font-size: 2.25rem;
+        min-width: auto;
+      }
+  
+      .callout-label {
+        font-size: 0.88rem;
+      }
+  
+      .callout-divider span {
+        font-size: 0.78rem;
+      }
+  
+      .callout-context {
+        font-size: 0.88rem;
+        padding-top: 16px;
+      }
+  
+      .hira-trust-outro--continued {
+        padding-top: 50px;
+      }
+  
+  
+   }
+   
+   /* XS: ≤ 465px */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     
+     /* === CONSOLIDATED BODY TEXT FIX FOR XS === */
+     .hira-challenge-body p,
+     .hira-journey-body p,
+     .hira-hmw-body p,
+     .hira-directions-body p,
+     .hira-concept-body p,
+     .hira-wwh-body p,
+     .hira-pivot-body p,
+     .hira-trust-body p,
+     .hira-trust-outro-body p,
+     .hira-impact-body p {
+       font-size: 0.825rem !important;
+       line-height: 1.65;
+     }
+     
+     /* === Our Challenge === */
+     .hira-challenge {
+       padding: 40px 0 60px;
+     }
+     
+     .hira-challenge-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-challenge-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-challenge-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .hira-challenge-body {
+       gap: 12px;
+     }
+   
+     .hira-challenge-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     /* === Patient Journey === */
+     .hira-journey {
+       padding: 40px 0 20px;
+     }
+     
+     .hira-journey-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-journey-header {
+       margin-bottom: 22px;
+     }
+   
+     .hira-journey-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-journey-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .hira-journey-body {
+       margin-bottom: 60px;
+       gap: 12px;
+     }
+   
+     .hira-journey-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .hira-journey-map {
+       margin-top: 40px;
+     }
+   
+     .journey-columns {
+       gap: 80px;
+       max-width: 100%;
+     }
+   
+     .journey-icon-wrapper {
+       width: 60px;
+       height: 60px;
+       top: -32px;
+     }
+   
+     .journey-icon {
+       width: 32px;
+       height: 32px;
+     }
+   
+     .journey-column {
+       padding-top: 50px;
+     }
+   
+     .journey-column-title {
+       font-size: 0.95rem;
+       margin-bottom: 5px;
+     }
+   
+     .journey-column-subtitle {
+       font-size: 0.85rem;
+       margin-bottom: 18px;
+     }
+   
+     .journey-dotted-line {
+       top: -55px;
+     }
+   
+     .journey-box {
+       padding: 14px 12px 10px;
+       border-radius: 12px;
+     }
+   
+     .journey-box-tag {
+       font-size: 0.6rem;
+       padding: 3px 7px;
+       margin-bottom: 8px;
+     }
+   
+     .journey-box-text {
+       font-size: 0.8rem;
+       line-height: 1.45;
+     }
+   
+     /* === HMW Section === */
+     .hira-hmw {
+       padding: 50px 0 60px;
+     }
+     
+     .hira-hmw-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-hmw-header {
+       margin-bottom: 22px;
+     }
+   
+     .hira-hmw-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-hmw-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .hira-hmw-body {
+       margin-bottom: 28px;
+       gap: 12px;
+     }
+   
+     .hira-hmw-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .hira-hmw-flow {
+       gap: 10px;
+     }
+   
+     .hmw-flow-icon {
+       width: 50px;
+       height: 50px;
+   
+       img {
+         width: 24px;
+         height: 24px;
+       }
+     }
+   
+     .hmw-flow-label {
+       font-size: 0.8rem;
+     }
+   
+     .hmw-flow-arrow {
+       margin-bottom: 16px;
+   
+       svg {
+         width: 18px;
+         height: 18px;
+       }
+     }
+   
+     /* === Directions Section === */
+     .hira-directions {
+       padding: 0 0 50px;
+     }
+     
+     .hira-directions-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-directions-header {
+       margin-bottom: 22px;
+       padding-top: 50px;
+     }
+   
+     .hira-directions-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-directions-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .hira-directions-body {
+       gap: 12px;
+       margin-bottom: 28px;
+     }
+   
+     .hira-directions-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .hira-directions-image {
+       border-radius: 12px;
+     }
+   
+     .hira-directions-caption {
+       font-size: 0.8rem;
+     }
+   
+     /* === The Concept === */
+     .hira-concept {
+       padding: 40px 0 60px;
+     }
+     
+     .hira-concept-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-concept-header {
+       margin-bottom: 22px;
+     }
+   
+     .hira-concept-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-concept-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .hira-concept-body {
+       margin-bottom: 30px;
+       gap: 12px;
+     }
+   
+     .hira-concept-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .hira-concept-cards {
+       gap: 12px;
+     }
+   
+     .concept-card {
+       padding: 18px 16px 18px;
+       border-radius: 12px;
+       gap: 10px;
+     }
+   
+     .concept-card-title {
+       font-size: 0.9rem;
+       margin-top: 8px;
+     }
+   
+     .concept-card-icon {
+       width: 40px;
+       height: 40px;
+     }
+   
+     .concept-card-description {
+       font-size: 0.8rem;
+       line-height: 1.5;
+     }
+   
+     /* === What We Heard === */
+     .hira-wwh {
+       padding: 40px 0 60px;
+     }
+     
+     .hira-wwh-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-wwh-header {
+       margin-bottom: 25px;
+     }
+   
+     .hira-wwh-header--spaced {
+       margin-top: 50px;
+     }
+   
+     .hira-wwh-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-wwh-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+       margin-bottom: 16px;
+     }
+   
+     .hira-wwh-body {
+       gap: 12px;
+     }
+   
+     .hira-wwh-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .hira-wwh-activities {
+       gap: 30px;
+     }
+   
+     .hira-wwh-activity-image {
+       border-radius: 12px;
+     }
+   
+     .hira-wwh-activity-label {
+       font-size: 0.8rem !important;
+     }
+   
+     .hira-wwh-activity-title {
+       font-size: 1.15rem !important;
+     }
+   
+     .hira-wwh-activity-text {
+       font-size: 0.825rem !important;
+     }
+   
+     .hira-wwh-insights {
+       margin-top: 30px;
+     }
+   
+     .hira-wwh-insights-label {
+       font-size: 0.8rem !important;
+       margin-bottom: 18px;
+     }
+   
+     .hira-wwh-insights-grid {
+       gap: 12px;
+       margin-bottom: 30px;
+     }
+   
+     .hira-wwh-insight-card {
+       padding: 18px 16px 18px;
+       gap: 12px;
+       border-radius: 12px;
+     }
+   
+     .hira-wwh-insight-number {
+       width: 40px;
+       height: 40px;
+       font-size: 0.85rem;
+     }
+   
+     .hira-wwh-insight-content {
+       padding-top: 0;
+       gap: 5px;
+     }
+   
+     .hira-wwh-insight-title {
+       font-size: 0.9rem;
+     }
+   
+     .hira-wwh-insight-text {
+       font-size: 0.8rem;
+       line-height: 1.5;
+     }
+   
+     .hira-wwh-transition {
+       font-size: 0.825rem !important;
+       padding-top: 20px;
+     }
+   
+     /* === Product Pivot === */
+     .hira-pivot {
+       padding: 40px 0 60px;
+     }
+     
+     .hira-pivot-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-pivot-header {
+       margin-bottom: 30px;
+     }
+   
+     .hira-pivot-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-pivot-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+       margin-bottom: 16px;
+     }
+   
+     .hira-pivot-body {
+       gap: 12px;
+     }
+   
+     .hira-pivot-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .hira-pivot-compare {
+       gap: 6px;
+     }
+   
+     .hira-pivot-image {
+       border-radius: 12px;
+     }
+   
+     .hira-pivot-tag {
+       top: 12px;
+       left: 12px;
+       padding: 4px 8px;
+       font-size: 0.6rem;
+       border-radius: 6px;
+     }
+   
+     .hira-pivot-caption {
+       font-size: 0.85rem;
+       font-weight: 550;
+     }
+   
+     .hira-pivot-arrow {
+       width: 30px;
+       margin: 10px 0;
+     }
+   
+     /* === Solution === */
+     .hira-solution {
+       padding: 10px 0 10px;
+     }
+     
+     .hira-solution-inner {
+       padding: 15px var(--page-gutter-xs);
+     }
+   
+     .hira-solution-hero-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-solution-hero-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+       margin-bottom: 35px;
+     }
+   
+     .hira-solution-demo {
+       gap: 40px;
+       margin-bottom: 40px;
+     }
+   
+     .hira-solution-demo-video {
+       max-width: 220px;
+       border-radius: 12px;
+     }
+   
+     .hira-solution-demo-heading {
+       font-size: 0.95rem;
+     }
+   
+     .hira-solution-demo-description {
+       font-size: 0.825rem !important;
+     }
+   
+     .hira-live-context {
+       margin-bottom: 60px;
+     }
+   
+     .hira-live-context-header {
+       margin-bottom: 40px;
+       margin-top: 50px;
+     }
+   
+     .hira-live-context-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-live-context-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .hira-mobile-intro {
+       margin-bottom: 50px;
+     }
+   
+     .hira-mobile-intro-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-mobile-intro-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     /* === Trust === */
+     .hira-trust {
+       padding: 40px 0 60px;
+     }
+     
+     .hira-trust-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-trust-header {
+       margin-bottom: 22px;
+     }
+   
+     .hira-trust-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-trust-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .hira-trust-body {
+       gap: 12px;
+       margin-bottom: 30px;
+     }
+   
+     .hira-trust-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .hira-trust-block {
+       &:not(:last-child) {
+         margin-bottom: 50px;
+       }
+     }
+   
+     /* === Trust Outro === */
+     .hira-trust-outro {
+       padding: 40px 0 60px;
+     }
+     
+     .hira-trust-outro-inner {
+       padding: 0 var(--page-gutter-xs);
+     }
+   
+     .hira-trust-outro-header {
+       margin-bottom: 22px;
+     }
+   
+     .hira-trust-outro-eyebrow {
+       font-size: 0.9rem;
+       margin-bottom: 10px;
+     }
+   
+     .hira-trust-outro-title {
+       font-size: 1.2rem;
+       line-height: 1.4;
+     }
+   
+     .hira-trust-outro-body {
+       gap: 12px;
+       margin-bottom: 30px;
+     }
+   
+     .hira-trust-outro-body p {
+       font-size: 0.825rem !important;
+     }
+   
+     .hira-trust-outro-block {
+       &:not(:last-child) {
+         margin-bottom: 50px;
+       }
+     }
+   
+     .hira-testimonial-cards {
+       gap: 12px;
+       margin-top: 30px;
+     }
+   
+     .hira-testimonial-card {
+       padding: 18px 18px 16px;
+       gap: 12px;
+       border-radius: 12px;
+     }
+   
+     .testimonial-quote {
+       font-size: 0.825rem !important;
+       line-height: 1.55;
+     }
+   
+     .author-avatar {
+       width: 38px;
+       height: 38px;
+     }
+   
+     .author-name {
+       font-size: 0.82rem;
+     }
+   
+     .author-role {
+       font-size: 0.75rem;
+     }
+   
+     .hira-trust-outro .hira-heard-images {
+       gap: 25px;
+       margin-top: 30px;
+     }
+   
+     .hira-trust-outro .hira-heard-image {
+       border-radius: 12px;
+     }
+   
+     .hira-trust-outro .hira-heard-caption {
+       font-size: 0.8rem !important;
+     }
+
+         /* === Perceived Impact === */
+    .hira-impact {
+        padding: 40px 0;
+      }
+  
+      .hira-impact-inner {
+        padding: 0 var(--page-gutter-xs);
+      }
+  
+      .hira-impact-header {
+        margin-bottom: 22px;
+      }
+  
+      .hira-impact-eyebrow {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+  
+      .hira-impact-title {
+        font-size: 1.2rem;
+        line-height: 1.4;
+      }
+  
+      .hira-impact-body {
+        gap: 12px;
+      }
+  
+      .hira-impact-body p {
+        font-size: 0.825rem !important;
+      }
+  
+      .hira-impact-callout {
+        padding: 20px 20px;
+        margin: 30px 0;
+        border-radius: 12px;
+      }
+  
+      .callout-stats {
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+  
+      .callout-number {
+        font-size: 2rem;
+      }
+  
+      .callout-label {
+        font-size: 0.825rem !important;
+      }
+  
+      .callout-divider span {
+        font-size: 0.75rem;
+      }
+  
+      .callout-context {
+        font-size: 0.825rem !important;
+        padding-top: 14px;
+      }
+  
+      .hira-trust-outro--continued {
+        padding-top: 40px;
+      }
+  
+   
+     /* === Disable animations on XS === */
+     .reveal,
+     .reveal-up,
+     .reveal-in,
+     [data-reveal] {
+       opacity: 1 !important;
+       transform: none !important;
+       animation: none !important;
+       transition: none !important;
+     }
+   }
+   
+   /* XXL: ≥ 1440px */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .hira-hmw-spark {
+       width: 85px;
+       right: -75px;
+       top: -100px;
+     }
+   }
+
+  /* =========================================================
+   Perceived Impact Callout — alignment + responsive rules
+   Paste at VERY BOTTOM of Hira.scss so it wins
+   ========================================================= */
+
+.hira-impact-callout {
+    /* (no visual changes here, just layout overrides below) */
+  }
+  
+  /* ---------- Default / Desktop ---------- */
+  /* Keep number above label + force LEFT alignment everywhere */
+  .hira-impact-callout .callout-stats {
+    display: flex;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 40px;
+  }
+  
+  .hira-impact-callout .callout-stat-item {
+    display: flex;
+    flex-direction: column;          /* label under number */
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 8px;
+    flex: 1;
+  }
+  
+  .hira-impact-callout .callout-number {
+    text-align: left !important;
+    line-height: 1;
+    margin: 0;                       /* prevents odd alignment shifts */
+  }
+  
+  .hira-impact-callout .callout-label {
+    text-align: left !important;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  /* ---------- Tablet / Medium (stats stack as two rows) ---------- */
+  @media (max-width: #{tokens.$md_breakpoint}) {
+    .hira-impact-callout .callout-stats {
+      flex-direction: column;        /* 20% block above 3% block */
+      gap: 22px;
+    }
+  
+    /* keep label under number, but make each row feel tighter */
+    .hira-impact-callout .callout-stat-item {
+      width: 100%;
+    }
+  }
+  
+  /* ---------- Small screens: keep label UNDER number (what you asked) ---------- */
+  @media (max-width: #{tokens.$sm_breakpoint}) {
+    .hira-impact-callout .callout-stat-item {
+      flex-direction: column !important;  /* ensure it stays stacked */
+      align-items: flex-start !important;
+      gap: 6px;
+    }
+  
+    .hira-impact-callout .callout-number {
+      font-size: 2.5rem;                  /* optional: helps fit */
+    }
+  
+    .hira-impact-callout .callout-label {
+      font-size: 0.92rem;                 /* optional: helps fit */
+    }
+  }

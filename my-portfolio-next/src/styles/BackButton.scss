@@ -1,0 +1,122 @@
+@use './partials/tokens';
+
+.back-button-wrapper {
+  position: fixed;
+  top: 30px;
+  left: 50px;
+  z-index: 210;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  &.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+  }
+}
+
+.back-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 22px 9px 20px;
+  border-radius: 999px;
+  
+  /* Darker background for better visibility on light sections */
+  background: rgba(10, 10, 13, 0.9);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 tokens.$space-xs rgba(0, 0, 0, 0.15);
+  
+  transition: transform 0.275s ease, box-shadow 0.3s ease, background 0.275s ease;
+
+  color: tokens.$prisec;
+  @include tokens.type-coop-nav-bold;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+
+  &:hover {
+    transform: scale(1.04);
+    background: rgba(14, 14, 23, 0.75);
+    box-shadow: 0 0 tokens.$space-sm rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.back-label {
+  transition: color 0.275s ease, filter 0.275s ease;
+}
+
+.back-bubble:hover .back-label,
+.back-bubble:focus-visible .back-label {
+  color: tokens.$secondary;
+  filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+}
+
+.back-arrow {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  transform: rotate(-135deg);
+  margin-top: -1px;
+  margin-left: -2px;
+  color: tokens.$prisec;
+  pointer-events: none;
+  transition: color 0.275s ease, filter 0.275s ease;
+}
+
+.back-bubble:hover .back-arrow,
+.back-bubble:focus-visible .back-arrow {
+  color: tokens.$secondary;
+  filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+}
+
+.back-bubble, 
+.back-bubble * { 
+  text-decoration: none !important; 
+}
+
+/* Focus visible for accessibility */
+.back-bubble:focus-visible {
+  outline: 2px solid tokens.$secondary;
+  outline-offset: 3px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: #{tokens.$lg_breakpoint}) {
+  .back-button-wrapper {
+    left: 38px;
+    top: 20px;
+  }
+  
+  .back-bubble {
+    padding: 8px 18px 8px 16px;
+    font-size: 0.95rem;
+  }
+
+  .back-arrow {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: #{tokens.$sm_breakpoint}) {
+  .back-button-wrapper {
+    left: 24px;
+    top: 18px;
+  }
+
+  .back-bubble {
+    padding: 7px 16px 7px 14px;
+    gap: 6px;
+  }
+}

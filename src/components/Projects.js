@@ -29,7 +29,6 @@ const FadeInImage = ({
       if (!canceled) setLoaded(true);
     };
 
-    // decode() ensures it's ready to paint (best anti-jank)
     if (img.decode) {
       img.decode().then(done).catch(done);
     } else {
@@ -51,7 +50,6 @@ const FadeInImage = ({
       decoding="async"
       fetchPriority={fetchPriority}
       onLoad={() => {
-        // fallback: if fadeOnLoad=false we still mark loaded
         if (!fadeOnLoad) setLoaded(true);
       }}
       onError={() => setLoaded(true)}
@@ -62,40 +60,59 @@ const FadeInImage = ({
 /**
  * Case studies only: lazy-load MP4 when near viewport.
  * Poster shows immediately (so the card feels “ready”).
+ * Also: play/pause based on visibility to save CPU/GPU.
  */
-const LazyThumbVideo = ({ mp4, poster, className }) => {
+const LazyThumbVideo = ({ mp4, poster, className, priority = false }) => {
   const videoRef = useRef(null);
-  const [shouldLoad, setShouldLoad] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(priority);
+  const [isVisible, setIsVisible] = useState(priority);
+
+  // Preload poster for priority cards (first 1–2 feel instant)
+  useEffect(() => {
+    if (!priority || !poster) return;
+    const img = new Image();
+    img.src = poster;
+  }, [priority, poster]);
 
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
 
-    // Fallback: load immediately
     if (typeof IntersectionObserver === "undefined") {
       setShouldLoad(true);
+      setIsVisible(true);
       return;
     }
 
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoad(true);
-          io.disconnect();
-        }
+        const vis = entry.isIntersecting;
+        setIsVisible(vis);
+        if (vis) setShouldLoad(true);
       },
-      { rootMargin: "300px", threshold: 0.01 }
+      { rootMargin: "250px", threshold: 0.01 }
     );
 
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    if (isVisible) {
+      const p = el.play?.();
+      if (p && typeof p.catch === "function") p.catch(() => {});
+    } else {
+      el.pause?.();
+    }
+  }, [isVisible]);
+
   return (
     <video
       ref={videoRef}
       className={className}
-      autoPlay
       loop
       muted
       playsInline
@@ -128,47 +145,53 @@ const Projects = () => {
           </h3>
 
           <div className="projects-container">
-            {caseStudies.map((project, index) => (
-              <Link
-                to={project.link}
-                className="project-card-link animate-project-card"
-                key={project.slug}
-                style={{ animationDelay: `${0.1 + index * 0.1}s` }}
-              >
-                <div className="project-card">
-                  <div className="project-thumbnail">
-                    {project.video ? (
-                      <LazyThumbVideo
-                        mp4={project.video}
-                        poster={project.poster}
-                        className="thumbnail-media"
-                      />
-                    ) : (
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="thumbnail-media"
-                        loading={index < 2 ? "eager" : "lazy"}
-                        decoding="async"
-                      />
-                    )}
-                  </div>
+            {caseStudies.map((project, index) => {
+              const isPriority = index < 2; // top case studies
 
-                  <div className="project-tags">
-                    {project.tags.map((tag) => (
-                      <span className="tag" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+              return (
+                <Link
+                  to={project.link}
+                  className="project-card-link animate-project-card"
+                  key={project.slug}
+                  style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+                >
+                  <div className="project-card">
+                    <div className="project-thumbnail">
+                      {project.video ? (
+                        <LazyThumbVideo
+                          mp4={project.video}
+                          poster={project.poster}
+                          className="thumbnail-media"
+                          priority={isPriority}
+                        />
+                      ) : (
+                        <FadeInImage
+                          src={project.image}
+                          alt={project.title}
+                          className="thumbnail-media thumb-fade"
+                          loading={isPriority ? "eager" : "lazy"}
+                          fetchPriority={isPriority ? "high" : "auto"}
+                          fadeOnLoad={true}
+                        />
+                      )}
+                    </div>
 
-                  <div className="project-content">
-                    <h4 className="project-title">{project.title}</h4>
-                    <p className="project-description">{project.description}</p>
+                    <div className="project-tags">
+                      {project.tags.map((tag) => (
+                        <span className="tag" key={tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="project-content">
+                      <h4 className="project-title">{project.title}</h4>
+                      <p className="project-description">{project.description}</p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
 

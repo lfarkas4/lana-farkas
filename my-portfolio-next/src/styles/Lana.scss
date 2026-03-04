@@ -1,0 +1,188 @@
+@use "./partials/tokens" as tokens;
+
+/* ===== Floating keyframes (letters) ===== */
+@keyframes float-l {
+  0% { transform: translate(-50%, -50%) rotate(0.5deg); }
+  50% { transform: translate(calc(-50%), calc(-50% + 2%)) rotate(-4deg); }
+  100% { transform: translate(-50%, -50%) rotate(0.5deg); }
+}
+@keyframes float-a1 {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(calc(-50% + 2%), calc(-50% - 11%)) rotate(5deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+@keyframes float-n {
+  0% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+  50% { transform: translate(calc(-50% + 3%), calc(-50% + 5%)) rotate(-3deg); }
+  100% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+}
+@keyframes float-a2 {
+  0% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+  50% { transform: translate(calc(-50% + 6%), calc(-50% - 10%)) rotate(-4deg); }
+  100% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+}
+
+/* ===== Floating keyframes (decor) ===== */
+@keyframes float-halo {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(-50%, calc(-50% - 7%)) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+@keyframes float-orstar1 {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(calc(-50% + 4%), calc(-50% - 8%)) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+@keyframes float-redstar1 {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(calc(-50% + 4%), calc(-50% + 12%)); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes float-blustar3 {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(calc(-50% + 15%), calc(-50% + 5%)); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes float-blustar2 {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, calc(-50% - 16%)); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes float-blustar1 {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, calc(-50% - 10%)); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes float-redstar2 {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(calc(-50% - 1%), calc(-50% - 10%)); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes float-crown {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(calc(-50% + 5%), calc(-50% - 14%)) rotate(4deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+/* ================================================================
+   Container
+   ================================================================ */
+.lana-container {
+  position: relative;
+  /* clamp() with a simple calc — more Safari-safe than aspect-ratio + clamp combo */
+  width: clamp(200px, 50vw + 200px, 760px);
+  /* padding-top % is relative to width — replicates aspect-ratio 786.86/280.77 ≈ 35.68% */
+  height: 0;
+  padding-top: 35.68%;
+  margin: 0 auto;
+  margin-top: -16px;
+  margin-bottom: -18px;
+
+  /* Safari: avoid any stacking-context side-effects from will-change here */
+  -webkit-transform: translateZ(0);
+}
+
+/* Start hidden; reveal when images are ready */
+/* 
+ * Safari bug: animation-play-state:paused on opacity:0 elements can permanently
+ * prevent them from appearing. Use visibility instead of pausing animations,
+ * and let the opacity transition handle the reveal.
+ */
+.lana-container :is(.lana-piece) {
+  opacity: 0;
+  /* Do NOT set animation-play-state:paused — causes Safari to freeze elements */
+}
+.lana-container.is-ready :is(.lana-piece) {
+  opacity: 1;
+  transition: opacity 260ms ease-out;
+}
+
+/* Base piece styling */
+.lana-piece {
+  position: absolute;
+  width: 12%;
+  height: auto;
+  /* top/left % are relative to the container width in absolute positioning,
+     but since we use padding-top trick the bounding box is the full padded area */
+  transform: translate3d(-50%, -50%, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* Safari */
+  will-change: transform;
+  pointer-events: none;
+  z-index: 2;
+  user-select: none;
+  image-rendering: auto;
+  /* -webkit-font-smoothing only applies to text, removed from img elements */
+}
+
+/* ================================================================
+   Letter shadows (tighter to avoid fuzzy PNG edges)
+   ================================================================ */
+
+@keyframes letterGlowPulse {
+  0%, 100% { --pulse: 0.97; }
+  50%      { --pulse: 1.02; } /* tiny swing = less “breathing” blur */
+}
+
+.lana-letter {
+  --pulse: 1;
+
+  filter:
+    /* 1) crisp edge keeper (tiny, tight) */
+    drop-shadow(0 0 1px rgba(0, 0, 0, 0.95))
+
+    /* 2) grounded depth (less blur than before) */
+    drop-shadow(0 10px 14px rgba(0, 0, 0, 0.84))
+
+    /* 3) inky purple core glow (tight radius) */
+    drop-shadow(
+      0 0 calc(5px * var(--pulse))
+      rgba(60, 0, 120, 0.24)
+    )
+
+    /* 4) outer bloom (very subtle + tighter radius so edges stay crisp) */
+    drop-shadow(
+      0 0 calc(9px * var(--pulse))
+      rgba(175, 120, 255, 0.05)
+    )
+
+    /* keep your richness but don’t brighten the edge halo */
+    saturate(1.74)
+    brightness(0.975);
+
+  animation: letterGlowPulse 9.2s ease-in-out infinite;
+  /* will-change: filter causes Safari to allocate a separate compositing layer
+     per letter which can exhaust GPU memory on mobile. Removed. */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lana-letter { animation: none !important; }
+}
+
+/* ================================================================
+   Positions + sizes
+   ================================================================ */
+
+/* Decorative stars and crown */
+.orstar1-piece  { width: 8.2%; top: 23.75%; left: 12%;   animation: float-orstar1 3.2s ease-in-out infinite; }
+.redstar1-piece { width: 6%;   top: 78%;    left: 11.5%; animation: float-redstar1 3.15s ease-in-out infinite; }
+.blustar3-piece { width: 5.3%; top: 52%;    left: 4.5%;  animation: float-blustar3 3.2s ease-in-out infinite; }
+.blustar2-piece { width: 4%;   top: 95%;    left: 39.5%; animation: float-blustar2 3.15s ease-in-out infinite; }
+.blustar1-piece { width: 4.1%; top: 42%;    left: 91%;   animation: float-blustar1 3.2s ease-in-out infinite; }
+.redstar2-piece { width: 6%;   top: 20%;    left: 86%;   animation: float-redstar2 3.15s ease-in-out infinite; }
+.crown-piece    { width: 11.7%;top: 82%;    left: 85.75%;animation: float-crown 3.1s ease-in-out infinite; }
+
+/* Letters */
+.l-piece    { width: 16.1%; top: 64%;    left: 25.25%; animation: float-l 3.1s ease-in-out infinite; }
+.a1-piece   { width: 16.9%; top: 56%;    left: 39.5%;  animation: float-a1 3.1s ease-in-out infinite; }
+.n-piece    { width: 20.05%;top: 65.75%; left: 57.5%;  animation: float-n 3.1s ease-in-out infinite; }
+.a2-piece   { width: 18.9%; top: 59%;    left: 75.25%; animation: float-a2 3.1s ease-in-out infinite; }
+.halo-piece { width: 20.1%; top: 25%;    left: 58%;    animation: float-halo 3.1s ease-in-out infinite; }
+
+@media (min-width: #{tokens.$xxl_breakpoint}) {
+  .lana-container { width: clamp(200px, 50vw + 200px, 875px); }
+}
+
+@media (max-width: #{tokens.$xxs_breakpoint}) {
+  .lana-container { width: 97vw; }
+}

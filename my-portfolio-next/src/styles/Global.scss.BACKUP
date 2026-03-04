@@ -1,0 +1,401 @@
+/* ================================================================
+   GLOBAL STYLES
+   Base styles, typography, utilities, and animations
+   ================================================================ */
+
+/* ================================================================
+   TABLE OF CONTENTS
+   1. Font Imports
+   2. Base Styles (HTML & Body)
+   3. Typography Utility Classes - Montserrat
+   4. Typography Utility Classes - Cooper
+   5. Text Selection & Cursor Controls
+   6. Shooting Star Animation
+   7. Background Utilities
+   ================================================================ */
+
+
+/* ================================================================
+   1. FONT IMPORTS
+   ================================================================ */
+   @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,425;0,450;0,475;0,500;0,525;0,550;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,300;1,400;1,500&display=swap');
+
+   /* Cooper font faces */
+   @font-face {
+     font-family: 'CooperLtBT-Regular-Lightened';
+     src: url('/fonts/CooperLtBT-Regular-Lightened.ttf') format('truetype');
+     font-display: swap;
+   }
+   
+   @font-face {
+     font-family: 'CooperLtBT-Regular-Lightened1';
+     src: url('/fonts/CooperLtBT-Regular-Lightened1.ttf') format('truetype');
+     font-display: swap;
+   }
+   
+   @font-face {
+     font-family: 'CooperLtBT-Regular';
+     src: url('/fonts/CooperLtBT-Regular.ttf') format('truetype');
+     font-display: swap;
+   }
+   
+   @font-face {
+     font-family: 'CooperLtBT-Italic';
+     src: url('/fonts/CooperLtBT-Italic.ttf') format('truetype');
+     font-weight: 300;
+     font-style: italic;
+     font-display: swap;
+   }
+   
+   @font-face {
+     font-family: 'CooperLtBT-Italic-Lightened';
+     src: url('/fonts/CooperLtBT-Italic-Lightened.ttf') format('truetype');
+     font-style: italic;
+     font-weight: 300;
+     font-display: swap;
+   }
+   
+   
+   /* ================================================================
+      2. BASE STYLES (HTML & Body)
+      ================================================================ */
+   html {
+     height: 100%;
+     margin: 0;
+     padding: 0;
+     overflow-x: hidden;
+     overflow-y: auto;
+     scroll-behavior: smooth;
+   }
+   
+   body {
+     height: 100%;
+     margin: 0;
+     padding: 0;
+     overflow-x: hidden;
+     overflow-y: auto;
+     background: transparent;
+     background-size: cover;
+     font-family: 'Montserrat', sans-serif;
+     color: rgb(204, 204, 204);
+     letter-spacing: 0.66px;
+   }
+   
+   
+   /* ================================================================
+      3. TYPOGRAPHY UTILITY CLASSES - MONTSERRAT
+      ================================================================ */
+   
+   /* Font weights */
+   .font-regular {
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 400;
+   }
+   
+   .font-medium {
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 500;
+   }
+   
+   .font-semibold {
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 600;
+   }
+   
+   .font-bold {
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 700;
+   }
+   
+   /* Italics */
+   .font-italic {
+     font-style: italic;
+   }
+   
+   .font-medium-italic {
+     font-family: 'Montserrat', sans-serif;
+     font-style: italic;
+     font-weight: 500;
+   }
+   
+   .font-semibold-italic {
+     font-family: 'Montserrat', sans-serif;
+     font-style: italic;
+     font-weight: 600;
+   }
+   
+   /* Font sizes */
+   .text-xs { font-size: 0.75rem; }
+   .text-sm { font-size: 0.875rem; }
+   .text-base { font-size: 1rem; }
+   .text-lg { font-size: 1.125rem; }
+   .text-xl { font-size: 1.25rem; }
+   .text-2xl { font-size: 1.5rem; }
+   .text-3xl { font-size: 1.875rem; }
+   .text-4xl { font-size: 2.25rem; }
+   
+   
+   /* ================================================================
+      4. TYPOGRAPHY UTILITY CLASSES - COOPER
+      ================================================================ */
+   .font-cooper-italic {
+     font-family: 'CooperLtBT-Italic', serif;
+     font-style: italic;
+     font-weight: normal;
+     letter-spacing: 1px;
+   }
+   
+   .font-cooper-italic-bold {
+     font-family: 'CooperMdBT-Italic', serif;
+     font-style: italic;
+     font-weight: bold;
+     letter-spacing: 0.5px;
+   }
+   
+   .font-cooper-italic-tag3 {
+     font-family: 'CooperLtBT-Italic', serif;
+     font-style: italic;
+     font-weight: normal;
+     letter-spacing: 1.4px;
+     font-size: 1rem;
+   }
+   
+   .cooper-spotify-heading {
+     font-family: 'CooperLtBT-Italic-Lightened', serif;
+     font-weight: 300;
+     font-style: italic;
+     color: #cccccc;
+     text-align: center;
+     font-size: 1.55rem;
+     letter-spacing: 1.25px;
+   }
+   
+   
+/* ================================================================
+   5. TEXT SELECTION & CURSOR CONTROLS
+   ================================================================ */
+
+/* Prevent I-beam cursor and text selection on UI elements */
+body,
+h1, h2, h3, h4, h5, h6,
+.hero,
+.hero-title,
+.hero-tagline,
+.hero-column h4,
+.about-top,
+.about-heading,
+.cooper-tagline,
+.about-contact-block,
+.about-cards,
+.extras-intro,
+.spotify-heading,
+.floating-caption,
+.haiku-intro,
+.haiku-text,
+.footer-thanks,
+.footer-message,
+.section-title,
+.project-title,
+.mini-title,
+.pd-hero__eyebrow,
+.pd-hero__title,
+.pd-meta__heading,
+.section-title1,
+.custom-navbar,
+.nav-bubble,
+.nav-links,
+.nav-link,
+.nav-link-label {
+  user-select: none;
+  cursor: default;
+}
+
+/* Allow text selection on body content BUT NO I-BEAM */
+p,
+p *,
+strong,
+b,
+em,
+i,
+span,
+.about-bio,
+.about-bio *,
+.hero-column p,
+.hero-column p *,
+.project-description,
+.project-description *,
+.mini-description,
+.mini-description *,
+.pd-hero__subtitle,
+.pd-hero__subtitle *,
+.pd-meta__text,
+.pd-meta__text *,
+.pd-section__body,
+.pd-section__body *,
+article,
+article *,
+.selectable-text,
+.selectable-text *,
+.light-bold {
+  user-select: text;
+  cursor: default !important;
+}
+
+/* Custom cursor mode - hide OS cursor when NOT in native mode */
+html:not(.cursor-native),
+html:not(.cursor-native) body,
+html:not(.cursor-native) * {
+  cursor: none !important;
+}
+
+/* In NATIVE cursor mode - force default cursor on ALL text (no I-beam) */
+html.cursor-native p,
+html.cursor-native p *,
+html.cursor-native strong,
+html.cursor-native b,
+html.cursor-native em,
+html.cursor-native i,
+html.cursor-native span,
+html.cursor-native .about-bio,
+html.cursor-native .about-bio *,
+html.cursor-native .hero-column p,
+html.cursor-native .hero-column p *,
+html.cursor-native .project-description,
+html.cursor-native .project-description *,
+html.cursor-native .mini-description,
+html.cursor-native .mini-description *,
+html.cursor-native .pd-hero__subtitle,
+html.cursor-native .pd-hero__subtitle *,
+html.cursor-native .pd-meta__text,
+html.cursor-native .pd-meta__text *,
+html.cursor-native .pd-section__body,
+html.cursor-native .pd-section__body *,
+html.cursor-native article,
+html.cursor-native article *,
+html.cursor-native .selectable-text,
+html.cursor-native .selectable-text *,
+html.cursor-native .light-bold {
+  cursor: default !important;
+}
+
+/* Clickable elements in native cursor mode */
+html.cursor-native .nav-link,
+html.cursor-native .nav-link *,
+html.cursor-native .nav-link-wrapper,
+html.cursor-native .menu-icon,
+html.cursor-native button,
+html.cursor-native a,
+html.cursor-native .clickable {
+  cursor: pointer !important;
+}
+
+/* Brand logo */
+.brand-logo {
+  text-decoration: none !important;
+  display: flex;
+}
+
+.brand-logo * {
+  text-decoration: none !important;
+}
+   
+   /* ================================================================
+      6. SHOOTING STAR ANIMATION
+      ================================================================ */
+   .shooting-star {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 4px;
+     height: 4px;
+     background: rgb(244, 244, 244);
+     border-radius: 50%;
+     box-shadow: 0 0 6px 3px rgba(70, 75, 120, 0.8);
+     animation: shoot 2s linear forwards;
+     transform: rotate(45deg);
+     z-index: -5;
+     pointer-events: none;
+     opacity: 1;
+     overflow: visible;
+   }
+   
+   .shooting-star::after {
+     content: '';
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     width: 100px;
+     height: 2px;
+     background: linear-gradient(to left, rgba(184, 184, 184, 0.9), rgba(255, 255, 255, 0));
+     transform: translate(-100%, -50%) rotate(-20deg);
+     transform-origin: right;
+     filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+     opacity: 1;
+     animation: trail-fade 1.85s linear forwards;
+   }
+   
+   @keyframes shoot {
+     0% {
+       transform: translate(0, 0) scale(1) rotate(45deg);
+       opacity: 1;
+     }
+     100% {
+       transform: translate(100vw, 100vh) scale(1.2) rotate(45deg);
+       opacity: 0;
+     }
+   }
+   
+   @keyframes trail-fade {
+     0% {
+       opacity: 1;
+       width: 200px;
+     }
+     80% {
+       opacity: 0.8;
+     }
+     100% {
+       opacity: 0;
+       width: 0px;
+     }
+   }
+   
+   
+   /* ================================================================
+      7. BACKGROUND UTILITIES
+      ================================================================ */
+   
+   /* Disable animated background on certain pages */
+   body.no-animated-bg {
+     background: #040f11 !important;
+     background-image: none !important;
+   }
+   
+   body.no-animated-bg .stars,
+   body.no-animated-bg #stars-canvas,
+   body.no-animated-bg .background-anim {
+     display: none !important;
+   }
+   #root {
+    position: relative;
+    z-index: 1;
+  }
+/* --- Next migration: ensure Montserrat is the default site font --- */
+html, body {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Next: normalize Montserrat rendering to match production feel */
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+/* Next: normalize Montserrat rendering to match production feel */
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}

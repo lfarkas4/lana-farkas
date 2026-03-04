@@ -1,0 +1,371 @@
+/* ================================================================
+   DESIGN TOKENS
+   Core design system variables for typography, colors, spacing
+   ================================================================ */
+
+/* ================================================================
+   COLORS
+   ================================================================ */
+   $primary: rgb(210, 210, 210);     // Default text (dimmest)
+   $prisec: rgb(240, 240, 240);      // Middle brightness
+   $prisaac: rgb(200, 200, 200);    // Middle brightness
+   $secondary: rgb(255, 255, 255);  // Hover animation (brightest)
+   $tertiary: rgb(180, 180, 180);   // Slightly lighter than primary
+   
+   $tag: rgba(255, 255, 255, 0.07); // Project tag background
+   
+   
+   /* ================================================================
+      SPACING SCALE
+      8px base scale for consistent spacing across all components
+      ================================================================ */
+   $space-2xs: 8px;
+   $space-xs: 16px;
+   $space-sm: 24px;
+   $space-md: 32px;
+   $space-lg: 48px;
+   $space-xl: 64px;
+   $space-xxl: 80px;
+   $space-3xl: 96px;
+   $space-4xl: 160px;
+   
+   
+   /* ================================================================
+      LAYOUT PADDING
+      Responsive padding system using clamp for fluid scaling
+      ================================================================ */
+   $padding-narrow: clamp(40px, 4vw, 60px);
+   $padding-medium: clamp(40px, 6vw, 80px);
+   $padding-wide: clamp(50px, 8vw, 100px);
+   
+   
+   /* ================================================================
+      CONTAINER WIDTHS
+      Max-width values for content containers
+      ================================================================ */
+   $container-sm: 540px;
+   $container-md: 680px;
+   $container-lg: 1200px;
+   $container-xl: 1360px;
+   $container-page-max: 1325px;
+   $container-xxl: 1520px;  // Wide-screen homepage max (≥ 1600px)
+   
+   
+   /* ================================================================
+      TYPOGRAPHY - FONT FAMILIES
+      ================================================================ */
+   $font-montserrat: 'Montserrat', sans-serif;
+   $font-cooperxtralight: 'CooperLtBT-Italic-Lightened', serif;
+   $font-cooperlight: 'CooperLtBT-Italic', serif;
+   
+   
+   /* ================================================================
+      TYPOGRAPHY - FONT SIZES
+      ================================================================ */
+   $font-coop-display1: 2.025rem;
+   $font-coop-display-mid: 1.8rem;
+   $font-coop-display2: 1.5rem;
+   $font-coop-h1: 1.5rem;
+   $font-coop-h2: 1.2rem;
+   
+   $font-mont-display1: 1.825rem;
+   $font-mont-display-mid: 1.6rem;
+   $font-mont-display2: 1.4rem;
+   $font-mont-body1: 0.825rem;
+   $font-mont-body: 0.9rem;
+   $font-mont-credit: 0.75rem;
+   
+   $font-mont-italic-nav: 1rem;
+   $font-mont-italic-footer: 1rem;
+   
+   
+   /* ================================================================
+      TYPOGRAPHY - FONT WEIGHTS (Montserrat)
+      ================================================================ */
+   $mont-weight-425: 425;
+   $mont-weight-400: 400;
+   $mont-weight-375: 375;
+   
+   
+   /* ================================================================
+      TYPOGRAPHY - MIXINS
+      ================================================================ */
+   
+   /* Cooper Font Mixins */
+   @mixin type-coop-display1 {
+     font-family: $font-cooperxtralight;
+     font-size: $font-coop-display1;
+     letter-spacing: 2.25px;
+     font-style: italic;
+   }
+   
+   @mixin type-coop-display-mid {
+     font-family: $font-cooperxtralight;
+     font-size: $font-coop-display-mid;
+     letter-spacing: 1.7px;
+     font-style: italic;
+   }
+   
+   @mixin type-coop-display2 {
+     font-family: $font-cooperxtralight;
+     font-size: $font-coop-display2;
+     letter-spacing: 1.25px;
+     font-style: italic;
+   }
+   
+   @mixin type-coop-display2-bold {
+     font-family: $font-cooperlight;
+     font-size: $font-coop-display2;
+     letter-spacing: 1.45px;
+     font-style: italic;
+   }
+   
+   @mixin type-coop-h1 {
+     font-family: $font-cooperxtralight;
+     font-size: $font-coop-h2;
+     letter-spacing: 1.35px;
+     font-style: italic;
+   }
+   
+   @mixin type-coop-h2 {
+     font-family: $font-cooperxtralight;
+     font-size: $font-coop-h1;
+     letter-spacing: 1.35px;
+     font-style: italic;
+     font-weight: 425;
+   }
+   
+   /* Montserrat Font Mixins */
+   @mixin type-mont-display1 {
+     font-family: $font-montserrat;
+     font-size: $font-mont-display1;
+     font-weight: $mont-weight-400;
+     letter-spacing: 0.85px;
+   }
+   
+   @mixin type-mont-display-mid {
+     font-family: $font-montserrat;
+     font-size: $font-mont-display-mid;
+     font-weight: $mont-weight-400;
+     letter-spacing: 0.825px;
+   }
+   
+   @mixin type-mont-display2 {
+     font-family: $font-montserrat;
+     font-size: $font-mont-display2;
+     font-weight: $mont-weight-400;
+     letter-spacing: 0.75px;
+   }
+   
+   @mixin type-mont-display2-bold {
+     font-family: $font-montserrat;
+     font-size: $font-mont-display2;
+     font-weight: $mont-weight-425;
+   }
+   
+   @mixin type-mont-body {
+     font-family: $font-montserrat;
+     font-size: $font-mont-body;
+     font-weight: $mont-weight-375;
+   }
+   
+   @mixin type-mont-body-bold {
+     font-family: $font-montserrat;
+     font-size: $font-mont-body;
+     font-weight: $mont-weight-400;
+   }
+   
+   @mixin type-mont-footer {
+     font-family: $font-montserrat;
+     font-style: italic;
+     font-size: $font-mont-italic-footer;
+     font-weight: $mont-weight-375;
+   }
+   
+   @mixin type-mont-credit {
+     font-family: $font-montserrat;
+     font-size: $font-mont-credit;
+     font-weight: $mont-weight-375;
+   }
+   
+   /* Navigation Mixins */
+   @mixin type-coop-nav-bold {
+     font-family: $font-montserrat;
+     font-size: $font-mont-italic-nav;
+     letter-spacing: 0.85px;
+     font-weight: $mont-weight-400;
+   }
+   
+   @mixin type-coop-nav-bold-mob {
+     font-family: $font-montserrat;
+     font-size: $font-mont-display1;
+     letter-spacing: 1.2px;
+     font-weight: $mont-weight-400;
+   }
+   
+   /* Project Page Specific Mixins */
+   @mixin type-mont-poj-display1 {
+     font-family: $font-montserrat;
+     font-size: 2.15rem;
+     font-weight: 475;
+     letter-spacing: 0.75px;
+   }
+   
+   @mixin type-mont-poj-light-headerintro {
+     font-family: $font-montserrat;
+     font-size: 1.925rem;
+     letter-spacing: -0.375px;
+     font-weight: 550;
+     line-height: 1.35;
+     margin: 0;
+   }
+
+   @mixin type-mont-poj-dark-headerintro {
+    font-family: $font-montserrat;
+    font-size: 1.925rem;
+    letter-spacing: 0.45px;
+    font-weight: 425;
+    line-height: 1.35;
+    margin: 0;
+  }
+   
+   @mixin type-mont-poj-display2-bold {
+     font-family: $font-montserrat;
+     font-size: $font-mont-display2;
+     font-weight: $mont-weight-425;
+     letter-spacing: 0px;
+   }
+   
+   @mixin type-mont-poj-body {
+     font-family: $font-montserrat;
+     font-size: 1.075rem;
+     font-weight: $mont-weight-375;
+     letter-spacing: 0.3px;
+   }
+   @mixin type-mont-poj-light-body {
+    font-family: $font-montserrat;
+    font-size: 1.075rem;
+    font-weight: 425;
+    letter-spacing: -0.25px;
+  }
+   
+   @mixin type-mont-poj-light-header {
+     font-family: $font-montserrat;
+     font-size: 1.1rem;
+     font-weight: $mont-weight-400;
+     letter-spacing: 0px;
+   }
+
+   @mixin type-mont-poj-dark-header {
+    font-family: $font-montserrat;
+    font-size: 1.1rem;
+    font-weight: 375;
+    letter-spacing: 0px;
+  }
+
+   /* ================================================================
+      BREAKPOINTS
+      Mobile-first responsive breakpoints
+      ================================================================ */
+   $xxs_breakpoint: '375px';   // Smallest mobile
+   $xs_breakpoint: '465px';    // Small mobile
+   $sm_breakpoint: '626px';    // Larger phones / small tablets
+   $md_breakpoint: '768px';    // Tablets (portrait)
+   $lg_breakpoint: '992px';    // Small laptops
+   $xl_breakpoint: '1200px';   // Desktops
+   $xxl_breakpoint: '1600px';  // Large/ultrawide screens
+   $xxxl_breakpoint: '1800px';  // Large/ultrawide screens
+
+
+
+   /* ===================================================================
+   AQUATONOMY COMPAT LAYER (non-breaking additions)
+   Standardized title/label/caption + body-strong + section/container
+   =================================================================== */
+
+/* Sizes & tracking defaults */
+$font-title-md: 1.4rem !default;
+$font-label-sm: 0.95rem !default;
+$font-caption: 0.85rem !default;
+
+$track-tight: -0.2px !default;   /* tighter for light bg */
+$track-loose: 0.2px !default;    /* looser for dark bg */
+
+/* --- Titles (shared by deliverable-title & takeaway-title) --- */
+@mixin type-title-md-light {
+  font-family: $font-montserrat;
+  font-size: $font-title-md;
+  font-weight: 550;
+  letter-spacing: $track-tight;
+  line-height: 1.3;
+}
+
+@mixin type-title-md-dark {
+  font-family: $font-montserrat;
+  font-size: $font-title-md;
+  font-weight: 500;
+  letter-spacing: $track-loose;
+  line-height: 1.3;
+}
+
+/* --- Labels (eyebrow-ish small headings) --- */
+@mixin type-label-sm-light {
+  font-family: $font-montserrat;
+  font-size: $font-label-sm;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+@mixin type-label-sm-dark {
+  font-family: $font-montserrat;
+  font-size: $font-label-sm;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+/* --- Captions --- */
+@mixin type-caption-light {
+  font-family: $font-montserrat;
+  font-size: $font-caption;
+  font-weight: 425;
+  letter-spacing: -0.2px;
+}
+
+@mixin type-caption-dark {
+  font-family: $font-montserrat;
+  font-size: $font-caption;
+  font-weight: 375;
+  letter-spacing: 0.15px;
+}
+
+/* --- Strong text normalization (use inside p strong) --- */
+@mixin body-strong-light {
+  font-weight: 600 !important;
+  color: #000000;
+}
+
+@mixin body-strong-dark {
+  font-weight: 550 !important;
+  // color: $prisec;
+  letter-spacing: 0.05px;
+}
+
+/* --- Section rhythm helpers (optional) --- */
+@mixin section-light($pt: 75px, $pb: 100px) {
+  background: #E8EAF0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: $pt 0 $pb;
+}
+
+@mixin section-dark($pt: 75px, $pb: 100px) {
+  background: transparent;
+  padding: $pt 0 $pb;
+}
+
+/* --- Consistent page container (matches your existing pattern) --- */
+@mixin container-page($pad: var(--page-gutter-desktop)) {
+  max-width: $container-page-max;
+  margin: 0 auto;
+  padding: 0 #{$pad};
+}

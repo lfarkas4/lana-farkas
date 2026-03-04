@@ -1,17 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useRouter } from "next/router";
 import { FiArrowUpRight } from "react-icons/fi";
-import "../styles/BackButton.scss";
 
-const BackButton = () => {
+const fallbackHref = "/";
+
+export default function BackButton() {
+  const router = useRouter();
+
+  const goBack = (e) => {
+    e.preventDefault();
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push(fallbackHref);
+    }
+  };
+
   return (
-    <Link to="/" className="back-bubble">
-      <span className="back-arrow">
-        <FiArrowUpRight />
-      </span>
-      <span className="back-label">back</span>
-    </Link>
+    <div className="back-button-wrapper visible">
+      <a className="back-bubble" href={fallbackHref} onClick={goBack}>
+        <FiArrowUpRight className="back-arrow" aria-hidden="true" />
+        <span className="back-label">back</span>
+      </a>
+    </div>
   );
-};
-
-export default BackButton;
+}

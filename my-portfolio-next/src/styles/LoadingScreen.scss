@@ -1,0 +1,244 @@
+/* ================================================================
+   LOADING SCREEN - Minimal Line (fade in + clean exit)
+   ================================================================ */
+   @use "./partials/tokens" as tokens;
+
+   .loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+  }  
+
+   /* ================================================================
+      1. LOADING SCREEN CONTAINER
+      ================================================================ */
+   .loading-screen {
+     position: fixed;
+     inset: 0;
+     z-index: 1000;
+   
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 32px;
+   
+     background: transparent; // CosmicBackground shows through
+   
+     /* start hidden so we can fade in */
+     opacity: 0;
+     transition: opacity 0.32s ease-out; // ✅ faster + matches JS FADE_OUT_MS
+     will-change: opacity;
+   
+     &.is-visible {
+       opacity: 1;
+     }
+   
+     &.is-exiting {
+       opacity: 0;
+       pointer-events: none;
+     }
+   }
+   
+   /* Don’t run inner animations until container is visible */
+   .loading-screen:not(.is-visible) .line-wrapper,
+   .loading-screen:not(.is-visible) .loading-text {
+     animation: none !important;
+     opacity: 0 !important;
+   }
+   
+   /* ================================================================
+      2. MINIMAL LINE ANIMATION
+      ================================================================ */
+   .line-wrapper {
+     width: 100px;
+     height: 2px;
+     background: rgba(255, 255, 255, 0.1);
+     border-radius: 2px;
+     overflow: hidden;
+   
+     opacity: 0;
+   
+     /* ✅ bar + text fade in together */
+     animation: fadeInNow 0.18s ease-out 0.10s forwards;
+   
+     &.is-resting .line-progress {
+       animation: lineGlow 1.8s ease-in-out infinite;
+       transform: scaleX(1);
+     }
+   }
+   
+   .loading-text {
+     text-align: center;
+     opacity: 0;
+   
+     /* ✅ bar + text fade in together */
+     animation: fadeInNow 0.18s ease-out 0.10s forwards;
+   }
+   
+   @keyframes fadeInNow {
+     to {
+       opacity: 1;
+     }
+   }
+   
+   .line-progress {
+     width: 100%;
+     height: 100%;
+     background: rgba(255, 255, 255, 0.85);
+     border-radius: 2px;
+     transform-origin: left;
+     animation: lineExpand 1.4s ease-in-out infinite;
+   }
+   
+   @keyframes lineExpand {
+     0% { transform: scaleX(0) translateX(0); }
+     50% { transform: scaleX(1) translateX(0); }
+     100% { transform: scaleX(0) translateX(100px); }
+   }
+   
+   @keyframes lineGlow {
+     0%, 100% {
+       opacity: 0.6;
+       box-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+     }
+     50% {
+       opacity: 1;
+       box-shadow:
+         0 0 16px rgba(255, 255, 255, 0.6),
+         0 0 28px rgba(200, 220, 255, 0.35);
+     }
+   }
+   
+   /* ================================================================
+      3. LOADING TEXT
+      ================================================================ */
+   .loading-tagline {
+     font-family: tokens.$font-montserrat;
+     font-weight: tokens.$mont-weight-400;
+     font-size: 1.05rem;
+     color: tokens.$primary;
+     letter-spacing: 0.5px;
+   
+     em {
+       font-family: tokens.$font-cooperxtralight;
+       font-style: italic;
+       font-size: 1.15rem;
+       color: tokens.$prisec;
+       letter-spacing: 1px;
+     }
+   }
+   
+   /* ================================================================
+      4. RESPONSIVE BREAKPOINTS
+      (keep your existing blocks, just ensure translateX matches widths)
+      ================================================================ */
+   
+   /* XXL */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .loading-screen { gap: 40px; }
+     .line-wrapper { width: 130px; }
+     .loading-tagline {
+       font-size: 1.2rem;
+       em { font-size: 1.35rem; }
+     }
+
+     @keyframes lineExpand {
+       0% { transform: scaleX(0) translateX(0); }
+       50% { transform: scaleX(1) translateX(0); }
+       100% { transform: scaleX(0) translateX(130px); }
+     }
+   }
+
+   /* LG */
+   @media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
+     .line-wrapper { width: 90px; }
+     @keyframes lineExpand {
+       0% { transform: scaleX(0) translateX(0); }
+       50% { transform: scaleX(1) translateX(0); }
+       100% { transform: scaleX(0) translateX(90px); }
+     }
+   }
+   
+   /* MD */
+   @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
+     .line-wrapper { width: 85px; }
+     .loading-tagline { font-size: 1rem; em { font-size: 1.1rem; } }
+   
+     @keyframes lineExpand {
+       0% { transform: scaleX(0) translateX(0); }
+       50% { transform: scaleX(1) translateX(0); }
+       100% { transform: scaleX(0) translateX(85px); }
+     }
+   }
+   
+   /* SM */
+   @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
+     .line-wrapper { width: 80px; }
+     .loading-tagline { font-size: 0.95rem; em { font-size: 1.05rem; } }
+   
+     @keyframes lineExpand {
+       0% { transform: scaleX(0) translateX(0); }
+       50% { transform: scaleX(1) translateX(0); }
+       100% { transform: scaleX(0) translateX(80px); }
+     }
+   }
+   
+   /* XS */
+   @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
+     .loading-screen { gap: 28px; }
+     .line-wrapper { width: 70px; }
+     .loading-tagline {
+       font-size: 0.9rem;
+       letter-spacing: 0.3px;
+       em { font-size: 1rem; letter-spacing: 0.75px; }
+     }
+   
+     @keyframes lineExpand {
+       0% { transform: scaleX(0) translateX(0); }
+       50% { transform: scaleX(1) translateX(0); }
+       100% { transform: scaleX(0) translateX(70px); }
+     }
+   }
+   
+   /* XXS */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .loading-screen { gap: 24px; }
+     .line-wrapper { width: 60px; }
+     .loading-tagline {
+       font-size: 0.85rem;
+       font-weight: 450;
+       letter-spacing: 0px;
+   
+       em {
+         font-family: tokens.$font-cooperlight;
+         font-size: 0.9rem;
+         letter-spacing: 0.5px;
+       }
+     }
+   
+     @keyframes lineExpand {
+       0% { transform: scaleX(0) translateX(0); }
+       50% { transform: scaleX(1) translateX(0); }
+       100% { transform: scaleX(0) translateX(60px); }
+     }
+   }
+   
+   /* ================================================================
+      5. REDUCED MOTION
+      ================================================================ */
+   @media (prefers-reduced-motion: reduce) {
+     .loading-screen,
+     .line-wrapper,
+     .line-progress,
+     .loading-text {
+       animation: none !important;
+       opacity: 1 !important;
+       transform: none !important;
+       transition: none !important;
+     }
+   
+     .line-progress {
+       transform: scaleX(1) !important;
+     }
+   }
