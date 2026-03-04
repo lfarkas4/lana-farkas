@@ -1,10 +1,12 @@
 // src/components/BehavaiSolutionPreview.jsx
 import React, { useRef, useEffect } from "react";
 import useReveal from "../utils/useReveal";
+import useIsMobile from "../utils/useIsMobile";
 
 export default function BehavaiSolutionPreview() {
   const sectionRef = useReveal();
   const videoRef = useRef(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const videoEl = videoRef.current;
@@ -38,11 +40,11 @@ export default function BehavaiSolutionPreview() {
         <header className="behavai-solution-header">
           <p className="behavai-solution-eyebrow">Solution Preview</p>
           <h2 className="behavai-solution-title">
-  Introducing BehavAI, an <em>AI layer</em> that transforms scattered{" "}
-  <span className="behavai-solution-title-break">
-    <em>session data</em> into structured, <em>shareable progress reports</em>.
-  </span>
-</h2>
+            Introducing BehavAI, an <em>AI layer</em> that transforms scattered{" "}
+            <span className="behavai-solution-title-break">
+              <em>session data</em> into structured, <em>shareable progress reports</em>.
+            </span>
+          </h2>
 
           <img
             src="/assets/spark-six-dark.svg"
@@ -53,22 +55,19 @@ export default function BehavaiSolutionPreview() {
         </header>
 
         {/* Media block */}
-
-<div className="behavai-solution-media">
-  <video
-    ref={videoRef}
-    className="behavai-solution-video"
-    src="/assets/behavai-trailer@1.mp4"
-    muted
-    loop
-    playsInline
-    // no controls here – clean, auto-playing frame
-  />
-  <p className="behavai-solution-caption">
-    Here’s a sneak peek of the platform!
-  </p>
-</div>
-
+        <div className="behavai-solution-media">
+          <video
+            ref={videoRef}
+            className="behavai-solution-video"
+            src={isMobile ? "/assets/behavai-trailer-mobile.mp4" : "/assets/behavai-trailer@1.mp4"}
+            muted
+            loop
+            playsInline
+          />
+          <p className="behavai-solution-caption">
+            Here's a sneak peek of the platform!
+          </p>
+        </div>
       </div>
     </section>
   );

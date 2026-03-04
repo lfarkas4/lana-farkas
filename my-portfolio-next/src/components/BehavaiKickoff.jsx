@@ -1,9 +1,11 @@
 // src/components/BehavAIKickoff.jsx
 import React from "react";
 import useReveal from "../utils/useReveal";
+import useIsMobile from "../utils/useIsMobile";
 
 export default function BehavAIKickoff() {
   const sectionRef = useReveal();
+  const isMobile = useIsMobile();
 
   return (
     <section
@@ -16,7 +18,8 @@ export default function BehavAIKickoff() {
         <header className="behavai-kickoff-header">
           <p className="behavai-kickoff-eyebrow">The Kickoff</p>
           <h2 className="behavai-kickoff-title">
-          We built a <em>real startup</em> powered by <em>AI</em> at Carnegie Mellon's renowned venture studio.          </h2>
+            We built a <em>real startup</em> powered by <em>AI</em> at Carnegie Mellon's renowned venture studio.
+          </h2>
         </header>
 
         {/* Body */}
@@ -42,7 +45,7 @@ export default function BehavAIKickoff() {
         {/* Media underneath */}
         <div className="behavai-kickoff-media">
           <video
-            src="/assets/behavai-worksesh@1.mp4"
+            src={isMobile ? "/assets/behavai-worksesh-mobile.mp4" : "/assets/behavai-worksesh@1.mp4"}
             autoPlay
             muted
             loop

@@ -1,9 +1,11 @@
 // src/components/TapTapIdea.jsx
 import React from "react";
 import useReveal from "../utils/useReveal";
+import useIsMobile from "../utils/useIsMobile";
 
 export default function TapTapIdea() {
   const sectionRef = useReveal();
+  const isMobile = useIsMobile();
 
   return (
     <section
@@ -21,10 +23,10 @@ export default function TapTapIdea() {
           </h2>
         </header>
 
-        {/* Media — full-width video, sits above body */}
+        {/* Media */}
         <div className="taptap-idea-media">
           <video
-            src="/assets/ddr.mp4"
+            src={isMobile ? "/assets/ddr-mobile.mp4" : "/assets/ddr.mp4"}
             autoPlay
             muted
             loop
@@ -42,7 +44,6 @@ export default function TapTapIdea() {
             <span className="hi">finger-sized game</span> you could play
             anywhere.
           </p>
-
           <p>
             We called it <span className="hi">Tap-Tap Revolution (TTR)</span>, a
             miniature rhythm game that brought the addictive gameplay of DDR to a

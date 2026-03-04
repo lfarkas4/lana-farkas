@@ -2,7 +2,7 @@
 import React from "react";
 import useReveal from "../utils/useReveal";
 
-export default function HiraSolution() {
+export default function HiraSolution({ isMobile }) {
   const solutionSectionRef = useReveal();
 
   return (
@@ -12,13 +12,14 @@ export default function HiraSolution() {
       aria-label="Hira Health complete solution"
     >
       <div className="hira-solution-inner">
-        
+
         {/* ===== HERO: MEET HIRA ===== */}
         <div className="hira-solution-hero reveal">
           <div className="hira-solution-hero-content">
             <p className="hira-solution-hero-eyebrow">Final Solution</p>
             <h2 className="hira-solution-hero-title">
-              Meet Hira, A WatchOS tool designed to help patients <em>feel heard</em>, <em>stay grounded</em>, and leave appointments with <em>clarity</em>.
+              Meet Hira, A WatchOS tool designed to help patients <em>feel heard</em>,{" "}
+              <em>stay grounded</em>, and leave appointments with <em>clarity</em>.
             </h2>
           </div>
         </div>
@@ -27,7 +28,7 @@ export default function HiraSolution() {
         <div className="hira-solution-demo reveal">
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hirra4@1.mp4"
+              src={isMobile ? "/assets/hirra4-mobile.mp4" : "/assets/hirra4@1.mp4"}
               autoPlay
               muted
               loop
@@ -35,7 +36,6 @@ export default function HiraSolution() {
               className="hira-solution-demo-video"
             />
           </div>
-
           <div className="hira-solution-demo-content">
             <h3 className="hira-solution-demo-heading">
               <span className="hira-solution-demo-number">1.</span> Say it out loud to capture a moment
@@ -56,10 +56,9 @@ export default function HiraSolution() {
               Swipe through widgets that keep priorities visible: what's next, what's new, what repeats.
             </p>
           </div>
-
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hirrra@1.mp4"
+              src={isMobile ? "/assets/hirrra-mobile.mp4" : "/assets/hirrra@1.mp4"}
               autoPlay
               muted
               loop
@@ -73,7 +72,7 @@ export default function HiraSolution() {
         <div className="hira-solution-demo reveal">
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hirrrra3@1.mp4"
+              src={isMobile ? "/assets/hirrrra3-mobile.mp4" : "/assets/hirrrra3@1.mp4"}
               autoPlay
               muted
               loop
@@ -81,7 +80,6 @@ export default function HiraSolution() {
               className="hira-solution-demo-video"
             />
           </div>
-
           <div className="hira-solution-demo-content">
             <h3 className="hira-solution-demo-heading">
               <span className="hira-solution-demo-number">3.</span> Review your patterns to prep for what's next
@@ -97,20 +95,19 @@ export default function HiraSolution() {
           <header className="hira-live-context-header">
             <p className="hira-live-context-eyebrow">Live Context</p>
             <h2 className="hira-live-context-title">
-              Hira uses context signals to nudge at the right moments with <em>gentle reminders</em>, <em>check-ins</em>, and <em>prep</em>.
+              Hira uses context signals to nudge at the right moments with{" "}
+              <em>gentle reminders</em>, <em>check-ins</em>, and <em>prep</em>.
             </h2>
           </header>
-
           <div className="hira-live-context-visual">
-          <video
-      // src="/assets/nutif.mp4"
-      src="/assets/hora@1.mp4"
-      autoPlay
-      muted
-      loop
-      playsInline
-      className="hira-live-context-image"
-    />
+            <video
+              src={isMobile ? "/assets/hora-mobile.mp4" : "/assets/hora@1.mp4"}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="hira-live-context-image"
+            />
           </div>
         </div>
 
@@ -118,7 +115,8 @@ export default function HiraSolution() {
         <div className="hira-mobile-intro reveal">
           <p className="hira-mobile-intro-eyebrow">Mobile Companion</p>
           <h2 className="hira-mobile-intro-title">
-            Hira's mobile view brings everything together, including <em>appointments</em>, <em>health signals</em>, and <em>long-term trends</em>.
+            Hira's mobile view brings everything together, including{" "}
+            <em>appointments</em>, <em>health signals</em>, and <em>long-term trends</em>.
           </h2>
         </div>
 
@@ -126,7 +124,7 @@ export default function HiraSolution() {
         <div className="hira-solution-demo hira-solution-demo--mobile reveal">
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hick2@1.mp4"
+              src={isMobile ? "/assets/hick2-mobile.mp4" : "/assets/hick2@1.mp4"}
               autoPlay
               muted
               loop
@@ -134,7 +132,6 @@ export default function HiraSolution() {
               className="hira-solution-demo-video hira-solution-demo-video--mobile"
             />
           </div>
-
           <div className="hira-solution-demo-content">
             <h3 className="hira-solution-demo-heading">
               <span className="hira-solution-demo-number">1.</span> Sync appointments and health data
@@ -155,10 +152,9 @@ export default function HiraSolution() {
               Visualize symptom trends and recurring themes pulled from voice-logged notes.
             </p>
           </div>
-
           <div className="hira-solution-demo-media">
             <video
-              src="/assets/hick_1@1.mp4"
+              src={isMobile ? "/assets/hick_1-mobile.mp4" : "/assets/hick_1@1.mp4"}
               autoPlay
               muted
               loop

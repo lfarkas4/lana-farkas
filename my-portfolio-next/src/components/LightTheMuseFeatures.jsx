@@ -1,9 +1,11 @@
 // src/components/LightTheMuseFeatures.jsx
 import React from "react";
 import useReveal from "../utils/useReveal";
+import useIsMobile from "../utils/useIsMobile";
 
 export default function LightTheMuseFeatures() {
   const featuresSectionRef = useReveal();
+  const isMobile = useIsMobile();
 
   return (
     <section
@@ -17,7 +19,8 @@ export default function LightTheMuseFeatures() {
         <header className="light-features-header reveal">
           <p className="light-features-eyebrow">Core Features</p>
           <h2 className="light-features-title">
-            Light the Muse adapts to your <em>creative rhythm</em> while keeping the <em>focus on making</em>, not consuming.
+            Light the Muse adapts to your <em>creative rhythm</em> while keeping the{" "}
+            <em>focus on making</em>, not consuming.
           </h2>
         </header>
 
@@ -25,7 +28,7 @@ export default function LightTheMuseFeatures() {
         <div className="light-features-demo reveal">
           <div className="light-features-demo-media">
             <video
-              src="/assets/muse1.mp4"
+              src={isMobile ? "/assets/muse1-mobile.mp4" : "/assets/muse1.mp4"}
               autoPlay
               muted
               loop
@@ -33,7 +36,6 @@ export default function LightTheMuseFeatures() {
               className="light-features-demo-video"
             />
           </div>
-
           <div className="light-features-demo-content">
             <h3 className="light-features-demo-heading">
               <span className="light-features-demo-number">1.</span> Personalized prompts tailored to your practice
@@ -54,10 +56,9 @@ export default function LightTheMuseFeatures() {
               A Pomodoro-style timer keeps your screen locked and notifications silent, with space to document your progress after each session.
             </p>
           </div>
-
           <div className="light-features-demo-media">
             <video
-              src="/assets/muse2.mp4"
+              src={isMobile ? "/assets/muse2-mobile.mp4" : "/assets/muse2.mp4"}
               autoPlay
               muted
               loop
@@ -71,7 +72,7 @@ export default function LightTheMuseFeatures() {
         <div className="light-features-demo reveal">
           <div className="light-features-demo-media">
             <video
-              src="/assets/musee3.mp4"
+              src={isMobile ? "/assets/musee3-mobile.mp4" : "/assets/musee3.mp4"}
               autoPlay
               muted
               loop
@@ -79,7 +80,6 @@ export default function LightTheMuseFeatures() {
               className="light-features-demo-video"
             />
           </div>
-
           <div className="light-features-demo-content">
             <h3 className="light-features-demo-heading">
               <span className="light-features-demo-number">3.</span> Community challenges to inspire and connect
@@ -97,13 +97,12 @@ export default function LightTheMuseFeatures() {
               <span className="light-features-demo-number">4.</span> Progress tracking to celebrate your journey
             </h3>
             <p className="light-features-demo-description">
-            A visual timeline organizes your creations with the moods and moments that shaped them, so you can track your progress at a glance.
+              A visual timeline organizes your creations with the moods and moments that shaped them, so you can track your progress at a glance.
             </p>
           </div>
-
           <div className="light-features-demo-media">
             <video
-              src="/assets/muse4.mp4"
+              src={isMobile ? "/assets/muse4-mobile.mp4" : "/assets/muse4.mp4"}
               autoPlay
               muted
               loop

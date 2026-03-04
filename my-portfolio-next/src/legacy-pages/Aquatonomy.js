@@ -12,6 +12,7 @@ import SolutionImpact from "../components/SolutionImpact";
 import ResearchDiscovery from "../components/ResearchDiscovery";
 import DeliveredReflection from "../components/DeliveredReflection";
 import useReveal from "../utils/useReveal";
+import useIsMobile from "../utils/useIsMobile";
 
 const iconMap = {
   Figma: "/assets/figma.svg",
@@ -20,13 +21,10 @@ const iconMap = {
 };
 
 export default function Aquatonomy() {
-  // get this project's data from ProjectsData
   const data = caseStudies.find((p) => p.slug === "aquatonomy");
-
-  // set up scroll-reveal once for this page
   const revealRef = useReveal();
+  const isMobile = useIsMobile();
 
-  // keep your guard
   if (!data) return null;
 
   const splitTeam = (txt) => {
@@ -59,11 +57,13 @@ export default function Aquatonomy() {
     .map((t) => t.trim())
     .filter(Boolean);
 
+  const heroVideoSrc = isMobile && data.videoMobile ? data.videoMobile : data.video;
+
   return (
     <ProjectDetailLayout>
-    {/* Scroll Progress Bar */}
-    <ScrollProgressBar />
-    
+      {/* Scroll Progress Bar */}
+      <ScrollProgressBar />
+
       {/* attach revealRef so .reveal / .reveal-block can animate */}
       <div ref={revealRef}>
         {/* ===== HERO ===== */}
@@ -86,7 +86,7 @@ export default function Aquatonomy() {
 
           <div className="pd-hero__media">
             {data.video ? (
-              <video src={data.video} autoPlay muted loop playsInline />
+              <video src={heroVideoSrc} autoPlay muted loop playsInline />
             ) : (
               data.image && <img src={data.image} alt={data.title} />
             )}
@@ -129,7 +129,9 @@ export default function Aquatonomy() {
         </section>
 
         {/* ===== CASE STUDY CONTENT ===== */}
-        <OverviewSection videoSrc="/assets/aqua.mp4" />
+        <OverviewSection
+          videoSrc={isMobile ? "/assets/aqua-mobile.mp4" : "/assets/aqua.mp4"}
+        />
 
         <ProblemSpace />
         <SolutionImpact />

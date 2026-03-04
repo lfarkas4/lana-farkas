@@ -4,7 +4,7 @@ import ProjectDetailLayout from "../components/ProjectDetailLayout";
 import NextProjectTeaser from "../components/NextProjectTeaser";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 import BehavaiKickoff from "../components/BehavaiKickoff";
-import BehavaiAboutABA from "../components/BehavaiAboutABA"; // NEW: How We Learned About ABA
+import BehavaiAboutABA from "../components/BehavaiAboutABA";
 import BehavaiMeetOurUsers from "../components/BehavaiMeetOurUsers";
 import BehavaiProblemSpace from "../components/BehavaiProblemSpace";
 import BehavaiSolutionPreview from "../components/BehavaiSolutionPreview";
@@ -15,6 +15,7 @@ import BehavaiImpactAndBeyond from "../components/BehavaiImpactAndBeyond";
 
 import { caseStudies } from "../data/ProjectsData";
 import useReveal from "../utils/useReveal";
+import useIsMobile from "../utils/useIsMobile";
 
 const iconMap = {
   Figma: "/assets/figma.svg",
@@ -24,28 +25,26 @@ const iconMap = {
 
 export default function BehavAI() {
   const data = caseStudies.find((p) => p.slug === "behavai");
-
-  // one scope for hero + meta
   const heroScopeRef = useReveal();
+  const isMobile = useIsMobile();
 
   if (!data) return null;
 
-  // Only break line before "clinical advisors"
   const splitTeam = (txt) => {
-  if (!txt) return null;
-  const str = String(txt);
-  const plusIdx = str.indexOf(" + ");
-  if (plusIdx > -1) {
-    return (
-      <>
-        {str.slice(0, plusIdx)}
-        <br />
-        {str.slice(plusIdx + 3)}
-      </>
-    );
-  }
-  return str;
-};
+    if (!txt) return null;
+    const str = String(txt);
+    const plusIdx = str.indexOf(" + ");
+    if (plusIdx > -1) {
+      return (
+        <>
+          {str.slice(0, plusIdx)}
+          <br />
+          {str.slice(plusIdx + 3)}
+        </>
+      );
+    }
+    return str;
+  };
 
   const splitTimeline = (txt) => {
     if (!txt) return null;
@@ -67,11 +66,13 @@ export default function BehavAI() {
     .map((t) => t.trim())
     .filter(Boolean);
 
+  const heroVideoSrc = isMobile && data.videoMobile ? data.videoMobile : data.video;
+
   return (
     <ProjectDetailLayout>
       {/* Scroll Progress Bar */}
       <ScrollProgressBar />
-      
+
       <div ref={heroScopeRef}>
         {/* ===== HERO ===== */}
         <section
@@ -89,25 +90,24 @@ export default function BehavAI() {
             )}
           </div>
 
-          {/* Techstars award badge (replaces NDA pill) */}
+          {/* Techstars award badge */}
           <div className="pd-hero__award nda-banner">
-          <img
-  src="/assets/techstars.png"
-  alt="Techstars Startup Weekend award"
-  className="pd-hero__award-logo nda-icon"
-/>
-  <span className="pd-hero__award-text nda-text">
-    🥇 1st Place Techstars Startup Weekend 2025
-  </span>
-</div>
-
+            <img
+              src="/assets/techstars.png"
+              alt="Techstars Startup Weekend award"
+              className="pd-hero__award-logo nda-icon"
+            />
+            <span className="pd-hero__award-text nda-text">
+              🥇 1st Place Techstars Startup Weekend 2025
+            </span>
+          </div>
 
           <h1 className="pd-hero__title">{data.title}</h1>
           <p className="pd-hero__subtitle">{data.description}</p>
 
           <div className="pd-hero__media">
             {data.video ? (
-              <video src={data.video} autoPlay muted loop playsInline />
+              <video src={heroVideoSrc} autoPlay muted loop playsInline />
             ) : (
               data.image && <img src={data.image} alt={data.title} />
             )}
@@ -118,7 +118,6 @@ export default function BehavAI() {
         <section className="pd-meta">
           <div className="pd-meta__item reveal">
             <div className="pd-meta__heading">My Role</div>
-            {/* CEO stays inline */}
             <div className="pd-meta__text">{data.meta?.role}</div>
           </div>
 
@@ -162,8 +161,7 @@ export default function BehavAI() {
       <BehavaiFinalSolution />
       <BehavaiImpactAndBeyond />
 
-      {/* Temporary while you build the rest of the sections */}      <NextProjectTeaser currentSlug="behavai" nextSlug="aquatonomy" />
-
+      <NextProjectTeaser currentSlug="behavai" nextSlug="aquatonomy" />
     </ProjectDetailLayout>
   );
 }

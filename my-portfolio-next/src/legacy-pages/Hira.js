@@ -14,32 +14,25 @@ import HiraProductPivot from "../components/HiraProductPivot";
 
 import { caseStudies } from "../data/ProjectsData";
 import useReveal from "../utils/useReveal";
+import useIsMobile from "../utils/useIsMobile";
 
 const iconMap = {
   Figma: "/assets/figma.svg",
-  Swift: "/assets/swift.svg"
+  Swift: "/assets/swift.svg",
 };
 
-// ═══════════════════════════════════════════════════════════════
-// Toggle this to switch between the placeholder and full case study
-// Set to `false` when you're ready to show the actual content
-// ═══════════════════════════════════════════════════════════════
 const SHOW_UNDER_CONSTRUCTION = false;
 
 export default function Hira() {
-  // Set up scroll-reveal for hero + meta - MUST be at the top before any returns
   const heroScopeRef = useReveal();
-  
+  const isMobile = useIsMobile();
+
   const data = caseStudies.find((p) => p.slug === "hira");
   if (!data) return null;
 
-  // ════════════════════════════════════════════════════════════
-  // OPTION 1: Show the Under Construction page with mini-game
-  // ════════════════════════════════════════════════════════════
   if (SHOW_UNDER_CONSTRUCTION) {
     return <UnderConstructionPage projectName="Hira" />;
   }
-  // ════════════════════════════════════════════════════════════
 
   const splitTeam = (txt) => {
     const parts = String(txt).split(" — ");
@@ -71,9 +64,10 @@ export default function Hira() {
     .map((t) => t.trim())
     .filter(Boolean);
 
+  const heroVideoSrc = isMobile && data.videoMobile ? data.videoMobile : data.video;
+
   return (
     <ProjectDetailLayout>
-      {/* Scroll Progress Bar */}
       <ScrollProgressBar />
 
       <div ref={heroScopeRef}>
@@ -95,7 +89,7 @@ export default function Hira() {
 
           <div className="pd-hero__media">
             {data.video ? (
-              <video src={data.video} autoPlay muted loop playsInline />
+              <video src={heroVideoSrc} autoPlay muted loop playsInline />
             ) : (
               data.image && <img src={data.image} alt={data.title} />
             )}
@@ -124,11 +118,7 @@ export default function Hira() {
             <ul className="pd-tools">
               {tools.map((tool) => (
                 <li className="pd-tool" key={tool}>
-                  <img
-                    className="pd-tool__icon"
-                    src={iconMap[tool]}
-                    alt={tool}
-                  />
+                  <img className="pd-tool__icon" src={iconMap[tool]} alt={tool} />
                 </li>
               ))}
             </ul>
@@ -137,17 +127,13 @@ export default function Hira() {
       </div>
 
       {/* ===== CASE STUDY CONTENT ===== */}
-<HiraOurChallenge />
-<HiraPatientJourney />
-<HiraTheConcept />
-<HiraWhatWeHeard />
-<HiraProductPivot />
-<HiraSolution />
-<HiraTrustOutro />
-
-      
-
-      {/* Future sections will go here */}
+      <HiraOurChallenge />
+      <HiraPatientJourney />
+      <HiraTheConcept />
+      <HiraWhatWeHeard />
+      <HiraProductPivot />
+      <HiraSolution isMobile={isMobile} />
+      <HiraTrustOutro />
 
       <NextProjectTeaser currentSlug="hira" nextSlug="stackbuilder" />
     </ProjectDetailLayout>
