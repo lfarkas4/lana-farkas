@@ -70,7 +70,7 @@ export default function Lana() {
       aria-hidden="true"
     >
       <img
-        src="/assets/L@1x.webp"
+        src="/assets/L@3x.webp"
         srcSet="/assets/L@1x.webp 1x, /assets/L@3x.webp 2x, /assets/L@3x.webp 3x"
         alt=""
         className="lana-piece l-piece lana-letter"
@@ -79,7 +79,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/A1@1x.webp"
+        src="/assets/A1@3x.webp"
         srcSet="/assets/A1@1x.webp 1x, /assets/A1@3x.webp 2x, /assets/A1@3x.webp 3x"
         alt=""
         className="lana-piece a1-piece lana-letter"
@@ -88,7 +88,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/N@1x.webp"
+        src="/assets/N@3x.webp"
         srcSet="/assets/N@1x.webp 1x, /assets/N@3x.webp 2x, /assets/N@3x.webp 3x"
         alt=""
         className="lana-piece n-piece lana-letter"
@@ -97,7 +97,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/A2@1x.webp"
+        src="/assets/A2@3x.webp"
         srcSet="/assets/A2@1x.webp 1x, /assets/A2@3x.webp 2x, /assets/A2@3x.webp 3x"
         alt=""
         className="lana-piece a2-piece lana-letter"
@@ -106,7 +106,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/halo@1x.png"
+        src="/assets/halo@3x.webp"
         srcSet="/assets/halo@1x.png 1x, /assets/halo@3x.webp 2x, /assets/halo@3x.webp 3x"
         alt=""
         className="lana-piece halo-piece"
@@ -115,7 +115,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/orstar1@1x.png"
+        src="/assets/orstar1@3x.webp"
         srcSet="/assets/orstar1@1x.png 1x, /assets/orstar1@3x.webp 2x, /assets/orstar1@3x.webp 3x"
         alt=""
         className="lana-piece orstar1-piece"
@@ -123,7 +123,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/redstar1@1x.png"
+        src="/assets/redstar1@3x.webp"
         srcSet="/assets/redstar1@1x.png 1x, /assets/redstar1@3x.webp 2x, /assets/redstar1@3x.webp 3x"
         alt=""
         className="lana-piece redstar1-piece"
@@ -131,7 +131,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/blustar3@1x.png"
+        src="/assets/blustar3@3x.webp"
         srcSet="/assets/blustar3@1x.png 1x, /assets/blustar3@3x.webp 2x, /assets/blustar3@3x.webp 3x"
         alt=""
         className="lana-piece blustar3-piece"
@@ -139,7 +139,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/blustar2@1x.png"
+        src="/assets/blustar2@3x.webp"
         srcSet="/assets/blustar2@1x.png 1x, /assets/blustar2@3x.webp 2x, /assets/blustar2@3x.webp 3x"
         alt=""
         className="lana-piece blustar2-piece"
@@ -147,7 +147,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/blustar1@1x.png"
+        src="/assets/blustar1@3x.webp"
         srcSet="/assets/blustar1@1x.png 1x, /assets/blustar1@3x.webp 2x, /assets/blustar1@3x.webp 3x"
         alt=""
         className="lana-piece blustar1-piece"
@@ -155,7 +155,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/redstar2@1x.png"
+        src="/assets/redstar2@3x.webp"
         srcSet="/assets/redstar2@1x.png 1x, /assets/redstar2@3x.webp 2x, /assets/redstar2@3x.webp 3x"
         alt=""
         className="lana-piece redstar2-piece"
@@ -163,7 +163,7 @@ export default function Lana() {
         decoding="async"
       />
       <img
-        src="/assets/crown@1x.png"
+        src="/assets/crown@3x.webp"
         srcSet="/assets/crown@1x.png 1x, /assets/crown@3x.webp 2x, /assets/crown@3x.webp 3x"
         alt=""
         className="lana-piece crown-piece"
