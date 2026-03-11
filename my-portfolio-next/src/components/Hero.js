@@ -84,9 +84,14 @@ const Hero = ({ isLoading = false }) => {
           {/* XS only */}
           <span className="tagline-xs">
             <span className="line">… a product designer driven by</span>
+            <span className="line"><span className="font-cooper-italic-tag">curiosity</span> and playful</span>
+            <span className="line"><span className="font-cooper-italic-tag">front-end thinking</span>.</span>
+          </span>
+          {/* <span className="tagline-xs">
+            <span className="line">… a product designer driven by</span>
             <span className="line">curiosity and playful</span>
             <span className="line">front-end thinking.</span>
-          </span>
+          </span> */}
         </p>
 
         {/* Info columns */}
