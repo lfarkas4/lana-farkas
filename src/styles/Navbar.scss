@@ -1,0 +1,448 @@
+/* ================================================================
+   NAVBAR
+   Site-wide navigation with desktop bubble and mobile menu
+   ================================================================ */
+   @use './partials/tokens' as tokens;
+
+   /* ================================================================
+      TABLE OF CONTENTS
+      1. Container & Layout
+      2. Brand Logo
+      3. Desktop Navigation Bubble
+      4. Navigation Links
+      5. Active State Animations (Sparkle & Stroke)
+      6. Mobile Menu
+      7. Hover Effects
+      8. Responsive Breakpoints (Desktop → Mobile)
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. CONTAINER & LAYOUT
+      ================================================================ */
+   .nav-container {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 100%;
+     /* Fluid padding — stays proportionate on wide screens without over-stretching */
+     padding: 10px clamp(50px, 4vw, 80px);
+   }
+   
+   .custom-navbar {
+     position: relative;
+     top: 20px;
+     left: 0;
+     width: 100%;
+     z-index: 200;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+   }
+   
+   
+   /* ================================================================
+      2. BRAND LOGO
+      ================================================================ */
+   .brand-logo img {
+     height: 43px;
+     width: auto;
+     z-index: 101;
+     transition: all 0.2s ease-in-out;
+   }
+   
+   
+   /* ================================================================
+      3. DESKTOP NAVIGATION BUBBLE
+      ================================================================ */
+   .nav-bubble {
+     display: flex;
+     align-items: center;
+     padding: 7px tokens.$space-xs 9px 28px;
+     border-radius: 999px;
+     background: rgba(10, 10, 13, 0.3);
+     backdrop-filter: blur(16px);
+     -webkit-backdrop-filter: blur(16px); /* Safari */
+     border: 1px solid rgba(255, 255, 255, 0.12);
+     box-shadow: 0 0 tokens.$space-xs rgba(0, 0, 0, 0.15);
+     transition: transform 0.275s ease, box-shadow 0.3s ease;
+   }
+   
+   .nav-bubble:hover {
+     transform: scale(1.04);
+     box-shadow: 0 0 tokens.$space-sm rgba(0, 0, 0, 0.2);
+   }
+   
+   
+   /* ================================================================
+      4. NAVIGATION LINKS
+      ================================================================ */
+   
+   /* Link container */
+   .nav-links {
+     display: flex;
+     gap: 15px;
+     align-items: center;
+     flex-direction: row;
+   }
+   
+   /* Link text styling */
+   .nav-link {
+     position: relative;
+     color: tokens.$prisaac;
+     @include tokens.type-coop-nav-bold;
+     transition: color 0.275s ease-in-out, filter 0.275s ease;
+   }
+   
+   .nav-link:hover,
+   .nav-link:not(.active):hover .nav-link-label {
+     color: tokens.$secondary;
+     filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+   }
+   
+   .nav-link.active {
+     color: tokens.$secondary;
+   }
+   
+   /* Link wrapper structure */
+   .nav-link-wrapper {
+     position: relative;
+     display: inline-block;
+     padding: 6px tokens.$space-xs;
+     transition: transform 0.3s ease, opacity 0.3s ease;
+   }
+   
+   .nav-bubble:hover .nav-link-wrapper {
+     transform: scale(0.99);
+   }
+   
+   .nav-link-label {
+     position: relative;
+     z-index: 2;
+     transition: color 0.275s ease;
+     letter-spacing: 0.1px;
+     font-weight: 450 !important;
+   }
+   
+   /* Resume icon */
+   .resume-arrow {
+     font-size: tokens.$font-mont-italic-nav;
+     vertical-align: middle;
+     margin-top: -0.5px;
+     transform: rotate(0deg);
+     transition: transform 0.3s ease;
+   }
+   
+   .nav-link:hover .resume-arrow {
+     transform: rotate(45deg);
+   }
+   
+   
+   /* ================================================================
+      5. ACTIVE STATE ANIMATIONS (Sparkle & Stroke)
+      ================================================================ */
+   
+   /* Sparkle stroke animation */
+   .nav-active-stroke {
+     position: absolute;
+     top: -6px;
+     left: -19.5px;
+     width: calc(100% + 40px);
+     height: 60px;
+     z-index: 1;
+     pointer-events: none;
+     overflow: visible;
+   }
+   
+   .nav-active-path {
+     fill: none;
+     stroke: tokens.$prisec;
+     stroke-width: 2.1;
+     stroke-linecap: round;
+     stroke-dasharray: 360;
+     stroke-dashoffset: 360;
+     animation: dashDraw 0.75s ease forwards;
+   }
+   
+   @keyframes dashDraw {
+     to {
+       stroke-dashoffset: 115;
+     }
+   }
+   
+   /* Sparkle animation */
+   .nav-sparkle {
+     position: absolute;
+     top: 3.25px;
+     left: 0.5px;
+     width: 12px;
+     height: 12px;
+     opacity: 0;
+     transform: scale(0.5);
+     z-index: 2;
+     pointer-events: none;
+     animation: sparkleAppear 0.215s ease 0.5s forwards;
+   }
+   
+   @keyframes sparkleAppear {
+     0% {
+       opacity: 0;
+       transform: scale(0.5);
+     }
+     100% {
+       opacity: 1;
+       transform: scale(1.1);
+     }
+   }
+   
+   
+/* ================================================================
+   6. MOBILE MENU  (perf-friendly)
+   ================================================================ */
+
+/* Mobile menu icon */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: tokens.$primary;
+  z-index: 200;
+  transition: color 0.275s ease-in-out;
+  pointer-events: auto;
+}
+
+.menu-icon:hover {
+  color: tokens.$secondary;
+}
+
+/* --- Background overlay (no height animation) --- */
+.nav-background {
+  position: fixed;
+  inset: 0; /* top/right/bottom/left: 0 */
+  background: #03090b;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari */
+  z-index: 99;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  /* Use transform + opacity (GPU-friendly) */
+  transform: translate3d(0, -10px, 0);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    visibility 0s linear 0.28s; /* delay hiding until after fade */
+}
+
+.nav-background.active {
+  opacity: 0.98;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    visibility 0s linear 0s; /* show immediately */
+}
+
+/* --- Mobile nav container (also no height animation) --- */
+.nav-links-container {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translate3d(0, -16px, 0);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    visibility 0s linear 0.32s;
+}
+
+.nav-links-container.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    visibility 0s linear 0s;
+}
+
+/* Stack the links vertically on mobile */
+.nav-links-container .nav-links {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-links-container .nav-link {
+  @include tokens.type-coop-nav-bold-mob;
+  transition: color 0.1s ease-in-out;
+  color: tokens.$prisec;
+}
+
+.nav-links-container .nav-link-wrapper {
+  padding: 10px 26px;
+}
+
+   
+   /* ================================================================
+      7. HOVER EFFECTS
+      ================================================================ */
+   /* .hover-subtle base is intentionally minimal — real transition is on
+      .custom-navbar .brand-logo img.hover-subtle further down. */
+   .hover-subtle {
+     transition: transform 0.2s ease, filter 0.2s ease;
+   }
+   
+   .hover-subtle:hover {
+     transform: scale(1.08) rotate(-3deg);
+     filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+   }
+   
+   
+   /* ================================================================
+      8. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
+      ================================================================ */
+
+   /* XXL: ≥ 1600px */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .nav-container {
+       padding: 14px clamp(60px, 4vw, 100px);
+     }
+
+     .brand-logo img {
+       height: 52px;
+     }
+
+     .nav-bubble {
+       padding: 9px tokens.$space-sm 11px 32px;
+     }
+
+     .nav-links {
+       gap: 20px;
+     }
+
+     .nav-link-label {
+       font-size: 1.1rem;
+     }
+
+     .custom-navbar {
+       top: 26px;
+     }
+   }
+
+   /* LG: ≤ 991px (Tablets and below) */
+   @media (max-width: #{tokens.$lg_breakpoint}) {
+    .nav-container {
+      padding: tokens.$space-xs tokens.$space-md tokens.$space-lg;
+    }
+  
+    .brand-logo img {
+      height: 40px;
+    }
+  
+    .custom-navbar {
+      top: 10px;
+    }
+  
+    .nav-bubble,
+    .nav-links-desktop {
+      display: none;
+    }
+  
+    .menu-icon {
+      display: flex;
+    }
+  
+    .resume-arrow {
+      font-size: tokens.$font-mont-display1;
+    }
+  
+    /* Lighter overlay on real mobile devices */
+    .nav-background {
+      backdrop-filter: none;
+      background: rgba(3, 9, 11, 1);
+    }
+  }
+  
+  @media (max-width: #{tokens.$sm_breakpoint}) {
+    .nav-container {
+      padding: tokens.$space-xs tokens.$space-md tokens.$space-sm;
+    }
+  }  
+   
+   /* ================================================================
+      UTILITIES
+      ================================================================ */
+   
+   /* Prevent text selection on nav elements */
+   .custom-navbar,
+   .nav-bubble,
+   .nav-links,
+   .nav-link,
+   .nav-link-label {
+     user-select: none;
+   }
+   
+   /* Native cursor support */
+   html.cursor-native .nav-link,
+   html.cursor-native .nav-link *,
+   html.cursor-native .nav-link-wrapper,
+   html.cursor-native .menu-icon {
+     cursor: pointer !important;
+   }
+
+
+   .custom-navbar {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0);
+    transition:
+      opacity 0.34s cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  
+  .custom-navbar.nav-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Make the star/logo feel softer too */
+  .custom-navbar .brand-logo img {
+    opacity: 0;
+    transform: translate3d(0, -3px, 0) scale(0.98);
+    transition:
+      opacity 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) 0.06s,
+      transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) 0.06s;
+  }
+  
+  .custom-navbar.nav-visible .brand-logo img {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  
+
+  /* --- Logo hover should override the nav-visible entrance transform --- */
+.custom-navbar.nav-visible .brand-logo img.hover-subtle:hover {
+  transform: translate3d(0, 0, 0) scale(1.08) rotate(-3deg);
+  filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+}
+
+/* Optional: smoother hover (your current hover transition is basically instant) */
+.custom-navbar .brand-logo img.hover-subtle {
+  display: inline-block;
+  will-change: transform, filter;
+  transition: transform 0.2s ease, filter 0.2s ease, opacity 0.34s ease;
+}

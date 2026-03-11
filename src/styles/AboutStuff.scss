@@ -1,0 +1,999 @@
+/* ================================================================
+   ABOUT EXTRAS SECTION
+   About page extras: Spotify embeds, floating photo cards, haiku
+   ================================================================ */
+   @use './partials/tokens' as tokens;
+
+   /* ================================================================
+      TABLE OF CONTENTS
+      1. Container & Layout Variables
+      2. Intro Text & Spotify Section
+      3. Floating Photo Cards (Desktop Baseline)
+         3.1 Card Transform / Entrance
+         3.2 Paperclips
+      4. Haiku Section
+      4.5 Section Entrance Animations
+      5. Responsive Breakpoints (Desktop → Mobile)
+      6. Container Units Fallback (Older Browsers)
+      7. Spotify Embed Optimizations
+      ================================================================ */
+   
+   
+   /* ================================================================
+      1. CONTAINER & LAYOUT VARIABLES
+      ================================================================ */
+   
+   .about-cards {
+     --padX: clamp(50px, 8vw, 100px);
+     --containerMax: 1360px;
+     --captionMin: 1.1rem;
+   
+     padding: 0 var(--padX);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+   }
+   
+   
+   /* ================================================================
+      2. INTRO TEXT & SPOTIFY SECTION
+      ================================================================ */
+   
+   /* Intro text */
+   .extras-intro {
+     @include tokens.type-mont-display2;
+     color: tokens.$prisec;
+     text-align: center;
+     text-transform: lowercase;
+     margin: 50px auto 45px;
+     max-width: 1150px;
+   }
+   
+   /* Spotify container */
+   .spotify-block {
+     margin-top: 0;
+     width: 100%;
+     max-width: 1150px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+   }
+   
+   .spotify-heading {
+     @include tokens.type-mont-display2;
+     text-align: center;
+     text-transform: lowercase;
+     color: tokens.$prisec;
+     margin-bottom: 35px;
+   }
+   
+   .cooper-spotify-heading {
+     @include tokens.type-coop-display2;
+     color: tokens.$prisec;
+   }
+   
+   /* Spotify layout structure */
+   .spotify-trapezoid {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 18px;
+   }
+   
+   .spotify-row {
+     display: flex;
+     gap: tokens.$space-sm;
+   }
+   
+   .top-row {
+     justify-content: space-between;
+     width: min(100%, calc(100vw - 2 * var(--padX)));
+     max-width: 1100px;
+   }
+   
+   .bottom-row {
+     justify-content: center;
+     gap: tokens.$space-lg;
+   }
+   
+   /* Spotify embeds */
+   .spotify-row iframe {
+     width: 100%;
+     max-width: 310px;
+     height: 84px;
+     border-radius: 12px;
+     border: none;
+   }
+   
+   
+   /* ================================================================
+      3. FLOATING PHOTO CARDS (Desktop Baseline)
+      ================================================================ */
+   
+   /* Card section container */
+   .floating-card-section {
+     width: 100%;
+     max-width: var(--containerMax);
+     margin-top: 44px;
+     margin-bottom: 100px;
+     display: flex;
+     justify-content: center;
+   }
+   
+   /* Card grid */
+   .floating-card-grid {
+     display: flex;
+     justify-content: center;
+     align-items: flex-start;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     --gap-base: clamp(36px, 4vw, 64px);
+     gap: var(--gap-base);
+   }
+   
+   /* Individual card
+      - No float / hover animation.
+      - Resting pose = rotated (per-card).
+      - Entrance: fade + slide + rotate from left/right.
+   */
+   .floating-card {
+     --cardW: clamp(300px, 25vw, 420px);
+     --nudgeX: 0px;
+     --tx: 0px;
+     --rotation: 0deg;          /* base rotation, overridden below */
+     --enterTilt: 8deg;         /* how dramatic the entry tilt is */
+     --enterDir: -1;            /* -1 = from "left", 1 = from "right" */
+     --staggerDelay: 0s;
+   
+     width: var(--cardW);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     position: relative;
+     margin: 0;
+   
+     opacity: 0;
+     transform:
+       translateX(var(--tx))
+       translateY(18px)
+       rotate(calc(var(--rotation) + var(--enterDir) * var(--enterTilt)));
+     transform-origin: center 80%;
+   
+     transition:
+       opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+       transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+     transition-delay: var(--staggerDelay);
+   }
+   
+   /* Card rotations (desktop baseline) */
+   .rotate-plant { --rotation: -3.72deg; }
+   .rotate-toast { --rotation: -1.16deg; }
+   .rotate-craft { --rotation:  2.43deg; }
+   
+   /* Entrance direction / staggering
+      - Left card: rotates in from LEFT (more negative).
+      - Middle + right: rotate in from RIGHT (more positive).
+   */
+   .floating-card:nth-child(1) {
+     --staggerDelay: 0.02s;
+     --enterDir: 1;
+   }
+   
+   .floating-card:nth-child(2) {
+     --staggerDelay: 0.10s;
+     --enterDir: -1;
+   }
+   
+   .floating-card:nth-child(3) {
+     --staggerDelay: 0.18s;
+     --enterDir: -1;
+   }
+   
+   /* Desktop vertical offsets */
+   .offset-left  { margin-top: tokens.$space-md; }
+   .offset-mid   { margin-top: tokens.$space-3xl; }
+   .offset-right { margin-top: tokens.$space-lg; }
+   
+   /* When section scrolls into view, cards settle into their rotated pose */
+   .floating-card-section.is-visible .floating-card {
+     opacity: 1;
+     transform:
+       translateX(var(--tx))
+       translateY(0)
+       rotate(var(--rotation));
+   }
+   
+   /* Card image */
+   .floating-img {
+     width: 95%;
+     height: auto;
+     display: block;
+     margin-inline: auto;
+   
+     border-radius: 20px;
+     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.378);
+     object-fit: cover;
+   }
+   
+   /* Card caption – always visible now, no hover state */
+   .floating-caption {
+     @include tokens.type-coop-display2;
+     color: tokens.$prisec;
+     text-transform: lowercase;
+     line-height: 1.18;
+     letter-spacing: 0.6px;
+     margin-top: clamp(18px, calc(var(--cardW, 320px) * 0.09), 28px);
+   
+     opacity: 1;
+     transform: none;
+   }
+   
+   /* Caption size scaling */
+   .floating-card .floating-caption.floating-caption {
+     font-size: clamp(
+       var(--captionMin, 1.2rem),
+       calc(var(--captionMin, 1.2rem) + 0.12 * (var(--cardW, 320px) - 300px)),
+       1.45rem
+     );
+   }
+   
+   
+   /* ================================================================
+      3.2 PAPERCLIP DECORATIONS
+      (These rotate with the card because transform is on .floating-card)
+      ================================================================ */
+   
+   .clip-wrapper,
+   .clip-wrapper2,
+   .clip-wrapper3 {
+     position: absolute;
+     z-index: 3;
+     pointer-events: none;
+     left: 0;
+     top: 0;
+   }
+   
+   .clip-wrapper {
+     transform: translate(
+       calc(var(--cardW, 320px) * 0.15),
+       calc(var(--cardW, 320px) * -0.29)
+     ) rotate(-6deg);
+   }
+   
+   .clip-wrapper2 {
+     transform: translate(
+       calc(var(--cardW, 320px) * 0.30),
+       calc(var(--cardW, 320px) * -0.28)
+     ) rotate(23deg);
+   }
+   
+   .clip-wrapper3 {
+     transform: translate(
+       calc(var(--cardW, 320px) * 0.20),
+       calc(var(--cardW, 320px) * -0.27)
+     ) rotate(6deg);
+   }
+   
+   .clip-img {
+     width: clamp(120px, calc(var(--cardW, 320px) * 0.55), 190px);
+     height: auto;
+     opacity: 1;
+   }
+   
+   
+   /* ================================================================
+      4. HAIKU SECTION
+      ================================================================ */
+   
+   .haiku-section {
+     width: 100%;
+     max-width: tokens.$container-lg;
+     margin-bottom: 145px;
+     text-align: center;
+   }
+   
+   .haiku-intro {
+     @include tokens.type-mont-display2;
+     color: tokens.$primary;
+     text-transform: lowercase;
+     margin-bottom: tokens.$space-md;
+   }
+   
+   .haiku-text {
+     @include tokens.type-coop-display1;
+     color: tokens.$primary;
+     font-size: 2.25rem;
+     font-style: italic;
+     line-height: 1.2;
+     letter-spacing: 2.25px;
+   }
+   
+   .haiku-text p {
+     margin: tokens.$space-2xs 0;
+   }
+   
+   .cooper-symbols {
+     font-family: 'CooperLtBT', serif;
+     font-style: normal;
+   }
+   
+   /* XS-specific line break helper */
+   .xs-only { display: none; }
+   .xs-hide { display: inline; }
+   
+   
+   /* ================================================================
+      4.5 SECTION ENTRANCE ANIMATIONS
+      ================================================================ */
+   
+   @keyframes fadeInUp {
+     from {
+       opacity: 0;
+       transform: translateY(10px);
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+   
+   /* Section animation - starts hidden */
+   .animate-section {
+     opacity: 0;
+     transform: translateY(10px);
+   }
+   
+   /* Trigger animations when visible */
+   .is-visible.animate-section {
+     animation: fadeInUp 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+   }
+   
+   
+   /* ================================================================
+      5. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
+      ================================================================ */
+   
+   /* XXL: ≥ 1600px (Extra large desktops) */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .about-cards {
+       --padX: clamp(50px, 4vw, 80px);
+       --containerMax: 1720px;
+     }
+
+     .floating-card-grid {
+       gap: var(--gap-base);
+     }
+
+     .extras-intro {
+       font-size: 1.5rem;
+       max-width: 1380px;
+     }
+
+     .cooper-spotify-heading {
+       font-size: 1.7rem;
+     }
+
+     .spotify-heading {
+       font-size: 1.5rem;
+     }
+
+     .haiku-text {
+       font-size: 2.75rem;
+     }
+
+     .floating-caption {
+       font-size: 1.55rem !important;
+     }
+
+     .floating-card {
+       --cardW: min(clamp(440px, 31vw, 610px), var(--fitW));
+     }
+   }
+   
+   /* XL: 1200px – 1599px (Large desktops) */
+   @media (min-width: #{tokens.$xl_breakpoint}) {
+     .about-cards {
+       --padX: clamp(50px, 4vw, 80px);
+     }
+
+     .floating-card-grid {
+       gap: var(--gap-base);
+     }
+   }
+   
+   /* LG: ≥ 992px (Small laptops and up) */
+   @media (min-width: #{tokens.$lg_breakpoint}) {
+     /* Desktop 3-column fit */
+     .floating-card-grid {
+       --gap: var(--gap-base);
+       gap: var(--gap);
+       --fitW: calc(
+         (min(var(--containerMax), 100vw) - (2 * var(--padX)) - (2 * var(--gap))) / 3
+       );
+     }
+   
+     .floating-card {
+       --cardW: min(clamp(300px, 25vw, 420px), var(--fitW));
+       width: var(--cardW);
+     }
+   }
+   
+   /* MD: 768px – 991px (Tablets) */
+   @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
+     .extras-intro {
+       font-size: 1.2rem;
+     }
+   
+     .cooper-spotify-heading {
+       font-size: 1.35rem;
+     }
+   
+     .haiku-text {
+       font-size: 2rem;
+     }
+   
+     .haiku-section {
+       margin-bottom: 200px;
+     }
+   
+     .floating-caption {
+       font-size: 1.25rem !important;
+     }
+   }
+   
+   /* SM: 626px – 767px (Large phones) - Stacked triangle layout */
+   @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
+     .about-cards {
+       --padX: 8vw;
+       --captionMin: 1.2rem;
+       padding: 0 var(--padX);
+     }
+   
+     /* Stacked / triangle-ish card layout */
+     .floating-card-grid {
+       container-type: inline-size;
+       container-name: cardstack;
+       padding-inline: clamp(20px, 8cqw, 60px);
+       display: flex;
+       flex-direction: column;
+       align-items: stretch;
+       gap: tokens.$space-md;
+       width: 100%;
+       max-width: 540px;
+       margin: 45px 0px -60px;
+     }
+   
+     .floating-card {
+       --ratio: 1.45;
+       --cardW: clamp(200px, 54cqw, 280px);
+       --cardH: calc(var(--cardW) * var(--ratio));
+       --tx: 0cqw;
+   
+       margin-top: var(--mt, 0px);
+       opacity: 1;
+       transform:
+         translateX(var(--tx))
+         translateY(0)
+         rotate(var(--rotation));
+       transition-delay: 0s;
+     }
+   
+     /* Mobile rotations + offsets for this band */
+     .rotate-plant { --rotation: -5.5deg; }
+     .rotate-toast { --rotation:  3deg;   }
+     .rotate-craft { --rotation: -6deg;   }
+   
+     .floating-card:nth-child(1) { --tx: -4cqw; --mt: calc(-0.15 * var(--cardH)); }
+     .floating-card:nth-child(2) { --tx: 58cqw; --mt: calc(-0.50 * var(--cardH)); }
+     .floating-card:nth-child(3) { --tx: -3cqw; --mt: calc(-0.41 * var(--cardH)); }
+   
+     .clip-img {
+       width: clamp(90px, calc(var(--cardW) * 0.48), 150px);
+     }
+   
+     .floating-caption {
+       margin-top: tokens.$space-xs;
+       font-size: 1rem !important;
+     }
+   
+     /* Spotify stacks */
+     .spotify-trapezoid {
+       width: 100%;
+       gap: 20px;
+     }
+   
+     .spotify-row,
+     .top-row,
+     .bottom-row {
+       flex-direction: column;
+       align-items: stretch;
+       gap: 20px;
+       width: min(100%, calc(100vw - 2 * var(--padX)));
+       max-width: 680px;
+       margin: 0 auto;
+     }
+   
+     .spotify-row iframe {
+       width: 100% !important;
+       max-width: none !important;
+       height: 84px;
+     }
+   }
+   
+   /* XS: ≤ 625px (Phones and below) - Single column, no tilt */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     .about-cards {
+       --padX: 7.5vw;
+       --captionMin: 1.25rem;
+       padding: 0 var(--padX);
+     }
+   
+     .floating-card-grid {
+       container-type: inline-size;
+       container-name: onecol;
+       display: flex;
+       flex-direction: column !important;
+       align-items: center;
+       justify-content: flex-start;
+       width: min(100%, calc(100vw - 2 * var(--padX)));
+       max-width: 440px;
+       gap: 80px;
+       padding-inline: 0;
+       margin: 0 auto -60px;
+     }
+   
+     .floating-card {
+       --cardW: clamp(230px, 88cqw, 360px);
+       --cardH: calc(var(--cardW) * 1.45);
+   
+       width: var(--cardW);
+       margin-top: 0;
+   
+       opacity: 1;
+       transform: translateX(0) translateY(0) rotate(0deg);
+       transition-delay: 0s;
+     }
+   
+     .rotate-plant,
+     .rotate-toast,
+     .rotate-craft {
+       --rotation: 0deg;
+     }
+   
+     .clip-wrapper  {
+       transform: translate(
+         calc(var(--cardW, 320px) * 0.20),
+         calc(var(--cardW, 320px) * -0.24)
+       ) rotate(-6deg);
+     }
+   
+     .clip-wrapper2 {
+       transform: translate(
+         calc(var(--cardW, 320px) * 0.34),
+         calc(var(--cardW, 320px) * -0.23)
+       ) rotate(23deg);
+     }
+   
+     .clip-wrapper3 {
+       transform: translate(
+         calc(var(--cardW, 320px) * 0.24),
+         calc(var(--cardW, 320px) * -0.24)
+       ) rotate(6deg);
+     }
+   
+     .clip-img {
+       width: clamp(115px, calc(var(--cardW) * 0.60), 160px);
+     }
+   
+     .floating-caption {
+       font-size: 1.4rem !important;
+     }
+   
+     /* Spotify - single column */
+     .spotify-trapezoid {
+       width: 100%;
+     }
+   
+     .spotify-row,
+     .top-row,
+     .bottom-row {
+       flex-direction: column !important;
+       align-items: stretch;
+       gap: 18px;
+       width: min(100%, calc(100vw - 2 * var(--padX)));
+       max-width: 440px;
+       margin: 0 auto;
+     }
+   
+     .spotify-row iframe {
+       width: 100% !important;
+       max-width: none !important;
+     }
+   }
+   
+   /* Typography + sizes: ≤ 464px (Small phones) */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .about-cards {
+       --padX: 7.5vw;
+       --captionMin: 1.25rem;
+       padding: 0 var(--padX);
+     }
+   
+     .floating-card-grid {
+       display: flex;
+       flex-direction: column !important;
+       align-items: center;
+       justify-content: flex-start;
+       width: min(100%, calc(100vw - 2 * var(--padX)));
+       max-width: 420px;
+       gap: 80px;
+       margin: 8px auto -60px;
+     }
+   
+     .floating-card {
+       --cardW: clamp(210px, 94cqw, 330px);
+       --cardH: 300px;
+   
+       width: var(--cardW);
+       opacity: 1;
+       transform: translateX(0) translateY(0) rotate(0deg);
+     }
+   
+     .clip-img {
+       width: clamp(80px, calc(var(--cardW) * 0.48), 150px);
+     }
+   
+     .xs-only { display: inline; }
+     .xs-hide { display: none !important; }
+   
+     .extras-intro {
+       font-size: 1rem;
+       margin-bottom: 25px;
+       letter-spacing: 0px;
+       font-weight: 500 !important;
+     }
+   
+     .cooper-spotify-heading {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.1rem;
+       letter-spacing: 0.75px;
+     }
+   
+     .haiku-text {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.45rem;
+       line-height: 1.55;
+       letter-spacing: 1px;
+     }
+   
+     .haiku-text .xs-line {
+       display: block;
+     }
+   
+     .haiku-text p {
+       margin: -3px 0;
+     }
+   
+     .haiku-section {
+       margin-bottom: 100px;
+     }
+   
+     .floating-caption {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.05rem !important;
+       letter-spacing: 0.75px;
+     }
+   
+     .spotify-trapezoid {
+       width: 100%;
+       gap: 18px;
+     }
+   
+     .spotify-row,
+     .top-row,
+     .bottom-row {
+       flex-direction: column !important;
+       align-items: stretch;
+       gap: 18px;
+       width: min(100%, calc(100vw - 2 * var(--padX)));
+       max-width: 440px;
+       margin: 0 auto;
+     }
+   
+     .spotify-row iframe {
+       width: 100% !important;
+       max-width: none !important;
+     }
+   }
+   
+   /* XXS: ≤ 375px (Smallest phones) */
+   @media (max-width: #{tokens.$xxs_breakpoint}) {
+     .extras-intro {
+       font-size: 1rem;
+       margin-bottom: 25px;
+     }
+   
+     .cooper-spotify-heading {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.1rem;
+       letter-spacing: 0.75px;
+     }
+   
+     .haiku-text {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.45rem;
+       letter-spacing: 1px;
+     }
+   
+     .haiku-section {
+       margin-bottom: 100px;
+     }
+   
+     .floating-caption {
+       @include tokens.type-coop-display2-bold;
+       font-size: 1.05rem !important;
+       letter-spacing: 0.75px;
+     }
+   
+     .spotify-trapezoid {
+       gap: 18px;
+     }
+   }
+   
+   
+   /* ================================================================
+      6. CONTAINER UNITS FALLBACK (Older Browsers)
+      ================================================================ */
+   @supports not (width: 1cqw) {
+     /* Stacked layout fallback: 626px – 991px */
+     @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
+       .floating-card-grid {
+         padding-inline: tokens.$space-xs;
+       }
+   
+       .floating-card {
+         --cardW: clamp(200px, 56vw, 300px);
+         --cardH: calc(var(--cardW) * 1.45);
+   
+         transform:
+           translateX(var(--tx, 0px))
+           translateY(0)
+           rotate(var(--rotation));
+         opacity: 1;
+       }
+   
+       .floating-card:nth-child(1) { --tx: -8vw; margin-top: 0; }
+       .floating-card:nth-child(2) { --tx: 30vw; margin-top: calc(-0.60 * var(--cardH)); }
+       .floating-card:nth-child(3) { --tx: -6vw; margin-top: calc(-1.00 * var(--cardH)); }
+     }
+   
+     /* Single column fallback: ≤ 625px */
+     @media (max-width: #{tokens.$sm_breakpoint}) {
+       .floating-card-grid {
+         max-width: 420px;
+         gap: 80px;
+         --stackShiftPx: 0px;
+         transform: translateX(var(--stackShiftPx));
+         margin: 0 auto -60px;
+       }
+   
+       .floating-card {
+         --cardW: clamp(210px, 80vw, 340px);
+   
+         width: var(--cardW);
+         transform: translateX(0) translateY(0) rotate(0deg);
+         opacity: 1;
+       }
+     }
+   
+     /* Spotify fallback: ≤ 991px */
+     @media (max-width: #{tokens.$lg_breakpoint}) {
+       .spotify-row {
+         flex-direction: column;
+         gap: 20px;
+         align-items: center;
+       }
+   
+       .top-row,
+       .bottom-row {
+         flex-direction: column;
+         width: 100%;
+         max-width: 320px;
+         gap: 20px;
+         justify-content: center;
+       }
+   
+       .spotify-row iframe {
+         max-width: 300px;
+         height: 84px;
+       }
+     }
+   }
+   
+   
+   /* ================================================================
+      7. SPOTIFY EMBED OPTIMIZATIONS
+      ================================================================ */
+   
+   .spotify-embed-wrapper {
+     position: relative;
+     width: 100%;
+     max-width: 310px;
+     height: 84px;
+     border-radius: 12px;
+   
+     iframe {
+       position: relative;
+       z-index: 2;
+     }
+   }
+   
+   .spotify-skeleton {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 84px;
+     background: #121212;
+     background-size: 200% 100%;
+     border-radius: 12px;
+     overflow: hidden;
+     z-index: 1;
+   
+     &::after {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: -200%;
+       width: 200%;
+       height: 100%;
+       background: linear-gradient(
+         90deg,
+         transparent 0%,
+         rgba(255, 255, 255, 0.02) 50%,
+         transparent 100%
+       );
+       animation: shimmer 2s infinite;
+     }
+   
+     .skeleton-content {
+       display: flex;
+       align-items: center;
+       height: 100%;
+       padding: 12px;
+       gap: 12px;
+     }
+   
+     .skeleton-image {
+       width: 60px;
+       height: 60px;
+       background: #181818;
+       border-radius: 4px;
+       flex-shrink: 0;
+     }
+   
+     .skeleton-text {
+       flex: 1;
+       display: flex;
+       flex-direction: column;
+       gap: 8px;
+     }
+   
+     .skeleton-title {
+       height: 14px;
+       width: 70%;
+       background: #181818;
+       border-radius: 4px;
+     }
+   
+     .skeleton-artist {
+       height: 12px;
+       width: 50%;
+       background: #181818;
+       border-radius: 4px;
+     }
+   }
+   
+   @keyframes shimmer {
+     0%   { transform: translateX(0); }
+     100% { transform: translateX(200%); }
+   }
+   
+   .spotify-error {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 84px;
+     background: #121212;
+     border: 1px solid #282828;
+     border-radius: 12px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 8px;
+     z-index: 2;
+   
+     p {
+       color: #b3b3b3;
+       font-size: 0.875rem;
+       margin: 0;
+     }
+   
+     .retry-button {
+       background: transparent;
+       color: #b3b3b3;
+       border: 1px solid #282828;
+       padding: 4px 12px;
+       border-radius: 4px;
+       font-size: 0.75rem;
+       cursor: pointer;
+       transition: all 0.2s ease;
+   
+       &:hover {
+         background: #282828;
+         color: #fff;
+         border-color: #404040;
+       }
+   
+       &:active {
+         transform: scale(0.95);
+       }
+     }
+   }
+   
+   @media (max-width: 991px) {
+     .spotify-embed-wrapper {
+       max-width: none;
+   
+       .spotify-skeleton,
+       .spotify-error {
+         width: 100%;
+       }
+     }
+   }
+   
+   @media (prefers-color-scheme: light) {
+     .spotify-skeleton {
+       background: #1F1F1F;
+       border: 1px solid rgb(35, 35, 35);
+   
+       &::after {
+         background: linear-gradient(
+           90deg,
+           transparent 0%,
+           rgba(0, 0, 0, 0.02) 50%,
+           transparent 100%
+         );
+       }
+   
+       .skeleton-image,
+       .skeleton-title,
+       .skeleton-artist {
+         background: rgb(94, 93, 93);
+       }
+     }
+   
+     .spotify-error {
+       background: #ffffff;
+       border-color: #e0e0e0;
+   
+       p {
+         color: #535353;
+       }
+   
+       .retry-button {
+         background: transparent;
+         color: #535353;
+         border-color: #d0d0d0;
+   
+         &:hover {
+           background: #f0f0f0;
+           color: #000;
+           border-color: #b0b0b0;
+         }
+       }
+     }
+   }

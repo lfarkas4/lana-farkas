@@ -1,0 +1,688 @@
+/* ================================================================
+   PROJECTS SECTION
+   Homepage project grid with case studies and mini projects
+   ================================================================ */
+   @use "./partials/tokens" as tokens;
+
+   /* ================================================================
+      TABLE OF CONTENTS
+      1. Section Container & Layout
+      2. Section Title
+      3. Case Studies Grid
+      4. Project Cards (Thumbnail, Tags, Content)
+      5. Mini Projects Grid
+      6. Text Clamping & Overflow
+      7. Scroll Animations
+      8. Responsive Breakpoints (Desktop → Mobile)
+      ================================================================ */
+   
+   /* ================================================================
+      1. SECTION CONTAINER & LAYOUT
+      ================================================================ */
+   .projects-section {
+     padding: 0 tokens.$padding-wide;
+     background: transparent;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   
+   .projects-wrapper {
+     width: 100%;
+     max-width: tokens.$container-page-max;
+     margin: 0 auto;
+   }
+   
+   /* ================================================================
+      2. SECTION TITLE
+      ================================================================ */
+   .section-title {
+     @include tokens.type-mont-display2;
+     color: tokens.$prisec;
+     display: flex;
+     align-items: center;
+     gap: 5px;
+     font-size: 1.15rem;
+   }
+   
+   .section-arrow {
+     height: 0.95rem;
+     width: auto;
+     margin-bottom: -1px;
+     margin-right: 5px;
+     filter: brightness(1.05);
+   }
+   
+   /* ================================================================
+      3. CASE STUDIES GRID
+      ================================================================ */
+   .projects-container {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: tokens.$space-xxl tokens.$space-lg;
+     margin: (tokens.$space-lg - 4px) 0 tokens.$space-4xl;
+   }
+   
+   /* ================================================================
+      4. PROJECT CARDS (Thumbnail, Tags, Content)
+      ================================================================ */
+   
+   /* Card container */
+   .project-card {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+   }
+   
+   /* IMPORTANT: don't transition "all" on the link wrapper (causes jank) */
+   .project-card-link {
+     text-decoration: none;
+     color: inherit;
+     display: block;
+     border-radius: 12px;
+     cursor: pointer;
+     pointer-events: auto;
+     transition: none;
+   }
+   
+   .project-card-link:focus-visible {
+     outline: 2px solid rgba(255, 255, 255, 0.25);
+     outline-offset: 6px;
+   }
+   
+   /* Thumbnail container */
+   .project-thumbnail {
+     width: 100%;
+     aspect-ratio: 4 / 3;
+     border-radius: 20px;
+     margin-bottom: tokens.$space-xs;
+     overflow: hidden;
+     position: relative;
+     border: 0.5px solid rgba(42, 42, 43, 0.35);
+   
+     /* Smooth + quick hover in/out (same timing both ways) */
+     transition: box-shadow 0.34s cubic-bezier(0.22, 0.61, 0.36, 1);
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+   
+     will-change: box-shadow;
+     transform: translateZ(0);
+   }
+   
+   html:not(.cursor-native) .project-thumbnail:hover {
+     cursor: none;
+   }
+   
+   /* Hover state - deeper shadow */
+   .project-card-link:hover .project-thumbnail,
+   .project-card-link:focus-visible .project-thumbnail {
+     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+   }
+   
+   /* Thumbnail media (image/video) */
+   .thumbnail-image {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+   }
+   
+   .thumbnail-media {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     border-radius: 12px;
+     transform: scale(1.06) !important;
+   
+     /* Smooth + quick hover in/out (same timing both ways) */
+     transition:
+       transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1),
+       filter 0.3s ease !important;
+   
+     z-index: 1;
+     will-change: transform, filter;
+     transform: translateZ(0) scale(1.06) !important;
+   
+     /* Hide all video controls on mobile */
+     &::-webkit-media-controls {
+       display: none !important;
+     }
+     &::-webkit-media-controls-enclosure {
+       display: none !important;
+     }
+     &::-webkit-media-controls-panel {
+       display: none !important;
+     }
+     &::-webkit-media-controls-play-button {
+       display: none !important;
+     }
+     &::-webkit-media-controls-start-playback-button {
+       display: none !important;
+     }
+   
+     /* Prevent video interaction */
+     pointer-events: none;
+   }
+   
+   /* Case study images: decode-fade without affecting videos */
+   .thumbnail-media.thumb-fade {
+     opacity: 0;
+     transition:
+       opacity 0.24s ease,
+       transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1),
+       filter 0.3s ease !important;
+   }
+   
+   .thumbnail-media.thumb-fade.is-loaded {
+     opacity: 1;
+   }
+   
+   /* Mini thumbs: fade-in on decode/load without breaking hover */
+   .thumbnail-media.mini-thumb {
+     opacity: 0;
+     will-change: opacity, transform;
+     transition:
+       opacity 0.24s ease,
+       transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1),
+       filter 0.3s ease !important;
+   }
+   
+   .thumbnail-media.mini-thumb.is-loaded {
+     opacity: 1;
+   }
+   
+   /* Hover interactions - scale and subtle brightness */
+   .project-card-link:hover .thumbnail-media,
+   .project-card-link:focus-visible .thumbnail-media {
+     transform: translateZ(0) scale(1) !important;
+     filter: brightness(0.95);
+   }
+   
+   /* Tags */
+   .project-tags {
+     display: flex;
+     flex-wrap: wrap;
+     gap: tokens.$space-2xs 6px;
+     max-width: 100%;
+     margin-bottom: 0;
+   }
+   
+   .tag {
+     background: tokens.$tag;
+     color: tokens.$prisec;
+     @include tokens.type-mont-body-bold;
+     padding: tokens.$space-2xs 15px;
+     border-radius: 10px;
+     margin-top: 5px;
+     transition: background 0.3s ease;
+   }
+   
+   /* Subtle tag hover effect */
+   .project-card-link:hover .tag {
+     background: rgba(255, 255, 255, 0.125);
+   }
+   
+   /* Project content */
+   .project-content {
+     padding: 0 tokens.$space-2xs;
+   }
+   
+   .project-title {
+     @include tokens.type-mont-display2-bold;
+     color: tokens.$prisec;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     margin-bottom: 18px;
+     margin-top: 22px;
+     transition: color 0.3s ease;
+     opacity: 0.95;
+   }
+   
+   .project-card-link:hover .project-title {
+     color: tokens.$secondary;
+     opacity: 1;
+   }
+   
+   .project-description {
+     @include tokens.type-mont-body;
+     color: tokens.$primary;
+     line-height: 1.5;
+     transition: color 0.3s ease, opacity 0.3s ease;
+     opacity: 0.9;
+     letter-spacing: 0.25px;
+   }
+   
+   .project-card-link:hover .project-description {
+     color: tokens.$prisec;
+     opacity: 1;
+   }
+   
+   /* ================================================================
+      5. MINI PROJECTS GRID
+      ================================================================ */
+   .mini-projects-container {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 60px tokens.$space-md;
+     margin-top: (tokens.$space-lg - 4px);
+     margin-bottom: 35px;
+   }
+   
+   .mini-project-card {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+   }
+   
+   .mini-project-card .project-thumbnail {
+     width: 100%;
+     aspect-ratio: 4 / 3;
+     border-radius: 20px;
+     margin-bottom: 0;
+   }
+   
+   .mini-content {
+     padding: 0 tokens.$space-2xs;
+   }
+   
+   .mini-title {
+     @include tokens.type-mont-display2-bold;
+     color: tokens.$prisec;
+     margin-bottom: 18px;
+     transition: color 0.3s ease;
+     opacity: 0.95;
+   }
+   
+   .project-card-link:hover .mini-title {
+     color: tokens.$secondary;
+     opacity: 1;
+   }
+   
+   .mini-description {
+     @include tokens.type-mont-body;
+     color: tokens.$primary;
+     line-height: 1.5;
+     transition: color 0.3s ease, opacity 0.3s ease;
+     opacity: 0.9;
+   }
+   
+   .project-card-link:hover .mini-description {
+     color: tokens.$prisec;
+     opacity: 1;
+   }
+   
+   /* ================================================================
+      6. TEXT CLAMPING & OVERFLOW
+      ================================================================ */
+   .project-title {
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+     word-wrap: break-word;
+     text-overflow: ellipsis;
+   }
+   
+   .project-description {
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+     word-wrap: break-word;
+     text-overflow: ellipsis;
+   }
+   
+   /* ================================================================
+      7. SCROLL ANIMATIONS (aligned with hero)
+      ================================================================ */
+   
+   @keyframes sectionFadeUp {
+     from { opacity: 0; transform: translate3d(0, 7px, 0); }
+     to   { opacity: 1; transform: translate3d(0, 0, 0); }
+   }
+   
+   @keyframes cardFadeUp {
+     from { opacity: 0; transform: translate3d(0, 10px, 0); }
+     to   { opacity: 1; transform: translate3d(0, 0, 0); }
+   }
+   
+   /* Base states – hidden until .is-visible */
+   .animate-section-title {
+     opacity: 0;
+     transform: translate3d(0, 6px, 0);
+     will-change: opacity, transform;
+   }
+   
+   .animate-project-card {
+     opacity: 0;
+     transform: translate3d(0, 6px, 0);
+     will-change: opacity, transform;
+     transition: none !important;
+   }
+   
+   .is-visible .animate-section-title {
+     animation: sectionFadeUp 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+   }
+   
+   .is-visible .animate-project-card {
+     animation: cardFadeUp 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+   }
+   
+   @media (prefers-reduced-motion: reduce) {
+     .animate-section-title,
+     .animate-project-card {
+       opacity: 1 !important;
+       transform: none !important;
+       animation: none !important;
+     }
+   
+     .thumbnail-media,
+     .project-thumbnail {
+       transition: none !important;
+     }
+   }
+   
+   /* ================================================================
+      8. RESPONSIVE BREAKPOINTS (Desktop → Mobile)
+      ================================================================ */
+   
+   /* XXL: ≥ 1600px */
+   @media (min-width: #{tokens.$xxl_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     .projects-wrapper {
+       max-width: tokens.$container-xxl;
+     }
+   
+     .section-title {
+       font-size: 1.4rem;
+     }
+   
+     .section-arrow {
+       height: 1.15rem;
+     }
+   
+     .project-title {
+       font-size: 1.65rem;
+     }
+   
+     .project-description {
+       font-size: 1.05rem;
+     }
+   
+     .mini-title {
+       font-size: 1.65rem;
+     }
+   
+     .mini-description {
+       font-size: 1.05rem;
+     }
+   
+     .tag {
+       font-size: 0.95rem;
+     }
+   }
+   
+   /* XL: 1200px – 1599px */
+   @media (max-width: #{tokens.$xxl_breakpoint}) and (min-width: #{tokens.$xl_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     .mini-projects-container {
+       gap: tokens.$space-md;
+     }
+   }
+   
+   /* LG: 992px – 1199px */
+   @media (max-width: #{tokens.$xl_breakpoint}) and (min-width: #{tokens.$lg_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     .projects-container {
+       gap: tokens.$space-xxl tokens.$space-md;
+     }
+   
+     .tag {
+       font-size: 0.78rem;
+       padding: 7px 14px;
+     }
+   
+     .project-title {
+       font-size: 1.2rem;
+     }
+   
+     .project-description {
+       font-size: 0.8rem;
+     }
+   
+     .mini-projects-container {
+       gap: 25px;
+     }
+   
+     .mini-title {
+       font-size: 1.2rem;
+     }
+   
+     .mini-description {
+       font-size: 0.8rem;
+     }
+   }
+   
+   /* MD: 768px – 991px */
+   @media (max-width: #{tokens.$lg_breakpoint}) and (min-width: #{tokens.$md_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     .projects-container {
+       grid-template-columns: 1fr;
+     }
+   
+     .mini-projects-container {
+       grid-template-columns: 1fr;
+       gap: 45px;
+     }
+   
+     .mini-project-card {
+       flex-direction: row;
+       align-items: center;
+       gap: tokens.$space-lg;
+     }
+   
+     .mini-content {
+       width: 70%;
+       padding-left: 12px;
+       transform: translateY(-15%);
+     }
+   
+     .section-title {
+       font-size: 1.25rem;
+     }
+   
+     .section-arrow {
+       height: 1rem;
+     }
+   }
+   
+   /* SM: 626px – 767px */
+   @media (max-width: #{tokens.$md_breakpoint}) and (min-width: #{tokens.$sm_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     .projects-container {
+       grid-template-columns: 1fr;
+     }
+   
+     .mini-projects-container {
+       display: flex;
+       flex-direction: column;
+       gap: 60px;
+     }
+   
+     .mini-project-card {
+       flex-direction: column;
+       gap: 0;
+     }
+   
+     .mini-content {
+       width: 100%;
+       padding: 0 6px;
+       margin-top: 0;
+     }
+   
+     .section-title {
+       font-size: 1.2rem;
+     }
+   
+     .section-arrow {
+       height: 1rem;
+     }
+   }
+   
+   /* XS: 465px – 625px */
+   @media (max-width: #{tokens.$sm_breakpoint}) and (min-width: #{tokens.$xs_breakpoint}) {
+     .projects-section {
+       padding: 0 tokens.$padding-wide;
+     }
+   
+     .projects-container {
+       grid-template-columns: 1fr;
+       gap: tokens.$space-lg tokens.$space-md;
+       margin-bottom: tokens.$space-3xl;
+     }
+   
+     .project-tags {
+       gap: 6px;
+     }
+   
+     .mini-projects-container {
+       display: flex;
+       flex-direction: column;
+       gap: tokens.$space-lg;
+     }
+   
+     .mini-project-card {
+       flex-direction: column;
+       gap: 0;
+     }
+   
+     .mini-content {
+       width: 100%;
+       padding: 0 5px;
+       margin-top: 0;
+     }
+   
+     .tag {
+       font-size: 0.78rem;
+       padding: 7px 14px;
+     }
+   
+     .project-title {
+       font-size: 1.2rem;
+     }
+   
+     .project-description {
+       font-size: 0.8rem;
+     }
+   
+     .mini-title {
+       font-size: 1.2rem;
+     }
+   
+     .mini-description {
+       font-size: 0.8rem;
+     }
+   
+     .section-title {
+       font-size: 1rem;
+       gap: tokens.$space-2xs;
+     }
+   
+     .section-arrow {
+       height: 1rem;
+     }
+   }
+   
+   /* ================================================================
+      PROJECTS SECTION - MOBILE (XS: ≤ 464px)
+      ================================================================ */
+   @media (max-width: #{tokens.$xs_breakpoint}) {
+     .projects-section {
+       padding: 0 6.75vw;
+     }
+   
+     .projects-container {
+       grid-template-columns: 1fr;
+       gap: 45px;
+       margin-bottom: 100px;
+     }
+   
+     .project-tags {
+       gap: 4px;
+     }
+   
+     .tag {
+       font-size: 0.66rem;
+       padding: 6px 9px;
+       font-weight: 450 !important;
+       letter-spacing: 0px;
+     }
+   
+     .project-title {
+       font-size: 1.2rem;
+       margin-bottom: 14px;
+       margin-top: 14px;
+       line-height: 28px;
+       font-weight: 500 !important;
+       letter-spacing: 0px;
+     }
+   
+     .project-description {
+       font-size: 0.825rem;
+       line-height: 1.6;
+       font-weight: 425 !important;
+       letter-spacing: 0px;
+     }
+   
+     .mini-projects-container {
+       display: flex;
+       flex-direction: column;
+       gap: 45px;
+     }
+   
+     .mini-title {
+       font-size: 1.2rem;
+       margin-bottom: 14px;
+       margin-top: 20px;
+       line-height: 28px;
+       font-weight: 500 !important;
+       letter-spacing: 0px;
+     }
+   
+     .mini-description {
+       font-size: 0.825rem;
+       line-height: 1.6;
+       font-weight: 425 !important;
+       letter-spacing: 0px;
+     }
+   
+     .section-title {
+       font-size: 0.925rem;
+       letter-spacing: 0px;
+       gap: 6px;
+       margin-bottom: -16px;
+       font-weight: 450 !important;
+     }
+   
+     .section-arrow {
+       height: 0.9rem;
+     }
+   }

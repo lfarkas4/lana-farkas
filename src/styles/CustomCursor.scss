@@ -1,0 +1,140 @@
+
+/* === Custom cursor base === */
+.custom-cursor {
+  position: fixed;
+  top: -10px;
+  left: -15px;
+  width: 38px;
+  height: 38px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;                  /* set to 1 if you want it visible immediately */
+  will-change: transform;
+  backface-visibility: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 66px; height: 66px;
+    left: 45%; top: 50%;
+    border-radius: 50%;
+    background: #010304;
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0;
+    transition: transform 180ms cubic-bezier(.2,.8,.2,1), opacity 120ms ease;
+    will-change: transform, opacity;
+  }
+
+  img {
+    position: absolute;
+    left: 46%; top: 50%;
+    display: block;
+    width: 55%; height: auto;
+    transform: translate(-50%, -50%);
+    transition: transform 180ms cubic-bezier(.2,.8,.2,1), opacity 120ms ease, width 120ms ease;
+    will-change: transform, opacity, width;
+  }
+
+  &.hover {
+    &::before { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    img {
+      width: 98%;
+      transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px);
+      animation: cursor-pop 180ms cubic-bezier(.2,.8,.2,1) both;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::before, img { transition: none; animation: none; }
+  }
+}
+
+/* Icon “pop-in” */
+@keyframes cursor-pop {
+  from { transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(0.6); opacity: 0; }
+  to   { transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1);   opacity: 1; }
+}
+
+/* Click feedback (non-hover) */
+@keyframes cursor-click {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  40%{ transform: translate(-50%, -50%) scale(0.75); }
+  100%{transform: translate(-50%, -50%) scale(1); }
+}
+.custom-cursor.click:not(.hover) img { animation: cursor-click 180ms ease-out; }
+
+/* Hover click pulses */
+@keyframes hover-halo-click {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  35%{ transform: translate(-50%, -50%) scale(0.9); }
+  70%{ transform: translate(-50%, -50%) scale(1.06); }
+  100%{transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes hover-icon-click {
+  0% { transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1); }
+  35%{ transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(0.9); }
+  70%{ transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1.08); }
+  100%{transform: translate(-50%, -50%) translateX(-0.75px) translateY(-2px) scale(1); }
+}
+.custom-cursor.hover.click::before { animation: hover-halo-click 240ms cubic-bezier(.25,.8,.25,1); }
+.custom-cursor.hover.click img     { animation: hover-icon-click 240ms cubic-bezier(.25,.8,.25,1); }
+
+/* === Overrides / integration (place AFTER base rules) === */
+
+/* Make JS transform immediate (no fade) */
+.custom-cursor { transition: none; /* keep opacity as you prefer: 0 or 1 */ }
+
+/* Hide the custom cursor when JS adds .suppress (e.g., over iframes) */
+.custom-cursor.suppress { opacity: 0 !important; }
+
+/* Keep custom cursor everywhere in the block… */
+.spotify-block,
+.spotify-trapezoid,
+.spotify-row {
+  cursor: none !important;
+}
+
+/* …but use the native cursor only right on the iframe surface */
+.spotify-row iframe {
+  cursor: auto !important;
+}
+
+/* “Temporarily restore native cursor” scope */
+html.cursor-native,
+html.cursor-native * { cursor: auto !important; }
+html.cursor-native .custom-cursor { opacity: 0 !important; }
+
+/* Touch devices: disable custom cursor entirely */
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor { display: none !important; }
+  html, body, * { cursor: auto !important; }
+}
+/* Native mode baseline = arrow */
+html.cursor-native body { cursor: default !important; }
+
+/* Hand on anything clickable (and their children/media) */
+html.cursor-native a[href],
+html.cursor-native a[href] *,
+html.cursor-native button,
+html.cursor-native button *,
+html.cursor-native [role="button"],
+html.cursor-native input[type="button"],
+html.cursor-native input[type="submit"],
+html.cursor-native label[for],
+html.cursor-native summary,
+html.cursor-native .project-card-link,
+html.cursor-native .project-card-link *,
+html.cursor-native .project-thumbnail,
+html.cursor-native .project-thumbnail *,
+html.cursor-native .thumbnail-media,
+html.cursor-native .thumbnail-overlay,
+html.cursor-native .nav-link,
+html.cursor-native .nav-link *,
+html.cursor-native .nav-link-wrapper,
+html.cursor-native .menu-icon {
+  cursor: pointer !important;
+}
+
+/* Keep the custom cursor UI hidden in native mode */
+html.cursor-native .custom-cursor { display: none !important; }

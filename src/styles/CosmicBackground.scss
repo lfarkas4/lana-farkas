@@ -1,0 +1,353 @@
+/* ================================================================
+   COSMIC BACKGROUND
+   Enhanced with floating particles + existing nebula/blob styling
+   ================================================================ */
+
+   @use "./partials/tokens" as tokens;
+
+   .cosmic-background {
+     position: fixed;
+     inset: 0;
+     width: 100vw;
+     height: 100vh;
+     z-index: -10;
+     background: #07161a;
+     overflow: hidden;
+     pointer-events: none;
+     /* Removed will-change: transform — on Safari/iOS this creates a new stacking
+        context that breaks position:fixed descendants and disrupts layout flow. */
+   }
+   
+   
+   /* ================================================================
+      1. BACKGROUND TEXTURES
+      ================================================================ */
+   .grain-layer {
+     position: absolute;
+     inset: 0;
+     z-index: -202;
+     pointer-events: none;
+     opacity: 0.06;
+     background-image: repeating-radial-gradient(
+       circle at 30% 40%,
+       rgba(255, 255, 255, 0.02) 0 2px,
+       transparent 2px 4px
+     );
+     filter: contrast(110%) saturate(108%);
+   }
+   
+   .nebula-layer {
+     position: absolute;
+     inset: -10% -10%;
+     z-index: -201;
+     pointer-events: none;
+     mix-blend-mode: screen;
+     filter: blur(48px);
+     opacity: 0.55;
+     background:
+       radial-gradient(900px 700px at 20% 28%, rgba(119, 0, 239, 0.18), transparent 80%),
+       radial-gradient(1000px 800px at 78% 22%, rgba(68, 13, 218, 0.17), transparent 75%),
+       radial-gradient(780px 620px at 30% 78%, rgba(144, 25, 162, 0.15), transparent 70%),
+       radial-gradient(620px 520px at 82% 80%, rgba(25, 14, 151, 0.16), transparent 35%);
+     animation: nebulaDrift 140s ease-in-out infinite alternate;
+   }
+   
+   @keyframes nebulaDrift {
+     0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 0.52; }
+     100% { transform: translate3d(-12px, 8px, 0) scale(1.02); opacity: 0.6; }
+   }
+   
+   
+   /* ================================================================
+      2. READABILITY OVERLAYS
+      ================================================================ */
+   .star-dimmer {
+     position: absolute;
+     inset: 0;
+     z-index: -190;
+     background: radial-gradient(
+       circle at center,
+       rgba(0, 0, 0, 0.20) 0%,
+       rgba(0, 0, 0, 0.35) 42%,
+       rgba(0, 0, 0, 0.45) 100%
+     );
+   }
+   
+   .center-orb3 {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     width: 1100px;
+     height: 500px;
+     transform: translate(-50%, -50%);
+     background: radial-gradient(
+       circle,
+       rgb(2, 8, 9) 0%,
+       rgba(5, 15, 17, 0.977) 10%,
+       rgba(5, 15, 17, 0.858) 20%,
+       rgba(5, 15, 17, 0.509) 40%,
+       transparent 100%
+     );
+     border-radius: 50%;
+     z-index: -9;
+     filter: blur(120px);
+   }
+   
+   
+   /* ================================================================
+      3. ENTRANCE ANIMATION
+      ================================================================ */
+   .stars-enter {
+     opacity: 0;
+     animation: starsFadeIn 680ms ease-out forwards;
+   }
+   
+   @keyframes starsFadeIn {
+     to { opacity: 1; }
+   }
+   
+   
+   /* ================================================================
+      4. SVG SPARKLE STARS (4-point stars with rotation)
+      ================================================================ */
+   .manual-stars {
+     position: absolute;
+     inset: 0;
+     z-index: -195;
+     pointer-events: none;
+   }
+   
+   .manual-star {
+     position: absolute;
+     width: 12px;
+     height: 12px;
+     opacity: 0.89;
+     filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.12));
+     transform-origin: 50% 50%;
+     animation: sparkleRotate 6s ease-in-out infinite;
+   }
+   
+   .manual-star.s-xs { width: 8px;  height: 8px;  }
+   .manual-star.s-sm { width: 10px; height: 10px; }
+   .manual-star.s-md { width: 12px; height: 12px; }
+   .manual-star.s-lg { width: 14px; height: 14px; }
+   
+   @keyframes sparkleRotate {
+     0%   { opacity: 0.78; transform: scale(1.2) rotate(0deg); }
+     50%  { opacity: 0.5;  transform: scale(0.85) rotate(180deg); }
+     100% { opacity: 0.78; transform: scale(1.2) rotate(360deg); }
+   }
+   
+   
+   /* ================================================================
+      5. CIRCLE DOT STARS (pulsing glow)
+      ================================================================ */
+   .circle-stars {
+     position: absolute;
+     inset: 0;
+     z-index: -196;
+     pointer-events: none;
+   }
+   
+   .circle-star {
+     position: absolute;
+     border-radius: 50%;
+     --glowCol: rgba(255, 255, 255, 0.08);
+   
+     opacity: var(--minO, 0.26);
+     box-shadow: 0 0 var(--haloMin, 1px) var(--glowCol);
+   
+     animation: dotGlow var(--glowDur, 10s) cubic-bezier(0.42, 0, 0.58, 1)
+                var(--glowDelay, 0s) infinite alternate;
+     will-change: opacity, box-shadow, filter;
+     filter: hue-rotate(calc(var(--dotHue, 0) * 1deg));
+   }
+   
+   .mover {
+     animation:
+       dotGlow var(--glowDur, 10s) cubic-bezier(0.42, 0, 0.58, 1) var(--glowDelay, 0s) infinite alternate,
+       moveTriangle var(--pathDur, 0s) cubic-bezier(0.45, 0.05, 0.55, 0.95) var(--pathDelay, 0s) infinite;
+   }
+   
+   @keyframes dotGlow {
+     to {
+       opacity: var(--maxO, 0.74);
+       box-shadow: 0 0 var(--haloMax, 10px) var(--glowCol);
+     }
+   }
+   
+   @keyframes moveTriangle {
+     0%   { transform: translate(0, 0); }
+     33%  { transform: translate(var(--ampX, 12px), 0); }
+     66%  { transform: translate(calc(var(--ampX, 12px) / 2), var(--ampY, 10px)); }
+     100% { transform: translate(0, 0); }
+   }
+   
+   
+   /* ================================================================
+      6. FLOATING PARTICLES (new - drift upward)
+      ================================================================ */
+   .floating-particles {
+     position: absolute;
+     inset: 0;
+     z-index: -194;
+     pointer-events: none;
+     overflow: hidden;
+   }
+   
+   .floating-particle {
+     position: absolute;
+     border-radius: 50%;
+     background: radial-gradient(
+       circle,
+       rgba(255, 255, 255, 0.5) 0%,
+       rgba(170, 209, 255, 0.3) 40%,
+       transparent 70%
+     );
+     animation: particleFloat var(--float-dur, 18s) linear infinite;
+     opacity: 0;
+   }
+   
+   /* Variation classes for different colors */
+   .floating-particle--warm {
+     background: radial-gradient(
+       circle,
+       rgba(255, 220, 180, 0.5) 0%,
+       rgba(255, 180, 120, 0.25) 40%,
+       transparent 70%
+     );
+   }
+   
+   .floating-particle--purple {
+     background: radial-gradient(
+       circle,
+       rgba(200, 150, 255, 0.45) 0%,
+       rgba(150, 100, 220, 0.2) 40%,
+       transparent 70%
+     );
+   }
+   
+   @keyframes particleFloat {
+     0% {
+       transform: translateY(0) translateX(0) scale(0);
+       opacity: 0;
+     }
+     5% {
+       transform: translateY(-5vh) translateX(var(--drift-x, 5px)) scale(1);
+       opacity: var(--max-opacity, 0.5);
+     }
+     90% {
+       transform: translateY(-90vh) translateX(calc(var(--drift-x, 5px) * -1)) scale(1);
+       opacity: var(--max-opacity, 0.5);
+     }
+     100% {
+       transform: translateY(-100vh) translateX(0) scale(0);
+       opacity: 0;
+     }
+   }
+   
+   
+   /* ================================================================
+      7. BLOBS
+      ================================================================ */
+   .blob {
+     position: absolute;
+     width: 600px;
+     height: 600px;
+     border-radius: 50%;
+     filter: blur(85px);
+     opacity: 0.35;
+     mix-blend-mode: screen;
+     animation: blobFloat 40s ease-in-out infinite;
+     z-index: -9;
+   }
+   
+   .blob1 { background: rgba(119, 0, 239, 0.32);   top: 80%;    left: -15%;  animation-delay: 0s; }
+   .blob2 { background: rgba(187, 19, 165, 0.3);   top: 94%;    left: 12%;   animation-delay: 5s; }
+   .blob3 { background: rgba(170, 28, 231, 0.319); top: -55%;   right: 40%;  animation-delay: 10s; }
+   .blob4 { background: rgba(11, 48, 196, 0.557);  bottom: 85%; right: 20%;  animation-delay: 15s; }
+   .blob5 { background: rgba(46, 14, 151, 0.358);  bottom: -40%; left: 2%;   animation-delay: 20s; }
+   .blob6 { background: rgba(38, 9, 134, 0.48);    bottom: -40%; left: 75%;  animation-delay: 20s; }
+   
+   @keyframes blobFloat {
+     0%   { transform: translate(0, 0) scale(1); }
+     25%  { transform: translate(20px, -10px) scale(1.02); }
+     50%  { transform: translate(-15px, 15px) scale(0.98); }
+     75%  { transform: translate(10px, -20px) scale(1.01); }
+     100% { transform: translate(0, 0) scale(1); }
+   }
+   
+   
+   /* ================================================================
+      8. MOBILE OPTIMIZATIONS (≤ 625px)
+      ================================================================ */
+   @media (max-width: #{tokens.$sm_breakpoint}) {
+     /* Nebula: stop drift animation for performance */
+     .nebula-layer {
+       animation: none;
+       filter: blur(36px);
+       opacity: 0.45;
+     }
+   
+     /* Blobs: static glow only */
+     .blob {
+       animation: none;
+       opacity: 0.24;
+     }
+   
+     /* Circle stars: simpler animation */
+     .circle-star {
+       animation: dotGlow 14s ease-in-out var(--glowDelay, 0s) infinite alternate;
+       transform: scale(0.75);
+     }
+   
+     .mover {
+       animation: dotGlow 14s ease-in-out var(--glowDelay, 0s) infinite alternate;
+     }
+   
+     /* Sparkle stars: faster cycle */
+     .manual-star {
+       animation: sparkleRotate 5s ease-in-out infinite;
+     }
+   
+     .manual-star.s-xs { width: 6px;  height: 6px; }
+     .manual-star.s-sm { width: 8px;  height: 8px; }
+     .manual-star.s-md { width: 10px; height: 10px; }
+     .manual-star.s-lg { width: 12px; height: 12px; }
+   
+     /* Floating particles: reduce count via CSS (hide some) */
+     .floating-particle:nth-child(n+9) {
+       display: none;
+     }
+   
+     .floating-particle {
+       animation-duration: 22s;
+     }
+   }
+   
+   
+   /* ================================================================
+      9. REDUCED MOTION
+      ================================================================ */
+   @media (prefers-reduced-motion: reduce) {
+     .nebula-layer,
+     .blob,
+     .circle-star,
+     .mover,
+     .manual-star,
+     .floating-particle {
+       animation: none !important;
+     }
+   
+     .circle-star {
+       opacity: 0.5;
+     }
+   
+     .manual-star {
+       opacity: 0.7;
+     }
+   
+     .floating-particle {
+       display: none;
+     }
+   }
