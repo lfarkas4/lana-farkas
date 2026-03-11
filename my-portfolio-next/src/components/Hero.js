@@ -53,19 +53,39 @@ const Hero = ({ isLoading = false }) => {
           className={`hero-tagline ${shouldAnimate ? "animate-fade-in" : "no-animation"}`}
           style={shouldAnimate ? { animationDelay: delays.tagline } : {}}
         >
-          <span className="tagline-gtxs">
+          {/* <span className="tagline-gtxs">
             … a product designer translating{" "}
             <span className="font-cooper-italic-tag">insights</span>
             <br />
             into <span className="font-cooper-italic-tag">interfaces</span> ready for
             launch.
-          </span>
+          </span> */}
+          {/* <span className="tagline-gtxs">
+            … a product designer crafting{" "}
+            <span className="font-cooper-italic-tag">ideas</span>
+            <br />
+            into <span className="font-cooper-italic-tag">interactions</span> built for
+            launch.
+          </span> */}
+          {/* <span className="tagline-gtxs">
+  … a product designer shaping{" "}
+  <span className="font-cooper-italic-tag"> experiences </span>
+  <br />
+  through playful <span className="font-cooper-italic-tag">front-end thinking</span>.
+</span> */}
+
+<span className="tagline-gtxs">
+  … a product designer driven by{" "}
+  <span className="font-cooper-italic-tag">curiosity</span>
+  <br />
+  and playful <span className="font-cooper-italic-tag">front-end thinking</span>.
+</span>
 
           {/* XS only */}
           <span className="tagline-xs">
-            <span className="line">… a product designer translating</span>
-            <span className="line">insights into interfaces</span>
-            <span className="line">ready for launch.</span>
+            <span className="line">… a product designer driven by</span>
+            <span className="line">curiosity and playful</span>
+            <span className="line">front-end thinking.</span>
           </span>
         </p>
 
