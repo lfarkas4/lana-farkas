@@ -212,7 +212,7 @@ h1, h2, h3, h4, h5, h6,
   cursor: default;
 }
 
-/* Allow text selection on body content BUT NO I-BEAM */
+/* Allow text selection on body content BUT NO I-beam */
 p,
 p *,
 strong,
@@ -243,19 +243,30 @@ article *,
   cursor: default !important;
 }
 
-/* Custom cursor mode - hide OS cursor when NOT in native mode */
+/* Only hide OS cursor when cursor-native is explicitly OFF */
 html:not(.cursor-native),
 html:not(.cursor-native) body,
 html:not(.cursor-native) * {
   cursor: none !important;
 }
 
-/* In NATIVE cursor mode - force default cursor on non-clickable text */
-html.cursor-native p:not(a p),
+/* In native cursor mode, keep normal text/default cursor behavior */
+html.cursor-native,
+html.cursor-native body {
+  cursor: default;
+}
+
+html.cursor-native p,
+html.cursor-native p *,
+html.cursor-native strong,
+html.cursor-native b,
+html.cursor-native em,
+html.cursor-native i,
+html.cursor-native span,
 html.cursor-native .about-bio,
 html.cursor-native .about-bio *,
 html.cursor-native .hero-column p,
-html.cursor-native .hero-column p *:not(a):not(a *),
+html.cursor-native .hero-column p *,
 html.cursor-native .project-description,
 html.cursor-native .project-description *,
 html.cursor-native .mini-description,
@@ -275,15 +286,16 @@ html.cursor-native .light-bold {
 }
 
 /* Clickable elements in native cursor mode */
+html.cursor-native a,
+html.cursor-native a *,
+html.cursor-native button,
+html.cursor-native button *,
 html.cursor-native .nav-link,
 html.cursor-native .nav-link *,
 html.cursor-native .nav-link-wrapper,
 html.cursor-native .menu-icon,
-html.cursor-native button,
-html.cursor-native button *,
-html.cursor-native a,
-html.cursor-native a *,
-html.cursor-native .clickable {
+html.cursor-native .clickable,
+html.cursor-native [role="button"] {
   cursor: pointer !important;
 }
 
