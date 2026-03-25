@@ -66,28 +66,27 @@ export default function SolutionImpact() {
       <div className="si-impact">
         <div className="si-eyebrow">Impact</div>
 
-        {/* Stats Grid */}
-        <div className="si-stats">
-          <div className="si-stat">
-            <CountUp end={30} suffix="%" duration={1200} />
-            <p className="si-stat-label">fewer steps in operator workflows</p>
-          </div>
+ {/* Stats Grid */}
+<div className="si-stats">
+  <div className="si-stat">
+    <CountUp end={30} suffix="%" duration={1200} />
+    <p className="si-stat-label">fewer steps in operator workflows</p>
+  </div>
 
-          <div className="si-stat">
-            <CountUp end={12} duration={1200} />
-            <p className="si-stat-label">high-fidelity prototypes tested and shared</p>
-          </div>
+  <div className="si-stat">
+    <CountUp end={25} suffix="%" duration={1200} />
+    <p className="si-stat-label">fewer operator errors from system states</p>  </div>
 
-          <div className="si-stat">
-            <CountUp end={20} suffix="+" duration={1200} />
-            <p className="si-stat-label">stakeholders validated new task flows</p>
-          </div>
+    <div className="si-stat">
+  <CountUp end={12} duration={1200} />
+  <p className="si-stat-label">hi-fi prototypes used to validate workflows</p>
+</div>
 
-          <div className="si-stat">
-            <CountUp end={1} animate={false} />
-            <p className="si-stat-label">system blueprint adopted into roadmap</p>
-          </div>
-        </div>
+  <div className="si-stat">
+    <CountUp end={1} animate={false} />
+    <p className="si-stat-label">system blueprint adopted into product roadmap</p>
+  </div>
+</div>
 
         <img src="/assets/impact.png" alt="" className="si-sparkle" aria-hidden="true" />
       </div>

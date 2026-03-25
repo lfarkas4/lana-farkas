@@ -165,7 +165,7 @@ export default function Navigation() {
               {renderAnimatedLink("about", "about", "/about", handleAboutClick)}
 
               <a
-                href="/assets/Lana_Farkas_Resume_2026.pdf"
+                href="/assets/LanaFarkas_Resume.pdf"
                 className="nav-link"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -192,7 +192,7 @@ export default function Navigation() {
           {renderAnimatedLink("about", "about", "/about", handleAboutClick)}
 
           <a
-            href="/assets/Lana_Farkas_Resume_2026.pdf"
+            href="/assets/LanaFarkas_Resume.pdf"
             className="nav-link"
             target="_blank"
             rel="noopener noreferrer"
